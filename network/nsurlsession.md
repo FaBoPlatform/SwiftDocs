@@ -61,6 +61,11 @@ class ViewController: UIViewController {
 
 
 ```
+## error code
+
+| error code | 意味 |
+| -- | -- |
+| -1022 | NSURLErrorDomain |
 
 ## http status code
 
