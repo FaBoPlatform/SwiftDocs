@@ -2,6 +2,7 @@
 
 ```swift
 
+
 import UIKit
 
 class ViewController: UIViewController {
@@ -17,7 +18,7 @@ class ViewController: UIViewController {
             
             // リクエストを生成.
             let request = NSURLRequest(URL: url)
-
+            
             // 接続.
             NSURLSession.sharedSession().dataTaskWithRequest(request,
                 completionHandler: { (data, response, error) -> Void in
@@ -32,16 +33,16 @@ class ViewController: UIViewController {
                         } else {
 
                             if let httpRes = response as? NSHTTPURLResponse {
-                                // http status code 200の時
-                                if httpRes.statusCode == 200 {
+                                // http status code 200-300の時
+                                if httpRes.statusCode >= 200 && httpRes.statusCode < 400{
                                     if let htmldata = data {
                                         let datastring = NSString(data:htmldata, encoding:NSUTF8StringEncoding) as! String
                                         print("data:\(datastring)")
                                     }
                                 }
-                                // http status code 404の時
-                                else if httpRes.statusCode == 404 {
-                                        print("ページが存在しません")
+                                // http status code 400-500の時
+                                else if httpRes.statusCode >= 400 {
+                                        print("エラー")
                                 }
                             }
                         }
@@ -54,6 +55,8 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 }
+
+
 
 ```
 
