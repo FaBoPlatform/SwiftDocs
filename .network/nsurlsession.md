@@ -32,14 +32,14 @@ class ViewController: UIViewController {
                         } else {
 
                             if let httpRes = response as? NSHTTPURLResponse {
-                                // Response status 200の時
+                                // http status code 200の時
                                 if httpRes.statusCode == 200 {
                                     if let htmldata = data {
                                         let datastring = NSString(data:htmldata, encoding:NSUTF8StringEncoding) as! String
                                         print("data:\(datastring)")
                                     }
                                 }
-                                // Response status 404の時
+                                // http status code 404の時
                                 else if httpRes.statusCode == 404 {
                                         print("ページが存在しません")
                                 }
@@ -56,3 +56,17 @@ class ViewController: UIViewController {
 }
 
 ```
+
+http status code
+
+| 0:0 | 1:0 |
+| -- | -- |
+| 200 | OK |
+| 201 | Created |
+| 202 | Accepted |
+| 203 | Non-Authoritative Information |
+| 204 | No Content |
+| 205 | Reset Content |
+| 206 | Partial Content |
+
+
