@@ -78,6 +78,7 @@ http status code
 
 4xx系は、異常処理
 
+5xx系は、内部エラー
 
 
 
