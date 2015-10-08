@@ -66,6 +66,7 @@ class ViewController: UIViewController {
 | error code | 意味 |
 | -- | -- |
 | -1022 | NSURLErrorDomain |
+| -1008 | The Internet connection appears to be offline. |
 
 ## http status code
 
