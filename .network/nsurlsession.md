@@ -62,26 +62,15 @@ class ViewController: UIViewController {
 
 http status code
 
-2xx系は、正常処理
+は、
 
 | status code | 意味 |
 | -- | -- |
-| 200 | OK |
-| 201 | Created |
-| 202 | Accepted |
-| 203 | Non-Authoritative Information |
-| 204 | No Content |
-| 205 | Reset Content |
-| 206 | Partial Content |
-| 207 | Multi-Status |
-| 208 | Already Reported |
-| 226 | IM Used |
+| 2xx系 | 正常処理 |
+| 3xx系 | リダイレクト |
+| 4xx系 | 異常処理 |
+| 5xx系 |内部エラー |
 
-3xx系は、リダイレクト
-
-4xx系は、異常処理
-
-5xx系は、内部エラー
 
 
 
