@@ -1,5 +1,7 @@
 # NSURLSession
 
+## Example
+
 ```swift
 
 
@@ -60,9 +62,7 @@ class ViewController: UIViewController {
 
 ```
 
-http status code
-
-は、
+## http status code
 
 | status code | 意味 |
 | -- | -- |
