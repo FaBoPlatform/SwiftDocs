@@ -65,7 +65,7 @@ class ViewController: UIViewController {
 
 | error code | 意味 |
 | -- | -- |
-| -1022 | NSURLErrorDomain |
+| -1022 | The resource could not be loaded because the App Transport Security policy requires the use of a secure connection. |
 | -1008 | The Internet connection appears to be offline. |
 
 ## http status code
