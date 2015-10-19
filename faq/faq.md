@@ -10,3 +10,8 @@
 
 Provisioningファイルの設定が問題ないか確認する
 
+## Q
+    Please verify that your device’s clock is properly set, and that your signing certificate is not expired. (0xE8008018)
+ 
+## A
+
