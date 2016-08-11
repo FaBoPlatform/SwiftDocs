@@ -4,12 +4,12 @@
 ![Preview uikit002](./img/uikit002.png) ![Preview uikit002_1](./img/uikit002_1.png)
 
 
-# Swift 3.X
+# Swift 3.0
 
 ```swift
 //
 //  ViewController.swift
-//  uikit001
+//  UIKit002
 //
 //  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
@@ -17,60 +17,74 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    private var myButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // ボタンのサイズを定義.
+        // Buttonを生成する.
+        myButton = UIButton()
+        
+        // ボタンのサイズ.
         let bWidth: CGFloat = 200
         let bHeight: CGFloat = 50
         
-        // 配置する座標を定義(画面の中心).
-        let posX: CGFloat = self.view.bounds.width/2 - bWidth/2
-        let posY: CGFloat = self.view.bounds.height/2 - bHeight/2
-
-        // Labelを作成.
-        let label: UILabel = UILabel(frame: CGRect(x: posX, y: posY, width: bWidth, height: bHeight))
+        // ボタンのX,Y座標.
+        let posX: CGFloat = self.view.frame.width/2 - bWidth/2
+        let posY: CGFloat = self.view.frame.height/2 - bHeight/2
         
-        // UILabelの背景をオレンジ色に.
-        label.backgroundColor = UIColor.orange
+        // ボタンの設置座標とサイズを設定する.
+        myButton.frame = CGRect(x: posX, y: posY, width: bWidth, height: bHeight)
         
-        // UILabelの枠を丸くする.
-        label.layer.masksToBounds = true
+        // ボタンの背景色を設定.
+        myButton.backgroundColor = UIColor.red
         
-        // 丸くするコーナーの半径.
-        label.layer.cornerRadius = 20.0
+        // ボタンの枠を丸くする.
+        myButton.layer.masksToBounds = true
         
-        // 文字の色を白に定義.
-        label.textColor = UIColor.white
+        // コーナーの半径を設定する.
+        myButton.layer.cornerRadius = 20.0
         
-        // UILabelに文字を代入.
-        label.text = "Hello Swift!!"
+        // タイトルを設定する(通常時).
+        myButton.setTitle("ボタン(通常)", for: .normal)
+        myButton.setTitleColor(UIColor.white, for: .normal)
         
-        // 文字の影をグレーに定義.
-        label.shadowColor = UIColor.gray
+        // タイトルを設定する(ボタンがハイライトされた時).
+        myButton.setTitle("ボタン(押された時)", for: .highlighted)
+        myButton.setTitleColor(UIColor.black, for: .highlighted)
         
-        // Textを中央寄せにする.
-        label.textAlignment = NSTextAlignment.center
+        // ボタンにタグをつける.
+        myButton.tag = 1
         
-        // Viewの背景を青にする.
-        self.view.backgroundColor = UIColor.cyan
+        // イベントを追加する
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(sender:)), for: .touchUpInside)
         
-        // ViewにLabelを追加.
-        self.view.addSubview(label)
+        // ボタンをViewに追加.
+        self.view.addSubview(myButton)
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    /*
+     ボタンのイベント.
+     */
+    internal func onClickMyButton(sender: UIButton) {
+        print("onClickMyButton:");
+        print("sender.currentTitle: \(sender.currentTitle)")
+        print("sender.tag: \(sender.tag)")
+    }
+    
 }
+
+
 ```
 
-# Swift 2.X
+# Swift 2.3
 
 ```swift
 //
@@ -97,8 +111,8 @@ class ViewController: UIViewController {
         let bHeight: CGFloat = 50
         
         // ボタンのX,Y座標.
-        let posX: CGFloat = self.view.frame.width/2
-        let posY: CGFloat = self.view.frame.height/2
+        let posX: CGFloat = self.view.frame.width/2 - bWidth/2
+        let posY: CGFloat = self.view.frame.height/2 - bHeight/2
         
         // ボタンの設置座標とサイズを設定する.
         myButton.frame = CGRectMake(posX, posY, bWidth, bHeight)
@@ -124,7 +138,7 @@ class ViewController: UIViewController {
         myButton.tag = 1
         
         // イベントを追加する
-        myButton.addTarget(self, action: "onClickMyButton", forControlEvents: .TouchUpInside)
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(_:)), forControlEvents: .TouchUpInside)
         
         // ボタンをViewに追加.
         self.view.addSubview(myButton)
@@ -146,14 +160,15 @@ class ViewController: UIViewController {
     }
 
 }
-
-
 ```
 
-## 2.xと3.xの差分
+## 2.3と3.0の差分
 
-* UIColor.grayColor()がUIColor.gray()に変更
-* NSTextAlignment.Centerが、NSTextAlignment.centerに変更
+* UIColor.grayColor()がUIColor.grayに変更
+* CGRectMake()がCGReat()に変更
+* UIButton.setTitle()のforState: .Normalが for: .normalに変更
+* UIButton.addTarget()の#selector(ViewController.onClickMyButton(_:))が、#selector(ViewController.onClickMyButton(sender:)に変更
+* UIButton.addTarget()のforControlEvents: .TouchUpInsideがfor: .touchUpInsideに変更
 
 ## Reference
 
