@@ -134,6 +134,11 @@ class ViewController: UIViewController {
 }
 ```
 
+## 2.xと3.xの差分
+
+* UIColor.grayColor()がUIColor.gray()に変更
+* NSTextAlignment.Centerが、NSTextAlignment.centerに変更
+
 ## Reference
 
 * UIColor
