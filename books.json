@@ -1,0 +1,17 @@
+{
+        "plugins": [
+                "-highlight",
+                "-search",
+                "-lunr",
+                "-sharing",
+                "-fontsettings",
+                "-theme-default-clarity"
+        ],
+        "plugins": ["mermaid","-sharing","hide-published-with"],
+        "plugins":["ga"],
+        "pluginsConfig": {
+                "ga": {
+                        "token": "UA-72383546-2"
+                }
+        }
+}
