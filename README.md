@@ -1,6 +1,6 @@
-My Awesome Book
+Swift Docs
 =======
 
-This file file serves as your book's preface, a great place to describe your book's content and ideas.
+逆引きSwift(Swift Docs)のトップページです。
 
-aaaa
+Powered by [FaBo](http://www.fabo.io)
