@@ -1,10 +1,10 @@
-
-[![Banner](../img/fabo_banner.png)](http://www.fabo.io)
+# UIButtonでボタンを表示
 
 ![Preview uikit002](./img/uikit002.png) ![Preview uikit002_1](./img/uikit002_1.png)
 
+[![Banner](../img/fabo_banner.png)](http://www.fabo.io)
 
-# Swift 3.0
+## Swift 3.0
 
 ```swift
 //
@@ -84,7 +84,7 @@ class ViewController: UIViewController {
 
 ```
 
-# Swift 2.3
+## Swift 2.3
 
 ```swift
 //

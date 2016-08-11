@@ -1,9 +1,10 @@
-
-[![Banner](../img/fabo_banner.png)](http://www.fabo.io)
+# UILabelで文字を表示
 
 ![Preview uikit001](./img/uikit001.png)
 
-# Swift 3.X
+[![Banner](../img/fabo_banner.png)](http://www.fabo.io)
+
+## Swift 3.X
 
 ```swift
 //
