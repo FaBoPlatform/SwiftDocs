@@ -1,6 +1,6 @@
 
 
-![Preview UIKIT001](./img/UIKKIT001.png)
+![Preview uikit001](./img/uikit001.png)
 
 ```swift
 //
