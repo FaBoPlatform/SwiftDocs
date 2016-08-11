@@ -1,6 +1,0 @@
-version: "Apple Swift version 3.0 (swiftlang-800.0.42.1 clang-800.0.36.1)"
-options: "2be8d6c786f947a013f65479ca7d1bed"
-build_time: [524229436, 192614000]
-inputs:
-  "/Users/sasakiakira/Documents/workspace_gyakubiki/SwiftDocs/project/uikit001/uikit001/ViewController.swift": [524229434, 0]
-  "/Users/sasakiakira/Documents/workspace_gyakubiki/SwiftDocs/project/uikit001/uikit001/AppDelegate.swift": [524228484, 0]

@@ -74,7 +74,7 @@ class ViewController: UIViewController {
 ```swift
 //
 //  ViewController.swift
-//  UIKit001
+//  uikit001
 //
 //  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
@@ -82,48 +82,54 @@ class ViewController: UIViewController {
 import UIKit
 
 class ViewController: UIViewController {
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // ボタンのサイズを定義.
+        let bWidth: CGFloat = 200
+        let bHeight: CGFloat = 50
+        
+        // 配置する座標を定義(画面の中心).
+        let posX: CGFloat = self.view.bounds.width/2 - bWidth/2
+        let posY: CGFloat = self.view.bounds.height/2 - bHeight/2
+
         // Labelを作成.
-        let myLabel: UILabel = UILabel(frame: CGRectMake(0,0,200,50))
+        let label: UILabel = UILabel(frame: CGRect(x: posX, y: posY, width: bWidth, height: bHeight))
         
-        // 背景をオレンジ色にする.
-        myLabel.backgroundColor = UIColor.orangeColor()
+        // UILabelの背景をオレンジ色に.
+        label.backgroundColor = UIColor.orangeColor()
         
-        // 枠を丸くする.
-        myLabel.layer.masksToBounds = true
+        // UILabelの枠を丸くする.
+        label.layer.masksToBounds = true
         
-        // コーナーの半径.
-        myLabel.layer.cornerRadius = 20.0
+        // 丸くするコーナーの半径.
+        label.layer.cornerRadius = 20.0
         
-        // Labelに文字を代入.
-        myLabel.text = "Hello Swift!!"
+        // 文字の色を白に定義.
+        label.textColor = UIColor.whiteColor()
         
-        // 文字の色を白にする.
-        myLabel.textColor = UIColor.whiteColor()
+        // UILabelに文字を代入.
+        label.text = "Hello Swift!!"
         
-        // 文字の影の色をグレーにする.
-        myLabel.shadowColor = UIColor.grayColor()
+        // 文字の影をグレーに定義.
+        label.shadowColor = UIColor.grayColor()
         
         // Textを中央寄せにする.
-        myLabel.textAlignment = NSTextAlignment.Center
+        label.textAlignment = NSTextAlignment.Center
         
-        // 配置する座標を設定する.
-        myLabel.layer.position = CGPoint(x: self.view.bounds.width/2,y: 200)
-        
-        // Viewの背景色を青にする.
+        // Viewの背景を青にする.
         self.view.backgroundColor = UIColor.cyanColor()
         
         // ViewにLabelを追加.
-        self.view.addSubview(myLabel)
+        self.view.addSubview(label)
+        
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
-    
-    
+
 }
 ```
