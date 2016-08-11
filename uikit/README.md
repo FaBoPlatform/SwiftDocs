@@ -1,1 +1,1 @@
-[![Preview uikit001](./uikit/img/uikit001.png)](./uikit/001_uilabel.md)
+[![Preview uikit001](./img/uikit001.png)](./001_uilabel.md)
