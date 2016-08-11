@@ -174,5 +174,5 @@ class ViewController: UIViewController {
 
 * UIColor
 	* [https://developer.apple.com/reference/uikit/uicolor](https://developer.apple.com/reference/uikit/uicolor)
-* UILabel
+* UIButton
 	* [https://developer.apple.com/reference/uikit/uibutton](https://developer.apple.com/reference/uikit/uibutton)
