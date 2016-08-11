@@ -133,3 +133,10 @@ class ViewController: UIViewController {
 
 }
 ```
+
+## Reference
+
+* UIColor
+	* [https://developer.apple.com/reference/uikit/uicolor](https://developer.apple.com/reference/uikit/uicolor)
+* UILabel
+	* [https://developer.apple.com/reference/uikit/uilabel](https://developer.apple.com/reference/uikit/uilabel)
