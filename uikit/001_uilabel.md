@@ -2,9 +2,7 @@
 
 ![Preview uikit001](./img/uikit001.png)
 
-[![Banner](../img/fabo_banner.png)](http://www.fabo.io)
-
-## Swift 3.X
+## Swift 3.0
 
 ```swift
 //
@@ -70,7 +68,7 @@ class ViewController: UIViewController {
 }
 ```
 
-# Swift 2.X
+# Swift 2.3
 
 ```swift
 //

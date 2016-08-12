@@ -2,7 +2,6 @@
 
 ![Preview uikit003](./img/uikit003.png)
 
-[![Banner](../img/fabo_banner.png)](http://www.fabo.io)
 
 ## Swift 3.0
 
