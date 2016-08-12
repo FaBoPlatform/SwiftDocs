@@ -40,6 +40,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         // 枠を表示する.
         myTextField.borderStyle = .roundedRect
+
+        // クリアボタンを追加.
+        myTextField.clearButtonMode = .whileEditing
         
         // Viewに追加する
         self.view.addSubview(myTextField)
@@ -116,6 +119,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         // 枠を表示する.
         myTextField.borderStyle = .RoundedRect
+
+        // クリアボタンを追加.
+        myTextField.clearButtonMode = .WhileEditing
         
         // Viewに追加する
         self.view.addSubview(myTextField)
