@@ -8,40 +8,44 @@
 ```swift
 //
 //  ViewController.swift
-//  UIKit005
+//  UIKit006
 //
 //  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    private var myImageView: UIImageView!
+    // Tableで使用する配列を設定する
+    private let myItems: NSArray = ["TEST1", "TEST2", "TEST3"]
+    private var myTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // UIImageViewのサイズを設定する
-        let iWidth: CGFloat = 300
-        let iHeight: CGFloat = 100
+        // Status Barの高さを取得する.
+        let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
         
-        // UIImageViewのx,yを設定する
-        let posX: CGFloat = (self.view.bounds.width - iWidth)/2
-        let posY: CGFloat = (self.view.bounds.height - iHeight)/2
+        // Viewの高さと幅を取得する.
+        let displayWidth: CGFloat = self.view.frame.width
+        let displayHeight: CGFloat = self.view.frame.height
         
-        // UIImageViewを作成.
-        myImageView = UIImageView(frame: CGRect(x: posX, y: posY, width: iWidth, height: iHeight))
+        // TableViewの生成(Status barの高さをずらして表示).
+        myTableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight))
         
-        // UIImageを作成.
-        let myImage: UIImage = UIImage(named: "fabo_logo.png")!
+        // Cell名の登録をおこなう.
+        myTableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
         
-        // 画像をUIImageViewに設定する.
-        myImageView.image = myImage
+        // DataSourceを自身に設定する.
+        myTableView.dataSource = self
         
+        // Delegateを自身に設定する.
+        myTableView.delegate = self
         
-        // UIImageViewをViewに追加する
-        self.view.addSubview(myImageView)
+        // Viewに追加する.
+        self.view.addSubview(myTableView)
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -49,10 +53,35 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    /*
+     Cellが選択された際に呼び出される
+     */
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Num: \(indexPath.row)")
+        print("Value: \(myItems[indexPath.row])")
+    }
+    
+    /*
+     Cellの総数を返す.
+     */
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return myItems.count
+    }
+    
+    /*
+     Cellに値を設定する
+     */
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // 再利用するCellを取得する.
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
+        
+        // Cellに値を設定する.
+        cell.textLabel!.text = "\(myItems[indexPath.row])"
+        
+        return cell
+    }
+    
 }
-
-
-
 ```
 
 ## Swift 2.3
