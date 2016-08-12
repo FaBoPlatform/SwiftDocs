@@ -265,5 +265,5 @@ class ViewController: UIViewController {
 
 ## Reference
 
-* UIFont
-	* [https://developer.apple.com/reference/uikit/uifont](https://developer.apple.com/reference/uikit/uifont)
+* UserNotifications
+	* [https://developer.apple.com/reference/usernotifications](https://developer.apple.com/reference/usernotifications)
