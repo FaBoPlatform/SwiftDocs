@@ -121,5 +121,7 @@ class ViewController: UIViewController {
 
 ## Reference
 
-* UITextField
-	* [https://developer.apple.com/reference/uikit/uitextfield](https://developer.apple.com/reference/uikit/uitextfield)
+* UIImageView
+	* [https://developer.apple.com/reference/uikit/uiimageview](https://developer.apple.com/reference/uikit/uiimageview)
+* UIImage
+    * [https://developer.apple.com/reference/uikit/uiimage](https://developer.apple.com/reference/uikit/uiimage)
