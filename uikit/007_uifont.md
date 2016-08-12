@@ -1,6 +1,6 @@
-# UITableViewでテーブルを表示
+# UIFontで文字を表示
 
-![Preview uikit006](./img/uikit006.png)
+![Preview uikit007](./img/uikit007.png)
 
 
 ## Swift 3.0
