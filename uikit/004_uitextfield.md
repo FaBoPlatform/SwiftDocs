@@ -160,6 +160,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 * textFieldDidBeginEditing(textField: UITextField)がtextFieldDidBeginEditing(_ textField: UITextField)に変更
 * textFieldDidEndEditing(textField: UITextField)が、textFieldDidEndEditing(_ textField: UITextField)に変更
 * textFieldShouldReturn(textField: UITextField)が、textFieldShouldReturn(_ textField: UITextField)に変更
+* UITextBorderStyle.RoundedRectがUITextBorderStyle.rundedRectに変更
 
 ## Reference
 
