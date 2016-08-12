@@ -8,6 +8,7 @@
 	* [005 UIImageViewで画像を表示](uikit/005_uiimageview.md)
 	* [006 UITableViewでテーブルを表示](uikit/006_uitableview.md)
 	* [007 UIFontで文字を表示](uikit/007_uifont.md)
+	* [008 UINotificationの表示](./008_uinotification.md)
 * [Introduction](README.md)
 * [NSURLSession](network/nsurlsession.md)
 * [iTunes Store]
