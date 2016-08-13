@@ -13,7 +13,8 @@
 	* [010 UIAlertControllerでアラートを表示](uikit/010_uialertcontroller.md)
 	* [011 UIPickerViewで値の選択](uikit/011_uipickerview.md)
 	* [012 UINavigationControllerの表示](uikit/012_uinavigationcontroller.md)
-	* [013 013 UITabBarControllerでタブの表示](uikit/013_uitabbarcontroller.md)
+	* [013 UITabBarControllerでタブの表示](uikit/013_uitabbarcontroller.md)
+	* [014 UIImageViewで画像の表示](uikit/014_uiimageview.md)
 * [Introduction](README.md)
 * [NSURLSession](network/nsurlsession.md)
 * [iTunes Store]

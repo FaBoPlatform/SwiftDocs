@@ -10,7 +10,8 @@
 [![Preview uikit010](./img/uikit010.png)](./010_uialertcontroller.md)
 [![Preview uikit011](./img/uikit011.png)](./011_uipickerview.md)
 [![Preview uikit012](./img/uikit012.png)](./012_uinavigationcontroller.md)
-[![Preview uikit012](./img/uikit013.png)](./013_uitabbarcontroller.md)
+[![Preview uikit013](./img/uikit013.png)](./013_uitabbarcontroller.md)
+[![Preview uikit014](./img/uikit014.png)](./014_uiimageview.md)
 
 
 

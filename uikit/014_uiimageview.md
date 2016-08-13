@@ -1,14 +1,15 @@
-# UIAlertControllerでアラートを表示
+# UIImageViewで画像を表示
 
-![Preview uikit010](./img/uikit010.png)
-![Preview uikit010_1](./img/uikit010_1.png)
+![Preview uikit014](./img/uikit014.png)
 
 ## Swift 3.0
 
 ```swift
 //
 //  ViewController.swift
-//  UIKit010
+//  UIKit014
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
 
 import UIKit
@@ -18,52 +19,93 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Viewの背景をCyanに設定する.
-        self.view.backgroundColor = UIColor.cyan
+        // 画像を設定する.
+        let myImage: UIImage = UIImage(named: "fabo_logo.png")!
+        let imageWidth: CGFloat = 300
+        let imageHeight: CGFloat = 100
         
-        // Buttonの定義する.
-        let myButton: UIButton = UIButton()
-        let buttonWidth: CGFloat = 200
-        let buttonHeight: CGFloat = 40
-        let posX: CGFloat = (self.view.bounds.width - buttonWidth)/2
-        let posY: CGFloat = 200
-        myButton.frame = CGRect(x: posX, y: posY, width: buttonWidth, height: buttonHeight)
-        myButton.backgroundColor = UIColor.red
-        myButton.layer.masksToBounds = true
-        myButton.layer.cornerRadius = 20.0
-        myButton.setTitle("UIAlertを発動", for: .normal)
-        myButton.setTitleColor(UIColor.white, for: .normal)
-        myButton.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchDown)
+        // 画像を縮小する(0.5倍)
+        // 表示する座標を設定.
+        let downPosX: CGFloat = (self.view.bounds.width - imageWidth) / 2
+        let downPosY: CGFloat = 50
         
-        // ボタンをViewに追加する
-        self.view.addSubview(myButton)
-    }
-    
-    /*
-     ボタンイベント
-     */
-    internal func onClickMyButton(sender: UIButton){
+        // 表示用のUIImageViewを生成.
+        let myScaleDownView: UIImageView = UIImageView(frame:  CGRect(x: downPosX, y: downPosY, width: imageWidth, height: imageHeight))
         
-        // UIAlertControllerを作成する.
-        let myAlert: UIAlertController = UIAlertController(title: "タイトル", message: "メッセージ", preferredStyle: .alert)
+        // UIImageViewに画像を設定する.
+        myScaleDownView.image = myImage
         
-        // OKのアクションを作成する.
-        let myOkAction = UIAlertAction(title: "OK", style: .default) { action in
-            print("Action OK!!")
-        }
+        // 縮小用(0.5倍)のアフィン行列を生成する.
+        myScaleDownView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
         
-        // OKのActionを追加する.
-        myAlert.addAction(myOkAction)
+        // Viewに追加する.
+        self.view.addSubview(myScaleDownView)
         
-        // UIAlertを発動する.
-        present(myAlert, animated: true, completion: nil)
+        
+        // 画像を拡大(1.2倍)
+        // 表示する座標を設定.
+        let upPosX: CGFloat = (self.view.bounds.width - imageWidth) / 2
+        let upPosY: CGFloat = 150
+        
+        // 表示用のUIImageViewを生成.
+        let myScaleUpView: UIImageView = UIImageView(frame:  CGRect(x: upPosX, y: upPosY, width: imageWidth, height: imageHeight))
+        
+        // UIImageViewに画像を設定する.
+        myScaleUpView.image = myImage
+        
+        // 縮小用(0.5倍)のアフィン行列を生成する.
+        myScaleUpView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        
+        // Viewに追加する.
+        self.view.addSubview(myScaleUpView)
+        
+        
+        // 画像を回転する.
+        // 表示する座標を設定.
+        let rotatePosX: CGFloat = (self.view.bounds.width - imageWidth) / 2
+        let rotatePosY: CGFloat = 350
+        
+        // 表示用のUIImageViewを生成.
+        let myRotateView:UIImageView = UIImageView(frame: CGRect(x: rotatePosX, y: rotatePosY, width: imageWidth, height: imageHeight))
+        
+        // UIImageViewに画像を設定する.
+        myRotateView.image = myImage
+        
+        // radianで回転角度を指定(30度)する.
+        let angle: CGFloat = CGFloat((30.0 * M_PI) / 180.0)
+        
+        // 回転用のアフィン行列を生成する.
+        myRotateView.transform = CGAffineTransform(rotationAngle: angle)
+        
+        // Viewに追加する.
+        self.view.addSubview(myRotateView)
+        
+        
+        // 画像を反転する.
+        // 表示する座標を設定.
+        let reversePosX: CGFloat = (self.view.bounds.width - imageWidth) / 2
+        let reversePosY: CGFloat = 550
+        
+        // 表示用のUIImageViewを生成.
+        let myReverseView: UIImageView = UIImageView(frame:  CGRect(x: reversePosX, y: reversePosY, width: imageWidth, height: imageHeight))
+        
+        // 画像を設定する.
+        myReverseView.image = myImage
+        
+        // 縮小用(0.5倍)のアフィン行列を生成する.
+        myReverseView.transform = myReverseView.transform.scaledBy(x: -1.0, y: 1.0)
+        
+        // Viewに追加する.
+        self.view.addSubview(myReverseView)
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
+    
 }
-
 ```
 
 ## Swift 2.3
@@ -71,7 +113,9 @@ class ViewController: UIViewController {
 ```swift
 //
 //  ViewController.swift
-//  UIKit010
+//  UIKit014
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
 
 import UIKit
@@ -81,61 +125,102 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Viewの背景をCyanに設定する.
-        self.view.backgroundColor = UIColor.cyanColor()
+        // 画像を設定する.
+        let myImage: UIImage = UIImage(named: "fabo_logo.png")!
+        let imageWidth: CGFloat = 300
+        let imageHeight: CGFloat = 100
         
-        // Buttonの定義する.
-        let myButton: UIButton = UIButton()
-        let buttonWidth: CGFloat = 200
-        let buttonHeight: CGFloat = 40
-        let posX: CGFloat = (self.view.bounds.width - buttonWidth)/2
-        let posY: CGFloat = 200
-        myButton.frame = CGRectMake(posX, posY, buttonWidth, buttonHeight)
-        myButton.backgroundColor = UIColor.redColor()
-        myButton.layer.masksToBounds = true
-        myButton.layer.cornerRadius = 20.0
-        myButton.setTitle("UIAlertを発動", forState: .Normal)
-        myButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        myButton.addTarget(self, action: #selector(onClickMyButton(_:)), forControlEvents: .TouchDown)
+        // 画像を縮小する(0.5倍)
+        // 表示する座標を設定.
+        let downPosX: CGFloat = (self.view.bounds.width - imageWidth) / 2
+        let downPosY: CGFloat = 50
         
-        // ボタンをViewに追加する
-        self.view.addSubview(myButton)
-    }
-    
-    /*
-     ボタンイベント
-     */
-    internal func onClickMyButton(sender: UIButton){
+        // 表示用のUIImageViewを生成.
+        let myScaleDownView: UIImageView = UIImageView(frame:  CGRect(x: downPosX, y: downPosY, width: imageWidth, height: imageHeight))
         
-        // UIAlertControllerを作成する.
-        let myAlert: UIAlertController = UIAlertController(title: "タイトル", message: "メッセージ", preferredStyle: .Alert)
+        // UIImageViewに画像を設定する.
+        myScaleDownView.image = myImage
         
-        // OKのアクションを作成する.
-        let myOkAction = UIAlertAction(title: "OK", style: .Default) { action in
-            print("Action OK!!")
-        }
+        // 縮小用(0.5倍)のアフィン行列を生成する.
+        myScaleDownView.transform = CGAffineTransformMakeScale(0.5, 0.5)
         
-        // OKのActionを追加する.
-        myAlert.addAction(myOkAction)
+        // Viewに追加する.
+        self.view.addSubview(myScaleDownView)
         
-        // UIAlertを発動する.
-        presentViewController(myAlert, animated: true, completion: nil)
+        
+        // 画像を拡大(1.2倍)
+        // 表示する座標を設定.
+        let upPosX: CGFloat = (self.view.bounds.width - imageWidth) / 2
+        let upPosY: CGFloat = 150
+        
+        // 表示用のUIImageViewを生成.
+        let myScaleUpView: UIImageView = UIImageView(frame:  CGRect(x: upPosX, y: upPosY, width: imageWidth, height: imageHeight))
+        
+        // UIImageViewに画像を設定する.
+        myScaleUpView.image = myImage
+        
+        // 縮小用(0.5倍)のアフィン行列を生成する.
+        myScaleUpView.transform = CGAffineTransformMakeScale(1.2, 1.2)
+        
+        // Viewに追加する.
+        self.view.addSubview(myScaleUpView)
+        
+        
+        // 画像を回転する.
+        // 表示する座標を設定.
+        let rotatePosX: CGFloat = (self.view.bounds.width - imageWidth) / 2
+        let rotatePosY: CGFloat = 350
+        
+        // 表示用のUIImageViewを生成.
+        let myRotateView:UIImageView = UIImageView(frame: CGRect(x: rotatePosX, y: rotatePosY, width: imageWidth, height: imageHeight))
+        
+        // UIImageViewに画像を設定する.
+        myRotateView.image = myImage
+        
+        // radianで回転角度を指定(30度)する.
+        let angle: CGFloat = CGFloat((30.0 * M_PI) / 180.0)
+        
+        // 回転用のアフィン行列を生成する.
+        myRotateView.transform = CGAffineTransformMakeRotation(angle)
+        
+        // Viewに追加する.
+        self.view.addSubview(myRotateView)
+        
+        
+        // 画像を反転する.
+        // 表示する座標を設定.
+        let reversePosX: CGFloat = (self.view.bounds.width - imageWidth) / 2
+        let reversePosY: CGFloat = 550
+        
+        // 表示用のUIImageViewを生成.
+        let myReverseView: UIImageView = UIImageView(frame:  CGRect(x: reversePosX, y: reversePosY, width: imageWidth, height: imageHeight))
+        
+        // 画像を設定する.
+        myReverseView.image = myImage
+        
+        // 縮小用(0.5倍)のアフィン行列を生成する.
+        myReverseView.transform = CGAffineTransformScale(myReverseView.transform, -1.0, 1.0)
+        
+        // Viewに追加する.
+        self.view.addSubview(myReverseView)
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
+    
 }
-
 
 ```
 
 ## 2.3と3.0の差分
 
-* presentViewController()がpresent()に変更.
+* CGAffineTransformの引数定義の変更.
 
 
 ## Reference
 
 * UserNotifications
-	* [https://developer.apple.com/reference/uikit/uialertcontroller](https://developer.apple.com/reference/uikit/uialertcontroller)
+	* [https://developer.apple.com/reference/uikit/uiimageview](https://developer.apple.com/reference/uikit/uiimageview)
