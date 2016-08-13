@@ -30,9 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // myFirstViewControllerをrootviewに設定し、Navication Controllerを生成する.
         let myNavigationController: UINavigationController = UINavigationController(rootViewController: myFirstViewController)
         
-        // UIWindowを生成する.
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        
         // rootViewControllerにNavigationControllerを設定する.
         self.window?.rootViewController = myNavigationController
         
@@ -188,10 +185,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // myFirstViewControllerをrootviewに設定し、Navication Controllerを生成する.
         var myNavigationController: UINavigationController = UINavigationController(rootViewController: myFirstViewController)
-        
-        // UIWindowを生成する.
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        
+         
         // rootViewControllerにNavigationControllerを設定する.
         self.window?.rootViewController = myNavigationController
     

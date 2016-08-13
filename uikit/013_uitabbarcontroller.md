@@ -1,4 +1,4 @@
-# UUINavigationControllerの表示
+# 013 UITabBarControllerでタブの表示
 
 ![Preview uikit013](./img/uikit013.png)
 ![Preview uikit013_1](./img/uikit013_1.png)
@@ -321,5 +321,5 @@ class SecondViewController: UIViewController {
 
 ## Reference
 
-* UINavigationController
-	* [https://developer.apple.com/reference/uikit/uinavigationcontroller](https://developer.apple.com/reference/uikit/uinavigationcontroller)
+* UITabBarController
+	* [https://developer.apple.com/reference/uikit/uitabbarcontroller](https://developer.apple.com/reference/uikit/uitabbarcontroller)
