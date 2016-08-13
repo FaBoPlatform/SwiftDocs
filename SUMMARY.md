@@ -1,5 +1,5 @@
 # Summary
-
+* [はじめに](README.md)
 * [UIKit](uikit/README.md)
 	* [001 UILabelで文字を表示](uikit/001_uilabel.md)
 	* [002 UIButtonでボタンを表示](uikit/002_uibutton.md)
@@ -16,7 +16,6 @@
 	* [013 UITabBarControllerでタブの表示](uikit/013_uitabbarcontroller.md)
 	* [014 UIImageViewで画像の表示](uikit/014_uiimageview.md)
 	* [015 UIViewControllerで画面遷移](uikit/015_uiviewcontroller.md)
-* [Introduction](README.md)
 * [NSURLSession](network/nsurlsession.md)
 * [iTunes Store]
     * [Push Notification](itunes/pushnotification.md) 
