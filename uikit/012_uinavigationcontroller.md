@@ -9,9 +9,8 @@
 ```swift
 //
 //  AppDelegate.swift
-//  UIKit012_3.0
+//  UIKit012
 //
-//  Created by akira on 2016/08/13.
 //  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
 
@@ -77,6 +76,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //  FirstViewController.swift
 //  UIKit012
 //
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
 import UIKit
 
@@ -133,6 +134,8 @@ class FirstViewController: UIViewController {
 //  SecondViewController.swift
 //  UIKit012
 //
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
 import UIKit
 
@@ -168,7 +171,6 @@ class SecondViewController: UIViewController {
 //  AppDelegate.swift
 //  UIKit012
 //
-//  Created by akira on 2016/08/13.
 //  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
 
@@ -231,6 +233,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //  FirstViewController.swift
 //  UIKit012
 //
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
 import UIKit
 
@@ -286,6 +290,8 @@ class FirstViewController: UIViewController {
 //  SecondViewController.swift
 //  UIKit012
 //
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
 import UIKit
 
@@ -313,7 +319,7 @@ class SecondViewController: UIViewController {
 
 ## 2.3と3.0の差分
 
-* presentViewController()がpresent()に変更.
+* UIScreen.mainScreen()がUIScreen.mainに変更.
 
 
 ## Reference

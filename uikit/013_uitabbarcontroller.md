@@ -1,141 +1,325 @@
-# UIAlertControllerでアラートを表示
+# UUINavigationControllerの表示
 
-![Preview uikit010](./img/uikit010.png)
-![Preview uikit010_1](./img/uikit010_1.png)
+![Preview uikit013](./img/uikit013.png)
+![Preview uikit013_1](./img/uikit013_1.png)
 
 ## Swift 3.0
 
+### AppDelegate.swift
 ```swift
 //
-//  ViewController.swift
-//  UIKit010
+//  AppDelegate.swift
+//  UIKit013_3.0
+//
+//  Created by akira on 2016/08/13.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    var window: UIWindow?
+
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        // Tabに設定するViewControllerのインスタンスを生成.
+        let myFirstTab: UIViewController = FirstViewController()
+        let mySecondTab: UIViewController = SecondViewController()
+        
+        // タブを要素に持つArrayの.を作成する.
+        let myTabs = NSArray(objects: myFirstTab, mySecondTab)
+        
+        // UITabControllerの作成する.
+        let myTabBarController: UITabBarController = UITabBarController()
+        
+        // ViewControllerを設定する.
+        myTabBarController.setViewControllers(myTabs as? [UIViewController], animated: false)
+        
+        // RootViewControllerに設定する.
+        self.window!.rootViewController = myTabBarController
+        
+        // Windowを表示する.
+        self.window!.makeKeyAndVisible()
+        
+        return true
+    }
+
+    func applicationWillResignActive(_ application: UIApplication) {
+        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
+        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+    }
+
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    }
+
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    }
+
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    }
+
+    func applicationWillTerminate(_ application: UIApplication) {
+        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+
+
+}
+
+
+```
+### FirstViewController.swift
+
+```swift
+//
+//  FirstViewController.swift
+//  UIKit013
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class FirstViewController: UIViewController {
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        
+        // Viewの背景色をCyanに設定する.
+        self.view.backgroundColor = UIColor.cyan
+        
+        //tabBarItemのアイコンをFeaturedに、タグを1と定義する.
+        self.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 1)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    required override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Viewの背景をCyanに設定する.
-        self.view.backgroundColor = UIColor.cyan
-        
-        // Buttonの定義する.
-        let myButton: UIButton = UIButton()
-        let buttonWidth: CGFloat = 200
-        let buttonHeight: CGFloat = 40
-        let posX: CGFloat = (self.view.bounds.width - buttonWidth)/2
-        let posY: CGFloat = 200
-        myButton.frame = CGRect(x: posX, y: posY, width: buttonWidth, height: buttonHeight)
-        myButton.backgroundColor = UIColor.red
-        myButton.layer.masksToBounds = true
-        myButton.layer.cornerRadius = 20.0
-        myButton.setTitle("UIAlertを発動", for: .normal)
-        myButton.setTitleColor(UIColor.white, for: .normal)
-        myButton.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchDown)
-        
-        // ボタンをViewに追加する
-        self.view.addSubview(myButton)
-    }
-    
-    /*
-     ボタンイベント
-     */
-    internal func onClickMyButton(sender: UIButton){
-        
-        // UIAlertControllerを作成する.
-        let myAlert: UIAlertController = UIAlertController(title: "タイトル", message: "メッセージ", preferredStyle: .alert)
-        
-        // OKのアクションを作成する.
-        let myOkAction = UIAlertAction(title: "OK", style: .default) { action in
-            print("Action OK!!")
-        }
-        
-        // OKのActionを追加する.
-        myAlert.addAction(myOkAction)
-        
-        // UIAlertを発動する.
-        present(myAlert, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 }
+```
 
+### SecondViewController.swift
+
+```swift
+//
+//  SecondViewController.swift
+//  UIKit013
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class SecondViewController: UIViewController {
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        
+        // Viewの背景色をGreenに設定する.
+        self.view.backgroundColor = UIColor.green
+        
+        // tabBarItemのアイコンをFeaturedに、タグを2と定義する.
+        self.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 2)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    required override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    
+}
 ```
 
 ## Swift 2.3
 
+### AppDelegate.swift
 ```swift
 //
-//  ViewController.swift
-//  UIKit010
+//  AppDelegate.swift
+//  UIKit013
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    var window: UIWindow?
+
+
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        // Tabに設定するViewControllerのインスタンスを生成.
+        let myFirstTab: UIViewController = FirstViewController()
+        let mySecondTab: UIViewController = SecondViewController()
+        
+        // タブを要素に持つArrayの.を作成する.
+        let myTabs = NSArray(objects: myFirstTab, mySecondTab)
+        
+        // UITabControllerの作成する.
+        let myTabBarController: UITabBarController = UITabBarController()
+        
+        // ViewControllerを設定する.
+        myTabBarController.setViewControllers(myTabs as? [UIViewController], animated: false)
+        
+        // RootViewControllerに設定する.
+        self.window!.rootViewController = myTabBarController
+        
+        // Windowを表示する.
+        self.window!.makeKeyAndVisible()
+        
+        return true
+    }
+
+    func applicationWillResignActive(application: UIApplication) {
+        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
+        // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    }
+
+    func applicationDidEnterBackground(application: UIApplication) {
+        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    }
+
+    func applicationWillEnterForeground(application: UIApplication) {
+        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    }
+
+    func applicationDidBecomeActive(application: UIApplication) {
+        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    }
+
+    func applicationWillTerminate(application: UIApplication) {
+        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+
+
+}
+
+```
+### FistViewController.swift
+
+```swift
+//
+//  FirstViewController.swift
+//  UIKit013
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class FirstViewController: UIViewController {
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        
+        // Viewの背景色をCyanに設定する.
+        self.view.backgroundColor = UIColor.cyanColor()
+        
+        //tabBarItemのアイコンをFeaturedに、タグを1と定義する.
+        self.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Featured, tag: 1)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    required override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Viewの背景をCyanに設定する.
-        self.view.backgroundColor = UIColor.cyanColor()
-        
-        // Buttonの定義する.
-        let myButton: UIButton = UIButton()
-        let buttonWidth: CGFloat = 200
-        let buttonHeight: CGFloat = 40
-        let posX: CGFloat = (self.view.bounds.width - buttonWidth)/2
-        let posY: CGFloat = 200
-        myButton.frame = CGRectMake(posX, posY, buttonWidth, buttonHeight)
-        myButton.backgroundColor = UIColor.redColor()
-        myButton.layer.masksToBounds = true
-        myButton.layer.cornerRadius = 20.0
-        myButton.setTitle("UIAlertを発動", forState: .Normal)
-        myButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        myButton.addTarget(self, action: #selector(onClickMyButton(_:)), forControlEvents: .TouchDown)
-        
-        // ボタンをViewに追加する
-        self.view.addSubview(myButton)
-    }
-    
-    /*
-     ボタンイベント
-     */
-    internal func onClickMyButton(sender: UIButton){
-        
-        // UIAlertControllerを作成する.
-        let myAlert: UIAlertController = UIAlertController(title: "タイトル", message: "メッセージ", preferredStyle: .Alert)
-        
-        // OKのアクションを作成する.
-        let myOkAction = UIAlertAction(title: "OK", style: .Default) { action in
-            print("Action OK!!")
-        }
-        
-        // OKのActionを追加する.
-        myAlert.addAction(myOkAction)
-        
-        // UIAlertを発動する.
-        presentViewController(myAlert, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
 }
+```
+### SecondViewController.swift
 
+```swift
+///
+//  SecondViewController.swift
+//  UIKit013
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
+import UIKit
+
+class SecondViewController: UIViewController {
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        
+        // Viewの背景色をGreenに設定する.
+        self.view.backgroundColor = UIColor.greenColor()
+        
+        // tabBarItemのアイコンをFeaturedに、タグを2と定義する.
+        self.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Featured, tag: 2)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    required override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    
+}
 ```
 
 ## 2.3と3.0の差分
 
-* presentViewController()がpresent()に変更.
+* UIScreen.mainScreen()がUIScreen.mainに変更.
 
 
 ## Reference
 
-* UserNotifications
-	* [https://developer.apple.com/reference/uikit/uialertcontroller](https://developer.apple.com/reference/uikit/uialertcontroller)
+* UINavigationController
+	* [https://developer.apple.com/reference/uikit/uinavigationcontroller](https://developer.apple.com/reference/uikit/uinavigationcontroller)
