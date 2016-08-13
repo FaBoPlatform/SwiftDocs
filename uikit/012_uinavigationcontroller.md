@@ -1,42 +1,110 @@
-# UIAlertControllerでアラートを表示
+# UUINavigationControllerの表示
 
-![Preview uikit010](./img/uikit010.png)
-![Preview uikit010_1](./img/uikit010_1.png)
+![Preview uikit012](./img/uikit012.png)
+![Preview uikit012_1](./img/uikit012_1.png)
 
 ## Swift 3.0
 
+### AppDelegate.swift
 ```swift
 //
-//  ViewController.swift
-//  UIKit010
+//  AppDelegate.swift
+//  UIKit012_3.0
+//
+//  Created by akira on 2016/08/13.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    var window: UIWindow?
+
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+
+        // ViewControllerを生成する.
+        let myFirstViewController: FirstViewController = FirstViewController()
+        
+        // myFirstViewControllerをrootviewに設定し、Navication Controllerを生成する.
+        let myNavigationController: UINavigationController = UINavigationController(rootViewController: myFirstViewController)
+        
+        // UIWindowを生成する.
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        
+        // rootViewControllerにNavigationControllerを設定する.
+        self.window?.rootViewController = myNavigationController
+        
+        // NavigationControllerを表示する.
+        self.window?.makeKeyAndVisible()
+        
+        return true
+    }
+
+    func applicationWillResignActive(_ application: UIApplication) {
+        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
+        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+    }
+
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    }
+
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    }
+
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    }
+
+    func applicationWillTerminate(_ application: UIApplication) {
+        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+
+
+}
+
+```
+### FirstViewController.swift
+
+```swift
+
+//
+//  FirstViewController.swift
+//  UIKit012
+//
+
+import UIKit
+
+class FirstViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Viewの背景をCyanに設定する.
+        // Controllerのタイトルを設定する.
+        self.title = "My First View"
+        
+        // Viewの背景色をCyanに設定する.
         self.view.backgroundColor = UIColor.cyan
         
-        // Buttonの定義する.
-        let myButton: UIButton = UIButton()
-        let buttonWidth: CGFloat = 200
-        let buttonHeight: CGFloat = 40
+        // ボタンの定義をおこなう.
+        let buttonWidth: CGFloat = 100
+        let buttonHeight: CGFloat = 50
         let posX: CGFloat = (self.view.bounds.width - buttonWidth)/2
         let posY: CGFloat = 200
-        myButton.frame = CGRect(x: posX, y: posY, width: buttonWidth, height: buttonHeight)
-        myButton.backgroundColor = UIColor.red
+        let myButton = UIButton(frame: CGRect(x: posX, y: posY, width: buttonWidth, height: buttonHeight))
+        myButton.backgroundColor = UIColor.orange
         myButton.layer.masksToBounds = true
         myButton.layer.cornerRadius = 20.0
-        myButton.setTitle("UIAlertを発動", for: .normal)
-        myButton.setTitleColor(UIColor.white, for: .normal)
-        myButton.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchDown)
+        myButton.setTitle("ボタン", for: .normal)
+        myButton.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchUpInside)
         
-        // ボタンをViewに追加する
-        self.view.addSubview(myButton)
+        // ボタンをViewに追加する.
+        self.view.addSubview(myButton);
     }
     
     /*
@@ -44,62 +112,153 @@ class ViewController: UIViewController {
      */
     internal func onClickMyButton(sender: UIButton){
         
-        // UIAlertControllerを作成する.
-        let myAlert: UIAlertController = UIAlertController(title: "タイトル", message: "メッセージ", preferredStyle: .alert)
+        // 移動先のViewを定義する.
+        let secondViewController = SecondViewController()
         
-        // OKのアクションを作成する.
-        let myOkAction = UIAlertAction(title: "OK", style: .default) { action in
-            print("Action OK!!")
-        }
-        
-        // OKのActionを追加する.
-        myAlert.addAction(myOkAction)
-        
-        // UIAlertを発動する.
-        present(myAlert, animated: true, completion: nil)
+        // SecondViewに移動する.
+        self.navigationController?.pushViewController(secondViewController, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 }
+```
+
+### SecondViewController.swift
+
+```swift
+//
+//  SecondViewController.swift
+//  UIKit012
+//
+
+import UIKit
+
+class SecondViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Controllerのタイトルを設定する.
+        self.title = "My Second View"
+        
+        // Viewの背景色を定義する.
+        self.view.backgroundColor = UIColor.green
+        
+    }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+}
+
 
 ```
 
 ## Swift 2.3
 
+### AppDelegate.swift
 ```swift
 //
-//  ViewController.swift
-//  UIKit010
+//  AppDelegate.swift
+//  UIKit012
+//
+//  Created by akira on 2016/08/13.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController {
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    var window: UIWindow?
+
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+
+        // ViewControllerを生成する.
+        let myFirstViewController: FirstViewController = FirstViewController()
+        
+        // myFirstViewControllerをrootviewに設定し、Navication Controllerを生成する.
+        var myNavigationController: UINavigationController = UINavigationController(rootViewController: myFirstViewController)
+        
+        // UIWindowを生成する.
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+        
+        // rootViewControllerにNavigationControllerを設定する.
+        self.window?.rootViewController = myNavigationController
+    
+        // NavigationControllerを表示する.
+        self.window?.makeKeyAndVisible()
+        
+        return true
+    }
+
+    func applicationWillResignActive(application: UIApplication) {
+        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
+        // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    }
+
+    func applicationDidEnterBackground(application: UIApplication) {
+        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    }
+
+    func applicationWillEnterForeground(application: UIApplication) {
+        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    }
+
+    func applicationDidBecomeActive(application: UIApplication) {
+        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    }
+
+    func applicationWillTerminate(application: UIApplication) {
+        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+
+
+}
+```
+### FistViewController.swift
+
+```swift
+//
+//  FirstViewController.swift
+//  UIKit012
+//
+
+import UIKit
+
+class FirstViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Viewの背景をCyanに設定する.
+        // Controllerのタイトルを設定する.
+        self.title = "My First View"
+        
+        // Viewの背景色をCyanに設定する.
         self.view.backgroundColor = UIColor.cyanColor()
         
-        // Buttonの定義する.
-        let myButton: UIButton = UIButton()
-        let buttonWidth: CGFloat = 200
-        let buttonHeight: CGFloat = 40
+        // ボタンの定義をおこなう.
+        let buttonWidth: CGFloat = 100
+        let buttonHeight: CGFloat = 50
         let posX: CGFloat = (self.view.bounds.width - buttonWidth)/2
         let posY: CGFloat = 200
-        myButton.frame = CGRectMake(posX, posY, buttonWidth, buttonHeight)
-        myButton.backgroundColor = UIColor.redColor()
+        let myButton = UIButton(frame: CGRectMake(posX, posY, buttonWidth, buttonHeight))
+        myButton.backgroundColor = UIColor.orangeColor()
         myButton.layer.masksToBounds = true
         myButton.layer.cornerRadius = 20.0
-        myButton.setTitle("UIAlertを発動", forState: .Normal)
-        myButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        myButton.addTarget(self, action: #selector(onClickMyButton(_:)), forControlEvents: .TouchDown)
+        myButton.setTitle("ボタン", forState: .Normal)
+        myButton.addTarget(self, action: #selector(onClickMyButton(_:)), forControlEvents: .TouchUpInside)
         
-        // ボタンをViewに追加する
-        self.view.addSubview(myButton)
+        // ボタンをViewに追加する.
+        self.view.addSubview(myButton);
     }
     
     /*
@@ -107,27 +266,49 @@ class ViewController: UIViewController {
      */
     internal func onClickMyButton(sender: UIButton){
         
-        // UIAlertControllerを作成する.
-        let myAlert: UIAlertController = UIAlertController(title: "タイトル", message: "メッセージ", preferredStyle: .Alert)
+        // 移動先のViewを定義する.
+        let secondViewController = SecondViewController()
         
-        // OKのアクションを作成する.
-        let myOkAction = UIAlertAction(title: "OK", style: .Default) { action in
-            print("Action OK!!")
-        }
-        
-        // OKのActionを追加する.
-        myAlert.addAction(myOkAction)
-        
-        // UIAlertを発動する.
-        presentViewController(myAlert, animated: true, completion: nil)
+        // SecondViewに移動する.
+        self.navigationController?.pushViewController(secondViewController, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 }
+```
+### SecondViewController.swift
 
+```swift
+//
+//  SecondViewController.swift
+//  UIKit012
+//
 
+import UIKit
+
+class SecondViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Controllerのタイトルを設定する.
+        self.title = "My Second View"
+        
+        // Viewの背景色を定義する.
+        self.view.backgroundColor = UIColor.greenColor()
+        
+    }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+}
 ```
 
 ## 2.3と3.0の差分
@@ -137,5 +318,5 @@ class ViewController: UIViewController {
 
 ## Reference
 
-* UserNotifications
-	* [https://developer.apple.com/reference/uikit/uialertcontroller](https://developer.apple.com/reference/uikit/uialertcontroller)
+* UINavigationController
+	* [https://developer.apple.com/reference/uikit/uinavigationcontroller](https://developer.apple.com/reference/uikit/uinavigationcontroller)
