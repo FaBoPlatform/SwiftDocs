@@ -11,6 +11,7 @@
 	* [008 UserNotificationの表示](uikit/008_uinotification.md)
 	* [009 UIWebViewでWebページを表示](uikit/009_uiwebview.md)
 	* [010 UIAlertControllerでアラートを表示](uikit/010_uialertcontroller.md)
+	* [011 UIPickerViewで値の選択](uikit/011_uipickerview.md)
 * [Introduction](README.md)
 * [NSURLSession](network/nsurlsession.md)
 * [iTunes Store]
