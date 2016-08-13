@@ -1,14 +1,19 @@
-# UIAlertControllerでアラートを表示
+# UIViewControllerで画面遷移する
 
-![Preview uikit010](./img/uikit010.png)
-![Preview uikit010_1](./img/uikit010_1.png)
+![Preview uikit015](./img/uikit015.png)
+![Preview uikit015_1](./img/uikit015_1.png)
 
 ## Swift 3.0
+
+### ViewController.swift
 
 ```swift
 //
 //  ViewController.swift
-//  UIKit010
+//  UIKit015_3.0
+//
+//  Created by akira on 2016/08/13.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
 
 import UIKit
@@ -17,118 +22,212 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // 背景色をGreenに設定する.
+        self.view.backgroundColor = UIColor.green
         
-        // Viewの背景をCyanに設定する.
-        self.view.backgroundColor = UIColor.cyan
+        // ボタンを生成する.
+        let nextButton: UIButton = UIButton(frame: CGRect(x: 0,y: 0, width: 120, height: 50))
+        nextButton.backgroundColor = UIColor.red
+        nextButton.layer.masksToBounds = true
+        nextButton.setTitle("Next", for: .normal)
+        nextButton.layer.cornerRadius = 20.0
+        nextButton.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height-50)
+        nextButton.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchUpInside)
         
-        // Buttonの定義する.
-        let myButton: UIButton = UIButton()
-        let buttonWidth: CGFloat = 200
-        let buttonHeight: CGFloat = 40
-        let posX: CGFloat = (self.view.bounds.width - buttonWidth)/2
-        let posY: CGFloat = 200
-        myButton.frame = CGRect(x: posX, y: posY, width: buttonWidth, height: buttonHeight)
-        myButton.backgroundColor = UIColor.red
-        myButton.layer.masksToBounds = true
-        myButton.layer.cornerRadius = 20.0
-        myButton.setTitle("UIAlertを発動", for: .normal)
-        myButton.setTitleColor(UIColor.white, for: .normal)
-        myButton.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchDown)
-        
-        // ボタンをViewに追加する
-        self.view.addSubview(myButton)
+        // ボタンを追加する.
+        self.view.addSubview(nextButton);
     }
     
     /*
-     ボタンイベント
+     ボタンイベント.
      */
     internal func onClickMyButton(sender: UIButton){
         
-        // UIAlertControllerを作成する.
-        let myAlert: UIAlertController = UIAlertController(title: "タイトル", message: "メッセージ", preferredStyle: .alert)
+        // 遷移するViewを定義する.
+        let mySecondViewController: UIViewController = SecondViewController()
         
-        // OKのアクションを作成する.
-        let myOkAction = UIAlertAction(title: "OK", style: .default) { action in
-            print("Action OK!!")
-        }
+        // アニメーションを設定する.
+        mySecondViewController.modalTransitionStyle = .partialCurl
         
-        // OKのActionを追加する.
-        myAlert.addAction(myOkAction)
+        // Viewの移動する.
+        self.present(mySecondViewController, animated: true, completion: nil)
+    }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+}
+```
+
+### SecondViewController.swift
+
+```swift
+//
+//  SecondViewController.swift
+//  UIKit015
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class SecondViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        // UIAlertを発動する.
-        present(myAlert, animated: true, completion: nil)
+        // 背景色を設定.
+        self.view.backgroundColor = UIColor.blueColor()
+        
+        // ボタンを作成.
+        let backButton: UIButton = UIButton(frame: CGRectMake(0,0,120,50))
+        backButton.backgroundColor = UIColor.redColor();
+        backButton.layer.masksToBounds = true
+        backButton.setTitle("Back", forState: .Normal)
+        backButton.layer.cornerRadius = 20.0
+        backButton.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height-50)
+        backButton.addTarget(self, action: #selector(onClickMyButton(_:)), forControlEvents: .TouchUpInside)
+        self.view.addSubview(backButton);
+    }
+    
+    /*
+     ボタンイベント.
+     */
+    internal func onClickMyButton(sender: UIButton){
+        
+        // 遷移するViewを定義.
+        let myViewController: UIViewController = ViewController()
+        
+        // アニメーションを設定.
+        myViewController.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
+        
+        // Viewの移動.
+        self.presentViewController(myViewController, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 }
-
 ```
 
 ## Swift 2.3
 
+### ViewController.swift
 ```swift
-//
+///
 //  ViewController.swift
-//  UIKit010
+//  UIKit015
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
 
 import UIKit
 
 class ViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // 背景色をGreenに設定する.
+        self.view.backgroundColor = UIColor.greenColor()
+        
+        // ボタンを生成する.
+        let nextButton: UIButton = UIButton(frame: CGRectMake(0,0,120,50))
+        nextButton.backgroundColor = UIColor.redColor();
+        nextButton.layer.masksToBounds = true
+        nextButton.setTitle("Next", forState: .Normal)
+        nextButton.layer.cornerRadius = 20.0
+        nextButton.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height-50)
+        nextButton.addTarget(self, action: #selector(onClickMyButton(_:)), forControlEvents: .TouchUpInside)
+        
+        // ボタンを追加する.
+        self.view.addSubview(nextButton);
+    }
+    
+    /*
+     ボタンイベント.
+     */
+    internal func onClickMyButton(sender: UIButton){
+        
+        // 遷移するViewを定義する.
+        let mySecondViewController: UIViewController = SecondViewController()
+        
+        // アニメーションを設定する.
+        mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
+        
+        // Viewの移動する.
+        self.presentViewController(mySecondViewController, animated: true, completion: nil)
+    }
+    
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+
+}
+```
+
+### SecondViewController.swift
+
+```swift
+//
+//  SecondViewController.swift
+//  UIKit015
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class SecondViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Viewの背景をCyanに設定する.
-        self.view.backgroundColor = UIColor.cyanColor()
+        // 背景色を設定.
+        self.view.backgroundColor = UIColor.blueColor()
         
-        // Buttonの定義する.
-        let myButton: UIButton = UIButton()
-        let buttonWidth: CGFloat = 200
-        let buttonHeight: CGFloat = 40
-        let posX: CGFloat = (self.view.bounds.width - buttonWidth)/2
-        let posY: CGFloat = 200
-        myButton.frame = CGRectMake(posX, posY, buttonWidth, buttonHeight)
-        myButton.backgroundColor = UIColor.redColor()
-        myButton.layer.masksToBounds = true
-        myButton.layer.cornerRadius = 20.0
-        myButton.setTitle("UIAlertを発動", forState: .Normal)
-        myButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        myButton.addTarget(self, action: #selector(onClickMyButton(_:)), forControlEvents: .TouchDown)
-        
-        // ボタンをViewに追加する
-        self.view.addSubview(myButton)
+        // ボタンを作成.
+        let backButton: UIButton = UIButton(frame: CGRectMake(0,0,120,50))
+        backButton.backgroundColor = UIColor.redColor();
+        backButton.layer.masksToBounds = true
+        backButton.setTitle("Back", forState: .Normal)
+        backButton.layer.cornerRadius = 20.0
+        backButton.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height-50)
+        backButton.addTarget(self, action: #selector(onClickMyButton(_:)), forControlEvents: .TouchUpInside)
+        self.view.addSubview(backButton);
     }
     
     /*
-     ボタンイベント
+     ボタンイベント.
      */
     internal func onClickMyButton(sender: UIButton){
         
-        // UIAlertControllerを作成する.
-        let myAlert: UIAlertController = UIAlertController(title: "タイトル", message: "メッセージ", preferredStyle: .Alert)
+        // 遷移するViewを定義.
+        let myViewController: UIViewController = ViewController()
         
-        // OKのアクションを作成する.
-        let myOkAction = UIAlertAction(title: "OK", style: .Default) { action in
-            print("Action OK!!")
-        }
+        // アニメーションを設定.
+        myViewController.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
         
-        // OKのActionを追加する.
-        myAlert.addAction(myOkAction)
-        
-        // UIAlertを発動する.
-        presentViewController(myAlert, animated: true, completion: nil)
+        // Viewの移動.
+        self.presentViewController(myViewController, animated: true, completion: nil)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 }
 
-
 ```
+
 
 ## 2.3と3.0の差分
 
