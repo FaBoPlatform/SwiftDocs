@@ -67,7 +67,7 @@ class ViewController: UIViewController {
 
 ```
 
-# Swift 2.3
+## Swift 2.3
 
 ```swift
 //
