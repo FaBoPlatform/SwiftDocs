@@ -42,8 +42,7 @@ class ViewController: UIViewController {
         self.view.addSubview(myTextView)
         
         // 通信先のURLを生成.
-        //        let url: NSURL = NSURL(string:"http://xxx/hello.php")!
-        let url: NSURL = NSURL(string:"http://localhost/swift/index.php")!
+        let url: NSURL = NSURL(string:"http://xxx/hello.php")!
         // リクエストを生成.
         let request: NSURLRequest  = NSURLRequest(url: url as URL)
         // 送信処理を始める.
@@ -105,8 +104,7 @@ class ViewController: UIViewController {
         self.view.addSubview(myTextView)
         
         // 通信先のURLを生成.
-//        let url: NSURL = NSURL(string:"http://xxx/hello.php")!
-        let url: NSURL = NSURL(string:"http://localhost/swift/index.php")!
+        let url: NSURL = NSURL(string:"http://xxx/hello.php")!
         // リクエストを生成.
         let request: NSURLRequest  = NSURLRequest(URL: url)
         // 送信処理を始める.
