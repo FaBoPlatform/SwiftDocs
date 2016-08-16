@@ -1,6 +1,6 @@
 # 通信の進捗を知る
 
-![Preview connection005](./img/Connection005.png)
+![Preview connection005](./img/Connection005.png =200x)
 
 ### iOS9からリクエスト先によってはATSを無効化・対処する必要があります
 
