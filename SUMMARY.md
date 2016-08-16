@@ -16,6 +16,12 @@
 	* [013 UITabBarControllerでタブの表示](uikit/013_uitabbarcontroller.md)
 	* [014 UIImageViewで画像の表示](uikit/014_uiimageview.md)
 	* [015 UIViewControllerで画面遷移](uikit/015_uiviewcontroller.md)
+	* [016 UIScrollViewの表示](uikit/016_uiscrollview.md)
+	* [017 UIBarButtonItemの設置](uikit/017_uibarbuttonitem.md)
+	* [018 UIPageControlの表示](uikit/018_uipagecontrol.md)
+	* [019 セクション分けしたUITableViewを作る](uikit/019_sectionuitableview.md)
+	* [020 UITextViewで複数行のテキストの表示](uikit/020_uitextview.md)
+
 * [Connection](conection/README.md)
 	* [001 NSURLConnectionを用いたHTTP通信(非同期)](connection/001_nsurlconnection.md)
 	* [002 NSURLConnectionを用いたHTTP通信(同期)](connection/002_nsurlconnection.md)
@@ -26,7 +32,6 @@
 	* [007 POSTを送信する](connection/007_post.md)
 * [NSURLSession](network/nsurlsession.md)
 * [iTunes Store]
-    * [Push Notification](itunes/pushnotification.md) 
+    * [Push Notification](itunes/pushnotification.md)
     * [Amazon SNS](itunes/amazonsns.md)
 * [FAQ](faq/faq.md)
-
