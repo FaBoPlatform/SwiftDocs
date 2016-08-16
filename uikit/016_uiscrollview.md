@@ -6,11 +6,25 @@
 ```swift
 //
 //  ViewController.swift
-//  UIKit015_3.0
+//  UIKit016_3.0
 //
-//  Created by akira on 2016/08/13.
+//  Created by KimikoWatanabe on 2016/08/16.
 //  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
+
+```
+
+### ViewController.swift
+
+
+## Swift 2.3
+```swift
+//
+//  ViewController.swift
+//  UIKit016_2.3
+//
+//  Created by KimikoWatanabe on 2016/08/16.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
 
 import UIKit
 
@@ -60,20 +74,6 @@ class ViewController: UIViewController {
     }
 
 }
-
-```
-
-### ViewController.swift
-
-
-## Swift 2.3
-```swift
-//
-//  ViewController.swift
-//  UIKit015_2.3
-//
-//  Created by akira on 2016/08/13.
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
 ```
 

@@ -8,7 +8,7 @@
 ```swift
 //
 //  ViewController.swift
-//  UIKit015_3.0
+//  UIKit017_3.0
 //
 //  Created by akira on 2016/08/13.
 //  Copyright © 2016年 FaBo, Inc. All rights reserved.
@@ -25,7 +25,7 @@
 //  AppDelegate.swift
 //  UIKit017_2.3
 //
-//  Created by akira on 2016/08/13.
+//  Created by KimikoWatanabe on 2016/08/16.
 //  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
 
@@ -62,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //  ViewController.swift
 //  UIKit017_2.3
 //
-//  Created by akira on 2016/08/13.
+//  Created by KimikoWatanabe on 2016/08/16.
 //  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
 
