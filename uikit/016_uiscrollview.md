@@ -129,3 +129,9 @@ class ViewController: UIViewController {
 * CGSizeの生成方法の変更(CGSizeMakeの廃止)
 
 ## Reference
+* UIScrollView Class
+ * [https://developer.apple.com/reference/uikit/uiscrollview](https://developer.apple.com/reference/uikit/uiscrollview)
+* UIImageView Class
+ * [https://developer.apple.com/reference/uikit/uiimageview](https://developer.apple.com/reference/uikit/uiimageview)
+* UIImage Class
+ * [https://developer.apple.com/reference/uikit/uiimage](https://developer.apple.com/reference/uikit/uiimage)

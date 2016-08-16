@@ -149,3 +149,5 @@ class ViewController: UIViewController {
 * UITextViewの一部プロパティ名が変更
 
 ## Reference
+* UITextView Class
+ * [https://developer.apple.com/reference/uikit/uitextview](https://developer.apple.com/reference/uikit/uitextview)

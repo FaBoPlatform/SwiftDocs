@@ -196,3 +196,5 @@ class ViewController: UIViewController, UIScrollViewDelegate{
 
 
 ## Reference
+* UIPageControl Class
+ * [https://developer.apple.com/reference/uikit/uipagecontrol](https://developer.apple.com/reference/uikit/uipagecontrol)
