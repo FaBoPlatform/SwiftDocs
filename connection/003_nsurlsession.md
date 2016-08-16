@@ -50,8 +50,7 @@ class ViewController: UIViewController, URLSessionDelegate, URLSessionDataDelega
         // Sessionを生成.
         let session: URLSession = URLSession(configuration: config, delegate: self, delegateQueue: nil)
         // 通信先のURLを生成.
-        //        let url: NSURL = NSURL(string: "http://xxx/hello.php")!
-        let url: NSURL = NSURL(string: "http://localhost/swift/index.php")!
+        let url: NSURL = NSURL(string: "http://xxx/hello.php")!
         // タスクの生成.
         let task: URLSessionDataTask = session.dataTask(with: url as URL)
         // タスクの実行.
@@ -126,8 +125,7 @@ class ViewController: UIViewController, NSURLSessionDelegate, NSURLSessionDataDe
         // Sessionを生成.
         let session: NSURLSession = NSURLSession(configuration: config, delegate: self, delegateQueue: nil)
         // 通信先のURLを生成.
-//        let url: NSURL = NSURL(string: "http://xxx/hello.php")!
-        let url: NSURL = NSURL(string: "http://localhost/swift/index.php")!
+        let url: NSURL = NSURL(string: "http://xxx/hello.php")!
         // タスクの生成.
         let task: NSURLSessionDataTask = session.dataTaskWithURL(url)
         // タスクの実行.
