@@ -1,6 +1,6 @@
 # POSTを送信する
 
-![Preview connection007](./img/Connection007.png =200x)
+![Preview connection007](./img/Connection007.png)
 
 ### iOS9からリクエスト先によってはATSを無効化・対処する必要があります
 
