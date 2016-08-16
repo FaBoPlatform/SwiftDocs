@@ -123,6 +123,8 @@ class ViewController: UIViewController {
 }
 //
 ```
+![Preview temple.jpg](./img/temple.jpg)
+
 
 ## 2.3と3.0の差分
 * UIViewContentModeの名称が変更
