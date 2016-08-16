@@ -59,8 +59,7 @@ class ViewController: UIViewController, URLSessionDelegate, URLSessionDataDelega
         let session: URLSession = URLSession(configuration: config, delegate: self, delegateQueue: nil)
         
         // 通信先のURLを生成.
-        //        let url: NSURL = NSURL(string: "http://localhost/test/hello.php")!
-        let url: NSURL = NSURL(string: "http://localhost/swift/index.php")!
+        let url: NSURL = NSURL(string: "http://localhost/test/hello.php")!
         
         // タスクの生成.
         let task: URLSessionDataTask = session.dataTask(with: url as URL)
