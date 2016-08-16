@@ -1,4 +1,3 @@
-
 # NSURLConnectionを用いたHTTP通信(同期)
 
 ![Preview connection001](./img/Connection002.png)
