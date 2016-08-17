@@ -173,7 +173,7 @@ class ViewController: UIViewController {
 
 ### AizuDataStore.swift
 
-```
+```swift
 //
 //  AizuDataStore.swift
 //
