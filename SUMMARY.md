@@ -32,6 +32,7 @@
 	* [007 POSTを送信する](connection/007_post.md)
 * [Config](config/README.md)
 	* [001 Versinを表示する](config/001_version.md)
+	* [002 ProvisioningからDevloperかDistributionかを判定する](config/002_provisioning.md)
 
 * [NSURLSession](network/nsurlsession.md)
 * [iTunes Store]
