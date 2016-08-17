@@ -21,6 +21,17 @@
 	* [018 UIPageControlの表示](uikit/018_uipagecontrol.md)
 	* [019 セクション分けしたUITableViewを作る](uikit/019_sectionuitableview.md)
 	* [020 UITextViewで複数行のテキストの表示](uikit/020_uitextview.md)
+	* [021 UISliderの表示](uikit/021_uislider.md)
+	* [022 UISwitchの表示](uikit/022_uiswitch.md)
+	* [023 UIDatePickerの表示](uikit/023_uidatepicker.md)
+	* [024 UIActivityIndicatorの表示](uikit/024_uiactivityindicator.md)
+	* [025 UISearchBarの表示](uikit/025_uisearchbar.md)
+	* [026 UIWindowの表示](uikit/026_uiwindow.md)
+	* [027 UIToolBarの表示](uikit/027_uitoolbar.md)
+	* [028 UIProgressViewで進捗の具合の確認](uikit/028_uiprogressview.md)
+	* [029 UISegmentedControlの表示](uikit/029_uisegmentedcontrol.md)
+	* [030 UIStepperの表示](uikit/030_uistepper.md)
+
 
 * [Connection](conection/README.md)
 	* [001 NSURLConnectionを用いたHTTP通信(非同期)](connection/001_nsurlconnection.md)
