@@ -1,4 +1,4 @@
-# アプリのバージョンを取得する　
+# Versionを表示する　
 
 ![Preview config001](./img/config001.png)
 
