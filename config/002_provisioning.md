@@ -42,7 +42,7 @@ class ViewController: UIViewController {
         do {
             let binaryData: String = try NSString(contentsOfFile: provisioningPath,
                                                   encoding: String.Encoding.isoLatin1.rawValue) as String
-            print("binaryData:\(binaryData)")
+            print("Data:\(binaryData)")
             
             do {
                 
@@ -124,7 +124,7 @@ class ViewController: UIViewController {
         do {
             let binaryData: String = try NSString(contentsOfFile: provisioningPath,
                                                   encoding: NSISOLatin1StringEncoding) as String
-            print("binaryData:\(binaryData)")
+            print("Data:\(binaryData)")
            
             do {
                 
