@@ -30,6 +30,13 @@
 	* [005 通信の進捗を知る](connection/005_progress.md)
 	* [006 タイムアウトの指定](connection/006_timeout.md)
 	* [007 POSTを送信する](connection/007_post.md)
+	* [008 ファイルのダウンロード](connection/008_download.md)
+	* [009 ファイルのアップロード](connection/009_upload.md)
+	* [010 JSONデータのPOST](connection/010_postjson.md)
+* [Config](config/README.md)
+	* [001 Versinを表示する](config/001_version.md)
+	* [002 ProvisioningからDevloperかDistributionかを判定する](config/002_provisioning.md)
+
 * [NSURLSession](network/nsurlsession.md)
 * [iTunes Store]
     * [Push Notification](itunes/pushnotification.md)
