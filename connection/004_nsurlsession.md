@@ -1,6 +1,6 @@
 # NSURLSessionを用いたHTTP通信(Handlerを用いた処理)
 
-![Preview connection001](./img/Connection004.png)
+![Preview connection001](./img/Connection004.png =200x)
 
 ### iOS9からリクエスト先によってはATSを無効化・対処する必要があります
 

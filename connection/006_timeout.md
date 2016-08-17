@@ -1,6 +1,6 @@
 # タイムアウトの指定
 
-![Preview connection006](./img/Connection006.png)
+![Preview connection006](./img/Connection006.png =200x)
 
 ### iOS9からリクエスト先によってはATSを無効化・対処する必要があります
 
