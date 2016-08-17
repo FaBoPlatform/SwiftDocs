@@ -38,7 +38,7 @@ class ViewController: UIViewController {
         let provisioningPath: String = Bundle.main.path(forResource: "embedded", ofType: "mobileprovision")!
         print("provisioningPath\(provisioningPath)")
         
-        // BinaryDataを読み込み.
+        // Dataを読み込み.
         do {
             let binaryData: String = try NSString(contentsOfFile: provisioningPath,
                                                   encoding: String.Encoding.isoLatin1.rawValue) as String
@@ -120,7 +120,7 @@ class ViewController: UIViewController {
         let provisioningPath: String = NSBundle.mainBundle().pathForResource("embedded", ofType: "mobileprovision")!
         print("provisioningPath\(provisioningPath)")
         
-        // BinaryDataを読み込み.
+        // Dataを読み込み.
         do {
             let binaryData: String = try NSString(contentsOfFile: provisioningPath,
                                                   encoding: NSISOLatin1StringEncoding) as String
