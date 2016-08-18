@@ -41,7 +41,6 @@
 	* [074 UIWebViewでPDFを開く](uikit/074_webviewpdf.md)
 	* [075 UIWebViewでファイルの表示](uikit/075_webviewfile.md)
 
-
 * [Connection](conection/README.md)
 	* [001 NSURLConnectionを用いたHTTP通信(非同期)](connection/001_nsurlconnection.md)
 	* [002 NSURLConnectionを用いたHTTP通信(同期)](connection/002_nsurlconnection.md)
@@ -57,12 +56,12 @@
 	* [012 データの更新日時を取得](connection/012_lastmodified.md)
 
 * [Config](config/README.md)
-	* [001 Versinを表示する](config/001_version.md)
+	* [001 Versionを表示する](config/001_version.md)
 	* [002 ProvisioningからDevloperかDistributionかを判定する](config/002_provisioning.md)
+
 * [CoreData](config/README.md)
 	* [001 JSONデータをCoreDataに保存](coredata/001_json.md)
-* [NSURLSession](network/nsurlsession.md)
+
 * [iTunes Store]
-    * [Push Notification](itunes/pushnotification.md)
-    * [Amazon SNS](itunes/amazonsns.md)
-* [FAQ](faq/faq.md)
+    * [001 Push Notificationの設定](itunes/pushnotification.md)
+    * [002 Amazon SNSの設定](itunes/amazonsns.md)
