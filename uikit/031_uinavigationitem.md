@@ -324,3 +324,5 @@ class SecondViewController: UIViewController {
 * senderの記述方法の変更(```.onClickMyBarButton(_:)``` -> ```.onClickMyButton(sender:)```)
 
 ## Reference
+* UINavigationItem Class
+ * [https://developer.apple.com/reference/uikit/uinavigationitem](https://developer.apple.com/reference/uikit/uinavigationitem)

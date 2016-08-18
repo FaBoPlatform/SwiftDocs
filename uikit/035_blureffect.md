@@ -179,3 +179,11 @@ class ViewController: UIViewController {
 * CGRect,CGPointの初期化方法の変更(CGRectMake,CGPointMakeの廃止)
 
 ## Reference
+* UIVisualEffectView Class
+ * [https://developer.apple.com/reference/uikit/uivisualeffectview](https://developer.apple.com/reference/uikit/uivisualeffectview)
+* UISegmentedControl Class
+ * [https://developer.apple.com/reference/uikit/uisegmentedcontrol](https://developer.apple.com/reference/uikit/uisegmentedcontrol)
+* UIBlurEffect Class
+ * [https://developer.apple.com/reference/uikit/uiblureffect](https://developer.apple.com/reference/uikit/uiblureffect)
+* UIVisualEffectView Class
+ * [https://developer.apple.com/reference/uikit/uivisualeffectview](https://developer.apple.com/reference/uikit/uivisualeffectview)

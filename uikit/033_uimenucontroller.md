@@ -214,3 +214,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 * ```CGRectZero```が```CGRect.zero```に変更
 
 ## Reference
+* UIMenuController Class
+ * [https://developer.apple.com/reference/uikit/uimenucontroller](https://developer.apple.com/reference/uikit/uimenucontroller)
+* UIMenuItem Class
+ * [https://developer.apple.com/reference/uikit/uimenuitem](https://developer.apple.com/reference/uikit/uimenuitem)

@@ -31,6 +31,11 @@
 	* [028 UIProgressViewで進捗の具合の確認](uikit/028_uiprogressview.md)
 	* [029 UISegmentedControlの表示](uikit/029_uisegmentedcontrol.md)
 	* [030 UIStepperの表示](uikit/030_uistepper.md)
+	* [031 UINavigationItemでUINavigationBarを設定](uikit/031_uinavigationitem.md)
+	* [032 UIAlertControllerでActionSheet表示](uikit/032_uialertC¥controller.md)
+	* [033 UIMenuControllerにMenuItemを追加](uikit/033_uimenucontroller.md)
+	* [034 UIViewにUIMotionEffectを追加](uikit/034_uimotioneffect.md)
+	* [035 UIViewにBlurエフェクトを適用させる](uikit/035_blureffect.md)
 
 
 * [Connection](conection/README.md)

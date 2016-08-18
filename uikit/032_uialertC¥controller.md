@@ -113,3 +113,5 @@ class ViewController: UIViewController {
 * ```self.presentViewController```が```self.present(myAlert, animated: true, completion: nil)```に変更
 
 ## Reference
+* UIAlertController Class
+ * [https://developer.apple.com/reference/uikit/uialertcontroller](https://developer.apple.com/reference/uikit/uialertcontroller)
