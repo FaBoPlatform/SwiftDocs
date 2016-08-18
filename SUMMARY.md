@@ -44,6 +44,9 @@
 	* [008 ファイルのダウンロード](connection/008_download.md)
 	* [009 ファイルのアップロード](connection/009_upload.md)
 	* [010 JSONデータのPOST](connection/010_postjson.md)
+	* [011 JSONデータのパース](connection/011_persejson.md)
+	* [012 データの更新日時を取得](connection/012_lastmodified.md)
+
 * [Config](config/README.md)
 	* [001 Versinを表示する](config/001_version.md)
 	* [002 ProvisioningからDevloperかDistributionかを判定する](config/002_provisioning.md)
