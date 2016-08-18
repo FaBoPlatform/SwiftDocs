@@ -9,7 +9,7 @@
 ```swift
 //
 //  ViewController.swift
-//  swiftdocs
+//  Connection011
 //
 //  Created by Misato Morino on 2016/08/15.
 //  Copyright © 2016年 Misato Morino. All rights reserved.
