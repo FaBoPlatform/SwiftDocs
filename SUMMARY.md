@@ -62,6 +62,6 @@
 * [CoreData](config/README.md)
 	* [001 JSONデータをCoreDataに保存](coredata/001_json.md)
 
-* [iTunes Store]
+* iTunes Store
     * [001 Push Notificationの設定](itunes/pushnotification.md)
     * [002 Amazon SNSの設定](itunes/amazonsns.md)
