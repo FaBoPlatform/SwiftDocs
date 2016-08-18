@@ -37,6 +37,10 @@
 	* [034 UIViewにUIMotionEffectを追加](uikit/034_uimotioneffect.md)
 	* [035 UIViewにBlurエフェクトを適用させる](uikit/035_blureffect.md)
 
+	* [073 現Viewの上に別Viewを表示する](uikit/073_uiview.md)
+	* [074 UIWebViewでPDFを開く](uikit/074_webviewpdf.md)
+	* [075 UIWebViewでファイルの表示](uikit/075_webviewfile.md)
+
 
 * [Connection](conection/README.md)
 	* [001 NSURLConnectionを用いたHTTP通信(非同期)](connection/001_nsurlconnection.md)
