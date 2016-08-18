@@ -49,8 +49,7 @@ class ViewController: UIViewController, URLSessionDelegate {
         let session: URLSession = URLSession(configuration: config, delegate: self, delegateQueue: nil)
         
         // 通信先のURLを生成.
-        //        let url:NSURL = NSURL(string: "http://xxx/json_encode.php")!
-        let url:NSURL = NSURL(string: "http://localhost/swift/json_encode.php")!
+        let url:NSURL = NSURL(string: "http://xxx/json_encode.php")!
         
         // タスクの生成.
         let task: URLSessionDataTask = session.dataTask(with: url as URL, completionHandler: { (data, response, err) -> Void in
@@ -142,8 +141,7 @@ class ViewController: UIViewController, NSURLSessionDelegate {
         let session:NSURLSession = NSURLSession(configuration: config, delegate: self, delegateQueue: nil)
         
         // 通信先のURLを生成.
-//        let url:NSURL = NSURL(string: "http://xxx/json_encode.php")!
-        let url:NSURL = NSURL(string: "http://localhost/swift/json_encode.php")!
+        let url:NSURL = NSURL(string: "http://xxx/json_encode.php")!
         
         // タスクの生成.
         let task:NSURLSessionDataTask = session.dataTaskWithURL(url, completionHandler: { (data, response, err) -> Void in
