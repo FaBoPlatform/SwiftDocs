@@ -1,6 +1,6 @@
 # JSONデータをCoreDataに格納
 
-![Preview uikit001](./img/uikit001.png)
+![Preview coredata001](./img/coredata001.png)
 
 ## 共通
 
