@@ -203,7 +203,7 @@ class ViewController: UIViewController{
 * NSURLSessionからURLSessionに変更（他も同じく）
 * デリゲートメソッドの接頭語が```URLSession``` から ```urlSession``` に変更
 * NSJSONSerialization から JSONSerialization に変更
-* ```dataUsingEncoding(NSUTF8StringEncoding)``` から ```dataUsingEncoding(NSUTF8StringEncoding)``` に変更
+* ```dataUsingEncoding(NSUTF8StringEncoding)``` から ```data(using: String.Encoding.utf8.rawValue)``` に変更
 
 ## Reference
 
