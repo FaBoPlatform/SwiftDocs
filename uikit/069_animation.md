@@ -364,7 +364,8 @@ class ViewController: UIViewController {
 
 ## 2.3と3.0の差分
 
-* 
+* CGPointMakeが廃止
+* CGRectMakeが廃止
 
 ## Reference
 
