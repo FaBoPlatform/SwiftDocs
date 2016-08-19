@@ -180,5 +180,5 @@ class ViewController: UIViewController {
 
 * UIDynamicBehavior
     * [https://developer.apple.com/reference/uikit/uidynamicbehavior](https://developer.apple.com/reference/uikit/uidynamicbehavior)
-* UIPushBehavioe
-    * [https://developer.apple.com/reference/uikit/uipushbehavioe](https://developer.apple.com/reference/uikit/uipushBehavioe)
+* UIPushBehavior
+    * [https://developer.apple.com/reference/uikit/uipushbehavior](https://developer.apple.com/reference/uikit/uipushBehavior)
