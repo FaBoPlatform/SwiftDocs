@@ -56,13 +56,12 @@
 	* [012 データの更新日時を取得](connection/012_lastmodified.md)
 * [CoreLication](corelocation/README.md)
 	* [001 現在位置を取得](corelocation/001_gps.md)
+	* [003 iBeaconをモニタリング](corelocation/003_ibeacon_monitaring.md)
 * [Config](config/README.md)
 	* [001 Versionを表示する](config/001_version.md)
 	* [002 ProvisioningからDevloperかDistributionかを判定する](config/002_provisioning.md)
-
 * [CoreData](config/README.md)
 	* [001 JSONデータをCoreDataに保存](coredata/001_json.md)
-
 * iTunes Store
     * [001 Push Notificationの設定](itunes/pushnotification.md)
     * [002 Amazon SNSの設定](itunes/amazonsns.md)
