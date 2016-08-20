@@ -37,6 +37,13 @@
 	* [034 UIViewにUIMotionEffectを追加](uikit/034_uimotioneffect.md)
 	* [035 UIViewにBlurエフェクトを適用させる](uikit/035_blureffect.md)
 
+	* [059 UIImageをリサイズする](uikit/059_uiimage.md)
+	* [060 UIImageを合成する](uikit/060_uiimage.md)
+	* [061 UIViewからUIImageを取得する（スクリーンショット）](uikit/061_screenshot.md)
+	* [062 UIPopoverControllerを使ってViewをポップさせる(iPad専用)
+](uikit/062_uipopover.md)
+	* [063 UITextCheckerでスペルチェック](uikit/063_uitextchecker.md)
+	* [064 UIViewにアタッチメントを適用させる](uikit/064_uiview.md)
 	* [065 UIWebViewでファイルの表示](uikit/065_collision.md)
 	* [066 UIViewに重力を適用させる](uikit/066_uiview.md)
 	* [067 UIViewをスナップさせる](uikit/067_uiview.md)
