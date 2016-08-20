@@ -54,7 +54,8 @@
 	* [010 JSONデータのPOST](connection/010_postjson.md)
 	* [011 JSONデータのパース](connection/011_persejson.md)
 	* [012 データの更新日時を取得](connection/012_lastmodified.md)
-
+* [CoreLication](corelocation/README.md)
+	* [001 現在位置を取得](corelocation/001_gps.md)
 * [Config](config/README.md)
 	* [001 Versionを表示する](config/001_version.md)
 	* [002 ProvisioningからDevloperかDistributionかを判定する](config/002_provisioning.md)
