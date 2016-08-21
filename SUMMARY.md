@@ -45,7 +45,12 @@
 	* [042 UIAlertControllerで文字数制限を設ける](uikit/042_uialertcontroller.md)
 	* [043 プレビュー画面にエフェクト処理](uikit/043_preview.md)
 	* [044 セカンドScreenへの描画](uikit/044_scoundscreendraw.md)
-	* [045. TableViewのボタンの拡張](uikit/045_uitableviewbutton.md)
+	* [045 TableViewのボタンの拡張](uikit/045_uitableviewbutton.md)
+	* [046 UITableViewをSlideさせる](uikit/046_uitableviewslide.md)
+	* [047 周期の違うUIScrollViewを同期させる](uikit/047_uiscrollview.md)
+	* [048 プルンプルンするButtonの作成](uikit/048_effectbutton.md)
+	* [049 カスタマイズButton](uikit/049_custombutton.md)
+	* [050 UIパーツの削除](uikit/050_deleteuiparts.md)
 
 	* [059 UIImageをリサイズする](uikit/059_uiimage.md)
 	* [060 UIImageを合成する](uikit/060_uiimage.md)
