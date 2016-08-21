@@ -10,7 +10,7 @@
 //  AppDelegate.swift
 //  UIKit043_3.0
 //
-//  Created by KimikoWatanabe on 2016/08/18.
+//  Created by KimikoWatanabe on 2016/08/21.
 //  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
 
@@ -84,7 +84,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //  ViewController.swift
 //  UIKit043_3.0
 //
-//  Created by KimikoWatanabe on 2016/08/18.
+//  Created by KimikoWatanabe on 2016/08/21.
 //  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
 
@@ -138,7 +138,7 @@ class ViewController: UIViewController, UIWebViewDelegate {
 //  AppDelegate.swift
 //  UIKit043_2.3
 //
-//  Created by KimikoWatanabe on 2016/08/18.
+//  Created by KimikoWatanabe on 2016/08/21.
 //  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
 
@@ -212,7 +212,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //  ViewController.swift
 //  UIKit043_2.3
 //
-//  Created by KimikoWatanabe on 2016/08/18.
+//  Created by KimikoWatanabe on 2016/08/21.
 //  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
 

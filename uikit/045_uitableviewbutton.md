@@ -8,7 +8,7 @@
 //  ViewController.swift
 //  UIKit045_3.0
 //
-//  Created by KimikoWatanabe on 2016/08/18.
+//  Created by KimikoWatanabe on 2016/08/21.
 //  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
 
@@ -132,7 +132,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //  ViewController.swift
 //  UIKit045_2.3
 //
-//  Created by KimikoWatanabe on 2016/08/18.
+//  Created by KimikoWatanabe on 2016/08/21.
 //  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
 

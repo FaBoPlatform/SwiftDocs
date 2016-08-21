@@ -8,7 +8,7 @@
 //  ViewController.swift
 //  UIKit042_3.0
 //
-//  Created by KimikoWatanabe on 2016/08/18.
+//  Created by KimikoWatanabe on 2016/08/21.
 //  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
 
@@ -101,7 +101,7 @@ class ViewController: UIViewController {
 //  ViewController.swift
 //  UIKit042_2.3
 //
-//  Created by KimikoWatanabe on 2016/08/18.
+//  Created by KimikoWatanabe on 2016/08/21.
 //  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
 
