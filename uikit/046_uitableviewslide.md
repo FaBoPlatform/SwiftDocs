@@ -341,9 +341,10 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
 * UIColorの参照方法が変更(UIColor.grayColor()->UIColor.gray)
 * CGRect,CGSizeの初期化方法の変更(CGRectMake,CGSizetMakeの廃止)
 * UITableViewDelegateのデリゲートメソッドの引数が変更
-* UIScrollViewの一部プロパティの変更
+* UIScrollViewの一部プロパティ名の変更
 * UITableViewの一部プロパティ名の変更
 * NSIndexPathの廃止、IndexPathに変更
 
 ## Reference
 * UITableView Class
+ * [https://developer.apple.com/reference/uikit/uitableview](https://developer.apple.com/reference/uikit/uitableview)

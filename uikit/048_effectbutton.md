@@ -188,4 +188,6 @@ class ViewController: UIViewController {
 * CGAffineTransformMakeScaleの廃止、CGAffineTransformに統合
 ## Reference
 * UIButton Class
-* CGAffinTransformMakeScale
+ * [https://developer.apple.com/reference/uikit/uibutton](https://developer.apple.com/reference/uikit/uibutton)
+* CGAffinTransform Class
+ * [https://developer.apple.com/reference/coregraphics/cgaffinetransform](https://developer.apple.com/reference/coregraphics/cgaffinetransform)

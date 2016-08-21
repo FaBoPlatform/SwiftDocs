@@ -326,7 +326,8 @@ class MyButton: UIButton {
 * UIColorの参照方法が変更(UIColor.grayColor()->UIColor.gray)
 * CGRect,CGPointの初期化方法の変更(CGRectMake,CGPointMakeの廃止)
 * ```drawRect```が```draw```メソッドに変更
-* ```bezierPath.addCurveToPoint```が```bezierPath.addCurve``に変更
+* ```bezierPath.addCurveToPoint```が```bezierPath.addCurve```に変更
 
 ## Reference
 * UIButton Class
+ * [https://developer.apple.com/reference/uikit/uibutton](https://developer.apple.com/reference/uikit/uibutton)
