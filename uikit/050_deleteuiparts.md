@@ -12,7 +12,42 @@
 //  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
 
+import UIKit
 
+class ViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        let myButton = UIButton(frame: CGRect(x:50, y:50, width:100, height:100))
+        myButton.setTitle("UIボタン", for: UIControlState.normal)
+        myButton.setTitleColor(UIColor.black, for: UIControlState.normal)
+        myButton.backgroundColor = UIColor.green
+
+        let myLabel = UILabel(frame: CGRect(x:50, y:200, width:100, height:100))
+        myLabel.text = "UIラベル"
+        myLabel.textColor = UIColor.green
+        myLabel.backgroundColor = UIColor.red
+
+        self.view.addSubview(myButton)
+
+        print("View:\(view.description)")
+
+        let views = self.view.subviews
+        for myView in views {
+            print("View:\(myView.description)")
+
+            if myView.isKind(of:UIButton.self) {
+                myView.removeFromSuperview()
+                self.view.addSubview(myLabel)
+            }
+        }
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
 ```
 
 ## Swift 2.3
@@ -67,6 +102,7 @@ class ViewController: UIViewController {
 ## 2.3と3.0の差分
 * UIColorの参照方法が変更(UIColor.grayColor()->UIColor.gray)
 * CGRect,CGPointの初期化方法の変更(CGRectMake,CGPointMakeの廃止)
+* ```isKindOfClass(class)```が```isKind(of:class)```に変更
 
 ## Reference
 * UIView Class
