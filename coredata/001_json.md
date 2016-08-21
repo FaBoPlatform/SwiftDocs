@@ -1,6 +1,6 @@
 # JSONデータをCoreDataに格納
 
-![Preview uikit001](./img/uikit001.png)
+![Preview coredata001](./img/coredata001.png)
 
 ## 共通
 
@@ -29,66 +29,201 @@ AizuData.json
 ```swift
 //
 //  ViewController.swift
-//  uikit001
+//  CoreData001
 //
 //  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
 
 import UIKit
+import CoreData
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
+    
+    private let AIZU_DATA_STORE: String = "AizuDataStore"
+    private var aizuDatas: [AizuDataStore] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // ボタンのサイズを定義.
-        let bWidth: CGFloat = 200
-        let bHeight: CGFloat = 50
-
-        // 配置する座標を定義(画面の中心).
-        let posX: CGFloat = self.view.bounds.width/2 - bWidth/2
-        let posY: CGFloat = self.view.bounds.height/2 - bHeight/2
-
-        // Labelを作成.
-        let label: UILabel = UILabel(frame: CGRect(x: posX, y: posY, width: bWidth, height: bHeight))
-
-        // UILabelの背景をオレンジ色に.
-        label.backgroundColor = UIColor.orange
-
-        // UILabelの枠を丸くする.
-        label.layer.masksToBounds = true
-
-        // 丸くするコーナーの半径.
-        label.layer.cornerRadius = 20.0
-
-        // 文字の色を白に定義.
-        label.textColor = UIColor.white
-
-        // UILabelに文字を代入.
-        label.text = "Hello Swift!!"
-
-        // 文字の影をグレーに定義.
-        label.shadowColor = UIColor.gray
-
-        // Textを中央寄せにする.
-        label.textAlignment = NSTextAlignment.center
-
-        // Viewの背景を青にする.
-        self.view.backgroundColor = UIColor.cyan
-
-        // ViewにLabelを追加.
-        self.view.addSubview(label)
-
+        // Do any additional setup after loading the view, typically from a nib.
+        insertDataFromJson()
+        
+        aizuDatas = loadDatas()
+        
+        // Table View.
+        let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
+        let displayWidth: CGFloat = self.view.frame.width
+        let displayHeight: CGFloat = self.view.frame.height
+        let myTableView: UITableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight))
+        myTableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
+        myTableView.dataSource = self
+        myTableView.delegate = self
+        self.view.addSubview(myTableView)
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    /*
+     CoreDataからデータの読み込み
+     */
+    func loadDatas() -> [AizuDataStore] {
+        
+        let appDel: AppDelegate = (UIApplication.shared.delegate as! AppDelegate)
+        let context = appDel.persistentContainer.viewContext
+        
+        // Request
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: AIZU_DATA_STORE)
+        
+        
+        fetchRequest.returnsObjectsAsFaults = false
+        
+        // Access to CoreData
+        do {
+            if let aizuDatas = try context.fetch(fetchRequest) as? [AizuDataStore] {
+                return aizuDatas
+            }
+            else  {
+                return []
+            }
+            
+        } catch let error as NSError{
+            print(error.localizedDescription)
+            return []
+        }
+    }
+    
+    /*
+     JSONファイルを読み込みCoreDataにInsert.
+     */
+    private func insertDataFromJson() {
+        
+        // Path.
+        let jsonDataPath: NSString = Bundle.main.path(forResource: "AizuData", ofType: "json")!
+        // Data.
+        let jsonRawData: NSData! = NSData(contentsOfFile: jsonDataPath as String)
+        print("jsonRawData:\(jsonRawData)")
+        
+        // JSONのパース.
+        let jsonDictionary: [[String: AnyObject]]
+        do {
+            jsonDictionary = try JSONSerialization.jsonObject(with: jsonRawData as Data, options: []) as! [[String: AnyObject]]
+        }
+        catch {
+            print("Error JSONObjectWithData:\(error)")
+            return
+        }
+        
+        let appDel: AppDelegate = (UIApplication.shared.delegate as! AppDelegate)
+        let context = appDel.persistentContainer.viewContext
+        
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: AIZU_DATA_STORE)
+        let deleteAll = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do {
+            try context.execute(deleteAll)
+        }
+        catch {
+            print("Error excuteRequest(deleteAll):\(error)")
+        }
+ 
 
+        // Entityを定義.
+        let entity: NSEntityDescription! = NSEntityDescription.entity(forEntityName: AIZU_DATA_STORE, in: context)
 
+        // JSONデータを配列分、CoreDataに格納.
+        for jsonData: AnyObject in jsonDictionary {
+            print("jsonData:\(jsonData)")
+            
+            let aizuDataStore: AizuDataStore = AizuDataStore(entity: entity, insertInto: context)
+            
+            do {
+                try aizuDataStore.updateFromDictionary(dataDictionary: jsonData as! [String : AnyObject])
+            } catch {
+                print("Error updateFromDictionary:\(error)")
+            }
+            
+            do {
+                
+                try context.save()
+            }
+            catch {
+                print("Error save:\(error)")
+            }
+        }
+ 
+    }
+    
+    /*
+     Cellが選択された際に呼び出される
+     */
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Num: \(indexPath.row)")
+        print("Value: \(aizuDatas[indexPath.row])")
+    }
+    
+    /*
+     Cellの総数を返す.
+     */
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return aizuDatas.count
+    }
+    
+    /*
+     Cellに値を設定する
+     */
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // 再利用するCellを取得する.
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MyCell", for: indexPath as IndexPath)
+        
+        // Cellに値を設定する.
+        cell.textLabel!.text = "\(aizuDatas[indexPath.row].title)"
+        
+        return cell
+    }
+    
 }
+
 ```
+### AizuDataStore.swift
+
+```swift
+//
+//  AizuDataStore.swift
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+import CoreData
+
+@objc(AizuDataStore)
+class AizuDataStore: NSManagedObject {
+    
+    @NSManaged var id: NSNumber
+    @NSManaged var title: String
+    @NSManaged var content: String
+    
+    func updateFromDictionary(dataDictionary: [String: AnyObject]) throws {
+        
+        // バリデーション.
+        guard let tmp_id: NSNumber  = dataDictionary["id"] as? NSNumber,
+            let tmp_title: String   = dataDictionary["title"] as? String,
+            let tmp_content: String = dataDictionary["content"] as? String
+            
+            else{
+                throw NSError(domain: "Failed validation of JSON object. ", code: -1, userInfo: nil)
+        }
+        
+        // データを反映.
+        id = tmp_id
+        title = tmp_title
+        content = tmp_content
+    }
+}
+
+```
+
 
 # Swift 2.3
 
@@ -105,17 +240,60 @@ class ViewController: UIViewController {
 import UIKit
 import CoreData
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
 
+    private let AIZU_DATA_STORE: String = "AizuDataStore"
+    private var aizuDatas: [AizuDataStore] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         insertDataFromJson()
+        
+        aizuDatas = loadDatas()
+        
+        // Table View.
+        let barHeight: CGFloat = UIApplication.sharedApplication().statusBarFrame.size.height
+        let displayWidth: CGFloat = self.view.frame.width
+        let displayHeight: CGFloat = self.view.frame.height
+        let myTableView: UITableView = UITableView(frame: CGRectMake(0, barHeight, displayWidth, displayHeight))
+        myTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
+        myTableView.dataSource = self
+        myTableView.delegate = self
+        self.view.addSubview(myTableView)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    /*
+     CoreDataからデータの読み込み
+    */
+    func loadDatas() -> [AizuDataStore] {
+        
+        // Context
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context: NSManagedObjectContext = appDel.managedObjectContext
+        
+        // Request
+        let fetchRequest: NSFetchRequest = NSFetchRequest(entityName: AIZU_DATA_STORE)
+        fetchRequest.returnsObjectsAsFaults = false
+        
+        // Access to CoreData
+        do {
+            if let aizuDatas = try context.executeFetchRequest(fetchRequest) as? [AizuDataStore] {
+                return aizuDatas
+            }
+            else  {
+                return []
+            }
+            
+        } catch let error as NSError{
+            print(error.localizedDescription)
+            return []
+        }
     }
     
     /*
@@ -135,40 +313,77 @@ class ViewController: UIViewController {
             jsonDictionary = try NSJSONSerialization.JSONObjectWithData(jsonRawData, options: []) as! [[String: AnyObject]]
         }
         catch {
-            print(error)
+            print("Error JSONObjectWithData:\(error)")
             return
         }
         
         let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let localContext: NSManagedObjectContext = appDel.managedObjectContext
+        let context: NSManagedObjectContext = appDel.managedObjectContext
         
-        let localEntity: NSEntityDescription! = NSEntityDescription.entityForName("AizuDataStore", inManagedObjectContext: localContext)
+        // 全データを削除.
+        let fetchRequest = NSFetchRequest(entityName: AIZU_DATA_STORE)
+        let deleteAll = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do {
+            try context.executeRequest(deleteAll)
+        }
+        catch {
+            print("Error excuteRequest(deleteAll):\(error)")
+        }
+        
+        // Entityを定義.
+        let entity: NSEntityDescription! = NSEntityDescription.entityForName(AIZU_DATA_STORE, inManagedObjectContext: context)
         
         // JSONデータを配列分、CoreDataに格納.
         for jsonData: AnyObject in jsonDictionary {
             print("jsonData:\(jsonData)")
             
-            let aizuDataStore: AizuDataStore = AizuDataStore(entity: localEntity, insertIntoManagedObjectContext: localContext)
+            let aizuDataStore: AizuDataStore = AizuDataStore(entity: entity, insertIntoManagedObjectContext: context)
             
             do {
                 try aizuDataStore.updateFromDictionary(jsonData as! [String : AnyObject])
             } catch {
-                print("Error:)")
+                print("Error updateFromDictionary:\(error)")
             }
             
             do {
-                try localContext.save()
+                
+                try context.save()
             }
             catch {
-                return
+                print("Error save:\(error)")
             }
         }
     }
-
+    
+    /*
+     Cellが選択された際に呼び出される
+     */
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print("Num: \(indexPath.row)")
+        print("Value: \(aizuDatas[indexPath.row])")
+    }
+    
+    /*
+     Cellの総数を返す.
+     */
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return aizuDatas.count
+    }
+    
+    /*
+     Cellに値を設定する
+     */
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        // 再利用するCellを取得する.
+        let cell = tableView.dequeueReusableCellWithIdentifier("MyCell", forIndexPath: indexPath)
+        
+        // Cellに値を設定する.
+        cell.textLabel!.text = "\(aizuDatas[indexPath.row].title)"
+        
+        return cell
+    }
 
 }
-
-
 ```
 
 ### AizuDataStore.swift
@@ -185,8 +400,6 @@ import CoreData
 
 @objc(AizuDataStore)
 class AizuDataStore: NSManagedObject {
-    let errorCode = 999
-    let errroDomain = "TestDataErrorDomain"
     
     @NSManaged var id: NSNumber
     @NSManaged var title: String
@@ -200,11 +413,7 @@ class AizuDataStore: NSManagedObject {
             tmp_content: String     = dataDictionary["content"] as? String
             
             else{
-                let localizedDescription = NSLocalizedString("Could not interpret data.", comment: "")
-                
-                throw NSError(domain: errroDomain, code: errorCode, userInfo: [
-                    NSLocalizedDescriptionKey: localizedDescription
-                    ])
+                throw NSError(domain: "Failed validation of JSON object. ", code: -1, userInfo: nil)
         }
         
         // データを反映.
@@ -218,12 +427,10 @@ class AizuDataStore: NSManagedObject {
 
 ## 2.xと3.xの差分
 
-* UIColor.grayColor()がUIColor.grayに変更
-* NSTextAlignment.Centerが、NSTextAlignment.centerに変更
+* 自動生成されるAppDelegateのCoreDataの記述が変更。
+* `let context: NSManagedObjectContext = appDel.managedObjectContext`が`let context = appDel.persistentContainer.viewContext`に。
 
 ## Reference
 
-* UIColor
-	* [https://developer.apple.com/reference/uikit/uicolor](https://developer.apple.com/reference/uikit/uicolor)
-* UILabel
-	* [https://developer.apple.com/reference/uikit/uilabel](https://developer.apple.com/reference/uikit/uilabel)
+* CoreData
+	* [https://developer.apple.com/reference/coredata](https://developer.apple.com/reference/coredata)
