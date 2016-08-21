@@ -41,6 +41,11 @@
 	* [038 UITextFieldに文字数制限を設ける](uikit/038_uitextfield.md)
 	* [039 UITextFieldの入力をパスワード形式にする](uikit/039_uitextfield.md)
 	* [040 GestureRecognizerのイベント取得](uikit/040_gesturerecognizer.md)
+	* [041 UIAlertControllerをパスワード形式にする](uikit/041_uiapplicationpass.md)
+	* [042 UIAlertControllerで文字数制限を設ける](uikit/042_uialertcontroller.md)
+	* [043 プレビュー画面にエフェクト処理](uikit/043_preview.md)
+	* [044 セカンドScreenへの描画](uikit/044_scoundscreendraw.md)
+	* [045. TableViewのボタンの拡張](uikit/045_uitableviewbutton.md)
 
 	* [059 UIImageをリサイズする](uikit/059_uiimage.md)
 	* [060 UIImageを合成する](uikit/060_uiimage.md)
