@@ -157,11 +157,17 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
 ## 2.3と3.0の差分
 * UIColorの参照方法が変更(UIColor.grayColor()->UIColor.gray)
 * CGRect,CGPointの初期化方法の変更(CGRectMake,CGPointMakeの廃止)
+* UICollectionViewDelegateのメソッドの引数が変更
 * NSIndexPathの廃止、IndexPathに変更.
 
 ## Reference
 * UICollectionViewFlowLayout Class
+ * [https://developer.apple.com/reference/uikit/uicollectionviewflowlayout](https://developer.apple.com/reference/uikit/uicollectionviewflowlayout)
 * UICollectionView Class
+ * [https://developer.apple.com/reference/uikit/uicollectionview](https://developer.apple.com/reference/uikit/uicollectionview)
 * UIEdgeInsetsMake
+ * [https://developer.apple.com/reference/uikit/1624475-uiedgeinsetsmake?language=objc](https://developer.apple.com/reference/uikit/1624475-uiedgeinsetsmake?language=objc)
 * UICollectionDelegate
+ * [https://developer.apple.com/reference/uikit/uicollectionviewdelegate](https://developer.apple.com/reference/uikit/uicollectionviewdelegate)
 * UICollectionDataSource
+ * [https://developer.apple.com/reference/uikit/uicollectionviewdatasource](https://developer.apple.com/reference/uikit/uicollectionviewdatasource)

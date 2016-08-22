@@ -344,8 +344,12 @@ class CustomUICollectionViewCell : UICollectionViewCell{
 
 ## Reference
 * UICollectionViewFlowLayout Class
+ * [https://developer.apple.com/reference/uikit/uicollectionviewflowlayout](https://developer.apple.com/reference/uikit/uicollectionviewflowlayout)
 * UICollectionView Class
+ * [https://developer.apple.com/reference/uikit/uicollectionview](https://developer.apple.com/reference/uikit/uicollectionview)
 * UIEdgeInsetsMake
+ * [https://developer.apple.com/reference/uikit/1624475-uiedgeinsetsmake?language=objc](https://developer.apple.com/reference/uikit/1624475-uiedgeinsetsmake?language=objc)
 * UICollectionDelegate
+ * [https://developer.apple.com/reference/uikit/uicollectionviewdelegate](https://developer.apple.com/reference/uikit/uicollectionviewdelegate)
 * UICollectionDataSource
-* UIKit Class
+ * [https://developer.apple.com/reference/uikit/uicollectionviewdatasource](https://developer.apple.com/reference/uikit/uicollectionviewdatasource)
