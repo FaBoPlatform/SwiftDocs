@@ -52,6 +52,9 @@
 	* [049 カスタマイズButton](uikit/049_custombutton.md)
 	* [050 UIパーツの削除](uikit/050_deleteuiparts.md)
 
+	* [056 UIImagePickerControllerでライブラリから画像を選択](uikit/056_uiimagepickercontroller.md)
+	* [057 UIImageで画像の透過](uikit/057_uiimage.md)
+	* [058 UIImageをぼかす](uikit/058_uiimage.md) 
 	* [059 UIImageをリサイズする](uikit/059_uiimage.md)
 	* [060 UIImageを合成する](uikit/060_uiimage.md)
 	* [061 UIViewからUIImageを取得する（スクリーンショット）](uikit/061_screenshot.md)
