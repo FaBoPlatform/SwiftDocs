@@ -51,6 +51,11 @@
 	* [048 プルンプルンするButtonの作成](uikit/048_effectbutton.md)
 	* [049 カスタマイズButton](uikit/049_custombutton.md)
 	* [050 UIパーツの削除](uikit/050_deleteuiparts.md)
+	* [051 UITableViewに追加・削除機能を追加](uikit/051_uitableview.md)
+	* [052 UIBezierPathで図形を描画](uikit/052_uibezierpath.md)
+	* [053 UICollectionViewを使う](uikit/053_uicollectionview.md)
+	* [054 UICollectionViewのCellをカスタマイズする](uikit/054_customuicollectionview.md)
+	* [055 UICollectionViewをセクション毎に分ける](uikit/055_sectionuicollectionview.md)
 
 	* [059 UIImageをリサイズする](uikit/059_uiimage.md)
 	* [060 UIImageを合成する](uikit/060_uiimage.md)
