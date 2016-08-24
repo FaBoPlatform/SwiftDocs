@@ -12,7 +12,57 @@
 //  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
 
+import UIKit
 
+class ViewController: UIViewController {
+
+    var myLabel: UILabel!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Windowの表示領域すべてのサイズ(point).
+        let myBoundSize: CGSize = UIScreen.main.bounds.size
+        let myBoundSizeStr: NSString = "Bounds width: \(myBoundSize.width) height: \(myBoundSize.height)"
+        print("\(myBoundSizeStr)")
+        setMyLabel(text: myBoundSizeStr, point: CGPoint(x: 0, y: 100))
+
+        // Windowの表示領域すべてのサイズ(pixel).
+        let myNativeBoundSize: CGSize = UIScreen.main.nativeBounds.size
+        let myNativeBoundSizeStr: NSString = "NativeBounds width: \(myNativeBoundSize.width) \nNativeBoundheight: \(myNativeBoundSize.height)"
+        print("\(myNativeBoundSizeStr)")
+        setMyLabel(text: myNativeBoundSizeStr, point: CGPoint(x: 0, y: 200))
+        myLabel.font = UIFont.systemFont(ofSize: 14)
+
+        // Windowの表示領域すべてのサイズ(pixel).
+        let myAppFrameSize: CGSize = UIScreen.main.bounds.size
+        let myAppFrameSizeStr: NSString = "applicationFrame width: \(myAppFrameSize.width) \nNativeBoundheight: \(myAppFrameSize.height)"
+        print("\(myAppFrameSizeStr)")
+        setMyLabel(text: myAppFrameSizeStr, point: CGPoint(x: 0, y: 300))
+        myLabel.font = UIFont.systemFont(ofSize: 14)
+
+        // WindowのScale.
+        let myScale: CGFloat = UIScreen.main.scale
+        print("\(myScale)")
+        setMyLabel(text: "\(myScale)", point: CGPoint(x: 0, y: 400))
+        myLabel.font = UIFont.systemFont(ofSize: 20)
+    }
+
+    // ラベルの表示.
+    func setMyLabel(text: NSString, point: CGPoint){
+        myLabel = UILabel(frame: CGRect(x:point.x,y:point.y,width:self.view.bounds.width,height:50))
+        myLabel.backgroundColor = UIColor.orange
+        myLabel.layer.masksToBounds = true
+        myLabel.layer.cornerRadius = 10.0
+        myLabel.textColor = UIColor.white
+        myLabel.shadowColor = UIColor.gray
+        myLabel.textAlignment = NSTextAlignment.center
+        myLabel.text = text as String
+        myLabel.numberOfLines = 2
+        self.view.addSubview(myLabel)
+    }
+
+}
 ```
 
 ## Swift 2.3
@@ -82,6 +132,7 @@ class ViewController: UIViewController {
 ## 2.3と3.0の差分
 * UIColorの参照方法が変更(UIColor.grayColor()->UIColor.gray)
 * CGRect,CGPointの初期化方法の変更(CGRectMake,CGPointMakeの廃止)
+* ```UIScreen.mainScreen()```が```UIScreen.main```に変更
 
 ## Reference
 * UIScreen Class

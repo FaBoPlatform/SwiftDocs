@@ -13,7 +13,63 @@
 //  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
 
+import UIKit
 
+class ViewController: UIViewController {
+
+    //端末の向き表示用のラベル.
+    var myLabel:UILabel!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.view.backgroundColor = UIColor.cyan
+
+        //現在の向きを表示するためのラベル.
+        myLabel = UILabel(frame: CGRect(x:0, y:0, width:200, height:50))
+        myLabel.backgroundColor = UIColor.orange
+        myLabel.textColor = UIColor.white
+        myLabel.layer.masksToBounds = true
+        myLabel.layer.cornerRadius = 20.0
+        myLabel.textAlignment = NSTextAlignment.center
+        myLabel.layer.position = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height/2)
+        myLabel.text = "Portrait"
+
+        self.view.addSubview(myLabel)
+
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+
+        // 端末の向きがかわったらNotificationを呼ばす設定.
+        NotificationCenter.default.addObserver(self, selector: #selector(ViewController.onOrientationChange(notification:)), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+    }
+
+    // 端末の向きがかわったら呼び出される.
+    func onOrientationChange(notification: NSNotification){
+
+        // 現在のデバイスの向きを取得.
+        let deviceOrientation: UIDeviceOrientation!  = UIDevice.current.orientation
+
+        // 向きの判定.
+        if UIDeviceOrientationIsLandscape(deviceOrientation) {
+
+            //横向きの判定.
+            //向きに従って位置を調整する.
+            myLabel.layer.position = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height/2)
+            myLabel.text = "Landscape"
+
+        } else if UIDeviceOrientationIsPortrait(deviceOrientation){
+
+            //縦向きの判定.
+            //向きに従って位置を調整する.
+            myLabel.layer.position = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height/2)
+            myLabel.text = "Portrait"
+
+        }
+
+    }
+}
 ```
 
 ## Swift 2.3
@@ -82,13 +138,14 @@ class ViewController: UIViewController {
         }
 
     }
-
 }
 ```
 
 ## 2.3と3.0の差分
 * UIColorの参照方法が変更(UIColor.grayColor()->UIColor.gray)
 * CGRect,CGPointの初期化方法の変更(CGRectMake,CGPointMakeの廃止)
+* NSNotificationCenterが廃止、NotificationCenterに変更
+* ```UIDeviceOrientationDidChangeNotification```が```NSNotification.Name.UIDeviceOrientationDidChange```に変更
 
 ## Reference
 * NSNotificationCenter Class
