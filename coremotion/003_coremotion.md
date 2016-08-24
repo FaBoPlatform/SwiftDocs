@@ -129,3 +129,9 @@ class ViewController: UIViewController {
 
 ## Reference
 
+* CMPedometer
+    * https://developer.apple.com/library/ios/documentation/CoreMotion/Reference/CMPedometer_class/
+* NSTextAlignment
+    * https://developer.apple.com/reference/uikit/nstextalignment
+* UIFont
+    * https://developer.apple.com/reference/uikit/uifont
