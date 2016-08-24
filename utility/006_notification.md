@@ -24,6 +24,23 @@
 //  Created by KimikoWatanabe on 2016/08/24.
 //  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
+
+import UIKit
+
+class ViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // 通知の設定を生成.
+        let settings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Badge, categories: nil)
+
+        // 通知設定を促す.
+        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+
+    }
+
+}
 ```
 
 ## 2.3と3.0の差分

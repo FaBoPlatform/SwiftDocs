@@ -25,6 +25,39 @@
 //  Created by KimikoWatanabe on 2016/08/24.
 //  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
+
+import UIKit
+import SystemConfiguration
+
+class ViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        //UIボタンを生成.
+        let myButton = UIButton(frame: CGRectMake(0,0,100,100))
+        myButton.backgroundColor = UIColor.redColor()
+        myButton.layer.masksToBounds = true
+        myButton.setTitle("メール", forState: .Normal)
+        myButton.layer.cornerRadius = 50.0
+        myButton.layer.position = CGPoint(x: self.view.bounds.width/2, y: self.view.bounds.height/2)
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(_:)), forControlEvents: .TouchUpInside)
+        self.view.addSubview(myButton)
+
+    }
+
+    //ボタンイベント.
+    func onClickMyButton(sender: UIButton){
+
+        //メーラーのURLを生成.
+        let myMailURL : NSURL = NSURL(string:"mailto:1234@xxxx.com")!
+
+        //URLスキームからメーラーを呼び出す.
+        UIApplication.sharedApplication().openURL(myMailURL)
+
+    }
+
+}
 ```
 
 ## 2.3と3.0の差分

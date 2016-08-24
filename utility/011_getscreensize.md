@@ -24,6 +24,59 @@
 //  Created by KimikoWatanabe on 2016/08/24.
 //  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
+
+import UIKit
+
+class ViewController: UIViewController {
+
+    var myLabel: UILabel!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Windowの表示領域すべてのサイズ(point).
+        let myBoundSize: CGSize = UIScreen.mainScreen().bounds.size
+        let myBoundSizeStr: NSString = "Bounds width: \(myBoundSize.width) height: \(myBoundSize.height)"
+        print("\(myBoundSizeStr)")
+        setMyLabel(myBoundSizeStr, point: CGPoint(x: 0, y: 100))
+
+        // Windowの表示領域すべてのサイズ(pixel).
+        let myNativeBoundSize: CGSize = UIScreen.mainScreen().nativeBounds.size
+        let myNativeBoundSizeStr: NSString = "NativeBounds width: \(myNativeBoundSize.width) \nNativeBoundheight: \(myNativeBoundSize.height)"
+        print("\(myNativeBoundSizeStr)")
+        setMyLabel(myNativeBoundSizeStr, point: CGPoint(x: 0, y: 200))
+        myLabel.font = UIFont.systemFontOfSize(14)
+
+        // Windowの表示領域すべてのサイズ(pixel).
+        let myAppFrameSize: CGSize = UIScreen.mainScreen().bounds.size
+        let myAppFrameSizeStr: NSString = "applicationFrame width: \(myAppFrameSize.width) \nNativeBoundheight: \(myAppFrameSize.height)"
+        print("\(myAppFrameSizeStr)")
+        setMyLabel(myAppFrameSizeStr, point: CGPoint(x: 0, y: 300))
+        myLabel.font = UIFont.systemFontOfSize(14)
+
+        // WindowのScale.
+        let myScale: CGFloat = UIScreen.mainScreen().scale
+        print("\(myScale)")
+        setMyLabel("\(myScale)", point: CGPoint(x: 0, y: 400))
+        myLabel.font = UIFont.systemFontOfSize(20)
+    }
+
+    // ラベルの表示.
+    func setMyLabel(text: NSString, point: CGPoint){
+        myLabel = UILabel(frame: CGRectMake(point.x,point.y,self.view.bounds.width,50))
+        myLabel.backgroundColor = UIColor.orangeColor()
+        myLabel.layer.masksToBounds = true
+        myLabel.layer.cornerRadius = 10.0
+        myLabel.textColor = UIColor.whiteColor()
+        myLabel.shadowColor = UIColor.grayColor()
+        myLabel.textAlignment = NSTextAlignment.Center
+        myLabel.text = text as String
+        myLabel.numberOfLines = 2
+        self.view.addSubview(myLabel)
+    }
+
+}
+
 ```
 
 ## 2.3と3.0の差分
