@@ -1,12 +1,12 @@
 # Twitterに投稿
 
-![Preview social001](img/social001.png)
+![Preview social001](img/social001_001.png) ![Preview social001](img/social001_002.png)
 
 ## Swift3.0
 ```swift
 //
 //  ViewController.swift
-//  swiftdocs
+//  Social001
 //
 //  Created by Misato Morino on 2016/08/15.
 //  Copyright © 2016年 Misato Morino. All rights reserved.
@@ -70,7 +70,7 @@ class ViewController: UIViewController {
 ```swift
 //
 //  ViewController.swift
-//  swiftdocs
+//  Social001
 //
 //  Created by Misato Morino on 2016/08/15.
 //  Copyright © 2016年 Misato Morino. All rights reserved.
