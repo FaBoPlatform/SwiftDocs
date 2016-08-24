@@ -83,7 +83,11 @@
     * [001 地図の表示](mapkit/001_mapview.md)
     * [002 地図の縮尺の変更](mapkit/002_mapview.md)
     * [003 現在位置の地図の表示](mapkit/003_cllocation.md)
-
+* [CoreMotion](coremotion/README.md)
+    * [001 加速度センサーの値を取得](coremotion/001_coremotion.md)
+    * [002 活動量計の値の取得](coremotion/002_coremotion.md)
+    * [003 万歩計の歩数の取得](coremotion/003_coremotion.md)
+    * [004 高度の計測](coremotion/004_coremotion.md)
 * [Connection](conection/README.md)
 	* [001 NSURLConnectionを用いたHTTP通信(非同期)](connection/001_nsurlconnection.md)
 	* [002 NSURLConnectionを用いたHTTP通信(同期)](connection/002_nsurlconnection.md)
