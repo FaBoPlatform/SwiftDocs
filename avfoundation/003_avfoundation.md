@@ -20,19 +20,19 @@ import AVFoundation
 class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
     
     // ビデオのアウトプット.
-    private var myVideoOutput : AVCaptureMovieFileOutput!
+    private var myVideoOutput: AVCaptureMovieFileOutput!
     
     // スタートボタン.
-    private var myButtonStart : UIButton!
+    private var myButtonStart: UIButton!
     
     // ストップボタン.
-    private var myButtonStop : UIButton!
+    private var myButtonStop: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // セッションの作成.
-        let mySession : AVCaptureSession = AVCaptureSession()
+        let mySession = AVCaptureSession()
         
         // デバイス.
         var myDevice = AVCaptureDevice.defaultDevice(withMediaType: AVMediaTypeVideo)
@@ -44,11 +44,9 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
         let devices = AVCaptureDevice.devices()
         
         // マイクを取得.
-        //let audioCaptureDevice = AVCaptureDevice.devicesWithMediaType(AVMediaTypeAudio)
         let audioCaptureDevice = AVCaptureDevice.devices(withMediaType: AVMediaTypeAudio)
         
         // マイクをセッションのInputに追加.
-        //let audioInput = AVCaptureDeviceInput.deviceInputWithDevice(audioCaptureDevice[0] as! AVCaptureDevice, error: nil)  as! AVCaptureInput
         let audioInput = try! AVCaptureDeviceInput.init(device: audioCaptureDevice?.first as! AVCaptureDevice)
         
         // バックライトをmyDeviceに格納.
@@ -59,7 +57,6 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
         }
         
         // バックカメラを取得.
-        //let videoInput = AVCaptureDeviceInput.deviceInputWithDevice(myDevice, error: nil) as! AVCaptureDeviceInput
         let videoInput = try! AVCaptureDeviceInput.init(device: myDevice)
         
         // ビデオをセッションのInputに追加.
@@ -128,7 +125,7 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
             let documentsDirectory = paths[0]
             
             // ファイル名.
-            let filePath : String? = "\(documentsDirectory)/test.mp4"
+            let filePath = "\(documentsDirectory)/test.mp4"
             
             // URL.
             let fileURL = URL(fileURLWithPath: filePath!)
@@ -204,7 +201,6 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
         let audioCaptureDevice = AVCaptureDevice.devicesWithMediaType(AVMediaTypeAudio)
         
         // マイクをセッションのInputに追加.
-        //let audioInput = AVCaptureDeviceInput.deviceInputWithDevice(audioCaptureDevice[0] as! AVCaptureDevice, error: nil)  as! AVCaptureInput
         let audioInput = try! AVCaptureDeviceInput.init(device: audioCaptureDevice.first as! AVCaptureDevice)
         
         // バックライトをmyDeviceに格納.
@@ -215,7 +211,6 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
         }
         
         // バックカメラを取得.
-        //let videoInput = AVCaptureDeviceInput.deviceInputWithDevice(myDevice, error: nil) as! AVCaptureDeviceInput
         let videoInput = try! AVCaptureDeviceInput.init(device: myDevice)
         
         // ビデオをセッションのInputに追加.
