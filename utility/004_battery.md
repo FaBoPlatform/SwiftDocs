@@ -137,3 +137,5 @@ class ViewController: UIViewController {
 
 
 ## Reference
+* UIDevice Class
+ * [https://developer.apple.com/reference/uikit/uidevice](https://developer.apple.com/reference/uikit/uidevice)

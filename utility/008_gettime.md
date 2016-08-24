@@ -144,5 +144,6 @@ class ViewController: UIViewController {
 * ```NSCalendarUnit```が```NSCalendar.Unit```に変更
 
 ## Reference
-* NSDate Class
+* Date Class
 * NSCalendar Class
+ * [https://developer.apple.com/reference/foundation/nscalendar](https://developer.apple.com/reference/foundation/nscalendar)

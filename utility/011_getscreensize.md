@@ -136,3 +136,4 @@ class ViewController: UIViewController {
 
 ## Reference
 * UIScreen Class
+ * [https://developer.apple.com/reference/uikit/uiscreen](https://developer.apple.com/reference/uikit/uiscreen)

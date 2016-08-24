@@ -148,5 +148,5 @@ class ViewController: UIViewController {
 * ```UIDeviceOrientationDidChangeNotification```が```NSNotification.Name.UIDeviceOrientationDidChange```に変更
 
 ## Reference
-* NSNotificationCenter Class
 * UIDevice Class
+ * [https://developer.apple.com/reference/uikit/uidevice](https://developer.apple.com/reference/uikit/uidevice)

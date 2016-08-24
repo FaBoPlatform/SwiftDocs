@@ -118,3 +118,4 @@ class ViewController: UIViewController {
 
 ## Reference
 * Timer Class
+ * [https://developer.apple.com/reference/foundation/timer](https://developer.apple.com/reference/foundation/timer)

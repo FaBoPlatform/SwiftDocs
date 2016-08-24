@@ -192,3 +192,4 @@ class ViewController: UIViewController {
 
 ## Reference
 * invalidate Tasks
+ * [https://developer.apple.com/reference/foundation/timer/1415405-invalidate](https://developer.apple.com/reference/foundation/timer/1415405-invalidate)

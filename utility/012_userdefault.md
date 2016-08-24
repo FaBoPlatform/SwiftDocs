@@ -158,4 +158,5 @@ class ViewController: UIViewController {
 * NSUserDefaultsの廃止、UserDefaultに変更
 
 ## Reference
-* NSUserDefaults Class
+* UserDefaults Class
+ * [https://developer.apple.com/reference/foundation/userdefaults](https://developer.apple.com/reference/foundation/userdefaults)

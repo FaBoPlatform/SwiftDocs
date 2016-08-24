@@ -65,5 +65,7 @@ class ViewController: UIViewController {
 * CGRect,CGPointの初期化方法の変更(CGRectMake,CGPointMakeの廃止)
 
 ## Reference
-* systemConfiguration Framework
+* SystemConfiguration Framework
+ * [https://developer.apple.com/reference/systemconfiguration](https://developer.apple.com/reference/systemconfiguration)
 * NSURL Class
+ * [https://developer.apple.com/reference/foundation/nsurl](https://developer.apple.com/reference/foundation/nsurl)

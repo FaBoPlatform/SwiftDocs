@@ -141,4 +141,6 @@ class ViewController: UIViewController {
 
 ## Reference
 * UIDevice Class
+ * [https://developer.apple.com/reference/uikit/uidevice](https://developer.apple.com/reference/uikit/uidevice)
 * ASIdentifierManager Class
+ * [https://developer.apple.com/reference/adsupport/asidentifiermanager](https://developer.apple.com/reference/adsupport/asidentifiermanager)
