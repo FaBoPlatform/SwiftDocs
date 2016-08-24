@@ -1,4 +1,6 @@
-# 
+# 加速度センサーの値を取得
+
+![Preview coremotion001](./img/CoreMotion001.png)
 
 ## Swift 3.0
 
