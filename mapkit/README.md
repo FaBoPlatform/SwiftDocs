@@ -2,3 +2,8 @@
 [![Preview mapkit002](./img/mapkit002.png)](./002_mapview.md)
 [![Preview mapkit003](./img/mapkit003.png)](./003_cllocation.md)
 [![Preview mapkit004](./img/mapkit004.png)](./004_point.md)
+[![Preview mapkit005](./img/mapkit005.png)](./005_3d.md)
+[![Preview mapkit006](./img/mapkit006.png)](./006_pin.md)
+[![Preview mapkit007](./img/mapkit007.png)](./007_image.md)
+[![Preview mapkit008](./img/mapkit008.png)](./008_image.md)
+[![Preview mapkit009](./img/mapkit009.png)](./009_route.md)
