@@ -7,7 +7,7 @@
 ```swift
 //
 //  ViewController.swift
-//  avfoundation006v2
+//  avfoundation006
 //
 //  Created by akimach on 2016/08/28.
 //  Copyright © 2016年 akimacho. All rights reserved.
@@ -135,7 +135,7 @@ class ViewController: UIViewController {
 ```swift
 //
 //  ViewController.swift
-//  avfoundation006v2
+//  avfoundation006
 //
 //  Created by akimach on 2016/08/28.
 //  Copyright © 2016年 akimacho. All rights reserved.
