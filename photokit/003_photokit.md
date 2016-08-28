@@ -172,7 +172,7 @@ class ViewController: UIViewController, UITableViewDataSource {
 ## 2.xと3.xの差分
 
 * `func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int`から`func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int`に変更
-* ``から`func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell`に変更
+* `func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {`から`func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell`に変更
 * `UITableView.dequeueReusableCellWithIdentifier(String, forIndexPath: NSIndexPath)`から`UITableView.dequeueReusableCell(withIdentifier: String, for: IndexPath)`に変更
 * `NSIndexPath`から`IndexPath`に変更
 * `PHAssetCollection.fetchAssetCollectionsWithType(PHAssetCollectionType, subtype: PHAssetCollectionSubtype, options: PHFetchOptions?)`から`PHAssetCollection.fetchAssetCollections(with: PHAssetCollectionType, subtype: PHAssetCollectionSubtype, options: PHFetchOptions?)`に変更
@@ -181,3 +181,5 @@ class ViewController: UIViewController, UITableViewDataSource {
 
 * Photos Framework
     * https://developer.apple.com/library/ios/documentation/Photos/Reference/Photos_Framework/
+* PHPhotoLibrary
+    * https://developer.apple.com/library/ios/documentation/Photos/Reference/PHPhotoLibrary_Class/
