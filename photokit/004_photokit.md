@@ -1,6 +1,6 @@
 # アルバムを削除する
 
-![Preview photokit004](./img/photokit004.png) ![Preview photokit004_2](./img/photokit004_2.png) ![Preview photokit004_3](./img/photokit004_3.png)
+![Preview PhotoKit004](./img/PhotoKit004.png) ![Preview photokit004_2](./img/PhotoKit004_2.png) ![Preview photokit004_3](./img/PhotoKit004_3.png)
 
 ## Swift 3.0
 

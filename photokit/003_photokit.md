@@ -1,6 +1,6 @@
 # アルバムを検索する
 
-![Preview photokit002](./img/photokit002.png) ![Preview PhotoKit002_2](./img/PhotoKit002_2.png) ![Preview PhotoKit002_3](./img/PhotoKit002_3.png) ![Preview PhotoKit002_4](./img/PhotoKit002_4.png)
+![Preview photokit003](./img/PhotoKit003.png) ![Preview PhotoKit003_2](./img/PhotoKit003_2.png) ![Preview PhotoKit003_3](./img/PhotoKit003_3.png) ![Preview PhotoKit003_4](./img/PhotoKit003_4.png)
 
 ## Swift 3.0
 

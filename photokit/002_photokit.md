@@ -1,6 +1,6 @@
 # アルバムを作る
 
-![Preview photokit001](./img/photokit001.png)
+![Preview photokit001](./img/PhotoKit002.png)
 
 ## Swift 3.0
 

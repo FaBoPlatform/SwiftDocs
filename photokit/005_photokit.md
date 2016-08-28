@@ -1,6 +1,6 @@
 # アルバムにアセットを追加する
 
-![Preview photokit005](./img/photokit005.png) 
+![Preview PhotoKit005](./img/PhotoKit005.png) 
 
 ## Swift 3.0
 

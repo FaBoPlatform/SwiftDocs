@@ -1,6 +1,6 @@
 # ユーザーに許可を得る
 
-![Preview photokit001](./img/photokit001.png)
+![Preview photokit001](./img/PhotoKit001.png)
 
 ## Swift 3.0
 

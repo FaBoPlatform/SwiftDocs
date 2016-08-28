@@ -1,6 +1,6 @@
 # アルバムのアセットを削除する
 
-![Preview photokit006](./img/photokit006.png) ![Preview PhotoKit006_2](./img/PhotoKit006_2.png) ![Preview PhotoKit006_3](./img/PhotoKit006_3.png) ![Preview PhotoKit006_4](./img/PhotoKit006_4.png)
+![Preview photokit006](./img/PhotoKit005.png) ![Preview PhotoKit006_2](./img/PhotoKit006_2.png) ![Preview PhotoKit006_3](./img/PhotoKit006_3.png) ![Preview PhotoKit006_4](./img/PhotoKit006_4.png)
 
 ## Swift 3.0
 
