@@ -139,6 +139,13 @@
 * [UserNotification](usernotification/README.md)
 	* [001 通知設定のダイアログ設定を開く](usernotification/001_notification.md)
 	* [002 アプリのアイコンにバッジを表示する](usernotification/002_badge.md)
+* [PhotoKit‎](photokit/README.md)
+    * [001 ユーザーに許可を得る](photokit/001_photokit.md)
+    * [002 アルバムを作る](photokit/002_photokit.md)
+    * [003 アルバムを検索する](photokit/003_photokit.md)
+    * [004 アルバムを削除する](photokit/004_photokit.md)
+    * [005 アルバムにアセットを追加する](photokit/005_photokit.md)
+    * [006 アルバムのアセットを削除する](photokit/006_photokit.md)
 * iTunes Store
     * [001 Push Notificationの設定](itunes/pushnotification.md)
     * [002 Amazon SNSの設定](itunes/amazonsns.md)
