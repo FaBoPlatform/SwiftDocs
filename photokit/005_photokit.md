@@ -348,8 +348,6 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
 * `PHAssetCollection.fetchAssetCollectionsWithType(PHAssetCollectionType, subtype: PHAssetCollectionSubtype, options: PHFetchOptions?)`から`PHAssetCollection.fetchAssetCollections(with: PHAssetCollectionType, subtype: PHAssetCollectionSubtype, options: PHFetchOptions?)`に変更
 * `NSURL`から`URL`に変更
 
-* 
-
 ## Reference
 
 * Photos Framework
