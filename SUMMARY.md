@@ -146,6 +146,13 @@
     * [004 アルバムを削除する](photokit/004_photokit.md)
     * [005 アルバムにアセットを追加する](photokit/005_photokit.md)
     * [006 アルバムのアセットを削除する](photokit/006_photokit.md)
+* [CoreBluetooth](corebluetooth/README.md)
+    * [001 Bluetooth機器の検出](corebluetooth/001_corebluetooth.md)
+    * [002 Peripheralへの接続とServiceの検索](corebluetooth/002_corebluetooth.md)
+    * [003 Serviceの接続とCharacteristicsの検索](corebluetooth/003_corebluetooth.md)
+    * [004 Read](corebluetooth/004_corebluetooth.md)
+    * [005 Write](corebluetooth/005_corebluetooth.md)
+    * [006 操作アプリ](corebluetooth/006_corebluetooth.md)
 * iTunes Store
     * [001 Push Notificationの設定](itunes/pushnotification.md)
     * [002 Amazon SNSの設定](itunes/amazonsns.md)
