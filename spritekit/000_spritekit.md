@@ -131,6 +131,7 @@ class GameViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Release any cached data, images, etc that aren't in use.
     }
+
     override var prefersStatusBarHidden: Bool {
         return true
     }
@@ -274,6 +275,9 @@ class GameViewController: UIViewController {
 
 ## 2.3と3.0の差分
 
+* ```unarchiveFromFile("GameScene")``` から ```unarchiveFromFile(file: "GameScene")``` に変更
+* ```override func shouldAutorotate() -> Bool``` から ```override var shouldAutorotate: Bool``` に変更
+* ```override func prefersStatusBarHidden() -> Bool``` から ```override var prefersStatusBarHidden: Bool``` に変更
 
 ## Reference
 * SKPhysicsBody
