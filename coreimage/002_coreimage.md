@@ -1,0 +1,187 @@
+# 画像のリサイズ
+
+![Preview coreimage002](./img/coreimage002.png)
+
+## Swift 3.0 
+```swift
+//
+//  ViewController.swift
+//  CoreImage002
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
+
+import UIKit
+import CoreImage
+
+class ViewController: UIViewController {
+    
+    // ベース画像.
+    let myInputImage = CIImage(image: UIImage(named: "sample1")!)
+    
+    // ImageView.
+    var myImageView: UIImageView!
+    
+    // ボタン.
+    let myButton: UIButton = UIButton()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // UIImageViewの生成.
+        myImageView =  UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+        myImageView.image = UIImage(ciImage: myInputImage!)
+        self.view.addSubview(myImageView)
+        
+        // ボタン.
+        myButton.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        myButton.backgroundColor = UIColor.red
+        myButton.layer.masksToBounds = true
+        myButton.setTitle("リサイズ", for: UIControlState.normal)
+        myButton.titleLabel?.font = UIFont.systemFont(ofSize: UIFont.smallSystemFontSize)
+        myButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        myButton.layer.cornerRadius = 40.0
+        myButton.layer.position = CGPoint(x: self.view.frame.width/2, y:self.view.frame.height - 50)
+        myButton.tag = 1
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(sender:)), for: .touchUpInside)
+        
+        // 背景色を黒.
+        self.view.backgroundColor = UIColor.black
+        
+        // UIボタンをViewに追加.
+        self.view.addSubview(myButton);
+    }
+    
+    // ボタンイベント.
+    func onClickMyButton(sender: UIButton){
+        
+        // CIFilterを生成。nameにどんなを処理するのか記入.
+        let myScaleFilter = CIFilter(name: "CILanczosScaleTransform")
+        
+        // イメージのセット.
+        myScaleFilter!.setValue(myInputImage, forKey: kCIInputImageKey)
+        
+        // myInputImageをInputImageとして渡す.
+        myScaleFilter!.setValue(myInputImage, forKey: kCIInputImageKey)
+        
+        // 画像サイズの倍率を渡す.
+        myScaleFilter!.setValue(NSNumber(value: 0.5), forKey: kCIInputScaleKey)
+        
+        // 画像のアスペクト比を渡す
+        myScaleFilter!.setValue(NSNumber(value: 1.0), forKey: kCIInputAspectRatioKey)
+        
+        // フィルターを通した画像をアウトプット
+        let myOutputImage : CIImage = myScaleFilter!.outputImage!
+        
+        // UIImageに変換.
+        let myOutputUIImage: UIImage = UIImage(ciImage: myOutputImage)
+        
+        // 再びUIViewにセット.
+        myImageView.frame = CGRect(x: 0, y: 0, width: myOutputUIImage.size.width, height: myOutputUIImage.size.height)
+        myImageView.image = myOutputUIImage
+        
+        // 再描画.
+        myImageView.setNeedsDisplay()
+        
+    } 
+}
+```
+
+# Swift 2.3 
+```swift
+//
+//  ViewController.swift
+//  CoreImage002
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
+
+import UIKit
+import CoreImage
+
+class ViewController: UIViewController {
+    
+    // ベース画像.
+    let myInputImage = CIImage(image: UIImage(named: "sample1")!)
+    
+    // ImageView.
+    var myImageView: UIImageView!
+    
+    // ボタン.
+    let myButton: UIButton = UIButton()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // UIImageViewの生成.
+        myImageView =  UIImageView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
+        myImageView.image = UIImage(CIImage: myInputImage!)
+        self.view.addSubview(myImageView)
+        
+        // ボタン.
+        myButton.frame = CGRectMake(0,0,80,80)
+        myButton.backgroundColor = UIColor.redColor();
+        myButton.layer.masksToBounds = true
+        myButton.setTitle("リサイズ", forState: UIControlState.Normal)
+        myButton.titleLabel?.font = UIFont.systemFontOfSize(UIFont.smallSystemFontSize())
+        myButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        myButton.layer.cornerRadius = 40.0
+        myButton.layer.position = CGPoint(x: self.view.frame.width/2, y:self.view.frame.height - 50)
+        myButton.tag = 1
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(_:)), forControlEvents: .TouchUpInside)
+        
+        // 背景色を黒.
+        self.view.backgroundColor = UIColor.blackColor()
+        
+        // UIボタンをViewに追加.
+        self.view.addSubview(myButton);
+    }
+    
+    // ボタンイベント.
+    func onClickMyButton(sender: UIButton){
+        
+        // CIFilterを生成。nameにどんなを処理するのか記入.
+        let myScaleFilter = CIFilter(name: "CILanczosScaleTransform")
+        
+        // イメージのセット.
+        myScaleFilter!.setValue(myInputImage, forKey: kCIInputImageKey)
+        
+        // myInputImageをInputImageとして渡す.
+        myScaleFilter!.setValue(myInputImage, forKey: kCIInputImageKey)
+        
+        // 画像サイズの倍率を渡す.
+        myScaleFilter!.setValue(NSNumber(float: 0.5), forKey: kCIInputScaleKey)
+        
+        // 画像のアスペクト比を渡す
+        myScaleFilter!.setValue(NSNumber(float: 1.0), forKey: kCIInputAspectRatioKey)
+        
+        // フィルターを通した画像をアウトプット
+        let myOutputImage : CIImage = myScaleFilter!.outputImage!
+        
+        // UIImageに変換.
+        let myOutputUIImage: UIImage = UIImage(CIImage: myOutputImage)
+        
+        // 再びUIViewにセット.
+        myImageView.frame = CGRectMake(0, 0, myOutputUIImage.size.width, myOutputUIImage.size.height)
+        myImageView.image = myOutputUIImage
+        
+        // 再描画.
+        myImageView.setNeedsDisplay()
+        
+    }
+    
+}
+```
+
+## 2.xと3.xの差分
+* ```init(CIImage:)``` から ```init(ciImage:)``` に変更
+* ```(NSNumber(value:)``` から ```(NSNumber(value:)``` に変更
+
+## Reference
+
+* CIFilter
+    * [https://developer.apple.com/reference/coreimage/cifilter](https://developer.apple.com/reference/coreimage/cifilter)
+* CIImage
+    * [https://developer.apple.com/reference/coreimage/ciimage](https://developer.apple.com/reference/coreimage/ciimage)
