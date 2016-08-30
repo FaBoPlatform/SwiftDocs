@@ -1,4 +1,4 @@
-# 指定した座標を表示
+# マーカーを表示
 
 ![Preview GMAP004](img/GMAP004.png)
 
@@ -189,7 +189,8 @@ class ViewController: UIViewController, GMSMapViewDelegate {
 
 ## 2.3と3.0の差分
 * ```GMSCameraPosition.cameraWithLatitude```が```GMSCameraPosition.camera(withLatitude:```に変更
-
 * CGRectの初期化方法の変更(CGRectMakeの廃止)
 
 ## Reference
+* Google Map SDK for iOS
+ * [https://developers.google.com/maps/documentation/ios/reference/index](https://developers.google.com/maps/documentation/ios/reference/index)

@@ -132,3 +132,5 @@ class ViewController: UIViewController, GMSMapViewDelegate {
 * CGRectの初期化方法の変更(CGRectMakeの廃止)
 
 ## Reference
+* Google Map SDK for iOS
+ * [https://developers.google.com/maps/documentation/ios/reference/index](https://developers.google.com/maps/documentation/ios/reference/index)
