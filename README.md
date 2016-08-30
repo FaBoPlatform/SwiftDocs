@@ -1,7 +1,7 @@
 Swift Docs 
 =======
 
-![](/img/swift_title.png)
+![](/img/title_swift.png)
 
 # 本ドキュメントについて
 
