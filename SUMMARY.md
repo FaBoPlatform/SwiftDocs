@@ -159,6 +159,12 @@
     * [004 アルバムを削除する](photokit/004_photokit.md)
     * [005 アルバムにアセットを追加する](photokit/005_photokit.md)
     * [006 アルバムのアセットを削除する](photokit/006_photokit.md)
+* [GoogleMaps](googlemap/README.md)
+	* [001 Swiftで使用するための設定](googlemap/001_setting.md)
+	* [002 GoogleMapを表示する](googlemap/002_googlemap.md)
+	* [003 指定した座標を表示](googlemap/003_mappoint.md)
+	* [004 マーカーを表示](googlemap/004_setmarker.md)
+	* [005 StreetView](googlemap/005_streetview.md)
 * iTunes Store
     * [001 Push Notificationの設定](itunes/pushnotification.md)
     * [002 Amazon SNSの設定](itunes/amazonsns.md)
