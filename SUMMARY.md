@@ -152,7 +152,7 @@
 * [UserNotification](usernotification/README.md)
 	* [001 通知設定のダイアログ設定を開く](usernotification/001_notification.md)
 	* [002 アプリのアイコンにバッジを表示する](usernotification/002_badge.md)
-* [PhotoKit‎](photokit/README.md)
+* [PhotoKit](photokit/README.md)
     * [001 ユーザーに許可を得る](photokit/001_photokit.md)
     * [002 アルバムを作る](photokit/002_photokit.md)
     * [003 アルバムを検索する](photokit/003_photokit.md)
