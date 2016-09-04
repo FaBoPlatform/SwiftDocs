@@ -1,4 +1,4 @@
-# Bluetooth機器の検出
+# Peripheralへの接続とServiceの検索
 
 ## Swift 3.0
 

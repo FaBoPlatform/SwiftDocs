@@ -1,4 +1,4 @@
-# Bluetooth機器の検出
+# Serviceの接続とCharacteristicsの検索
 
 ## Swift 3.0
 
@@ -995,7 +995,6 @@ class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDat
 * `CBCentralManager.scanForPeripheralsWithServices([CBUUID]?, options: [String : AnyObject]?)`から`CBCentralManager.scanForPeripherals(withServices: [CBUUID]?, options: [String : AnyObject]?)`に変更
 * `CBPeripheral.identifier.UUIDString`から`CBPeripheral.identifier.uuidString`に変更
 * `UIFont.systemFontOfSize(CGFloat)`から`UIFont.systemFont(ofSize: CGFloat)`に変更
-
 
 ## Reference
 
