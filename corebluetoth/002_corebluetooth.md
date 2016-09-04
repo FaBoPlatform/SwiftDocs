@@ -1,5 +1,7 @@
 # Peripheralへの接続とServiceの検索
 
+![Preview coremotion002](./img/CoreBluetooth002.png) ![Preview coremotion002](./img/CoreBluetooth002_2.png) ![Preview coremotion002](./img/CoreBluetooth002_3.png)
+
 ## Swift 3.0
 
 ### AppDelegate.swift

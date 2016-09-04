@@ -1,5 +1,7 @@
 # Write
 
+![Preview coremotion005](./img/CoreBluetooth005.png) ![Preview coremotion005](./img/CoreBluetooth005_2.png) ![Preview coremotion005_3](./img/CoreBluetooth005_3.png)
+
 ## Swift 3.0
 
 ### AppDelegate.swift

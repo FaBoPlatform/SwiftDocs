@@ -1,5 +1,7 @@
 # 操作アプリ
 
+![Preview coremotion006](./img/CoreBluetooth006.png) ![Preview coremotion006_2](./img/CoreBluetooth006_2.png) ![Preview coremotion006_3](./img/CoreBluetooth006_3.png)
+
 ## Swift 3.0
 
 ### AppDelegate.swift

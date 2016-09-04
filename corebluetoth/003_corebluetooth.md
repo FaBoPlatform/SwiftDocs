@@ -1,5 +1,7 @@
 # Serviceの接続とCharacteristicsの検索
 
+![Preview coremotion003](./img/CoreBluetooth003.png) ![Preview coremotion003_](./img/CoreBluetooth003_2.png) ![Preview coremotion003_3](./img/CoreBluetooth003_3.png)
+
 ## Swift 3.0
 
 ### AppDelegate.swift

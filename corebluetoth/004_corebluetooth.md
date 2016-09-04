@@ -1,5 +1,7 @@
 # Read
 
+![Preview coremotion004](./img/CoreBluetooth004.png)
+
 ## Swift 3.0
 
 ### AppDelegate.swift
