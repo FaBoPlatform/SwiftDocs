@@ -1,2 +1,8 @@
 [![Preview coreimage001](./img/coreimage001.png)
 [![Preview coreimage002](./img/coreimage002.png)
+[![Preview coreimage003](./img/coreimage003.png)
+[![Preview coreimage004](./img/coreimage004.png)
+[![Preview coreimage005](./img/coreimage005.png)
+[![Preview coreimage006](./img/coreimage006.png)
+[![Preview coreimage007](./img/coreimage007.png)
+[![Preview coreimage008](./img/coreimage008.png)
