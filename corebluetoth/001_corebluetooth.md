@@ -1,5 +1,7 @@
 # Bluetooth機器の検出
 
+![Preview coremotion002](./img/CoreBluetooth001.png)
+
 ## Swift 3.0
 
 ```swift
