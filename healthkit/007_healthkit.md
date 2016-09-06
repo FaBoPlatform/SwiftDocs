@@ -337,6 +337,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 ## Vital Signs Identifiers
 
 |Vital Signs Identifiers (健康状況)|意味|単位(HKUnit)|
+|:-:|:-:|:-:|
 |HKQuantityTypeIdentifierHeartRate|心拍数|count/time|
 |HKQuantityTypeIdentifierBodyTemperature|体温|temperature|
 |HKQuantityTypeIdentifierBloodPressureSystolic|収縮期血圧(最高血圧)|pressure|
