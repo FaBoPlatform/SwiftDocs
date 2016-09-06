@@ -1,6 +1,6 @@
 # Blood pressure monitor(IEEE Std 11073-10407 Dev specialization)
 
-![Preview healthkit001](./img/healthkit002.png) ![Preview healthkit001_2](./img/healthkit002_2.png)
+![Preview healthkit006](./img/healthkit006.png)
 
 ## Swift3.0
 
