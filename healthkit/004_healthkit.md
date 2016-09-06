@@ -336,6 +336,21 @@ class ViewController: UIViewController, UITextFieldDelegate{
 }
 ```
 
+## Results Identifiers
+
+|Results Identifiers(検査結果)|意味|単位(HKUnit)|
+|:-:|:-:|:-:|
+|HKQuantityTypeIdentifierOxygenSaturation|酸素飽和度|percent|
+|HKQuantityTypeIdentifierPeripheralPerfusionIndex|末梢灌流指数|percent|
+|HKQuantityTypeIdentifierBloodGlucose|血糖値|mass/volume|
+|HKQuantityTypeIdentifierNumberOfTimesFallen|転倒回数|count|
+|HKQuantityTypeIdentifierElectrodermalActivity|電気活動|conductance|
+|HKQuantityTypeIdentifierInhalerUsage|吸入器の使用回数|count|
+|HKQuantityTypeIdentifierBloodAlcoholContent|血中アルコール濃度|percent|
+|HKQuantityTypeIdentifierForcedVitalCapacity|肺活量|volume|
+|HKQuantityTypeIdentifierForcedExpiratoryVolume1|呼吸量|volume|
+|HKQuantityTypeIdentifierPeakExpiratoryFlowRate|ピークフロー値|volume/time|
+
 ## 2.xと3.xの差分
 
 * HealthKitの定数が列挙体に変更
