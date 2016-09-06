@@ -316,6 +316,9 @@ class ViewController: UIViewController, UITextFieldDelegate{
 
 * HealthKitの定数が列挙体に変更
     * 例 : `HKCharacteristicTypeIdentifierDateOfBirth` → `HKCharacteristicTypeIdentifier.dateOfBirth`
+* `HKObjectType.characteristicTypeForIdentifier(String)`から`HKObjectType.characteristicType(forIdentifier: HKCharacteristicTypeIdentifier)`に変更
+* `HKHealthStore.requestAuthorizationToShareTypes(Set<HKSampleType>?, readTypes: Set<HKObjectType>?, completion: (Bool, NSError?) -> Void)`から`HKHealthStore.requestAuthorization(toShare: Set<HKSampleType>?, read: Set<HKObjectType>?, completion: (Bool, Error?) -> Void)`に変更
+* `HKQuantityTypeIdentifierOxygenSaturation`から``に変更
 * `HKHealthStore.dateOfBirthComponents()`の利用推奨
 
 ## References
