@@ -1,6 +1,6 @@
 # 取得データの最大値・最小値を得る
 
-![Preview healthkit001](./img/healthkit002.png) ![Preview healthkit001_2](./img/healthkit002_2.png)
+![Preview healthkit001](./img/healthkit013.png)
 
 ## Swift3.0
 
