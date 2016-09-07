@@ -11,11 +11,449 @@
 ![Preview healthkit001_3](./img/healthkit001_3.png)
 
 ```swift
+//
+//  ViewController.swift
+//  healthkit008
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+import UIKit
+import HealthKit
+
+class ViewController: UIViewController, UITextFieldDelegate {
+    // 各インスタンスの生成.
+    var myHealthStore = HKHealthStore()
+    
+    var myReadBodyMassField = UITextField()
+    var myReadHeightField = UITextField()
+    var myReadBMIField = UITextField()
+    var myWriteBodyMassField = UITextField()
+    var myWriteHeightField = UITextField()
+    var myWriteBMIField = UITextField()
+    var myReadButton: UIButton!
+    var myWriteButton: UIButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // 体重用の入力フィールドを設置.
+        self.setTextField(textField: myWriteBodyMassField, placeholder: "体重を入力してください", position: CGPoint(x:self.view.bounds.width/2,y:150))
+        // 身長用の入力フィールドを設置.
+        self.setTextField(textField: myWriteHeightField, placeholder: "身長を入力してください", position: CGPoint(x:self.view.bounds.width/2,y:190))
+        // BMI用の入力フィールドを設置(自動計算).
+        myWriteBMIField.isEnabled = false
+        self.setTextField(textField: myWriteBMIField, placeholder: "BMIの計算値", position: CGPoint(x:self.view.bounds.width/2,y:230))
+        
+        // 書き込みボタンを設置.
+        myWriteButton = UIButton()
+        myWriteButton.frame = CGRect(x: 0, y: 0, width: 300, height: 40)
+        myWriteButton.backgroundColor = UIColor.blue
+        myWriteButton.layer.masksToBounds = true
+        myWriteButton.setTitle("データの書き込み", for: UIControlState.normal)
+        myWriteButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        myWriteButton.setTitleColor(UIColor.black, for: UIControlState.highlighted)
+        myWriteButton.layer.cornerRadius = 20.0
+        myWriteButton.layer.position = CGPoint(x: self.view.frame.width/2, y:280)
+        myWriteButton.tag = 2
+        myWriteButton.addTarget(self, action: #selector(ViewController.onClickMyButton(sender:)), for: .touchUpInside)
+        self.view.addSubview(myWriteButton);
+        
+        // 体重用の表示フィールドを設置.
+        myReadBodyMassField.isEnabled = false
+        self.setTextField(textField: myReadBodyMassField, placeholder: "前回登録の体重", position: CGPoint(x:self.view.bounds.width/2,y:380))
+        // 身長用の表示フィールドを設置.
+        myReadHeightField.isEnabled = false
+        self.setTextField(textField: myReadHeightField, placeholder: "前回登録の身長", position: CGPoint(x:self.view.bounds.width/2,y:420))
+        // BMI用の表示フィールドを設置.
+        myReadBMIField.isEnabled = false
+        self.setTextField(textField: myReadBMIField, placeholder: "前回登録のBMI", position: CGPoint(x:self.view.bounds.width/2,y:460))
+        
+        // 読み込みボタンを設置.
+        myReadButton = UIButton()
+        myReadButton.frame = CGRect(x: 0, y: 0, width: 300, height: 40)
+        myReadButton.backgroundColor = UIColor.red
+        myReadButton.layer.masksToBounds = true
+        myReadButton.setTitle("データの読み込み", for: UIControlState.normal)
+        myReadButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        myReadButton.setTitleColor(UIColor.black, for: UIControlState.highlighted)
+        myReadButton.layer.cornerRadius = 20.0
+        myReadButton.layer.position = CGPoint(x: self.view.frame.width/2, y:510)
+        myReadButton.tag = 1
+        myReadButton.addTarget(self, action: #selector(ViewController.onClickMyButton(sender:)), for: .touchUpInside)
+        self.view.addSubview(myReadButton);
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // HealthStoreへの許可を申請.
+        requestAuthorization()
+    }
+    
+    private func setTextField(textField: UITextField, placeholder: String, position: CGPoint) {
+        textField.frame = CGRect(x: 0, y: 0, width: 300, height: 30)
+        textField.placeholder = placeholder
+        textField.delegate = self
+        textField.borderStyle = UITextBorderStyle.roundedRect
+        textField.layer.position = position;
+        self.view.addSubview(textField)
+    }
+    
+    /*
+     ボタンイベント.
+     */
+    func onClickMyButton(sender: UIButton){
+        if(sender.tag == 1){
+            readData()
+        } else if(sender.tag == 2){
+            let myBodyMass = Double(myWriteBodyMassField.text!)
+            let myHeight = Double(myWriteHeightField.text!)
+            let myBMI = Double(myWriteBMIField.text!)
+            if myBodyMass != nil && myHeight != nil && myBMI != nil {
+                writeData(BodyMass: myBodyMass!, Height: myHeight!, BMI: myBMI!)
+            }
+        }
+    }
+    
+    /*
+     Healthデータへのアクセスを申請.
+     */
+    private func requestAuthorization(){
+        // 読み込みを許可する型.
+        let types = Set(arrayLiteral:
+            HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)!,
+            HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.height)!,
+            HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMassIndex)!
+        )
+        
+        // HealthStoreへのアクセス承認をおこなう.
+        myHealthStore.requestAuthorization(toShare: types, read: types, completion: { (success, error) in
+            if let e = error {
+                print("Error: \(e.localizedDescription)")
+            }
+            print(success ? "Success" : "Failure")
+        })
+    }
+    
+    /*
+     データの読み出し.
+     */
+    private func readData() {
+        // 取得したいデータのタイプを生成する.
+        let typeOfBodyMass = HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)
+        let typeOfHeight = HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.height)
+        let typeOfBMI = HKSampleType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMassIndex)
+        
+        let kg = HKUnit.gramUnit(with: .kilo)
+        getSampleData(sampletype: typeOfBodyMass!, uint: kg, inputField: myReadBodyMassField)
+        let m = HKUnit.meter()
+        getSampleData(sampletype: typeOfHeight!, uint: m, inputField: myReadHeightField)
+        let count = HKUnit.count()
+        getSampleData(sampletype: typeOfBMI!, uint: count, inputField: myReadBMIField)
+    }
+    
+    private func getSampleData(sampletype: HKSampleType, uint: HKUnit, inputField: UITextField) {
+        let calendar = Calendar.init(identifier: Calendar.Identifier.gregorian)
+        let now = Date()
+        let startDate = calendar.startOfDay(for: now)
+        let endDate = calendar.date(byAdding: Calendar.Component.day, value: 1, to: startDate)
+        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: [])
+        
+        // データ取得時に登録された時間でソートするためのDescriptorを生成.
+        let mySortDescriptor = NSSortDescriptor(key:HKSampleSortIdentifierStartDate, ascending: false)
+        
+        // 体重データ読み出しのためのqueryを生成.
+        let mySampleQuery = HKSampleQuery(sampleType: sampletype, predicate: predicate, limit: 1, sortDescriptors: [mySortDescriptor])
+        { (sampleQuery, results, error ) -> Void in
+            // 一番最近に登録されたデータを取得.
+            guard let myRecentSample = results!.first as? HKQuantitySample else {
+                print("error")
+                inputField.text = "Data is not found"
+                return
+            }
+            // 取得したサンプルを単位に合わせる.
+            DispatchQueue.main.async {
+                inputField.text = "\(myRecentSample.quantity)"
+            }
+        }
+        // queryを発行.
+        self.myHealthStore.execute(mySampleQuery)
+    }
+    
+    /*
+     データの書き込み.
+     */
+    private func writeData(BodyMass: Double, Height: Double, BMI: Double){
+        // 登録用データタイプを生成.
+        let typeOfBodyMass = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMass)!
+        let typeOfHeight = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.height)!
+        let typeOfBMI = HKObjectType.quantityType(forIdentifier: HKQuantityTypeIdentifier.bodyMassIndex)!
+        // 単位とセットのデータを生成.
+        let kg = HKUnit.gramUnit(with: .kilo)
+        let myBodyMass = HKQuantity(unit:kg, doubleValue: BodyMass)
+        let m = HKUnit.meter()
+        let myHeight = HKQuantity(unit: m, doubleValue: Height)
+        let count = HKUnit.count()
+        let myBMI = HKQuantity(unit: count , doubleValue: BMI)
+        // StoreKit保存用データを作成.
+        let myBodyMassData = HKQuantitySample(type: typeOfBodyMass, quantity: myBodyMass, start: Date(), end: Date())
+        let myHeightData = HKQuantitySample(type: typeOfHeight, quantity: myHeight, start: Date(), end: Date())
+        let myBMIData = HKQuantitySample(type: typeOfBMI, quantity: myBMI, start: Date(), end: Date())
+        
+        // HealthStoreにデータを保存.
+        myHealthStore.save([myBodyMassData, myHeightData, myBMIData]) { (success, error) in
+            if let e = error {
+                print("Error: \(e.localizedDescription)")
+                return
+            }
+            print(success ? "Success" : "Failure")
+        }
+    }
+    
+    // MARK: - UITextFieldDelegate
+    
+    /*
+     UITextFieldが編集終了する直前に呼ばれる.
+     */
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        
+        // 身長・体重どちらも入力済みであったらBMIの計算を行う.
+        if myWriteBodyMassField.text != "" && myWriteHeightField.text != "" {
+            let myBodyMass = Double(myWriteBodyMassField.text!)
+            let myHeight = Double(myWriteHeightField.text!)
+            
+            if myBodyMass != nil && myHeight != nil {
+                let myBMI = myBodyMass! / ((myHeight! / 100) * (myHeight! / 100))
+                myWriteBMIField.text = "\(myBMI)"
+            }
+        }
+        
+        return true
+    }
+}
 ```
 
 ## Swift2.3
 
 ```swift
+//
+//  ViewController.swift
+//  healthkit008
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+import UIKit
+import HealthKit
+
+class ViewController: UIViewController, UITextFieldDelegate {
+    // 各インスタンスの生成.
+    var myHealthStore = HKHealthStore()
+    
+    var myReadBodyMassField = UITextField()
+    var myReadHeightField = UITextField()
+    var myReadBMIField = UITextField()
+    var myWriteBodyMassField = UITextField()
+    var myWriteHeightField = UITextField()
+    var myWriteBMIField = UITextField()
+    var myReadButton: UIButton!
+    var myWriteButton: UIButton!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // 体重用の入力フィールドを設置.
+        self.setTextField(myWriteBodyMassField, placeholder: "体重を入力してください", position: CGPoint(x:self.view.bounds.width/2,y:150))
+        // 身長用の入力フィールドを設置.
+        self.setTextField(myWriteHeightField, placeholder: "身長を入力してください", position: CGPoint(x:self.view.bounds.width/2,y:190))
+        // BMI用の入力フィールドを設置(自動計算).
+        myWriteBMIField.enabled = false
+        self.setTextField(myWriteBMIField, placeholder: "BMIの計算値", position: CGPoint(x:self.view.bounds.width/2,y:230))
+        
+        // 書き込みボタンを設置.
+        myWriteButton = UIButton()
+        myWriteButton.frame = CGRectMake(0,0,300,40)
+        myWriteButton.backgroundColor = UIColor.blueColor();
+        myWriteButton.layer.masksToBounds = true
+        myWriteButton.setTitle("データの書き込み", forState: UIControlState.Normal)
+        myWriteButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        myWriteButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Highlighted)
+        myWriteButton.layer.cornerRadius = 20.0
+        myWriteButton.layer.position = CGPoint(x: self.view.frame.width/2, y:280)
+        myWriteButton.tag = 2
+        myWriteButton.addTarget(self, action: #selector(ViewController.onClickMyButton(_:)), forControlEvents: .TouchUpInside)
+        self.view.addSubview(myWriteButton);
+        
+        // 体重用の表示フィールドを設置.
+        myReadBodyMassField.enabled = false
+        self.setTextField(myReadBodyMassField, placeholder: "前回登録の体重", position: CGPoint(x:self.view.bounds.width/2,y:380))
+        // 身長用の表示フィールドを設置.
+        myReadHeightField.enabled = false
+        self.setTextField(myReadHeightField, placeholder: "前回登録の身長", position: CGPoint(x:self.view.bounds.width/2,y:420))
+        // BMI用の表示フィールドを設置.
+        myReadBMIField.enabled = false
+        self.setTextField(myReadBMIField, placeholder: "前回登録のBMI", position: CGPoint(x:self.view.bounds.width/2,y:460))
+        
+        // 読み込みボタンを設置.
+        myReadButton = UIButton()
+        myReadButton.frame = CGRectMake(0,0,300,40)
+        myReadButton.backgroundColor = UIColor.redColor();
+        myReadButton.layer.masksToBounds = true
+        myReadButton.setTitle("データの読み込み", forState: UIControlState.Normal)
+        myReadButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        myReadButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Highlighted)
+        myReadButton.layer.cornerRadius = 20.0
+        myReadButton.layer.position = CGPoint(x: self.view.frame.width/2, y:510)
+        myReadButton.tag = 1
+        myReadButton.addTarget(self, action: #selector(ViewController.onClickMyButton(_:)), forControlEvents: .TouchUpInside)
+        self.view.addSubview(myReadButton);
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        // HealthStoreへの許可を申請.
+        requestAuthorization()
+    }
+    
+    private func setTextField(textField: UITextField, placeholder: String, position: CGPoint) {
+        textField.frame = CGRectMake(0,0,300,30)
+        textField.placeholder = placeholder
+        textField.delegate = self
+        textField.borderStyle = UITextBorderStyle.RoundedRect
+        textField.layer.position = position;
+        self.view.addSubview(textField)
+    }
+    
+    /*
+     ボタンイベント.
+     */
+    func onClickMyButton(sender: UIButton){
+        if(sender.tag == 1){
+            readData()
+        } else if(sender.tag == 2){
+            let myBodyMass = Double(myWriteBodyMassField.text!)
+            let myHeight = Double(myWriteHeightField.text!)
+            let myBMI = Double(myWriteBMIField.text!)
+            if myBodyMass != nil && myHeight != nil && myBMI != nil {
+                writeData(myBodyMass!, Height: myHeight!, BMI: myBMI!)
+            }
+        }
+    }
+    
+    /*
+     Healthデータへのアクセスを申請.
+     */
+    private func requestAuthorization(){
+        // 読み込みを許可する型.
+        let types = Set(arrayLiteral:
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)!,
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight)!,
+            HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMassIndex)!
+        )
+        
+        // HealthStoreへのアクセス承認をおこなう.
+        myHealthStore.requestAuthorizationToShareTypes(types, readTypes: types, completion: { (success, error) in
+            if let e = error {
+                print("Error: \(e.localizedDescription)")
+            }
+            print(success ? "Success" : "Failure")
+        })
+    }
+    
+    /*
+     データの読み出し.
+     */
+    private func readData() {
+        // 取得したいデータのタイプを生成する.
+        let typeOfBodyMass = HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)
+        let typeOfHeight = HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight)
+        let typeOfBMI = HKSampleType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMassIndex)
+        
+        let kg = HKUnit.gramUnitWithMetricPrefix(.Kilo)
+        getSampleData(typeOfBodyMass!, uint: kg, inputField: myReadBodyMassField)
+        let m = HKUnit.meterUnit()
+        getSampleData(typeOfHeight!, uint: m, inputField: myReadHeightField)
+        let count = HKUnit.countUnit()
+        getSampleData(typeOfBMI!, uint: count, inputField: myReadBMIField)
+    }
+    
+    private func getSampleData(sampletype: HKSampleType, uint: HKUnit, inputField: UITextField) {
+        let calendar = NSCalendar.init(identifier: NSCalendarIdentifierGregorian)
+        let now = NSDate()
+        let startDate = calendar!.startOfDayForDate(now)
+        let endDate = calendar!.dateByAddingUnit(NSCalendarUnit.Day, value: 1, toDate: startDate, options: NSCalendarOptions.MatchFirst)
+        let predicate = HKQuery.predicateForSamplesWithStartDate(startDate, endDate: endDate, options: HKQueryOptions.None)
+        
+        // データ取得時に登録された時間でソートするためのDescriptorを生成.
+        let mySortDescriptor = NSSortDescriptor(key:HKSampleSortIdentifierStartDate, ascending: false)
+        
+        // 体重データ読み出しのためのqueryを生成.
+        let mySampleQuery = HKSampleQuery(sampleType: sampletype, predicate: predicate, limit: 1, sortDescriptors: [mySortDescriptor])
+        { (sampleQuery, results, error ) -> Void in
+            // 一番最近に登録されたデータを取得.
+            guard let myRecentSample = results!.first as? HKQuantitySample else {
+                print("error")
+                inputField.text = "Data is not found"
+                return
+            }
+            // 取得したサンプルを単位に合わせる.
+            dispatch_async(dispatch_get_main_queue(),{
+                inputField.text = "\(myRecentSample.quantity)"
+            })
+        }
+        // queryを発行.
+        self.myHealthStore.executeQuery(mySampleQuery)
+    }
+    
+    /*
+     データの書き込み.
+     */
+    private func writeData(BodyMass: Double, Height: Double, BMI: Double){
+        // 登録用データタイプを生成.
+        let typeOfBodyMass = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMass)!
+        let typeOfHeight = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierHeight)!
+        let typeOfBMI = HKObjectType.quantityTypeForIdentifier(HKQuantityTypeIdentifierBodyMassIndex)!
+        // 単位とセットのデータを生成.
+        let kg = HKUnit.gramUnitWithMetricPrefix(.Kilo)
+        let myBodyMass = HKQuantity(unit:kg, doubleValue: BodyMass)
+        let m = HKUnit.meterUnit()
+        let myHeight = HKQuantity(unit: m, doubleValue: Height)
+        let count = HKUnit.countUnit()
+        let myBMI = HKQuantity(unit: count , doubleValue: BMI)
+        // StoreKit保存用データを作成.
+        let myBodyMassData = HKQuantitySample(type:typeOfBodyMass, quantity:myBodyMass, startDate:NSDate(), endDate:NSDate())
+        let myHeightData = HKQuantitySample(type: typeOfHeight, quantity:myHeight, startDate:NSDate(), endDate:NSDate())
+        let myBMIData = HKQuantitySample(type: typeOfBMI, quantity:myBMI, startDate:NSDate(), endDate:NSDate())
+        
+        // HealthStoreにデータを保存.
+        myHealthStore.saveObjects([myBodyMassData, myHeightData, myBMIData]) { (success, error) in
+            if let e = error {
+                print("Error: \(e.localizedDescription)")
+                return
+            }
+            print(success ? "Success" : "Failure")
+        }
+    }
+    
+    // MARK: - UITextFieldDelegate
+    
+    /*
+     UITextFieldが編集終了する直前に呼ばれる.
+     */
+    func textFieldShouldEndEditing(textField: UITextField) -> Bool {
+        
+        // 身長・体重どちらも入力済みであったらBMIの計算を行う.
+        if myWriteBodyMassField.text != "" && myWriteHeightField.text != "" {
+            let myBodyMass = Double(myWriteBodyMassField.text!)
+            let myHeight = Double(myWriteHeightField.text!)
+            
+            if myBodyMass != nil && myHeight != nil {
+                let myBMI = myBodyMass! / ((myHeight! / 100) * (myHeight! / 100))
+                myWriteBMIField.text = "\(myBMI)"
+            }
+        }
+        
+        return true
+    }
+}
 ```
 
 ## 2.xと3.xの差分
