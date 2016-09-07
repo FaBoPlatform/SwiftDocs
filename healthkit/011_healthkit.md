@@ -1,6 +1,6 @@
 # 睡眠情報の記録
 
-![Preview healthkit001](./img/healthkit002.png) ![Preview healthkit001_2](./img/healthkit002_2.png)
+![Preview healthkit011](./img/healthkit011.png)
 
 ## Swift3.0
 

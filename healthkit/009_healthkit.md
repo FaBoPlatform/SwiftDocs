@@ -1,6 +1,6 @@
 # Glucose meter + Revision (IEEE Std 11073-10417 Dev specialization)
 
-![Preview healthkit001](./img/healthkit002.png) ![Preview healthkit001_2](./img/healthkit002_2.png)
+![Preview healthkit009](./img/healthkit009.png)
 
 ## Swift3.0
 

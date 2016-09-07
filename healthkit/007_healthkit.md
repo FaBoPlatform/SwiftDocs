@@ -13,7 +13,7 @@
 ```swift
 //
 //  ViewController.swift
-//  healthkit005
+//  healthkit007
 //
 //  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //

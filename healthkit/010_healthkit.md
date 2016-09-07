@@ -1,6 +1,6 @@
 # Body comp (IEEE Std 11073-10420 Dev specialization)
 
-![Preview healthkit001](./img/healthkit002.png) ![Preview healthkit001_2](./img/healthkit002_2.png)
+![Preview healthkit010](./img/healthkit010.png)
 
 ## Swift3.0
 
