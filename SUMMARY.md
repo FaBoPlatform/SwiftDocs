@@ -147,6 +147,8 @@
     * [009 画像の色変換](coreimage/009_coreimage.md)
     * [010 画像の境界をシャープにする](coreimage/010_coreimage.md)
     * [011 画像の合成](coreimage/011_coreimage.md)
+    * [012 コピーマシントランジションフィルタ処理](coreimage/012_coreimage.md)
+    * [013 スワイプマシントランジションフィルタ処理](coreimage/013_coreimage.md)
 * [Utility](utility/README.md)
 	* [001 タイマーを作る](utility/001_maketimer.md)
 	* [002 タイマーを止める](utility/002_stoptimer.md)
