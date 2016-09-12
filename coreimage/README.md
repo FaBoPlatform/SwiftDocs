@@ -9,3 +9,5 @@
 [![Preview coreimage000](./img/coreimage009.png)
 [![Preview coreimage010](./img/coreimage010.png)
 [![Preview coreimage011](./img/coreimage011.png)
+[![Preview coreimage012](./img/coreimage012.png)
+[![Preview coreimage013](./img/coreimage013.png)
