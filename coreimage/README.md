@@ -6,3 +6,6 @@
 [![Preview coreimage006](./img/coreimage006.png)
 [![Preview coreimage007](./img/coreimage007.png)
 [![Preview coreimage008](./img/coreimage008.png)
+[![Preview coreimage000](./img/coreimage009.png)
+[![Preview coreimage010](./img/coreimage010.png)
+[![Preview coreimage011](./img/coreimage011.png)
