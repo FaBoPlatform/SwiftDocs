@@ -6,7 +6,7 @@
 ```swift
 //
 //  ViewController.swift
-//  swiftdocs
+//  CoreImage010
 //
 //  Created by Misato Morino on 2016/08/15.
 //  Copyright © 2016年 Misato Morino. All rights reserved.
@@ -79,7 +79,7 @@ class ViewController: UIViewController {
 ```swift
 //
 //  ViewController.swift
-//  swiftdocs
+//  CoreImage010
 //
 //  Created by Misato Morino on 2016/08/15.
 //  Copyright © 2016年 Misato Morino. All rights reserved.
