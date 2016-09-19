@@ -6,7 +6,7 @@
 ```swift
 //
 //  ViewController.swift
-//  swift2
+//  CoreImage015
 //
 //  Created by Misato Morino on 2016/09/19.
 //  Copyright © 2016年 Misato Morino. All rights reserved.
