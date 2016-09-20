@@ -47,7 +47,7 @@ class GameScene: SKScene {
 }
 ```
 ### GameViewController.swift
-```swiftdocs
+```swift
 //
 //  GameViewController.swift
 //  SpriteKit000
