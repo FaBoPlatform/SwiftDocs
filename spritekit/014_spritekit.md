@@ -1,4 +1,4 @@
-# 
+# Sceneの背景色を変える
 
 ![Preview spritekit014](img/spritekit014.png)
 
