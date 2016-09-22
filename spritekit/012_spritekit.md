@@ -56,9 +56,9 @@ class GameScene: SKScene{
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
-        for touch : AnyObject in touches{
+        for touch : UITouch in touches{
             
-            let location = touch.location(in: self.view)
+            let location = touch.location(in: self) 
             
             let texture = SKTexture(imageNamed: "Vector.png")
             let Vector = SKSpriteNode(texture: texture)
