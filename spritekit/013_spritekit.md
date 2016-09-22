@@ -46,7 +46,7 @@ class GameScene: SKScene{
         for touch : AnyObject in touches{
             
             // touchした場所を取得.
-            let location = touch.location(in: self.view)
+            let location = touch.location(in: self)
             
             // textureを作成.
             let texture = SKTexture(imageNamed: "sample")
