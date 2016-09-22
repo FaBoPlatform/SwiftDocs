@@ -39,7 +39,7 @@ class GameScene: SKScene {
         for touch: AnyObject in touches {
             
             // タッチされた場所の座標を取得.
-            let location = touch.location(in: self.view)
+            let location = touch.location(in: self)
             
             // タッチされた場所に画像を移動.
             myImage.position = location
