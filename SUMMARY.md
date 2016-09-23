@@ -227,3 +227,4 @@
 * iTunes Store
     * [001 Push Notificationの設定](itunes/pushnotification.md)
     * [002 Amazon SNSの設定](itunes/amazonsns.md)
+    * [003 Store upload時のエラー](itunes/error.md)
