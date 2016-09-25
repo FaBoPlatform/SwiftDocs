@@ -62,6 +62,9 @@ class ViewController: UIViewController {
                         print("Destribution")
                         myLabel.text = "Destribution"
                     }
+                } else {
+                    print("Destribution")
+                    myLabel.text = "Destribution"
                 }
             } catch let error as NSError {
                 print(error.localizedDescription)
@@ -144,6 +147,8 @@ class ViewController: UIViewController {
                             print("Destribution")
                             myLabel.text = "Destribution"
                     }
+                } else {
+                    myLabel.text = "Destribution"
                 }
             } catch let error as NSError {
                 print(error.localizedDescription)
