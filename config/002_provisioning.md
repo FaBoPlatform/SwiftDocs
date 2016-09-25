@@ -3,6 +3,10 @@
 ![Preview config002](./img/config002.png)
 ![Preview config002_1](./img/config002_1.png)
 
+## 設定
+
+![Preview config002_2](./img/config002_2.png)
+
 ## Swift 3.0
 
 ```swift
@@ -34,47 +38,11 @@ class ViewController: UIViewController {
         myLabel.textColor = UIColor.white
         self.view.addSubview(myLabel)
         
-        // embedded.mobileprovision のパスを指定.
-        let provisioningPath: String = Bundle.main.path(forResource: "embedded", ofType: "mobileprovision")!
-        print("provisioningPath\(provisioningPath)")
-        
-        // Dataを読み込み.
-        do {
-            let binaryData: String = try NSString(contentsOfFile: provisioningPath,
-                                                  encoding: String.Encoding.isoLatin1.rawValue) as String
-            print("Data:\(binaryData)")
-            
-            do {
-                
-                // <key>get-task-allow</key><true/>が含まれるならDeveloperと判定.
-                let myPattern: String = "<key>get-task-allow</key>\n\\s*<true/>"
-                let myRegex = try NSRegularExpression(pattern: myPattern,
-                                                      options: [.dotMatchesLineSeparators,
-                                                                .caseInsensitive])
-                
-                if let size: Int = myRegex.numberOfMatches(in: binaryData,
-                                                                   options: NSRegularExpression.MatchingOptions(),
-                                                                   range: NSMakeRange(0, binaryData.characters.count)) {
-                    if size > 0 {
-                        print("Developer")
-                        myLabel.text = "Developer"
-                    } else {
-                        print("Destribution")
-                        myLabel.text = "Destribution"
-                    }
-                } else {
-                    print("Destribution")
-                    myLabel.text = "Destribution"
-                }
-            } catch let error as NSError {
-                print(error.localizedDescription)
-            }
-            
-            
-        } catch {
-            print("error")
-        }
-        
+        #if TARGET_DEBUG
+            myLabel.text = "Developer"
+        #else
+            myLabel.text = "Destribution"
+        #endif
         
     }
     
@@ -119,47 +87,11 @@ class ViewController: UIViewController {
         myLabel.textColor = UIColor.whiteColor()
         self.view.addSubview(myLabel)
         
-        // embedded.mobileprovision のパスを指定.
-        let provisioningPath: String = NSBundle.mainBundle().pathForResource("embedded", ofType: "mobileprovision")!
-        print("provisioningPath\(provisioningPath)")
-        
-        // Dataを読み込み.
-        do {
-            let binaryData: String = try NSString(contentsOfFile: provisioningPath,
-                                                  encoding: NSISOLatin1StringEncoding) as String
-            print("Data:\(binaryData)")
-           
-            do {
-                
-                // <key>get-task-allow</key><true/>が含まれるならDeveloperと判定.
-                let myPattern: String = "<key>get-task-allow</key>\n\\s*<true/>"
-                let myRegex = try NSRegularExpression(pattern: myPattern,
-                                                    options: [.DotMatchesLineSeparators,
-                                                            .CaseInsensitive])
-                
-                if let size: Int = myRegex.numberOfMatchesInString(binaryData,
-                                                                options: NSMatchingOptions(),
-                                                                range: NSMakeRange(0, binaryData.characters.count)) {
-                    if size > 0 {
-                            print("Developer")
-                            myLabel.text = "Developer"
-                    } else {
-                            print("Destribution")
-                            myLabel.text = "Destribution"
-                    }
-                } else {
-                    myLabel.text = "Destribution"
-                }
-            } catch let error as NSError {
-                print(error.localizedDescription)
-            }
- 
-            
-        } catch {
-            print("error")
-        }
-
-        
+        #if TARGET_DEBUG
+            myLabel.text = "Developer"
+        #else
+            myLabel.text = "Destribution"
+        #endif
     }
 
     override func didReceiveMemoryWarning() {
@@ -173,7 +105,6 @@ class ViewController: UIViewController {
 
 ## 2.xと3.xの差分
 
-* ```NSBundle.mainBundle().pathForResource()```が```Bundle.main.path()```に変更
 
 ## Reference
 
