@@ -2,6 +2,7 @@
 * [はじめに](README.md)
 * [CoreML]
 	* [001 Places205-GoogLeNetで場所判定](coreml/001_coreml.md)
+	* [002 Inceptionv3で物体判定](coreml/002_coreml.md)
 * [UIKit](uikit/README.md)
 	* [001 UILabelで文字を表示](uikit/001_uilabel.md)
 	* [002 UIButtonでボタンを表示](uikit/002_uibutton.md)
