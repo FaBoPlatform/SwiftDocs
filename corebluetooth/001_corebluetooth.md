@@ -15,12 +15,12 @@ import CoreBluetooth
 
 class ViewController: UIViewController {
     
-    var myTableView: UITableView!
-    var myUuids: [String] = []
-    var myNames: [String] = []
-    var myPeripheral: [CBPeripheral] = []
-    var myCentralManager: CBCentralManager!
-    let myButton = UIButton()
+    var tableView: UITableView!
+    var uuids = Array<UUID>()
+    var names = [UUID : String]()
+    var peripherals = [UUID : CBPeripheral]()
+    var centralManager: CBCentralManager!
+    let button = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,33 +33,33 @@ class ViewController: UIViewController {
         let displayHeight = self.view.frame.height
         
         // TableViewの生成( status barの高さ分ずらして表示 ).
-        myTableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight - barHeight))
+        tableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight - barHeight))
         
         // Cellの登録.
-        myTableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
         
         // DataSourceの設定.
-        myTableView.dataSource = self
+        tableView.dataSource = self
         
         // Delegateを設定.
-        myTableView.delegate = self
+        tableView.delegate = self
         
         // Viewに追加する.
-        self.view.addSubview(myTableView)
+        self.view.addSubview(tableView)
         
         // サイズ
-        myButton.frame = CGRect(x: 0, y: 0, width: 200, height: 40)
-        myButton.backgroundColor = UIColor.red
-        myButton.layer.masksToBounds = true
-        myButton.setTitle("検索", for: UIControlState.normal)
-        myButton.setTitleColor(UIColor.white, for: UIControlState.normal)
-        myButton.layer.cornerRadius = 20.0
-        myButton.layer.position = CGPoint(x: self.view.frame.width/2, y:self.view.frame.height-50)
-        myButton.tag = 1
-        myButton.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchUpInside)
+        button.frame = CGRect(x: 0, y: 0, width: 200, height: 40)
+        button.backgroundColor = UIColor.red
+        button.layer.masksToBounds = true
+        button.setTitle("検索", for: UIControlState.normal)
+        button.setTitleColor(UIColor.white, for: UIControlState.normal)
+        button.layer.cornerRadius = 20.0
+        button.layer.position = CGPoint(x: self.view.frame.width/2, y:self.view.frame.height-50)
+        button.tag = 1
+        button.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchUpInside)
         
         // UIボタンをViewに追加.
-        self.view.addSubview(myButton);
+        self.view.addSubview(button);
     }
     
     override func didReceiveMemoryWarning() {
@@ -72,12 +72,12 @@ class ViewController: UIViewController {
     @objc func onClickMyButton(sender: UIButton){
         
         // 配列をリセット.
-        myNames = []
-        myUuids = []
-        myPeripheral = []
+        self.uuids = []
+        self.names = [:]
+        self.peripherals = [:]
         
         // CoreBluetoothを初期化および始動.
-        myCentralManager = CBCentralManager(delegate: self, queue: nil, options: nil)
+        centralManager = CBCentralManager(delegate: self, queue: nil, options: nil)
     }
 }
 extension ViewController: UITableViewDataSource{
@@ -88,7 +88,7 @@ extension ViewController: UITableViewDataSource{
     ///   - section: <#section description#>
     /// - Returns: <#return value description#>
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myUuids.count
+        return self.names.count
     }
 }
 extension ViewController: UITableViewDelegate{
@@ -99,9 +99,10 @@ extension ViewController: UITableViewDelegate{
     ///   - tableView: <#tableView description#>
     ///   - indexPath: <#indexPath description#>
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let uuid = self.uuids[indexPath.row]
         print("Num: \(indexPath.row)")
-        print("Uuid: \(myUuids[indexPath.row])")
-        print("Name: \(myNames[indexPath.row])")
+        print("uuid: \(uuid.description)")
+        print("Name: \(String(describing: self.names[uuid]?.description))")
     }
     
     /// Cellに値を設定する。
@@ -113,13 +114,14 @@ extension ViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier:"MyCell" )
         
+        let uuid = self.uuids[indexPath.row]
         // Cellに値を設定.
         cell.textLabel!.sizeToFit()
         cell.textLabel!.textColor = UIColor.red
-        cell.textLabel!.text = "\(myNames[indexPath.row])"
+        cell.textLabel!.text = self.names[uuid]
         cell.textLabel!.font = UIFont.systemFont(ofSize: 20)
         // Cellに値を設定(下).
-        cell.detailTextLabel!.text = "\(myUuids[indexPath.row])"
+        cell.detailTextLabel!.text = uuid.description
         cell.detailTextLabel!.font = UIFont.systemFont(ofSize: 12)
         return cell
     }
@@ -138,7 +140,7 @@ extension ViewController: CBCentralManagerDelegate{
         case .poweredOn:
             print("Bluetoothの電源はOn")
             // BLEデバイスの検出を開始.
-            myCentralManager.scanForPeripherals(withServices: nil)
+            centralManager.scanForPeripherals(withServices: nil)
         case .resetting:
             print("レスティング状態")
         case .unauthorized:
@@ -163,21 +165,19 @@ extension ViewController: CBCentralManagerDelegate{
         print("advertisementData:\(advertisementData)")
         print("RSSI: \(RSSI)")
         print("peripheral.identifier.uuidString: \(peripheral.identifier.uuidString)")
-        
+        let uuid = UUID(uuid: peripheral.identifier.uuid)
+        self.uuids.append(uuid)
         let kCBAdvDataLocalName = advertisementData["kCBAdvDataLocalName"] as? String
         if let name = kCBAdvDataLocalName {
-            myNames.append(name)
+            self.names[uuid] = name.description
         } else {
-            myNames.append("no name")
+            self.names[uuid] = "no name"
         }
-        
-        myPeripheral.append(peripheral)
-        myUuids.append(peripheral.identifier.uuidString)
-        
-        myTableView.reloadData()
+        self.peripherals[uuid] = peripheral
+
+        tableView.reloadData()
     }
 }
-
 ```
 
 ## Reference
