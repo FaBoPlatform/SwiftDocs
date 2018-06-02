@@ -736,136 +736,148 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 //  SecondViewController.swift
 //  corebluetooth003
 //
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//  Copyright © 2018年 FaBo, Inc. All rights reserved.
 //
+import Foundation
 import UIKit
 import CoreBluetooth
 
-class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CBPeripheralDelegate{
+class SecondViewController: UIViewController {
     
-    var myTableView: UITableView!
-    var myServiceUuids: [String] = []
-    var myService: [CBService] = []
-    var myButtonBefore: UIButton!
-    var myTargetPeriperal: CBPeripheral!
-    var myCentralManager: CBCentralManager!
+    var tableView: UITableView!
+    var serviceUuids: [String] = []
+    var services: [CBService] = []
+    var buttonBefore: UIButton!
+    var targetPeriperal: CBPeripheral!
+    var centralManager: CBCentralManager!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.blueColor()
-        let barHeight = UIApplication.sharedApplication().statusBarFrame.size.height
-        let displayWidth = self.view.frame.width
-        let displayHeight = self.view.frame.height
-        
+        self.view.backgroundColor = UIColor.blue
+        let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
+        let displayWidth: CGFloat = self.view.frame.width
+        let displayHeight: CGFloat = self.view.frame.height
         // TableViewの生成( status barの高さ分ずらして表示 ).
-        myTableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight - barHeight))
+        tableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight - barHeight))
         // Cellの登録.
-        myTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
         // DataSourceの設定.
-        myTableView.dataSource = self
+        tableView.dataSource = self
         // Delegateを設定.
-        myTableView.delegate = self
+        tableView.delegate = self
         // Viewに追加する.
-        self.view.addSubview(myTableView)
+        self.view.addSubview(tableView)
     }
     
-    override func didMoveToParentViewController(parent: UIViewController?) {
+    override func didMove(toParentViewController parent: UIViewController?) {
         if parent == nil {
-            self.myCentralManager.cancelPeripheralConnection(self.myTargetPeriperal)
+            self.centralManager.cancelPeripheralConnection(self.targetPeriperal)
         }
-    }
-    
-    // MARK: - CBPeripheralDelegate
-    
-    /*
-     接続先のPeripheralを設定
-     */
-    func setPeripheral(target: CBPeripheral) {
-        self.myTargetPeriperal = target
-        print(target)
-    }
-    
-    /*
-     CentralManagerを設定
-     */
-    func setCentralManager(manager: CBCentralManager) {
-        self.myCentralManager = manager
-        print(manager)
-    }
-    
-    /*
-     Serviceの検索
-     */
-    func searchService(){
-        print("searchService")
-        self.myTargetPeriperal.delegate = self
-        self.myTargetPeriperal.discoverServices(nil)
-    }
-    
-    func peripheral(peripheral: CBPeripheral, didDiscoverServices error: NSError?) {
-        print("didDiscoverServices")
-        for service in peripheral.services! {
-            myServiceUuids.append(service.UUID.UUIDString)
-            myService.append(service)
-            print("P: \(peripheral.name) - Discovered service S:'\(service.UUID)'")
-        }
-        
-        myTableView.reloadData()
-    }
-    
-    
-    // MARK: - UITableViewDelegate
-    
-    /*
-     Cellが選択された際に呼び出される.
-     */
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        print("ServiceUuid: \(myServiceUuids[indexPath.row])")
-        
-        // 遷移するViewを定義する.
-        let myThirdViewController: ThirdViewController = ThirdViewController()
-        myThirdViewController.setPeripheral(self.myTargetPeriperal)
-        myThirdViewController.setService(self.myService[indexPath.row])
-        myThirdViewController.searchCharacteristics()
-        
-        // アニメーションを設定する.
-        myThirdViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
-        print(self.navigationController)
-        // Viewの移動する.
-        self.navigationController?.pushViewController(myThirdViewController, animated: true)
-    }
-    
-    // MARK: - UITableViewDataSource
-    
-    /*
-     Cellの総数を返す.
-     */
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myServiceUuids.count
-    }
-    
-    /*
-     Cellに値を設定する.
-     */
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier:"MyCell" )
-        // Cellに値を設定.
-        cell.textLabel!.sizeToFit()
-        cell.textLabel!.textColor = UIColor.redColor()
-        cell.textLabel!.text = "\(myServiceUuids[indexPath.row])"
-        cell.textLabel!.font = UIFont.systemFontOfSize(16)
-        // Cellに値を設定(下).
-        cell.detailTextLabel!.text = "Service"
-        cell.detailTextLabel!.font = UIFont.systemFontOfSize(12)
-        
-        return cell
-        
     }
 }
+extension SecondViewController: UITableViewDelegate{
+    
+    /// Cellが選択された際に呼び出される.
+    ///
+    /// - Parameters:
+    ///   - tableView: <#tableView description#>
+    ///   - indexPath: <#indexPath description#>
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("ServiceUuid: \(serviceUuids[indexPath.row])")
+        
+        // 遷移するViewを定義する.
+        let thirdViewController: ThirdViewController = ThirdViewController()
+        thirdViewController.setPeripheral(target: self.targetPeriperal)
+        thirdViewController.setService(service: self.services[indexPath.row])
+        thirdViewController.searchCharacteristics()
+        
+        // アニメーションを設定する.
+        thirdViewController.modalTransitionStyle = UIModalTransitionStyle.partialCurl
+        // Viewの移動する.
+        self.navigationController?.pushViewController(thirdViewController, animated: true)
+    }
+}
+
+extension SecondViewController: UITableViewDataSource{
+    
+    /// Cellの総数を返す.
+    ///
+    /// - Parameters:
+    ///   - tableView: <#tableView description#>
+    ///   - section: <#section description#>
+    /// - Returns: <#return value description#>
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return serviceUuids.count
+    }
+    
+    /// Cellに値を設定する.
+    ///
+    /// - Parameters:
+    ///   - tableView: <#tableView description#>
+    ///   - indexPath: <#indexPath description#>
+    /// - Returns: <#return value description#>
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier:"MyCell" )
+        
+        // Cellに値を設定.
+        cell.textLabel!.sizeToFit()
+        cell.textLabel!.textColor = UIColor.red
+        cell.textLabel!.text = "\(serviceUuids[indexPath.row])"
+        cell.textLabel!.font = UIFont.systemFont(ofSize: 16)
+        // Cellに値を設定(下).
+        cell.detailTextLabel!.text = "Service"
+        cell.detailTextLabel!.font = UIFont.systemFont(ofSize: 12)
+        
+        return cell
+    }
+}
+
+extension SecondViewController: CBPeripheralDelegate{
+    /// 接続先のPeripheralを設定
+    ///
+    /// - Parameter target: <#target description#>
+    func setPeripheral(target: CBPeripheral) {
+        self.targetPeriperal = target
+    }
+   
+    /// CentralManagerを設定
+    ///
+    /// - Parameter manager: <#manager description#>
+    func setCentralManager(manager: CBCentralManager) {
+        self.centralManager = manager
+    }
+    
+    /// Serviceの検索
+    func searchService() {
+        print("searchService")
+        self.targetPeriperal.delegate = self
+        self.targetPeriperal.discoverServices(nil)
+    }
+
+    /// Serviceの検索が終わったら呼び出される
+    ///
+    /// - Parameters:
+    ///   - peripheral: <#peripheral description#>
+    ///   - error: <#error description#>
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+        if let e = error {
+            print("Error: \(e.localizedDescription)")
+            return
+        }
+        
+        print("didDiscoverServices")
+        for service in peripheral.services! {
+            serviceUuids.append(service.uuid.uuidString)
+            services.append(service)
+            print("P: \(String(describing: peripheral.name)) - Discovered service S:'\(service.uuid)'")
+        }
+        
+        tableView.reloadData()
+    }
+    
+}
+
 ```
 
 ### ThirdViewController.swift
@@ -873,130 +885,169 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
 ```swift
 //
 //  ThirdViewController.swift
-//  corebluetooth03v2
+//  corebluetooth003
 //
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//  Copyright © 2018年 FaBo, Inc. All rights reserved.
 //
+import Foundation
 import UIKit
 import CoreBluetooth
 
-class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CBPeripheralDelegate,  UITextFieldDelegate{
+class ThirdViewController: UIViewController {
     
-    var myTableView: UITableView!
-    var myCharacteristicsUuids: [String] = []
-    var myButtonBefore: UIButton!
-    var myTargetPeriperal: CBPeripheral!
-    var myService: CBService!
-    var myTextField: UITextField!
+    var tableView: UITableView!
+    var services: [CBService] = []
+    var characteristics: [CBCharacteristic] = []
+    var buttonBefore: UIButton!
+    var targetPeriperal: CBPeripheral!
+    var targetService: CBService!
+    var centralManager: CBCentralManager!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.blueColor()
-        let barHeight = UIApplication.sharedApplication().statusBarFrame.size.height
-        let displayWidth = self.view.frame.width
-        let displayHeight = self.view.frame.height
-        
+        self.view.backgroundColor = UIColor.blue
+        let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
+        let displayWidth: CGFloat = self.view.frame.width
+        let displayHeight: CGFloat = self.view.frame.height
         // TableViewの生成( status barの高さ分ずらして表示 ).
-        myTableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight/2 - barHeight))
+        tableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight - barHeight))
         // Cellの登録.
-        myTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
         // DataSourceの設定.
-        myTableView.dataSource = self
+        tableView.dataSource = self
         // Delegateを設定.
-        myTableView.delegate = self
+        tableView.delegate = self
         // Viewに追加する.
-        self.view.addSubview(myTableView)
+        self.view.addSubview(tableView)
+    }
+}
+extension ThirdViewController: UITableViewDelegate{
+    
+    /// Cellが選択された際に呼び出される.
+    ///
+    /// - Parameters:
+    ///   - tableView: <#tableView description#>
+    ///   - indexPath: <#indexPath description#>
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("characteristics: \(characteristics[indexPath.row])")
+    }
+}
+extension ThirdViewController: UITableViewDataSource{
+    
+    /// Cellの総数を返す.
+    ///
+    /// - Parameters:
+    ///   - tableView: <#tableView description#>
+    ///   - section: <#section description#>
+    /// - Returns: <#return value description#>
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return characteristics.count
     }
     
-    
-    // MARK: - CBPeripheralDelegate
-    
-    /*
-     接続先のPeripheralを設定
-     */
-    func setPeripheral(target: CBPeripheral) {
-        self.myTargetPeriperal = target
-        print(target)
-    }
-    
-    /*
-     CentralManagerを設定
-     */
-    func setService(service: CBService) {
-        self.myService = service
-        print(service)
-    }
-    
-    /*
-     Charactaristicsの検索
-     */
-    func searchCharacteristics(){
-        print("searchService")
-        self.myTargetPeriperal.delegate = self
-        self.myTargetPeriperal.discoverCharacteristics(nil, forService: self.myService)
-    }
-    
-    func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService,
-                    error: NSError?) {
-        print("didDiscoverCharacteristicsForService")
-        for characteristics in service.characteristics! {
-            myCharacteristicsUuids.append(characteristics.UUID.UUIDString)
-        }
-        myTableView.reloadData()
-    }
-    
-    
-    // MARK: - UITableViewDelegate
-    
-    /*
-     Cellが選択された際に呼び出される.
-     */
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("CharactaristicsUuid: \(myCharacteristicsUuids[indexPath.row])")
-    }
-    
-    
-    // MARK: - UITableViewDataSource
-    
-    /*
-     Cellの総数を返す.
-     */
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myCharacteristicsUuids.count
-    }
-    
-    /*
-     Cellに値を設定する.
-     */
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier:"MyCell")
+    /// Cellに値を設定する.
+    ///
+    /// - Parameters:
+    ///   - tableView: <#tableView description#>
+    ///   - indexPath: <#indexPath description#>
+    /// - Returns: <#return value description#>
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier:"MyCell" )
+        let characteristic = characteristics[indexPath.row]
         // Cellに値を設定.
         cell.textLabel!.sizeToFit()
-        cell.textLabel!.textColor = UIColor.redColor()
-        cell.textLabel!.text = "\(myCharacteristicsUuids[indexPath.row])"
-        cell.textLabel!.font = UIFont.systemFontOfSize(16)
+        cell.textLabel!.textColor = UIColor.red
+        cell.textLabel!.text = "\(characteristic.uuid)"
+        cell.textLabel!.font = UIFont.systemFont(ofSize: 16)
         // Cellに値を設定(下).
-        cell.detailTextLabel!.text = "Characteristics"
-        cell.detailTextLabel!.font = UIFont.systemFontOfSize(12)
+        var strProp = ""
+        if isRead(characteristic: characteristic) {
+            strProp += "Read "
+        }
+        if isWrite(characteristic: characteristic) {
+            strProp += "Write "
+        }
+        if isNotify(characteristic: characteristic) {
+            strProp += "Notifiy"
+        }
+        cell.detailTextLabel!.text = "\(strProp)"
+        cell.detailTextLabel!.font = UIFont.systemFont(ofSize: 12)
         
         return cell
+    }
+}
+extension ThirdViewController: CBPeripheralDelegate{
+    /// 接続先のPeripheralを設定
+    ///
+    /// - Parameter target: <#target description#>
+    func setPeripheral(target: CBPeripheral) {
+        self.targetPeriperal = target
+    }
+    
+    /// <#Description#>
+    ///
+    /// - Parameter service: <#service description#>
+    func setService(service: CBService) {
+        self.targetService = service
+    }
+    
+    /// Characteristicの検索
+    func searchCharacteristics(){
+        print("searchService")
+        self.targetPeriperal.delegate = self
+        self.targetPeriperal.discoverCharacteristics(nil, for: self.targetService)
+    }
+    
+    /// Characteristicの検索が終わったら呼び出される
+    ///
+    /// - Parameters:
+    ///   - peripheral: <#peripheral description#>
+    ///   - service: <#service description#>
+    ///   - error: <#error description#>
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService,
+                    error: Error?) {
+        print("didDiscoverCharacteristicsForService")
         
+        for characteristic in service.characteristics! {
+            characteristics.append(characteristic)
+        }
+        tableView.reloadData()
+    }
+    
+    /// Read可能か
+    ///
+    /// - Parameter characteristic: <#characteristic description#>
+    /// - Returns: <#return value description#>
+    func isRead(characteristic: CBCharacteristic) -> Bool{
+        if characteristic.properties.contains(.read) {
+            return true
+        }
+        return false
+    }
+    
+    /// Write可能か
+    ///
+    /// - Parameter characteristic: <#characteristic description#>
+    /// - Returns: <#return value description#>
+    func isWrite(characteristic: CBCharacteristic) -> Bool{
+        if characteristic.properties.contains(.write) || characteristic.properties.contains(.writeWithoutResponse) {
+            return true
+        }
+        return false
+    }
+
+    /// Notifyに対応しているか
+    ///
+    /// - Parameter characteristic: <#characteristic description#>
+    /// - Returns: <#return value description#>
+    func isNotify(characteristic: CBCharacteristic) -> Bool{
+        if characteristic.properties.contains(.notify) {
+            return true
+        }
+        return false
     }
 }
 ```
-
-## 2.xと3.xの差分
-
-* `UIScreen.mainScreen()`から`UIScreen.main`に変更
-* `UIApplication.sharedApplication()`から`UIApplication.shared`に変更
-* `CBCentralManager.connectPeripheral(CBPeripheral, options: [String : AnyObject]?)`から`CBCentralManager.connect(CBPeripheral, options: [String : AnyObject]?)`に変更
-* `func centralManagerDidUpdateState(central: CBCentralManager)`から`func centralManagerDidUpdateState(_ central: CBCentralManager)`に変更
-* `CBCentralManager.scanForPeripheralsWithServices([CBUUID]?, options: [String : AnyObject]?)`から`CBCentralManager.scanForPeripherals(withServices: [CBUUID]?, options: [String : AnyObject]?)`に変更
-* `CBPeripheral.identifier.UUIDString`から`CBPeripheral.identifier.uuidString`に変更
-* `UIFont.systemFontOfSize(CGFloat)`から`UIFont.systemFont(ofSize: CGFloat)`に変更
 
 ## Reference
 
