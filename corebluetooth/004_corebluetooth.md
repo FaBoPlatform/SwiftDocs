@@ -1,40 +1,113 @@
-# Read
+# Read/Write/Notify
 
-![Preview coremotion004](./img/CoreBluetooth004.png)
-
-## Swift 3.0
+![Preview coremotion004](./img/CoreBluetooth004_3.png)
 
 ### AppDelegate.swift
 
 ```swift
 //
 //  AppDelegate.swift
-//  corebluetooth004
+//  CoreBluetooth004
 //
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//  Copyright © 2018年 FaBo, Inc. All rights reserved.
 //
+
 import UIKit
+import CoreData
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
+
     var window: UIWindow?
-    var myViewController: UIViewController?
-    
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+
+
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        // Override point for customization after application launch.
         //ViewControllerのインスタンス化
-        myViewController = ViewController()
+        let viewController = ViewController()
         //UINavigationControllerのインスタンス化とrootViewControllerの指定
-        let myNavigationController = UINavigationController(rootViewController: myViewController!)
+        let navigationController = UINavigationController(rootViewController: viewController)
         //UIWindowのインスタンス化
         self.window = UIWindow(frame: UIScreen.main.bounds)
         //UIWindowのrootViewControllerにnavigationControllerを指定
-        self.window?.rootViewController = myNavigationController
+        self.window?.rootViewController = navigationController
         //UIWindowの表示
         self.window?.makeKeyAndVisible()
+        
         return true
     }
+
+    func applicationWillResignActive(_ application: UIApplication) {
+        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
+        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+    }
+
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    }
+
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    }
+
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    }
+
+    func applicationWillTerminate(_ application: UIApplication) {
+        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        // Saves changes in the application's managed object context before the application terminates.
+        self.saveContext()
+    }
+
+    // MARK: - Core Data stack
+
+    lazy var persistentContainer: NSPersistentContainer = {
+        /*
+         The persistent container for the application. This implementation
+         creates and returns a container, having loaded the store for the
+         application to it. This property is optional since there are legitimate
+         error conditions that could cause the creation of the store to fail.
+        */
+        let container = NSPersistentContainer(name: "SwiftBLE")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error as NSError? {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                 
+                /*
+                 Typical reasons for an error here include:
+                 * The parent directory does not exist, cannot be created, or disallows writing.
+                 * The persistent store is not accessible, due to permissions or data protection when the device is locked.
+                 * The device is out of space.
+                 * The store could not be migrated to the current model version.
+                 Check the error message to determine what the actual problem was.
+                 */
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+
+    // MARK: - Core Data Saving support
+
+    func saveContext () {
+        let context = persistentContainer.viewContext
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                // Replace this implementation with code to handle the error appropriately.
+                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+    }
+
 }
+
 ```
 
 ### ViewController.swift
@@ -44,92 +117,143 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //  ViewController.swift
 //  corebluetooth004
 //
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//  Copyright © 2018年 FaBo, Inc. All rights reserved.
 //
 import UIKit
 import CoreBluetooth
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CBCentralManagerDelegate {
+class ViewController: UIViewController {
     
-    var myTableView: UITableView!
-    var myUuids: [String] = []
-    var myNames: [String] = []
-    var myPeripheral: [CBPeripheral] = []
-    var myCentralManager: CBCentralManager!
-    var myTargetPeripheral: CBPeripheral!
-    let myButton: UIButton = UIButton()
-    
-    let dataSets = NSMutableArray()
+    var tableView: UITableView!
+    var uuids = Array<UUID>()
+    var names = [UUID : String]()
+    var peripherals = [UUID : CBPeripheral]()
+    var targetPeripheral: CBPeripheral!
+    var centralManager: CBCentralManager!
+    let button = UIButton()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Status Barの高さを取得.
-        let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
+        let barHeight = UIApplication.shared.statusBarFrame.size.height
         
         // Viewの高さと幅を取得.
         let displayWidth = self.view.frame.width
         let displayHeight = self.view.frame.height
         
         // TableViewの生成( status barの高さ分ずらして表示 ).
-        myTableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight - barHeight))
+        tableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight - barHeight))
         
         // Cellの登録.
-        myTableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
         
         // DataSourceの設定.
-        myTableView.dataSource = self
+        tableView.dataSource = self
         
         // Delegateを設定.
-        myTableView.delegate = self
+        tableView.delegate = self
         
         // Viewに追加する.
-        self.view.addSubview(myTableView)
+        self.view.addSubview(tableView)
         
         // サイズ
-        myButton.frame = CGRect(x: 0, y: 0, width: 200, height: 40)
-        myButton.backgroundColor = UIColor.red
-        myButton.layer.masksToBounds = true
-        myButton.setTitle("検索", for: UIControlState.normal)
-        myButton.setTitleColor(UIColor.white, for: UIControlState.normal)
-        myButton.layer.cornerRadius = 20.0
-        myButton.layer.position = CGPoint(x: self.view.frame.width/2, y:self.view.frame.height-50)
-        myButton.tag = 1
-        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(sender:)), for: .touchUpInside)
+        button.frame = CGRect(x: 0, y: 0, width: 200, height: 40)
+        button.backgroundColor = UIColor.red
+        button.layer.masksToBounds = true
+        button.setTitle("検索", for: UIControlState.normal)
+        button.setTitleColor(UIColor.white, for: UIControlState.normal)
+        button.layer.cornerRadius = 20.0
+        button.layer.position = CGPoint(x: self.view.frame.width/2, y:self.view.frame.height-50)
+        button.tag = 1
+        button.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchUpInside)
         
         // UIボタンをViewに追加.
-        self.view.addSubview(myButton);
-    }
-    
-    /*
-     ボタンイベント.
-     */
-    func onClickMyButton(sender: UIButton){
-        
-        // 配列をリセット.
-        myNames = []
-        myUuids = []
-        myPeripheral = []
-        
-        // CoreBluetoothを初期化および始動.
-        myCentralManager = CBCentralManager(delegate: self, queue: nil, options: nil)
+        self.view.addSubview(button);
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    // MARK: - CBCentralManagerDelegate
+    /// ボタンが押されたときに呼び出される。
+    ///
+    /// - Parameter sender: <#sender description#>
+    @objc func onClickMyButton(sender: UIButton){
+        
+        // 配列をリセット.
+        self.uuids = []
+        self.names = [:]
+        self.peripherals = [:]
+        
+        // CoreBluetoothを初期化および始動.
+        centralManager = CBCentralManager(delegate: self, queue: nil, options: nil)
+    }
+}
+extension ViewController: UITableViewDataSource{
+    /// Cellの総数を返す。
+    ///
+    /// - Parameters:
+    ///   - tableView: <#tableView description#>
+    ///   - section: <#section description#>
+    /// - Returns: <#return value description#>
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.names.count
+    }
+}
+extension ViewController: UITableViewDelegate{
     
+    /// Cellが選択されたときに呼び出される。
+    ///
+    /// - Parameters:
+    ///   - tableView: <#tableView description#>
+    ///   - indexPath: <#indexPath description#>
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let uuid = self.uuids[indexPath.row]
+        print("Num: \(indexPath.row)")
+        print("uuid: \(uuid.description)")
+        print("Name: \(String(describing: self.names[uuid]?.description))")
+        
+        self.targetPeripheral = self.peripherals[uuid]
+        self.centralManager.connect(self.targetPeripheral, options: nil)
+    }
+    
+    /// Cellに値を設定する。
+    ///
+    /// - Parameters:
+    ///   - tableView: <#tableView description#>
+    ///   - indexPath: <#indexPath description#>
+    /// - Returns: <#return value description#>
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier:"MyCell" )
+        
+        let uuid = self.uuids[indexPath.row]
+        // Cellに値を設定.
+        cell.textLabel!.sizeToFit()
+        cell.textLabel!.textColor = UIColor.red
+        cell.textLabel!.text = self.names[uuid]
+        cell.textLabel!.font = UIFont.systemFont(ofSize: 20)
+        // Cellに値を設定(下).
+        cell.detailTextLabel!.text = uuid.description
+        cell.detailTextLabel!.font = UIFont.systemFont(ofSize: 12)
+        return cell
+    }
+}
+extension ViewController: CBCentralManagerDelegate{
+    
+    /// Central Managerの状態がかわったら呼び出される。
+    ///
+    /// - Parameter central: Central manager
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
-        print("state \(central.state)");
+        print("state \(central.state)")
+        
         switch central.state {
         case .poweredOff:
             print("Bluetoothの電源がOff")
         case .poweredOn:
             print("Bluetoothの電源はOn")
             // BLEデバイスの検出を開始.
-            myCentralManager.scanForPeripherals(withServices: nil, options: nil)
+            centralManager.scanForPeripherals(withServices: nil)
         case .resetting:
             print("レスティング状態")
         case .unauthorized:
@@ -141,91 +265,62 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    /*
-     BLEデバイスが検出された際に呼び出される.
-     */
-    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : AnyObject], rssi RSSI: NSNumber) {
-        print("pheripheral.name: \(peripheral.name)")
+    /// PheripheralのScanが成功したら呼び出される。
+    ///
+    /// - Parameters:
+    ///   - central: <#central description#>
+    ///   - peripheral: <#peripheral description#>
+    ///   - advertisementData: <#advertisementData description#>
+    ///   - RSSI: <#RSSI description#>
+    func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral,
+                        advertisementData: [String: Any], rssi RSSI: NSNumber) {
+        print("pheripheral.name: \(String(describing: peripheral.name))")
         print("advertisementData:\(advertisementData)")
         print("RSSI: \(RSSI)")
-        print("peripheral.identifier.UUIDString: \(peripheral.identifier.uuidString)")
-        
+        print("peripheral.identifier.uuidString: \(peripheral.identifier.uuidString)")
+        let uuid = UUID(uuid: peripheral.identifier.uuid)
+        self.uuids.append(uuid)
         let kCBAdvDataLocalName = advertisementData["kCBAdvDataLocalName"] as? String
         if let name = kCBAdvDataLocalName {
-            myNames.append(name)
+            self.names[uuid] = name.description
         } else {
-            myNames.append("no name")
+            self.names[uuid] = "no name"
         }
-        
-        myPeripheral.append(peripheral)
-        myUuids.append(peripheral.identifier.uuidString)
-        
-        myTableView.reloadData()
+        self.peripherals[uuid] = peripheral
+
+        tableView.reloadData()
     }
     
-    /*
-     Cellが選択された際に呼び出される.
-     */
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("Num: \(indexPath.row)")
-        print("Uuid: \(myUuids[indexPath.row])")
-        print("Name: \(myNames[indexPath.row])")
-        
-        self.myTargetPeripheral = myPeripheral[indexPath.row]
-        myCentralManager.connect(self.myTargetPeripheral, options: nil)
-    }
-    
-    // MARK: - UITableViewDataSource
-    
-    /*
-     Cellの総数を返す.
-     */
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myUuids.count
-    }
-    
-    /*
-     Cellに値を設定する.
-     */
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier:"MyCell" )
-        
-        // Cellに値を設定.
-        cell.textLabel!.sizeToFit()
-        cell.textLabel!.textColor = UIColor.red
-        cell.textLabel!.text = "\(myNames[indexPath.row])"
-        cell.textLabel!.font = UIFont.systemFont(ofSize: 20)
-        // Cellに値を設定(下).
-        cell.detailTextLabel!.text = "\(myUuids[indexPath.row])"
-        cell.detailTextLabel!.font = UIFont.systemFont(ofSize: 12)
-        return cell
-    }
-    
-    /*
-     Peripheralに接続
-     */
+    /// Pheripheralに接続した時に呼ばれる。
+    ///
+    /// - Parameters:
+    ///   - central: <#central description#>
+    ///   - peripheral: <#peripheral description#>
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         print("connect")
         
         // 遷移するViewを定義する.
-        let mySecondViewController: SecondViewController = SecondViewController()
-        
-        print("setPeripheral")
-        mySecondViewController.setPeripheral(target: peripheral)
-        mySecondViewController.setCentralManager(manager: central)
-        mySecondViewController.searchService()
+        let secondViewController: SecondViewController = SecondViewController()
+        secondViewController.setPeripheral(target: self.targetPeripheral)
+        secondViewController.setCentralManager(manager: self.centralManager)
+        secondViewController.searchService()
         
         // アニメーションを設定する.
-        mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.partialCurl
+        secondViewController.modalTransitionStyle = UIModalTransitionStyle.partialCurl
         
-        print(self.navigationController)
         // Viewの移動する.
-        self.navigationController?.pushViewController(mySecondViewController, animated: true)
+        self.navigationController?.pushViewController(secondViewController, animated: true)
+        
+        // Scanを停止する.
+        self.centralManager.stopScan()
     }
     
-    /*
-     Peripheralに接続失敗した際
-     */
+    /// Pheripheralの接続に失敗した時に呼ばれる。
+    ///
+    /// - Parameters:
+    ///   - central: <#central description#>
+    ///   - peripheral: <#peripheral description#>
+    ///   - error: <#error description#>
     func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         if let e = error {
             print("Error: \(e.localizedDescription)")
@@ -234,6 +329,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         print("not connnect")
     }
 }
+
 ```
 
 ### SecondViewController.swift
@@ -241,138 +337,150 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 ```swift
 //
 //  SecondViewController.swift
-//  corebluetooth004
+//  corebluetooth003
 //
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//  Copyright © 2018年 FaBo, Inc. All rights reserved.
 //
+import Foundation
 import UIKit
 import CoreBluetooth
 
-class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CBPeripheralDelegate{
+class SecondViewController: UIViewController {
     
-    var myTableView: UITableView!
-    var myServiceUuids: [String] = []
-    var myService: [CBService] = []
-    var myButtonBefore: UIButton!
-    var myTargetPeriperal: CBPeripheral!
-    var myCentralManager: CBCentralManager!
+    var tableView: UITableView!
+    var serviceUuids: [String] = []
+    var services: [CBService] = []
+    var buttonBefore: UIButton!
+    var targetPeriperal: CBPeripheral!
+    var centralManager: CBCentralManager!
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.blue
-        let barHeight = UIApplication.shared.statusBarFrame.size.height
-        let displayWidth = self.view.frame.width
-        let displayHeight = self.view.frame.height
-        
+        let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
+        let displayWidth: CGFloat = self.view.frame.width
+        let displayHeight: CGFloat = self.view.frame.height
         // TableViewの生成( status barの高さ分ずらして表示 ).
-        myTableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight - barHeight))
+        tableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight - barHeight))
         // Cellの登録.
-        myTableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
         // DataSourceの設定.
-        myTableView.dataSource = self
+        tableView.dataSource = self
         // Delegateを設定.
-        myTableView.delegate = self
+        tableView.delegate = self
         // Viewに追加する.
-        self.view.addSubview(myTableView)
+        self.view.addSubview(tableView)
     }
     
     override func didMove(toParentViewController parent: UIViewController?) {
         if parent == nil {
-            self.myCentralManager.cancelPeripheralConnection(self.myTargetPeriperal)
+            self.centralManager.cancelPeripheralConnection(self.targetPeriperal)
         }
     }
+}
+extension SecondViewController: UITableViewDelegate{
     
-    // MARK: - CBPeripheralDelegate
-    
-    /*
-     接続先のPeripheralを設定
-     */
-    func setPeripheral(target: CBPeripheral) {
-        self.myTargetPeriperal = target
-        print(target)
-    }
-    
-    /*
-     CentralManagerを設定
-     */
-    func setCentralManager(manager: CBCentralManager) {
-        self.myCentralManager = manager
-        print(manager)
-    }
-    
-    /*
-     Serviceの検索
-     */
-    func searchService(){
-        print("searchService")
-        self.myTargetPeriperal.delegate = self
-        self.myTargetPeriperal.discoverServices(nil)
-    }
-    
-    func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
-        print("didDiscoverServices")
-        for service in peripheral.services! {
-            myServiceUuids.append(service.uuid.uuidString)
-            myService.append(service)
-            print("P: \(peripheral.name) - Discovered service S:'\(service.uuid)'")
-        }
-        
-        myTableView.reloadData()
-    }
-    
-    
-    // MARK: - UITableViewDelegate
-    
-    /*
-     Cellが選択された際に呼び出される.
-     */
+    /// Cellが選択された際に呼び出される.
+    ///
+    /// - Parameters:
+    ///   - tableView: <#tableView description#>
+    ///   - indexPath: <#indexPath description#>
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        print("ServiceUuid: \(myServiceUuids[indexPath.row])")
+        print("ServiceUuid: \(serviceUuids[indexPath.row])")
         
         // 遷移するViewを定義する.
-        let myThirdViewController: ThirdViewController = ThirdViewController()
-        myThirdViewController.setPeripheral(target: self.myTargetPeriperal)
-        myThirdViewController.setService(service: self.myService[indexPath.row])
-        myThirdViewController.searchCharacteristics()
+        let thirdViewController: ThirdViewController = ThirdViewController()
+        thirdViewController.setPeripheral(target: self.targetPeriperal)
+        thirdViewController.setService(service: self.services[indexPath.row])
+        thirdViewController.searchCharacteristics()
         
         // アニメーションを設定する.
-        myThirdViewController.modalTransitionStyle = UIModalTransitionStyle.partialCurl
-        print(self.navigationController)
+        thirdViewController.modalTransitionStyle = UIModalTransitionStyle.partialCurl
         // Viewの移動する.
-        self.navigationController?.pushViewController(myThirdViewController, animated: true)
+        self.navigationController?.pushViewController(thirdViewController, animated: true)
     }
+}
+
+extension SecondViewController: UITableViewDataSource{
     
-    // MARK: - UITableViewDataSource
-    
-    /*
-     Cellの総数を返す.
-     */
+    /// Cellの総数を返す.
+    ///
+    /// - Parameters:
+    ///   - tableView: <#tableView description#>
+    ///   - section: <#section description#>
+    /// - Returns: <#return value description#>
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myServiceUuids.count
+        return serviceUuids.count
     }
     
-    /*
-     Cellに値を設定する.
-     */
+    /// Cellに値を設定する.
+    ///
+    /// - Parameters:
+    ///   - tableView: <#tableView description#>
+    ///   - indexPath: <#indexPath description#>
+    /// - Returns: <#return value description#>
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier:"MyCell" )
+        
         // Cellに値を設定.
         cell.textLabel!.sizeToFit()
         cell.textLabel!.textColor = UIColor.red
-        cell.textLabel!.text = "\(myServiceUuids[indexPath.row])"
+        cell.textLabel!.text = "\(serviceUuids[indexPath.row])"
         cell.textLabel!.font = UIFont.systemFont(ofSize: 16)
         // Cellに値を設定(下).
         cell.detailTextLabel!.text = "Service"
         cell.detailTextLabel!.font = UIFont.systemFont(ofSize: 12)
         
         return cell
-        
     }
 }
+
+extension SecondViewController: CBPeripheralDelegate{
+    /// 接続先のPeripheralを設定
+    ///
+    /// - Parameter target: <#target description#>
+    func setPeripheral(target: CBPeripheral) {
+        self.targetPeriperal = target
+    }
+   
+    /// CentralManagerを設定
+    ///
+    /// - Parameter manager: <#manager description#>
+    func setCentralManager(manager: CBCentralManager) {
+        self.centralManager = manager
+    }
+    
+    /// Serviceの検索
+    func searchService() {
+        print("searchService")
+        self.targetPeriperal.delegate = self
+        self.targetPeriperal.discoverServices(nil)
+    }
+
+    /// Serviceの検索が終わったら呼び出される
+    ///
+    /// - Parameters:
+    ///   - peripheral: <#peripheral description#>
+    ///   - error: <#error description#>
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
+        if let e = error {
+            print("Error: \(e.localizedDescription)")
+            return
+        }
+        
+        print("didDiscoverServices")
+        for service in peripheral.services! {
+            serviceUuids.append(service.uuid.uuidString)
+            services.append(service)
+            print("P: \(String(describing: peripheral.name)) - Discovered service S:'\(service.uuid)'")
+        }
+        
+        tableView.reloadData()
+    }
+    
+}
+
 ```
 
 ### ThirdViewController.swift
@@ -380,715 +488,330 @@ class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDa
 ```swift
 //
 //  ThirdViewController.swift
-//  corebluetooth04
+//  corebluetooth003
 //
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//  Copyright © 2018年 FaBo, Inc. All rights reserved.
 //
+import Foundation
 import UIKit
 import CoreBluetooth
 
-class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CBPeripheralDelegate,  UITextFieldDelegate {
+class ThirdViewController: UIViewController {
     
-    var myTableView: UITableView!
-    var myCharacteristicsUuids: [String] = []
-    var myCharacteristics: [CBCharacteristic] = []
-    var myReadButton: UIButton!
-    var myTargetPeriperal: CBPeripheral!
-    var myService: CBService!
-    var myTextField: UITextField!
-    var myTargetCharacteristics: CBCharacteristic!
+    var tableView: UITableView!
+    var readTableView: UITableView!
+    var services: [CBService] = []
+    var characteristics: [CBCharacteristic] = []
+    var buttonBefore: UIButton!
+    var targetPeriperal: CBPeripheral!
+    var targetService: CBService!
+    var centralManager: CBCentralManager!
+    var targetCharacteristic: CBCharacteristic!
+    var readButton: UIButton!
+    var notifyLabel: UILabel!
+    var writeField: UITextField!
+    var writeButton: UIButton!
+    var readValues: [Data] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor.blue
-        let barHeight = UIApplication.shared.statusBarFrame.size.height
-        let displayWidth = self.view.frame.width
-        let displayHeight = self.view.frame.height
-        
+        self.view.backgroundColor = UIColor.cyan
+        let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
+        let displayWidth: CGFloat = self.view.frame.width
+        let displayHeight: CGFloat = self.view.frame.height
         // TableViewの生成( status barの高さ分ずらして表示 ).
-        myTableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight/2 - barHeight))
-        // Cellの登録.
-        myTableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
-        // DataSourceの設定.
-        myTableView.dataSource = self
-        // Delegateを設定.
-        myTableView.delegate = self
-        // Viewに追加する.
-        self.view.addSubview(myTableView)
-        // 文字列を表示
-        myTextField = UITextField(frame: CGRect(x: 25, y: displayHeight/2+10, width: displayWidth-50, height: 30))
-        myTextField.delegate = self
-        myTextField.borderStyle = UITextBorderStyle.roundedRect
-        self.view.addSubview(myTextField)
-        // Readボタン.
-        myReadButton = UIButton()
-        myReadButton.frame = CGRect(x: displayWidth/2+60-100/2, y: displayHeight/2+100, width: 100, height: 40)
-        myReadButton.backgroundColor = UIColor.red
-        myReadButton.layer.masksToBounds = true
-        myReadButton.setTitle("Read", for: UIControlState.normal)
-        myReadButton.layer.cornerRadius = 20.0
-        myReadButton.tag = 1
-        myReadButton.addTarget(self, action: #selector(ThirdViewController.onClickMyButton(sender:)), for: .touchUpInside)
-        self.view.addSubview(myReadButton)
-    }
-    
-    /*
-     ボタンイベント.
-     */
-    func onClickMyButton(sender: UIButton){
-        print("onClickMyButton:")
-        print("sender.currentTitile: \(sender.currentTitle)")
-        print("sender.tag:\(sender.tag)")
+        tableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight/2 - barHeight))
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
+        tableView.dataSource = self
+        tableView.delegate = self
+        self.view.addSubview(tableView)
         
-        if(self.myTargetCharacteristics != nil){
-            if(sender.tag == 1){
-                self.myTargetPeriperal.readValue(for: myTargetCharacteristics)
+        readTableView = UITableView(frame: CGRect(x: 0, y: barHeight + displayHeight/2 + 100, width: displayWidth, height: 200))
+        readTableView.register(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
+        readTableView.dataSource = self
+        readTableView.delegate = self
+        self.view.addSubview(readTableView)
+        
+        // Readボタン.
+        readButton = UIButton()
+        readButton.frame = CGRect(x: displayWidth/2 - 150, y: displayHeight/2+50, width: 100, height: 40)
+        readButton.backgroundColor = UIColor.red
+        readButton.layer.masksToBounds = true
+        readButton.setTitle("Read", for: UIControlState.normal)
+        readButton.layer.cornerRadius = 10.0
+        readButton.tag = 1
+        readButton.addTarget(self, action: #selector(ThirdViewController.onClickMyButton(sender:)), for: .touchUpInside)
+        
+        // Norifyボタン.
+        notifyLabel = UILabel(frame: CGRect(x:displayWidth/2 + 50, y: displayHeight/2+55, width: 100, height: 30))
+        notifyLabel.textColor = UIColor.blue
+        notifyLabel.text = "Notify"
+        notifyLabel.tag = 2
+        notifyLabel.isUserInteractionEnabled = true
+        
+        // UITextField.
+        writeField = UITextField(frame: CGRect(x:10, y: displayHeight/2+15, width: displayWidth - 100 - 30, height: 30))
+        writeField.text = ""
+        writeField.delegate = self
+        writeField.borderStyle = .roundedRect
+        writeField.clearButtonMode = .whileEditing
+        
+        // Writeボタン.
+        writeButton = UIButton()
+        writeButton.frame = CGRect(x: displayWidth - 110, y: displayHeight/2+10, width: 100, height: 40)
+        writeButton.backgroundColor = UIColor.blue
+        writeButton.layer.masksToBounds = true
+        writeButton.setTitle("Write", for: UIControlState.normal)
+        writeButton.layer.cornerRadius = 10.0
+        writeButton.tag = 2
+        writeButton.addTarget(self, action: #selector(ThirdViewController.onClickMyButton(sender:)), for: .touchUpInside)
+    }
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch: UITouch in touches {
+            let tag = touch.view!.tag
+            if (tag == 2) {
+                if !self.targetCharacteristic.isNotifying {
+                    self.targetPeriperal.setNotifyValue(true, for: self.targetCharacteristic)
+                    notifyLabel.text = "Stop Notify"
+                } else {
+                    self.targetPeriperal.setNotifyValue(false, for: self.targetCharacteristic)
+                    notifyLabel.text = "Notify"
+                }
             }
         }
     }
     
-    // MARK: - CBPeripheralDelegate
-    
-    /*
-     接続先のPeripheralを設定
-     */
-    func setPeripheral(target: CBPeripheral) {
-        self.myTargetPeriperal = target
-        print(target)
-    }
-    
-    /*
-     CentralManagerを設定
-     */
-    func setService(service: CBService) {
-        self.myService = service
-        print(service)
-    }
-    
-    /*
-     Charactaristicsの検索
-     */
-    func searchCharacteristics(){
-        print("searchService")
-        self.myTargetPeriperal.delegate = self
-        self.myTargetPeriperal.discoverCharacteristics(nil, for: self.myService)
-    }
-    
-    func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
-        print("didDiscoverCharacteristicsForService")
-        if let e = error {
-            print("Error: \(e.localizedDescription)")
-            return
+    /// Read, Writeボタンのイベント
+    ///
+    /// - Parameter sender: <#sender description#>
+    @objc func onClickMyButton(sender: UIButton){
+        print("onClickMyButton:")
+        print("sender.currentTitile: \(String(describing: sender.currentTitle))")
+        print("sender.tag:\(sender.tag)")
+        
+        if let charasteristic = self.targetCharacteristic {
+            if(sender.tag == 1){
+                self.targetPeriperal.readValue(for: charasteristic)
+            }
+            else if(sender.tag == 2){
+                let data = writeField.text!.data(using: String.Encoding.utf8, allowLossyConversion:true)
+                self.targetPeriperal.writeValue(data!, for: targetCharacteristic, type: CBCharacteristicWriteType.withResponse)
+            }
         }
-        for characteristics in service.characteristics! {
-            myCharacteristicsUuids.append(characteristics.uuid.uuidString)
-            myCharacteristics.append(characteristics)
-        }
-        myTableView.reloadData()
     }
     
-    /*
-     read
-     */
+    /// 各種パーツの追加と削除
+    ///
+    /// - Parameter characteristic: <#characteristic description#>
+    func addButton(characteristic: CBCharacteristic) {
+        // Read
+        if (self.readButton.isDescendant(of: self.view)) {
+            self.readButton.removeFromSuperview()
+        }
+        if isRead(characteristic: characteristic) {
+            self.view.addSubview(self.readButton)
+        }
+        // Write
+        if (self.writeField.isDescendant(of: self.view)) {
+            self.writeField.removeFromSuperview()
+        }
+        if isWrite(characteristic: characteristic) {
+            self.view.addSubview(self.writeField)
+        }
+        if (self.writeButton.isDescendant(of: self.view)) {
+            self.writeButton.removeFromSuperview()
+        }
+        if isWrite(characteristic: characteristic) {
+            self.view.addSubview(self.writeButton)
+        }
+        // Notify
+        if (self.notifyLabel.isDescendant(of: self.view)) {
+            self.notifyLabel.removeFromSuperview()
+        }
+        if isNotify(characteristic: characteristic) {
+            if !self.targetCharacteristic.isNotifying {
+                notifyLabel.text = "Notify"
+            } else {
+                notifyLabel.text = "Stop Notify"
+            }
+            self.view.addSubview(self.notifyLabel)
+        }
+    }
+}
+extension ThirdViewController: UITextFieldDelegate{
+    /// 改行ボタンが押された時の処理
+    ///
+    /// - Parameter textField: <#textField description#>
+    /// - Returns: <#return value description#>
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        // 改行ボタンが押されたらKeyboardを閉じる処理.
+        textField.resignFirstResponder()
+        return true
+    }
+}
+extension ThirdViewController: UITableViewDelegate{
+    
+    /// Cellが選択された際に呼び出される.
+    ///
+    /// - Parameters:
+    ///   - tableView: <#tableView description#>
+    ///   - indexPath: <#indexPath description#>
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView.isEqual(self.tableView) {
+            self.targetCharacteristic = characteristics[indexPath.row]
+            addButton(characteristic: self.targetCharacteristic)
+        }
+    }
+}
+extension ThirdViewController: UITableViewDataSource{
+    
+    /// Cellの総数を返す.
+    ///
+    /// - Parameters:
+    ///   - tableView: <#tableView description#>
+    ///   - section: <#section description#>
+    /// - Returns: <#return value description#>
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView.isEqual(self.tableView) {
+            return characteristics.count
+        } else if tableView.isEqual(self.readTableView) {
+            return readValues.count
+        }
+        return 0
+    }
+    
+    /// Cellに値を設定する.
+    ///
+    /// - Parameters:
+    ///   - tableView: <#tableView description#>
+    ///   - indexPath: <#indexPath description#>
+    /// - Returns: <#return value description#>
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier:"MyCell" )
+        // Cellに値を設定.
+        cell.textLabel!.sizeToFit()
+        cell.textLabel!.textColor = UIColor.red
+        cell.textLabel!.font = UIFont.systemFont(ofSize: 16)
+        cell.detailTextLabel!.font = UIFont.systemFont(ofSize: 12)
+        
+        if tableView.isEqual(self.tableView) {
+            let characteristic = characteristics[indexPath.row]
+            cell.textLabel!.text = "\(characteristic.uuid)"
+            var strProp = ""
+            if isRead(characteristic: characteristic) {
+                strProp += "Read "
+            }
+            if isWrite(characteristic: characteristic) {
+                strProp += "Write "
+            }
+            if isNotify(characteristic: characteristic) {
+                strProp += "Notifiy"
+            }
+            cell.detailTextLabel!.text = "\(strProp)"
+        }
+        else if tableView.isEqual(self.readTableView) {
+            let value = self.readValues[indexPath.row]
+            cell.textLabel!.text = "\(value.base64EncodedString())"
+            let now = Date()
+            let locale = Locale(identifier: "ja_JP")
+            cell.detailTextLabel!.text = "\(now.description(with: locale))"
+        }
+        
+        return cell
+    }
+}
+extension ThirdViewController: CBPeripheralDelegate{
+    
+    /// CharastaristicがReadされると呼び出される
+    ///
+    /// - Parameters:
+    ///   - peripheral: <#peripheral description#>
+    ///   - characteristic: <#characteristic description#>
+    ///   - error: <#error description#>
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         if let e = error {
             print("Error: \(e.localizedDescription)")
             return
         }
-        print("\(characteristic.value)")
-        myTextField.text = "\(characteristic.value)"
-    }
-    
-    // MARK: - UITableViewDelegate
-    
-    /*
-     Cellが選択された際に呼び出される.
-     */
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("CharactaristicsUuid: \(myCharacteristicsUuids[indexPath.row])")
-        myTargetCharacteristics = myCharacteristics[indexPath.row]
-    }
-    
-    // MARK: - UITableViewDataSource
-    
-    /*
-     Cellの総数を返す.
-     */
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myCharacteristicsUuids.count
-    }
-    
-    /*
-     Cellに値を設定する.
-     */
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier:"MyCell" )
-        // Cellに値を設定.
-        cell.textLabel!.sizeToFit()
-        cell.textLabel!.textColor = UIColor.red
-        cell.textLabel!.text = "\(myCharacteristicsUuids[indexPath.row])"
-        cell.textLabel!.font = UIFont.systemFont(ofSize: 16)
-        // Cellに値を設定(下).
-        cell.detailTextLabel!.text = "Characteristics"
-        cell.detailTextLabel!.font = UIFont.systemFont(ofSize: 12)
-        
-        return cell
-        
-    }
-}
-```
-
----
-
-## Swift 2.3
-
-### AppDelegate.swift
-
-```swift
-//
-//  AppDelegate.swift
-//  corebluetooth004
-//
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
-//
-import UIKit
-
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-    
-    var window: UIWindow?
-    var myViewController: UIViewController?
-    
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
-        //ViewControllerのインスタンス化
-        myViewController = ViewController()
-        //UINavigationControllerのインスタンス化とrootViewControllerの指定
-        let myNavigationController = UINavigationController(rootViewController: myViewController!)
-        //UIWindowのインスタンス化
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        //UIWindowのrootViewControllerにnavigationControllerを指定
-        self.window?.rootViewController = myNavigationController
-        //UIWindowの表示
-        self.window?.makeKeyAndVisible()
-        return true
-    }
-}
-```
-
-### ViewController.swift
-
-```swift
-//
-//  ViewController.swift
-//  corebluetooth004
-//
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
-//
-import UIKit
-import CoreBluetooth
-
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CBCentralManagerDelegate {
-    
-    var myTableView: UITableView!
-    var myUuids: [String] = []
-    var myNames: [String] = []
-    var myPeripheral: [CBPeripheral] = []
-    var myCentralManager: CBCentralManager!
-    var myTargetPeripheral: CBPeripheral!
-    let myButton: UIButton = UIButton()
-    
-    let dataSets = NSMutableArray()
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Status Barの高さを取得.
-        let barHeight: CGFloat = UIApplication.sharedApplication().statusBarFrame.size.height
-        
-        // Viewの高さと幅を取得.
-        let displayWidth = self.view.frame.width
-        let displayHeight = self.view.frame.height
-        
-        // TableViewの生成( status barの高さ分ずらして表示 ).
-        myTableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight - barHeight))
-        
-        // Cellの登録.
-        myTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
-        
-        // DataSourceの設定.
-        myTableView.dataSource = self
-        
-        // Delegateを設定.
-        myTableView.delegate = self
-        
-        // Viewに追加する.
-        self.view.addSubview(myTableView)
-        
-        // サイズ
-        myButton.frame = CGRectMake(0,0,200,40)
-        myButton.backgroundColor = UIColor.redColor();
-        myButton.layer.masksToBounds = true
-        myButton.setTitle("検索", forState: UIControlState.Normal)
-        myButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        myButton.layer.cornerRadius = 20.0
-        myButton.layer.position = CGPoint(x: self.view.frame.width/2, y:self.view.frame.height-50)
-        myButton.tag = 1
-        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(_:)), forControlEvents: .TouchUpInside)
-        
-        // UIボタンをViewに追加.
-        self.view.addSubview(myButton);
-    }
-    
-    /*
-     ボタンイベント.
-     */
-    func onClickMyButton(sender: UIButton){
-        
-        // 配列をリセット.
-        myNames = []
-        myUuids = []
-        myPeripheral = []
-        
-        // CoreBluetoothを初期化および始動.
-        myCentralManager = CBCentralManager(delegate: self, queue: nil, options: nil)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    // MARK: - CBCentralManagerDelegate
-    
-    func centralManagerDidUpdateState(central: CBCentralManager) {
-        print("state \(central.state)");
-        switch (central.state) {
-        case .PoweredOff:
-            print("Bluetoothの電源がOff")
-        case .PoweredOn:
-            print("Bluetoothの電源はOn")
-            // BLEデバイスの検出を開始.
-            myCentralManager.scanForPeripheralsWithServices(nil, options: nil)
-        case .Resetting:
-            print("レスティング状態")
-        case .Unauthorized:
-            print("非認証状態")
-        case .Unknown:
-            print("不明")
-        case .Unsupported:
-            print("非対応")
+        readValues.insert(characteristic.value!, at: 0)
+        if readValues.count > 10 {
+            readValues.removeLast()
         }
+        readTableView.reloadData()
     }
     
-    /*
-     BLEデバイスが検出された際に呼び出される.
-     */
-    func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
-        print("pheripheral.name: \(peripheral.name)")
-        print("advertisementData:\(advertisementData)")
-        print("RSSI: \(RSSI)")
-        print("peripheral.identifier.UUIDString: \(peripheral.identifier.UUIDString)")
-        
-        let kCBAdvDataLocalName = advertisementData["kCBAdvDataLocalName"] as? String
-        if let name = kCBAdvDataLocalName {
-            myNames.append(name)
-        } else {
-            myNames.append("no name")
-        }
-        
-        myPeripheral.append(peripheral)
-        myUuids.append(peripheral.identifier.UUIDString)
-        
-        myTableView.reloadData()
-    }
-    
-    /*
-     Cellが選択された際に呼び出される.
-     */
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("Num: \(indexPath.row)")
-        print("Uuid: \(myUuids[indexPath.row])")
-        print("Name: \(myNames[indexPath.row])")
-        
-        self.myTargetPeripheral = myPeripheral[indexPath.row]
-        myCentralManager.connectPeripheral(self.myTargetPeripheral, options: nil)
-    }
-    
-    /*
-     Cellの総数を返す.
-     */
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myUuids.count
-    }
-    
-    /*
-     Cellに値を設定する.
-     */
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier:"MyCell" )
-        
-        // Cellに値を設定.
-        cell.textLabel!.sizeToFit()
-        cell.textLabel!.textColor = UIColor.redColor()
-        cell.textLabel!.text = "\(myNames[indexPath.row])"
-        cell.textLabel!.font = UIFont.systemFontOfSize(20)
-        // Cellに値を設定(下).
-        cell.detailTextLabel!.text = "\(myUuids[indexPath.row])"
-        cell.detailTextLabel!.font = UIFont.systemFontOfSize(12)
-        return cell
-    }
-    
-    /*
-     Peripheralに接続
-     */
-    func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
-        print("connect")
-        
-        // 遷移するViewを定義する.
-        let mySecondViewController: SecondViewController = SecondViewController()
-        
-        print("setPeripheral")
-        mySecondViewController.setPeripheral(peripheral)
-        mySecondViewController.setCentralManager(central)
-        mySecondViewController.searchService()
-        
-        // アニメーションを設定する.
-        mySecondViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
-        
-        print(self.navigationController)
-        // Viewの移動する.
-        self.navigationController?.pushViewController(mySecondViewController, animated: true)
-    }
-    
-    /*
-     Peripheralに接続失敗した際
-     */
-    func centralManager(central: CBCentralManager, didFailToConnectPeripheral peripheral: CBPeripheral, error: NSError?) {
-        if let e = error {
-            print("Error: \(e.localizedDescription)")
-            return
-        }
-        print("not connnect")
-    }    
-}
-```
-
-### SecondViewController.swift
-
-```swift
-//
-//  SecondViewController.swift
-//  corebluetooth004
-//
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
-//
-import UIKit
-import CoreBluetooth
-
-class SecondViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CBPeripheralDelegate{
-    
-    var myTableView: UITableView!
-    var myServiceUuids: [String] = []
-    var myService: [CBService] = []
-    var myButtonBefore: UIButton!
-    var myTargetPeriperal: CBPeripheral!
-    var myCentralManager: CBCentralManager!
-    
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        
-        self.view.backgroundColor = UIColor.blueColor()
-        let barHeight = UIApplication.sharedApplication().statusBarFrame.size.height
-        let displayWidth = self.view.frame.width
-        let displayHeight = self.view.frame.height
-        
-        // TableViewの生成( status barの高さ分ずらして表示 ).
-        myTableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight - barHeight))
-        // Cellの登録.
-        myTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
-        // DataSourceの設定.
-        myTableView.dataSource = self
-        // Delegateを設定.
-        myTableView.delegate = self
-        // Viewに追加する.
-        self.view.addSubview(myTableView)
-    }
-    
-    override func didMoveToParentViewController(parent: UIViewController?) {
-        if parent == nil {
-            self.myCentralManager.cancelPeripheralConnection(self.myTargetPeriperal)
-        }
-    }
-    
-    // MARK: - CBPeripheralDelegate
-    
-    /*
-     接続先のPeripheralを設定
-     */
+    /// 接続先のPeripheralを設定
+    ///
+    /// - Parameter target: <#target description#>
     func setPeripheral(target: CBPeripheral) {
-        self.myTargetPeriperal = target
-        print(target)
+        self.targetPeriperal = target
     }
     
-    /*
-     CentralManagerを設定
-     */
-    func setCentralManager(manager: CBCentralManager) {
-        self.myCentralManager = manager
-        print(manager)
-    }
-    
-    /*
-     Serviceの検索
-     */
-    func searchService(){
-        print("searchService")
-        self.myTargetPeriperal.delegate = self
-        self.myTargetPeriperal.discoverServices(nil)
-    }
-    
-    func peripheral(peripheral: CBPeripheral, didDiscoverServices error: NSError?) {
-        print("didDiscoverServices")
-        for service in peripheral.services! {
-            myServiceUuids.append(service.UUID.UUIDString)
-            myService.append(service)
-            print("P: \(peripheral.name) - Discovered service S:'\(service.UUID)'")
-        }
-        
-        myTableView.reloadData()
-    }
-    
-    
-    // MARK: - UITableViewDelegate
-    
-    /*
-     Cellが選択された際に呼び出される.
-     */
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        
-        print("ServiceUuid: \(myServiceUuids[indexPath.row])")
-        
-        // 遷移するViewを定義する.
-        let myThirdViewController: ThirdViewController = ThirdViewController()
-        myThirdViewController.setPeripheral(self.myTargetPeriperal)
-        myThirdViewController.setService(self.myService[indexPath.row])
-        myThirdViewController.searchCharacteristics()
-        
-        // アニメーションを設定する.
-        myThirdViewController.modalTransitionStyle = UIModalTransitionStyle.PartialCurl
-        print(self.navigationController)
-        // Viewの移動する.
-        self.navigationController?.pushViewController(myThirdViewController, animated: true)
-    }
-    
-    // MARK: - UITableViewDataSource
-    
-    /*
-     Cellの総数を返す.
-     */
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myServiceUuids.count
-    }
-    
-    /*
-     Cellに値を設定する.
-     */
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier:"MyCell" )
-        // Cellに値を設定.
-        cell.textLabel!.sizeToFit()
-        cell.textLabel!.textColor = UIColor.redColor()
-        cell.textLabel!.text = "\(myServiceUuids[indexPath.row])"
-        cell.textLabel!.font = UIFont.systemFontOfSize(16)
-        // Cellに値を設定(下).
-        cell.detailTextLabel!.text = "Service"
-        cell.detailTextLabel!.font = UIFont.systemFontOfSize(12)
-        
-        return cell
-        
-    }
-}
-```
-
-### ThirdViewController.swift
-
-```swift
-//
-//  ThirdViewController.swift
-//  corebluetooth04
-//
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
-//
-import UIKit
-import CoreBluetooth
-
-class ThirdViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CBPeripheralDelegate,  UITextFieldDelegate {
-    
-    var myTableView: UITableView!
-    var myCharacteristicsUuids: [String] = []
-    var myCharacteristics: [CBCharacteristic] = []
-    var myReadButton: UIButton!
-    var myTargetPeriperal: CBPeripheral!
-    var myService: CBService!
-    var myTextField: UITextField!
-    var myTargetCharacteristics: CBCharacteristic!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        self.view.backgroundColor = UIColor.blueColor()
-        let barHeight = UIApplication.sharedApplication().statusBarFrame.size.height
-        let displayWidth = self.view.frame.width
-        let displayHeight = self.view.frame.height
-        
-        // TableViewの生成( status barの高さ分ずらして表示 ).
-        myTableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight/2 - barHeight))
-        // Cellの登録.
-        myTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "MyCell")
-        // DataSourceの設定.
-        myTableView.dataSource = self
-        // Delegateを設定.
-        myTableView.delegate = self
-        // Viewに追加する.
-        self.view.addSubview(myTableView)
-        // 文字列を表示
-        myTextField = UITextField(frame: CGRectMake(25,displayHeight/2 + 10,displayWidth-50,30))
-        myTextField.delegate = self
-        myTextField.borderStyle = UITextBorderStyle.RoundedRect
-        self.view.addSubview(myTextField)
-        // Readボタン.
-        myReadButton = UIButton()
-        myReadButton.frame = CGRectMake(displayWidth/2 + 60 - 100/2,displayHeight/2 + 100,100,40)
-        myReadButton.backgroundColor = UIColor.redColor()
-        myReadButton.layer.masksToBounds = true
-        myReadButton.setTitle("Read", forState: UIControlState.Normal)
-        myReadButton.layer.cornerRadius = 20.0
-        myReadButton.tag = 1
-        myReadButton.addTarget(self, action: #selector(ThirdViewController.onClickMyButton(_:)), forControlEvents: .TouchUpInside)
-        self.view.addSubview(myReadButton)
-    }
-    
-    /*
-     ボタンイベント.
-     */
-    func onClickMyButton(sender: UIButton){
-        print("onClickMyButton:")
-        print("sender.currentTitile: \(sender.currentTitle)")
-        print("sender.tag:\(sender.tag)")
-        
-        if(self.myTargetCharacteristics != nil){
-            if(sender.tag == 1){
-                self.myTargetPeriperal.readValueForCharacteristic(myTargetCharacteristics)
-            }
-        }
-    }
-    
-    // MARK: - CBPeripheralDelegate
-    
-    /*
-     接続先のPeripheralを設定
-     */
-    func setPeripheral(target: CBPeripheral) {
-        self.myTargetPeriperal = target
-        print(target)
-    }
-    
-    /*
-     CentralManagerを設定
-     */
+    /// <#Description#>
+    ///
+    /// - Parameter service: <#service description#>
     func setService(service: CBService) {
-        self.myService = service
-        print(service)
+        self.targetService = service
     }
     
-    /*
-     Charactaristicsの検索
-     */
+    /// Characteristicの検索
     func searchCharacteristics(){
         print("searchService")
-        self.myTargetPeriperal.delegate = self
-        self.myTargetPeriperal.discoverCharacteristics(nil, forService: self.myService)
+        self.targetPeriperal.delegate = self
+        self.targetPeriperal.discoverCharacteristics(nil, for: self.targetService)
     }
     
-    func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService, error: NSError?) {
+    /// Characteristicの検索が終わったら呼び出される
+    ///
+    /// - Parameters:
+    ///   - peripheral: <#peripheral description#>
+    ///   - service: <#service description#>
+    ///   - error: <#error description#>
+    func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService,
+                    error: Error?) {
         print("didDiscoverCharacteristicsForService")
-        if let e = error {
-            print("Error: \(e.localizedDescription)")
-            return
+        
+        for characteristic in service.characteristics! {
+            characteristics.append(characteristic)
         }
-        for characteristics in service.characteristics! {
-            myCharacteristicsUuids.append(characteristics.UUID.UUIDString)
-            myCharacteristics.append(characteristics)
+        tableView.reloadData()
+    }
+    
+    /// Read可能か
+    ///
+    /// - Parameter characteristic: <#characteristic description#>
+    /// - Returns: <#return value description#>
+    func isRead(characteristic: CBCharacteristic) -> Bool{
+        if characteristic.properties.contains(.read) {
+            return true
         }
-        myTableView.reloadData()
+        return false
     }
     
-    /*
-     read
-     */
-    func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
-        if let e = error {
-            print("Error: \(e.localizedDescription)")
-            return
+    /// Write可能か
+    ///
+    /// - Parameter characteristic: <#characteristic description#>
+    /// - Returns: <#return value description#>
+    func isWrite(characteristic: CBCharacteristic) -> Bool{
+        if characteristic.properties.contains(.write) || characteristic.properties.contains(.writeWithoutResponse) {
+            return true
         }
-        print("\(characteristic.value)")
-        myTextField.text = "\(characteristic.value)"
+        return false
     }
-    
-    // MARK: - UITableViewDelegate
-    
-    /*
-     Cellが選択された際に呼び出される.
-     */
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("CharactaristicsUuid: \(myCharacteristicsUuids[indexPath.row])")
-        myTargetCharacteristics = myCharacteristics[indexPath.row] 
-    }
-    
-    // MARK: - UITableViewDataSource
-    
-    /*
-     Cellの総数を返す.
-     */
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return myCharacteristicsUuids.count
-        
-    }
-    
-    /*
-     Cellに値を設定する.
-     */
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        let cell = UITableViewCell(style: UITableViewCellStyle.Subtitle, reuseIdentifier:"MyCell" )
-        // Cellに値を設定.
-        cell.textLabel!.sizeToFit()
-        cell.textLabel!.textColor = UIColor.redColor()
-        cell.textLabel!.text = "\(myCharacteristicsUuids[indexPath.row])"
-        cell.textLabel!.font = UIFont.systemFontOfSize(16)
-        // Cellに値を設定(下).
-        cell.detailTextLabel!.text = "Characteristics"
-        cell.detailTextLabel!.font = UIFont.systemFontOfSize(12)
-        
-        return cell
-        
+
+    /// Notifyに対応しているか
+    ///
+    /// - Parameter characteristic: <#characteristic description#>
+    /// - Returns: <#return value description#>
+    func isNotify(characteristic: CBCharacteristic) -> Bool{
+        if characteristic.properties.contains(.notify) {
+            return true
+        }
+        return false
     }
 }
 ```
-
-## 2.xと3.xの差分
-
-* `CBPeripheral.readValueForCharacteristic(CBCharacteristic)`から`CBPeripheral.readValue(for: CBCharacteristic)`に変更
-* `UIScreen.mainScreen()`から`UIScreen.main`に変更
-* `UIApplication.sharedApplication()`から`UIApplication.shared`に変更
-* `CBCentralManager.connectPeripheral(CBPeripheral, options: [String : AnyObject]?)`から`CBCentralManager.connect(CBPeripheral, options: [String : AnyObject]?)`に変更
-* `func centralManagerDidUpdateState(central: CBCentralManager)`から`func centralManagerDidUpdateState(_ central: CBCentralManager)`に変更
-* `CBCentralManager.scanForPeripheralsWithServices([CBUUID]?, options: [String : AnyObject]?)`から`CBCentralManager.scanForPeripherals(withServices: [CBUUID]?, options: [String : AnyObject]?)`に変更
-* `CBPeripheral.identifier.UUIDString`から`CBPeripheral.identifier.uuidString`に変更
-* `UIFont.systemFontOfSize(CGFloat)`から`UIFont.systemFont(ofSize: CGFloat)`に変更
 
 ## Reference
 
