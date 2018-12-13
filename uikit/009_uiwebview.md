@@ -2,6 +2,8 @@
 
 ![Preview uikit009](./img/uikit009.png)
 
+UIWebViewはiOS 12.0から非推奨
+
 ## Swift 3.0
 
 ```swift
