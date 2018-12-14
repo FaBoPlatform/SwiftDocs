@@ -3,6 +3,120 @@
 ![Preview uikit015](./img/uikit015.png)
 ![Preview uikit015_1](./img/uikit015_1.png)
 
+## Swift 4.0
+
+### ViewController.swift
+
+```swift
+//
+//  ViewController.swift
+//  UIKit015_4.0
+//
+//  Created by akira on 2016/08/13.
+//  Copyright © 2018年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // 背景色をGreenに設定する.
+        self.view.backgroundColor = UIColor.green
+        
+        // ボタンを生成する.
+        let nextButton: UIButton = UIButton(frame: CGRect(x: 0,y: 0, width: 120, height: 50))
+        nextButton.backgroundColor = UIColor.red
+        nextButton.layer.masksToBounds = true
+        nextButton.setTitle("Next", for: .normal)
+        nextButton.layer.cornerRadius = 20.0
+        nextButton.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height-50)
+        nextButton.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchUpInside)
+        
+        // ボタンを追加する.
+        self.view.addSubview(nextButton);
+    }
+    
+    /*
+     ボタンイベント.
+     */
+    @objc internal func onClickMyButton(sender: UIButton){
+        
+        // 遷移するViewを定義する.
+        let mySecondViewController: UIViewController = SecondViewController()
+        
+        // アニメーションを設定する.
+        mySecondViewController.modalTransitionStyle = .partialCurl
+        
+        // Viewの移動する.
+        self.present(mySecondViewController, animated: true, completion: nil)
+    }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    
+}
+```
+
+### SecondViewController.swift
+
+```swift
+//
+//  SecondViewController.swift
+//  UIKit015
+//
+//  Copyright © 2018年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class SecondViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // 背景色を設定.
+        self.view.backgroundColor = UIColor.blue
+        
+        // ボタンを作成.
+        let backButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 120, height: 50))
+        backButton.backgroundColor = UIColor.red
+        backButton.layer.masksToBounds = true
+        backButton.setTitle("Back", for: .normal)
+        backButton.layer.cornerRadius = 20.0
+        backButton.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height-50)
+        backButton.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchUpInside)
+        self.view.addSubview(backButton);
+    }
+    
+    /*
+     ボタンイベント.
+     */
+    @objc internal func onClickMyButton(sender: UIButton){
+        
+        // 遷移するViewを定義.
+        let myViewController: UIViewController = ViewController()
+        
+        // アニメーションを設定.
+        myViewController.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
+        
+        // Viewの移動.
+        self.present(myViewController, animated: true, completion: nil)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+}
+
+```
+
 ## Swift 3.0
 
 ### ViewController.swift
@@ -228,6 +342,21 @@ class SecondViewController: UIViewController {
 
 ```
 
+## 3.0と4.0の差分
+* internal func onClickMyButton(sender: UIButton)が、
+@objc internal func onClickMyButton(sender: UIButton)に変更
+* UIColor.blueColor()がUIColor.blueに変更
+* UIButton(frame: CGRectMake(0,0,120,50))が、
+UIButton(frame: CGRect(x: 0, y: 0, width: 120, height: 50))に変更
+* UIColor.redColor()がUIColor.redに変更
+* backButton.setTitle("Back", forState: .Normal)が、
+backButton.setTitle("Back", for: .normal)に変更
+* backButton.addTarget(self, action: #selector(onClickMyButton(_:)), forControlEvents: .TouchUpInside)が、
+backButton.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchUpInside)に変更
+* myViewController.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontalが、
+myViewController.modalTransitionStyle = UIModalTransitionStyle.flipHorizontalに変更
+* self.presentViewController(myViewController, animated: true, completion: nil)が、
+self.present(myViewController, animated: true, completion: nil)に変更
 
 ## 2.3と3.0の差分
 
