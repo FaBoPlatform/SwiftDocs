@@ -2,6 +2,69 @@
 
 ![Preview uikit016](./img/uikit016.png)
 
+## Swift4.0
+```swift
+
+//
+//  ViewController.swift
+//  UIKit016_3.0
+//
+//  Created by KimikoWatanabe on 2016/08/16.
+//  Copyright © 2018年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+    
+    private var myScrollView: UIScrollView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // ScrollViewを生成.
+        myScrollView = UIScrollView()
+        
+        // ScrollViewの大きさを設定する.
+        myScrollView.frame = self.view.frame
+        
+        // UIImageに画像を設定する.
+        let myImage = UIImage(named: "temple.jpg")!
+        
+        // UIImageViewを生成する.
+        let myImageView = UIImageView()
+        
+        // myImageViewのimageにmyImageを設定する.
+        myImageView.image = myImage
+        
+        // frameの値を設定する.
+        myImageView.frame = myScrollView.frame
+        
+        // 画像のアスペクト比を設定.
+        myImageView.contentMode = UIView.ContentMode.scaleAspectFill
+
+        // ScrollViewにmyImageViewを追加する.
+        myScrollView.addSubview(myImageView)
+        
+        // Scrollの高さを計算しておく.
+        let scroll_height = myImage.size.height*(self.view.frame.width/myImage.size.width)
+        
+        // ScrollViewにcontentSizeを設定する.
+        myScrollView.contentSize = CGSize(width:self.view.frame.width, height:scroll_height)
+        
+        // ViewにScrollViewをAddする.
+        self.view.addSubview(myScrollView)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+}
+
+
+```
+
 ## Swift3.0
 ```swift
 //
@@ -121,10 +184,13 @@ class ViewController: UIViewController {
     }
 
 }
-//
+
 ```
 ![Preview temple.jpg](./img/temple.jpg)
 
+## 3.0と4.0の差分
+* UIViewContentMode.scaleAspectFillが、
+UIView.ContentMode.scaleAspectFillに変更
 
 ## 2.3と3.0の差分
 * UIViewContentModeの名称が変更
