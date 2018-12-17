@@ -1,0 +1,20 @@
+site_name: FaBo Circuit Docs
+theme:
+    name: material
+    language: 'ja'
+extra:
+    search:
+        language: 'jp'
+markdown_extensions:
+  - fontawesome_markdown
+  - codehilite:
+      linenums: true
+  - admonition
+  - pymdownx.keys
+  - markdown_fenced_code_tabs
+  - markdown.extensions.def_list
+extra_javascript:
+  - 'javascripts/extra.js'
+extra_css:
+  - "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"  
+  - 'stylesheets/extra.css'
