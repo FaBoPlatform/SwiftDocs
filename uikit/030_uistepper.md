@@ -2,6 +2,76 @@
 
 ![Preview uikit030](img/uikit030.png)
 
+## Swift4.0
+```swift
+//
+//  ViewController.swift
+//  UIKit030_4.0
+//
+//  Created by KimikoWatanabe on 2016/08/17.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+    
+    private let myStepLabel: UILabel = UILabel(frame: CGRect(x:0,y:0,width:150,height:150))
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Stepperの作成する.
+        let myStepper: UIStepper = UIStepper()
+        myStepper.center = CGPoint(x:self.view.frame.width/2, y:400)
+        myStepper.backgroundColor = UIColor.gray
+        myStepper.tintColor = UIColor.white
+        myStepper.addTarget(self, action: #selector(ViewController.stepperOneChanged(stepper:)), for: UIControl.Event.valueChanged)
+        
+        // 最小値, 最大値, 規定値の設定をする.
+        myStepper.minimumValue = 0
+        myStepper.maximumValue = 100
+        myStepper.value = 50
+        
+        // ボタンを押した際に動く値の.を設定する.
+        myStepper.stepValue = 10
+        
+        // Viewに追加する.
+        self.view.addSubview(myStepper)
+        
+        // Labelを作成する.
+        myStepLabel.backgroundColor = UIColor.blue
+        myStepLabel.layer.masksToBounds = true
+        myStepLabel.layer.cornerRadius = 75.0
+        myStepLabel.textColor = UIColor.white
+        myStepLabel.shadowColor = UIColor.gray
+        myStepLabel.font = UIFont.systemFont(ofSize: 30.0)
+        myStepLabel.textAlignment = NSTextAlignment.center
+        myStepLabel.layer.position = CGPoint(x: self.view.bounds.width/2,y: 200)
+        myStepLabel.text = "\(myStepper.value)"
+        
+        // Viewの背景色を青にする.
+        self.view.backgroundColor = UIColor.cyan
+        
+        // viewにLabelを追加.
+        self.view.addSubview(myStepLabel)
+    }
+    
+    /*
+     Stepperの値が変わったときに呼び出される.
+     */
+    @objc internal func stepperOneChanged(stepper: UIStepper){
+        myStepLabel.text = "\(stepper.value)"
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        
+    }
+}
+
+```
+
 ## Swift3.0
 ```swift
 //
@@ -143,6 +213,11 @@ class ViewController: UIViewController {
 
 
 ```
+
+## 3.0と4.0の差分
+* UIControlEvents.valueChangedが、UIControl.Event.valueChangedに変更
+* internal func stepperOneChanged(stepper: UIStepper)が、
+@objc internal func stepperOneChanged(stepper: UIStepper)に変更
 
 ## 2.3と3.0の差分
 * UIColorの参照方法が変更(UIColor.grayColor()->UIColor.gray)
