@@ -3,9 +3,7 @@
 ![Preview uikit007](./img/uikit007.png)
 
 
-## Swift 3.0
-
-```swift
+```swift fct_label="Swift 4.x/Swift 3.x"
 //
 //  ViewController.swift
 //  UIKit007
@@ -75,9 +73,8 @@ class ViewController: UIViewController {
 
 ```
 
-## Swift 2.3
 
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  UIKit007

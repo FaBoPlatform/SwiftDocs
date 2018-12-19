@@ -4,9 +4,8 @@
 
 UIWebViewはiOS 12.0から非推奨
 
-## Swift 3.0
 
-```swift
+```swift fct_label="Swift 4.x/Swift 3.x"
 //
 //  ViewController.swift
 //  UIKit009
@@ -71,9 +70,7 @@ class ViewController: UIViewController, UIWebViewDelegate {
 
 ```
 
-## Swift 2.3
-
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  UIKit009
@@ -83,7 +80,7 @@ class ViewController: UIViewController, UIWebViewDelegate {
 
 import UIKit
 
-class ViewController: UIViewController, UIWebViewDelegate {
+class VipewController: UIViewController, UIWebViewDelegate {
 
     private var myWebView: UIWebView!
     

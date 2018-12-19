@@ -3,9 +3,7 @@
 ![Preview uikit004](./img/uikit004.png)
 
 
-## Swift 3.0
-
-```swift
+```swift fct_label="Swift 3.x"
 //
 //  ViewController.swift
 //  UIKit004
@@ -82,9 +80,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
 
 ```
 
-## Swift 2.3
-
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  UIKit004

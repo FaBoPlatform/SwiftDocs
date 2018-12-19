@@ -3,9 +3,7 @@
 ![Preview uikit010](./img/uikit010.png)
 ![Preview uikit010_1](./img/uikit010_1.png)
 
-## Swift 4.0
-
-```swift
+```swift fct_label="Swift 4.x"
 //
 //  ViewController.swift
 //  UIKit010
@@ -66,9 +64,7 @@ class ViewController: UIViewController {
 
 ```
 
-## Swift 3.0
-
-```swift
+```swift fct_label="Swift 3.x"
 //
 //  ViewController.swift
 //  UIKit010
@@ -129,9 +125,7 @@ class ViewController: UIViewController {
 
 ```
 
-## Swift 2.3
-
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  UIKit010
