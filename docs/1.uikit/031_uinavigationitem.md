@@ -3,9 +3,8 @@
 ![Preview uikit031_001](img/uikit031_001.png)
 ![Preview uikit031_002](img/uikit031_002.png)
 
-## Swift4.0
 ### AppDelegate.swift
-```swift
+```swift fct_label="Swift 4.x"
 //
 //  AppDelegate.swift
 //  UIKit031_4.0
@@ -42,8 +41,84 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
+```swift fct_label="Swift 3.x"
+//
+//  AppDelegate.swift
+//  UIKit031_3.0
+//
+//  Created by KimikoWatanabe on 2016/08/18.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+  
+    var window: UIWindow?
+    
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+
+        // ViewControllerを生成する.
+        let myFirstViewController: FirstViewController = FirstViewController()
+
+        // Navication Controllerを生成する.
+        let myNavigationController: UINavigationController = UINavigationController(rootViewController: myFirstViewController)
+
+        // UIWindowを生成する.
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+
+        // rootViewControllerにNatigationControllerを設定する.
+        self.window?.rootViewController = myNavigationController
+
+        self.window?.makeKeyAndVisible()
+
+        return true
+    }
+
+}
+```
+
+```swift fct_label="Swift 2.3"
+//
+//  AppDelegate.swift
+//  UIKit031_2.3
+//
+//  Created by KimikoWatanabe on 2016/08/18.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    var window: UIWindow?
+
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
+
+        // ViewControllerを生成する.
+        let myFirstViewController: FirstViewController = FirstViewController()
+
+        // Navication Controllerを生成する.
+        let myNavigationController: UINavigationController = UINavigationController(rootViewController: myFirstViewController)
+
+        // UIWindowを生成する.
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
+
+        // rootViewControllerにNatigationControllerを設定する.
+        self.window?.rootViewController = myNavigationController
+
+        self.window?.makeKeyAndVisible()
+
+        return true
+    }
+
+}
+```
+
 ### FirstViewController.swift
-```swift
+```swift fct_label="Swift 4.x"
 //
 //  ViewController.swift
 //  UIKit031_4.0
@@ -123,83 +198,7 @@ class FirstViewController: UIViewController {
 }
 
 ```
-
-### SecoundViewController.swift
-```swift
-//
-//  SecoundViewController.swift
-//  UIKit031_4.0
-//
-//  Created by KimikoWatanabe on 2016/08/18.
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
-//
-
-import UIKit
-
-class SecondViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Controllerのタイトルを設定する.
-        self.title = "My 2nd View"
-
-        // Viewの背景色を定義する.
-        self.view.backgroundColor = UIColor.green
-    }
-
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-}
-
-```
-
-## Swift3.0
-### AppDelegate.swift
-```swift
-//
-//  AppDelegate.swift
-//  UIKit031_3.0
-//
-//  Created by KimikoWatanabe on 2016/08/18.
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
-//
-
-import UIKit
-
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    var window: UIWindow?
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
-
-        // ViewControllerを生成する.
-        let myFirstViewController: FirstViewController = FirstViewController()
-
-        // Navication Controllerを生成する.
-        let myNavigationController: UINavigationController = UINavigationController(rootViewController: myFirstViewController)
-
-        // UIWindowを生成する.
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-
-        // rootViewControllerにNatigationControllerを設定する.
-        self.window?.rootViewController = myNavigationController
-
-        self.window?.makeKeyAndVisible()
-
-        return true
-    }
-
-}
-```
-
-### FirstViewController.swift
-```swift
+```swift fct_label="Swift 3.x"
 //
 //  ViewController.swift
 //  UIKit031_3.0
@@ -278,83 +277,7 @@ class FirstViewController: UIViewController {
     }
 }
 ```
-
-### SecoundViewController.swift
-```swift
-//
-//  SecoundViewController.swift
-//  UIKit031_3.0
-//
-//  Created by KimikoWatanabe on 2016/08/18.
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
-//
-
-import UIKit
-
-class SecondViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Controllerのタイトルを設定する.
-        self.title = "My 2nd View"
-
-        // Viewの背景色を定義する.
-        self.view.backgroundColor = UIColor.green
-    }
-
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-}
-
-```
-
-## Swift 2.3
-### AppDelegate.swift
-```swift
-//
-//  AppDelegate.swift
-//  UIKit031_2.3
-//
-//  Created by KimikoWatanabe on 2016/08/18.
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
-//
-
-import UIKit
-
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    var window: UIWindow?
-
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
-
-        // ViewControllerを生成する.
-        let myFirstViewController: FirstViewController = FirstViewController()
-
-        // Navication Controllerを生成する.
-        let myNavigationController: UINavigationController = UINavigationController(rootViewController: myFirstViewController)
-
-        // UIWindowを生成する.
-        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-
-        // rootViewControllerにNatigationControllerを設定する.
-        self.window?.rootViewController = myNavigationController
-
-        self.window?.makeKeyAndVisible()
-
-        return true
-    }
-
-}
-```
-
-### FirstViewController.swift
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  UIKit031_2.3
@@ -440,7 +363,40 @@ class FirstViewController: UIViewController {
 ```
 
 ### SecoundViewController.swift
-```swift
+```swift fct_label="Swift 4.x/Swift 3.x"
+//
+//  SecoundViewController.swift
+//  UIKit031_4.0
+//
+//  Created by KimikoWatanabe on 2016/08/18.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class SecondViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Controllerのタイトルを設定する.
+        self.title = "My 2nd View"
+
+        // Viewの背景色を定義する.
+        self.view.backgroundColor = UIColor.green
+    }
+
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+}
+
+```
+
+```swift fct_label="Swift 2.3"
 //
 //  SecoundViewController.swift
 //  UIKit031_2.3

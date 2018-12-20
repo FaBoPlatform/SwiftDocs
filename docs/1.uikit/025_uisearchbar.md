@@ -3,8 +3,7 @@
 ![Preview uikit025_001](img/uikit025_001.png)
 ![Preview uikit025_002](img/uikit025_002.png)
 
-## Swift4.0
-```swift
+```swift　fct_label="Swift 4.x"
 //
 //  ViewController.swift
 //  UIKit025_4.0
@@ -99,8 +98,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
 }
 
 ```
-## Swift3.0
-```swift
+```swift fct_label="Swift3.x"
 //
 //  ViewController.swift
 //  UIKit025_3.0
@@ -196,8 +194,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
 
 ```
 
-## Swift 2.3
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  UIKit025_2.3

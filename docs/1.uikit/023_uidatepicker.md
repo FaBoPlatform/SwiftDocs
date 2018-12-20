@@ -2,8 +2,7 @@
 
 ![Preview uikit023](./img/uikit023.png)
 
-## Swift4.0
-```swift
+```swift fct_label="Swift 4.x"
 //
 //  ViewController.swift
 //  UIKit023_4.0
@@ -70,8 +69,7 @@ class ViewController: UIViewController, UIPickerViewDelegate {
 
 ```
 
-## Swift3.0
-```swift
+```swift fct_label="Swift 3.x"
 //
 //  ViewController.swift
 //  UIKit023_3.0
@@ -139,8 +137,7 @@ class ViewController: UIViewController, UIPickerViewDelegate {
 
 ```
 
-## Swift 2.3
-```swift
+```swift fct_label="2.3"
 //
 //  ViewController.swift
 //  UIKit023_2.3

@@ -3,8 +3,7 @@
 ![Preview uikit018_001](./img/uikit018_001.png)
 ![Preview uikit018_002](./img/uikit018_002.png)
 
-## Swift4.0
-``` swift
+``` swift fct_label="Swift 4.x"
 //
 //  ViewController.swift
 //  UIKit018_4.0
@@ -97,8 +96,7 @@ class ViewController: UIViewController, UIScrollViewDelegate{
 
 ```
 
-## Swift3.0
-```swift
+```swift fct_label="Swift 3.x"
 //
 //  ViewController.swift
 //  UIKit018_3.0
@@ -191,8 +189,7 @@ class ViewController: UIViewController, UIScrollViewDelegate{
 ```
 
 
-## Swift 2.3
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  UIKit018_2.3

@@ -4,15 +4,13 @@
 ![Preview uikit017_002](./img/uikit017_002.png)
 ![Preview uikit017_003](./img/uikit017_003.png)
 
-## Swfit4.0
-### AppDelegate.swift
-```swift
+```swift fct_label="Swift 4.x/Swift 3.x"
 //
 //  AppDelegate.swift
 //  UIKit017_3.0
 //
 //  Created by KimikoWatanabe on 2016/08/16.
-//  Copyright © 2018年 FaBo, Inc. All rights reserved.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
 
 import UIKit
@@ -44,8 +42,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
+```swift fct_label="Swift 2.3"
+//
+//  AppDelegate.swift
+//  UIKit017_2.3
+//
+//  Created by KimikoWatanabe on 2016/08/16.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+
+    internal var window: UIWindow?
+
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+
+        // viewConrollerを生成.
+        let myViewController = ViewController()
+
+        // navigationControllerを生成.
+        let navigationController = UINavigationController(rootViewController: myViewController)
+
+        // windowを生成.
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+
+        // rootViewControllerにnavigationControllerを設定.
+        window?.rootViewController = navigationController
+
+        window?.makeKeyAndVisible()
+        return true
+    }
+
+}
+```
+
 ### ViewController.swift
-```swift
+```swift fct_label="Swift 4.x"
 //
 //  ViewController.swift
 //  UIKit017_4.0
@@ -114,48 +149,7 @@ class ViewController: UIViewController {
 
 ```
 
-## Swift3.0
-### AppDelegate.swift
-```swift
-//
-//  AppDelegate.swift
-//  UIKit017_3.0
-//
-//  Created by KimikoWatanabe on 2016/08/16.
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
-//
-
-import UIKit
-
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    internal var window: UIWindow?
-
-    func applicationDidFinishLaunching(_ application: UIApplication) {
-
-        // viewConrollerを生成.
-        let myViewController = ViewController()
-
-        // navigationControllerを生成.
-        let navigationController = UINavigationController(rootViewController: myViewController)
-
-        // windowを生成.
-        window = UIWindow(frame: UIScreen.main.bounds)
-
-        // rootViewControllerにnavigationControllerを設定.
-        window?.rootViewController = navigationController
-
-        window?.makeKeyAndVisible()
-
-        //return true
-    }
-
-}
-```
-
-### ViewController.swift
-```swift
+```swift fct_label="Swift 3.x"
 //
 //  ViewController.swift
 //  UIKit017_3.0
@@ -224,48 +218,7 @@ class ViewController: UIViewController {
 
 ```
 
-
-## Swift 2.3
-### AppDelegate.swift
-```swift
-//
-//  AppDelegate.swift
-//  UIKit017_2.3
-//
-//  Created by KimikoWatanabe on 2016/08/16.
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
-//
-
-import UIKit
-
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    internal var window: UIWindow?
-
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-
-        // viewConrollerを生成.
-        let myViewController = ViewController()
-
-        // navigationControllerを生成.
-        let navigationController = UINavigationController(rootViewController: myViewController)
-
-        // windowを生成.
-        window = UIWindow(frame: UIScreen.mainScreen().bounds)
-
-        // rootViewControllerにnavigationControllerを設定.
-        window?.rootViewController = navigationController
-
-        window?.makeKeyAndVisible()
-        return true
-    }
-
-}
-```
-
-### ViewController.swift
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  UIKit017_2.3

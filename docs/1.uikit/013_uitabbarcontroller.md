@@ -3,10 +3,9 @@
 ![Preview uikit013](./img/uikit013.png)
 ![Preview uikit013_1](./img/uikit013_1.png)
 
-## Swift 4.0
 
 ### AppDelegate.swift
-```swift
+```swift fct_label="Swift 4.x"
 //
 //  AppDelegate.swift
 //  UIKit013_3.0
@@ -71,99 +70,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-
-
-```
-### FirstViewController.swift
-
-```swift
-//
-//  FirstViewController.swift
-//  UIKit013
-//
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
-//
-
-import UIKit
-
-class FirstViewController: UIViewController {
-    
-    init() {
-        super.init(nibName: nil, bundle: nil)
-        
-        // Viewの背景色をCyanに設定する.
-        self.view.backgroundColor = UIColor.cyan
-        
-        //tabBarItemのアイコンをFeaturedに、タグを1と定義する.
-        self.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 1)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    required override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-}
 ```
 
-### SecondViewController.swift
-
-```swift
-//
-//  SecondViewController.swift
-//  UIKit013
-//
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
-//
-
-import UIKit
-
-class SecondViewController: UIViewController {
-    
-    init() {
-        super.init(nibName: nil, bundle: nil)
-        
-        // Viewの背景色をGreenに設定する.
-        self.view.backgroundColor = UIColor.green
-        
-        // tabBarItemのアイコンをFeaturedに、タグを2と定義する.
-        self.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 2)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    required override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    
-}
-```
-
-## Swift 3.0
-
-### AppDelegate.swift
-```swift
+```swift fct_label="Swift 3.x"
 //
 //  AppDelegate.swift
 //  UIKit013_3.0
@@ -228,99 +137,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-
-
-```
-### FirstViewController.swift
-
-```swift
-//
-//  FirstViewController.swift
-//  UIKit013
-//
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
-//
-
-import UIKit
-
-class FirstViewController: UIViewController {
-    
-    init() {
-        super.init(nibName: nil, bundle: nil)
-        
-        // Viewの背景色をCyanに設定する.
-        self.view.backgroundColor = UIColor.cyan
-        
-        //tabBarItemのアイコンをFeaturedに、タグを1と定義する.
-        self.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 1)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    required override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-}
 ```
 
-### SecondViewController.swift
-
-```swift
-//
-//  SecondViewController.swift
-//  UIKit013
-//
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
-//
-
-import UIKit
-
-class SecondViewController: UIViewController {
-    
-    init() {
-        super.init(nibName: nil, bundle: nil)
-        
-        // Viewの背景色をGreenに設定する.
-        self.view.backgroundColor = UIColor.green
-        
-        // tabBarItemのアイコンをFeaturedに、タグを2と定義する.
-        self.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 2)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
-    required override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-    
-    
-}
-```
-
-## Swift 2.3
-
-### AppDelegate.swift
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  AppDelegate.swift
 //  UIKit013
@@ -384,11 +203,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-
 ```
-### FistViewController.swift
+### FirstViewController.swift
 
-```swift
+```swift fct_label="Swift 4.x/Swift 3.x"
+//
+//  FirstViewController.swift
+//  UIKit013
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class FirstViewController: UIViewController {
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        
+        // Viewの背景色をCyanに設定する.
+        self.view.backgroundColor = UIColor.cyan
+        
+        //tabBarItemのアイコンをFeaturedに、タグを1と定義する.
+        self.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 1)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    required override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+```
+
+```swift fct_label="Swift 2.3"
 //
 //  FirstViewController.swift
 //  UIKit013
@@ -427,9 +285,52 @@ class FirstViewController: UIViewController {
     }
 }
 ```
+
 ### SecondViewController.swift
 
-```swift
+```swift fct_label="Swift 4.x/Swift 3.x"
+//
+//  SecondViewController.swift
+//  UIKit013
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class SecondViewController: UIViewController {
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        
+        // Viewの背景色をGreenに設定する.
+        self.view.backgroundColor = UIColor.green
+        
+        // tabBarItemのアイコンをFeaturedに、タグを2と定義する.
+        self.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 2)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    required override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    
+}
+```
+
+```swift fct_label="Swift 2.3"
 ///
 //  SecondViewController.swift
 //  UIKit013

@@ -4,8 +4,7 @@
 ![Preview uikit027_002](img/uikit027_002.png)
 ![Preview uikit027_003](img/uikit027_003.png)
 
-## Swift4.0
-```swift
+```swift fct_label="Swift 4.x"
 //
 //  ViewController.swift
 //  UIKit027_4.0
@@ -80,8 +79,7 @@ class ViewController: UIViewController, UIToolbarDelegate{
 
 ```
 
-## Swift3.0
-```swift
+```swift fct_label="Swift 3.x"
 //
 //  ViewController.swift
 //  UIKit027_3.0
@@ -156,8 +154,7 @@ class ViewController: UIViewController, UIToolbarDelegate{
 
 ```
 
-## Swift 2.3
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  UIKit027_2.3

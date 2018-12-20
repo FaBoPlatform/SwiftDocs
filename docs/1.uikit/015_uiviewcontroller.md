@@ -3,11 +3,10 @@
 ![Preview uikit015](./img/uikit015.png)
 ![Preview uikit015_1](./img/uikit015_1.png)
 
-## Swift 4.0
 
 ### ViewController.swift
 
-```swift
+```swift fct_label="Swift 4.x"
 //
 //  ViewController.swift
 //  UIKit015_4.0
@@ -63,65 +62,7 @@ class ViewController: UIViewController {
 }
 ```
 
-### SecondViewController.swift
-
-```swift
-//
-//  SecondViewController.swift
-//  UIKit015
-//
-//  Copyright © 2018年 FaBo, Inc. All rights reserved.
-//
-
-import UIKit
-
-class SecondViewController: UIViewController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // 背景色を設定.
-        self.view.backgroundColor = UIColor.blue
-        
-        // ボタンを作成.
-        let backButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 120, height: 50))
-        backButton.backgroundColor = UIColor.red
-        backButton.layer.masksToBounds = true
-        backButton.setTitle("Back", for: .normal)
-        backButton.layer.cornerRadius = 20.0
-        backButton.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height-50)
-        backButton.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchUpInside)
-        self.view.addSubview(backButton);
-    }
-    
-    /*
-     ボタンイベント.
-     */
-    @objc internal func onClickMyButton(sender: UIButton){
-        
-        // 遷移するViewを定義.
-        let myViewController: UIViewController = ViewController()
-        
-        // アニメーションを設定.
-        myViewController.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
-        
-        // Viewの移動.
-        self.present(myViewController, animated: true, completion: nil)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-}
-
-```
-
-## Swift 3.0
-
-### ViewController.swift
-
-```swift
+```swift fct_label="Swift 3.x"
 //
 //  ViewController.swift
 //  UIKit015_3.0
@@ -177,63 +118,7 @@ class ViewController: UIViewController {
 }
 ```
 
-### SecondViewController.swift
-
-```swift
-//
-//  SecondViewController.swift
-//  UIKit015
-//
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
-//
-
-import UIKit
-
-class SecondViewController: UIViewController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // 背景色を設定.
-        self.view.backgroundColor = UIColor.blueColor()
-        
-        // ボタンを作成.
-        let backButton: UIButton = UIButton(frame: CGRectMake(0,0,120,50))
-        backButton.backgroundColor = UIColor.redColor();
-        backButton.layer.masksToBounds = true
-        backButton.setTitle("Back", forState: .Normal)
-        backButton.layer.cornerRadius = 20.0
-        backButton.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height-50)
-        backButton.addTarget(self, action: #selector(onClickMyButton(_:)), forControlEvents: .TouchUpInside)
-        self.view.addSubview(backButton);
-    }
-    
-    /*
-     ボタンイベント.
-     */
-    internal func onClickMyButton(sender: UIButton){
-        
-        // 遷移するViewを定義.
-        let myViewController: UIViewController = ViewController()
-        
-        // アニメーションを設定.
-        myViewController.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
-        
-        // Viewの移動.
-        self.presentViewController(myViewController, animated: true, completion: nil)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-}
-```
-
-## Swift 2.3
-
-### ViewController.swift
-```swift
+```swift fct_label="Swift 2.3"
 ///
 //  ViewController.swift
 //  UIKit015
@@ -290,7 +175,110 @@ class ViewController: UIViewController {
 
 ### SecondViewController.swift
 
-```swift
+```swift fct_label="Swift 4.x"
+//
+//  SecondViewController.swift
+//  UIKit015
+//
+//  Copyright © 2018年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class SecondViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // 背景色を設定.
+        self.view.backgroundColor = UIColor.blue
+        
+        // ボタンを作成.
+        let backButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 120, height: 50))
+        backButton.backgroundColor = UIColor.red
+        backButton.layer.masksToBounds = true
+        backButton.setTitle("Back", for: .normal)
+        backButton.layer.cornerRadius = 20.0
+        backButton.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height-50)
+        backButton.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchUpInside)
+        self.view.addSubview(backButton);
+    }
+    
+    /*
+     ボタンイベント.
+     */
+    @objc internal func onClickMyButton(sender: UIButton){
+        
+        // 遷移するViewを定義.
+        let myViewController: UIViewController = ViewController()
+        
+        // アニメーションを設定.
+        myViewController.modalTransitionStyle = UIModalTransitionStyle.flipHorizontal
+        
+        // Viewの移動.
+        self.present(myViewController, animated: true, completion: nil)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+}
+
+```
+
+```swift fct_label="Swift 3.x"
+//
+//  SecondViewController.swift
+//  UIKit015
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class SecondViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // 背景色を設定.
+        self.view.backgroundColor = UIColor.blueColor()
+        
+        // ボタンを作成.
+        let backButton: UIButton = UIButton(frame: CGRectMake(0,0,120,50))
+        backButton.backgroundColor = UIColor.redColor();
+        backButton.layer.masksToBounds = true
+        backButton.setTitle("Back", forState: .Normal)
+        backButton.layer.cornerRadius = 20.0
+        backButton.layer.position = CGPoint(x: self.view.bounds.width/2 , y:self.view.bounds.height-50)
+        backButton.addTarget(self, action: #selector(onClickMyButton(_:)), forControlEvents: .TouchUpInside)
+        self.view.addSubview(backButton);
+    }
+    
+    /*
+     ボタンイベント.
+     */
+    internal func onClickMyButton(sender: UIButton){
+        
+        // 遷移するViewを定義.
+        let myViewController: UIViewController = ViewController()
+        
+        // アニメーションを設定.
+        myViewController.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontal
+        
+        // Viewの移動.
+        self.presentViewController(myViewController, animated: true, completion: nil)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+}
+```
+
+```swift fct_label="Swift 2.3"
 //
 //  SecondViewController.swift
 //  UIKit015

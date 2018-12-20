@@ -3,10 +3,8 @@
 ![Preview uikit012](./img/uikit012.png)
 ![Preview uikit012_1](./img/uikit012_1.png)
 
-## Swift 4.0
-
 ### AppDelegate.swift
-```swift
+```swift fct_label="Swift 4.x"
 //
 //  AppDelegate.swift
 //  UIKit012
@@ -20,7 +18,6 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
 
@@ -63,108 +60,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-
-```
-### FirstViewController.swift
-
-```swift
-
-//
-//  FirstViewController.swift
-//  UIKit012
-//
-//  Copyright © 2018年 FaBo, Inc. All rights reserved.
-//
-
-import UIKit
-
-class FirstViewController: UIViewController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Controllerのタイトルを設定する.
-        self.title = "My First View"
-        
-        // Viewの背景色をCyanに設定する.
-        self.view.backgroundColor = UIColor.cyan
-        
-        // ボタンの定義をおこなう.
-        let buttonWidth: CGFloat = 100
-        let buttonHeight: CGFloat = 50
-        let posX: CGFloat = (self.view.bounds.width - buttonWidth)/2
-        let posY: CGFloat = 200
-        let myButton = UIButton(frame: CGRect(x: posX, y: posY, width: buttonWidth, height: buttonHeight))
-        myButton.backgroundColor = UIColor.orange
-        myButton.layer.masksToBounds = true
-        myButton.layer.cornerRadius = 20.0
-        myButton.setTitle("ボタン", for: .normal)
-        myButton.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchUpInside)
-        
-        // ボタンをViewに追加する.
-        self.view.addSubview(myButton);
-    }
-    
-    /*
-     ボタンイベント
-     */
-    @objc internal func onClickMyButton(sender: UIButton){
-        
-        // 移動先のViewを定義する.
-        let secondViewController = SecondViewController()
-        
-        // SecondViewに移動する.
-        self.navigationController?.pushViewController(secondViewController, animated: true)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-}
 ```
 
-### SecondViewController.swift
-
-```swift
-//
-//  SecondViewController.swift
-//  UIKit012
-//
-//  Copyright © 2018年 FaBo, Inc. All rights reserved.
-//
-
-import UIKit
-
-class SecondViewController: UIViewController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Controllerのタイトルを設定する.
-        self.title = "My Second View"
-        
-        // Viewの背景色を定義する.
-        self.view.backgroundColor = UIColor.green
-        
-    }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-}
-
-
-```
-
-
-## Swift 3.0
-
-### AppDelegate.swift
-```swift
+```swift fct_label="Swift 3.x"
 //
 //  AppDelegate.swift
 //  UIKit012
@@ -178,7 +76,6 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
@@ -221,107 +118,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-
-```
-### FirstViewController.swift
-
-```swift
-
-//
-//  FirstViewController.swift
-//  UIKit012
-//
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
-//
-
-import UIKit
-
-class FirstViewController: UIViewController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Controllerのタイトルを設定する.
-        self.title = "My First View"
-        
-        // Viewの背景色をCyanに設定する.
-        self.view.backgroundColor = UIColor.cyan
-        
-        // ボタンの定義をおこなう.
-        let buttonWidth: CGFloat = 100
-        let buttonHeight: CGFloat = 50
-        let posX: CGFloat = (self.view.bounds.width - buttonWidth)/2
-        let posY: CGFloat = 200
-        let myButton = UIButton(frame: CGRect(x: posX, y: posY, width: buttonWidth, height: buttonHeight))
-        myButton.backgroundColor = UIColor.orange
-        myButton.layer.masksToBounds = true
-        myButton.layer.cornerRadius = 20.0
-        myButton.setTitle("ボタン", for: .normal)
-        myButton.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchUpInside)
-        
-        // ボタンをViewに追加する.
-        self.view.addSubview(myButton);
-    }
-    
-    /*
-     ボタンイベント
-     */
-    internal func onClickMyButton(sender: UIButton){
-        
-        // 移動先のViewを定義する.
-        let secondViewController = SecondViewController()
-        
-        // SecondViewに移動する.
-        self.navigationController?.pushViewController(secondViewController, animated: true)
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-}
 ```
 
-### SecondViewController.swift
-
-```swift
-//
-//  SecondViewController.swift
-//  UIKit012
-//
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
-//
-
-import UIKit
-
-class SecondViewController: UIViewController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Controllerのタイトルを設定する.
-        self.title = "My Second View"
-        
-        // Viewの背景色を定義する.
-        self.view.backgroundColor = UIColor.green
-        
-    }
-    
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-}
-
-
-```
-
-## Swift 2.3
-
-### AppDelegate.swift
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  AppDelegate.swift
 //  UIKit012
@@ -378,9 +177,121 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 ```
-### FistViewController.swift
 
-```swift
+### FirstViewController.swift
+```swift fct_label="Swift 4.x"
+//
+//  FirstViewController.swift
+//  UIKit012
+//
+//  Copyright © 2018年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class FirstViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Controllerのタイトルを設定する.
+        self.title = "My First View"
+        
+        // Viewの背景色をCyanに設定する.
+        self.view.backgroundColor = UIColor.cyan
+        
+        // ボタンの定義をおこなう.
+        let buttonWidth: CGFloat = 100
+        let buttonHeight: CGFloat = 50
+        let posX: CGFloat = (self.view.bounds.width - buttonWidth)/2
+        let posY: CGFloat = 200
+        let myButton = UIButton(frame: CGRect(x: posX, y: posY, width: buttonWidth, height: buttonHeight))
+        myButton.backgroundColor = UIColor.orange
+        myButton.layer.masksToBounds = true
+        myButton.layer.cornerRadius = 20.0
+        myButton.setTitle("ボタン", for: .normal)
+        myButton.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchUpInside)
+        
+        // ボタンをViewに追加する.
+        self.view.addSubview(myButton);
+    }
+    
+    /*
+     ボタンイベント
+     */
+    @objc internal func onClickMyButton(sender: UIButton){
+        
+        // 移動先のViewを定義する.
+        let secondViewController = SecondViewController()
+        
+        // SecondViewに移動する.
+        self.navigationController?.pushViewController(secondViewController, animated: true)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+}
+```
+
+```swift fct_label="Swift 3.x"
+//
+//  FirstViewController.swift
+//  UIKit012
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class FirstViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Controllerのタイトルを設定する.
+        self.title = "My First View"
+        
+        // Viewの背景色をCyanに設定する.
+        self.view.backgroundColor = UIColor.cyan
+        
+        // ボタンの定義をおこなう.
+        let buttonWidth: CGFloat = 100
+        let buttonHeight: CGFloat = 50
+        let posX: CGFloat = (self.view.bounds.width - buttonWidth)/2
+        let posY: CGFloat = 200
+        let myButton = UIButton(frame: CGRect(x: posX, y: posY, width: buttonWidth, height: buttonHeight))
+        myButton.backgroundColor = UIColor.orange
+        myButton.layer.masksToBounds = true
+        myButton.layer.cornerRadius = 20.0
+        myButton.setTitle("ボタン", for: .normal)
+        myButton.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchUpInside)
+        
+        // ボタンをViewに追加する.
+        self.view.addSubview(myButton);
+    }
+    
+    /*
+     ボタンイベント
+     */
+    internal func onClickMyButton(sender: UIButton){
+        
+        // 移動先のViewを定義する.
+        let secondViewController = SecondViewController()
+        
+        // SecondViewに移動する.
+        self.navigationController?.pushViewController(secondViewController, animated: true)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+}
+```
+
+```swift fct_label="Swift 2.3"
 //
 //  FirstViewController.swift
 //  UIKit012
@@ -435,9 +346,42 @@ class FirstViewController: UIViewController {
     }
 }
 ```
-### SecondViewController.swift
 
-```swift
+### SecondViewController.swift
+```swift fct_label="Swift 4.x/3.x"
+//
+//  SecondViewController.swift
+//  UIKit012
+//
+//  Copyright © 2018年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class SecondViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Controllerのタイトルを設定する.
+        self.title = "My Second View"
+        
+        // Viewの背景色を定義する.
+        self.view.backgroundColor = UIColor.green
+        
+    }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+}
+```
+
+```swift fct_label="Swift 2.3"
+
 //
 //  SecondViewController.swift
 //  UIKit012
