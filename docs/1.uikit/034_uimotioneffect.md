@@ -2,8 +2,86 @@
 
 ![Preview uikit034](img/uikit034.png)
 
-## Swift3.0
-```swift
+```swift fct_label="Swift 4.x"
+//
+//  ViewController.swift
+//  UIKit034_4.0
+//
+//  Created by KimikoWatanabe on 2016/08/18.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor.cyan
+        
+        // UIViewを作成.
+        let myBox = UIView(frame: CGRect(x:0,y:0,width:200,height:200))
+        myBox.backgroundColor = UIColor.black
+        myBox.layer.masksToBounds = true
+        myBox.layer.cornerRadius = 20.0
+        myBox.layer.position = self.view.center
+        myBox.layer.zPosition = 1
+        self.view.addSubview(myBox)
+        
+        // Labelを作成.
+        let myLabel = UILabel(frame: CGRect(x:0,y:0,width:200,height:200))
+        myLabel.backgroundColor = UIColor.gray
+        myLabel.layer.masksToBounds = true
+        myLabel.layer.cornerRadius = 20.0
+        myLabel.text = "Hello Swift!!"
+        myLabel.textColor = UIColor.white
+        myLabel.shadowColor = UIColor.gray
+        myLabel.textAlignment = NSTextAlignment.center
+        myLabel.layer.position = self.view.center
+        myLabel.layer.zPosition = 2
+        self.view.addSubview(myLabel)
+        
+        //端末のｘ軸方向の傾きに応じてmyBoxの位置を変えるエフェクトを作成.
+        let xAxis1 = UIInterpolatingMotionEffect(keyPath: "center.x", type: UIInterpolatingMotionEffect.EffectType.tiltAlongHorizontalAxis)
+        xAxis1.minimumRelativeValue = -100.0
+        xAxis1.maximumRelativeValue = 100.0
+        
+        //端末のy軸方向の傾きに応じてmyBoxの位置を変えるエフェクトを作成.
+        let yAxis1 = UIInterpolatingMotionEffect(keyPath: "center.y", type: UIInterpolatingMotionEffect.EffectType.tiltAlongVerticalAxis)
+        yAxis1.minimumRelativeValue = -100.0
+        yAxis1.maximumRelativeValue = 100.0
+        
+        //モーションエフェクトのグループを作成.
+        let group1 = UIMotionEffectGroup()
+        group1.motionEffects = [xAxis1, yAxis1]
+        
+        //端末のｘ軸方向の傾きに応じてmyLabelの位置を変えるエフェクトを作成.
+        let xAxis = UIInterpolatingMotionEffect(keyPath: "center.x", type: UIInterpolatingMotionEffect.EffectType.tiltAlongHorizontalAxis)
+        xAxis.minimumRelativeValue = -50.0
+        xAxis.maximumRelativeValue = 50.0
+        
+        //端末のy軸方向の傾きに応じてmyLabelの位置を変えるエフェクトを作成.
+        let yAxis = UIInterpolatingMotionEffect(keyPath: "center.y", type: UIInterpolatingMotionEffect.EffectType.tiltAlongVerticalAxis)
+        yAxis.minimumRelativeValue = -50.0
+        yAxis.maximumRelativeValue = 50.0
+        
+        //モーションエフェクトのグループを作成.
+        let group = UIMotionEffectGroup()
+        group.motionEffects = [xAxis, yAxis]
+        
+        //myLabelにエフェクトを適用させる.
+        myBox.addMotionEffect(group)
+        myLabel.addMotionEffect(group1)
+        
+    }
+    
+}
+
+```
+
+```swift fct_label="Swift 3.x"
 //
 //  ViewController.swift
 //  UIKit034_3.0
@@ -81,8 +159,7 @@ class ViewController: UIViewController {
 }
 ```
 
-## Swift 2.3
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  UIKit034_2.3
@@ -160,6 +237,9 @@ class ViewController: UIViewController {
 }
 
 ```
+
+## 3.xと4.xの差分
+* UIInterpolatingMotionEffectTypeがUIInterpolatingMotionEffect.EffectTypeに変更
 
 ## 2.3と3.0の差分
 * UIColorの参照方法が変更(UIColor.grayColor()->UIColor.gray)

@@ -590,7 +590,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../032_uialertC¥controller/" title="UIAlertControllerでActionSheet表示" class="md-nav__link">
+    <a href="../032_uialertController/" title="UIAlertControllerでActionSheet表示" class="md-nav__link">
       UIAlertControllerでActionSheet表示
     </a>
   </li>
@@ -629,15 +629,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#swift30" title="Swift3.0" class="md-nav__link">
-    Swift3.0
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#swift-23" title="Swift 2.3" class="md-nav__link">
-    Swift 2.3
+  <a href="#3x4x" title="3.xと4.xの差分" class="md-nav__link">
+    3.xと4.xの差分
   </a>
   
 </li>
@@ -1197,15 +1190,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#swift30" title="Swift3.0" class="md-nav__link">
-    Swift3.0
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#swift-23" title="Swift 2.3" class="md-nav__link">
-    Swift 2.3
+  <a href="#3x4x" title="3.xと4.xの差分" class="md-nav__link">
+    3.xと4.xの差分
   </a>
   
 </li>
@@ -1244,8 +1230,204 @@
                 <h1 id="uimenucontrollermenuitem">UIMenuControllerにMenuItemを追加</h1>
 <p><img alt="Preview uikit033_001" src="../img/uikit033_001.png" />
 <img alt="Preview uikit033_002" src="../img/uikit033_002.png" /></p>
-<h2 id="swift30">Swift3.0</h2>
-<p> <table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99</pre></div></td><td class=code><div class=codehilite><pre><span></span><span class=c1>//</span>
+<span class=c1>//  ViewController.swift</span>
+<span class=c1>//  UIKit033_4.0</span>
+<span class=c1>//</span>
+<span class=c1>//  Created by KimikoWatanabe on 2016/08/18.</span>
+<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
+<span class=c1>//</span>
+
+<span class=kd>import</span> <span class=nc>UIKit</span>
+
+<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UITextFieldDelegate</span> <span class=p>{</span>
+
+    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
+        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+
+        <span class=c1>// 背景を青色に設定.</span>
+        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyan</span>
+
+        <span class=c1>// TextField作成.</span>
+        <span class=kd>let</span> <span class=nv>myTextField</span><span class=p>:</span> <span class=bp>UITextField</span> <span class=p>=</span> <span class=bp>UITextField</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=bp>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=mi>200</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>30</span><span class=p>))</span>
+        <span class=n>myTextField</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;Hello Swift!&quot;</span>
+        <span class=n>myTextField</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
+        <span class=n>myTextField</span><span class=p>.</span><span class=n>borderStyle</span> <span class=p>=</span> <span class=bp>UITextField</span><span class=p>.</span><span class=n>BorderStyle</span><span class=p>.</span><span class=n>roundedRect</span>
+        <span class=n>myTextField</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=bp>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>100</span><span class=p>)</span>
+
+        <span class=c1>// TextFieldをviewに追加.</span>
+        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myTextField</span><span class=p>)</span>
+
+        <span class=c1>// MenuController生成.</span>
+        <span class=kd>let</span> <span class=nv>myMenuController</span><span class=p>:</span> <span class=bp>UIMenuController</span> <span class=p>=</span> <span class=bp>UIMenuController</span><span class=p>.</span><span class=n>shared</span>
+
+        <span class=c1>// MenuControllerを表示.</span>
+        <span class=n>myMenuController</span><span class=p>.</span><span class=n>isMenuVisible</span> <span class=p>=</span> <span class=kc>true</span>
+
+        <span class=c1>// 矢印の向きを下に設定.</span>
+        <span class=n>myMenuController</span><span class=p>.</span><span class=n>arrowDirection</span> <span class=p>=</span> <span class=bp>UIMenuController</span><span class=p>.</span><span class=n>ArrowDirection</span><span class=p>.</span><span class=n>down</span>
+
+
+        <span class=c1>// rect、viewを設定.</span>
+        <span class=n>myMenuController</span><span class=p>.</span><span class=n>setTargetRect</span><span class=p>(</span><span class=bp>CGRect</span><span class=p>.</span><span class=n>zero</span><span class=p>,</span> <span class=k>in</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>)</span>
+
+
+        <span class=c1>// MenuItem生成.</span>
+        <span class=kd>let</span> <span class=nv>myMenuItem_1</span><span class=p>:</span> <span class=bp>UIMenuItem</span> <span class=p>=</span> <span class=bp>UIMenuItem</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;Menu1&quot;</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onMenu1</span><span class=p>(</span><span class=n>sender</span><span class=p>:)))</span>
+        <span class=kd>let</span> <span class=nv>myMenuItem_2</span><span class=p>:</span> <span class=bp>UIMenuItem</span> <span class=p>=</span> <span class=bp>UIMenuItem</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;Menu2&quot;</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onMenu2</span><span class=p>(</span><span class=n>sender</span><span class=p>:)))</span>
+        <span class=kd>let</span> <span class=nv>myMenuItem_3</span><span class=p>:</span> <span class=bp>UIMenuItem</span> <span class=p>=</span> <span class=bp>UIMenuItem</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;Menu3&quot;</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onMenu3</span><span class=p>(</span><span class=n>sender</span><span class=p>:)))</span>
+
+        <span class=c1>// MenuItemを配列に格納.</span>
+        <span class=kd>let</span> <span class=nv>myMenuItems</span><span class=p>:</span> <span class=bp>NSArray</span> <span class=p>=</span> <span class=p>[</span><span class=n>myMenuItem_1</span><span class=p>,</span> <span class=n>myMenuItem_2</span><span class=p>,</span> <span class=n>myMenuItem_3</span><span class=p>]</span>
+
+        <span class=c1>// MenuControllerにMenuItemを追加.</span>
+        <span class=n>myMenuController</span><span class=p>.</span><span class=n>menuItems</span> <span class=p>=</span> <span class=n>myMenuItems</span> <span class=k>as</span><span class=p>?</span> <span class=p>[</span><span class=bp>UIMenuItem</span><span class=p>]</span>
+    <span class=p>}</span>
+
+    <span class=cm>/*</span>
+<span class=cm>     UITextFieldが編集開始された直後に呼ばれる.</span>
+<span class=cm>     */</span>
+    <span class=kd>func</span> <span class=nf>textFieldDidBeginEditing</span><span class=p>(</span><span class=kc>_</span> <span class=n>textField</span><span class=p>:</span> <span class=bp>UITextField</span><span class=p>)</span> <span class=p>{</span>
+        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;textFieldDidBeginEditing:&quot;</span> <span class=o>+</span> <span class=n>textField</span><span class=p>.</span><span class=n>text</span><span class=p>!)</span>
+    <span class=p>}</span>
+
+    <span class=cm>/*</span>
+<span class=cm>     UITextFieldが編集終了する直前に呼ばれる.</span>
+<span class=cm>     */</span>
+    <span class=kd>func</span> <span class=nf>textFieldShouldEndEditing</span><span class=p>(</span><span class=kc>_</span> <span class=n>textField</span><span class=p>:</span> <span class=bp>UITextField</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Bool</span> <span class=p>{</span>
+        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;textFieldShouldEndEditing:&quot;</span> <span class=o>+</span> <span class=n>textField</span><span class=p>.</span><span class=n>text</span><span class=p>!)</span>
+        <span class=k>return</span> <span class=kc>true</span>
+    <span class=p>}</span>
+
+    <span class=cm>/*</span>
+<span class=cm>     作成したMenuItemが表示されるようにする.</span>
+<span class=cm>     */</span>
+    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>canPerformAction</span><span class=p>(</span><span class=kc>_</span> <span class=n>action</span><span class=p>:</span> <span class=nb>Selector</span><span class=p>,</span> <span class=n>withSender</span> <span class=n>sender</span><span class=p>:</span> <span class=nb>Any</span><span class=p>?)</span> <span class=p>-&gt;</span> <span class=nb>Bool</span> <span class=p>{</span>
+        <span class=k>if</span> <span class=n>action</span> <span class=p>==</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onMenu1</span><span class=p>(</span><span class=n>sender</span><span class=p>:))</span> <span class=o>||</span> <span class=n>action</span> <span class=p>==</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onMenu2</span><span class=p>(</span><span class=n>sender</span><span class=p>:))</span> <span class=o>||</span> <span class=n>action</span> <span class=p>==</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onMenu3</span><span class=p>(</span><span class=n>sender</span><span class=p>:))</span>  <span class=p>{</span>
+            <span class=k>return</span> <span class=kc>true</span>
+        <span class=p>}</span>
+        <span class=k>return</span> <span class=kc>false</span>
+    <span class=p>}</span>
+
+    <span class=cm>/*</span>
+<span class=cm>     作成したMenuItemが押された際に呼び出される.</span>
+<span class=cm>     */</span>
+
+    <span class=kr>@objc</span> <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onMenu1</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIMenuItem</span><span class=p>)</span> <span class=p>{</span>
+        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;onMenu1&quot;</span><span class=p>)</span>
+    <span class=p>}</span>
+
+    <span class=kr>@objc</span> <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onMenu2</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIMenuItem</span><span class=p>)</span> <span class=p>{</span>
+        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;onMenu2&quot;</span><span class=p>)</span>
+    <span class=p>}</span>
+
+    <span class=kr>@objc</span> <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onMenu3</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIMenuItem</span><span class=p>)</span> <span class=p>{</span>
+        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;onMenu3&quot;</span><span class=p>)</span>
+    <span class=p>}</span>
+
+    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
+        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+</pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
  2
  3
  4
@@ -1440,9 +1622,7 @@
         <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
     <span class=p>}</span>
 <span class=p>}</span>
-</pre></div></td></tr></table></p>
-<h2 id="swift-23">Swift 2.3</h2>
-<p> <table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
+</pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
  2
  3
  4
@@ -1635,7 +1815,14 @@
         <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
     <span class=p>}</span>
 <span class=p>}</span>
-</pre></div></td></tr></table></p>
+</pre></div></td></tr></table></div></div>
+
+<h2 id="3x4x">3.xと4.xの差分</h2>
+<ul>
+<li>UITextBorderStyleがUITextField.BorderStyleに変更</li>
+<li>UIMenuControllerArrowDirectionがUIMenuController.ArrowDirectionに変更</li>
+<li>internal func onMenuの1~3に@objcを追加</li>
+</ul>
 <h2 id="2330">2.3と3.0の差分</h2>
 <ul>
 <li>UIColorの参照方法が変更(UIColor.grayColor()-&gt;UIColor.gray)</li>
@@ -1671,7 +1858,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../032_uialertC¥controller/" title="UIAlertControllerでActionSheet表示" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../032_uialertController/" title="UIAlertControllerでActionSheet表示" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>

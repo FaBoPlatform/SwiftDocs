@@ -2,8 +2,99 @@
 
 ![Preview uikit042](img/uikit042.png)
 
-## Swift3.0
-```swift
+```swift fct_label="Swift 4.x"
+//
+//  ViewController.swift
+//  UIKit042_4.0
+//
+//  Created by KimikoWatanabe on 2016/08/21.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+    
+    var InputStr:String!
+    
+    // 入力できる最大文字数.
+    let maxLength: Int = 6
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor.cyan
+        
+        let myButton = UIButton(frame: CGRect(x:0, y:0, width:200, height:40))
+        myButton.layer.position = CGPoint(x:self.view.frame.width/2, y:200)
+        myButton.layer.cornerRadius = 20.0
+        myButton.backgroundColor = UIColor.red
+        myButton.setTitle("UIAlertを発動", for: .normal)
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(sender:)), for: .touchUpInside)
+        
+        self.view.addSubview(myButton)
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    @objc func onClickMyButton(sender: UIButton) {
+        
+        // Alert生成.
+        let myAlert: UIAlertController = UIAlertController(title: "title", message: "6文字以下で入力", preferredStyle: UIAlertController.Style.alert)
+        
+        
+        // OKアクション生成.
+        let OkAction = UIAlertAction(title: "OK", style: UIAlertAction.Style.default) { (action: UIAlertAction!) -> Void in
+            print("OK")
+        }
+        
+        // Cancelアクション生成.
+        let CancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.destructive) { (action: UIAlertAction!) -> Void in
+            print("Cancel")
+        }
+        
+        // AlertにTextFieldを追加.
+        myAlert.addTextField { (textField: UITextField!) -> Void in
+            
+            // NotificationCenterを生成.
+            let myNotificationCenter = NotificationCenter.default
+            
+            // textFieldに変更があればchangeTextFieldメソッドに通知.
+            myNotificationCenter.addObserver(self, selector: #selector(ViewController.changeTextField(sender:)), name: UITextField.textDidChangeNotification, object: nil)
+        }
+        
+        // Alertにアクションを追加.
+        myAlert.addAction(OkAction)
+        myAlert.addAction(CancelAction)
+        
+        // Alertを発動する.
+        present(myAlert, animated: true, completion: nil)
+    }
+    
+    @objc func changeTextField (sender: NSNotification) {
+        
+        let textField = sender.object as! UITextField
+        
+        // 入力された文字を取得.
+        InputStr = textField.text
+        
+        // 入力された文字が6文字を超えたら入力を制限.
+        if InputStr.characters.count < maxLength {
+            textField.isEnabled = true
+            
+            // 入力された文字を表示.
+            print(textField.text!)
+        } else {
+            textField.isEnabled = false
+            print("6文字を超えています")
+        }
+    }
+}
+```
+
+```swift fct_label="Swift 3.x"
 //
 //  ViewController.swift
 //  UIKit042_3.0
@@ -95,8 +186,7 @@ class ViewController: UIViewController {
 }
 ```
 
-## Swift 2.3
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  UIKit042_2.3
@@ -187,6 +277,14 @@ class ViewController: UIViewController {
     }
 }
 ```
+
+## 3.xと4.xの差分
+* func onClickMyButtonに@objcを追加
+* func changeTextFieldに@objcを追加
+* NSNotification.Name.UITextFieldTextDidChangeが
+UITextField.textDidChangeNotificationに変更
+* UIAlertControllerStyleがUIAlertController.Styleに変更
+* charactersは非推奨
 
 ## 2.3と3.0の差分
 * UIColorの参照方法が変更(UIColor.grayColor()->UIColor.gray)

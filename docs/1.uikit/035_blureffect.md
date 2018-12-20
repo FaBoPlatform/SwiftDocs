@@ -5,8 +5,91 @@
 ![Preview uikit035_003](img/uikit035_003.png)
 ![Preview uikit035_004](img/uikit035_004.png)
 
-## Swift3.0
-```swift
+```swift fct_label="Swift 4.x"
+//
+//  ViewController.swift
+//  UIKit035_4.0
+//
+//  Created by KimikoWatanabe on 2016/08/18.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+    
+    private var effectView : UIVisualEffectView!
+    private var mySegcon : UISegmentedControl!
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        // 背景画像を生成.
+        let image = UIImage(named: "ci005")
+        let imageView = UIImageView(frame: self.view.bounds)
+        imageView.image = image
+        self.view.addSubview(imageView)
+        
+        // SegmentedControlを生成.
+        mySegcon = UISegmentedControl(items: ["Dark", "ExtraLight", "Light"])
+        mySegcon.center = CGPoint(x:self.view.center.x, y:self.view.bounds.maxY - 50)
+        mySegcon.backgroundColor = UIColor.gray
+        mySegcon.tintColor = UIColor.white
+        mySegcon.addTarget(self, action: #selector(ViewController.onClickMySegmentedControl(sender:)), for: UIControl.Event.valueChanged)
+        self.view.addSubview(mySegcon)
+    }
+    
+    /*
+     エフェクトを適用する.
+     */
+    internal func addVirtualEffectView(effect : UIBlurEffect!){
+        
+        if effectView != nil {
+            effectView.removeFromSuperview()
+        }
+        
+        // Blurエフェクトを適用するEffectViewを作成.
+        effectView = UIVisualEffectView(effect: effect)
+        effectView.frame = CGRect(x:0, y:0, width:200, height:400)
+        effectView.layer.position = CGPoint(x:mySegcon.bounds.midX, y:-(effectView.frame.midY + 20) )
+        effectView.layer.masksToBounds = true
+        effectView.layer.cornerRadius = 20.0
+        mySegcon.addSubview(effectView)
+    }
+    
+    /*
+     SegmentedControlの値が変わった時に呼び出されるメソッド.
+     */
+    @objc internal func onClickMySegmentedControl(sender : UISegmentedControl){
+        
+        var effect : UIBlurEffect!
+        
+        switch sender.selectedSegmentIndex {
+            
+        case 0:
+            // LightなBlurエフェクトを作る.
+            effect = UIBlurEffect(style: UIBlurEffect.Style.dark)
+            
+        case 1:
+            // DarkなBlurエフェクトを作る.
+            effect = UIBlurEffect(style: UIBlurEffect.Style.light)
+            
+        case 2:
+            // ExtraLightなBlurエフェクトを作る.
+            effect = UIBlurEffect(style: UIBlurEffect.Style.extraLight)
+            
+        default:
+            print("Error")
+        }
+        
+        self.addVirtualEffectView(effect: effect)
+    }
+}
+
+```
+
+```swift fct_label="Swift 3.x"
 //
 //  ViewController.swift
 //  UIKit035_3.0
@@ -90,8 +173,7 @@ class ViewController: UIViewController {
 
 ```
 
-## Swift 2.3
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  UIKit035_2.3
@@ -173,6 +255,11 @@ class ViewController: UIViewController {
     }
 }
 ```
+
+## 3.xと4.xの差分
+* UIControlEventsがUIControl.Eventに変更
+* internal func addVirtualEffectView(effect : UIBlurEffect!)に@objcを追加
+* UIBlurEffectStyleがUIBlurEffect.Styleに変更
 
 ## 2.3と3.0の差分
 * UIColorの参照方法が変更(UIColor.grayColor()->UIColor.gray)

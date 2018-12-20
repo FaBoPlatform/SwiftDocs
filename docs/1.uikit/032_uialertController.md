@@ -2,8 +2,60 @@
 
 ![Preview uikit032](img/uikit032.png)
 
-## Swift3.0
-```swift
+```swift fct_label="Swift 4.x"
+//
+//  ViewController.swift
+//  UIKit032_4.0
+//
+//  Created by KimikoWatanabe on 2016/08/18.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        // インスタンス生成　styleはActionSheet.
+        let myAlert = UIAlertController(title: "タイトル", message: "message", preferredStyle: UIAlertController.Style.actionSheet)
+        
+        // アクションを生成.
+        let myAction_1 = UIAlertAction(title: "Hello", style: UIAlertAction.Style.default, handler: {
+            (action: UIAlertAction!) in
+            print("Hello")
+        })
+        
+        let myAction_2 = UIAlertAction(title: "yes", style: UIAlertAction.Style.destructive, handler: {
+            (action: UIAlertAction!) in
+            print("yes")
+        })
+        
+        let myAction_3 = UIAlertAction(title: "no", style: UIAlertAction.Style.cancel, handler: {
+            (action: UIAlertAction!) in
+            print("no")
+        })
+        
+        // アクションを追加.
+        myAlert.addAction(myAction_1)
+        myAlert.addAction(myAction_2)
+        myAlert.addAction(myAction_3)
+        
+        self.present(myAlert, animated: true, completion: nil)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+
+```
+
+```swift fct_label="Swift 3.x"
 //
 //  ViewController.swift
 //  UIKit032_3.0
@@ -55,8 +107,7 @@ class ViewController: UIViewController {
 }
 ```
 
-## Swift 2.3
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  UIKit032_2.3
@@ -107,6 +158,9 @@ class ViewController: UIViewController {
     }
 }
 ```
+
+## 3.xと4.xの差分
+* UIAlertActionStyleがUIAlertController.Styleに変更
 
 ## 2.3と3.0の差分
 * UIAlertActionStyleのプロパティ名の変更
