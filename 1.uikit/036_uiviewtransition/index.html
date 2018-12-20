@@ -590,7 +590,7 @@
 
 
   <li class="md-nav__item">
-    <a href="../032_uialertC¥controller/" title="UIAlertControllerでActionSheet表示" class="md-nav__link">
+    <a href="../032_uialertController/" title="UIAlertControllerでActionSheet表示" class="md-nav__link">
       UIAlertControllerでActionSheet表示
     </a>
   </li>
@@ -665,15 +665,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#swift30" title="Swift3.0" class="md-nav__link">
-    Swift3.0
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#swift-23" title="Swift 2.3" class="md-nav__link">
-    Swift 2.3
+  <a href="#3x4x" title="3.xと4.xの差分" class="md-nav__link">
+    3.xと4.xの差分
   </a>
   
 </li>
@@ -1197,15 +1190,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#swift30" title="Swift3.0" class="md-nav__link">
-    Swift3.0
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#swift-23" title="Swift 2.3" class="md-nav__link">
-    Swift 2.3
+  <a href="#3x4x" title="3.xと4.xの差分" class="md-nav__link">
+    3.xと4.xの差分
   </a>
   
 </li>
@@ -1244,8 +1230,212 @@
                 <h1 id="uiview">UIViewにトランジションをつける</h1>
 <p><img alt="Preview uikit036_001" src="../img/uikit036_001.png" />
 <img alt="Preview uikit036_002" src="../img/uikit036_002.png" /></p>
-<h2 id="swift30">Swift3.0</h2>
-<p> <table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103</pre></div></td><td class=code><div class=codehilite><pre><span></span><span class=c1>//</span>
+<span class=c1>//  ViewController.swift</span>
+<span class=c1>//  UIKit036_4.0</span>
+<span class=c1>//</span>
+<span class=c1>//  Created by KimikoWatanabe on 2016/08/18.</span>
+<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
+<span class=c1>//</span>
+
+<span class=kd>import</span> <span class=nc>UIKit</span>
+
+<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+
+    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myView</span><span class=p>:</span> <span class=bp>UIView</span><span class=p>!</span>
+    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myButton</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>!</span>
+
+    <span class=c1>// View切り替え用フラグ.</span>
+    <span class=kd>var</span> <span class=nv>viewFlag</span> <span class=p>=</span> <span class=kc>true</span>
+
+    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
+        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+
+        <span class=c1>// 背景を青色に設定.</span>
+        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyan</span>
+
+        <span class=c1>// myViewを生成.</span>
+        <span class=n>myView</span> <span class=p>=</span> <span class=bp>UIView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>)</span>
+        <span class=n>myView</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>orange</span>
+        <span class=n>myView</span><span class=p>.</span><span class=n>isHidden</span> <span class=p>=</span> <span class=kc>true</span>
+        <span class=n>myView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=bp>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span><span class=o>/</span><span class=mi>2</span><span class=p>)</span>
+
+        <span class=c1>// ボタンを生成.</span>
+        <span class=n>myButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=bp>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=mi>100</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>50</span><span class=p>))</span>
+        <span class=n>myButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>red</span>
+        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
+        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
+        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;Transition&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>normal</span><span class=p>)</span>
+        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>normal</span><span class=p>)</span>
+        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=bp>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span><span class=o>/</span><span class=mi>2</span><span class=p>)</span>
+        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>touchUpInside</span><span class=p>)</span>
+
+        <span class=c1>// self.viewにmyViewを追加.</span>
+        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myView</span><span class=p>)</span>
+
+        <span class=c1>// self.viewにボタンを追加.</span>
+        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>)</span>
+    <span class=p>}</span>
+
+    <span class=cm>/*</span>
+<span class=cm>     ボタンイベント</span>
+<span class=cm>     */</span>
+    <span class=kr>@objc</span> <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>)</span> <span class=p>{</span>
+
+        <span class=c1>// フラグがtrue.</span>
+        <span class=k>if</span> <span class=n>viewFlag</span> <span class=p>{</span>
+
+            <span class=c1>// アニメーション処理.</span>
+            <span class=c1>// どのviewからtransitionするか.</span>
+            <span class=bp>UIView</span><span class=p>.</span><span class=n>transition</span><span class=p>(</span><span class=n>from</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>,</span>
+
+                              <span class=c1>// transition先のview.</span>
+                <span class=n>to</span><span class=p>:</span> <span class=n>myView</span><span class=p>,</span>
+
+                <span class=c1>// 秒数(1秒).</span>
+                <span class=n>duration</span><span class=p>:</span> <span class=mf>1.0</span><span class=p>,</span>
+
+                <span class=c1>// transitionを設定.</span>
+                <span class=n>options</span><span class=p>:</span> <span class=bp>UIView</span><span class=p>.</span><span class=n>AnimationOptions</span><span class=p>.</span><span class=n>transitionCurlUp</span><span class=p>,</span>
+
+                <span class=c1>// アニメーション完了時の処理.</span>
+                <span class=n>completion</span><span class=p>:</span> <span class=p>{</span> <span class=p>(</span><span class=nb>Bool</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
+
+                    <span class=bp>print</span><span class=p>(</span><span class=s>&quot;self.view -&gt; myView&quot;</span><span class=p>)</span>
+
+                    <span class=c1>// myViewを表示.</span>
+                    <span class=kc>self</span><span class=p>.</span><span class=n>myView</span><span class=p>.</span><span class=n>isHidden</span> <span class=p>=</span> <span class=kc>false</span>
+
+                    <span class=c1>// myViewにボタンを追加.</span>
+                    <span class=kc>self</span><span class=p>.</span><span class=n>myView</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>myButton</span><span class=p>)</span>
+            <span class=p>})</span>
+            <span class=c1>// フラグを折る.</span>
+            <span class=n>viewFlag</span> <span class=p>=</span> <span class=kc>false</span>
+
+        <span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
+            <span class=bp>UIView</span><span class=p>.</span><span class=n>transition</span><span class=p>(</span><span class=n>from</span><span class=p>:</span> <span class=n>myView</span><span class=p>,</span>
+                              <span class=n>to</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>,</span>
+                              <span class=n>duration</span><span class=p>:</span> <span class=mf>1.0</span><span class=p>,</span>
+                              <span class=n>options</span><span class=p>:</span> <span class=bp>UIView</span><span class=p>.</span><span class=n>AnimationOptions</span><span class=p>.</span><span class=n>transitionFlipFromLeft</span><span class=p>,</span>
+                              <span class=n>completion</span><span class=p>:</span> <span class=p>{</span> <span class=p>(</span><span class=nb>Bool</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
+
+                                <span class=bp>print</span><span class=p>(</span><span class=s>&quot;myView -&gt; self.view&quot;</span><span class=p>)</span>
+
+                                <span class=c1>// self.viewにボタンを追加.</span>
+                                <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>myButton</span><span class=p>)</span>
+            <span class=p>})</span>
+            <span class=c1>// フラグを立てる.</span>
+            <span class=n>viewFlag</span> <span class=p>=</span> <span class=kc>true</span>
+        <span class=p>}</span>
+    <span class=p>}</span>
+
+    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
+        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+</pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
   2
   3
   4
@@ -1450,9 +1640,7 @@
         <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
     <span class=p>}</span>
 <span class=p>}</span>
-</pre></div></td></tr></table></p>
-<h2 id="swift-23">Swift 2.3</h2>
-<p> <table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
+</pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
   2
   3
   4
@@ -1657,7 +1845,13 @@
         <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
     <span class=p>}</span>
 <span class=p>}</span>
-</pre></div></td></tr></table></p>
+</pre></div></td></tr></table></div></div>
+
+<h2 id="3x4x">3.xと4.xの差分</h2>
+<ul>
+<li>internal func onClickMyButton(sender: UIButton)に@objcを追加</li>
+<li>UIViewAnimationOptionsがUIView.AnimationOptionsに変更</li>
+</ul>
 <h2 id="2330">2.3と3.0の差分</h2>
 <ul>
 <li>UIColorの参照方法が変更(UIColor.grayColor()-&gt;UIColor.gray)</li>
