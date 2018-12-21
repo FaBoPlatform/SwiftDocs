@@ -833,15 +833,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#swift30" title="Swift3.0" class="md-nav__link">
-    Swift3.0
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#swift-23" title="Swift 2.3" class="md-nav__link">
-    Swift 2.3
+  <a href="#3x4x" title="3.xと4.xの差分" class="md-nav__link">
+    3.xと4.xの差分
   </a>
   
 </li>
@@ -913,8 +906,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../054_customuicollectionview/" title="UITableViewに追加・削除機能を追加" class="md-nav__link">
-      UITableViewに追加・削除機能を追加
+    <a href="../054_customuicollectionview/" title="UICollectionViewのCellをカスタマイズ" class="md-nav__link">
+      UICollectionViewのCellをカスタマイズ
     </a>
   </li>
 
@@ -1197,15 +1190,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#swift30" title="Swift3.0" class="md-nav__link">
-    Swift3.0
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#swift-23" title="Swift 2.3" class="md-nav__link">
-    Swift 2.3
+  <a href="#3x4x" title="3.xと4.xの差分" class="md-nav__link">
+    3.xと4.xの差分
   </a>
   
 </li>
@@ -1243,8 +1229,94 @@
                 
                 <h1 id="ui">UIパーツの削除</h1>
 <p><img alt="Preview uikit050" src="../img/uikit050.png" /></p>
-<h2 id="swift30">Swift3.0</h2>
-<p> <table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44</pre></div></td><td class=code><div class=codehilite><pre><span></span><span class=c1>//</span>
+<span class=c1>//  ViewController.swift</span>
+<span class=c1>//  UIKit050_4.0</span>
+<span class=c1>//</span>
+<span class=c1>//  Created by KimikoWatanabe on 2016/08/21.</span>
+<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
+<span class=c1>//</span>
+
+<span class=kd>import</span> <span class=nc>UIKit</span>
+
+<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+
+    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
+        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+
+        <span class=kd>let</span> <span class=nv>myButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=bp>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>50</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>50</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=mi>100</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>100</span><span class=p>))</span>
+        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;UIボタン&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=bp>UIControl</span><span class=p>.</span><span class=n>State</span><span class=p>.</span><span class=n>normal</span><span class=p>)</span>
+        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=bp>UIControl</span><span class=p>.</span><span class=n>State</span><span class=p>.</span><span class=n>normal</span><span class=p>)</span>
+        <span class=n>myButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>green</span>
+
+        <span class=kd>let</span> <span class=nv>myLabel</span> <span class=p>=</span> <span class=bp>UILabel</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=bp>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>50</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>200</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=mi>100</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>100</span><span class=p>))</span>
+        <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;UIラベル&quot;</span>
+        <span class=n>myLabel</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>green</span>
+        <span class=n>myLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>red</span>
+
+        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>)</span>
+
+        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;View:</span><span class=si>\(</span><span class=n>view</span><span class=p>.</span><span class=n>description</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
+
+        <span class=kd>let</span> <span class=nv>views</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>subviews</span>
+        <span class=k>for</span> <span class=n>myView</span> <span class=k>in</span> <span class=n>views</span> <span class=p>{</span>
+            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;View:</span><span class=si>\(</span><span class=n>myView</span><span class=p>.</span><span class=n>description</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
+
+            <span class=k>if</span> <span class=n>myView</span><span class=p>.</span><span class=n>isKind</span><span class=p>(</span><span class=n>of</span><span class=p>:</span><span class=bp>UIButton</span><span class=p>.</span><span class=kc>self</span><span class=p>)</span> <span class=p>{</span>
+                <span class=n>myView</span><span class=p>.</span><span class=n>removeFromSuperview</span><span class=p>()</span>
+                <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myLabel</span><span class=p>)</span>
+            <span class=p>}</span>
+        <span class=p>}</span>
+    <span class=p>}</span>
+
+    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
+        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+</pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
  2
  3
  4
@@ -1331,9 +1403,7 @@
         <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
     <span class=p>}</span>
 <span class=p>}</span>
-</pre></div></td></tr></table></p>
-<h2 id="swift-23">Swift 2.3</h2>
-<p> <table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
+</pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
  2
  3
  4
@@ -1420,7 +1490,12 @@
         <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
     <span class=p>}</span>
 <span class=p>}</span>
-</pre></div></td></tr></table></p>
+</pre></div></td></tr></table></div></div>
+
+<h2 id="3x4x">3.xと4.xの差分</h2>
+<ul>
+<li>UIControlStateがUIControl.Stateに変更</li>
+</ul>
 <h2 id="2330">2.3と3.0の差分</h2>
 <ul>
 <li>UIColorの参照方法が変更(UIColor.grayColor()-&gt;UIColor.gray)</li>

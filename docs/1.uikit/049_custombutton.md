@@ -2,8 +2,48 @@
 
 ![Preview uikit049](img/uikit049.png)
 
-## Swift3.0
-```swift
+```swift fct_label="Swift 4.x"
+//
+//  ViewController.swift
+//  UIKit049_4.0
+//
+//  Created by KimikoWatanabe on 2016/08/21.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let myButton = MyButton(frame: CGRect(x:50, y:50, width:100, height:100))
+        myButton.setTitle("ボタン", for: UIControl.State.normal)
+        myButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(sender:)), for: .touchUpInside)
+        
+        self.view.addSubview(myButton)
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    /*
+     ボタンイベント.
+     */
+    @objc func onClickMyButton(sender: UIButton){
+        print("onClickMyButton:")
+        print("sender.currentTitile: \(sender.currentTitle!)")
+    }
+    
+}
+```
+
+```swift fct_label="Swift 3.x"
 //
 //  ViewController.swift
 //  UIKit049_3.0
@@ -43,11 +83,53 @@ class ViewController: UIViewController {
 
 }
 ```
+
+```swift fct_label="Swift 2.3"
+//
+//  ViewController.swift
+//  UIKit049_2.3
+//
+//  Created by KimikoWatanabe on 2016/08/21.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        let myButton = MyButton(frame: CGRectMake(50, 50, 100, 100))
+        myButton.setTitle("ボタン", forState: UIControlState.Normal)
+        myButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(_:)), forControlEvents: .TouchUpInside)
+
+        self.view.addSubview(myButton)
+
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    /*
+     ボタンイベント.
+     */
+    func onClickMyButton(sender: UIButton){
+        print("onClickMyButton:")
+        print("sender.currentTitile: \(sender.currentTitle!)")
+    }
+
+}
+```
+
 ### MyButton.swift
-```swift
+```swift fct_label="Swift 4.x/Swift 3.x"
 //
 //  MyButton.swift
-//  UIKit049_3.0
+//  UIKit049_4.0
 //
 //  Created by KimikoWatanabe on 2016/08/21.
 //  Copyright © 2016年 FaBo, Inc. All rights reserved.
@@ -161,51 +243,7 @@ class MyButton: UIButton {
 }
 ```
 
-## Swift 2.3
-### ViewController.swift
-```swift
-//
-//  ViewController.swift
-//  UIKit049_2.3
-//
-//  Created by KimikoWatanabe on 2016/08/21.
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
-//
-
-import UIKit
-
-class ViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        let myButton = MyButton(frame: CGRectMake(50, 50, 100, 100))
-        myButton.setTitle("ボタン", forState: UIControlState.Normal)
-        myButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
-        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(_:)), forControlEvents: .TouchUpInside)
-
-        self.view.addSubview(myButton)
-
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    /*
-     ボタンイベント.
-     */
-    func onClickMyButton(sender: UIButton){
-        print("onClickMyButton:")
-        print("sender.currentTitile: \(sender.currentTitle!)")
-    }
-
-}
-```
-
-### MyButton.swift
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  MyButton.swift
 //  UIKit049_2.3
@@ -321,6 +359,10 @@ class MyButton: UIButton {
 }
 
 ```
+
+## 3.xと4.xの差分
+* UIControlStateがUIControl.Stateに変更
+* func onClickMyButtonに@objcを追加
 
 ## 2.3と3.0の差分
 * UIColorの参照方法が変更(UIColor.grayColor()->UIColor.gray)

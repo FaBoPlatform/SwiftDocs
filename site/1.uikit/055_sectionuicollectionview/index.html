@@ -854,8 +854,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../054_customuicollectionview/" title="UITableViewに追加・削除機能を追加" class="md-nav__link">
-      UITableViewに追加・削除機能を追加
+    <a href="../054_customuicollectionview/" title="UICollectionViewのCellをカスタマイズ" class="md-nav__link">
+      UICollectionViewのCellをカスタマイズ
     </a>
   </li>
 
@@ -893,56 +893,23 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#swift30" title="Swift3.0" class="md-nav__link">
-    Swift3.0
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#uiviewcontrollerswift" title="UIViewController.swift" class="md-nav__link">
     UIViewController.swift
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#customuicollectionviewcellswift" title="CustomUICollectionViewCell.swift" class="md-nav__link">
     CustomUICollectionViewCell.swift
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
         <li class="md-nav__item">
-  <a href="#swift-23" title="Swift 2.3" class="md-nav__link">
-    Swift 2.3
+  <a href="#3x4x" title="3.xと4.xの差分" class="md-nav__link">
+    3.xと4.xの差分
   </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#uiviewcontrollerswift_1" title="UIViewController.swift" class="md-nav__link">
-    UIViewController.swift
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#customuicollectionviewcellswift_1" title="CustomUICollectionViewCell.swift" class="md-nav__link">
-    CustomUICollectionViewCell.swift
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1237,56 +1204,23 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#swift30" title="Swift3.0" class="md-nav__link">
-    Swift3.0
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
   <a href="#uiviewcontrollerswift" title="UIViewController.swift" class="md-nav__link">
     UIViewController.swift
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#customuicollectionviewcellswift" title="CustomUICollectionViewCell.swift" class="md-nav__link">
     CustomUICollectionViewCell.swift
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
-  
-</li>
       
         <li class="md-nav__item">
-  <a href="#swift-23" title="Swift 2.3" class="md-nav__link">
-    Swift 2.3
+  <a href="#3x4x" title="3.xと4.xの差分" class="md-nav__link">
+    3.xと4.xの差分
   </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#uiviewcontrollerswift_1" title="UIViewController.swift" class="md-nav__link">
-    UIViewController.swift
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#customuicollectionviewcellswift_1" title="CustomUICollectionViewCell.swift" class="md-nav__link">
-    CustomUICollectionViewCell.swift
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1323,9 +1257,259 @@
                 
                 <h1 id="uicollectionview">UICollectionViewをセクション毎に分ける</h1>
 <p><img alt="Preview uikit055" src="../img/uikit055.png" /></p>
-<h2 id="swift30">Swift3.0</h2>
 <h3 id="uiviewcontrollerswift">UIViewController.swift</h3>
-<p> <table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126</pre></div></td><td class=code><div class=codehilite><pre><span></span><span class=c1>//</span>
+<span class=c1>//  ViewController.swift</span>
+<span class=c1>//  UIKit055_4.0</span>
+<span class=c1>//</span>
+<span class=c1>//  Created by KimikoWatanabe on 2016/08/21.</span>
+<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
+<span class=c1>//</span>
+
+<span class=kd>import</span> <span class=nc>UIKit</span>
+
+<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UICollectionViewDelegate</span><span class=p>,</span> <span class=bp>UICollectionViewDataSource</span> <span class=p>{</span>
+
+    <span class=kd>var</span> <span class=nv>myCollectionView</span> <span class=p>:</span> <span class=bp>UICollectionView</span><span class=p>!</span>
+
+    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
+        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+
+        <span class=c1>// CollectionViewのレイアウトを生成.</span>
+        <span class=kd>let</span> <span class=nv>layout</span> <span class=p>=</span> <span class=bp>UICollectionViewFlowLayout</span><span class=p>()</span>
+
+        <span class=c1>// Cell一つ一つの大きさ.</span>
+        <span class=n>layout</span><span class=p>.</span><span class=n>itemSize</span> <span class=p>=</span> <span class=bp>CGSize</span><span class=p>(</span><span class=n>width</span><span class=p>:</span><span class=mi>50</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>50</span><span class=p>)</span>
+
+        <span class=c1>// Cellのマージン.</span>
+        <span class=n>layout</span><span class=p>.</span><span class=n>sectionInset</span> <span class=p>=</span> <span class=bp>UIEdgeInsets</span><span class=p>(</span><span class=n>top</span><span class=p>:</span> <span class=mi>16</span><span class=p>,</span> <span class=kr>left</span><span class=p>:</span> <span class=mi>16</span><span class=p>,</span> <span class=n>bottom</span><span class=p>:</span> <span class=mi>32</span><span class=p>,</span> <span class=kr>right</span><span class=p>:</span> <span class=mi>16</span><span class=p>)</span>
+
+        <span class=c1>// セクション毎のヘッダーサイズ.</span>
+        <span class=n>layout</span><span class=p>.</span><span class=n>headerReferenceSize</span> <span class=p>=</span> <span class=bp>CGSize</span><span class=p>(</span><span class=n>width</span><span class=p>:</span><span class=mi>100</span><span class=p>,</span><span class=n>height</span><span class=p>:</span><span class=mi>50</span><span class=p>)</span>
+
+        <span class=c1>// CollectionViewを生成.</span>
+        <span class=n>myCollectionView</span> <span class=p>=</span> <span class=bp>UICollectionView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>,</span> <span class=n>collectionViewLayout</span><span class=p>:</span> <span class=n>layout</span><span class=p>)</span>
+
+        <span class=c1>// Cellに使われるクラスを登録.</span>
+        <span class=n>myCollectionView</span><span class=p>.</span><span class=n>register</span><span class=p>(</span><span class=n>CustomUICollectionViewCell</span><span class=p>.</span><span class=kc>self</span><span class=p>,</span> <span class=n>forCellWithReuseIdentifier</span><span class=p>:</span> <span class=s>&quot;MyCell&quot;</span><span class=p>)</span>
+        <span class=n>myCollectionView</span><span class=p>.</span><span class=n>register</span><span class=p>(</span><span class=bp>UICollectionReusableView</span><span class=p>.</span><span class=kc>self</span><span class=p>,</span> <span class=n>forSupplementaryViewOfKind</span><span class=p>:</span> <span class=bp>UICollectionView</span><span class=p>.</span><span class=n>elementKindSectionHeader</span><span class=p>,</span> <span class=n>withReuseIdentifier</span><span class=p>:</span> <span class=s>&quot;Section&quot;</span><span class=p>)</span>
+
+        <span class=n>myCollectionView</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
+        <span class=n>myCollectionView</span><span class=p>.</span><span class=n>dataSource</span> <span class=p>=</span> <span class=kc>self</span>
+
+        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myCollectionView</span><span class=p>)</span>
+
+    <span class=p>}</span>
+
+    <span class=cm>/*</span>
+<span class=cm>     Sectionの数</span>
+<span class=cm>     */</span>
+
+    <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>numberOfSections</span><span class=p>(</span><span class=k>in</span> <span class=n>collectionView</span><span class=p>:</span> <span class=bp>UICollectionView</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Int</span> <span class=p>{</span>
+        <span class=k>return</span> <span class=mi>3</span>
+    <span class=p>}</span>
+
+    <span class=cm>/*</span>
+<span class=cm>     Cellが選択された際に呼び出される</span>
+<span class=cm>     */</span>
+    <span class=kd>func</span> <span class=nf>collectionView</span><span class=p>(</span><span class=kc>_</span> <span class=n>collectionView</span><span class=p>:</span> <span class=bp>UICollectionView</span><span class=p>,</span> <span class=n>didSelectItemAt</span> <span class=n>indexPath</span><span class=p>:</span> <span class=n>IndexPath</span><span class=p>)</span> <span class=p>{</span>
+
+        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Num: </span><span class=si>\(</span><span class=n>indexPath</span><span class=p>.</span><span class=n>row</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
+        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;SectionNum:</span><span class=si>\(</span><span class=n>indexPath</span><span class=p>.</span><span class=n>section</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
+
+    <span class=p>}</span>
+
+    <span class=cm>/*</span>
+<span class=cm>     Cellの総数を返す</span>
+<span class=cm>     */</span>
+    <span class=kd>func</span> <span class=nf>collectionView</span><span class=p>(</span><span class=kc>_</span> <span class=n>collectionView</span><span class=p>:</span> <span class=bp>UICollectionView</span><span class=p>,</span> <span class=n>numberOfItemsInSection</span> <span class=n>section</span><span class=p>:</span> <span class=nb>Int</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Int</span> <span class=p>{</span>
+
+        <span class=c1>// Section毎にCellの総数を変える.</span>
+        <span class=k>switch</span><span class=p>(</span><span class=n>section</span><span class=p>){</span>
+        <span class=k>case</span> <span class=mi>0</span><span class=p>:</span>
+            <span class=k>return</span> <span class=mi>5</span>
+
+        <span class=k>case</span> <span class=mi>1</span><span class=p>:</span>
+            <span class=k>return</span> <span class=mi>8</span>
+
+        <span class=k>case</span> <span class=mi>2</span><span class=p>:</span>
+            <span class=k>return</span> <span class=mi>20</span>
+
+        <span class=k>default</span><span class=p>:</span>
+            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;error&quot;</span><span class=p>)</span>
+            <span class=k>return</span> <span class=mi>0</span>
+        <span class=p>}</span>
+
+    <span class=p>}</span>
+
+    <span class=cm>/*</span>
+<span class=cm>     Sectionに値を設定する</span>
+<span class=cm>     */</span>
+    <span class=kd>func</span> <span class=nf>collectionView</span><span class=p>(</span><span class=kc>_</span> <span class=n>collectionView</span><span class=p>:</span> <span class=bp>UICollectionView</span><span class=p>,</span> <span class=n>viewForSupplementaryElementOfKind</span> <span class=n>kind</span><span class=p>:</span> <span class=nb>String</span><span class=p>,</span> <span class=n>at</span> <span class=n>indexPath</span><span class=p>:</span> <span class=n>IndexPath</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=bp>UICollectionReusableView</span> <span class=p>{</span>
+
+        <span class=kd>let</span> <span class=nv>headerView</span> <span class=p>=</span> <span class=n>collectionView</span><span class=p>.</span><span class=n>dequeueReusableSupplementaryView</span><span class=p>(</span><span class=n>ofKind</span><span class=p>:</span> <span class=bp>UICollectionView</span><span class=p>.</span><span class=n>elementKindSectionHeader</span><span class=p>,</span> <span class=n>withReuseIdentifier</span><span class=p>:</span> <span class=s>&quot;Section&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=n>indexPath</span><span class=p>)</span>
+
+        <span class=n>headerView</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
+
+        <span class=k>return</span> <span class=n>headerView</span>
+    <span class=p>}</span>
+
+    <span class=cm>/*</span>
+<span class=cm>     Cellに値を設定する</span>
+<span class=cm>     */</span>
+    <span class=kd>func</span> <span class=nf>collectionView</span><span class=p>(</span><span class=kc>_</span> <span class=n>collectionView</span><span class=p>:</span> <span class=bp>UICollectionView</span><span class=p>,</span> <span class=n>cellForItemAt</span> <span class=n>indexPath</span><span class=p>:</span> <span class=n>IndexPath</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=bp>UICollectionViewCell</span> <span class=p>{</span>
+
+        <span class=kd>let</span> <span class=nv>cell</span> <span class=p>:</span> <span class=n>CustomUICollectionViewCell</span> <span class=p>=</span> <span class=n>collectionView</span><span class=p>.</span><span class=n>dequeueReusableCell</span><span class=p>(</span><span class=n>withReuseIdentifier</span><span class=p>:</span> <span class=s>&quot;MyCell&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=n>indexPath</span> <span class=k>as</span> <span class=n>IndexPath</span><span class=p>)</span> <span class=k>as</span><span class=p>!</span> <span class=n>CustomUICollectionViewCell</span>
+
+        <span class=c1>// Section毎にCellのプロパティを変える.</span>
+        <span class=k>switch</span><span class=p>(</span><span class=n>indexPath</span><span class=p>.</span><span class=n>section</span><span class=p>){</span>
+        <span class=k>case</span> <span class=mi>0</span><span class=p>:</span>
+            <span class=n>cell</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>red</span>
+            <span class=n>cell</span><span class=p>.</span><span class=n>textLabel</span><span class=p>?.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;0&quot;</span>
+
+        <span class=k>case</span> <span class=mi>1</span><span class=p>:</span>
+            <span class=n>cell</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>green</span>
+            <span class=n>cell</span><span class=p>.</span><span class=n>textLabel</span><span class=p>?.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;1&quot;</span>
+
+        <span class=k>case</span> <span class=mi>2</span><span class=p>:</span>
+            <span class=n>cell</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blue</span>
+            <span class=n>cell</span><span class=p>.</span><span class=n>textLabel</span><span class=p>?.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;2&quot;</span>
+
+        <span class=k>default</span><span class=p>:</span>
+            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;section error&quot;</span><span class=p>)</span>
+            <span class=n>cell</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
+        <span class=p>}</span>
+
+        <span class=k>return</span> <span class=n>cell</span>
+    <span class=p>}</span>
+
+<span class=p>}</span>
+</pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
   2
   3
   4
@@ -1576,73 +1760,7 @@
     <span class=p>}</span>
 
 <span class=p>}</span>
-</pre></div></td></tr></table></p>
-<h3 id="customuicollectionviewcellswift">CustomUICollectionViewCell.swift</h3>
-<p> <table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31</pre></div></td><td class=code><div class=codehilite><pre><span></span><span class=c1>//</span>
-<span class=c1>//  CustomUICollectionViewCell.swift</span>
-<span class=c1>//  UIKit055_3.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/21.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
-
-<span class=kd>import</span> <span class=nc>UIKit</span>
-
-<span class=kd>class</span> <span class=nc>CustomUICollectionViewCell</span> <span class=p>:</span> <span class=bp>UICollectionViewCell</span><span class=p>{</span>
-
-    <span class=kd>var</span> <span class=nv>textLabel</span> <span class=p>:</span> <span class=bp>UILabel</span><span class=p>?</span>
-
-    <span class=kr>required</span> <span class=kd>init</span><span class=p>(</span><span class=n>coder</span> <span class=n>aDecoder</span><span class=p>:</span> <span class=bp>NSCoder</span><span class=p>)</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>coder</span><span class=p>:</span> <span class=n>aDecoder</span><span class=p>)</span><span class=o>!</span>
-    <span class=p>}</span>
-
-    <span class=kr>override</span> <span class=kd>init</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=bp>CGRect</span><span class=p>)</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>frame</span><span class=p>)</span>
-
-        <span class=c1>// UILabelを生成.</span>
-        <span class=n>textLabel</span> <span class=p>=</span> <span class=bp>UILabel</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=bp>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span><span class=p>))</span>
-        <span class=n>textLabel</span><span class=p>?.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;nil&quot;</span>
-        <span class=n>textLabel</span><span class=p>?.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=n>NSTextAlignment</span><span class=p>.</span><span class=n>center</span>
-
-        <span class=c1>// Cellに追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>contentView</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>textLabel</span><span class=p>!)</span>
-    <span class=p>}</span>
-
-<span class=p>}</span>
-</pre></div></td></tr></table></p>
-<h2 id="swift-23">Swift 2.3</h2>
-<h3 id="uiviewcontrollerswift_1">UIViewController.swift</h3>
-<p> <table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
+</pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
   2
   3
   4
@@ -1891,9 +2009,71 @@
     <span class=p>}</span>
 
 <span class=p>}</span>
-</pre></div></td></tr></table></p>
-<h3 id="customuicollectionviewcellswift_1">CustomUICollectionViewCell.swift</h3>
-<p> <table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
+</pre></div></td></tr></table></div></div>
+
+<h3 id="customuicollectionviewcellswift">CustomUICollectionViewCell.swift</h3>
+<div class=md-fenced-code-tabs id=tab-tab-group-1><input name=tab-group-1 type=radio id=tab-group-1-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-1-0_swift-panel role=tab><label for=tab-group-1-0_swift class=code-tab-label data-lang=swift id=tab-group-1-0_swift-label>Swift 4.x/Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-0_swift-panel aria-labelledby=tab-group-1-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31</pre></div></td><td class=code><div class=codehilite><pre><span></span><span class=c1>//</span>
+<span class=c1>//  CustomUICollectionViewCell.swift</span>
+<span class=c1>//  UIKit055_4.0</span>
+<span class=c1>//</span>
+<span class=c1>//  Created by KimikoWatanabe on 2016/08/21.</span>
+<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
+<span class=c1>//</span>
+
+<span class=kd>import</span> <span class=nc>UIKit</span>
+
+<span class=kd>class</span> <span class=nc>CustomUICollectionViewCell</span> <span class=p>:</span> <span class=bp>UICollectionViewCell</span><span class=p>{</span>
+
+    <span class=kd>var</span> <span class=nv>textLabel</span> <span class=p>:</span> <span class=bp>UILabel</span><span class=p>?</span>
+
+    <span class=kr>required</span> <span class=kd>init</span><span class=p>(</span><span class=n>coder</span> <span class=n>aDecoder</span><span class=p>:</span> <span class=bp>NSCoder</span><span class=p>)</span> <span class=p>{</span>
+        <span class=kc>super</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>coder</span><span class=p>:</span> <span class=n>aDecoder</span><span class=p>)</span><span class=o>!</span>
+    <span class=p>}</span>
+
+    <span class=kr>override</span> <span class=kd>init</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=bp>CGRect</span><span class=p>)</span> <span class=p>{</span>
+        <span class=kc>super</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>frame</span><span class=p>)</span>
+
+        <span class=c1>// UILabelを生成.</span>
+        <span class=n>textLabel</span> <span class=p>=</span> <span class=bp>UILabel</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=bp>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span><span class=p>))</span>
+        <span class=n>textLabel</span><span class=p>?.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;nil&quot;</span>
+        <span class=n>textLabel</span><span class=p>?.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=n>NSTextAlignment</span><span class=p>.</span><span class=n>center</span>
+
+        <span class=c1>// Cellに追加.</span>
+        <span class=kc>self</span><span class=p>.</span><span class=n>contentView</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>textLabel</span><span class=p>!)</span>
+    <span class=p>}</span>
+
+<span class=p>}</span>
+</pre></div></td></tr></table></div><input name=tab-group-1 type=radio id=tab-group-1-1_swift class=code-tab data-lang=swift aria-controls=tab-group-1-1_swift-panel role=tab><label for=tab-group-1-1_swift class=code-tab-label data-lang=swift id=tab-group-1-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-1_swift-panel aria-labelledby=tab-group-1-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
  2
  3
  4
@@ -1954,7 +2134,13 @@
     <span class=p>}</span>
 
 <span class=p>}</span>
-</pre></div></td></tr></table></p>
+</pre></div></td></tr></table></div></div>
+
+<h2 id="3x4x">3.xと4.xの差分</h2>
+<ul>
+<li>UIEdgeInsetsMake(16, 16, 32, 16)がUIEdgeInsets(top: 16, left: 16, bottom: 32, right: 16)に変更</li>
+<li>UICollectionElementKindSectionHeaderがUICollectionView.elementKindSectionHeaderに変子</li>
+</ul>
 <h2 id="2330">2.3と3.0の差分</h2>
 <ul>
 <li>UIColorの参照方法が変更(UIColor.grayColor()-&gt;UIColor.gray)</li>
@@ -1996,7 +2182,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../054_customuicollectionview/" title="UITableViewに追加・削除機能を追加" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../054_customuicollectionview/" title="UICollectionViewのCellをカスタマイズ" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -2005,7 +2191,7 @@
                 <span class="md-footer-nav__direction">
                   前
                 </span>
-                UITableViewに追加・削除機能を追加
+                UICollectionViewのCellをカスタマイズ
               </span>
             </div>
           </a>

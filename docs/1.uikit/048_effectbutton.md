@@ -2,11 +2,10 @@
 
 ![Preview uikit048](img/uikit048.png)
 
-## Swift3.0
-```swift
+```swift fct_label="Swift 4.x/Swift 3.x"
 //
 //  ViewController.swift
-//  UIKit048_3.0
+//  UIKit048_4.0
 //
 //  Created by KimikoWatanabe on 2016/08/21.
 //  Copyright © 2016年 FaBo, Inc. All rights reserved.
@@ -92,8 +91,7 @@ class ViewController: UIViewController {
 }
 ```
 
-## Swift 2.3
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  UIKit048_2.3

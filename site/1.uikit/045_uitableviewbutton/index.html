@@ -773,15 +773,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#swift30" title="Swift3.0" class="md-nav__link">
-    Swift3.0
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#swift-23" title="Swift 2.3" class="md-nav__link">
-    Swift 2.3
+  <a href="#3x4x" title="3.xと4.xの差分" class="md-nav__link">
+    3.xと4.xの差分
   </a>
   
 </li>
@@ -913,8 +906,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../054_customuicollectionview/" title="UITableViewに追加・削除機能を追加" class="md-nav__link">
-      UITableViewに追加・削除機能を追加
+    <a href="../054_customuicollectionview/" title="UICollectionViewのCellをカスタマイズ" class="md-nav__link">
+      UICollectionViewのCellをカスタマイズ
     </a>
   </li>
 
@@ -1197,15 +1190,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#swift30" title="Swift3.0" class="md-nav__link">
-    Swift3.0
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#swift-23" title="Swift 2.3" class="md-nav__link">
-    Swift 2.3
+  <a href="#3x4x" title="3.xと4.xの差分" class="md-nav__link">
+    3.xと4.xの差分
   </a>
   
 </li>
@@ -1243,8 +1229,246 @@
                 
                 <h1 id="tableview">TableViewのボタンの拡張</h1>
 <p><img alt="Preview uikit045" src="../img/uikit045.png" /></p>
-<h2 id="swift30">Swift3.0</h2>
-<p> <table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120</pre></div></td><td class=code><div class=codehilite><pre><span></span><span class=c1>//</span>
+<span class=c1>//  ViewController.swift</span>
+<span class=c1>//  UIKit045_4.0</span>
+<span class=c1>//</span>
+<span class=c1>//  Created by KimikoWatanabe on 2016/08/21.</span>
+<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
+<span class=c1>//</span>
+
+<span class=kd>import</span> <span class=nc>UIKit</span>
+
+<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UITableViewDelegate</span><span class=p>,</span> <span class=bp>UITableViewDataSource</span><span class=p>{</span>
+
+    <span class=c1>// Tabelで使用する配列.</span>
+    <span class=kd>var</span> <span class=nv>myItems</span><span class=p>:</span> <span class=p>[</span><span class=nb>String</span><span class=p>]</span> <span class=p>=</span> <span class=p>[</span><span class=s>&quot;TEST1&quot;</span><span class=p>,</span> <span class=s>&quot;TEST2&quot;</span><span class=p>,</span> <span class=s>&quot;TEST3&quot;</span><span class=p>]</span>
+    <span class=kd>var</span> <span class=nv>myTableView</span><span class=p>:</span> <span class=bp>UITableView</span> <span class=p>=</span> <span class=bp>UITableView</span><span class=p>()</span>
+    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
+        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+
+        <span class=c1>// Status Barの高さを取得.</span>
+        <span class=kd>let</span> <span class=nv>barHeight</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=bp>UIApplication</span><span class=p>.</span><span class=n>shared</span><span class=p>.</span><span class=n>statusBarFrame</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>height</span>
+
+        <span class=c1>// Viewの高さと幅を取得.</span>
+        <span class=kd>let</span> <span class=nv>displayWidth</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span>
+        <span class=kd>let</span> <span class=nv>displayHeight</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span>
+
+        <span class=c1>// TableViewの生成( status barの高さ分ずらして表示 ).</span>
+        <span class=n>myTableView</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=bp>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=n>barHeight</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=n>displayWidth</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>displayHeight</span> <span class=o>-</span> <span class=n>barHeight</span><span class=p>)</span>
+
+        <span class=c1>// Cellの登録.</span>
+        <span class=n>myTableView</span><span class=p>.</span><span class=n>register</span><span class=p>(</span><span class=bp>UITableViewCell</span><span class=p>.</span><span class=kc>self</span><span class=p>,</span> <span class=n>forCellReuseIdentifier</span><span class=p>:</span> <span class=s>&quot;MyCell&quot;</span><span class=p>)</span>
+
+        <span class=c1>// DataSourceの設定.</span>
+        <span class=n>myTableView</span><span class=p>.</span><span class=n>dataSource</span> <span class=p>=</span> <span class=kc>self</span>
+
+        <span class=c1>// Delegateを設定.</span>
+        <span class=n>myTableView</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
+
+        <span class=c1>// Viewに追加する.</span>
+        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myTableView</span><span class=p>)</span>
+
+
+    <span class=p>}</span>
+
+    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
+        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
+    <span class=p>}</span>
+
+    <span class=cm>/*</span>
+<span class=cm>     Cellが選択された際に呼び出される.</span>
+<span class=cm>     */</span>
+    <span class=kd>func</span> <span class=nf>tableView</span><span class=p>(</span><span class=kc>_</span> <span class=n>tableView</span><span class=p>:</span> <span class=bp>UITableView</span><span class=p>,</span> <span class=n>didSelectRowAt</span> <span class=n>indexPath</span><span class=p>:</span> <span class=n>IndexPath</span><span class=p>)</span> <span class=p>{</span>
+        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Num: </span><span class=si>\(</span><span class=n>indexPath</span><span class=p>.</span><span class=n>row</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
+        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Value: </span><span class=si>\(</span><span class=n>myItems</span><span class=p>[</span><span class=n>indexPath</span><span class=p>.</span><span class=n>row</span><span class=p>]</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
+    <span class=p>}</span>
+
+    <span class=cm>/*</span>
+<span class=cm>     Cellの総数を返す.</span>
+<span class=cm>     */</span>
+    <span class=kd>func</span> <span class=nf>tableView</span><span class=p>(</span><span class=kc>_</span> <span class=n>tableView</span><span class=p>:</span> <span class=bp>UITableView</span><span class=p>,</span> <span class=n>numberOfRowsInSection</span> <span class=n>section</span><span class=p>:</span> <span class=nb>Int</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Int</span> <span class=p>{</span>
+        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;numberOfRowsInSection&quot;</span><span class=p>)</span>
+        <span class=k>return</span> <span class=n>myItems</span><span class=p>.</span><span class=bp>count</span>
+    <span class=p>}</span>
+
+    <span class=cm>/*</span>
+<span class=cm>     Editableの状態にする.</span>
+<span class=cm>     */</span>
+    <span class=kd>func</span> <span class=nf>tableView</span><span class=p>(</span><span class=kc>_</span> <span class=n>tableView</span><span class=p>:</span> <span class=bp>UITableView</span><span class=p>,</span> <span class=n>canEditRowAt</span> <span class=n>indexPath</span><span class=p>:</span> <span class=n>IndexPath</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Bool</span> <span class=p>{</span>
+        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;canEditRowAtIndexPath&quot;</span><span class=p>)</span>
+
+        <span class=k>return</span> <span class=kc>true</span>
+    <span class=p>}</span>
+
+    <span class=cm>/*</span>
+<span class=cm>     特定の行のボタン操作を有効にする.</span>
+<span class=cm>     */</span>
+    <span class=kd>func</span> <span class=nf>tableView</span><span class=p>(</span><span class=kc>_</span> <span class=n>tableView</span><span class=p>:</span> <span class=bp>UITableView</span><span class=p>,</span> <span class=n>commit</span> <span class=n>editingStyle</span><span class=p>:</span> <span class=bp>UITableViewCell</span><span class=p>.</span><span class=n>EditingStyle</span><span class=p>,</span> <span class=n>forRowAt</span> <span class=n>indexPath</span><span class=p>:</span> <span class=n>IndexPath</span><span class=p>)</span> <span class=p>{</span>
+        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;commitEdittingStyle:</span><span class=si>\(</span><span class=n>editingStyle</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
+    <span class=p>}</span>
+
+    <span class=cm>/*</span>
+<span class=cm>     Cellに値を設定する.</span>
+<span class=cm>     */</span>
+    <span class=kd>func</span> <span class=nf>tableView</span><span class=p>(</span><span class=kc>_</span> <span class=n>tableView</span><span class=p>:</span> <span class=bp>UITableView</span><span class=p>,</span> <span class=n>cellForRowAt</span> <span class=n>indexPath</span><span class=p>:</span> <span class=n>IndexPath</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=bp>UITableViewCell</span> <span class=p>{</span>
+        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;cellForRowAtIndexPath&quot;</span><span class=p>)</span>
+
+        <span class=kd>let</span> <span class=nv>cell</span><span class=p>:</span> <span class=bp>UITableViewCell</span> <span class=p>=</span> <span class=n>tableView</span><span class=p>.</span><span class=n>dequeueReusableCell</span><span class=p>(</span><span class=n>withIdentifier</span><span class=p>:</span> <span class=s>&quot;MyCell&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=n>indexPath</span> <span class=k>as</span> <span class=n>IndexPath</span><span class=p>)</span>
+        <span class=c1>//tableView.dequeueReusableCellWithIdentifier(&quot;MyCell&quot;, forIndexPath: indexPath as IndexPath)</span>
+
+        <span class=n>cell</span><span class=p>.</span><span class=n>textLabel</span><span class=p>?.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;</span><span class=si>\(</span><span class=n>myItems</span><span class=p>[</span><span class=n>indexPath</span><span class=p>.</span><span class=n>row</span><span class=p>]</span><span class=si>)</span><span class=s>&quot;</span>
+
+        <span class=k>return</span> <span class=n>cell</span>
+    <span class=p>}</span>
+
+    <span class=cm>/*</span>
+<span class=cm>     Buttonを拡張する.</span>
+<span class=cm>     */</span>
+    <span class=kd>func</span> <span class=nf>tableView</span><span class=p>(</span><span class=kc>_</span> <span class=n>tableView</span><span class=p>:</span> <span class=bp>UITableView</span><span class=p>,</span> <span class=n>editActionsForRowAt</span> <span class=n>indexPath</span><span class=p>:</span> <span class=n>IndexPath</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=p>[</span><span class=bp>UITableViewRowAction</span><span class=p>]?</span> <span class=p>{</span>
+
+        <span class=c1>// Shareボタン.</span>
+        <span class=kd>let</span> <span class=nv>myShareButton</span><span class=p>:</span> <span class=bp>UITableViewRowAction</span> <span class=p>=</span> <span class=bp>UITableViewRowAction</span><span class=p>(</span><span class=n>style</span><span class=p>:</span> <span class=p>.</span><span class=n>normal</span><span class=p>,</span> <span class=n>title</span><span class=p>:</span> <span class=s>&quot;Share&quot;</span><span class=p>)</span> <span class=p>{</span> <span class=p>(</span><span class=n>action</span><span class=p>,</span> <span class=n>index</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
+
+            <span class=n>tableView</span><span class=p>.</span><span class=n>isEditing</span> <span class=p>=</span> <span class=kc>false</span>
+            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;share&quot;</span><span class=p>)</span>
+
+        <span class=p>}</span>
+        <span class=n>myShareButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blue</span>
+
+        <span class=c1>// Archiveボタン.</span>
+        <span class=kd>let</span> <span class=nv>myArchiveButton</span><span class=p>:</span> <span class=bp>UITableViewRowAction</span> <span class=p>=</span> <span class=bp>UITableViewRowAction</span><span class=p>(</span><span class=n>style</span><span class=p>:</span> <span class=p>.</span><span class=n>normal</span><span class=p>,</span> <span class=n>title</span><span class=p>:</span> <span class=s>&quot;Archive&quot;</span><span class=p>)</span> <span class=p>{</span> <span class=p>(</span><span class=n>action</span><span class=p>,</span> <span class=n>index</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
+
+            <span class=n>tableView</span><span class=p>.</span><span class=n>isEditing</span> <span class=p>=</span> <span class=kc>false</span>
+            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;archive&quot;</span><span class=p>)</span>
+
+        <span class=p>}</span>
+        <span class=n>myArchiveButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>red</span>
+
+        <span class=k>return</span> <span class=p>[</span><span class=n>myShareButton</span><span class=p>,</span> <span class=n>myArchiveButton</span><span class=p>]</span>
+    <span class=p>}</span>
+
+<span class=p>}</span>
+</pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
   2
   3
   4
@@ -1483,9 +1707,7 @@
     <span class=p>}</span>
 
 <span class=p>}</span>
-</pre></div></td></tr></table></p>
-<h2 id="swift-23">Swift 2.3</h2>
-<p> <table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
+</pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
   2
   3
   4
@@ -1722,7 +1944,12 @@
     <span class=p>}</span>
 
 <span class=p>}</span>
-</pre></div></td></tr></table></p>
+</pre></div></td></tr></table></div></div>
+
+<h2 id="3x4x">3.xと4.xの差分</h2>
+<ul>
+<li>UITableViewCellEditingStyleがUITableViewCell.EditingStyleに変更</li>
+</ul>
 <h2 id="2330">2.3と3.0の差分</h2>
 <ul>
 <li>UIColorの参照方法が変更(UIColor.grayColor()-&gt;UIColor.gray)</li>

@@ -3,8 +3,112 @@
 ![Preview uikit044_1](img/uikit044_001.png)
 ![Preview uikit044_2](img/uikit044_002.png)
 
-## Swift3.0
-```swift
+```swift fct_label="Swift 4.x"
+//
+//  ViewController.swift
+//  UIKit044_4.0
+//
+//  Created by KimikoWatanabe on 2016/08/21.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+    
+    var mySecondWindow: UIWindow!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let screen: NSArray = UIScreen.screens as NSArray
+        
+        // 接続中の画面が2つある場合、2番目を表示.
+        if screen.count > 1 {
+            let screen: UIScreen = UIScreen.screens[1]
+            showSecondScreenWindow(screen: screen)
+        }
+        
+        // 画面の接続がおこなわれた時に発生するNotification.
+        let myDefaultCenter: NotificationCenter = NotificationCenter.default
+        myDefaultCenter.addObserver(self, selector: #selector(ViewController.screenDidConnect(notification:)), name: UIScreen.didConnectNotification, object: nil)
+        myDefaultCenter.addObserver(self, selector: #selector(ViewController.screenDidDisconnect(notification:)), name: UIScreen.didDisconnectNotification, object: nil)
+        myDefaultCenter.addObserver(self, selector: #selector(ViewController.screenDidModeChange(notification:)), name: UIScreen.modeDidChangeNotification, object: nil)
+        
+        // Labelを作成.
+        let myLabel: UILabel = UILabel(frame: CGRect(x:0,y:0,width:200,height:50))
+        myLabel.backgroundColor = UIColor.orange
+        myLabel.layer.masksToBounds = true
+        myLabel.layer.cornerRadius = 20.0
+        myLabel.text = "Hello 1st Screen"
+        myLabel.textColor = UIColor.white
+        myLabel.shadowColor = UIColor.gray
+        myLabel.textAlignment = NSTextAlignment.center
+        myLabel.layer.position = CGPoint(x: self.view.bounds.width/2,y: 200)
+        self.view.addSubview(myLabel)
+        
+    }
+    
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
+    /*
+     画面の接続された時.
+     */
+    @objc func screenDidConnect(notification: NSNotification){
+        
+        print("screenDidConnect")
+        
+        let screen: NSArray = UIScreen.screens as NSArray
+        
+        if screen.count > 1 {
+            let screen: UIScreen = UIScreen.screens[1]
+            showSecondScreenWindow(screen: screen)
+        }
+    }
+    
+    /*
+     画面が切断された時.
+     */
+    @objc func screenDidDisconnect(notification: NSNotification){
+        print("screenDidDisconnect")
+    }
+    
+    /*
+     画面のモードが変わった時.
+     */
+    @objc func screenDidModeChange(notification: NSNotification){
+        print("screenDidModeChange")
+    }
+    
+    /*
+     2画面目の画面のレイアウト.
+     */
+    func showSecondScreenWindow(screen: UIScreen!){
+        
+        mySecondWindow = UIWindow()
+        mySecondWindow.screen = screen
+        mySecondWindow.frame = CGRect(x:0, y:0, width:screen.bounds.width, height:screen.bounds.height)
+        mySecondWindow.backgroundColor = UIColor.red
+        self.mySecondWindow.makeKeyAndVisible()
+        
+        // Labelを作成.
+        let myLabel: UILabel = UILabel(frame: CGRect(x:0,y:0,width:200,height:50))
+        myLabel.backgroundColor = UIColor.orange
+        myLabel.layer.masksToBounds = true
+        myLabel.layer.cornerRadius = 20.0
+        myLabel.text = "Hello Second Screen"
+        myLabel.textColor = UIColor.white
+        myLabel.shadowColor = UIColor.gray
+        myLabel.textAlignment = NSTextAlignment.center
+        myLabel.layer.position = CGPoint(x: self.mySecondWindow.bounds.width/2,y: 200)
+        self.mySecondWindow.addSubview(myLabel)
+    }
+}
+```
+
+```swift fct_label="Swift 3.x"
 //
 //  ViewController.swift
 //  UIKit044_3.0
@@ -109,8 +213,7 @@ class ViewController: UIViewController {
 }
 ```
 
-## Swift 2.3
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  UIKit044_2.3
@@ -214,6 +317,15 @@ class ViewController: UIViewController {
     }
 }
 ```
+
+## 3.xと4.xの差分
+* UIScreen.screensがUIScreen.screens as NSArrayに変更
+* func screenDidConnectに@objcを追加
+* func screenDidDisconnectに@objcを追加
+* func screenDidModeChangeに@objcを追加
+* NSNotification.Name.UIScreenDidConnectがUIScreen.didConnectNotificationに変更
+* NSNotification.Name.UIScreenDidDisconnectがUIScreen.didDisconnectNotificationに変更
+* NSNotification.Name.UIScreenModeDidChangeがUIScreen.modeDidChangeNotificationに変更
 
 ## 2.3と3.0の差分
 * UIColorの参照方法が変更(UIColor.grayColor()->UIColor.gray)

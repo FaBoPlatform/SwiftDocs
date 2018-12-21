@@ -2,8 +2,54 @@
 
 ![Preview uikit050](img/uikit050.png)
 
-## Swift3.0
-```swift
+```swift fct_label="Swift 4.x"
+//
+//  ViewController.swift
+//  UIKit050_4.0
+//
+//  Created by KimikoWatanabe on 2016/08/21.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let myButton = UIButton(frame: CGRect(x:50, y:50, width:100, height:100))
+        myButton.setTitle("UIボタン", for: UIControl.State.normal)
+        myButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
+        myButton.backgroundColor = UIColor.green
+        
+        let myLabel = UILabel(frame: CGRect(x:50, y:200, width:100, height:100))
+        myLabel.text = "UIラベル"
+        myLabel.textColor = UIColor.green
+        myLabel.backgroundColor = UIColor.red
+        
+        self.view.addSubview(myButton)
+        
+        print("View:\(view.description)")
+        
+        let views = self.view.subviews
+        for myView in views {
+            print("View:\(myView.description)")
+            
+            if myView.isKind(of:UIButton.self) {
+                myView.removeFromSuperview()
+                self.view.addSubview(myLabel)
+            }
+        }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+```
+
+```swift fct_label="Swift 3.x"
 //
 //  ViewController.swift
 //  UIKit050_3.0
@@ -50,8 +96,7 @@ class ViewController: UIViewController {
 }
 ```
 
-## Swift 2.3
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  UIKit050_2.3
@@ -98,6 +143,9 @@ class ViewController: UIViewController {
 }
 
 ```
+
+## 3.xと4.xの差分
+* UIControlStateがUIControl.Stateに変更
 
 ## 2.3と3.0の差分
 * UIColorの参照方法が変更(UIColor.grayColor()->UIColor.gray)

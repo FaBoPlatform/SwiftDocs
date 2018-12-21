@@ -3,11 +3,10 @@
 ![Preview uikit046_001](img/uikit046_001.png)
 ![Preview uikit046_002](img/uikit046_002.png)
 
-## Swift3.0
-```swift
+```swift fct_label="Swift 4.x/Swift 3.x"
 //
 //  ViewController.swift
-//  UIKit046_3.0
+//  UIKit046_4.0
 //
 //  Created by KimikoWatanabe on 2016/08/21.
 //  Copyright © 2016年 FaBo, Inc. All rights reserved.
@@ -170,8 +169,7 @@ class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegat
 }
 ```
 
-## Swift 2.3
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  UIKit046_2.3
