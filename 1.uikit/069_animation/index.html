@@ -362,8 +362,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../013_uitabbarcontroller/" title="013 UITabBarControllerでタブの表示" class="md-nav__link">
-      013 UITabBarControllerでタブの表示
+    <a href="../013_uitabbarcontroller/" title="UITabBarControllerでタブの表示" class="md-nav__link">
+      UITabBarControllerでタブの表示
     </a>
   </li>
 
@@ -902,8 +902,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../058_image/" title="UIImageで画像の透過" class="md-nav__link">
-      UIImageで画像の透過
+    <a href="../058_image/" title="UIImageをぼかす" class="md-nav__link">
+      UIImageをぼかす
     </a>
   </li>
 
@@ -1061,15 +1061,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#swift30" title="Swift3.0" class="md-nav__link">
-    Swift3.0
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#swift-23" title="Swift 2.3" class="md-nav__link">
-    Swift 2.3
+  <a href="#3x4x" title="3.xと4.xの差分" class="md-nav__link">
+    3.xと4.xの差分
   </a>
   
 </li>
@@ -1197,15 +1190,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#swift30" title="Swift3.0" class="md-nav__link">
-    Swift3.0
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#swift-23" title="Swift 2.3" class="md-nav__link">
-    Swift 2.3
+  <a href="#3x4x" title="3.xと4.xの差分" class="md-nav__link">
+    3.xと4.xの差分
   </a>
   
 </li>
@@ -1243,8 +1229,358 @@
                 
                 <h1 id="uiview">UIViewアニメーションまとめ</h1>
 <p><img alt="Preview uikit069" src="../img/uikit069.png" /></p>
-<h2 id="swift30">Swift3.0</h2>
-<p> <table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176</pre></div></td><td class=code><div class=codehilite><pre><span></span><span class=c1>//</span>
+<span class=c1>//  ViewController.swift</span>
+<span class=c1>//  UIKit069</span>
+<span class=c1>//</span>
+<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
+<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
+<span class=c1>//</span>
+
+<span class=kd>import</span> <span class=nc>UIKit</span>
+
+<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+
+    <span class=kd>var</span> <span class=nv>myLabel</span><span class=p>:</span> <span class=bp>UILabel</span><span class=p>!</span>
+
+    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
+        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+
+        <span class=c1>// Labelを生成</span>
+        <span class=n>myLabel</span> <span class=p>=</span> <span class=bp>UILabel</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=bp>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>200</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>50</span><span class=p>))</span>
+        <span class=n>myLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>(</span><span class=n>red</span><span class=p>:</span> <span class=mf>0.561</span><span class=p>,</span> <span class=n>green</span><span class=p>:</span> <span class=mf>0.737</span><span class=p>,</span> <span class=n>blue</span><span class=p>:</span> <span class=mf>0.561</span><span class=p>,</span> <span class=n>alpha</span><span class=p>:</span> <span class=mf>1.0</span><span class=p>)</span>
+        <span class=n>myLabel</span><span class=p>.</span><span class=n>center</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>center</span>
+        <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;*･゜ﾟ･*:.｡..｡.:*･゜&quot;</span>
+        <span class=n>myLabel</span><span class=p>.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=n>NSTextAlignment</span><span class=p>.</span><span class=n>center</span>
+        <span class=n>myLabel</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
+
+        <span class=c1>// SegmentesControllerを生成.</span>
+        <span class=kd>let</span> <span class=nv>mySegcon</span> <span class=p>=</span> <span class=bp>UISegmentedControl</span><span class=p>(</span><span class=n>items</span><span class=p>:</span> <span class=p>[</span><span class=s>&quot;Spring&quot;</span><span class=p>,</span> <span class=s>&quot;Invert&quot;</span><span class=p>,</span> <span class=s>&quot;Rotate&quot;</span><span class=p>,</span> <span class=s>&quot;Scaling&quot;</span><span class=p>,</span> <span class=s>&quot;Move&quot;</span><span class=p>])</span>
+        <span class=n>mySegcon</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=bp>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span> <span class=o>-</span> <span class=mi>50</span><span class=p>)</span>
+        <span class=n>mySegcon</span><span class=p>.</span><span class=n>tintColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blue</span>
+        <span class=n>mySegcon</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>changedValue</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=bp>UIControl</span><span class=p>.</span><span class=n>Event</span><span class=p>.</span><span class=n>valueChanged</span><span class=p>)</span>
+
+        <span class=c1>// Labelをviewに追加</span>
+        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myLabel</span><span class=p>)</span>
+
+        <span class=c1>// SegmentedControllerをviewに追加.</span>
+        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>mySegcon</span><span class=p>)</span>
+    <span class=p>}</span>
+
+    <span class=cm>/*</span>
+<span class=cm>     SegmentedControllerの値が変わった時に呼ばれるメソッド.</span>
+<span class=cm>     */</span>
+    <span class=kr>@objc</span> <span class=kd>func</span> <span class=nf>changedValue</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UISegmentedControl</span><span class=p>)</span> <span class=p>{</span>
+
+        <span class=n>myLabel</span><span class=p>.</span><span class=n>center</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>center</span>
+
+        <span class=c1>// 各アニメーションの処理.</span>
+        <span class=k>switch</span><span class=p>(</span><span class=n>sender</span><span class=p>.</span><span class=n>selectedSegmentIndex</span><span class=p>)</span> <span class=p>{</span>
+
+            <span class=cm>/*</span>
+<span class=cm>             バネのような動きをするアニメーション.</span>
+<span class=cm>             */</span>
+        <span class=k>case</span> <span class=mi>0</span><span class=p>:</span>
+            <span class=c1>// アニメーションの時間を2秒に設定.</span>
+            <span class=bp>UIView</span><span class=p>.</span><span class=n>animate</span><span class=p>(</span><span class=n>withDuration</span><span class=p>:</span> <span class=mf>2.0</span><span class=p>,</span>
+
+                           <span class=c1>// 遅延時間.</span>
+                <span class=n>delay</span><span class=p>:</span> <span class=mf>0.0</span><span class=p>,</span>
+
+                <span class=c1>// バネの弾性力. 小さいほど弾性力は大きくなる.</span>
+                <span class=n>usingSpringWithDamping</span><span class=p>:</span> <span class=mf>0.2</span><span class=p>,</span>
+
+                <span class=c1>// 初速度.</span>
+                <span class=n>initialSpringVelocity</span><span class=p>:</span> <span class=mf>1.5</span><span class=p>,</span>
+
+                <span class=c1>// 一定の速度.</span>
+                <span class=n>options</span><span class=p>:</span> <span class=bp>UIView</span><span class=p>.</span><span class=n>AnimationOptions</span><span class=p>.</span><span class=n>curveLinear</span><span class=p>,</span>
+
+                <span class=n>animations</span><span class=p>:</span> <span class=p>{</span> <span class=p>()</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
+
+                    <span class=kc>self</span><span class=p>.</span><span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=bp>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>-</span><span class=mi>50</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>100</span><span class=p>)</span>
+
+                    <span class=c1>// アニメーション完了時の処理</span>
+            <span class=p>})</span> <span class=p>{</span> <span class=p>(</span><span class=nb>Bool</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
+                <span class=kc>self</span><span class=p>.</span><span class=n>myLabel</span><span class=p>.</span><span class=n>center</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>center</span>
+            <span class=p>}</span>
+
+            <span class=cm>/*</span>
+<span class=cm>             X, Y方向にそれぞれ反転するアニメーション.</span>
+<span class=cm>             */</span>
+        <span class=k>case</span> <span class=mi>1</span><span class=p>:</span>
+            <span class=c1>// アニメーションの時間を3秒に設定</span>
+            <span class=bp>UIView</span><span class=p>.</span><span class=n>animate</span><span class=p>(</span><span class=n>withDuration</span><span class=p>:</span> <span class=mf>3.0</span><span class=p>,</span>
+
+                           <span class=c1>// アニメーション中の処理</span>
+                <span class=n>animations</span><span class=p>:</span> <span class=p>{</span> <span class=p>()</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
+
+                    <span class=c1>// X方向に反転用のアフィン行列作成</span>
+                    <span class=kc>self</span><span class=p>.</span><span class=n>myLabel</span><span class=p>.</span><span class=n>transform</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>myLabel</span><span class=p>.</span><span class=n>transform</span><span class=p>.</span><span class=n>scaledBy</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=o>-</span><span class=mf>1.0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mf>1.0</span><span class=p>)</span>
+
+                    <span class=c1>// 連続したアニメーション処理.</span>
+            <span class=p>})</span> <span class=p>{</span> <span class=p>(</span><span class=nb>Bool</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
+                <span class=bp>UIView</span><span class=p>.</span><span class=n>animate</span><span class=p>(</span><span class=n>withDuration</span><span class=p>:</span> <span class=mf>3.0</span><span class=p>,</span>
+
+                               <span class=c1>// アニメーション中の処理</span>
+                    <span class=n>animations</span><span class=p>:</span> <span class=p>{</span> <span class=p>()</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
+
+                        <span class=c1>// Y方向に反転用のアフィン行列作成</span>
+                        <span class=kc>self</span><span class=p>.</span><span class=n>myLabel</span><span class=p>.</span><span class=n>transform</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>myLabel</span><span class=p>.</span><span class=n>transform</span><span class=p>.</span><span class=n>scaledBy</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mf>1.0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=o>-</span><span class=mf>1.0</span><span class=p>)</span>
+
+                        <span class=c1>// アニメーション完了時の処理</span>
+                <span class=p>})</span> <span class=p>{</span> <span class=p>(</span><span class=nb>Bool</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
+                <span class=p>}</span>
+            <span class=p>}</span>
+
+            <span class=cm>/*</span>
+<span class=cm>             回転アニメーション.</span>
+<span class=cm>             */</span>
+        <span class=k>case</span> <span class=mi>2</span><span class=p>:</span>
+            <span class=c1>// 初期化.</span>
+            <span class=kc>self</span><span class=p>.</span><span class=n>myLabel</span><span class=p>.</span><span class=n>transform</span> <span class=p>=</span> <span class=bp>CGAffineTransform</span><span class=p>(</span><span class=n>rotationAngle</span><span class=p>:</span> <span class=mi>0</span><span class=p>)</span>
+
+            <span class=c1>// radianで回転角度を指定(90度).</span>
+            <span class=kd>let</span> <span class=nv>angle</span><span class=p>:</span><span class=n>CGFloat</span> <span class=p>=</span> <span class=n>CGFloat</span><span class=p>(</span><span class=n>M_PI_2</span><span class=p>)</span>
+
+            <span class=c1>// アニメーションの秒数を設定(3秒).</span>
+            <span class=bp>UIView</span><span class=p>.</span><span class=n>animate</span><span class=p>(</span><span class=n>withDuration</span><span class=p>:</span> <span class=mf>3.0</span><span class=p>,</span>
+
+                           <span class=n>animations</span><span class=p>:</span> <span class=p>{</span> <span class=p>()</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
+
+                            <span class=c1>// 回転用のアフィン行列を生成.</span>
+                            <span class=kc>self</span><span class=p>.</span><span class=n>myLabel</span><span class=p>.</span><span class=n>transform</span> <span class=p>=</span> <span class=bp>CGAffineTransform</span><span class=p>(</span><span class=n>rotationAngle</span><span class=p>:</span> <span class=n>angle</span><span class=p>)</span>
+            <span class=p>},</span>
+                           <span class=n>completion</span><span class=p>:</span> <span class=p>{</span> <span class=p>(</span><span class=nb>Bool</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
+            <span class=p>})</span>
+
+            <span class=cm>/*</span>
+<span class=cm>             拡縮アニメーション.</span>
+<span class=cm>             */</span>
+        <span class=k>case</span> <span class=mi>3</span><span class=p>:</span>
+            <span class=kc>self</span><span class=p>.</span><span class=n>myLabel</span><span class=p>.</span><span class=n>transform</span> <span class=p>=</span> <span class=bp>CGAffineTransform</span><span class=p>(</span><span class=n>scaleX</span><span class=p>:</span> <span class=mi>1</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>1</span><span class=p>)</span>
+
+            <span class=c1>// アニメーションの時間を3秒に設定.</span>
+            <span class=bp>UIView</span><span class=p>.</span><span class=n>animate</span><span class=p>(</span><span class=n>withDuration</span><span class=p>:</span> <span class=mf>3.0</span><span class=p>,</span>
+
+                           <span class=n>animations</span><span class=p>:</span> <span class=p>{</span> <span class=p>()</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
+                            <span class=c1>// 縮小用アフィン行列を作成.</span>
+                            <span class=kc>self</span><span class=p>.</span><span class=n>myLabel</span><span class=p>.</span><span class=n>transform</span> <span class=p>=</span> <span class=bp>CGAffineTransform</span><span class=p>(</span><span class=n>scaleX</span><span class=p>:</span> <span class=mf>1.5</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mf>1.5</span><span class=p>)</span>
+            <span class=p>})</span> <span class=c1>// 連続したアニメーション処理.</span>
+            <span class=p>{</span> <span class=p>(</span><span class=nb>Bool</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
+                <span class=bp>UIView</span><span class=p>.</span><span class=n>animate</span><span class=p>(</span><span class=n>withDuration</span><span class=p>:</span> <span class=mf>3.0</span><span class=p>,</span>
+                               <span class=c1>// アニメーション中の処理.</span>
+                    <span class=n>animations</span><span class=p>:</span> <span class=p>{</span> <span class=p>()</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
+                        <span class=c1>// 拡大用アフィン行列を作成.</span>
+                        <span class=kc>self</span><span class=p>.</span><span class=n>myLabel</span><span class=p>.</span><span class=n>transform</span> <span class=p>=</span> <span class=bp>CGAffineTransform</span><span class=p>(</span><span class=n>scaleX</span><span class=p>:</span> <span class=mf>0.5</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mf>0.5</span><span class=p>)</span>
+                <span class=p>})</span> <span class=c1>// アニメーション完了時の処理.</span>
+                <span class=p>{</span> <span class=p>(</span><span class=nb>Bool</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
+                    <span class=c1>// 大きさを元に戻す.</span>
+                    <span class=kc>self</span><span class=p>.</span><span class=n>myLabel</span><span class=p>.</span><span class=n>transform</span> <span class=p>=</span> <span class=bp>CGAffineTransform</span><span class=p>(</span><span class=n>scaleX</span><span class=p>:</span> <span class=mi>1</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>1</span><span class=p>)</span>
+                <span class=p>}</span>
+            <span class=p>}</span>
+
+            <span class=cm>/*</span>
+<span class=cm>             移動するアニメーション.</span>
+<span class=cm>             */</span>
+        <span class=k>case</span> <span class=mi>4</span><span class=p>:</span>
+            <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=bp>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=o>-</span><span class=mi>30</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=o>-</span><span class=mi>30</span><span class=p>)</span>
+
+            <span class=c1>// アニメーション処理</span>
+            <span class=bp>UIView</span><span class=p>.</span><span class=n>animate</span><span class=p>(</span><span class=n>withDuration</span><span class=p>:</span> <span class=n>TimeInterval</span><span class=p>(</span><span class=n>CGFloat</span><span class=p>(</span><span class=mf>3.0</span><span class=p>)),</span>
+                           <span class=n>animations</span><span class=p>:</span> <span class=p>{()</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
+
+                            <span class=c1>// 移動先の座標を指定する.</span>
+                            <span class=kc>self</span><span class=p>.</span><span class=n>myLabel</span><span class=p>.</span><span class=n>center</span> <span class=p>=</span> <span class=bp>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span><span class=n>y</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span><span class=o>/</span><span class=mi>2</span><span class=p>);</span>
+
+            <span class=p>},</span> <span class=n>completion</span><span class=p>:</span> <span class=p>{(</span><span class=nb>Bool</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
+            <span class=p>})</span>
+
+        <span class=k>default</span><span class=p>:</span>
+            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;error!&quot;</span><span class=p>)</span>
+        <span class=p>}</span>
+    <span class=p>}</span>
+
+    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
+        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+</pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
   2
   3
   4
@@ -1595,9 +1931,7 @@
         <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
     <span class=p>}</span>
 <span class=p>}</span> 
-</pre></div></td></tr></table></p>
-<h2 id="swift-23">Swift 2.3</h2>
-<p> <table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
+</pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
   2
   3
   4
@@ -1948,7 +2282,14 @@
         <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
     <span class=p>}</span>
 <span class=p>}</span>
-</pre></div></td></tr></table></p>
+</pre></div></td></tr></table></div></div>
+
+<h2 id="3x4x">3.xと4.xの差分</h2>
+<ul>
+<li>UIControlEventsがUIControl.Eventに変更</li>
+<li>func changedValue(sender: UISegmentedControl)に@objcを追加</li>
+<li>UIViewAnimationOptionsをUIView.AnimationOptionsに変更</li>
+</ul>
 <h2 id="2330">2.3と3.0の差分</h2>
 <ul>
 <li>CGPointMakeが廃止</li>
