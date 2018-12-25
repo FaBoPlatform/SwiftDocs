@@ -2,8 +2,7 @@
 
 ![Preview uikit060_1](img/uikit060_1.png) ![Preview uikit060_2](img/uikit060_2.png) ![Preview uikit060_3](img/uikit060_3.png)
 
-## Swift3.0
-```swift
+```swift fct_label="Swift 4.x/Swift 3.x"
 //
 //  ViewController.swift
 //  UIKit060
@@ -89,8 +88,7 @@ class ViewController: UIViewController {
 
 ``` 
 
-## Swift 2.3
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  UIKit060

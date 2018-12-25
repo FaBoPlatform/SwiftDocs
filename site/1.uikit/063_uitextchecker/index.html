@@ -362,8 +362,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../013_uitabbarcontroller/" title="013 UITabBarControllerでタブの表示" class="md-nav__link">
-      013 UITabBarControllerでタブの表示
+    <a href="../013_uitabbarcontroller/" title="UITabBarControllerでタブの表示" class="md-nav__link">
+      UITabBarControllerでタブの表示
     </a>
   </li>
 
@@ -902,8 +902,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../058_image/" title="UIImageで画像の透過" class="md-nav__link">
-      UIImageで画像の透過
+    <a href="../058_image/" title="UIImageをぼかす" class="md-nav__link">
+      UIImageをぼかす
     </a>
   </li>
 
@@ -989,15 +989,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#swift30" title="Swift3.0" class="md-nav__link">
-    Swift3.0
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#swift-23" title="Swift 2.3" class="md-nav__link">
-    Swift 2.3
+  <a href="#3x4x" title="3.xと4.xの差分" class="md-nav__link">
+    3.xと4.xの差分
   </a>
   
 </li>
@@ -1197,15 +1190,8 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#swift30" title="Swift3.0" class="md-nav__link">
-    Swift3.0
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#swift-23" title="Swift 2.3" class="md-nav__link">
-    Swift 2.3
+  <a href="#3x4x" title="3.xと4.xの差分" class="md-nav__link">
+    3.xと4.xの差分
   </a>
   
 </li>
@@ -1244,8 +1230,238 @@
                 <h1 id="uitextchecker">UITextCheckerでスペルチェック</h1>
 <p><img alt="Preview uikit063_1" src="../img/uikit063_1.png" />
 <img alt="Preview uikit063_2" src="../img/uikit063_2.png" /></p>
-<h2 id="swift30">Swift3.0</h2>
-<p> <table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
+  2
+  3
+  4
+  5
+  6
+  7
+  8
+  9
+ 10
+ 11
+ 12
+ 13
+ 14
+ 15
+ 16
+ 17
+ 18
+ 19
+ 20
+ 21
+ 22
+ 23
+ 24
+ 25
+ 26
+ 27
+ 28
+ 29
+ 30
+ 31
+ 32
+ 33
+ 34
+ 35
+ 36
+ 37
+ 38
+ 39
+ 40
+ 41
+ 42
+ 43
+ 44
+ 45
+ 46
+ 47
+ 48
+ 49
+ 50
+ 51
+ 52
+ 53
+ 54
+ 55
+ 56
+ 57
+ 58
+ 59
+ 60
+ 61
+ 62
+ 63
+ 64
+ 65
+ 66
+ 67
+ 68
+ 69
+ 70
+ 71
+ 72
+ 73
+ 74
+ 75
+ 76
+ 77
+ 78
+ 79
+ 80
+ 81
+ 82
+ 83
+ 84
+ 85
+ 86
+ 87
+ 88
+ 89
+ 90
+ 91
+ 92
+ 93
+ 94
+ 95
+ 96
+ 97
+ 98
+ 99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116</pre></div></td><td class=code><div class=codehilite><pre><span></span><span class=c1>//</span>
+<span class=c1>//  ViewController.swift</span>
+<span class=c1>//  swiftdocs</span>
+<span class=c1>//</span>
+<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
+<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
+<span class=c1>//</span>
+
+<span class=kd>import</span> <span class=nc>UIKit</span>
+
+<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UITextFieldDelegate</span> <span class=p>{</span>
+
+    <span class=kd>var</span> <span class=nv>myTextField</span><span class=p>:</span> <span class=bp>UITextField</span><span class=p>!</span>
+    <span class=kd>var</span> <span class=nv>suggestTextField</span> <span class=p>:</span> <span class=bp>UITextView</span><span class=p>!</span>
+
+    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
+        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+
+        <span class=c1>// Buttonを生成.</span>
+        <span class=kd>let</span> <span class=nv>myButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>()</span>
+        <span class=n>myButton</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=bp>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>200</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>40</span><span class=p>)</span>
+        <span class=n>myButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>red</span>
+        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
+        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;チェックする&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=bp>UIControl</span><span class=p>.</span><span class=n>State</span><span class=p>.</span><span class=n>normal</span><span class=p>)</span>
+        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=bp>UIControl</span><span class=p>.</span><span class=n>State</span><span class=p>.</span><span class=n>normal</span><span class=p>)</span>
+        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=bp>UIControl</span><span class=p>.</span><span class=n>State</span><span class=p>.</span><span class=n>highlighted</span><span class=p>)</span>
+        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
+        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=bp>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>200</span><span class=p>)</span>
+        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>touchUpInside</span><span class=p>)</span>
+        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>)</span>
+
+        <span class=c1>// 候補用TextFieldを生成.</span>
+        <span class=n>suggestTextField</span> <span class=p>=</span> <span class=bp>UITextView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=bp>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>300</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>250</span><span class=p>))</span>
+        <span class=n>suggestTextField</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=bp>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>midX</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>midY</span> <span class=o>+</span> <span class=mi>150</span><span class=p>)</span>
+        <span class=n>suggestTextField</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span>
+        <span class=n>suggestTextField</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
+        <span class=n>suggestTextField</span><span class=p>.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=n>NSTextAlignment</span><span class=p>.</span><span class=kr>left</span>
+        <span class=n>suggestTextField</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;もしかして: &quot;</span>
+        <span class=n>suggestTextField</span><span class=p>.</span><span class=n>font</span> <span class=p>=</span> <span class=bp>UIFont</span><span class=p>.</span><span class=n>systemFont</span><span class=p>(</span><span class=n>ofSize</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=mi>20</span><span class=p>))</span>
+        <span class=n>suggestTextField</span><span class=p>.</span><span class=n>isEditable</span> <span class=p>=</span> <span class=kc>false</span>
+        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>suggestTextField</span><span class=p>!)</span>
+
+        <span class=c1>// スペル入力用UITextFieldを作成.</span>
+        <span class=n>myTextField</span> <span class=p>=</span> <span class=bp>UITextField</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=bp>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span><span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>200</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>30</span><span class=p>))</span>
+        <span class=n>myTextField</span><span class=p>.</span><span class=n>borderStyle</span> <span class=p>=</span> <span class=bp>UITextField</span><span class=p>.</span><span class=n>BorderStyle</span><span class=p>.</span><span class=n>roundedRect</span>
+        <span class=n>myTextField</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=bp>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>100</span><span class=p>)</span>
+        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myTextField</span><span class=p>)</span>
+    <span class=p>}</span>
+
+    <span class=cm>/*</span>
+<span class=cm>     Buttonが押されたときに呼ばれるメソッド.</span>
+<span class=cm>     */</span>
+    <span class=kr>@objc</span> <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span> <span class=p>:</span> <span class=bp>UIButton</span><span class=p>){</span>
+
+        <span class=c1>// スペルチェックを行う.</span>
+        <span class=n>suggestUpdate</span><span class=p>()</span>
+    <span class=p>}</span>
+
+    <span class=cm>/*</span>
+<span class=cm>     スペルチェックするメソッド.</span>
+<span class=cm>     */</span>
+    <span class=kd>func</span> <span class=nf>suggestUpdate</span><span class=p>(){</span>
+
+        <span class=c1>// UITextCheckerの宣言.</span>
+        <span class=kd>let</span> <span class=nv>checker</span> <span class=p>:</span> <span class=bp>UITextChecker</span> <span class=p>=</span> <span class=bp>UITextChecker</span><span class=p>()</span>
+
+        <span class=c1>// textの文字数を取得.</span>
+        <span class=kd>let</span> <span class=nv>length</span> <span class=p>=</span> <span class=n>myTextField</span><span class=p>.</span><span class=n>text</span><span class=p>?.</span><span class=n>characters</span><span class=p>.</span><span class=bp>count</span>
+
+        <span class=c1>// スペルチェックをする範囲(0~入力された文字数)を指定.</span>
+        <span class=kd>let</span> <span class=nv>checkRange</span><span class=p>:</span> <span class=n>NSRange</span> <span class=p>=</span> <span class=n>NSMakeRange</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=n>length</span><span class=p>!)</span>
+
+        <span class=c1>// 範囲の中から間違ったスペルの物を探す.</span>
+        <span class=kd>let</span> <span class=nv>misspelledRange</span><span class=p>:</span> <span class=n>NSRange</span> <span class=p>=</span> <span class=n>checker</span><span class=p>.</span><span class=n>rangeOfMisspelledWord</span><span class=p>(</span>
+
+            <span class=c1>// チェックする文字を指定.</span>
+            <span class=k>in</span><span class=p>:</span> <span class=n>myTextField</span><span class=p>.</span><span class=n>text</span><span class=p>!,</span>
+
+            <span class=c1>// チェックする範囲を指定.</span>
+            <span class=n>range</span><span class=p>:</span><span class=n>checkRange</span><span class=p>,</span>
+
+            <span class=c1>// 開始位置を範囲の先頭に指定.</span>
+            <span class=n>startingAt</span><span class=p>:</span> <span class=n>checkRange</span><span class=p>.</span><span class=n>location</span><span class=p>,</span>
+
+            <span class=c1>// 指定された範囲内にミスが見つからなくてもrangeの開始位置から探し始める.(falseならミスが見つからなかった末尾の位置を保持する)</span>
+            <span class=n>wrap</span><span class=p>:</span> <span class=kc>true</span><span class=p>,</span>
+
+            <span class=c1>// 言語を英語に指定.</span>
+            <span class=n>language</span><span class=p>:</span> <span class=s>&quot;en_US&quot;</span><span class=p>)</span>
+
+        <span class=c1>// スペルミスが見つかった場合.</span>
+        <span class=k>if</span> <span class=n>misspelledRange</span><span class=p>.</span><span class=n>location</span> <span class=o>!=</span> <span class=n>NSNotFound</span> <span class=p>{</span>
+
+            <span class=c1>// 正しいスペルの候補を取得.</span>
+            <span class=kd>let</span> <span class=nv>candidateArray</span><span class=p>:</span> <span class=bp>NSArray</span> <span class=p>=</span> <span class=n>checker</span><span class=p>.</span><span class=n>guesses</span><span class=p>(</span>
+
+                <span class=c1>// スペルミスがある範囲.</span>
+                <span class=n>forWordRange</span><span class=p>:</span> <span class=n>misspelledRange</span><span class=p>,</span>
+
+                <span class=c1>// スペルミスを含む文字(range内).</span>
+                <span class=k>in</span><span class=p>:</span> <span class=n>myTextField</span><span class=p>.</span><span class=n>text</span><span class=p>!,</span>
+
+                <span class=c1>// 言語を指定.</span>
+                <span class=n>language</span><span class=p>:</span> <span class=s>&quot;en_US&quot;</span><span class=p>)</span><span class=o>!</span> <span class=k>as</span> <span class=bp>NSArray</span>
+
+            <span class=kd>var</span> <span class=nv>str</span> <span class=p>=</span> <span class=s>&quot;もしかして:</span><span class=se>\n</span><span class=s>&quot;</span>
+
+            <span class=c1>// 候補を配列から1つずつ取り出す.</span>
+            <span class=k>for</span> <span class=n>text</span> <span class=k>in</span> <span class=n>candidateArray</span> <span class=p>{</span>
+                <span class=n>str</span> <span class=o>+=</span> <span class=p>(</span><span class=n>text</span> <span class=k>as</span> <span class=nb>AnyObject</span><span class=p>).</span><span class=n>description</span><span class=p>!</span>
+                <span class=n>str</span> <span class=o>+=</span> <span class=s>&quot;, &quot;</span>
+            <span class=p>}</span>
+            <span class=n>suggestTextField</span><span class=p>?.</span><span class=n>text</span> <span class=p>=</span> <span class=n>str</span>
+        <span class=p>}</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+</pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
   2
   3
   4
@@ -1476,9 +1692,7 @@
         <span class=p>}</span>
     <span class=p>}</span>
 <span class=p>}</span>
-</pre></div></td></tr></table></p>
-<h2 id="swift-23">Swift 2.3</h2>
-<p> <table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
+</pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
   2
   3
   4
@@ -1709,7 +1923,16 @@
         <span class=p>}</span>
     <span class=p>}</span>
 <span class=p>}</span>
-</pre></div></td></tr></table></p>
+</pre></div></td></tr></table></div></div>
+
+<h2 id="3x4x">3.xと4.xの差分</h2>
+<ul>
+<li><code>UIControlState</code>が<code>UIControl.State</code>に変更</li>
+<li><code>func onClickMyButton(sender : UIButton)</code>に<code>@objc</code>を追加</li>
+<li><code>UITextBorderStyle</code>が<code>UITextField.BorderStyle</code>に変更</li>
+<li>let candidateArray: NSArray = checker.guesses(forWordRange: misspelledRange, in: myTextField.text!, language: "en_US")<code>!</code>がlet candidateArray: NSArray = checker.guesses(forWordRange: misspelledRange, in: myTextField.text!, language: "en_US")<code>! as NSArray</code>に変更</li>
+<li>t<code>ext.description!</code>を<code>(text as AnyObject).description!</code>に変更</li>
+</ul>
 <h2 id="2330">2.3と3.0の差分</h2>
 <ul>
 <li><code>rangeOfMisspelledWordInString</code> から <code>rangeOfMisspelledWord</code> に変更</li>

@@ -29,7 +29,7 @@
 [![Preview uikit029](./img/uikit029.png)](./029_uisegmentedcontrol.md)
 [![Preview uikit030](./img/uikit030.png)](./030_uistepper.md)
 [![Preview uikit031](./img/uikit031_001.png)](./031_uinavigationitem.md)
-[![Preview uikit032](./img/uikit032.png)](./032_uialertC¥controller.md)
+[![Preview uikit032](./img/uikit032.png)](./032_uialertController.md)
 [![Preview uikit033](./img/uikit033_001.png)](./033_uimenucontroller.md)
 [![Preview uikit034](./img/uikit034.png)](./034_uimotioneffect.md)
 [![Preview uikit035](./img/uikit035_001.png)](./035_blureffect.md)

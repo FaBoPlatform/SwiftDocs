@@ -1,4 +1,4 @@
-# 013 UITabBarControllerでタブの表示
+# UITabBarControllerでタブの表示
 
 ![Preview uikit013](./img/uikit013.png)
 ![Preview uikit013_1](./img/uikit013_1.png)

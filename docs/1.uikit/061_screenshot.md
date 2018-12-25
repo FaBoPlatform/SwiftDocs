@@ -2,8 +2,94 @@
 
 ![Preview uikit061](img/uikit061.png)
 
-## Swift3.0
-```swift
+```swift fct_label="Swift 4.x"
+//
+//  ViewController.swift
+//  UIKit061
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
+
+import UIKit
+
+extension UIView {
+    
+    func GetImage() -> UIImage{
+        
+        // キャプチャする範囲を取得.
+        let rect = self.bounds
+        
+        // ビットマップ画像のcontextを作成.
+        UIGraphicsBeginImageContextWithOptions(rect.size, false, 0.0)
+        let context: CGContext = UIGraphicsGetCurrentContext()!
+        
+        // 対象のview内の描画をcontextに複写する.
+        self.layer.render(in: context)
+        
+        // 現在のcontextのビットマップをUIImageとして取得.
+        let capturedImage : UIImage = UIGraphicsGetImageFromCurrentImageContext()!
+        
+        // contextを閉じる.
+        UIGraphicsEndImageContext()
+        
+        return capturedImage
+    }
+}
+
+class ViewController: UIViewController {
+    
+    var myLabel: UILabel!
+    var myImageView: UIImageView!
+    
+    override func viewDidLoad() {
+        
+        // Labelを生成.
+        myLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        myLabel.text = "test"
+        myLabel.textColor = UIColor.white
+        myLabel.layer.cornerRadius = 50.0
+        myLabel.layer.masksToBounds = true
+        myLabel.backgroundColor = UIColor.blue
+        myLabel.textAlignment = NSTextAlignment.center
+        myLabel.layer.position = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height/2 - 100)
+        
+        // ImageViewを生成.
+        myImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
+        myImageView.layer.borderColor = UIColor.black.cgColor
+        myImageView.layer.position = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height - 200)
+        myImageView.layer.borderWidth = 0.5
+        
+        // Buttonを生成.
+        let myButton = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 20))
+        myButton.setTitle("push", for: UIControl.State.normal)
+        myButton.setTitleColor(UIColor.blue, for: UIControl.State.normal)
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(sender:)), for: UIControl.Event.touchUpInside)
+        myButton.layer.position = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height - 50)
+        
+        // viewにそれぞれを追加.
+        self.view.addSubview(myLabel)
+        self.view.addSubview(myImageView)
+        self.view.addSubview(myButton)
+    }
+    
+    /*
+     Buttonが押された時に呼ばれるメソッド.
+     */
+    @objc func onClickMyButton(sender: UIButton) {
+        // キャプチャ画像を取得.
+        let myImage = myLabel.GetImage() as UIImage
+        
+        // ImageViewのimageにセット.
+        myImageView.image = myImage
+        
+        // 縦横比率を保ちつつ画像をUIImageViewの大きさに合わせる.
+        myImageView.contentMode = UIView.ContentMode.scaleAspectFit
+    }
+}
+```
+
+```swift fct_label="Swift3.x"
 //
 //  ViewController.swift
 //  UIKit061
@@ -90,8 +176,7 @@ class ViewController: UIViewController {
 }
 ``` 
 
-## Swift 2.3
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  UIKit061
@@ -177,6 +262,12 @@ class ViewController: UIViewController {
     }
 }
 ``` 
+
+## 3.xと4.xの差分
+* UIControlStateがUIControl.Stateに変更
+* func onClickMyButton(sender: UIButton)に@objcを追加
+* UIControlEventsがUIControl.Eventに変更
+* UIViewContentModeがUIView.ContentModeに変更
 
 ## 2.3と3.0の差分
 

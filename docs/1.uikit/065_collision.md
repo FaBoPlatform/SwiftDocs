@@ -3,8 +3,115 @@
 ![Preview uikit065_1](img/uikit065_1.png)
 ![Preview uikit065_2](img/uikit065_2.png)
 
-## Swift3.0
-```swift
+```swift fct_label="Swift 4.x"
+
+//
+//  ViewController.swift
+//  UIKit065
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+    
+    // UIDynamicAnimatorはインスタンスを保存しなければアニメーションが実行されない.
+    var animator : UIDynamicAnimator!
+    
+    var gravity : UIGravityBehavior!
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor.cyan
+        
+        // Labelを作成.
+        let myLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 40))
+        myLabel.backgroundColor = UIColor.orange
+        myLabel.layer.masksToBounds = true
+        myLabel.layer.cornerRadius = 20.0
+        myLabel.text = "Hello Swift!!"
+        myLabel.textColor = UIColor.white
+        myLabel.shadowColor = UIColor.gray
+        myLabel.textAlignment = NSTextAlignment.center
+        myLabel.layer.position = CGPoint(x: self.view.bounds.width/2, y: -200)
+        self.view.addSubview(myLabel)
+        
+        // 障害物を作成.
+        let myBoxView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 40))
+        myBoxView.backgroundColor = UIColor.blue
+        myBoxView.layer.masksToBounds = true
+        myBoxView.layer.position = CGPoint(x: self.view.frame.midX - 50, y: self.view.frame.midY)
+        self.view.addSubview(myBoxView)
+        
+        // DropButtonを作成.
+        let myButton = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
+        myButton.layer.position = CGPoint(x: self.view.frame.midX, y: 500)
+        myButton.layer.masksToBounds = true
+        myButton.layer.cornerRadius = 20.0
+        myButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
+        myButton.setTitleColor(UIColor.black, for: UIControl.State.highlighted)
+        myButton.backgroundColor = UIColor.red
+        myButton.setTitle("Dropped!", for: UIControl.State.normal)
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(sender:)), for: UIControl.Event.touchUpInside)
+        myButton.tag = 0
+        self.view.addSubview(myButton)
+        
+        // ResetButtonを作成.
+        let myResetButton = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
+        myResetButton.layer.position = CGPoint(x: self.view.frame.midX, y: 400)
+        myResetButton.layer.masksToBounds = true
+        myResetButton.layer.cornerRadius = 20.0
+        myResetButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
+        myResetButton.setTitleColor(UIColor.black, for: UIControl.State.highlighted)
+        myResetButton.backgroundColor = UIColor.blue
+        myResetButton.setTitle("Reset!", for: UIControl.State.normal)
+        myResetButton.addTarget(self, action: #selector(ViewController.onClickMyButton(sender:)), for: UIControl.Event.touchUpInside)
+        myResetButton.tag = 1
+        self.view.addSubview(myResetButton)
+        
+        // UIDynamiAnimatorの生成とインスタンスの保存.
+        animator = UIDynamicAnimator(referenceView: self.view)
+        
+        // 重力を作り、Viewに適用させる.
+        gravity = UIGravityBehavior(items: [myLabel])
+        
+        // Collisionを作成、Viewに適用させる.
+        let collision = UICollisionBehavior(items: [myLabel,myBoxView])
+        
+        // Collisionの挙動を指定.
+        collision.addBoundary(withIdentifier: "barrier" as NSCopying, for: UIBezierPath(rect: myBoxView.frame))
+        
+        // Collisionのアニメーションを実行.
+        animator.addBehavior(collision)
+    }
+    
+    @objc func onClickMyButton(sender : UIButton){
+        
+        switch(sender.tag) {
+            
+        // DropButton.
+        case 0:
+            // Gravityのアニメーションを実行.
+            animator.addBehavior(gravity)
+            
+        // ResetButton.
+        case 1:
+            
+            let next = ViewController()
+            self.present(next, animated: false, completion: nil)
+            
+        default:
+            print("error!")
+        }
+    }
+}
+```
+
+```swift fct_label="Swift 3.x"
 //
 //  ViewController.swift
 //  UIKit065
@@ -111,8 +218,7 @@ class ViewController: UIViewController {
 }
 ```
 
-## Swift 2.3
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  UIKit065
@@ -218,6 +324,12 @@ class ViewController: UIViewController {
     }
 }
 ```
+
+## 3.xと4.xの差分
+* UIControlStateがUIControl.Statenに変更
+* UIControlEventsがUIControl.Eventに変更
+* func onClickMyButton(sender : UIButton)に@objcを追加
+* "barrier"を"barrier" as NSCopyingに変更
 
 ## 2.3と3.0の差分
 

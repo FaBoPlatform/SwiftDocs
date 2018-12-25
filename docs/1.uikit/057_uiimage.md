@@ -2,8 +2,7 @@
 
 ![Preview uikit057_1](img/uikit057_1.png) ![Preview uikit057_2](img/uikit057_2.png)
 
-## Swift3.0
-```swift
+```swift fct_label="Swift4.x/Swift 3.x"
 //
 //  ViewController.swift
 //  UIKit057
@@ -55,8 +54,7 @@ class ViewController: UIViewController {
 }
 ```
 
-## Swift 2.3
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  UIKit057
