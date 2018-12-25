@@ -1,4 +1,4 @@
-site_name: FaBo Circuit Docs
+site_name: FaBo Swift Docs
 theme:
     name: material
     language: 'ja'
