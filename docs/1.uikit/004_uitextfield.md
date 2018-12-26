@@ -1,9 +1,9 @@
-# UIButtonでいろいろなボタンを表示
+# UITextFieldで文字を入力
 
 ![Preview uikit004](./img/uikit004.png)
 
 
-```swift fct_label="Swift 3.x"
+```swift fct_label="Swift 4.x/Swift 3.x"
 //
 //  ViewController.swift
 //  UIKit004

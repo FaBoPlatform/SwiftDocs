@@ -330,21 +330,15 @@ class SecondViewController: UIViewController {
 
 ```
 
-## 3.0と4.0の差分
-* internal func onClickMyButton(sender: UIButton)が、
-@objc internal func onClickMyButton(sender: UIButton)に変更
-* UIColor.blueColor()がUIColor.blueに変更
-* UIButton(frame: CGRectMake(0,0,120,50))が、
-UIButton(frame: CGRect(x: 0, y: 0, width: 120, height: 50))に変更
-* UIColor.redColor()がUIColor.redに変更
-* backButton.setTitle("Back", forState: .Normal)が、
-backButton.setTitle("Back", for: .normal)に変更
-* backButton.addTarget(self, action: #selector(onClickMyButton(_:)), forControlEvents: .TouchUpInside)が、
-backButton.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchUpInside)に変更
-* myViewController.modalTransitionStyle = UIModalTransitionStyle.FlipHorizontalが、
-myViewController.modalTransitionStyle = UIModalTransitionStyle.flipHorizontalに変更
-* self.presentViewController(myViewController, animated: true, completion: nil)が、
-self.present(myViewController, animated: true, completion: nil)に変更
+## 3.xと4.xの差分
+* ```internal func onClickMyButton(sender: UIButton)``` に ```@objc``` を追加
+* ```UIColor.blueColor()``` が ```UIColor.blue``` に変更
+* ```UIButton(frame: CGRectMake(0,0,120,50))``` が、 ```UIButton(frame: CGRect(x: 0, y: 0, width: 120, height: 50))```に変更
+* ```UIColor.redColor()``` が ```UIColor.red``` に変更
+* ```setTitle("Back", forState: .Normal)``` が、 ```setTitle("Back", for: .normal)``` に変更
+* ```backButton.addTarget(self, action: #selector(onClickMyButton(_:)), forControlEvents: .TouchUpInside)``` が、 ```backButton.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchUpInside)``` に変更
+* ```UIModalTransitionStyle.FlipHorizontal``` が、 ```UIModalTransitionStyle.flipHorizontal``` に変更
+* ```self.presentViewController(myViewController, animated: true, completion: nil)``` が、 ```self.present(myViewController, animated: true, completion: nil)``` に変更
 
 ## 2.3と3.0の差分
 

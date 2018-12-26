@@ -308,9 +308,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
 ```
 
 ## 3.xと4.xの差分
-* UITextBorderStyleがUITextField.BorderStyleに変更
-* UIMenuControllerArrowDirectionがUIMenuController.ArrowDirectionに変更
-* internal func onMenuの1~3に@objcを追加
+* ```UITextBorderStyle``` が ```UITextField.BorderStyle``` に変更
+* ```UIMenuControllerArrowDirection``` が ```UIMenuController.ArrowDirection``` に変更
+* ```internal func onMenu``` の ```1~3``` に ```@objc``` を追加
 
 ## 2.3と3.0の差分
 * UIColorの参照方法が変更(UIColor.grayColor()->UIColor.gray)

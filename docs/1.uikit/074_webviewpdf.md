@@ -2,8 +2,122 @@
 
 ![Preview uikit074](img/uikit074.png)
 
-## Swift3.0
-```swift
+```swift fct_label="Swift 4.x"
+//
+//  ViewController.swift
+//  swiftdocs
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController, UIWebViewDelegate {
+    
+    var myWebView: UIWebView!
+    var myPDFurl: NSURL!
+    var myRequest: NSURLRequest!
+    var myIndiator: UIActivityIndicatorView!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Buttonを生成.
+        let myButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
+        myButton.layer.cornerRadius = 20.0
+        myButton.layer.masksToBounds = true
+        myButton.layer.position = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height - 50)
+        myButton.backgroundColor = UIColor.orange
+        myButton.setTitle("Open PDF", for: UIControl.State.normal)
+        myButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(sender:)), for: UIControl.Event.touchUpInside)
+        self.view.addSubview(myButton)
+        
+        // PDFを開くためのWebViewを生成.
+        myWebView = UIWebView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        myWebView.delegate = self
+        myWebView.scalesPageToFit = true
+        myWebView.layer.position = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height/2)
+        
+        // URLReqestを生成.
+        myPDFurl = NSURL(string: "https://developer.apple.com/jp/documentation/CocoaEncyclopedia.pdf")!
+        myRequest = NSURLRequest(url: myPDFurl as URL)
+        
+        // ページ読み込み中に表示させるインジケータを生成.
+        myIndiator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        myIndiator.center = self.view.center
+        myIndiator.hidesWhenStopped = true
+        myIndiator.style = UIActivityIndicatorView.Style.gray
+    }
+    
+    /*
+     インジケータのアニメーション開始.
+     */
+    func startAnimation() {
+        
+        // NetworkActivityIndicatorを表示.
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        
+        // UIACtivityIndicatorを表示.
+        if !myIndiator.isAnimating {
+            myIndiator.startAnimating()
+        }
+        
+        // viewにインジケータを追加.
+        self.view.addSubview(myIndiator)
+    }
+    
+    /*
+     インジケータのアニメーション終了.
+     */
+    func stopAnimation() {
+        // NetworkActivityIndicatorを非表示.
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+        
+        // UIACtivityIndicatorを非表示.
+        if myIndiator.isAnimating {
+            myIndiator.stopAnimating()
+        }
+    }
+    
+    /*
+     Buttonが押された時に呼ばれるメソッド.
+     */
+    @objc func onClickMyButton(sender: UIButton) {
+        
+        // WebViewのLoad開始.
+        myWebView.loadRequest(myRequest as URLRequest)
+        
+        // viewにWebViewを追加.
+        self.view.addSubview(myWebView)
+    }
+    
+    /*
+     WebViewのloadが開始された時に呼ばれるメソッド.
+     */
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        print("load started")
+        
+        startAnimation()
+    }
+    
+    /*
+     WebViewのloadが終了した時に呼ばれるメソッド.
+     */
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        print("load finished")
+        
+        stopAnimation()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+```
+
+```swift fct_label="Swift 3.x"
 //
 //  ViewController.swift
 //  swiftdocs
@@ -118,8 +232,7 @@ class ViewController: UIViewController, UIWebViewDelegate {
 }
 ```
 
-## Swift 2.3
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  UIKit074
@@ -233,6 +346,13 @@ class ViewController: UIViewController, UIWebViewDelegate {
     }
 }
 ```
+
+## 3.xと4.xの差分
+* ```UIControlState``` が ```UIControl.State``` に変更
+* ```UIControlEvents``` が ```UIControl.Event``` に変更
+* ```func onClickMyButton(sender: UIButton)``` に ```@objc```を追加
+* ```UIActivityIndicatorViewStyle``` が ```UIActivityIndicatorView.Style``` に変更
+* ```activityIndicatorViewStyle``` が ```style``` に変更
 
 ## 2.3と3.0の差分
 

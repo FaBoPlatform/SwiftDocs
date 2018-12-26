@@ -205,11 +205,9 @@ class ViewController: UIViewController, UIPickerViewDelegate {
 ```
 
 ## 3.0と4.0の差分
-* UITextBorderStyle.roundedRectが、UITextField.BorderStyle.roundedRectに変更
-* internal func onDidChangeDate(sender: UIDatePicker)が、
-@objc internal func onDidChangeDate(sender: UIDatePicker)に変更
-* myDateFormatter.string(from: sender.date)が、
-myDateFormatter.string(from: sender.date) as NSStringに変更
+* ```UITextBorderStyle.roundedRect``` が、 ```UITextField.BorderStyle.roundedRect``` に変更
+* ```internal func onDidChangeDate(sender: UIDatePicker)``` に ```@objc``` を追加
+* ```myDateFormatter.string(from: sender.date)``` を、 ```myDateFormatter.string(from: sender.date) as NSString``` に変更
 
 
 ## 2.3と3.0の差分

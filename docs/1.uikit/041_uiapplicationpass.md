@@ -252,12 +252,10 @@ class ViewController: UIViewController {
 ```
 
 ## 3.xと4.xの差分
-* internal func onClickMyButtonに@objcを追加
-* internal func changeTextFieldに@objcを追加
-* UIAlertControllerStyleがUIAlertController.Styleに変更
-* UIAlertActionStyleがUIAlertAction.Styleに変更
-*  NSNotification.Name.UITextFieldTextDidChangeが、
-UITextField.textDidChangeNotificationに変更
+* ```onClickMyButton``` 、 ```changeTextField``` に ```@objc``` を追加
+* ```UIAlertControllerStyle``` が ```UIAlertController.Style``` に変更
+* ```UIAlertActionStyle``` が ```UIAlertAction.Style``` に変更
+*  ```NSNotification.Name.UITextFieldTextDidChange``` が ```UITextField.textDidChangeNotification``` に変更
 
 ## 2.3と3.0の差分
 * UIColorの参照方法が変更(UIColor.grayColor()->UIColor.gray)

@@ -232,8 +232,7 @@ class ViewController: UIViewController, UIToolbarDelegate{
 ```
 
 ## 3.0と4.0の差分
-* internal func onClickBarButton(sender: UIBarButtonItem)が、
-@objc internal func onClickBarButton(sender: UIBarButtonItem)に変更
+* ```internal func onClickBarButton(sender: UIBarButtonItem)``` に ```@objc``` を追加
 
 ## 2.3と3.0の差分
 * UIColorの参照方法が変更(UIColor.grayColor()->UIColor.gray)

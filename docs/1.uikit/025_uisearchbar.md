@@ -292,7 +292,7 @@ class ViewController: UIViewController, UISearchBarDelegate {
 ```
 
 ## 3.0と4.0の差分
-* UISearchBarStyle.defaultが、UISearchBar.Style.defaultに変更
+* ```UISearchBarStyle.default``` が、 ```UISearchBar.Style.default``` に変更
 
 ## 2.3と3.0の差分
 * UIColorの参照名が変更(UIColor.blackColor() -> UIColor.black)

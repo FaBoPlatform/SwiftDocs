@@ -319,13 +319,11 @@ class ViewController: UIViewController {
 ```
 
 ## 3.xと4.xの差分
-* UIScreen.screensがUIScreen.screens as NSArrayに変更
-* func screenDidConnectに@objcを追加
-* func screenDidDisconnectに@objcを追加
-* func screenDidModeChangeに@objcを追加
-* NSNotification.Name.UIScreenDidConnectがUIScreen.didConnectNotificationに変更
-* NSNotification.Name.UIScreenDidDisconnectがUIScreen.didDisconnectNotificationに変更
-* NSNotification.Name.UIScreenModeDidChangeがUIScreen.modeDidChangeNotificationに変更
+* ```UIScreen.screens``` が ```UIScreen.screens as NSArray``` に変更
+* ```screenDidConnect``` 、 ```screenDidDisconnect``` 、 ```screenDidModeChange``` に ```@objc``` を追加
+* ```NSNotification.Name.UIScreenDidConnect``` が ```UIScreen.didConnectNotification``` に変更
+* ```NSNotification.Name.UIScreenDidDisconnect``` が ```UIScreen.didDisconnectNotification``` に変更
+* ```NSNotification.Name.UIScreenModeDidChange``` が ```UIScreen.modeDidChangeNotification``` に変更
 
 ## 2.3と3.0の差分
 * UIColorの参照方法が変更(UIColor.grayColor()->UIColor.gray)

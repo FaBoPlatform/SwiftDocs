@@ -414,10 +414,8 @@ class SecondViewController: UIViewController {
 ```
 
 ## 3.0と4.0の差分
-* application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Boolが、  
-application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Boolに変更
-* internal func onClickMyButton(sender: UIButton)が、  
-  @objc internal func onClickMyButton(sender: UIButton)に変更
+* ```[NSObject: AnyObject]?``` が、 ```[UIApplication.LaunchOptionsKey : Any]? = nil``` に変更
+* ```internal func onClickMyButton(sender: UIButton)``` に ```@objc``` を追加
 
 ## 2.3と3.0の差分
 

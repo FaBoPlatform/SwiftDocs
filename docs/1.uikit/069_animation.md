@@ -540,9 +540,9 @@ class ViewController: UIViewController {
 ```
 
 ## 3.xと4.xの差分
-* UIControlEventsがUIControl.Eventに変更
-* func changedValue(sender: UISegmentedControl)に@objcを追加
-* UIViewAnimationOptionsをUIView.AnimationOptionsに変更
+* ```UIControlEvents``` が ```UIControl.Event``` に変更
+* ```func changedValue(sender: UISegmentedControl)``` に ```@objc``` を追加
+* ```UIViewAnimationOptions``` を ```UIView.AnimationOptions``` に変更
 
 ## 2.3と3.0の差分
 

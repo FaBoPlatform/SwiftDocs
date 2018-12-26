@@ -589,9 +589,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 ## 3.xと4.xの差分
 * func application(_ application: UIApplication, didFinishLaunchingWithOptions ```launchOptions: [NSObject : AnyObject]?```) -> Boolが、
 func application(_ application: UIApplication, willFinishLaunchingWithOptions ```launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil```) -> Boolに変更
-* UIBarButtonSystemItemがUIBarButtonItem.SystemItemに変更
-* func addCellに@objcを追加
-* UITableViewCellEditingStyleがUITableViewCell.EditingStyleに変更
+* ```UIBarButtonSystemItem``` が ```UIBarButtonItem.SystemItem``` に変更
+* ```func addCell``` に ```@objc``` を追加
+* ```UITableViewCellEditingStyle``` が ```UITableViewCell.EditingStyle``` に変更
 
 ## 2.3と3.0の差分
 * UIColorの参照方法が変更(UIColor.grayColor()->UIColor.gray)

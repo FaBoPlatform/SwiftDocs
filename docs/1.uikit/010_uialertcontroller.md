@@ -189,8 +189,7 @@ class ViewController: UIViewController {
 
 ## 3.0と4.0の差分
 
-* internal func onClickMyButton(sender: UIButton)が、  
-@objc internal func onClickMyButton(sender: UIButton)に変更
+* ```internal func onClickMyButton(sender: UIButton)``` に ```@objc``` を追加
 
 ## 2.3と3.0の差分
 

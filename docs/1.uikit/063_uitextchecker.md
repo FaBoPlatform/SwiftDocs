@@ -361,11 +361,11 @@ class ViewController: UIViewController, UITextFieldDelegate {
 ```
 
 ## 3.xと4.xの差分
-* ```UIControlState```が```UIControl.State```に変更
-* ```func onClickMyButton(sender : UIButton)```に```@objc```を追加
-* ```UITextBorderStyle```が```UITextField.BorderStyle```に変更
-* let candidateArray: NSArray = checker.guesses(forWordRange: misspelledRange, in: myTextField.text!, language: "en_US")```!```がlet candidateArray: NSArray = checker.guesses(forWordRange: misspelledRange, in: myTextField.text!, language: "en_US")```! as NSArray```に変更
-* t```ext.description!```を```(text as AnyObject).description!```に変更
+* ```UIControlState``` が ```UIControl.State``` に変更
+* ```func onClickMyButton(sender : UIButton)``` に ```@objc``` を追加
+* ```UITextBorderStyle``` が ```UITextField.BorderStyle``` に変更
+* let candidateArray: NSArray = checker.guesses(forWordRange: misspelledRange, in: myTextField.text!, language: "en_US")```!``` が let candidateArray: NSArray = checker.guesses(forWordRange: misspelledRange, in: myTextField.text!, language: "en_US")```! as NSArray``` に変更
+* ```text.description!``` を ```(text as AnyObject).description!``` に変更
 
 ## 2.3と3.0の差分
 

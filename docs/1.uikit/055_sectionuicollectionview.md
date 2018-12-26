@@ -461,8 +461,8 @@ class CustomUICollectionViewCell : UICollectionViewCell{
 ```
 
 ## 3.xと4.xの差分
-* UIEdgeInsetsMake(16, 16, 32, 16)がUIEdgeInsets(top: 16, left: 16, bottom: 32, right: 16)に変更
-* UICollectionElementKindSectionHeaderがUICollectionView.elementKindSectionHeaderに変子
+* ```UIEdgeInsetsMake(16, 16, 32, 16)``` が ```UIEdgeInsets(top: 16, left: 16, bottom: 32, right: 16)``` に変更
+* ```UICollectionElementKindSectionHeader``` が ```UICollectionView.elementKindSectionHeader``` に変更
 
 ## 2.3と3.0の差分
 * UIColorの参照方法が変更(UIColor.grayColor()->UIColor.gray)

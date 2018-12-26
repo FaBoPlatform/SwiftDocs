@@ -226,10 +226,9 @@ class ViewController: UIViewController {
 ```
 
 ## 3.0と4.0の差分
-* myActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteが、
-myActivityIndicator.style = UIActivityIndicatorView.Style.whiteに変更
-* internal func onClickMyButton(sender: UIButton)が、
-@objc internal func onClickMyButton(sender: UIButton)に変更
+* ```activityIndicatorViewStyle``` が ```style``` に変更
+* ```UIActivityIndicatorViewStyle``` が ```UIActivityIndicatorView.Style``` に変更
+* ```internal func onClickMyButton(sender: UIButton)``` に ```@objc``` を追加
 
 
 ## 2.3と3.0の差分

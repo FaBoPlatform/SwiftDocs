@@ -279,10 +279,8 @@ class ViewController: UIViewController{
 ```
 
 ## 3.0と4.0の差分
-* myGreenSlider.addTarget(self, action: #selector(ViewController.onChangeValueMySlider(sender:)), for: UIControlEvents.valueChanged)が、
-myGreenSlider.addTarget(self, action: #selector(ViewController.onChangeValueMySlider(sender:)), for: UIControl.Event.valueChanged)に変更
-* internal func onChangeValueMySlider(sender : UISlider)が、
-@objc internal func onChangeValueMySlider(sender : UISlider)に変更
+* ```UIControlEvents``` が、 ```UIControl.Event``` に変更
+* ```internal func onChangeValueMySlider(sender : UISlider)``` に ```@objc``` を追加
 
 
 ## 2.3と3.0の差分

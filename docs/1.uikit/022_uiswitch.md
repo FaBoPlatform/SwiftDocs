@@ -220,10 +220,8 @@ class ViewController: UIViewController {
 ```
 
 ## 3.0と4.0の差分
-* mySwicth.addTarget(self, action: #selector(ViewController.onClickMySwicth(sender:)), for: UIControlEvents.valueChanged)が、
-mySwicth.addTarget(self, action: #selector(ViewController.onClickMySwicth(sender:)), for: UIControl.Event.valueChanged)に変更
-* internal func onClickMySwicth(sender: UISwitch)が、
-@objc internal func onClickMySwicth(sender: UISwitch)に変更
+* ```UIControlEvents``` 　が ```UIControl.Event``` に変更
+* ```internal func onClickMySwicth(sender: UISwitch)``` に ```@objc``` を追加
 
 ## 2.3と3.0の差分
 * UIColorの参照方法の変更(UIColor.cyanColor() -> UIColor.cyan)

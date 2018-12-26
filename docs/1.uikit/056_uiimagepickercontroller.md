@@ -467,12 +467,12 @@ class SecondViewController: UIViewController {
 Info.plistに上記を追加（2.3には必要ない）
 
 ## 3.xと4.xの差分
-* ```func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool```が、```func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool ```に変更
-* ```UIImagePickerControllerSourceType```が```UIImagePickerController.SourceType```に変更
-* ```func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])```が```func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])```に変更
-* ```info[UIImagePickerControllerOriginalImage]```が```info[UIImagePickerController.InfoKey.originalImage] as AnyObject```に変更
-* ```myImage as! UIImage```が```myImage as? UIImage```に変更
-* ```UIViewContentMode```が```UIView.ContentMode```に変更
+* ```func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool``` が、 ```func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool ``` に変更
+* ```UIImagePickerControllerSourceType``` が ```UIImagePickerController.SourceType``` に変更
+* ```func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])``` が ```func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])``` に変更
+* ```info[UIImagePickerControllerOriginalImage]``` が ```info[UIImagePickerController.InfoKey.originalImage] as AnyObject``` に変更
+* ```myImage as! UIImage``` が ```myImage as? UIImage``` に変更
+* ```UIViewContentMode``` が` ``UIView.ContentMode``` に変更
 
 ## 2.3と3.0の差分
 

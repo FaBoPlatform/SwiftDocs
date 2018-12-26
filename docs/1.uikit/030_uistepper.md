@@ -212,9 +212,8 @@ class ViewController: UIViewController {
 ```
 
 ## 3.0と4.0の差分
-* UIControlEvents.valueChangedが、UIControl.Event.valueChangedに変更
-* internal func stepperOneChanged(stepper: UIStepper)が、
-@objc internal func stepperOneChanged(stepper: UIStepper)に変更
+* ```UIControlEvents.valueChanged``` が、 ```UIControl.Event.valueChanged``` に変更
+* ```internal func stepperOneChanged(stepper: UIStepper)``` に ```@objc``` を追加
 
 ## 2.3と3.0の差分
 * UIColorの参照方法が変更(UIColor.grayColor()->UIColor.gray)

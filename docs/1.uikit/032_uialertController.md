@@ -160,7 +160,7 @@ class ViewController: UIViewController {
 ```
 
 ## 3.xと4.xの差分
-* UIAlertActionStyleがUIAlertController.Styleに変更
+* ```UIAlertActionStyle``` が ```UIAlertController.Style``` に変更
 
 ## 2.3と3.0の差分
 * UIAlertActionStyleのプロパティ名の変更

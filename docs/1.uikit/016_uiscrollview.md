@@ -185,9 +185,8 @@ class ViewController: UIViewController {
 ```
 ![Preview temple.jpg](./img/temple.jpg)
 
-## 3.0と4.0の差分
-* UIViewContentMode.scaleAspectFillが、
-UIView.ContentMode.scaleAspectFillに変更
+## 3.xと4.xの差分
+* ```UIViewContentMode``` が、 ```UIView.ContentMode``` に変更
 
 ## 2.3と3.0の差分
 * UIViewContentModeの名称が変更

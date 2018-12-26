@@ -255,10 +255,10 @@ class ViewController: UIViewController {
 ```
 
 ## 3.xと4.xの差分
-* UIControlStateをUIControl.Stateに変更
-* UIControlEventsをUIControl.Eventに変更
-* func onClickMyButton(sender : UIButton)に@objcを追加
-* UIPushBehaviorModeをUIPushBehavior.Modeに変更
+* ```UIControlState``` を ```UIControl.State``` に変更
+* ```UIControlEvents``` を ```UIControl.Event``` に変更
+* ```func onClickMyButton(sender : UIButton)``` に ```@objc``` を追加
+* ```UIPushBehaviorMode``` を ```UIPushBehavior.Mode``` に変更
 
 ## 2.3と3.0の差分
 

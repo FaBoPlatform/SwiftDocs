@@ -253,8 +253,8 @@ class ViewController: UIViewController {
 ```
 
 ## 3.xと4.xの差分
-* ```func onValueChanged(slider : UISlider)```に```@objc```を追加
-* ```UIControlEvents.valueChanged```が```UIControl.Event.valueChanged```に変更
+* ```func onValueChanged(slider : UISlider)``` に ```@objc``` を追加
+* ```UIControlEvents.valueChanged``` が ```UIControl.Event.valueChanged``` に変更
 
 ## 2.3と3.0の差分
 

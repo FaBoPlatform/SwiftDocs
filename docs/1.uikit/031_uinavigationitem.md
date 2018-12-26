@@ -429,13 +429,11 @@ class SecondViewController: UIViewController {
 ```
 
 ## 3.0と4.0の差分
-* func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Boolが、
-func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Boolに変更
-* internal func onClickMyButton(sender: UIButton)が、
-@objc internal func onClickMyButton(sender: UIButton)に変更
-* UIBarButtonSystemItem.cameraがUIBarButtonItem.SystemItem.cameraに変更
-* UIBarButtonSystemItem.addがUIBarButtonItem.SystemItem.addに変更
-* UIBarButtonSystemItem.doneがUIBarButtonItem.SystemItem.doneに変更
+* ```func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool``` が、 ```func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool``` に変更
+* ```internal func onClickMyButton(sender: UIButton)に@objcを追加```
+* ```UIBarButtonSystemItem.camera``` が ```UIBarButtonItem.SystemItem.camera``` に変更
+* ```UIBarButtonSystemItem.add``` が ```UIBarButtonItem.SystemItem.add``` に変更
+* ```UIBarButtonSystemItem.done``` が ```UIBarButtonItem.SystemItem.done``` に変更
 
 ## 2.3と3.0の差分
 * UIColorの参照方法が変更(UIColor.grayColor()->UIColor.gray)

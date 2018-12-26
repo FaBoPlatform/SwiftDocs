@@ -280,9 +280,8 @@ class ViewController: UIViewController, UIScrollViewDelegate{
 
 ```
 
-## 3.0と4.0の差分
-* scrollViewDidEndDecelerating(scrollView: UIScrollView)が、
-scrollViewDidEndDecelerating(_ scrollView: UIScrollView)に変更
+## 3.xと4.xの差分
+* ```scrollViewDidEndDecelerating(scrollView: UIScrollView)``` が、 ```scrollViewDidEndDecelerating(_ scrollView: UIScrollView)``` に変更
 
 ## 2.3と3.0の差分
 * UIColorの指定が変更  

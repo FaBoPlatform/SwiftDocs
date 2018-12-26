@@ -323,8 +323,8 @@ class ViewController: UIViewController {
 ```
 
 ## 3.xと4.xの差分
-* internal func onClickMyButton(sender: UIButton)に@objcを追加
-* UIViewAnimationOptionsがUIView.AnimationOptionsに変更
+* ```internal func onClickMyButton(sender: UIButton)``` に ```@objc``` を追加
+* ```UIViewAnimationOptions``` が ```UIView.AnimationOptions``` に変更
 
 ## 2.3と3.0の差分
 * UIColorの参照方法が変更(UIColor.grayColor()->UIColor.gray)

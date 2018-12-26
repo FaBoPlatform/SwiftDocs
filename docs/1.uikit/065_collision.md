@@ -326,10 +326,10 @@ class ViewController: UIViewController {
 ```
 
 ## 3.xと4.xの差分
-* UIControlStateがUIControl.Statenに変更
-* UIControlEventsがUIControl.Eventに変更
-* func onClickMyButton(sender : UIButton)に@objcを追加
-* "barrier"を"barrier" as NSCopyingに変更
+* ```UIControlState``` が ```UIControl.Staten``` に変更
+* ```UIControlEvents``` が ```UIControl.Event``` に変更
+* ```func onClickMyButton(sender : UIButton)``` に ```@objc``` を追加
+* ```"barrier"``` を ```"barrier" as NSCopying``` に変更
 
 ## 2.3と3.0の差分
 

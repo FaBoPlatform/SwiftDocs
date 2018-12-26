@@ -371,7 +371,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 ```
 
 ## 3.xと4.xの差分
-* UITableViewCellEditingStyleがUITableViewCell.EditingStyleに変更
+* ```UITableViewCellEditingStyle``` が ```UITableViewCell.EditingStyle``` に変更
 
 ## 2.3と3.0の差分
 * UIColorの参照方法が変更(UIColor.grayColor()->UIColor.gray)

@@ -253,9 +253,9 @@ class ViewController: UIViewController {
 ```
 
 ## 3.xと4.xの差分
-* UIControlStateがUIControl.Stateに変更
-* UIControlEventsがUIControl.Eventに変更
-* func onClickMyButton(sender : UIButton)に@objcを追加
+* ```UIControlState``` が ```UIControl.State``` に変更
+* ```UIControlEvents``` が ```UIControl.Event``` に変更
+* ```func onClickMyButton(sender : UIButton)``` に ```@objc``` を追加
 
 ## 2.3と3.0の差分
 
