@@ -254,8 +254,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../004_uitextfield/" title="UIButtonでいろいろなボタンを表示" class="md-nav__link">
-      UIButtonでいろいろなボタンを表示
+    <a href="../004_uitextfield/" title="UITextFieldで文字を入力" class="md-nav__link">
+      UITextFieldで文字を入力
     </a>
   </li>
 
@@ -1155,8 +1155,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../073_uiview/" title="UIWebViewでPDFを開く" class="md-nav__link">
-      UIWebViewでPDFを開く
+    <a href="../073_uiview/" title="現Viewの上に別Viewを表示する" class="md-nav__link">
+      現Viewの上に別Viewを表示する
     </a>
   </li>
 
@@ -2071,13 +2071,11 @@
 
 <h2 id="3040">3.0と4.0の差分</h2>
 <ul>
-<li>func application(<em> application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -&gt; Boolが、
-func application(</em> application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -&gt; Boolに変更</li>
-<li>internal func onClickMyButton(sender: UIButton)が、
-@objc internal func onClickMyButton(sender: UIButton)に変更</li>
-<li>UIBarButtonSystemItem.cameraがUIBarButtonItem.SystemItem.cameraに変更</li>
-<li>UIBarButtonSystemItem.addがUIBarButtonItem.SystemItem.addに変更</li>
-<li>UIBarButtonSystemItem.doneがUIBarButtonItem.SystemItem.doneに変更</li>
+<li><code>func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -&gt; Bool</code> が、 <code>func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -&gt; Bool</code> に変更</li>
+<li><code>internal func onClickMyButton(sender: UIButton)に@objcを追加</code></li>
+<li><code>UIBarButtonSystemItem.camera</code> が <code>UIBarButtonItem.SystemItem.camera</code> に変更</li>
+<li><code>UIBarButtonSystemItem.add</code> が <code>UIBarButtonItem.SystemItem.add</code> に変更</li>
+<li><code>UIBarButtonSystemItem.done</code> が <code>UIBarButtonItem.SystemItem.done</code> に変更</li>
 </ul>
 <h2 id="2330">2.3と3.0の差分</h2>
 <ul>

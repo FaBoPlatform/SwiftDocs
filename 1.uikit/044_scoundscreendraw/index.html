@@ -254,8 +254,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../004_uitextfield/" title="UIButtonでいろいろなボタンを表示" class="md-nav__link">
-      UIButtonでいろいろなボタンを表示
+    <a href="../004_uitextfield/" title="UITextFieldで文字を入力" class="md-nav__link">
+      UITextFieldで文字を入力
     </a>
   </li>
 
@@ -1134,8 +1134,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../073_uiview/" title="UIWebViewでPDFを開く" class="md-nav__link">
-      UIWebViewでPDFを開く
+    <a href="../073_uiview/" title="現Viewの上に別Viewを表示する" class="md-nav__link">
+      現Viewの上に別Viewを表示する
     </a>
   </li>
 
@@ -1843,13 +1843,11 @@
 
 <h2 id="3x4x">3.xと4.xの差分</h2>
 <ul>
-<li>UIScreen.screensがUIScreen.screens as NSArrayに変更</li>
-<li>func screenDidConnectに@objcを追加</li>
-<li>func screenDidDisconnectに@objcを追加</li>
-<li>func screenDidModeChangeに@objcを追加</li>
-<li>NSNotification.Name.UIScreenDidConnectがUIScreen.didConnectNotificationに変更</li>
-<li>NSNotification.Name.UIScreenDidDisconnectがUIScreen.didDisconnectNotificationに変更</li>
-<li>NSNotification.Name.UIScreenModeDidChangeがUIScreen.modeDidChangeNotificationに変更</li>
+<li><code>UIScreen.screens</code> が <code>UIScreen.screens as NSArray</code> に変更</li>
+<li><code>screenDidConnect</code> 、 <code>screenDidDisconnect</code> 、 <code>screenDidModeChange</code> に <code>@objc</code> を追加</li>
+<li><code>NSNotification.Name.UIScreenDidConnect</code> が <code>UIScreen.didConnectNotification</code> に変更</li>
+<li><code>NSNotification.Name.UIScreenDidDisconnect</code> が <code>UIScreen.didDisconnectNotification</code> に変更</li>
+<li><code>NSNotification.Name.UIScreenModeDidChange</code> が <code>UIScreen.modeDidChangeNotification</code> に変更</li>
 </ul>
 <h2 id="2330">2.3と3.0の差分</h2>
 <ul>
