@@ -220,7 +220,7 @@ class ViewController: UIViewController {
 ```
 
 ## 3.0と4.0の差分
-* ```UIControlEvents``` 　が ```UIControl.Event``` に変更
+* ```UIControlEvents```　が ```UIControl.Event``` に変更
 * ```internal func onClickMySwicth(sender: UISwitch)``` に ```@objc``` を追加
 
 ## 2.3と3.0の差分
