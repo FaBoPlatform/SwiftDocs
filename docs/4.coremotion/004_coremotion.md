@@ -4,9 +4,7 @@
 
 ※iPhone6以上の端末でないと動作しません
 
-## Swift 3.0
-
-```swift
+```swift fct_label="Swift 4.x/Swift 3.x"
 //
 //  ViewController.swift
 //  coremotion004
@@ -62,9 +60,7 @@ class ViewController: UIViewController {
 }
 ```
 
-## Swift 2.3
-
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  coremotion004

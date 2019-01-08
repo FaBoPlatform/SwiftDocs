@@ -2,9 +2,7 @@
 
 ![Preview coremotion001](./img/CoreMotion001.png)
 
-## Swift 3.0
-
-```swift
+```swift fct_label="Swift 4.x/Swift 3.x"
 //
 //  ViewController.swift
 //  coremotion001
@@ -86,9 +84,7 @@ class ViewController: UIViewController {
 }
 ```
 
-## Swift 2.3
-
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  coremotion001
