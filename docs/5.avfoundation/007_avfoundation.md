@@ -2,11 +2,71 @@
 
 ![Preview coremotion001](./img/AVFoundation007.png) ![Preview coremotion001](./img/AVFoundation007_2.png)
 
-## Swift 3.0
-
 `Info.plist`に`NSAppleMusicUsageDescription`を追加します
 
-```swift
+```swift fct_label="Swift 4.x"
+//
+//  ViewController.swift
+//  avfoundation007
+//
+//  Created by akimach on 2016/08/28.
+//  Copyright © 2016年 akimacho. All rights reserved.
+//
+import UIKit
+import MediaPlayer
+
+class ViewController: UIViewController {
+    
+    // MPMoviePlayerViewControllerの宣言.
+    var myMoviePlayerView: MPMoviePlayerViewController!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // ボタンの生成.
+        let myButton = UIButton()
+        myButton.frame.size = CGSize(width: 100, height: 40)
+        myButton.layer.position = CGPoint(x: self.view.bounds.width/2, y: self.view.bounds.height/2)
+        myButton.layer.masksToBounds = true
+        myButton.layer.cornerRadius = 20.0
+        myButton.backgroundColor = UIColor.orange
+        myButton.setTitle("動画再生", for: .normal)
+        myButton.setTitleColor(UIColor.white, for: .normal)
+        myButton.setTitleShadowColor(UIColor.gray, for: .normal)
+        myButton.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchUpInside)
+        self.view.addSubview(myButton)
+    }
+    
+    // ボタンのクリックイベント.
+    @objc func onClickMyButton(sender: UIButton) {
+        
+        // 動画のパス.
+        let myMoviePath = URL.init(fileURLWithPath: Bundle.main.path(forResource: "test", ofType: "mov")!)
+        
+        // MPMoviePlayerViewControllerのインスタンスを生成.
+        myMoviePlayerView = MPMoviePlayerViewController(contentURL: myMoviePath)
+        
+        // 動画の再生が終了した時のNotification.
+        NotificationCenter.default.addObserver(self, selector: #selector(moviePlayBackDidFinish(notification:)),
+                                               name: Notification.Name.MPMoviePlayerPlaybackDidFinish,
+                                               object: myMoviePlayerView.moviePlayer)
+        
+        // 画面遷移.
+        self.present(myMoviePlayerView, animated: true, completion: nil)
+    }
+    
+    // 動画の再生が終了した時に呼ばれるメソッド.
+    @objc func moviePlayBackDidFinish(notification: NSNotification) {
+        print("moviePlayBackDidFinish:")
+        
+        // 通知があったらnotificationを削除.
+        NotificationCenter.default.removeObserver(self, name: Notification.Name.MPMoviePlayerPlaybackDidFinish, object: nil)
+    }
+    
+}
+```
+
+```swift fct_label="Swift 3.x"
 //
 //  ViewController.swift
 //  avfoundation007
@@ -68,9 +128,7 @@ class ViewController: UIViewController {
 }
 ```
 
-## Swift 2.3
-
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  avfoundation007
@@ -131,6 +189,9 @@ class ViewController: UIViewController {
     
 }
 ```
+
+## 3.xと4.xの差分
+* `func onClickMyButton(sender: UIButton)` と `func moviePlayBackDidFinish(notification: NSNotification)` に `@objc` を追加
 
 ## 2.xと3.xの差分
 

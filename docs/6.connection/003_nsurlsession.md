@@ -4,9 +4,7 @@
 
 ### iOS9からリクエスト先によってはATSを無効化・対処する必要があります
 
-## Swift 3.0
-
-```swift
+```swift fct_label="Swift 4.x/Swift 3.x"
 //
 //  ViewController.swift
 //  Connection003
@@ -79,9 +77,7 @@ class ViewController: UIViewController, URLSessionDelegate, URLSessionDataDelega
 } 
 ```
 
-## Swift 2.3
-
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  Connection003
