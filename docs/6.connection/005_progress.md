@@ -1,12 +1,123 @@
 # 通信の進捗を知る
 
-![Preview connection005](./img/Connection005.png =200x)
+![Preview connection005](./img/Connection005.png)
 
 ### iOS9からリクエスト先によってはATSを無効化・対処する必要があります
 
-## Swift 3.0
+```swift fct_label="Swift 4.x"
+//
+//  ViewController.swift
+//  Connection005
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-```swift
+import UIKit
+
+class ViewController: UIViewController, URLSessionDownloadDelegate {
+    
+    var myProgress:UIProgressView!
+    var myProgressLabel:UILabel!
+    var myImageView: UIImageView!
+    var myImage: UIImage!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        myImage = UIImage()
+        
+        myImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
+        myImageView.center = self.view.center
+        self.view.addSubview(myImageView)
+        
+        // Progressバーの設定.
+        myProgress = UIProgressView(progressViewStyle: UIProgressView.Style.default)
+        myProgress.layer.position = CGPoint(x: self.view.frame.width/2, y: 400)
+        myProgress.progress = 0.0
+        self.view.addSubview(myProgress)
+        
+        // Progressの内容を表示するためのラベル.
+        myProgressLabel = UILabel(frame: CGRect(x: 0, y: 0, width: 200, height: 150))
+        myProgressLabel.text = "0%　ダウンロード"
+        myProgressLabel.textAlignment = NSTextAlignment.center
+        myProgressLabel.center = CGPoint(x: self.view.frame.width/2, y: 450)
+        
+        self.view.addSubview(myProgressLabel)
+        
+        // 通信のコンフィグを用意.
+        let config: URLSessionConfiguration = URLSessionConfiguration.default
+        
+        // Sessionを作成する.
+        let session: URLSession = Foundation.URLSession(configuration: config, delegate: self, delegateQueue: OperationQueue.main)
+        
+        // ダウンロード先のURLからリクエストを生成.
+        let url:NSURL = NSURL(string: "http://xxx/sample.png")!
+        let request: URLRequest = URLRequest(url: url as URL)
+        // ダウンロードタスクを生成.
+        let task: URLSessionDownloadTask = session.downloadTask(with: request)
+        
+        // タスクを実行.
+        task.resume()
+    }
+    
+    /*
+     ダウンロード終了時に呼び出されるデリゲート.
+     */
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        
+        // ダウンロードしたデータを取り出す.
+        let data: NSData = NSData(contentsOf: location as URL)!
+        if data.length > 0 {
+            myImage = UIImage(data: data as Data)
+            myImageView.image = myImage
+            print("data is found")
+        }
+    }
+    
+    /*
+     ダウンロードの開始時に呼び出されるデリゲート.
+     */
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didResumeAtOffset fileOffset: Int64, expectedTotalBytes: Int64) {
+        myProgress.progress = 0
+        myProgress.setProgress(1.0, animated: true)
+        myProgressLabel.text = "100% ダウンロード"
+    }
+    
+    /*
+     タスク処理中に定期的に呼び出されるデリゲート.
+     */
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+        
+        let per:Float = Float(totalBytesWritten/totalBytesExpectedToWrite)
+        myProgress.setProgress(per, animated: true)
+        
+        myProgressLabel.text = "\((Int)(myProgress.progress * 100))%　ダウンロード"
+        print(myProgress.progress)
+        
+    }
+    
+    /*
+     タスク終了時に呼び出されるデリゲート.
+     */
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        
+        if error != nil {
+            print("ダウンロードが失敗しました")
+            print(error)
+        } else {
+            print("ダウンロードが完了しました")
+        }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+}
+```
+
+```swift fct_label="Swift 3.x"
 //
 //  ViewController.swift
 //  Connection005
@@ -119,9 +230,7 @@ class ViewController: UIViewController, URLSessionDownloadDelegate {
 }
 ```
 
-## Swift 2.3
-
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  Connection005
@@ -231,6 +340,10 @@ class ViewController: UIViewController, NSURLSessionDownloadDelegate {
     }
 } 
 ```
+
+## 3.xと4.xの差分
+
+* `UIProgressViewStyle` が `UIProgressView.Style` に変更
 
 ## 2.xと3.xの差分
 

@@ -2,7 +2,7 @@
 
 ![Preview config001](./img/config001.png)
 
-## Swift 3.0
+## Swift 3.x
 
 ```swift
 //

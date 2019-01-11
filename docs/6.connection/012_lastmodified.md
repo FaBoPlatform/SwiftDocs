@@ -4,9 +4,7 @@
 
 ### iOS9からリクエスト先によってはATSを無効化・対処する必要があります
 
-## Swift 3.0
-
-```swif//
+```swift fct_label="Swift 4.x/Swift 3.x"
 //  ViewController.swift
 //  Connection012
 //
@@ -66,12 +64,10 @@ class ViewController: UIViewController, NSURLConnectionDataDelegate{
         print(head.allHeaderFields["Last-Modified"] as! NSString)
         
     }
-}t
+}
 ```
 
-## Swift 2.3
-
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  Connection012

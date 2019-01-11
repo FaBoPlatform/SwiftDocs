@@ -4,9 +4,102 @@
 
 ### iOS9からリクエスト先によってはATSを無効化・対処する必要があります
 
-## Swift 3.0
+```swift fct_label="Swift 4.x"
+//
+//  ViewController.swift
+//  Connection010
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-```swift
+import UIKit
+
+class ViewController: UIViewController {
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.view.backgroundColor = UIColor.lightGray
+        
+        // 結果表示用のTextViewを用意.
+        let myTextView = UITextView(frame: CGRect(x: 10, y: 50, width: self.view.frame.width - 20, height: 500))
+        
+        myTextView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 1, alpha: 1.0)
+        myTextView.layer.masksToBounds = true
+        myTextView.layer.cornerRadius = 20.0
+        myTextView.layer.borderWidth = 1
+        myTextView.layer.borderColor = UIColor.black.cgColor
+        myTextView.font = UIFont.systemFont(ofSize: CGFloat(20))
+        myTextView.textColor = UIColor.black
+        myTextView.textAlignment = NSTextAlignment.left
+        myTextView.dataDetectorTypes = UIDataDetectorTypes.all
+        myTextView.layer.shadowOpacity = 0.5
+        myTextView.layer.masksToBounds = false
+        myTextView.isEditable = false
+        
+        self.view.addSubview(myTextView)
+        
+        var json: NSData!
+        
+        // dictionaryで送信するJSONデータを生成.
+        let myDict:NSMutableDictionary = NSMutableDictionary()
+        myDict.setObject("object1", forKey: "key1" as NSCopying)
+        myDict.setObject("object2", forKey: "key2" as NSCopying)
+        myDict.setObject("object3", forKey: "key3" as NSCopying)
+        myDict.setObject("object4", forKey: "key4" as NSCopying)
+        
+        // 作成したdictionaryがJSONに変換可能かチェック.
+        if JSONSerialization.isValidJSONObject(myDict){
+            
+            do {
+                
+                // DictionaryからJSON(NSData)へ変換.
+                json = try JSONSerialization.data(withJSONObject: myDict, options: JSONSerialization.WritingOptions.prettyPrinted) as NSData
+                
+                // 生成したJSONデータの確認.
+                print(NSString(data: json as Data, encoding: String.Encoding.utf8.rawValue)!)
+                
+            } catch {
+                print(error)
+            }
+            
+        }
+        
+        // Http通信のリクエスト生成.
+        let config:URLSessionConfiguration = URLSessionConfiguration.default
+        let url:NSURL = NSURL(string: "http:/xxx/json_decode.php")!
+        let request:NSMutableURLRequest = NSMutableURLRequest(url: url as URL)
+        let session:URLSession = URLSession(configuration: config)
+        
+        request.httpMethod = "POST"
+        
+        // jsonのデータを一度文字列にして、キーと合わせる.
+        let data:NSString = "json=\(NSString(data: json as Data, encoding: String.Encoding.utf8.rawValue)!)" as NSString
+        
+        // jsonデータのセット.
+        request.httpBody = data.data(using: String.Encoding.utf8.rawValue)
+        
+        let task:URLSessionDataTask = session.dataTask(with: request as URLRequest, completionHandler: { (_data, response, err) -> Void in
+            
+            // バックグラウンドだとUIの処理が出来ないので、メインスレッドでUIの処理を行わせる.
+            DispatchQueue.main.async(execute: {
+                myTextView.text = NSString(data: _data!, encoding: String.Encoding.utf8.rawValue)! as String
+            })
+        })
+        
+        task.resume()
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        
+    }
+}
+```
+
+```swift fct_label="Swift 3.x"
 //
 //  ViewController.swift
 //  Connection010
@@ -101,9 +194,7 @@ class ViewController: UIViewController {
 }
 ```
 
-## Swift 2.3
-
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  Connection010
@@ -197,6 +288,12 @@ class ViewController: UIViewController{
     }
 }
 ```
+
+## 3.xと4.xの差分
+
+* `forKey: "key~"` に `as NSCopying` を追加
+* `JSONSerialization.data(withJSONObject: myDict, options: JSONSerialization.WritingOptions.prettyPrinted)` に `as NSData` を追加
+* `"json=\(NSString(data: json as Data, encoding: String.Encoding.utf8.rawValue)!)"` に `as NSString` を追加
 
 ## 2.xと3.xの差分
 
