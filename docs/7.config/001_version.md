@@ -2,9 +2,7 @@
 
 ![Preview config001](./img/config001.png)
 
-## Swift 3.x
-
-```swift
+```swift fct_label="Swift 4.x/Swift 3.x"
 //
 //  ViewController.swift
 //  Config001
@@ -53,9 +51,7 @@ class ViewController: UIViewController {
 
 ```
 
-## Swift 2.3
-
-```swift
+```swift fct_label="Swift 2.3"
 ///
 //  ViewController.swift
 //  Config001

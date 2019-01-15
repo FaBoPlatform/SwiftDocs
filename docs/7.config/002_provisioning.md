@@ -7,9 +7,7 @@
 
 ![Preview config002_2](./img/config002_2.png)
 
-## Swift 3.0
-
-```swift
+```swift fct_label="Swift 4.x/Swift 3.x"
 //
 //  ViewController.swift
 //  config002
@@ -52,13 +50,9 @@ class ViewController: UIViewController {
     }
 }
 
-
-
 ```
 
-## Swift 2.3
-
-```swift
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  config002
@@ -104,7 +98,8 @@ class ViewController: UIViewController {
 ```
 
 ## 2.xと3.xの差分
-
+* `blueColor()` が `blue` に変更
+* `CGRectMake(posX, posY, labelWidth, labelHeight)` が `CGRect(x: posX, y: posY, width: labelWidth, height: labelHeight)` に変更
 
 ## Reference
 
