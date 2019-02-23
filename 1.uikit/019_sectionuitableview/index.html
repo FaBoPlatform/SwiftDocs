@@ -2,7 +2,7 @@
 
 
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja" class="no-js">
   <head>
     
@@ -32,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-　、。，．]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.2.0">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.1.0">
     
     
       
@@ -40,12 +40,12 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.572ca0f0.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.11e41852.css">
       
       
     
     
-      <script src="../../assets/javascripts/modernizr.8c900955.js"></script>
+      <script src="../../assets/javascripts/modernizr.20ef595d.js"></script>
     
     
       
@@ -2567,97 +2567,97 @@
 88
 89
 90
-91</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="o">//</span> <span class="nt">Tableで使用する配列を定義する</span><span class="o">.</span>
-<span class="nt">private</span> <span class="nt">let</span> <span class="nt">myiPhoneItems</span><span class="o">:</span> <span class="nt">NSArray</span> <span class="o">=</span> <span class="cp">[</span><span class="s2">&quot;iOS9&quot;</span><span class="p">,</span><span class="s2">&quot;iOS8&quot;</span><span class="p">,</span> <span class="s2">&quot;iOS7&quot;</span><span class="p">,</span> <span class="s2">&quot;iOS6&quot;</span><span class="p">,</span> <span class="s2">&quot;iOS5&quot;</span><span class="p">,</span> <span class="s2">&quot;iOS4&quot;</span><span class="cp">]</span>
-<span class="nt">private</span> <span class="nt">let</span> <span class="nt">myAndroidItems</span><span class="o">:</span> <span class="nt">NSArray</span> <span class="o">=</span> <span class="cp">[</span><span class="s2">&quot;5.x&quot;</span><span class="p">,</span> <span class="s2">&quot;4.x&quot;</span><span class="p">,</span> <span class="s2">&quot;2.x&quot;</span><span class="p">,</span> <span class="s2">&quot;1.x&quot;</span><span class="cp">]</span>
+91</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>// Tableで使用する配列を定義する.
+private let myiPhoneItems: NSArray = [&quot;iOS9&quot;,&quot;iOS8&quot;, &quot;iOS7&quot;, &quot;iOS6&quot;, &quot;iOS5&quot;, &quot;iOS4&quot;]
+private let myAndroidItems: NSArray = [&quot;5.x&quot;, &quot;4.x&quot;, &quot;2.x&quot;, &quot;1.x&quot;]
 
-<span class="o">//</span> <span class="nt">Sectionで使用する配列を定義する</span><span class="o">.</span>
-<span class="nt">private</span> <span class="nt">let</span> <span class="nt">mySections</span><span class="o">:</span> <span class="nt">NSArray</span> <span class="o">=</span> <span class="cp">[</span><span class="s2">&quot;iPhone&quot;</span><span class="p">,</span> <span class="s2">&quot;Android&quot;</span><span class="cp">]</span>
+// Sectionで使用する配列を定義する.
+private let mySections: NSArray = [&quot;iPhone&quot;, &quot;Android&quot;]
 
-<span class="nt">override</span> <span class="nt">func</span> <span class="nt">viewDidLoad</span><span class="o">()</span> <span class="p">{</span>
-    <span class="err">super.viewDidLoad()</span>
+override func viewDidLoad() {
+    super.viewDidLoad()
 
-    <span class="err">//</span> <span class="err">Status</span> <span class="err">Barの高さを取得を.する.</span>
-    <span class="err">let</span> <span class="n">barHeight</span><span class="p">:</span> <span class="n">CGFloat</span> <span class="o">=</span> <span class="n">UIApplication</span><span class="o">.</span><span class="nf">sharedApplication</span><span class="p">()</span><span class="o">.</span><span class="n">statusBarFrame</span><span class="o">.</span><span class="k">size</span><span class="o">.</span><span class="k">height</span>
+    // Status Barの高さを取得を.する.
+    let barHeight: CGFloat = UIApplication.sharedApplication().statusBarFrame.size.height
 
-    <span class="o">//</span> <span class="n">Viewの高さと幅を取得する</span><span class="o">.</span>
-    <span class="n">let</span> <span class="n">displayWidth</span><span class="o">:</span> <span class="n">CGFloat</span> <span class="o">=</span> <span class="n">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="k">width</span>
-    <span class="n">let</span> <span class="n">displayHeight</span><span class="o">:</span> <span class="n">CGFloat</span> <span class="o">=</span> <span class="n">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="n">frame</span><span class="o">.</span><span class="k">height</span>
+    // Viewの高さと幅を取得する.
+    let displayWidth: CGFloat = self.view.frame.width
+    let displayHeight: CGFloat = self.view.frame.height
 
-    <span class="o">//</span> <span class="nf">TableViewの生成</span><span class="p">(</span> <span class="n">status</span> <span class="n">barの高さ分ずらして表示</span> <span class="p">)</span><span class="o">.</span>
-    <span class="n">let</span> <span class="n">myTableView</span><span class="o">:</span> <span class="n">UITableView</span> <span class="o">=</span> <span class="nf">UITableView</span><span class="p">(</span><span class="n">frame</span><span class="err">:</span> <span class="nf">CGRect</span><span class="p">(</span><span class="n">x</span><span class="err">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="err">:</span> <span class="n">barHeight</span><span class="p">,</span> <span class="n">width</span><span class="err">:</span> <span class="n">displayWidth</span><span class="p">,</span> <span class="n">height</span><span class="err">:</span> <span class="n">displayHeight</span> <span class="o">-</span> <span class="n">barHeight</span><span class="p">))</span>
+    // TableViewの生成( status barの高さ分ずらして表示 ).
+    let myTableView: UITableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight - barHeight))
 
-    <span class="o">//</span> <span class="n">Cell名の登録をおこなう</span><span class="o">.</span>
-    <span class="n">myTableView</span><span class="o">.</span><span class="nf">registerClass</span><span class="p">(</span><span class="n">UITableViewCell</span><span class="err">.</span><span class="n">self</span><span class="p">,</span> <span class="n">forCellReuseIdentifier</span><span class="err">:</span> <span class="s2">&quot;MyCell&quot;</span><span class="p">)</span>
+    // Cell名の登録をおこなう.
+    myTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: &quot;MyCell&quot;)
 
-    <span class="o">//</span> <span class="n">DataSourceの設定をする</span><span class="o">.</span>
-    <span class="n">myTableView</span><span class="o">.</span><span class="n">dataSource</span> <span class="o">=</span> <span class="n">self</span>
+    // DataSourceの設定をする.
+    myTableView.dataSource = self
 
-    <span class="o">//</span> <span class="n">Delegateを設定する</span><span class="o">.</span>
-    <span class="n">myTableView</span><span class="o">.</span><span class="n">delegate</span> <span class="o">=</span> <span class="n">self</span>
+    // Delegateを設定する.
+    myTableView.delegate = self
 
-    <span class="o">//</span> <span class="n">Viewに追加する</span><span class="o">.</span>
-    <span class="n">self</span><span class="o">.</span><span class="n">view</span><span class="o">.</span><span class="nf">addSubview</span><span class="p">(</span><span class="n">myTableView</span><span class="p">)</span>
-<span class="p">}</span>
+    // Viewに追加する.
+    self.view.addSubview(myTableView)
+}
 
-<span class="nt">override</span> <span class="nt">func</span> <span class="nt">didReceiveMemoryWarning</span><span class="o">()</span> <span class="p">{</span>
-    <span class="err">super.didReceiveMemoryWarning()</span>
-<span class="p">}</span>
+override func didReceiveMemoryWarning() {
+    super.didReceiveMemoryWarning()
+}
 
-<span class="c">/*</span>
-<span class="c"> セクションの数を返す.</span>
-<span class="c"> */</span>
-<span class="nt">func</span> <span class="nt">numberOfSectionsInTableView</span><span class="o">(</span><span class="nt">tableView</span><span class="o">:</span> <span class="nt">UITableView</span><span class="o">)</span> <span class="nt">-</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">Int</span> <span class="p">{</span>
-    <span class="err">return</span> <span class="err">mySections.count</span>
-<span class="p">}</span>
+/*
+ セクションの数を返す.
+ */
+func numberOfSectionsInTableView(tableView: UITableView) -&gt; Int {
+    return mySections.count
+}
 
-<span class="c">/*</span>
-<span class="c"> セクションのタイトルを返す.</span>
-<span class="c"> */</span>
-<span class="nt">func</span> <span class="nt">tableView</span><span class="o">(</span><span class="nt">tableView</span><span class="o">:</span> <span class="nt">UITableView</span><span class="o">,</span> <span class="nt">titleForHeaderInSection</span> <span class="nt">section</span><span class="o">:</span> <span class="nt">Int</span><span class="o">)</span> <span class="nt">-</span><span class="o">&amp;</span><span class="nt">gt</span><span class="o">;</span> <span class="nt">String</span><span class="o">?</span> <span class="p">{</span>
-    <span class="err">return</span> <span class="err">mySections</span><span class="cp">[</span><span class="nx">section</span><span class="cp">]</span> <span class="err">as?</span> <span class="err">String</span>
-<span class="p">}</span>
+/*
+ セクションのタイトルを返す.
+ */
+func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -&gt; String? {
+    return mySections[section] as? String
+}
 
-<span class="c">/*</span>
-<span class="c"> Cellが選択された際に呼び出される.</span>
-<span class="c"> */</span>
-<span class="nt">func</span> <span class="nt">tableView</span><span class="o">(</span><span class="nt">tableView</span><span class="o">:</span> <span class="nt">UITableView</span><span class="o">,</span> <span class="nt">didSelectRowAtIndexPath</span> <span class="nt">indexPath</span><span class="o">:</span> <span class="nt">NSIndexPath</span><span class="o">)</span> <span class="p">{</span>
+/*
+ Cellが選択された際に呼び出される.
+ */
+func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 
-    <span class="err">if</span> <span class="err">indexPath.section</span> <span class="err">==</span> <span class="err">0</span> <span class="err">{</span>
-        <span class="err">print(&quot;</span><span class="n">Value</span><span class="p">:</span> <span class="err">\</span><span class="p">(</span><span class="n">myiPhoneItems</span><span class="cp">[</span><span class="nx">indexPath.row</span><span class="cp">]</span><span class="p">)</span><span class="s2">&quot;)</span>
-<span class="s2">    } else if indexPath.section == 1 {</span>
-<span class="s2">        print(&quot;</span><span class="n">Value</span><span class="o">:</span> <span class="err">\</span><span class="p">(</span><span class="n">myAndroidItems</span><span class="cp">[</span><span class="nx">indexPath.row</span><span class="cp">]</span><span class="p">)</span><span class="s2">&quot;)</span>
-<span class="s2">    }</span>
-<span class="s2">}</span>
+    if indexPath.section == 0 {
+        print(&quot;Value: \(myiPhoneItems[indexPath.row])&quot;)
+    } else if indexPath.section == 1 {
+        print(&quot;Value: \(myAndroidItems[indexPath.row])&quot;)
+    }
+}
 
-<span class="s2">/*</span>
-<span class="s2"> テーブルに表示する配列の総数を返す.</span>
-<span class="s2"> */</span>
-<span class="s2">func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -&amp;gt; Int {</span>
-<span class="s2">    if section == 0 {</span>
-<span class="s2">        return myiPhoneItems.count</span>
-<span class="s2">    } else if section == 1 {</span>
-<span class="s2">        return myAndroidItems.count</span>
-<span class="s2">    } else {</span>
-<span class="s2">        return 0</span>
-<span class="s2">    }</span>
-<span class="s2">}</span>
+/*
+ テーブルに表示する配列の総数を返す.
+ */
+func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -&gt; Int {
+    if section == 0 {
+        return myiPhoneItems.count
+    } else if section == 1 {
+        return myAndroidItems.count
+    } else {
+        return 0
+    }
+}
 
-<span class="s2">/*</span>
-<span class="s2"> Cellに値を設定する.</span>
-<span class="s2"> */</span>
-<span class="s2">func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -&amp;gt; UITableViewCell {</span>
+/*
+ Cellに値を設定する.
+ */
+func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -&gt; UITableViewCell {
 
-<span class="s2">    let cell = tableView.dequeueReusableCellWithIdentifier(&quot;</span><span class="n">MyCell</span><span class="s2">&quot;, forIndexPath: indexPath)</span>
+    let cell = tableView.dequeueReusableCellWithIdentifier(&quot;MyCell&quot;, forIndexPath: indexPath)
 
-<span class="s2">    if indexPath.section == 0 {</span>
-<span class="s2">        cell.textLabel?.text = &quot;</span><span class="err">\</span><span class="p">(</span><span class="n">myiPhoneItems</span><span class="cp">[</span><span class="nx">indexPath.row</span><span class="cp">]</span><span class="p">)</span><span class="s2">&quot;</span>
-<span class="s2">    } else if indexPath.section == 1 {</span>
-<span class="s2">        cell.textLabel?.text = &quot;</span><span class="err">\</span><span class="p">(</span><span class="n">myAndroidItems</span><span class="cp">[</span><span class="nx">indexPath.row</span><span class="cp">]</span><span class="p">)</span><span class="err">&quot;</span>
-    <span class="p">}</span>
+    if indexPath.section == 0 {
+        cell.textLabel?.text = &quot;\(myiPhoneItems[indexPath.row])&quot;
+    } else if indexPath.section == 1 {
+        cell.textLabel?.text = &quot;\(myAndroidItems[indexPath.row])&quot;
+    }
 
-    <span class="nt">return</span> <span class="nt">cell</span>
-<span class="err">}</span>
+    return cell
+}
 </pre></div>
 </td></tr></table>
 
@@ -2747,7 +2747,7 @@
       
     </div>
     
-      <script src="../../assets/javascripts/application.b41f3d20.js"></script>
+      <script src="../../assets/javascripts/application.9e1f3b71.js"></script>
       
         
         
