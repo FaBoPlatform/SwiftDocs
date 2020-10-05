@@ -1,4 +1,4 @@
-# UUINavigationControllerの表示
+# UINavigationControllerの表示
 
 ![Preview uikit012](./img/uikit012.png)
 ![Preview uikit012_1](./img/uikit012_1.png)
