@@ -16,25 +16,25 @@ import UIKit
 import UserNotifications
 
 class ViewController: UIViewController {
-    
+
     private let BUTTON_NORMAL: Int = 1
     private let BUTTON_FIRE: Int = 2
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Notificationの表示許可をもらう.
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
-            
+
         }
-        
+
         // すぐにNotificationを発火するボタン.
         let buttonWidth: CGFloat = 200
         let buttonHeight: CGFloat = 80
         let posX: CGFloat = (self.view.bounds.width - buttonWidth) / 2
         let posY: CGFloat = 200
-        
+
         let myButton: UIButton = UIButton(frame: CGRect(x: posX, y: posY, width: buttonWidth, height: buttonHeight))
         myButton.backgroundColor = UIColor.orange
         myButton.layer.masksToBounds = true
@@ -43,11 +43,11 @@ class ViewController: UIViewController {
         myButton.setTitle("Notification", for: .normal)
         myButton.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchDown)
         view.addSubview(myButton)
-        
+
         // 時間をおいてNotificationを発火するボタン.
         let posFireX: CGFloat = (self.view.bounds.width - buttonWidth) / 2
         let posFireY: CGFloat = 400
-        
+
         let myFireButton: UIButton = UIButton(frame: CGRect(x: posFireX, y: posFireY, width: buttonWidth, height: buttonHeight))
         myFireButton.backgroundColor = UIColor.blue
         myFireButton.layer.masksToBounds = true
@@ -57,16 +57,16 @@ class ViewController: UIViewController {
         myFireButton.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchDown)
         view.addSubview(myFireButton)
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
     /*
      ボタンイベント.
      */
-    internal func onClickMyButton(sender: UIButton) {
+    @objc internal func onClickMyButton(sender: UIButton) {
         print("onClickMyButton")
         if sender.tag == BUTTON_NORMAL {
             showNotification()
@@ -74,68 +74,66 @@ class ViewController: UIViewController {
             showNotificationFire()
         }
     }
-    
+
     /*
      Notificationを表示.
      */
     private func showNotification() {
         print("showNotification")
-        
+
         // Notificationを生成.
         let content = UNMutableNotificationContent()
-        
+
         // Titleを代入する.
         content.title = "Title1"
-        
+
         // Bodyを代入する.
         content.body = "Hello Notification"
-        
+
         // 音を設定する.
-        content.sound = UNNotificationSound.default()
-        
+        content.sound = UNNotificationSound.default
+
         // Requestを生成する.
         let request = UNNotificationRequest.init(identifier: "Title1", content: content, trigger: nil)
 
         // Noticationを発行する.
         let center = UNUserNotificationCenter.current()
         center.add(request) { (error) in
-            print(error)
+            print(error as Any)
         }
     }
-    
+
     /*
      Notificationを表示(10秒後)
      */
     private func showNotificationFire() {
         // Notificationを生成.
         let content = UNMutableNotificationContent()
-        
+
         // Titleを代入する.
         content.title = "Title1"
-        
+
         // Bodyを代入する.
         content.body = "Hello Notification"
-        
+
         // 音を設定する.
-        content.sound = UNNotificationSound.default()
-        
+        content.sound = UNNotificationSound.default
+
         // Triggerを生成する.
         let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 5, repeats: false)
-        
+
         // Requestを生成する.
         let request = UNNotificationRequest.init(identifier: "Title1", content: content, trigger: trigger)
-        
+
         // Noticationを発行する.
         let center = UNUserNotificationCenter.current()
         center.add(request) { (error) in
-            print(error)
+            print(error as Any)
         }
 
     }
-    
+
 }
-
-
 
 ```
 
