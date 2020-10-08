@@ -111,7 +111,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 ```
 
 
-```swift　fct_label="Swift 2.3"
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  UIKit019_2.3
