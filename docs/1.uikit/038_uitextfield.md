@@ -5,10 +5,9 @@
 ```swift fct_label="Swift 5.x"
 //
 //  ViewController.swift
-//  UIKit038_4.0
+//  UIKit038_5.0
 //
-//  Created by KimikoWatanabe on 2016/08/18.
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//  Copyright © 2020年 FaBo, Inc. All rights reserved.
 //
 
 import UIKit
