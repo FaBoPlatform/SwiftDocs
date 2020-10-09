@@ -120,7 +120,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 }
 ```
 
-### UIViewController.swift
+### ViewController.swift
 
 ```swift fct_label="Swift 4.x"
 //
