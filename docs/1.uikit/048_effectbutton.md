@@ -2,13 +2,11 @@
 
 ![Preview uikit048](img/uikit048.png)
 
-```swift fct_label="Swift 4.x/Swift 3.x"
+```swift fct_label="Swift 5.x/4.x/3.x"
 //
 //  ViewController.swift
-//  UIKit048_4.0
-//
-//  Created by KimikoWatanabe on 2016/08/21.
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//  UIKit048_5.0
+//  Copyright © 2020年 FaBo, Inc. All rights reserved.
 //
 
 import UIKit
@@ -26,8 +24,8 @@ class ViewController: UIViewController {
         myButton.frame = CGRect(x:0,y:0,width:100,height:100)
         myButton.backgroundColor = UIColor.green
         myButton.layer.masksToBounds = true
-        myButton.setTitle("ボタン", for: UIControlState.normal)
-        myButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        myButton.setTitle("ボタン", for: UIControl.State.normal)
+        myButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
         myButton.layer.cornerRadius = 50.0
         myButton.layer.position = CGPoint(x: self.view.frame.width/2, y:self.view.frame.height/2)
 
@@ -47,7 +45,7 @@ class ViewController: UIViewController {
     /*
      ボタンイベント(Down)
      */
-    func onDownButton(sender: UIButton){
+    @objc func onDownButton(sender: UIButton){
         //UIView.animateWithDuration
         UIView.animate(withDuration: 0.06,
 
@@ -66,7 +64,7 @@ class ViewController: UIViewController {
     /*
      ボタンイベント(Up)
      */
-    func onUpButton(sender: UIButton){
+    @objc func onUpButton(sender: UIButton){
         UIView.animate(withDuration: 0.1,
 
                                    // アニメーション中の処理.
@@ -180,10 +178,11 @@ class ViewController: UIViewController {
 ```
 
 ## 2.3と3.0の差分
-* UIColorの参照方法が変更(UIColor.grayColor()->UIColor.gray)
-* CGRect,CGPointの初期化方法の変更(CGRectMake,CGPointMakeの廃止)
-* UIView.animateWithDurationメソッドがUIView.animateに変更
-* CGAffineTransformMakeScaleの廃止、CGAffineTransformに統合
+* `UIColor` の参照方法が変更 (`UIColor.grayColor()` -> `UIColor.gray`)
+* `CGRect`, `CGPoint` の初期化方法の変更 (`CGRectMake`, `CGPointMake` の廃止)
+* `UIView.animateWithDuration` メソッドが `UIView.animate`に変更
+* `CGAffineTransformMakeScale` の廃止、`CGAffineTransform` に統合
+
 ## Reference
 * UIButton Class
  * [https://developer.apple.com/reference/uikit/uibutton](https://developer.apple.com/reference/uikit/uibutton)
