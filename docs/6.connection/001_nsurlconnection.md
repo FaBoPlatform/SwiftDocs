@@ -4,7 +4,7 @@
 
 ### iOS9からリクエスト先によってはATSを無効化・対処する必要があります
 
-```swift fct_label="Swift 4.x/Swift 3.x"
+```swift fct_label="Swift 5.x/4.x/3.x"
 //
 //  ViewController.swift
 //  Connection001

@@ -3,7 +3,7 @@
 ![Preview uikit026_001](img/uikit026_001.png)
 ![Preview uikit026_002](img/uikit026_002.png)
 
-```swift fct_label="Swift 4.x"
+```swift fct_label="Swift 5.x/4.x"
 //
 //  ViewController.swift
 //  UIKit026_4.0

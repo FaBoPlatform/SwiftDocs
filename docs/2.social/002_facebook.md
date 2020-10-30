@@ -2,7 +2,7 @@
 
 ![Preview social002](img/social002_001.png) ![Preview social002](img/social002_002.png)
 
-```swift fct_label="Swift 4.x"
+```swift fct_label="Swift 5.x/4.x"
 //
 //  ViewController.swift
 //  Social002

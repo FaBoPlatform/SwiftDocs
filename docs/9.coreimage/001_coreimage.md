@@ -2,7 +2,7 @@
 
 ![Preview coreimage001](./img/coreimage001.png)
 
-```swift fct_label="Swift 4.x"
+```swift fct_label="Swift 5.x/4.x"
 //
 //  ViewController.swift
 //  CoreImage001

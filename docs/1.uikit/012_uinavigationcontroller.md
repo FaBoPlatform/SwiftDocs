@@ -4,7 +4,7 @@
 ![Preview uikit012_1](./img/uikit012_1.png)
 
 ### AppDelegate.swift
-```swift fct_label="Swift 4.x"
+```swift fct_label="Swift 5.x/4.x"
 //
 //  AppDelegate.swift
 //  UIKit012

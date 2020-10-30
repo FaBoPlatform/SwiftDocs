@@ -6,7 +6,7 @@
 
 ### ViewController.swift
 
-```swift fct_label="Swift 4.x"
+```swift fct_label="Swift 5.x/4.x"
 //
 //  ViewController.swift
 //  UIKit015_4.0

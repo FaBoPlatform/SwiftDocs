@@ -2,7 +2,7 @@
 
 ![Preview coremotion001](./img/AVFoundation001.png) ![Preview coremotion002](./img/AVFoundation001_2.png)
 
-```swift fct_label="Swift 4.x"
+```swift fct_label="Swift 5.x/4.x"
 //
 //  ViewController.swift
 //  avfoundation001

@@ -55,7 +55,7 @@ func saveContext () {
 
 ## ViewController.swift
 
-```swift fct_label="Swift 4.x"
+```swift fct_label="Swift 5.x/4.x"
 //
 //  ViewController.swift
 //  CoreData001
@@ -533,7 +533,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
 ### AizuDataStore.swift
 
-```swift fct_label="Swift 4.x/Swift 3.x"
+```swift fct_label="Swift 5.x/4.x/3.x"
 //
 //  AizuDataStore.swift
 //
