@@ -32,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-　、。，．]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.2.0">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-3.2.0">
     
     
       
@@ -348,8 +348,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../1.uikit/012_uinavigationcontroller/" title="UUINavigationControllerの表示" class="md-nav__link">
-      UUINavigationControllerの表示
+    <a href="../../1.uikit/012_uinavigationcontroller/" title="UINavigationControllerの表示" class="md-nav__link">
+      UINavigationControllerの表示
     </a>
   </li>
 
@@ -2374,12 +2374,12 @@
 2
 3
 4
-5</pre></div></td><td class=code><div class=codehilite><pre><span></span><span class=p>[</span>
+5</pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=p>[</span>
  <span class=p>{</span><span class=nt>&quot;id&quot;</span><span class=p>:</span><span class=mi>1</span><span class=p>,</span><span class=nt>&quot;title&quot;</span><span class=p>:</span><span class=s2>&quot;鶴ヶ城&quot;</span><span class=p>,</span><span class=nt>&quot;content&quot;</span><span class=p>:</span><span class=s2>&quot;お城&quot;</span><span class=p>},</span>
  <span class=p>{</span><span class=nt>&quot;id&quot;</span><span class=p>:</span><span class=mi>2</span><span class=p>,</span><span class=nt>&quot;title&quot;</span><span class=p>:</span><span class=s2>&quot;飯盛山&quot;</span><span class=p>,</span><span class=nt>&quot;content&quot;</span><span class=p>:</span><span class=s2>&quot;お墓&quot;</span><span class=p>},</span>
  <span class=p>{</span><span class=nt>&quot;id&quot;</span><span class=p>:</span><span class=mi>3</span><span class=p>,</span><span class=nt>&quot;title&quot;</span><span class=p>:</span><span class=s2>&quot;さざえ堂&quot;</span><span class=p>,</span><span class=nt>&quot;content&quot;</span><span class=p>:</span><span class=s2>&quot;螺旋階段&quot;</span><span class=p>}</span>
 <span class=p>]</span>
-</pre></div></td></tr></table></p>
+</code></pre></div></td></tr></table></p>
 <p><img alt="Preview coredata001_how4" src="../img/coredata001_how4.png" /></p>
 <h3 id="coredataentity">CoreDataのEntityの作成と設定</h3>
 <p><img alt="Preview coredata001_how0" src="../img/coredata001_how0.png" />
@@ -2409,7 +2409,7 @@
 20
 21
 22
-23</pre></div></td><td class=code><div class=codehilite><pre><span></span><span class=kr>lazy</span> <span class=kd>var</span> <span class=nv>persistentContainer</span><span class=p>:</span> <span class=n>NSPersistentContainer</span> <span class=p>=</span> <span class=p>{</span>
+23</pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=kr>lazy</span> <span class=kd>var</span> <span class=nv>persistentContainer</span><span class=p>:</span> <span class=n>NSPersistentContainer</span> <span class=p>=</span> <span class=p>{</span>
 
     <span class=kd>let</span> <span class=nv>container</span> <span class=p>=</span> <span class=n>NSPersistentContainer</span><span class=p>(</span><span class=n>name</span><span class=p>:</span> <span class=s>&quot;CoreData001&quot;</span><span class=p>)</span>
     <span class=n>container</span><span class=p>.</span><span class=n>loadPersistentStores</span><span class=p>(</span><span class=n>completionHandler</span><span class=p>:</span> <span class=p>{</span> <span class=p>(</span><span class=n>storeDescription</span><span class=p>,</span> <span class=n>error</span><span class=p>)</span> <span class=k>in</span>
@@ -2432,9 +2432,9 @@
         <span class=p>}</span>
     <span class=p>}</span>
 <span class=p>}</span>
-</pre></div></td></tr></table></p>
+</code></pre></div></td></tr></table></p>
 <h2 id="viewcontrollerswift">ViewController.swift</h2>
-<div class=md-fenced-code-tabs id=tab-tab-group-2><input name=tab-group-2 type=radio id=tab-group-2-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-2-0_swift-panel role=tab><label for=tab-group-2-0_swift class=code-tab-label data-lang=swift id=tab-group-2-0_swift-label>Swift 4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-2-0_swift-panel aria-labelledby=tab-group-2-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
+<div class=md-fenced-code-tabs id=tab-tab-group-2><input name=tab-group-2 type=radio id=tab-group-2-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-2-0_swift-panel role=tab><label for=tab-group-2-0_swift class=code-tab-label data-lang=swift id=tab-group-2-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-2-0_swift-panel aria-labelledby=tab-group-2-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
   2
   3
   4
@@ -2589,7 +2589,7 @@
 153
 154
 155
-156</pre></div></td><td class=code><div class=codehilite><pre><span></span><span class=c1>//</span>
+156</pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
 <span class=c1>//  ViewController.swift</span>
 <span class=c1>//  CoreData001</span>
 <span class=c1>//</span>
@@ -2745,7 +2745,7 @@
     <span class=p>}</span>
 
 <span class=p>}</span>
-</pre></div></td></tr></table></div><input name=tab-group-2 type=radio id=tab-group-2-1_swift class=code-tab data-lang=swift aria-controls=tab-group-2-1_swift-panel role=tab><label for=tab-group-2-1_swift class=code-tab-label data-lang=swift id=tab-group-2-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-2-1_swift-panel aria-labelledby=tab-group-2-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
+</code></pre></div></td></tr></table></div><input name=tab-group-2 type=radio id=tab-group-2-1_swift class=code-tab data-lang=swift aria-controls=tab-group-2-1_swift-panel role=tab><label for=tab-group-2-1_swift class=code-tab-label data-lang=swift id=tab-group-2-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-2-1_swift-panel aria-labelledby=tab-group-2-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
   2
   3
   4
@@ -2900,7 +2900,7 @@
 153
 154
 155
-156</pre></div></td><td class=code><div class=codehilite><pre><span></span><span class=c1>//</span>
+156</pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
 <span class=c1>//  ViewController.swift</span>
 <span class=c1>//  CoreData001</span>
 <span class=c1>//</span>
@@ -3056,7 +3056,7 @@
     <span class=p>}</span>
 
 <span class=p>}</span>
-</pre></div></td></tr></table></div><input name=tab-group-2 type=radio id=tab-group-2-2_swift class=code-tab data-lang=swift aria-controls=tab-group-2-2_swift-panel role=tab><label for=tab-group-2-2_swift class=code-tab-label data-lang=swift id=tab-group-2-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-2-2_swift-panel aria-labelledby=tab-group-2-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
+</code></pre></div></td></tr></table></div><input name=tab-group-2 type=radio id=tab-group-2-2_swift class=code-tab data-lang=swift aria-controls=tab-group-2-2_swift-panel role=tab><label for=tab-group-2-2_swift class=code-tab-label data-lang=swift id=tab-group-2-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-2-2_swift-panel aria-labelledby=tab-group-2-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre>  1
   2
   3
   4
@@ -3209,7 +3209,7 @@
 151
 152
 153
-154</pre></div></td><td class=code><div class=codehilite><pre><span></span><span class=c1>//</span>
+154</pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
 <span class=c1>//  ViewController.swift</span>
 <span class=c1>//  CoreData001</span>
 <span class=c1>//</span>
@@ -3363,10 +3363,9 @@
     <span class=p>}</span>
 
 <span class=p>}</span>
-</pre></div></td></tr></table></div></div>
-
+</code></pre></div></td></tr></table></div></div>
 <h3 id="aizudatastoreswift">AizuDataStore.swift</h3>
-<div class=md-fenced-code-tabs id=tab-tab-group-3><input name=tab-group-3 type=radio id=tab-group-3-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-3-0_swift-panel role=tab><label for=tab-group-3-0_swift class=code-tab-label data-lang=swift id=tab-group-3-0_swift-label>Swift 4.x/Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-3-0_swift-panel aria-labelledby=tab-group-3-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
+<div class=md-fenced-code-tabs id=tab-tab-group-3><input name=tab-group-3 type=radio id=tab-group-3-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-3-0_swift-panel role=tab><label for=tab-group-3-0_swift class=code-tab-label data-lang=swift id=tab-group-3-0_swift-label>Swift 5.x/4.x/3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-3-0_swift-panel aria-labelledby=tab-group-3-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
  2
  3
  4
@@ -3398,7 +3397,7 @@
 30
 31
 32
-33</pre></div></td><td class=code><div class=codehilite><pre><span></span><span class=c1>//</span>
+33</pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
 <span class=c1>//  AizuDataStore.swift</span>
 <span class=c1>//</span>
 <span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
@@ -3431,7 +3430,7 @@
         <span class=n>content</span> <span class=p>=</span> <span class=n>tmp_content</span>
     <span class=p>}</span>
 <span class=p>}</span>
-</pre></div></td></tr></table></div><input name=tab-group-3 type=radio id=tab-group-3-1_swift class=code-tab data-lang=swift aria-controls=tab-group-3-1_swift-panel role=tab><label for=tab-group-3-1_swift class=code-tab-label data-lang=swift id=tab-group-3-1_swift-label>Swift 2.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-3-1_swift-panel aria-labelledby=tab-group-3-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
+</code></pre></div></td></tr></table></div><input name=tab-group-3 type=radio id=tab-group-3-1_swift class=code-tab data-lang=swift aria-controls=tab-group-3-1_swift-panel role=tab><label for=tab-group-3-1_swift class=code-tab-label data-lang=swift id=tab-group-3-1_swift-label>Swift 2.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-3-1_swift-panel aria-labelledby=tab-group-3-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
  2
  3
  4
@@ -3463,7 +3462,7 @@
 30
 31
 32
-33</pre></div></td><td class=code><div class=codehilite><pre><span></span><span class=c1>//</span>
+33</pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
 <span class=c1>//  AizuDataStore.swift</span>
 <span class=c1>//</span>
 <span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
@@ -3496,8 +3495,7 @@
         <span class=n>content</span> <span class=p>=</span> <span class=n>tmp_content</span>
     <span class=p>}</span>
 <span class=p>}</span>
-</pre></div></td></tr></table></div></div>
-
+</code></pre></div></td></tr></table></div></div>
 <h2 id="3x4x">3.xと4.xの差分</h2>
 <ul>
 <li><code>CoreData001.xcdatamodeld</code> の <code>AizuDataStore</code> の <code>Class/Codegen</code> を <code>Manual/None</code> に変更</li>
@@ -3607,7 +3605,7 @@
           
         
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.1.2",url:{base:"../.."}})</script>
       
         <script src="../../javascripts/extra.js"></script>
       

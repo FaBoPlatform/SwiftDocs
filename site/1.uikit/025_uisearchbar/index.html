@@ -32,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-　、。，．]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.2.0">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-3.2.0">
     
     
       
@@ -350,8 +350,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../012_uinavigationcontroller/" title="UUINavigationControllerの表示" class="md-nav__link">
-      UUINavigationControllerの表示
+    <a href="../012_uinavigationcontroller/" title="UINavigationControllerの表示" class="md-nav__link">
+      UINavigationControllerの表示
     </a>
   </li>
 
@@ -2274,178 +2274,7 @@
                 <h1 id="uisearchbar">UISearchBarの表示</h1>
 <p><img alt="Preview uikit025_001" src="../img/uikit025_001.png" />
 <img alt="Preview uikit025_002" src="../img/uikit025_002.png" /></p>
-<p>```swift　fct_label="Swift 4.x"
-//
-//  ViewController.swift
-//  UIKit025_4.0
-//
-//  Created by KimikoWatanabe on 2016/08/17.
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
-//</p>
-<p>import UIKit</p>
-<p>class ViewController: UIViewController, UISearchBarDelegate {</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
-21
-22
-23
-24
-25
-26
-27
-28
-29
-30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56
-57
-58
-59
-60
-61
-62
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>private var mySearchBar: UISearchBar!
-private var myLabel : UILabel!
-
-override func viewDidLoad() {
-    super.viewDidLoad()
-
-    // 背景を白に設定する.
-    self.view.backgroundColor = UIColor.white
-
-    // 検索バーを作成する.
-    mySearchBar = UISearchBar()
-    mySearchBar.delegate = self
-    mySearchBar.frame = CGRect(x:0, y:0, width:300, height:80)
-    mySearchBar.layer.position = CGPoint(x: self.view.bounds.width/2, y: 100)
-
-    // 影をつける.
-    mySearchBar.layer.shadowColor = UIColor.black.cgColor
-    mySearchBar.layer.shadowOpacity = 0.5
-    mySearchBar.layer.masksToBounds = false
-
-    // キャンセルボタンを有効にする.
-    mySearchBar.showsCancelButton = true
-
-    // ブックマークボタンを無効にする.
-    mySearchBar.showsBookmarkButton = false
-
-    // バースタイルをDefaultに設定する.
-    mySearchBar.searchBarStyle = UISearchBar.Style.default
-
-    // タイトルを設定する.
-    mySearchBar.prompt = &quot;タイトル&quot;
-
-    // 説明文を設定する.
-    mySearchBar.placeholder = &quot;ここに入力してください&quot;
-
-    // カーソル、キャンセルボタンの色を設定する.
-    mySearchBar.tintColor = UIColor.red
-
-    // 検索結果表示ボタンは非表示にする.
-    mySearchBar.showsSearchResultsButton = false
-
-    // 検索バーをViewに追加する.
-    self.view.addSubview(mySearchBar)
-
-    // UITextFieldを作成する.
-    myLabel = UILabel(frame: CGRect(x:0,y:0,width:200,height:30))
-    myLabel.center = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height/2)
-    myLabel.text = &quot;&quot;
-    myLabel.layer.borderWidth = 1.0
-    myLabel.layer.borderColor = UIColor.gray.cgColor
-    myLabel.layer.cornerRadius = 10.0
-
-    // Viewに追加する.
-    self.view.addSubview(myLabel)
-}
-
-/*
- テキストが変更される毎に呼ばれる
- */
-func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-    myLabel.text = searchText
-}
-
-/*
- Cancelボタンが押された時に呼ばれる
- */
-func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-    myLabel.text = &quot;&quot;
-    mySearchBar.text = &quot;&quot;
-}
-
-/*
- Searchボタンが押された時に呼ばれる
- */
-func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    myLabel.text = &quot;Searching&quot;
-    mySearchBar.text = &quot;&quot;
-    self.view.endEditing(true)
-}
-</pre></div>
-</td></tr></table>
-
-<p>}</p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_4hkl91c8ox1rpxz checked=checked class=code-tab data-lang aria-controls=tab-group-0-0_4hkl91c8ox1rpxz-panel role=tab><label for=tab-group-0-0_4hkl91c8ox1rpxz class=code-tab-label data-lang id=tab-group-0-0_4hkl91c8ox1rpxz-label></label><div class=code-tabpanel role=tabpanel data-lang id=tab-group-0-0_4hkl91c8ox1rpxz-panel aria-labelledby=tab-group-0-0_4hkl91c8ox1rpxz-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
  2
  3
  4
@@ -2536,101 +2365,99 @@ func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
 89
 90
 91
-92
-93</pre></div></td><td class=code><div class=codehilite><pre><span></span><span class=sb>``</span><span class=err>`</span><span class=n>swift</span> <span class=n>fct_label</span><span class=o>=</span><span class=s2>&quot;Swift3.x&quot;</span>
-<span class=o>//</span>
-<span class=o>//</span>  <span class=n>ViewController</span><span class=o>.</span><span class=n>swift</span>
-<span class=o>//</span>  <span class=n>UIKit025_3</span><span class=o>.</span><span class=mi>0</span>
-<span class=o>//</span>
-<span class=o>//</span>  <span class=n>Created</span> <span class=n>by</span> <span class=n>KimikoWatanabe</span> <span class=n>on</span> <span class=mi>2016</span><span class=o>/</span><span class=mi>08</span><span class=o>/</span><span class=mf>17.</span>
-<span class=o>//</span>  <span class=n>Copyright</span> <span class=err>©</span> <span class=mi>2016</span><span class=err>年</span> <span class=n>FaBo</span><span class=p>,</span> <span class=n>Inc</span><span class=o>.</span> <span class=n>All</span> <span class=n>rights</span> <span class=n>reserved</span><span class=o>.</span>
-<span class=o>//</span>
+92</pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
+<span class=c1>//  ViewController.swift</span>
+<span class=c1>//  UIKit025_4.0</span>
+<span class=c1>//</span>
+<span class=c1>//  Created by KimikoWatanabe on 2016/08/17.</span>
+<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
+<span class=c1>//</span>
 
-<span class=kn>import</span> <span class=nn>UIKit</span>
+<span class=kd>import</span> <span class=nc>UIKit</span>
 
-<span class=k>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=n>UIViewController</span><span class=p>,</span> <span class=n>UISearchBarDelegate</span> <span class=p>{</span>
+<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UISearchBarDelegate</span> <span class=p>{</span>
 
-    <span class=n>private</span> <span class=n>var</span> <span class=n>mySearchBar</span><span class=p>:</span> <span class=n>UISearchBar</span><span class=err>!</span>
-    <span class=n>private</span> <span class=n>var</span> <span class=n>myLabel</span> <span class=p>:</span> <span class=n>UILabel</span><span class=err>!</span>
+    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>mySearchBar</span><span class=p>:</span> <span class=bp>UISearchBar</span><span class=p>!</span>
+    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myLabel</span> <span class=p>:</span> <span class=bp>UILabel</span><span class=p>!</span>
 
-    <span class=n>override</span> <span class=n>func</span> <span class=n>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=nb>super</span><span class=o>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
+        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
 
-        <span class=o>//</span> <span class=err>背景を白に設定する</span><span class=o>.</span>
-        <span class=bp>self</span><span class=o>.</span><span class=n>view</span><span class=o>.</span><span class=n>backgroundColor</span> <span class=o>=</span> <span class=n>UIColor</span><span class=o>.</span><span class=n>white</span>
+        <span class=c1>// 背景を白に設定する.</span>
+        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
 
-        <span class=o>//</span> <span class=err>検索バーを作成する</span><span class=o>.</span>
-        <span class=n>mySearchBar</span> <span class=o>=</span> <span class=n>UISearchBar</span><span class=p>()</span>
-        <span class=n>mySearchBar</span><span class=o>.</span><span class=n>delegate</span> <span class=o>=</span> <span class=bp>self</span>
-        <span class=n>mySearchBar</span><span class=o>.</span><span class=n>frame</span> <span class=o>=</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=mi>300</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>80</span><span class=p>)</span>
-        <span class=n>mySearchBar</span><span class=o>.</span><span class=n>layer</span><span class=o>.</span><span class=n>position</span> <span class=o>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=bp>self</span><span class=o>.</span><span class=n>view</span><span class=o>.</span><span class=n>bounds</span><span class=o>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>100</span><span class=p>)</span>
+        <span class=c1>// 検索バーを作成する.</span>
+        <span class=n>mySearchBar</span> <span class=p>=</span> <span class=bp>UISearchBar</span><span class=p>()</span>
+        <span class=n>mySearchBar</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
+        <span class=n>mySearchBar</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=bp>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=mi>300</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>80</span><span class=p>)</span>
+        <span class=n>mySearchBar</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=bp>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>100</span><span class=p>)</span>
 
-        <span class=o>//</span> <span class=err>影をつける</span><span class=o>.</span>
-        <span class=n>mySearchBar</span><span class=o>.</span><span class=n>layer</span><span class=o>.</span><span class=n>shadowColor</span> <span class=o>=</span> <span class=n>UIColor</span><span class=o>.</span><span class=n>black</span><span class=o>.</span><span class=n>cgColor</span>
-        <span class=n>mySearchBar</span><span class=o>.</span><span class=n>layer</span><span class=o>.</span><span class=n>shadowOpacity</span> <span class=o>=</span> <span class=mf>0.5</span>
-        <span class=n>mySearchBar</span><span class=o>.</span><span class=n>layer</span><span class=o>.</span><span class=n>masksToBounds</span> <span class=o>=</span> <span class=n>false</span>
+        <span class=c1>// 影をつける.</span>
+        <span class=n>mySearchBar</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>shadowColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span><span class=p>.</span><span class=n>cgColor</span>
+        <span class=n>mySearchBar</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>shadowOpacity</span> <span class=p>=</span> <span class=mf>0.5</span>
+        <span class=n>mySearchBar</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>false</span>
 
-        <span class=o>//</span> <span class=err>キャンセルボタンを有効にする</span><span class=o>.</span>
-        <span class=n>mySearchBar</span><span class=o>.</span><span class=n>showsCancelButton</span> <span class=o>=</span> <span class=n>true</span>
+        <span class=c1>// キャンセルボタンを有効にする.</span>
+        <span class=n>mySearchBar</span><span class=p>.</span><span class=n>showsCancelButton</span> <span class=p>=</span> <span class=kc>true</span>
 
-        <span class=o>//</span> <span class=err>ブックマークボタンを無効にする</span><span class=o>.</span>
-        <span class=n>mySearchBar</span><span class=o>.</span><span class=n>showsBookmarkButton</span> <span class=o>=</span> <span class=n>false</span>
+        <span class=c1>// ブックマークボタンを無効にする.</span>
+        <span class=n>mySearchBar</span><span class=p>.</span><span class=n>showsBookmarkButton</span> <span class=p>=</span> <span class=kc>false</span>
 
-        <span class=o>//</span> <span class=err>バースタイルを</span><span class=n>Defaultに設定する</span><span class=o>.</span>
-        <span class=n>mySearchBar</span><span class=o>.</span><span class=n>searchBarStyle</span> <span class=o>=</span> <span class=n>UISearchBarStyle</span><span class=o>.</span><span class=n>default</span>
+        <span class=c1>// バースタイルをDefaultに設定する.</span>
+        <span class=n>mySearchBar</span><span class=p>.</span><span class=n>searchBarStyle</span> <span class=p>=</span> <span class=bp>UISearchBar</span><span class=p>.</span><span class=n>Style</span><span class=p>.</span><span class=k>default</span>
 
-        <span class=o>//</span> <span class=err>タイトルを設定する</span><span class=o>.</span>
-        <span class=n>mySearchBar</span><span class=o>.</span><span class=n>prompt</span> <span class=o>=</span> <span class=s2>&quot;タイトル&quot;</span>
+        <span class=c1>// タイトルを設定する.</span>
+        <span class=n>mySearchBar</span><span class=p>.</span><span class=n>prompt</span> <span class=p>=</span> <span class=s>&quot;タイトル&quot;</span>
 
-        <span class=o>//</span> <span class=err>説明文を設定する</span><span class=o>.</span>
-        <span class=n>mySearchBar</span><span class=o>.</span><span class=n>placeholder</span> <span class=o>=</span> <span class=s2>&quot;ここに入力してください&quot;</span>
+        <span class=c1>// 説明文を設定する.</span>
+        <span class=n>mySearchBar</span><span class=p>.</span><span class=n>placeholder</span> <span class=p>=</span> <span class=s>&quot;ここに入力してください&quot;</span>
 
-        <span class=o>//</span> <span class=err>カーソル、キャンセルボタンの色を設定する</span><span class=o>.</span>
-        <span class=n>mySearchBar</span><span class=o>.</span><span class=n>tintColor</span> <span class=o>=</span> <span class=n>UIColor</span><span class=o>.</span><span class=n>red</span>
+        <span class=c1>// カーソル、キャンセルボタンの色を設定する.</span>
+        <span class=n>mySearchBar</span><span class=p>.</span><span class=n>tintColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>red</span>
 
-        <span class=o>//</span> <span class=err>検索結果表示ボタンは非表示にする</span><span class=o>.</span>
-        <span class=n>mySearchBar</span><span class=o>.</span><span class=n>showsSearchResultsButton</span> <span class=o>=</span> <span class=n>false</span>
+        <span class=c1>// 検索結果表示ボタンは非表示にする.</span>
+        <span class=n>mySearchBar</span><span class=p>.</span><span class=n>showsSearchResultsButton</span> <span class=p>=</span> <span class=kc>false</span>
 
-        <span class=o>//</span> <span class=err>検索バーを</span><span class=n>Viewに追加する</span><span class=o>.</span>
-        <span class=bp>self</span><span class=o>.</span><span class=n>view</span><span class=o>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>mySearchBar</span><span class=p>)</span>
+        <span class=c1>// 検索バーをViewに追加する.</span>
+        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>mySearchBar</span><span class=p>)</span>
 
-        <span class=o>//</span> <span class=n>UITextFieldを作成する</span><span class=o>.</span>
-        <span class=n>myLabel</span> <span class=o>=</span> <span class=n>UILabel</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span><span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span><span class=n>width</span><span class=p>:</span><span class=mi>200</span><span class=p>,</span><span class=n>height</span><span class=p>:</span><span class=mi>30</span><span class=p>))</span>
-        <span class=n>myLabel</span><span class=o>.</span><span class=n>center</span> <span class=o>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=bp>self</span><span class=o>.</span><span class=n>view</span><span class=o>.</span><span class=n>frame</span><span class=o>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=bp>self</span><span class=o>.</span><span class=n>view</span><span class=o>.</span><span class=n>frame</span><span class=o>.</span><span class=n>height</span><span class=o>/</span><span class=mi>2</span><span class=p>)</span>
-        <span class=n>myLabel</span><span class=o>.</span><span class=n>text</span> <span class=o>=</span> <span class=s2>&quot;&quot;</span>
-        <span class=n>myLabel</span><span class=o>.</span><span class=n>layer</span><span class=o>.</span><span class=n>borderWidth</span> <span class=o>=</span> <span class=mf>1.0</span>
-        <span class=n>myLabel</span><span class=o>.</span><span class=n>layer</span><span class=o>.</span><span class=n>borderColor</span> <span class=o>=</span> <span class=n>UIColor</span><span class=o>.</span><span class=n>gray</span><span class=o>.</span><span class=n>cgColor</span>
-        <span class=n>myLabel</span><span class=o>.</span><span class=n>layer</span><span class=o>.</span><span class=n>cornerRadius</span> <span class=o>=</span> <span class=mf>10.0</span>
+        <span class=c1>// UITextFieldを作成する.</span>
+        <span class=n>myLabel</span> <span class=p>=</span> <span class=bp>UILabel</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=bp>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span><span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span><span class=n>width</span><span class=p>:</span><span class=mi>200</span><span class=p>,</span><span class=n>height</span><span class=p>:</span><span class=mi>30</span><span class=p>))</span>
+        <span class=n>myLabel</span><span class=p>.</span><span class=n>center</span> <span class=p>=</span> <span class=bp>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span><span class=o>/</span><span class=mi>2</span><span class=p>)</span>
+        <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;&quot;</span>
+        <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>borderWidth</span> <span class=p>=</span> <span class=mf>1.0</span>
+        <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>borderColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>gray</span><span class=p>.</span><span class=n>cgColor</span>
+        <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>10.0</span>
 
-        <span class=o>//</span> <span class=n>Viewに追加する</span><span class=o>.</span>
-        <span class=bp>self</span><span class=o>.</span><span class=n>view</span><span class=o>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myLabel</span><span class=p>)</span>
+        <span class=c1>// Viewに追加する.</span>
+        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myLabel</span><span class=p>)</span>
     <span class=p>}</span>
 
-    <span class=o>/*</span>
-     <span class=err>テキストが変更される毎に呼ばれる</span>
-     <span class=o>*/</span>
-    <span class=n>func</span> <span class=n>searchBar</span><span class=p>(</span><span class=n>_</span> <span class=n>searchBar</span><span class=p>:</span> <span class=n>UISearchBar</span><span class=p>,</span> <span class=n>textDidChange</span> <span class=n>searchText</span><span class=p>:</span> <span class=n>String</span><span class=p>)</span> <span class=p>{</span>
-        <span class=n>myLabel</span><span class=o>.</span><span class=n>text</span> <span class=o>=</span> <span class=n>searchText</span>
+    <span class=cm>/*</span>
+<span class=cm>     テキストが変更される毎に呼ばれる</span>
+<span class=cm>     */</span>
+    <span class=kd>func</span> <span class=nf>searchBar</span><span class=p>(</span><span class=kc>_</span> <span class=n>searchBar</span><span class=p>:</span> <span class=bp>UISearchBar</span><span class=p>,</span> <span class=n>textDidChange</span> <span class=n>searchText</span><span class=p>:</span> <span class=nb>String</span><span class=p>)</span> <span class=p>{</span>
+        <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=n>searchText</span>
     <span class=p>}</span>
 
-    <span class=o>/*</span>
-     <span class=n>Cancelボタンが押された時に呼ばれる</span>
-     <span class=o>*/</span>
-    <span class=n>func</span> <span class=n>searchBarCancelButtonClicked</span><span class=p>(</span><span class=n>_</span> <span class=n>searchBar</span><span class=p>:</span> <span class=n>UISearchBar</span><span class=p>)</span> <span class=p>{</span>
-        <span class=n>myLabel</span><span class=o>.</span><span class=n>text</span> <span class=o>=</span> <span class=s2>&quot;&quot;</span>
-        <span class=n>mySearchBar</span><span class=o>.</span><span class=n>text</span> <span class=o>=</span> <span class=s2>&quot;&quot;</span>
+    <span class=cm>/*</span>
+<span class=cm>     Cancelボタンが押された時に呼ばれる</span>
+<span class=cm>     */</span>
+    <span class=kd>func</span> <span class=nf>searchBarCancelButtonClicked</span><span class=p>(</span><span class=kc>_</span> <span class=n>searchBar</span><span class=p>:</span> <span class=bp>UISearchBar</span><span class=p>)</span> <span class=p>{</span>
+        <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;&quot;</span>
+        <span class=n>mySearchBar</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;&quot;</span>
     <span class=p>}</span>
 
-    <span class=o>/*</span>
-     <span class=n>Searchボタンが押された時に呼ばれる</span>
-     <span class=o>*/</span>
-    <span class=n>func</span> <span class=n>searchBarSearchButtonClicked</span><span class=p>(</span><span class=n>_</span> <span class=n>searchBar</span><span class=p>:</span> <span class=n>UISearchBar</span><span class=p>)</span> <span class=p>{</span>
-        <span class=n>myLabel</span><span class=o>.</span><span class=n>text</span> <span class=o>=</span> <span class=s2>&quot;Searching&quot;</span>
-        <span class=n>mySearchBar</span><span class=o>.</span><span class=n>text</span> <span class=o>=</span> <span class=s2>&quot;&quot;</span>
-        <span class=bp>self</span><span class=o>.</span><span class=n>view</span><span class=o>.</span><span class=n>endEditing</span><span class=p>(</span><span class=n>true</span><span class=p>)</span>
+    <span class=cm>/*</span>
+<span class=cm>     Searchボタンが押された時に呼ばれる</span>
+<span class=cm>     */</span>
+    <span class=kd>func</span> <span class=nf>searchBarSearchButtonClicked</span><span class=p>(</span><span class=kc>_</span> <span class=n>searchBar</span><span class=p>:</span> <span class=bp>UISearchBar</span><span class=p>)</span> <span class=p>{</span>
+        <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;Searching&quot;</span>
+        <span class=n>mySearchBar</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;&quot;</span>
+        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>endEditing</span><span class=p>(</span><span class=kc>true</span><span class=p>)</span>
     <span class=p>}</span>
 <span class=p>}</span>
-</pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
+</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
  2
  3
  4
@@ -2721,7 +2548,190 @@ func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
 89
 90
 91
-92</pre></div></td><td class=code><div class=codehilite><pre><span></span><span class=c1>//</span>
+92</pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
+<span class=c1>//  ViewController.swift</span>
+<span class=c1>//  UIKit025_3.0</span>
+<span class=c1>//</span>
+<span class=c1>//  Created by KimikoWatanabe on 2016/08/17.</span>
+<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
+<span class=c1>//</span>
+
+<span class=kd>import</span> <span class=nc>UIKit</span>
+
+<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UISearchBarDelegate</span> <span class=p>{</span>
+
+    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>mySearchBar</span><span class=p>:</span> <span class=bp>UISearchBar</span><span class=p>!</span>
+    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myLabel</span> <span class=p>:</span> <span class=bp>UILabel</span><span class=p>!</span>
+
+    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
+        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+
+        <span class=c1>// 背景を白に設定する.</span>
+        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
+
+        <span class=c1>// 検索バーを作成する.</span>
+        <span class=n>mySearchBar</span> <span class=p>=</span> <span class=bp>UISearchBar</span><span class=p>()</span>
+        <span class=n>mySearchBar</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
+        <span class=n>mySearchBar</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=bp>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=mi>300</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>80</span><span class=p>)</span>
+        <span class=n>mySearchBar</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=bp>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>100</span><span class=p>)</span>
+
+        <span class=c1>// 影をつける.</span>
+        <span class=n>mySearchBar</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>shadowColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span><span class=p>.</span><span class=n>cgColor</span>
+        <span class=n>mySearchBar</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>shadowOpacity</span> <span class=p>=</span> <span class=mf>0.5</span>
+        <span class=n>mySearchBar</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>false</span>
+
+        <span class=c1>// キャンセルボタンを有効にする.</span>
+        <span class=n>mySearchBar</span><span class=p>.</span><span class=n>showsCancelButton</span> <span class=p>=</span> <span class=kc>true</span>
+
+        <span class=c1>// ブックマークボタンを無効にする.</span>
+        <span class=n>mySearchBar</span><span class=p>.</span><span class=n>showsBookmarkButton</span> <span class=p>=</span> <span class=kc>false</span>
+
+        <span class=c1>// バースタイルをDefaultに設定する.</span>
+        <span class=n>mySearchBar</span><span class=p>.</span><span class=n>searchBarStyle</span> <span class=p>=</span> <span class=n>UISearchBarStyle</span><span class=p>.</span><span class=k>default</span>
+
+        <span class=c1>// タイトルを設定する.</span>
+        <span class=n>mySearchBar</span><span class=p>.</span><span class=n>prompt</span> <span class=p>=</span> <span class=s>&quot;タイトル&quot;</span>
+
+        <span class=c1>// 説明文を設定する.</span>
+        <span class=n>mySearchBar</span><span class=p>.</span><span class=n>placeholder</span> <span class=p>=</span> <span class=s>&quot;ここに入力してください&quot;</span>
+
+        <span class=c1>// カーソル、キャンセルボタンの色を設定する.</span>
+        <span class=n>mySearchBar</span><span class=p>.</span><span class=n>tintColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>red</span>
+
+        <span class=c1>// 検索結果表示ボタンは非表示にする.</span>
+        <span class=n>mySearchBar</span><span class=p>.</span><span class=n>showsSearchResultsButton</span> <span class=p>=</span> <span class=kc>false</span>
+
+        <span class=c1>// 検索バーをViewに追加する.</span>
+        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>mySearchBar</span><span class=p>)</span>
+
+        <span class=c1>// UITextFieldを作成する.</span>
+        <span class=n>myLabel</span> <span class=p>=</span> <span class=bp>UILabel</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=bp>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span><span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span><span class=n>width</span><span class=p>:</span><span class=mi>200</span><span class=p>,</span><span class=n>height</span><span class=p>:</span><span class=mi>30</span><span class=p>))</span>
+        <span class=n>myLabel</span><span class=p>.</span><span class=n>center</span> <span class=p>=</span> <span class=bp>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span><span class=o>/</span><span class=mi>2</span><span class=p>)</span>
+        <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;&quot;</span>
+        <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>borderWidth</span> <span class=p>=</span> <span class=mf>1.0</span>
+        <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>borderColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>gray</span><span class=p>.</span><span class=n>cgColor</span>
+        <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>10.0</span>
+
+        <span class=c1>// Viewに追加する.</span>
+        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myLabel</span><span class=p>)</span>
+    <span class=p>}</span>
+
+    <span class=cm>/*</span>
+<span class=cm>     テキストが変更される毎に呼ばれる</span>
+<span class=cm>     */</span>
+    <span class=kd>func</span> <span class=nf>searchBar</span><span class=p>(</span><span class=kc>_</span> <span class=n>searchBar</span><span class=p>:</span> <span class=bp>UISearchBar</span><span class=p>,</span> <span class=n>textDidChange</span> <span class=n>searchText</span><span class=p>:</span> <span class=nb>String</span><span class=p>)</span> <span class=p>{</span>
+        <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=n>searchText</span>
+    <span class=p>}</span>
+
+    <span class=cm>/*</span>
+<span class=cm>     Cancelボタンが押された時に呼ばれる</span>
+<span class=cm>     */</span>
+    <span class=kd>func</span> <span class=nf>searchBarCancelButtonClicked</span><span class=p>(</span><span class=kc>_</span> <span class=n>searchBar</span><span class=p>:</span> <span class=bp>UISearchBar</span><span class=p>)</span> <span class=p>{</span>
+        <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;&quot;</span>
+        <span class=n>mySearchBar</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;&quot;</span>
+    <span class=p>}</span>
+
+    <span class=cm>/*</span>
+<span class=cm>     Searchボタンが押された時に呼ばれる</span>
+<span class=cm>     */</span>
+    <span class=kd>func</span> <span class=nf>searchBarSearchButtonClicked</span><span class=p>(</span><span class=kc>_</span> <span class=n>searchBar</span><span class=p>:</span> <span class=bp>UISearchBar</span><span class=p>)</span> <span class=p>{</span>
+        <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;Searching&quot;</span>
+        <span class=n>mySearchBar</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;&quot;</span>
+        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>endEditing</span><span class=p>(</span><span class=kc>true</span><span class=p>)</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92</pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
 <span class=c1>//  ViewController.swift</span>
 <span class=c1>//  UIKit025_2.3</span>
 <span class=c1>//</span>
@@ -2813,8 +2823,7 @@ func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>endEditing</span><span class=p>(</span><span class=kc>true</span><span class=p>)</span>
     <span class=p>}</span>
 <span class=p>}</span>
-</pre></div></td></tr></table></div></div>
-
+</code></pre></div></td></tr></table></div></div>
 <h2 id="3040">3.0と4.0の差分</h2>
 <ul>
 <li><code>UISearchBarStyle.default</code> が、 <code>UISearchBar.Style.default</code> に変更</li>
@@ -2920,7 +2929,7 @@ func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
           
         
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.1.2",url:{base:"../.."}})</script>
       
         <script src="../../javascripts/extra.js"></script>
       
