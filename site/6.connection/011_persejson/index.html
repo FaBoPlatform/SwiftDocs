@@ -32,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-　、。，．]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.2.0">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-3.2.0">
     
     
       
@@ -348,8 +348,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../1.uikit/012_uinavigationcontroller/" title="UUINavigationControllerの表示" class="md-nav__link">
-      UUINavigationControllerの表示
+    <a href="../../1.uikit/012_uinavigationcontroller/" title="UINavigationControllerの表示" class="md-nav__link">
+      UINavigationControllerの表示
     </a>
   </li>
 
@@ -2272,9 +2272,8 @@
                 
                 
                 <h1 id="json">JSONデータのパース</h1>
-<p><img alt="Preview connection011" src="./img/Connection011.png" /></p>
 <h3 id="ios9ats">iOS9からリクエスト先によってはATSを無効化・対処する必要があります</h3>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 4.x/Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x/3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
  2
  3
  4
@@ -2346,26 +2345,9 @@
 70
 71
 72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86
-87</pre></div></td><td class=code><div class=codehilite><pre><span></span><span class=c1>//</span>
+73</pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
 <span class=c1>//  ViewController.swift</span>
 <span class=c1>//  Connection011</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
 <span class=c1>//</span>
 
 <span class=kd>import</span> <span class=nc>UIKit</span>
@@ -2402,18 +2384,14 @@
         <span class=kd>let</span> <span class=nv>session</span><span class=p>:</span> <span class=n>URLSession</span> <span class=p>=</span> <span class=n>URLSession</span><span class=p>(</span><span class=n>configuration</span><span class=p>:</span> <span class=n>config</span><span class=p>,</span> <span class=n>delegate</span><span class=p>:</span> <span class=kc>self</span><span class=p>,</span> <span class=n>delegateQueue</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
 
         <span class=c1>// 通信先のURLを生成.</span>
-        <span class=kd>let</span> <span class=nv>url</span><span class=p>:</span><span class=bp>NSURL</span> <span class=p>=</span> <span class=bp>NSURL</span><span class=p>(</span><span class=n>string</span><span class=p>:</span> <span class=s>&quot;http://xxx/json_encode.php&quot;</span><span class=p>)</span><span class=o>!</span>
+        <span class=kd>let</span> <span class=nv>url</span><span class=p>:</span><span class=bp>NSURL</span> <span class=p>=</span> <span class=bp>NSURL</span><span class=p>(</span><span class=n>string</span><span class=p>:</span> <span class=s>&quot;http://jsonplaceholder.typicode.com/todos/1&quot;</span><span class=p>)</span><span class=o>!</span>
 
         <span class=c1>// タスクの生成.</span>
         <span class=kd>let</span> <span class=nv>task</span><span class=p>:</span> <span class=n>URLSessionDataTask</span> <span class=p>=</span> <span class=n>session</span><span class=p>.</span><span class=n>dataTask</span><span class=p>(</span><span class=n>with</span><span class=p>:</span> <span class=n>url</span> <span class=k>as</span> <span class=n>URL</span><span class=p>,</span> <span class=n>completionHandler</span><span class=p>:</span> <span class=p>{</span> <span class=p>(</span><span class=n>data</span><span class=p>,</span> <span class=n>response</span><span class=p>,</span> <span class=n>err</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
 
             <span class=k>if</span> <span class=n>data</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
-
                 <span class=kd>let</span> <span class=nv>str</span> <span class=p>=</span> <span class=bp>NSString</span><span class=p>(</span><span class=n>data</span><span class=p>:</span> <span class=n>data</span><span class=p>!,</span> <span class=n>encoding</span><span class=p>:</span> <span class=nb>String</span><span class=p>.</span><span class=n>Encoding</span><span class=p>.</span><span class=n>utf8</span><span class=p>.</span><span class=n>rawValue</span><span class=p>)</span>
                 <span class=bp>print</span><span class=p>(</span><span class=n>str</span><span class=p>!)</span>
-                <span class=n>DispatchQueue</span><span class=p>.</span><span class=n>main</span><span class=p>.</span><span class=n>async</span><span class=p>(</span><span class=n>execute</span><span class=p>:</span> <span class=p>{</span>
-                    <span class=n>myTextView</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;</span><span class=si>\(</span><span class=n>str</span><span class=p>!</span><span class=si>)</span><span class=s>&quot;</span>
-                <span class=p>})</span>
 
                 <span class=k>do</span> <span class=p>{</span>
                     <span class=c1>// 受け取ったJSONデータをパースする.</span>
@@ -2423,31 +2401,24 @@
                     <span class=n>DispatchQueue</span><span class=p>.</span><span class=n>main</span><span class=p>.</span><span class=n>async</span><span class=p>(</span><span class=n>execute</span><span class=p>:</span> <span class=p>{</span>
 
                         <span class=c1>// パースしたJSONデータへのアクセス.</span>
-                        <span class=k>for</span> <span class=n>_value</span> <span class=k>in</span> <span class=n>json</span> <span class=p>{</span>
-                            <span class=kd>let</span> <span class=nv>key</span><span class=p>:</span> <span class=nb>String</span> <span class=p>=</span> <span class=n>_value</span><span class=p>.</span><span class=n>key</span> <span class=k>as</span><span class=p>!</span> <span class=nb>String</span>
-                            <span class=kd>let</span> <span class=nv>value</span><span class=p>:</span> <span class=nb>Int</span> <span class=p>=</span> <span class=n>_value</span><span class=p>.</span><span class=n>value</span> <span class=k>as</span><span class=p>!</span> <span class=nb>Int</span>
-                            <span class=n>myTextView</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=n>myTextView</span><span class=p>.</span><span class=n>text</span><span class=p>.</span><span class=n>appending</span><span class=p>(</span><span class=s>&quot;</span><span class=se>\n</span><span class=si>\(</span><span class=n>key</span><span class=si>)</span><span class=s> : </span><span class=si>\(</span><span class=n>value</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-                        <span class=p>}</span>
-
+                        <span class=n>myTextView</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=n>myTextView</span><span class=p>.</span><span class=n>text</span><span class=p>.</span><span class=n>appending</span><span class=p>(</span><span class=s>&quot;Parsed JSON to NSDictionary: </span><span class=se>\n\n</span><span class=si>\(</span><span class=n>json</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
                     <span class=p>})</span>
 
                 <span class=p>}</span> <span class=k>catch</span> <span class=p>{</span>
-                    <span class=bp>print</span><span class=p>(</span><span class=s>&quot;error&quot;</span><span class=p>)</span>
-                    <span class=bp>print</span><span class=p>(</span><span class=n>error</span><span class=p>)</span>
+                    <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Error: </span><span class=si>\(</span><span class=n>error</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
                 <span class=p>}</span>
             <span class=p>}</span>
         <span class=p>})</span>
 
-
         <span class=c1>// タスクの実行.</span>
         <span class=n>task</span><span class=p>.</span><span class=n>resume</span><span class=p>()</span>
     <span class=p>}</span>
+
     <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
         <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-
     <span class=p>}</span>
 <span class=p>}</span>
-</pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
+</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
  2
  3
  4
@@ -2527,9 +2498,7 @@
 78
 79
 80
-81
-82
-83</pre></div></td><td class=code><div class=codehilite><pre><span></span><span class=c1>//</span>
+81</pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
 <span class=c1>//  ViewController.swift</span>
 <span class=c1>//  Connection011</span>
 <span class=c1>//</span>
@@ -2571,7 +2540,7 @@
         <span class=kd>let</span> <span class=nv>session</span><span class=p>:</span><span class=bp>NSURLSession</span> <span class=p>=</span> <span class=bp>NSURLSession</span><span class=p>(</span><span class=n>configuration</span><span class=p>:</span> <span class=n>config</span><span class=p>,</span> <span class=n>delegate</span><span class=p>:</span> <span class=kc>self</span><span class=p>,</span> <span class=n>delegateQueue</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
 
         <span class=c1>// 通信先のURLを生成.</span>
-        <span class=kd>let</span> <span class=nv>url</span><span class=p>:</span><span class=bp>NSURL</span> <span class=p>=</span> <span class=bp>NSURL</span><span class=p>(</span><span class=n>string</span><span class=p>:</span> <span class=s>&quot;http://xxx/json_encode.php&quot;</span><span class=p>)</span><span class=o>!</span>
+        <span class=kd>let</span> <span class=nv>url</span><span class=p>:</span><span class=bp>NSURL</span> <span class=p>=</span> <span class=bp>NSURL</span><span class=p>(</span><span class=n>string</span><span class=p>:</span> <span class=s>&quot;http://jsonplaceholder.typicode.com/todos/1&quot;</span><span class=p>)</span><span class=o>!</span>
 
         <span class=c1>// タスクの生成.</span>
         <span class=kd>let</span> <span class=nv>task</span><span class=p>:</span><span class=bp>NSURLSessionDataTask</span> <span class=p>=</span> <span class=n>session</span><span class=p>.</span><span class=n>dataTaskWithURL</span><span class=p>(</span><span class=n>url</span><span class=p>,</span> <span class=n>completionHandler</span><span class=p>:</span> <span class=p>{</span> <span class=p>(</span><span class=n>data</span><span class=p>,</span> <span class=n>response</span><span class=p>,</span> <span class=n>err</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
@@ -2591,9 +2560,7 @@
                     <span class=n>dispatch_async</span><span class=p>(</span><span class=n>dispatch_get_main_queue</span><span class=p>(),</span> <span class=p>{</span>
 
                         <span class=c1>// パースしたJSONデータへのアクセス.</span>
-                        <span class=k>for</span> <span class=n>value</span> <span class=k>in</span> <span class=n>json</span> <span class=p>{</span>
-                            <span class=n>myTextView</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;</span><span class=si>\(</span><span class=n>myTextView</span><span class=p>.</span><span class=n>text</span><span class=si>)</span><span class=se>\n</span><span class=si>\(</span><span class=n>value</span><span class=p>.</span><span class=n>key</span><span class=si>)</span><span class=s> : </span><span class=si>\(</span><span class=n>value</span><span class=p>.</span><span class=n>value</span><span class=si>)</span><span class=s>&quot;</span>
-                        <span class=p>}</span>
+                        <span class=n>myTextView</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;</span><span class=si>\(</span><span class=n>myTextView</span><span class=p>.</span><span class=n>text</span><span class=si>)</span><span class=se>\n</span><span class=si>\(</span><span class=n>json</span><span class=si>)</span><span class=s>&quot;</span>
 
                     <span class=p>})</span>
 
@@ -2612,15 +2579,13 @@
 
     <span class=p>}</span>
 <span class=p>}</span>
-</pre></div></td></tr></table></div></div>
-
+</code></pre></div></td></tr></table></div></div>
 <h2 id="2x3x">2.xと3.xの差分</h2>
 <ul>
 <li>NSURLSessionからURLSessionに変更（他も同じく）</li>
-<li>デリゲートメソッドの接頭語が<code>URLSession</code> から <code>urlSession</code> に変更</li>
+<li>デリゲートメソッドの接頭語が <code>URLSession</code> から <code>urlSession</code> に変更</li>
 <li>NSJSONSerialization から JSONSerialization に変更</li>
 <li><code>NSJSONSerialization.JSONObjectWithData</code> から <code>JSONSerialization.jsonObject</code> に変更</li>
-<li>[String : AnyObject]のオプショナル型の制限が厳しくなっているのか、Swift3では <code>\(value.key) : \(value.value)</code> のようにforeachの一時変数を直接使うよりも一度keyとvalueをそれぞれに合った型に取り出した方が安定している</li>
 </ul>
 <h2 id="reference">Reference</h2>
 <ul>
@@ -2731,7 +2696,7 @@
           
         
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.1.2",url:{base:"../.."}})</script>
       
         <script src="../../javascripts/extra.js"></script>
       

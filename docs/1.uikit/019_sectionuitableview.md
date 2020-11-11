@@ -2,7 +2,7 @@
 
 ![Preview uikit019_001](./img/uikit019.png)
 
-```swift fct_label="Swift 4.x/Swift 3.x"
+```swift fct_label="Swift 5.x/4.x/3.x"
 //
 //  ViewController.swift
 //  UIKit019_3.0
@@ -111,7 +111,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 ```
 
 
-```swift　fct_label="Swift 2.3"
+```swift fct_label="Swift 2.3"
 //
 //  ViewController.swift
 //  UIKit019_2.3

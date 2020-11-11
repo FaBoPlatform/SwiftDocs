@@ -4,6 +4,59 @@
 
 ※iPhone6以上の端末でないと動作しません
 
+```swift fct_label="Swift 5.x"
+//
+//  ViewController.swift
+//  coremotion004
+//
+
+import UIKit
+import CoreMotion
+
+class ViewController: UIViewController {
+
+    var myCMAltimeter: CMAltimeter!
+    var myAltimeter: UITextField!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // CMAltimeterを取得.
+        myCMAltimeter = CMAltimeter()
+
+        // CMAltimeterが利用できるか(iPhone5SではNoが返ってくる).
+        let isAltimeter = CMAltimeter.isRelativeAltitudeAvailable()
+
+        // UITextFieldを作成.
+        myAltimeter = UITextField(frame: CGRect(x: 0, y: 0, width: 200, height: 30))
+
+        // 枠の線を表示.
+        myAltimeter.borderStyle = UITextField.BorderStyle.roundedRect
+
+        // UITextFieldの表示する位置.
+        myAltimeter.layer.position = CGPoint(x:self.view.bounds.width/2,y:100)
+
+        // Viewに追加.
+        self.view.addSubview(myAltimeter)
+
+        // Altimeterのモニタリングのスタート.
+        if !isAltimeter {
+            print("not use altimeter")
+            return
+        }
+        myCMAltimeter.startRelativeAltitudeUpdates(to: OperationQueue.main, withHandler: {(altimeterData, error) in
+            if let e = error {
+                print(e.localizedDescription)
+            }
+            guard let data = altimeterData else {
+                return
+            }
+            self.myAltimeter.text = "Altitude: \(data.relativeAltitude)"
+        })
+    }
+}
+```
+
 ```swift fct_label="Swift 4.x/Swift 3.x"
 //
 //  ViewController.swift
@@ -115,6 +168,9 @@ class ViewController: UIViewController {
     }
 }
 ```
+
+## 4.xと5.xの差分
+* `UITextBorderStyle` を `UITextField.BorderStyle` に変更
 
 ## 2.3と3.0の差分
 

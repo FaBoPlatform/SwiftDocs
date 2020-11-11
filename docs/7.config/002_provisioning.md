@@ -7,7 +7,7 @@
 
 ![Preview config002_2](./img/config002_2.png)
 
-```swift fct_label="Swift 4.x/Swift 3.x"
+```swift fct_label="Swift 5.x/4.x/3.x"
 //
 //  ViewController.swift
 //  config002
