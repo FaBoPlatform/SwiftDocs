@@ -2,7 +2,7 @@
 
 
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja" class="no-js">
   <head>
     
@@ -32,7 +32,7 @@
         <meta name="lang:search.tokenizer" content="[\s\-　、。，．]+">
       
       <link rel="shortcut icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.1.0">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-3.2.0">
     
     
       
@@ -40,12 +40,12 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.11e41852.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.572ca0f0.css">
       
       
     
     
-      <script src="../../assets/javascripts/modernizr.20ef595d.js"></script>
+      <script src="../../assets/javascripts/modernizr.8c900955.js"></script>
     
     
       
@@ -348,8 +348,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../../1.uikit/012_uinavigationcontroller/" title="UUINavigationControllerの表示" class="md-nav__link">
-      UUINavigationControllerの表示
+    <a href="../../1.uikit/012_uinavigationcontroller/" title="UINavigationControllerの表示" class="md-nav__link">
+      UINavigationControllerの表示
     </a>
   </li>
 
@@ -2105,8 +2105,22 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#swift-30" title="Swift 3.0" class="md-nav__link">
-    Swift 3.0
+  <a href="#3x4x" title="3.xと4.xの差分" class="md-nav__link">
+    3.xと4.xの差分
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2x3x" title="2.xと3.xの差分" class="md-nav__link">
+    2.xと3.xの差分
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" title="Reference" class="md-nav__link">
+    Reference
   </a>
   
 </li>
@@ -2220,8 +2234,22 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#swift-30" title="Swift 3.0" class="md-nav__link">
-    Swift 3.0
+  <a href="#3x4x" title="3.xと4.xの差分" class="md-nav__link">
+    3.xと4.xの差分
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2x3x" title="2.xと3.xの差分" class="md-nav__link">
+    2.xと3.xの差分
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reference" title="Reference" class="md-nav__link">
+    Reference
   </a>
   
 </li>
@@ -2245,8 +2273,174 @@
                 
                 <h1 id="_1">スワイプトランジションフィルタ処理</h1>
 <p><img alt="Preview coreimage013" src="../img/coreimage013.png" /></p>
-<h2 id="swift-30">Swift 3.0</h2>
-<p> <table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84</pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
+<span class=c1>//  ViewController.swift</span>
+<span class=c1>//  CoreImage013</span>
+<span class=c1>//</span>
+
+<span class=kd>import</span> <span class=nc>UIKit</span>
+<span class=kd>import</span> <span class=nc>CoreImage</span>
+<span class=kd>import</span> <span class=nc>Foundation</span>
+
+<span class=kd>extension</span> <span class=bp>UIImage</span><span class=p>{</span>
+
+    <span class=kd>class</span> <span class=nc>func</span> <span class=n>ResizeÜIImage</span><span class=p>(</span><span class=n>image</span> <span class=p>:</span> <span class=bp>UIImage</span><span class=p>,</span><span class=n>width</span> <span class=p>:</span> <span class=n>CGFloat</span><span class=p>,</span> <span class=n>height</span> <span class=p>:</span>
+        <span class=n>CGFloat</span><span class=p>)-&gt;</span> <span class=bp>UIImage</span><span class=p>!{</span>
+
+        <span class=c1>// 指定された画像の大きさのコンテキストを用意.</span>
+        <span class=n>UIGraphicsBeginImageContext</span><span class=p>(</span><span class=bp>CGSize</span><span class=p>(</span><span class=n>width</span><span class=p>:</span> <span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>height</span><span class=p>))</span>
+
+        <span class=c1>// コンテキストに画像を描画.</span>
+        <span class=n>image</span><span class=p>.</span><span class=n>draw</span><span class=p>(</span><span class=k>in</span><span class=p>:</span> <span class=bp>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>height</span><span class=p>))</span>
+
+        <span class=c1>// コンテキストからUIImageを生成.</span>
+        <span class=kd>let</span> <span class=nv>newImage</span> <span class=p>=</span> <span class=n>UIGraphicsGetImageFromCurrentImageContext</span><span class=p>()</span>
+
+        <span class=c1>// コンテキストを閉じる.</span>
+        <span class=n>UIGraphicsGetImageFromCurrentImageContext</span><span class=p>()</span>
+
+        <span class=k>return</span> <span class=n>newImage</span>
+    <span class=p>}</span>
+<span class=p>}</span>
+
+<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>{</span>
+
+    <span class=c1>// UIImageViewnの生成.</span>
+    <span class=kd>var</span> <span class=nv>myImageView</span><span class=p>:</span><span class=bp>UIImageView</span><span class=p>!</span>
+    <span class=kd>var</span> <span class=nv>count</span> <span class=p>=</span> <span class=mf>0.0</span>
+    <span class=kd>let</span> <span class=nv>myFilter</span> <span class=p>=</span> <span class=bp>CIFilter</span><span class=p>(</span><span class=n>name</span><span class=p>:</span> <span class=s>&quot;CISwipeTransition&quot;</span><span class=p>)</span>
+
+    <span class=c1>// 画像遷移の時間処理.</span>
+    <span class=kr>@objc</span> <span class=kd>func</span> <span class=nf>update</span><span class=p>(</span><span class=n>timer</span><span class=p>:</span> <span class=n>Timer</span><span class=p>)</span> <span class=p>{</span>
+
+        <span class=bp>count</span> <span class=o>+=</span> <span class=mf>0.15</span>
+
+        <span class=n>myFilter</span><span class=p>!.</span><span class=n>setValue</span><span class=p>(</span><span class=bp>NSNumber</span><span class=p>(</span><span class=n>value</span><span class=p>:</span><span class=bp>count</span><span class=p>),</span> <span class=n>forKey</span><span class=p>:</span> <span class=n>kCIInputTimeKey</span><span class=p>)</span>
+
+        <span class=c1>// 加工後の画像を得る.</span>
+        <span class=kd>let</span> <span class=nv>myOutputImage</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>ciImage</span><span class=p>:</span> <span class=n>myFilter</span><span class=p>!.</span><span class=n>outputImage</span><span class=p>!)</span>
+
+        <span class=c1>//加工後の画像をUIImageViewに設定する.</span>
+        <span class=n>myImageView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=n>myOutputImage</span>
+
+    <span class=p>}</span>
+
+    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
+
+        <span class=c1>// UIImageViewを作る.</span>
+        <span class=n>myImageView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>)</span>
+        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myImageView</span><span class=p>)</span>
+
+        <span class=c1>// 変換元の画像と遷移の終着点の画像を作る.</span>
+        <span class=kd>let</span> <span class=nv>CIImage1</span> <span class=p>=</span> <span class=bp>CIImage</span><span class=p>(</span><span class=n>image</span><span class=p>:</span> <span class=bp>UIImage</span><span class=p>.</span><span class=n>ResizeÜIImage</span><span class=p>(</span><span class=n>image</span><span class=p>:</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>named</span><span class=p>:</span><span class=s>&quot;sample1&quot;</span><span class=p>)</span><span class=o>!</span><span class=p>,</span><span class=n>width</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxX</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxY</span><span class=p>))</span>
+
+        <span class=kd>let</span> <span class=nv>CIImage2</span> <span class=p>=</span> <span class=bp>CIImage</span><span class=p>(</span><span class=n>image</span><span class=p>:</span> <span class=bp>UIImage</span><span class=p>.</span><span class=n>ResizeÜIImage</span><span class=p>(</span><span class=n>image</span><span class=p>:</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>named</span><span class=p>:</span> <span class=s>&quot;sample2&quot;</span><span class=p>)</span><span class=o>!</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxX</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxY</span><span class=p>))</span>
+
+        <span class=c1>// フィルタ処理の角度を指定する.</span>
+        <span class=kd>let</span> <span class=nv>myAngle</span> <span class=p>=</span> <span class=bp>NSNumber</span><span class=p>(</span><span class=n>value</span><span class=p>:</span> <span class=mf>0.6</span><span class=p>)</span>
+        <span class=c1>// フィルタ処理の幅を指定する.</span>
+        <span class=kd>let</span> <span class=nv>myWidth</span> <span class=p>=</span> <span class=bp>NSNumber</span><span class=p>(</span><span class=n>value</span><span class=p>:</span><span class=mi>200</span><span class=p>)</span>
+
+        <span class=n>myFilter</span><span class=p>!.</span><span class=n>setValue</span><span class=p>(</span><span class=n>myWidth</span><span class=p>,</span>  <span class=n>forKey</span><span class=p>:</span> <span class=n>kCIInputWidthKey</span><span class=p>)</span>
+        <span class=n>myFilter</span><span class=p>!.</span><span class=n>setValue</span><span class=p>(</span><span class=n>myAngle</span><span class=p>,</span>  <span class=n>forKey</span><span class=p>:</span> <span class=n>kCIInputAngleKey</span><span class=p>)</span>
+        <span class=n>myFilter</span><span class=p>!.</span><span class=n>setValue</span><span class=p>(</span><span class=n>CIImage1</span><span class=p>,</span> <span class=n>forKey</span><span class=p>:</span> <span class=n>kCIInputImageKey</span><span class=p>)</span>
+        <span class=n>myFilter</span><span class=p>!.</span><span class=n>setValue</span><span class=p>(</span><span class=n>CIImage2</span><span class=p>,</span> <span class=n>forKey</span><span class=p>:</span> <span class=n>kCIInputTargetImageKey</span><span class=p>)</span>
+
+        <span class=c1>// Nstimerの設定.</span>
+        <span class=n>Timer</span><span class=p>.</span><span class=n>scheduledTimer</span><span class=p>(</span><span class=n>timeInterval</span><span class=p>:</span> <span class=mi>1</span><span class=p>,</span> <span class=n>target</span><span class=p>:</span> <span class=kc>self</span><span class=p>,</span> <span class=n>selector</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>update</span><span class=p>(</span><span class=n>timer</span><span class=p>:)),</span> <span class=n>userInfo</span><span class=p>:</span> <span class=kc>nil</span><span class=p>,</span> <span class=n>repeats</span><span class=p>:</span> <span class=kc>true</span><span class=p>)</span>
+
+        <span class=c1>// 加工後の画像を得る.</span>
+        <span class=kd>let</span> <span class=nv>myOutputImage</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>ciImage</span><span class=p>:</span> <span class=n>myFilter</span><span class=p>!.</span><span class=n>outputImage</span><span class=p>!)</span>
+
+        <span class=c1>// 加工後の画像をUIImageViewに設定.</span>
+        <span class=n>myImageView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=n>myOutputImage</span>
+    <span class=p>}</span>
+
+<span class=p>}</span>
+</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
  2
  3
  4
@@ -2334,7 +2528,7 @@
 86
 87
 88
-89</pre></div></td><td class=code><div class=codehilite><pre><span></span><span class=c1>//</span>
+89</pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
 <span class=c1>//  ViewController.swift</span>
 <span class=c1>//  CoreImage013</span>
 <span class=c1>//</span>
@@ -2423,9 +2617,7 @@
     <span class=p>}</span>
 
 <span class=p>}</span>
-</pre></div></td></tr></table></p>
-<h1 id="swift-23">Swift 2.3</h1>
-<p> <table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
+</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre> 1
  2
  3
  4
@@ -2512,7 +2704,7 @@
 85
 86
 87
-88</pre></div></td><td class=code><div class=codehilite><pre><span></span><span class=c1>//</span>
+88</pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
 <span class=c1>//  ViewController.swift</span>
 <span class=c1>//  CoreImage013</span>
 <span class=c1>//</span>
@@ -2600,7 +2792,11 @@
         <span class=n>myImageView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=n>myOutputImage</span>
     <span class=p>}</span> 
 <span class=p>}</span>
-</pre></div></td></tr></table></p>
+</code></pre></div></td></tr></table></div></div>
+<h2 id="3x4x">3.xと4.xの差分</h2>
+<ul>
+<li><code>func update(timer: NSTimer)</code> に <code>@objc</code> を付加</li>
+</ul>
 <h2 id="2x3x">2.xと3.xの差分</h2>
 <ul>
 <li><code>init(CIImage:)</code> から <code>init(ciImage:)</code> に変更</li>
@@ -2688,7 +2884,7 @@
       
     </div>
     
-      <script src="../../assets/javascripts/application.9e1f3b71.js"></script>
+      <script src="../../assets/javascripts/application.b41f3d20.js"></script>
       
         
         
@@ -2707,7 +2903,7 @@
           
         
       
-      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.1.2",url:{base:"../.."}})</script>
       
         <script src="../../javascripts/extra.js"></script>
       
