@@ -270,20 +270,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#3040" class="md-nav__link">
-    3.0と4.0の差分
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2330" class="md-nav__link">
-    2.3と3.0の差分
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#reference" class="md-nav__link">
     Reference
   </a>
@@ -2298,20 +2284,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#3040" class="md-nav__link">
-    3.0と4.0の差分
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2330" class="md-nav__link">
-    2.3と3.0の差分
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#reference" class="md-nav__link">
     Reference
   </a>
@@ -2408,167 +2380,60 @@ class ViewController: UIViewController {
 }
 
 
-</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
-//  ViewController.swift
-//  UIKit002
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>SwiftUI</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ContentView.swift
 //
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//  Copyright © 2021年 FaBo, Inc. All rights reserved.
 //
 
-import UIKit
+import SwiftUI
 
-class ViewController: UIViewController {
+struct ContentView: View {
+    @State private var buttonText = &quot;ボタン(通常)&quot;
+    @State private var buttonTextColor: Color = .white
+    @State private var buttonBGColor: Color = .red
 
-    private var myButton: UIButton!
+    var body: some View {
+        ZStack {
+            Color.init(UIColor.white).edgesIgnoringSafeArea(.all)
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+            let bWidth: CGFloat = 200
+            let bHeight: CGFloat = 50
 
-        // Buttonを生成する.
-        myButton = UIButton()
-
-        // ボタンのサイズ.
-        let bWidth: CGFloat = 200
-        let bHeight: CGFloat = 50
-
-        // ボタンのX,Y座標.
-        let posX: CGFloat = self.view.frame.width/2 - bWidth/2
-        let posY: CGFloat = self.view.frame.height/2 - bHeight/2
-
-        // ボタンの設置座標とサイズを設定する.
-        myButton.frame = CGRect(x: posX, y: posY, width: bWidth, height: bHeight)
-
-        // ボタンの背景色を設定.
-        myButton.backgroundColor = UIColor.red
-
-        // ボタンの枠を丸くする.
-        myButton.layer.masksToBounds = true
-
-        // コーナーの半径を設定する.
-        myButton.layer.cornerRadius = 20.0
-
-        // タイトルを設定する(通常時).
-        myButton.setTitle(&quot;ボタン(通常)&quot;, for: .normal)
-        myButton.setTitleColor(UIColor.white, for: .normal)
-
-        // タイトルを設定する(ボタンがハイライトされた時).
-        myButton.setTitle(&quot;ボタン(押された時)&quot;, for: .highlighted)
-        myButton.setTitleColor(UIColor.black, for: .highlighted)
-
-        // ボタンにタグをつける.
-        myButton.tag = 1
-
-        // イベントを追加する
-        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(sender:)), for: .touchUpInside)
-
-        // ボタンをViewに追加.
-        self.view.addSubview(myButton)
-
+            Button(action: {
+                onClick()
+            }, label: {
+                Text(buttonText)
+            })
+            .frame(maxWidth: bWidth, maxHeight: bHeight, alignment: .center)
+            .background(buttonBGColor)
+            .foregroundColor(buttonTextColor)
+            .cornerRadius(16)
+            .accentColor(.green)
+            .font(Font.body.bold())
+            .contentShape(Rectangle())
+            .onLongPressGesture(minimumDuration: 2.5, maximumDistance: .infinity, pressing: { pressing in
+                                withAnimation(.easeInOut(duration: 0.5)) {}
+                                if pressing {
+                                    buttonText = &quot;ボタン(押された時)&quot;
+                                    buttonTextColor = Color.black
+                                    buttonBGColor = Color.blue
+                                } else {
+                                    buttonText  = &quot;ボタン(通常)&quot;
+                                    buttonTextColor = Color.white
+                                    buttonBGColor = Color.red
+                                }
+                            }, perform: { })
+        }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    /*
-     ボタンのイベント.
-     */
-    internal func onClickMyButton(sender: UIButton) {
+    func onClick() -&gt; Void {
         print(&quot;onClickMyButton:&quot;);
-        print(&quot;sender.currentTitle: \(sender.currentTitle)&quot;)
-        print(&quot;sender.tag: \(sender.tag)&quot;)
-    }
 
+    }
 }
 
-
-</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><pre><code class=swift>//
-//  ViewController.swift
-//  UIKit002
-//
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
-//
-
-import UIKit
-
-class ViewController: UIViewController {
-
-    private var myButton: UIButton!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Buttonを生成する.
-        myButton = UIButton()
-
-        // ボタンのサイズ.
-        let bWidth: CGFloat = 200
-        let bHeight: CGFloat = 50
-
-        // ボタンのX,Y座標.
-        let posX: CGFloat = self.view.frame.width/2 - bWidth/2
-        let posY: CGFloat = self.view.frame.height/2 - bHeight/2
-
-        // ボタンの設置座標とサイズを設定する.
-        myButton.frame = CGRectMake(posX, posY, bWidth, bHeight)
-
-        // ボタンの背景色を設定.
-        myButton.backgroundColor = UIColor.redColor()
-
-        // ボタンの枠を丸くする.
-        myButton.layer.masksToBounds = true
-
-        // コーナーの半径を設定する.
-        myButton.layer.cornerRadius = 20.0
-
-        // タイトルを設定する(通常時).
-        myButton.setTitle(&quot;ボタン(通常)&quot;, forState: .Normal)
-        myButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-
-        // タイトルを設定する(ボタンがハイライトされた時).
-        myButton.setTitle(&quot;ボタン(押された時)&quot;, forState: .Highlighted)
-        myButton.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
-
-        // ボタンにタグをつける.
-        myButton.tag = 1
-
-        // イベントを追加する
-        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(_:)), forControlEvents: .TouchUpInside)
-
-        // ボタンをViewに追加.
-        self.view.addSubview(myButton)
-
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    /*
-     ボタンのイベント.
-    */
-    internal func onClickMyButton(sender: UIButton) {
-        print(&quot;onClickMyButton:&quot;);
-        print(&quot;sender.currentTitle: \(sender.currentTitle)&quot;)
-        print(&quot;sender.tag: \(sender.tag)&quot;)
-    }
-
-}
 </code></pre></div></div>
-<h2 id="3040">3.0と4.0の差分</h2>
-<ul>
-<li><code>internal func onClickMyButton(sender: UIButton)</code> に <code>@objc</code> を追加</li>
-</ul>
-<h2 id="2330">2.3と3.0の差分</h2>
-<ul>
-<li>UIColor.grayColor()がUIColor.grayに変更</li>
-<li>CGRectMake()がCGReat()に変更</li>
-<li>UIButton.setTitle()のforState: .Normalが for: .normalに変更</li>
-<li>UIButton.addTarget()の#selector(ViewController.onClickMyButton(_:))が、#selector(ViewController.onClickMyButton(sender:)に変更</li>
-<li>UIButton.addTarget()のforControlEvents: .TouchUpInsideがfor: .touchUpInsideに変更</li>
-</ul>
 <h2 id="reference">Reference</h2>
 <ul>
 <li>UIColor<ul>
