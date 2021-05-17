@@ -2428,16 +2428,12 @@
 <h2 id="_1">共通</h2>
 <h3 id="json">使用するJSONデータ</h3>
 <p>AizuData.json</p>
-<p> <table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal>1</span>
-<span class=normal>2</span>
-<span class=normal>3</span>
-<span class=normal>4</span>
-<span class=normal>5</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=p>[</span>
- <span class=p>{</span><span class=nt>&quot;id&quot;</span><span class=p>:</span><span class=mi>1</span><span class=p>,</span><span class=nt>&quot;title&quot;</span><span class=p>:</span><span class=s2>&quot;鶴ヶ城&quot;</span><span class=p>,</span><span class=nt>&quot;content&quot;</span><span class=p>:</span><span class=s2>&quot;お城&quot;</span><span class=p>},</span>
- <span class=p>{</span><span class=nt>&quot;id&quot;</span><span class=p>:</span><span class=mi>2</span><span class=p>,</span><span class=nt>&quot;title&quot;</span><span class=p>:</span><span class=s2>&quot;飯盛山&quot;</span><span class=p>,</span><span class=nt>&quot;content&quot;</span><span class=p>:</span><span class=s2>&quot;お墓&quot;</span><span class=p>},</span>
- <span class=p>{</span><span class=nt>&quot;id&quot;</span><span class=p>:</span><span class=mi>3</span><span class=p>,</span><span class=nt>&quot;title&quot;</span><span class=p>:</span><span class=s2>&quot;さざえ堂&quot;</span><span class=p>,</span><span class=nt>&quot;content&quot;</span><span class=p>:</span><span class=s2>&quot;螺旋階段&quot;</span><span class=p>}</span>
-<span class=p>]</span>
-</code></pre></div></td></tr></table></p>
+<p> <pre><code class=json>[
+ {&quot;id&quot;:1,&quot;title&quot;:&quot;鶴ヶ城&quot;,&quot;content&quot;:&quot;お城&quot;},
+ {&quot;id&quot;:2,&quot;title&quot;:&quot;飯盛山&quot;,&quot;content&quot;:&quot;お墓&quot;},
+ {&quot;id&quot;:3,&quot;title&quot;:&quot;さざえ堂&quot;,&quot;content&quot;:&quot;螺旋階段&quot;}
+]
+</code></pre></p>
 <p><img alt="Preview coredata001_how4" src="../img/coredata001_how4.png" /></p>
 <h3 id="coredataentity">CoreDataのEntityの作成と設定</h3>
 <p><img alt="Preview coredata001_how0" src="../img/coredata001_how0.png" />
@@ -2445,1115 +2441,568 @@
 <img alt="Preview coredata001_how2" src="../img/coredata001_how2.png" />
 <img alt="Preview coredata001_how3" src="../img/coredata001_how3.png" /></p>
 <p>project作成時、Use Core Dataにチェックを入れていない場合は下記をAppDelegateに追記</p>
-<p> <table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=kr>lazy</span> <span class=kd>var</span> <span class=nv>persistentContainer</span><span class=p>:</span> <span class=bp>NSPersistentContainer</span> <span class=p>=</span> <span class=p>{</span>
+<p> <pre><code class=swift>lazy var persistentContainer: NSPersistentContainer = {
 
-    <span class=kd>let</span> <span class=nv>container</span> <span class=p>=</span> <span class=bp>NSPersistentContainer</span><span class=p>(</span><span class=n>name</span><span class=p>:</span> <span class=s>&quot;CoreData001&quot;</span><span class=p>)</span>
-    <span class=n>container</span><span class=p>.</span><span class=n>loadPersistentStores</span><span class=p>(</span><span class=n>completionHandler</span><span class=p>:</span> <span class=p>{</span> <span class=p>(</span><span class=n>storeDescription</span><span class=p>,</span> <span class=n>error</span><span class=p>)</span> <span class=k>in</span>
-        <span class=k>if</span> <span class=kd>let</span> <span class=nv>error</span> <span class=p>=</span> <span class=n>error</span> <span class=p>{</span>
+    let container = NSPersistentContainer(name: &quot;CoreData001&quot;)
+    container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        if let error = error {
 
-            <span class=bp>fatalError</span><span class=p>(</span><span class=s>&quot;Unresolved error, </span><span class=si>\((</span><span class=n>error</span> <span class=k>as</span> <span class=bp>NSError</span><span class=si>)</span><span class=p>.</span><span class=n>userInfo</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
-    <span class=p>})</span>
-    <span class=k>return</span> <span class=n>container</span>
-<span class=p>}()</span>
+            fatalError(&quot;Unresolved error, \((error as NSError).userInfo)&quot;)
+        }
+    })
+    return container
+}()
 
-<span class=kd>func</span> <span class=nf>saveContext</span> <span class=p>()</span> <span class=p>{</span>
-    <span class=kd>let</span> <span class=nv>context</span> <span class=p>=</span> <span class=n>persistentContainer</span><span class=p>.</span><span class=n>viewContext</span>
-    <span class=k>if</span> <span class=n>context</span><span class=p>.</span><span class=n>hasChanges</span> <span class=p>{</span>
-        <span class=k>do</span> <span class=p>{</span>
-            <span class=k>try</span> <span class=n>context</span><span class=p>.</span><span class=n>save</span><span class=p>()</span>
-        <span class=p>}</span> <span class=k>catch</span> <span class=p>{</span>
-            <span class=kd>let</span> <span class=nv>nserror</span> <span class=p>=</span> <span class=n>error</span> <span class=k>as</span> <span class=bp>NSError</span>
-            <span class=bp>fatalError</span><span class=p>(</span><span class=s>&quot;Unresolved error </span><span class=si>\(</span><span class=n>nserror</span><span class=si>)</span><span class=s>, </span><span class=si>\(</span><span class=n>nserror</span><span class=p>.</span><span class=n>userInfo</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></p>
+func saveContext () {
+    let context = persistentContainer.viewContext
+    if context.hasChanges {
+        do {
+            try context.save()
+        } catch {
+            let nserror = error as NSError
+            fatalError(&quot;Unresolved error \(nserror), \(nserror.userInfo)&quot;)
+        }
+    }
+}
+</code></pre></p>
 <h2 id="viewcontrollerswift">ViewController.swift</h2>
-<div class=md-fenced-code-tabs id=tab-tab-group-2><input name=tab-group-2 type=radio id=tab-group-2-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-2-0_swift-panel role=tab><label for=tab-group-2-0_swift class=code-tab-label data-lang=swift id=tab-group-2-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-2-0_swift-panel aria-labelledby=tab-group-2-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal>  1</span>
-<span class=normal>  2</span>
-<span class=normal>  3</span>
-<span class=normal>  4</span>
-<span class=normal>  5</span>
-<span class=normal>  6</span>
-<span class=normal>  7</span>
-<span class=normal>  8</span>
-<span class=normal>  9</span>
-<span class=normal> 10</span>
-<span class=normal> 11</span>
-<span class=normal> 12</span>
-<span class=normal> 13</span>
-<span class=normal> 14</span>
-<span class=normal> 15</span>
-<span class=normal> 16</span>
-<span class=normal> 17</span>
-<span class=normal> 18</span>
-<span class=normal> 19</span>
-<span class=normal> 20</span>
-<span class=normal> 21</span>
-<span class=normal> 22</span>
-<span class=normal> 23</span>
-<span class=normal> 24</span>
-<span class=normal> 25</span>
-<span class=normal> 26</span>
-<span class=normal> 27</span>
-<span class=normal> 28</span>
-<span class=normal> 29</span>
-<span class=normal> 30</span>
-<span class=normal> 31</span>
-<span class=normal> 32</span>
-<span class=normal> 33</span>
-<span class=normal> 34</span>
-<span class=normal> 35</span>
-<span class=normal> 36</span>
-<span class=normal> 37</span>
-<span class=normal> 38</span>
-<span class=normal> 39</span>
-<span class=normal> 40</span>
-<span class=normal> 41</span>
-<span class=normal> 42</span>
-<span class=normal> 43</span>
-<span class=normal> 44</span>
-<span class=normal> 45</span>
-<span class=normal> 46</span>
-<span class=normal> 47</span>
-<span class=normal> 48</span>
-<span class=normal> 49</span>
-<span class=normal> 50</span>
-<span class=normal> 51</span>
-<span class=normal> 52</span>
-<span class=normal> 53</span>
-<span class=normal> 54</span>
-<span class=normal> 55</span>
-<span class=normal> 56</span>
-<span class=normal> 57</span>
-<span class=normal> 58</span>
-<span class=normal> 59</span>
-<span class=normal> 60</span>
-<span class=normal> 61</span>
-<span class=normal> 62</span>
-<span class=normal> 63</span>
-<span class=normal> 64</span>
-<span class=normal> 65</span>
-<span class=normal> 66</span>
-<span class=normal> 67</span>
-<span class=normal> 68</span>
-<span class=normal> 69</span>
-<span class=normal> 70</span>
-<span class=normal> 71</span>
-<span class=normal> 72</span>
-<span class=normal> 73</span>
-<span class=normal> 74</span>
-<span class=normal> 75</span>
-<span class=normal> 76</span>
-<span class=normal> 77</span>
-<span class=normal> 78</span>
-<span class=normal> 79</span>
-<span class=normal> 80</span>
-<span class=normal> 81</span>
-<span class=normal> 82</span>
-<span class=normal> 83</span>
-<span class=normal> 84</span>
-<span class=normal> 85</span>
-<span class=normal> 86</span>
-<span class=normal> 87</span>
-<span class=normal> 88</span>
-<span class=normal> 89</span>
-<span class=normal> 90</span>
-<span class=normal> 91</span>
-<span class=normal> 92</span>
-<span class=normal> 93</span>
-<span class=normal> 94</span>
-<span class=normal> 95</span>
-<span class=normal> 96</span>
-<span class=normal> 97</span>
-<span class=normal> 98</span>
-<span class=normal> 99</span>
-<span class=normal>100</span>
-<span class=normal>101</span>
-<span class=normal>102</span>
-<span class=normal>103</span>
-<span class=normal>104</span>
-<span class=normal>105</span>
-<span class=normal>106</span>
-<span class=normal>107</span>
-<span class=normal>108</span>
-<span class=normal>109</span>
-<span class=normal>110</span>
-<span class=normal>111</span>
-<span class=normal>112</span>
-<span class=normal>113</span>
-<span class=normal>114</span>
-<span class=normal>115</span>
-<span class=normal>116</span>
-<span class=normal>117</span>
-<span class=normal>118</span>
-<span class=normal>119</span>
-<span class=normal>120</span>
-<span class=normal>121</span>
-<span class=normal>122</span>
-<span class=normal>123</span>
-<span class=normal>124</span>
-<span class=normal>125</span>
-<span class=normal>126</span>
-<span class=normal>127</span>
-<span class=normal>128</span>
-<span class=normal>129</span>
-<span class=normal>130</span>
-<span class=normal>131</span>
-<span class=normal>132</span>
-<span class=normal>133</span>
-<span class=normal>134</span>
-<span class=normal>135</span>
-<span class=normal>136</span>
-<span class=normal>137</span>
-<span class=normal>138</span>
-<span class=normal>139</span>
-<span class=normal>140</span>
-<span class=normal>141</span>
-<span class=normal>142</span>
-<span class=normal>143</span>
-<span class=normal>144</span>
-<span class=normal>145</span>
-<span class=normal>146</span>
-<span class=normal>147</span>
-<span class=normal>148</span>
-<span class=normal>149</span>
-<span class=normal>150</span>
-<span class=normal>151</span>
-<span class=normal>152</span>
-<span class=normal>153</span>
-<span class=normal>154</span>
-<span class=normal>155</span>
-<span class=normal>156</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  CoreData001</span>
-<span class=c1>//</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
-
-<span class=kd>import</span> <span class=nc>UIKit</span>
-<span class=kd>import</span> <span class=nc>CoreData</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UITableViewDelegate</span><span class=p>,</span> <span class=bp>UITableViewDataSource</span>  <span class=p>{</span>
-
-    <span class=kd>private</span> <span class=kd>let</span> <span class=nv>AIZU_DATA_STORE</span><span class=p>:</span> <span class=nb>String</span> <span class=p>=</span> <span class=s>&quot;AizuDataStore&quot;</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>aizuDatas</span><span class=p>:</span> <span class=p>[</span><span class=n>AizuDataStore</span><span class=p>]</span> <span class=p>=</span> <span class=p>[]</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-        <span class=c1>// Do any additional setup after loading the view, typically from a nib.</span>
-        <span class=n>insertDataFromJson</span><span class=p>()</span>
-
-        <span class=n>aizuDatas</span> <span class=p>=</span> <span class=n>loadDatas</span><span class=p>()</span>
-
-        <span class=c1>// Table View.</span>
-        <span class=kd>let</span> <span class=nv>barHeight</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=bp>UIApplication</span><span class=p>.</span><span class=n>shared</span><span class=p>.</span><span class=n>statusBarFrame</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>height</span>
-        <span class=kd>let</span> <span class=nv>displayWidth</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span>
-        <span class=kd>let</span> <span class=nv>displayHeight</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span>
-        <span class=kd>let</span> <span class=nv>myTableView</span><span class=p>:</span> <span class=bp>UITableView</span> <span class=p>=</span> <span class=bp>UITableView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=n>barHeight</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=n>displayWidth</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>displayHeight</span><span class=p>))</span>
-        <span class=n>myTableView</span><span class=p>.</span><span class=n>register</span><span class=p>(</span><span class=bp>UITableViewCell</span><span class=p>.</span><span class=kc>self</span><span class=p>,</span> <span class=n>forCellReuseIdentifier</span><span class=p>:</span> <span class=s>&quot;MyCell&quot;</span><span class=p>)</span>
-        <span class=n>myTableView</span><span class=p>.</span><span class=n>dataSource</span> <span class=p>=</span> <span class=kc>self</span>
-        <span class=n>myTableView</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myTableView</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-        <span class=c1>// Dispose of any resources that can be recreated.</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     CoreDataからデータの読み込み</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>loadDatas</span><span class=p>()</span> <span class=p>-&gt;</span> <span class=p>[</span><span class=n>AizuDataStore</span><span class=p>]</span> <span class=p>{</span>
-
-        <span class=kd>let</span> <span class=nv>appDel</span><span class=p>:</span> <span class=n>AppDelegate</span> <span class=p>=</span> <span class=p>(</span><span class=bp>UIApplication</span><span class=p>.</span><span class=n>shared</span><span class=p>.</span><span class=n>delegate</span> <span class=k>as</span><span class=p>!</span> <span class=n>AppDelegate</span><span class=p>)</span>
-        <span class=kd>let</span> <span class=nv>context</span> <span class=p>=</span> <span class=n>appDel</span><span class=p>.</span><span class=n>persistentContainer</span><span class=p>.</span><span class=n>viewContext</span>
-
-        <span class=c1>// Request</span>
-        <span class=kd>let</span> <span class=nv>fetchRequest</span><span class=p>:</span> <span class=bp>NSFetchRequest</span><span class=p>&lt;</span><span class=bp>NSFetchRequestResult</span><span class=p>&gt;</span> <span class=p>=</span> <span class=bp>NSFetchRequest</span><span class=p>(</span><span class=n>entityName</span><span class=p>:</span> <span class=n>AIZU_DATA_STORE</span><span class=p>)</span>
-
-
-        <span class=n>fetchRequest</span><span class=p>.</span><span class=n>returnsObjectsAsFaults</span> <span class=p>=</span> <span class=kc>false</span>
-
-        <span class=c1>// Access to CoreData</span>
-        <span class=k>do</span> <span class=p>{</span>
-            <span class=k>if</span> <span class=kd>let</span> <span class=nv>aizuDatas</span> <span class=p>=</span> <span class=k>try</span> <span class=n>context</span><span class=p>.</span><span class=n>fetch</span><span class=p>(</span><span class=n>fetchRequest</span><span class=p>)</span> <span class=k>as</span><span class=p>?</span> <span class=p>[</span><span class=n>AizuDataStore</span><span class=p>]</span> <span class=p>{</span>
-                <span class=k>return</span> <span class=n>aizuDatas</span>
-            <span class=p>}</span>
-            <span class=k>else</span>  <span class=p>{</span>
-                <span class=k>return</span> <span class=p>[]</span>
-            <span class=p>}</span>
-
-        <span class=p>}</span> <span class=k>catch</span> <span class=kd>let</span> <span class=nv>error</span> <span class=k>as</span> <span class=bp>NSError</span><span class=p>{</span>
-            <span class=bp>print</span><span class=p>(</span><span class=n>error</span><span class=p>.</span><span class=n>localizedDescription</span><span class=p>)</span>
-            <span class=k>return</span> <span class=p>[]</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     JSONファイルを読み込みCoreDataにInsert.</span>
-<span class=cm>     */</span>
-    <span class=kd>private</span> <span class=kd>func</span> <span class=nf>insertDataFromJson</span><span class=p>()</span> <span class=p>{</span>
-
-        <span class=c1>// Path.</span>
-        <span class=kd>let</span> <span class=nv>jsonDataPath</span><span class=p>:</span> <span class=bp>NSString</span> <span class=p>=</span> <span class=n>Bundle</span><span class=p>.</span><span class=n>main</span><span class=p>.</span><span class=n>path</span><span class=p>(</span><span class=n>forResource</span><span class=p>:</span> <span class=s>&quot;AizuData&quot;</span><span class=p>,</span> <span class=n>ofType</span><span class=p>:</span> <span class=s>&quot;json&quot;</span><span class=p>)</span><span class=o>!</span> <span class=k>as</span> <span class=bp>NSString</span>
-        <span class=c1>// Data.</span>
-        <span class=kd>let</span> <span class=nv>jsonRawData</span><span class=p>:</span> <span class=bp>NSData</span><span class=p>!</span> <span class=p>=</span> <span class=bp>NSData</span><span class=p>(</span><span class=n>contentsOfFile</span><span class=p>:</span> <span class=n>jsonDataPath</span> <span class=k>as</span> <span class=nb>String</span><span class=p>)</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;jsonRawData:</span><span class=si>\(</span><span class=n>jsonRawData</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-
-        <span class=c1>// JSONのパース.</span>
-        <span class=kd>let</span> <span class=nv>jsonDictionary</span><span class=p>:</span> <span class=p>[[</span><span class=nb>String</span><span class=p>:</span> <span class=nb>AnyObject</span><span class=p>]]</span>
-        <span class=k>do</span> <span class=p>{</span>
-            <span class=n>jsonDictionary</span> <span class=p>=</span> <span class=k>try</span> <span class=n>JSONSerialization</span><span class=p>.</span><span class=n>jsonObject</span><span class=p>(</span><span class=n>with</span><span class=p>:</span> <span class=n>jsonRawData</span> <span class=k>as</span> <span class=n>Data</span><span class=p>,</span> <span class=n>options</span><span class=p>:</span> <span class=p>[])</span> <span class=k>as</span><span class=p>!</span> <span class=p>[[</span><span class=nb>String</span><span class=p>:</span> <span class=nb>AnyObject</span><span class=p>]]</span>
-        <span class=p>}</span>
-        <span class=k>catch</span> <span class=p>{</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Error JSONObjectWithData:</span><span class=si>\(</span><span class=n>error</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-            <span class=k>return</span>
-        <span class=p>}</span>
-
-        <span class=kd>let</span> <span class=nv>appDel</span><span class=p>:</span> <span class=n>AppDelegate</span> <span class=p>=</span> <span class=p>(</span><span class=bp>UIApplication</span><span class=p>.</span><span class=n>shared</span><span class=p>.</span><span class=n>delegate</span> <span class=k>as</span><span class=p>!</span> <span class=n>AppDelegate</span><span class=p>)</span>
-        <span class=kd>let</span> <span class=nv>context</span> <span class=p>=</span> <span class=n>appDel</span><span class=p>.</span><span class=n>persistentContainer</span><span class=p>.</span><span class=n>viewContext</span>
-
-        <span class=kd>let</span> <span class=nv>fetchRequest</span><span class=p>:</span> <span class=bp>NSFetchRequest</span><span class=p>&lt;</span><span class=bp>NSFetchRequestResult</span><span class=p>&gt;</span> <span class=p>=</span> <span class=bp>NSFetchRequest</span><span class=p>(</span><span class=n>entityName</span><span class=p>:</span> <span class=n>AIZU_DATA_STORE</span><span class=p>)</span>
-        <span class=kd>let</span> <span class=nv>deleteAll</span> <span class=p>=</span> <span class=bp>NSBatchDeleteRequest</span><span class=p>(</span><span class=n>fetchRequest</span><span class=p>:</span> <span class=n>fetchRequest</span><span class=p>)</span>
-        <span class=k>do</span> <span class=p>{</span>
-            <span class=k>try</span> <span class=n>context</span><span class=p>.</span><span class=n>execute</span><span class=p>(</span><span class=n>deleteAll</span><span class=p>)</span>
-        <span class=p>}</span>
-        <span class=k>catch</span> <span class=p>{</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Error excuteRequest(deleteAll):</span><span class=si>\(</span><span class=n>error</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
-
-
-        <span class=c1>// Entityを定義.</span>
-        <span class=kd>let</span> <span class=nv>entity</span><span class=p>:</span> <span class=bp>NSEntityDescription</span><span class=p>!</span> <span class=p>=</span> <span class=bp>NSEntityDescription</span><span class=p>.</span><span class=n>entity</span><span class=p>(</span><span class=n>forEntityName</span><span class=p>:</span> <span class=n>AIZU_DATA_STORE</span><span class=p>,</span> <span class=k>in</span><span class=p>:</span> <span class=n>context</span><span class=p>)</span>
-
-        <span class=c1>// JSONデータを配列分、CoreDataに格納.</span>
-        <span class=k>for</span> <span class=n>jsonData</span> <span class=k>in</span> <span class=n>jsonDictionary</span> <span class=p>{</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;jsonData:</span><span class=si>\(</span><span class=n>jsonData</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-
-            <span class=kd>let</span> <span class=nv>aizuDataStore</span><span class=p>:</span> <span class=n>AizuDataStore</span> <span class=p>=</span> <span class=n>AizuDataStore</span><span class=p>(</span><span class=n>entity</span><span class=p>:</span> <span class=n>entity</span><span class=p>,</span> <span class=n>insertInto</span><span class=p>:</span> <span class=n>context</span><span class=p>)</span>
-
-            <span class=k>do</span> <span class=p>{</span>
-                <span class=k>try</span> <span class=n>aizuDataStore</span><span class=p>.</span><span class=n>updateFromDictionary</span><span class=p>(</span><span class=n>dataDictionary</span><span class=p>:</span> <span class=n>jsonData</span> <span class=p>)</span>
-            <span class=p>}</span> <span class=k>catch</span> <span class=p>{</span>
-                <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Error updateFromDictionary:</span><span class=si>\(</span><span class=n>error</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-            <span class=p>}</span>
-
-            <span class=k>do</span> <span class=p>{</span>
-
-                <span class=k>try</span> <span class=n>context</span><span class=p>.</span><span class=n>save</span><span class=p>()</span>
-            <span class=p>}</span>
-            <span class=k>catch</span> <span class=p>{</span>
-                <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Error save:</span><span class=si>\(</span><span class=n>error</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-            <span class=p>}</span>
-        <span class=p>}</span>
-
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     Cellが選択された際に呼び出される</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>tableView</span><span class=p>(</span><span class=kc>_</span> <span class=n>tableView</span><span class=p>:</span> <span class=bp>UITableView</span><span class=p>,</span> <span class=n>didSelectRowAt</span> <span class=n>indexPath</span><span class=p>:</span> <span class=n>IndexPath</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Num: </span><span class=si>\(</span><span class=n>indexPath</span><span class=p>.</span><span class=n>row</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Value: </span><span class=si>\(</span><span class=n>aizuDatas</span><span class=p>[</span><span class=n>indexPath</span><span class=p>.</span><span class=n>row</span><span class=p>]</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     Cellの総数を返す.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>tableView</span><span class=p>(</span><span class=kc>_</span> <span class=n>tableView</span><span class=p>:</span> <span class=bp>UITableView</span><span class=p>,</span> <span class=n>numberOfRowsInSection</span> <span class=n>section</span><span class=p>:</span> <span class=nb>Int</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Int</span> <span class=p>{</span>
-        <span class=k>return</span> <span class=n>aizuDatas</span><span class=p>.</span><span class=bp>count</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     Cellに値を設定する</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>tableView</span><span class=p>(</span><span class=kc>_</span> <span class=n>tableView</span><span class=p>:</span> <span class=bp>UITableView</span><span class=p>,</span> <span class=n>cellForRowAt</span> <span class=n>indexPath</span><span class=p>:</span> <span class=n>IndexPath</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=bp>UITableViewCell</span> <span class=p>{</span>
-        <span class=c1>// 再利用するCellを取得する.</span>
-        <span class=kd>let</span> <span class=nv>cell</span> <span class=p>=</span> <span class=n>tableView</span><span class=p>.</span><span class=n>dequeueReusableCell</span><span class=p>(</span><span class=n>withIdentifier</span><span class=p>:</span> <span class=s>&quot;MyCell&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=n>indexPath</span> <span class=k>as</span> <span class=n>IndexPath</span><span class=p>)</span>
-
-        <span class=c1>// Cellに値を設定する.</span>
-        <span class=n>cell</span><span class=p>.</span><span class=n>textLabel</span><span class=p>!.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;</span><span class=si>\(</span><span class=n>aizuDatas</span><span class=p>[</span><span class=n>indexPath</span><span class=p>.</span><span class=n>row</span><span class=p>].</span><span class=n>title</span><span class=si>)</span><span class=s>&quot;</span>
-
-        <span class=k>return</span> <span class=n>cell</span>
-    <span class=p>}</span>
-
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-2 type=radio id=tab-group-2-1_swift class=code-tab data-lang=swift aria-controls=tab-group-2-1_swift-panel role=tab><label for=tab-group-2-1_swift class=code-tab-label data-lang=swift id=tab-group-2-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-2-1_swift-panel aria-labelledby=tab-group-2-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal>  1</span>
-<span class=normal>  2</span>
-<span class=normal>  3</span>
-<span class=normal>  4</span>
-<span class=normal>  5</span>
-<span class=normal>  6</span>
-<span class=normal>  7</span>
-<span class=normal>  8</span>
-<span class=normal>  9</span>
-<span class=normal> 10</span>
-<span class=normal> 11</span>
-<span class=normal> 12</span>
-<span class=normal> 13</span>
-<span class=normal> 14</span>
-<span class=normal> 15</span>
-<span class=normal> 16</span>
-<span class=normal> 17</span>
-<span class=normal> 18</span>
-<span class=normal> 19</span>
-<span class=normal> 20</span>
-<span class=normal> 21</span>
-<span class=normal> 22</span>
-<span class=normal> 23</span>
-<span class=normal> 24</span>
-<span class=normal> 25</span>
-<span class=normal> 26</span>
-<span class=normal> 27</span>
-<span class=normal> 28</span>
-<span class=normal> 29</span>
-<span class=normal> 30</span>
-<span class=normal> 31</span>
-<span class=normal> 32</span>
-<span class=normal> 33</span>
-<span class=normal> 34</span>
-<span class=normal> 35</span>
-<span class=normal> 36</span>
-<span class=normal> 37</span>
-<span class=normal> 38</span>
-<span class=normal> 39</span>
-<span class=normal> 40</span>
-<span class=normal> 41</span>
-<span class=normal> 42</span>
-<span class=normal> 43</span>
-<span class=normal> 44</span>
-<span class=normal> 45</span>
-<span class=normal> 46</span>
-<span class=normal> 47</span>
-<span class=normal> 48</span>
-<span class=normal> 49</span>
-<span class=normal> 50</span>
-<span class=normal> 51</span>
-<span class=normal> 52</span>
-<span class=normal> 53</span>
-<span class=normal> 54</span>
-<span class=normal> 55</span>
-<span class=normal> 56</span>
-<span class=normal> 57</span>
-<span class=normal> 58</span>
-<span class=normal> 59</span>
-<span class=normal> 60</span>
-<span class=normal> 61</span>
-<span class=normal> 62</span>
-<span class=normal> 63</span>
-<span class=normal> 64</span>
-<span class=normal> 65</span>
-<span class=normal> 66</span>
-<span class=normal> 67</span>
-<span class=normal> 68</span>
-<span class=normal> 69</span>
-<span class=normal> 70</span>
-<span class=normal> 71</span>
-<span class=normal> 72</span>
-<span class=normal> 73</span>
-<span class=normal> 74</span>
-<span class=normal> 75</span>
-<span class=normal> 76</span>
-<span class=normal> 77</span>
-<span class=normal> 78</span>
-<span class=normal> 79</span>
-<span class=normal> 80</span>
-<span class=normal> 81</span>
-<span class=normal> 82</span>
-<span class=normal> 83</span>
-<span class=normal> 84</span>
-<span class=normal> 85</span>
-<span class=normal> 86</span>
-<span class=normal> 87</span>
-<span class=normal> 88</span>
-<span class=normal> 89</span>
-<span class=normal> 90</span>
-<span class=normal> 91</span>
-<span class=normal> 92</span>
-<span class=normal> 93</span>
-<span class=normal> 94</span>
-<span class=normal> 95</span>
-<span class=normal> 96</span>
-<span class=normal> 97</span>
-<span class=normal> 98</span>
-<span class=normal> 99</span>
-<span class=normal>100</span>
-<span class=normal>101</span>
-<span class=normal>102</span>
-<span class=normal>103</span>
-<span class=normal>104</span>
-<span class=normal>105</span>
-<span class=normal>106</span>
-<span class=normal>107</span>
-<span class=normal>108</span>
-<span class=normal>109</span>
-<span class=normal>110</span>
-<span class=normal>111</span>
-<span class=normal>112</span>
-<span class=normal>113</span>
-<span class=normal>114</span>
-<span class=normal>115</span>
-<span class=normal>116</span>
-<span class=normal>117</span>
-<span class=normal>118</span>
-<span class=normal>119</span>
-<span class=normal>120</span>
-<span class=normal>121</span>
-<span class=normal>122</span>
-<span class=normal>123</span>
-<span class=normal>124</span>
-<span class=normal>125</span>
-<span class=normal>126</span>
-<span class=normal>127</span>
-<span class=normal>128</span>
-<span class=normal>129</span>
-<span class=normal>130</span>
-<span class=normal>131</span>
-<span class=normal>132</span>
-<span class=normal>133</span>
-<span class=normal>134</span>
-<span class=normal>135</span>
-<span class=normal>136</span>
-<span class=normal>137</span>
-<span class=normal>138</span>
-<span class=normal>139</span>
-<span class=normal>140</span>
-<span class=normal>141</span>
-<span class=normal>142</span>
-<span class=normal>143</span>
-<span class=normal>144</span>
-<span class=normal>145</span>
-<span class=normal>146</span>
-<span class=normal>147</span>
-<span class=normal>148</span>
-<span class=normal>149</span>
-<span class=normal>150</span>
-<span class=normal>151</span>
-<span class=normal>152</span>
-<span class=normal>153</span>
-<span class=normal>154</span>
-<span class=normal>155</span>
-<span class=normal>156</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  CoreData001</span>
-<span class=c1>//</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
-
-<span class=kd>import</span> <span class=nc>UIKit</span>
-<span class=kd>import</span> <span class=nc>CoreData</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UITableViewDelegate</span><span class=p>,</span> <span class=bp>UITableViewDataSource</span>  <span class=p>{</span>
-
-    <span class=kd>private</span> <span class=kd>let</span> <span class=nv>AIZU_DATA_STORE</span><span class=p>:</span> <span class=nb>String</span> <span class=p>=</span> <span class=s>&quot;AizuDataStore&quot;</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>aizuDatas</span><span class=p>:</span> <span class=p>[</span><span class=n>AizuDataStore</span><span class=p>]</span> <span class=p>=</span> <span class=p>[]</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-        <span class=c1>// Do any additional setup after loading the view, typically from a nib.</span>
-        <span class=n>insertDataFromJson</span><span class=p>()</span>
-
-        <span class=n>aizuDatas</span> <span class=p>=</span> <span class=n>loadDatas</span><span class=p>()</span>
-
-        <span class=c1>// Table View.</span>
-        <span class=kd>let</span> <span class=nv>barHeight</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=bp>UIApplication</span><span class=p>.</span><span class=n>shared</span><span class=p>.</span><span class=n>statusBarFrame</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>height</span>
-        <span class=kd>let</span> <span class=nv>displayWidth</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span>
-        <span class=kd>let</span> <span class=nv>displayHeight</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span>
-        <span class=kd>let</span> <span class=nv>myTableView</span><span class=p>:</span> <span class=bp>UITableView</span> <span class=p>=</span> <span class=bp>UITableView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=n>barHeight</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=n>displayWidth</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>displayHeight</span><span class=p>))</span>
-        <span class=n>myTableView</span><span class=p>.</span><span class=n>register</span><span class=p>(</span><span class=bp>UITableViewCell</span><span class=p>.</span><span class=kc>self</span><span class=p>,</span> <span class=n>forCellReuseIdentifier</span><span class=p>:</span> <span class=s>&quot;MyCell&quot;</span><span class=p>)</span>
-        <span class=n>myTableView</span><span class=p>.</span><span class=n>dataSource</span> <span class=p>=</span> <span class=kc>self</span>
-        <span class=n>myTableView</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myTableView</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-        <span class=c1>// Dispose of any resources that can be recreated.</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     CoreDataからデータの読み込み</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>loadDatas</span><span class=p>()</span> <span class=p>-&gt;</span> <span class=p>[</span><span class=n>AizuDataStore</span><span class=p>]</span> <span class=p>{</span>
-
-        <span class=kd>let</span> <span class=nv>appDel</span><span class=p>:</span> <span class=n>AppDelegate</span> <span class=p>=</span> <span class=p>(</span><span class=bp>UIApplication</span><span class=p>.</span><span class=n>shared</span><span class=p>.</span><span class=n>delegate</span> <span class=k>as</span><span class=p>!</span> <span class=n>AppDelegate</span><span class=p>)</span>
-        <span class=kd>let</span> <span class=nv>context</span> <span class=p>=</span> <span class=n>appDel</span><span class=p>.</span><span class=n>persistentContainer</span><span class=p>.</span><span class=n>viewContext</span>
-
-        <span class=c1>// Request</span>
-        <span class=kd>let</span> <span class=nv>fetchRequest</span><span class=p>:</span> <span class=bp>NSFetchRequest</span><span class=p>&lt;</span><span class=bp>NSFetchRequestResult</span><span class=p>&gt;</span> <span class=p>=</span> <span class=bp>NSFetchRequest</span><span class=p>(</span><span class=n>entityName</span><span class=p>:</span> <span class=n>AIZU_DATA_STORE</span><span class=p>)</span>
-
-
-        <span class=n>fetchRequest</span><span class=p>.</span><span class=n>returnsObjectsAsFaults</span> <span class=p>=</span> <span class=kc>false</span>
-
-        <span class=c1>// Access to CoreData</span>
-        <span class=k>do</span> <span class=p>{</span>
-            <span class=k>if</span> <span class=kd>let</span> <span class=nv>aizuDatas</span> <span class=p>=</span> <span class=k>try</span> <span class=n>context</span><span class=p>.</span><span class=n>fetch</span><span class=p>(</span><span class=n>fetchRequest</span><span class=p>)</span> <span class=k>as</span><span class=p>?</span> <span class=p>[</span><span class=n>AizuDataStore</span><span class=p>]</span> <span class=p>{</span>
-                <span class=k>return</span> <span class=n>aizuDatas</span>
-            <span class=p>}</span>
-            <span class=k>else</span>  <span class=p>{</span>
-                <span class=k>return</span> <span class=p>[]</span>
-            <span class=p>}</span>
-
-        <span class=p>}</span> <span class=k>catch</span> <span class=kd>let</span> <span class=nv>error</span> <span class=k>as</span> <span class=bp>NSError</span><span class=p>{</span>
-            <span class=bp>print</span><span class=p>(</span><span class=n>error</span><span class=p>.</span><span class=n>localizedDescription</span><span class=p>)</span>
-            <span class=k>return</span> <span class=p>[]</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     JSONファイルを読み込みCoreDataにInsert.</span>
-<span class=cm>     */</span>
-    <span class=kd>private</span> <span class=kd>func</span> <span class=nf>insertDataFromJson</span><span class=p>()</span> <span class=p>{</span>
-
-        <span class=c1>// Path.</span>
-        <span class=kd>let</span> <span class=nv>jsonDataPath</span><span class=p>:</span> <span class=bp>NSString</span> <span class=p>=</span> <span class=n>Bundle</span><span class=p>.</span><span class=n>main</span><span class=p>.</span><span class=n>path</span><span class=p>(</span><span class=n>forResource</span><span class=p>:</span> <span class=s>&quot;AizuData&quot;</span><span class=p>,</span> <span class=n>ofType</span><span class=p>:</span> <span class=s>&quot;json&quot;</span><span class=p>)</span><span class=o>!</span>
-        <span class=c1>// Data.</span>
-        <span class=kd>let</span> <span class=nv>jsonRawData</span><span class=p>:</span> <span class=bp>NSData</span><span class=p>!</span> <span class=p>=</span> <span class=bp>NSData</span><span class=p>(</span><span class=n>contentsOfFile</span><span class=p>:</span> <span class=n>jsonDataPath</span> <span class=k>as</span> <span class=nb>String</span><span class=p>)</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;jsonRawData:</span><span class=si>\(</span><span class=n>jsonRawData</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-
-        <span class=c1>// JSONのパース.</span>
-        <span class=kd>let</span> <span class=nv>jsonDictionary</span><span class=p>:</span> <span class=p>[[</span><span class=nb>String</span><span class=p>:</span> <span class=nb>AnyObject</span><span class=p>]]</span>
-        <span class=k>do</span> <span class=p>{</span>
-            <span class=n>jsonDictionary</span> <span class=p>=</span> <span class=k>try</span> <span class=n>JSONSerialization</span><span class=p>.</span><span class=n>jsonObject</span><span class=p>(</span><span class=n>with</span><span class=p>:</span> <span class=n>jsonRawData</span> <span class=k>as</span> <span class=n>Data</span><span class=p>,</span> <span class=n>options</span><span class=p>:</span> <span class=p>[])</span> <span class=k>as</span><span class=p>!</span> <span class=p>[[</span><span class=nb>String</span><span class=p>:</span> <span class=nb>AnyObject</span><span class=p>]]</span>
-        <span class=p>}</span>
-        <span class=k>catch</span> <span class=p>{</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Error JSONObjectWithData:</span><span class=si>\(</span><span class=n>error</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-            <span class=k>return</span>
-        <span class=p>}</span>
-
-        <span class=kd>let</span> <span class=nv>appDel</span><span class=p>:</span> <span class=n>AppDelegate</span> <span class=p>=</span> <span class=p>(</span><span class=bp>UIApplication</span><span class=p>.</span><span class=n>shared</span><span class=p>.</span><span class=n>delegate</span> <span class=k>as</span><span class=p>!</span> <span class=n>AppDelegate</span><span class=p>)</span>
-        <span class=kd>let</span> <span class=nv>context</span> <span class=p>=</span> <span class=n>appDel</span><span class=p>.</span><span class=n>persistentContainer</span><span class=p>.</span><span class=n>viewContext</span>
-
-        <span class=kd>let</span> <span class=nv>fetchRequest</span><span class=p>:</span> <span class=bp>NSFetchRequest</span><span class=p>&lt;</span><span class=bp>NSFetchRequestResult</span><span class=p>&gt;</span> <span class=p>=</span> <span class=bp>NSFetchRequest</span><span class=p>(</span><span class=n>entityName</span><span class=p>:</span> <span class=n>AIZU_DATA_STORE</span><span class=p>)</span>
-        <span class=kd>let</span> <span class=nv>deleteAll</span> <span class=p>=</span> <span class=bp>NSBatchDeleteRequest</span><span class=p>(</span><span class=n>fetchRequest</span><span class=p>:</span> <span class=n>fetchRequest</span><span class=p>)</span>
-        <span class=k>do</span> <span class=p>{</span>
-            <span class=k>try</span> <span class=n>context</span><span class=p>.</span><span class=n>execute</span><span class=p>(</span><span class=n>deleteAll</span><span class=p>)</span>
-        <span class=p>}</span>
-        <span class=k>catch</span> <span class=p>{</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Error excuteRequest(deleteAll):</span><span class=si>\(</span><span class=n>error</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
-
-
-        <span class=c1>// Entityを定義.</span>
-        <span class=kd>let</span> <span class=nv>entity</span><span class=p>:</span> <span class=bp>NSEntityDescription</span><span class=p>!</span> <span class=p>=</span> <span class=bp>NSEntityDescription</span><span class=p>.</span><span class=n>entity</span><span class=p>(</span><span class=n>forEntityName</span><span class=p>:</span> <span class=n>AIZU_DATA_STORE</span><span class=p>,</span> <span class=k>in</span><span class=p>:</span> <span class=n>context</span><span class=p>)</span>
-
-        <span class=c1>// JSONデータを配列分、CoreDataに格納.</span>
-        <span class=k>for</span> <span class=n>jsonData</span><span class=p>:</span> <span class=nb>AnyObject</span> <span class=k>in</span> <span class=n>jsonDictionary</span> <span class=p>{</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;jsonData:</span><span class=si>\(</span><span class=n>jsonData</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-
-            <span class=kd>let</span> <span class=nv>aizuDataStore</span><span class=p>:</span> <span class=n>AizuDataStore</span> <span class=p>=</span> <span class=n>AizuDataStore</span><span class=p>(</span><span class=n>entity</span><span class=p>:</span> <span class=n>entity</span><span class=p>,</span> <span class=n>insertInto</span><span class=p>:</span> <span class=n>context</span><span class=p>)</span>
-
-            <span class=k>do</span> <span class=p>{</span>
-                <span class=k>try</span> <span class=n>aizuDataStore</span><span class=p>.</span><span class=n>updateFromDictionary</span><span class=p>(</span><span class=n>dataDictionary</span><span class=p>:</span> <span class=n>jsonData</span> <span class=k>as</span><span class=p>!</span> <span class=p>[</span><span class=nb>String</span> <span class=p>:</span> <span class=nb>AnyObject</span><span class=p>])</span>
-            <span class=p>}</span> <span class=k>catch</span> <span class=p>{</span>
-                <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Error updateFromDictionary:</span><span class=si>\(</span><span class=n>error</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-            <span class=p>}</span>
-
-            <span class=k>do</span> <span class=p>{</span>
-
-                <span class=k>try</span> <span class=n>context</span><span class=p>.</span><span class=n>save</span><span class=p>()</span>
-            <span class=p>}</span>
-            <span class=k>catch</span> <span class=p>{</span>
-                <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Error save:</span><span class=si>\(</span><span class=n>error</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-            <span class=p>}</span>
-        <span class=p>}</span>
-
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     Cellが選択された際に呼び出される</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>tableView</span><span class=p>(</span><span class=kc>_</span> <span class=n>tableView</span><span class=p>:</span> <span class=bp>UITableView</span><span class=p>,</span> <span class=n>didSelectRowAt</span> <span class=n>indexPath</span><span class=p>:</span> <span class=n>IndexPath</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Num: </span><span class=si>\(</span><span class=n>indexPath</span><span class=p>.</span><span class=n>row</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Value: </span><span class=si>\(</span><span class=n>aizuDatas</span><span class=p>[</span><span class=n>indexPath</span><span class=p>.</span><span class=n>row</span><span class=p>]</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     Cellの総数を返す.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>tableView</span><span class=p>(</span><span class=kc>_</span> <span class=n>tableView</span><span class=p>:</span> <span class=bp>UITableView</span><span class=p>,</span> <span class=n>numberOfRowsInSection</span> <span class=n>section</span><span class=p>:</span> <span class=nb>Int</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Int</span> <span class=p>{</span>
-        <span class=k>return</span> <span class=n>aizuDatas</span><span class=p>.</span><span class=bp>count</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     Cellに値を設定する</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>tableView</span><span class=p>(</span><span class=kc>_</span> <span class=n>tableView</span><span class=p>:</span> <span class=bp>UITableView</span><span class=p>,</span> <span class=n>cellForRowAt</span> <span class=n>indexPath</span><span class=p>:</span> <span class=n>IndexPath</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=bp>UITableViewCell</span> <span class=p>{</span>
-        <span class=c1>// 再利用するCellを取得する.</span>
-        <span class=kd>let</span> <span class=nv>cell</span> <span class=p>=</span> <span class=n>tableView</span><span class=p>.</span><span class=n>dequeueReusableCell</span><span class=p>(</span><span class=n>withIdentifier</span><span class=p>:</span> <span class=s>&quot;MyCell&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=n>indexPath</span> <span class=k>as</span> <span class=n>IndexPath</span><span class=p>)</span>
-
-        <span class=c1>// Cellに値を設定する.</span>
-        <span class=n>cell</span><span class=p>.</span><span class=n>textLabel</span><span class=p>!.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;</span><span class=si>\(</span><span class=n>aizuDatas</span><span class=p>[</span><span class=n>indexPath</span><span class=p>.</span><span class=n>row</span><span class=p>].</span><span class=n>title</span><span class=si>)</span><span class=s>&quot;</span>
-
-        <span class=k>return</span> <span class=n>cell</span>
-    <span class=p>}</span>
-
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-2 type=radio id=tab-group-2-2_swift class=code-tab data-lang=swift aria-controls=tab-group-2-2_swift-panel role=tab><label for=tab-group-2-2_swift class=code-tab-label data-lang=swift id=tab-group-2-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-2-2_swift-panel aria-labelledby=tab-group-2-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal>  1</span>
-<span class=normal>  2</span>
-<span class=normal>  3</span>
-<span class=normal>  4</span>
-<span class=normal>  5</span>
-<span class=normal>  6</span>
-<span class=normal>  7</span>
-<span class=normal>  8</span>
-<span class=normal>  9</span>
-<span class=normal> 10</span>
-<span class=normal> 11</span>
-<span class=normal> 12</span>
-<span class=normal> 13</span>
-<span class=normal> 14</span>
-<span class=normal> 15</span>
-<span class=normal> 16</span>
-<span class=normal> 17</span>
-<span class=normal> 18</span>
-<span class=normal> 19</span>
-<span class=normal> 20</span>
-<span class=normal> 21</span>
-<span class=normal> 22</span>
-<span class=normal> 23</span>
-<span class=normal> 24</span>
-<span class=normal> 25</span>
-<span class=normal> 26</span>
-<span class=normal> 27</span>
-<span class=normal> 28</span>
-<span class=normal> 29</span>
-<span class=normal> 30</span>
-<span class=normal> 31</span>
-<span class=normal> 32</span>
-<span class=normal> 33</span>
-<span class=normal> 34</span>
-<span class=normal> 35</span>
-<span class=normal> 36</span>
-<span class=normal> 37</span>
-<span class=normal> 38</span>
-<span class=normal> 39</span>
-<span class=normal> 40</span>
-<span class=normal> 41</span>
-<span class=normal> 42</span>
-<span class=normal> 43</span>
-<span class=normal> 44</span>
-<span class=normal> 45</span>
-<span class=normal> 46</span>
-<span class=normal> 47</span>
-<span class=normal> 48</span>
-<span class=normal> 49</span>
-<span class=normal> 50</span>
-<span class=normal> 51</span>
-<span class=normal> 52</span>
-<span class=normal> 53</span>
-<span class=normal> 54</span>
-<span class=normal> 55</span>
-<span class=normal> 56</span>
-<span class=normal> 57</span>
-<span class=normal> 58</span>
-<span class=normal> 59</span>
-<span class=normal> 60</span>
-<span class=normal> 61</span>
-<span class=normal> 62</span>
-<span class=normal> 63</span>
-<span class=normal> 64</span>
-<span class=normal> 65</span>
-<span class=normal> 66</span>
-<span class=normal> 67</span>
-<span class=normal> 68</span>
-<span class=normal> 69</span>
-<span class=normal> 70</span>
-<span class=normal> 71</span>
-<span class=normal> 72</span>
-<span class=normal> 73</span>
-<span class=normal> 74</span>
-<span class=normal> 75</span>
-<span class=normal> 76</span>
-<span class=normal> 77</span>
-<span class=normal> 78</span>
-<span class=normal> 79</span>
-<span class=normal> 80</span>
-<span class=normal> 81</span>
-<span class=normal> 82</span>
-<span class=normal> 83</span>
-<span class=normal> 84</span>
-<span class=normal> 85</span>
-<span class=normal> 86</span>
-<span class=normal> 87</span>
-<span class=normal> 88</span>
-<span class=normal> 89</span>
-<span class=normal> 90</span>
-<span class=normal> 91</span>
-<span class=normal> 92</span>
-<span class=normal> 93</span>
-<span class=normal> 94</span>
-<span class=normal> 95</span>
-<span class=normal> 96</span>
-<span class=normal> 97</span>
-<span class=normal> 98</span>
-<span class=normal> 99</span>
-<span class=normal>100</span>
-<span class=normal>101</span>
-<span class=normal>102</span>
-<span class=normal>103</span>
-<span class=normal>104</span>
-<span class=normal>105</span>
-<span class=normal>106</span>
-<span class=normal>107</span>
-<span class=normal>108</span>
-<span class=normal>109</span>
-<span class=normal>110</span>
-<span class=normal>111</span>
-<span class=normal>112</span>
-<span class=normal>113</span>
-<span class=normal>114</span>
-<span class=normal>115</span>
-<span class=normal>116</span>
-<span class=normal>117</span>
-<span class=normal>118</span>
-<span class=normal>119</span>
-<span class=normal>120</span>
-<span class=normal>121</span>
-<span class=normal>122</span>
-<span class=normal>123</span>
-<span class=normal>124</span>
-<span class=normal>125</span>
-<span class=normal>126</span>
-<span class=normal>127</span>
-<span class=normal>128</span>
-<span class=normal>129</span>
-<span class=normal>130</span>
-<span class=normal>131</span>
-<span class=normal>132</span>
-<span class=normal>133</span>
-<span class=normal>134</span>
-<span class=normal>135</span>
-<span class=normal>136</span>
-<span class=normal>137</span>
-<span class=normal>138</span>
-<span class=normal>139</span>
-<span class=normal>140</span>
-<span class=normal>141</span>
-<span class=normal>142</span>
-<span class=normal>143</span>
-<span class=normal>144</span>
-<span class=normal>145</span>
-<span class=normal>146</span>
-<span class=normal>147</span>
-<span class=normal>148</span>
-<span class=normal>149</span>
-<span class=normal>150</span>
-<span class=normal>151</span>
-<span class=normal>152</span>
-<span class=normal>153</span>
-<span class=normal>154</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  CoreData001</span>
-<span class=c1>//</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
-
-<span class=kd>import</span> <span class=nc>UIKit</span>
-<span class=kd>import</span> <span class=nc>CoreData</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UITableViewDelegate</span><span class=p>,</span> <span class=bp>UITableViewDataSource</span>  <span class=p>{</span>
-
-    <span class=kd>private</span> <span class=kd>let</span> <span class=nv>AIZU_DATA_STORE</span><span class=p>:</span> <span class=nb>String</span> <span class=p>=</span> <span class=s>&quot;AizuDataStore&quot;</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>aizuDatas</span><span class=p>:</span> <span class=p>[</span><span class=n>AizuDataStore</span><span class=p>]</span> <span class=p>=</span> <span class=p>[]</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-        <span class=c1>// Do any additional setup after loading the view, typically from a nib.</span>
-        <span class=n>insertDataFromJson</span><span class=p>()</span>
-
-        <span class=n>aizuDatas</span> <span class=p>=</span> <span class=n>loadDatas</span><span class=p>()</span>
-
-        <span class=c1>// Table View.</span>
-        <span class=kd>let</span> <span class=nv>barHeight</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=bp>UIApplication</span><span class=p>.</span><span class=n>sharedApplication</span><span class=p>().</span><span class=n>statusBarFrame</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>height</span>
-        <span class=kd>let</span> <span class=nv>displayWidth</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span>
-        <span class=kd>let</span> <span class=nv>displayHeight</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span>
-        <span class=kd>let</span> <span class=nv>myTableView</span><span class=p>:</span> <span class=bp>UITableView</span> <span class=p>=</span> <span class=bp>UITableView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=n>barHeight</span><span class=p>,</span> <span class=n>displayWidth</span><span class=p>,</span> <span class=n>displayHeight</span><span class=p>))</span>
-        <span class=n>myTableView</span><span class=p>.</span><span class=n>registerClass</span><span class=p>(</span><span class=bp>UITableViewCell</span><span class=p>.</span><span class=kc>self</span><span class=p>,</span> <span class=n>forCellReuseIdentifier</span><span class=p>:</span> <span class=s>&quot;MyCell&quot;</span><span class=p>)</span>
-        <span class=n>myTableView</span><span class=p>.</span><span class=n>dataSource</span> <span class=p>=</span> <span class=kc>self</span>
-        <span class=n>myTableView</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myTableView</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-        <span class=c1>// Dispose of any resources that can be recreated.</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     CoreDataからデータの読み込み</span>
-<span class=cm>    */</span>
-    <span class=kd>func</span> <span class=nf>loadDatas</span><span class=p>()</span> <span class=p>-&gt;</span> <span class=p>[</span><span class=n>AizuDataStore</span><span class=p>]</span> <span class=p>{</span>
-
-        <span class=c1>// Context</span>
-        <span class=kd>let</span> <span class=nv>appDel</span><span class=p>:</span> <span class=n>AppDelegate</span> <span class=p>=</span> <span class=bp>UIApplication</span><span class=p>.</span><span class=n>sharedApplication</span><span class=p>().</span><span class=n>delegate</span> <span class=k>as</span><span class=p>!</span> <span class=n>AppDelegate</span>
-        <span class=kd>let</span> <span class=nv>context</span><span class=p>:</span> <span class=bp>NSManagedObjectContext</span> <span class=p>=</span> <span class=n>appDel</span><span class=p>.</span><span class=n>managedObjectContext</span>
-
-        <span class=c1>// Request</span>
-        <span class=kd>let</span> <span class=nv>fetchRequest</span><span class=p>:</span> <span class=bp>NSFetchRequest</span> <span class=p>=</span> <span class=bp>NSFetchRequest</span><span class=p>(</span><span class=n>entityName</span><span class=p>:</span> <span class=n>AIZU_DATA_STORE</span><span class=p>)</span>
-        <span class=n>fetchRequest</span><span class=p>.</span><span class=n>returnsObjectsAsFaults</span> <span class=p>=</span> <span class=kc>false</span>
-
-        <span class=c1>// Access to CoreData</span>
-        <span class=k>do</span> <span class=p>{</span>
-            <span class=k>if</span> <span class=kd>let</span> <span class=nv>aizuDatas</span> <span class=p>=</span> <span class=k>try</span> <span class=n>context</span><span class=p>.</span><span class=n>executeFetchRequest</span><span class=p>(</span><span class=n>fetchRequest</span><span class=p>)</span> <span class=k>as</span><span class=p>?</span> <span class=p>[</span><span class=n>AizuDataStore</span><span class=p>]</span> <span class=p>{</span>
-                <span class=k>return</span> <span class=n>aizuDatas</span>
-            <span class=p>}</span>
-            <span class=k>else</span>  <span class=p>{</span>
-                <span class=k>return</span> <span class=p>[]</span>
-            <span class=p>}</span>
-
-        <span class=p>}</span> <span class=k>catch</span> <span class=kd>let</span> <span class=nv>error</span> <span class=k>as</span> <span class=bp>NSError</span><span class=p>{</span>
-            <span class=bp>print</span><span class=p>(</span><span class=n>error</span><span class=p>.</span><span class=n>localizedDescription</span><span class=p>)</span>
-            <span class=k>return</span> <span class=p>[]</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     JSONファイルを読み込みCoreDataにInsert.</span>
-<span class=cm>     */</span>
-    <span class=kd>private</span> <span class=kd>func</span> <span class=nf>insertDataFromJson</span><span class=p>()</span> <span class=p>{</span>
-
-        <span class=c1>// Path.</span>
-        <span class=kd>let</span> <span class=nv>jsonDataPath</span><span class=p>:</span> <span class=bp>NSString</span> <span class=p>=</span> <span class=bp>NSBundle</span><span class=p>.</span><span class=n>mainBundle</span><span class=p>().</span><span class=n>pathForResource</span><span class=p>(</span><span class=s>&quot;AizuData&quot;</span><span class=p>,</span> <span class=n>ofType</span><span class=p>:</span> <span class=s>&quot;json&quot;</span><span class=p>)</span><span class=o>!</span>
-        <span class=c1>// Data.</span>
-        <span class=kd>let</span> <span class=nv>jsonRawData</span><span class=p>:</span> <span class=bp>NSData</span><span class=p>!</span> <span class=p>=</span> <span class=bp>NSData</span><span class=p>(</span><span class=n>contentsOfFile</span><span class=p>:</span> <span class=n>jsonDataPath</span> <span class=k>as</span> <span class=nb>String</span><span class=p>)</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;jsonRawData:</span><span class=si>\(</span><span class=n>jsonRawData</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-
-        <span class=c1>// JSONのパース.</span>
-        <span class=kd>let</span> <span class=nv>jsonDictionary</span><span class=p>:</span> <span class=p>[[</span><span class=nb>String</span><span class=p>:</span> <span class=nb>AnyObject</span><span class=p>]]</span>
-        <span class=k>do</span> <span class=p>{</span>
-            <span class=n>jsonDictionary</span> <span class=p>=</span> <span class=k>try</span> <span class=bp>NSJSONSerialization</span><span class=p>.</span><span class=n>JSONObjectWithData</span><span class=p>(</span><span class=n>jsonRawData</span><span class=p>,</span> <span class=n>options</span><span class=p>:</span> <span class=p>[])</span> <span class=k>as</span><span class=p>!</span> <span class=p>[[</span><span class=nb>String</span><span class=p>:</span> <span class=nb>AnyObject</span><span class=p>]]</span>
-        <span class=p>}</span>
-        <span class=k>catch</span> <span class=p>{</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Error JSONObjectWithData:</span><span class=si>\(</span><span class=n>error</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-            <span class=k>return</span>
-        <span class=p>}</span>
-
-        <span class=kd>let</span> <span class=nv>appDel</span><span class=p>:</span> <span class=n>AppDelegate</span> <span class=p>=</span> <span class=bp>UIApplication</span><span class=p>.</span><span class=n>sharedApplication</span><span class=p>().</span><span class=n>delegate</span> <span class=k>as</span><span class=p>!</span> <span class=n>AppDelegate</span>
-        <span class=kd>let</span> <span class=nv>context</span><span class=p>:</span> <span class=bp>NSManagedObjectContext</span> <span class=p>=</span> <span class=n>appDel</span><span class=p>.</span><span class=n>managedObjectContext</span>
-
-        <span class=c1>// 全データを削除.</span>
-        <span class=kd>let</span> <span class=nv>fetchRequest</span> <span class=p>=</span> <span class=bp>NSFetchRequest</span><span class=p>(</span><span class=n>entityName</span><span class=p>:</span> <span class=n>AIZU_DATA_STORE</span><span class=p>)</span>
-        <span class=kd>let</span> <span class=nv>deleteAll</span> <span class=p>=</span> <span class=bp>NSBatchDeleteRequest</span><span class=p>(</span><span class=n>fetchRequest</span><span class=p>:</span> <span class=n>fetchRequest</span><span class=p>)</span>
-        <span class=k>do</span> <span class=p>{</span>
-            <span class=k>try</span> <span class=n>context</span><span class=p>.</span><span class=n>executeRequest</span><span class=p>(</span><span class=n>deleteAll</span><span class=p>)</span>
-        <span class=p>}</span>
-        <span class=k>catch</span> <span class=p>{</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Error excuteRequest(deleteAll):</span><span class=si>\(</span><span class=n>error</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
-
-        <span class=c1>// Entityを定義.</span>
-        <span class=kd>let</span> <span class=nv>entity</span><span class=p>:</span> <span class=bp>NSEntityDescription</span><span class=p>!</span> <span class=p>=</span> <span class=bp>NSEntityDescription</span><span class=p>.</span><span class=n>entityForName</span><span class=p>(</span><span class=n>AIZU_DATA_STORE</span><span class=p>,</span> <span class=n>inManagedObjectContext</span><span class=p>:</span> <span class=n>context</span><span class=p>)</span>
-
-        <span class=c1>// JSONデータを配列分、CoreDataに格納.</span>
-        <span class=k>for</span> <span class=n>jsonData</span><span class=p>:</span> <span class=nb>AnyObject</span> <span class=k>in</span> <span class=n>jsonDictionary</span> <span class=p>{</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;jsonData:</span><span class=si>\(</span><span class=n>jsonData</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-
-            <span class=kd>let</span> <span class=nv>aizuDataStore</span><span class=p>:</span> <span class=n>AizuDataStore</span> <span class=p>=</span> <span class=n>AizuDataStore</span><span class=p>(</span><span class=n>entity</span><span class=p>:</span> <span class=n>entity</span><span class=p>,</span> <span class=n>insertIntoManagedObjectContext</span><span class=p>:</span> <span class=n>context</span><span class=p>)</span>
-
-            <span class=k>do</span> <span class=p>{</span>
-                <span class=k>try</span> <span class=n>aizuDataStore</span><span class=p>.</span><span class=n>updateFromDictionary</span><span class=p>(</span><span class=n>jsonData</span> <span class=k>as</span><span class=p>!</span> <span class=p>[</span><span class=nb>String</span> <span class=p>:</span> <span class=nb>AnyObject</span><span class=p>])</span>
-            <span class=p>}</span> <span class=k>catch</span> <span class=p>{</span>
-                <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Error updateFromDictionary:</span><span class=si>\(</span><span class=n>error</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-            <span class=p>}</span>
-
-            <span class=k>do</span> <span class=p>{</span>
-
-                <span class=k>try</span> <span class=n>context</span><span class=p>.</span><span class=n>save</span><span class=p>()</span>
-            <span class=p>}</span>
-            <span class=k>catch</span> <span class=p>{</span>
-                <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Error save:</span><span class=si>\(</span><span class=n>error</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-            <span class=p>}</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     Cellが選択された際に呼び出される</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>tableView</span><span class=p>(</span><span class=n>tableView</span><span class=p>:</span> <span class=bp>UITableView</span><span class=p>,</span> <span class=n>didSelectRowAtIndexPath</span> <span class=n>indexPath</span><span class=p>:</span> <span class=bp>NSIndexPath</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Num: </span><span class=si>\(</span><span class=n>indexPath</span><span class=p>.</span><span class=n>row</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Value: </span><span class=si>\(</span><span class=n>aizuDatas</span><span class=p>[</span><span class=n>indexPath</span><span class=p>.</span><span class=n>row</span><span class=p>]</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     Cellの総数を返す.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>tableView</span><span class=p>(</span><span class=n>tableView</span><span class=p>:</span> <span class=bp>UITableView</span><span class=p>,</span> <span class=n>numberOfRowsInSection</span> <span class=n>section</span><span class=p>:</span> <span class=nb>Int</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Int</span> <span class=p>{</span>
-        <span class=k>return</span> <span class=n>aizuDatas</span><span class=p>.</span><span class=bp>count</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     Cellに値を設定する</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>tableView</span><span class=p>(</span><span class=n>tableView</span><span class=p>:</span> <span class=bp>UITableView</span><span class=p>,</span> <span class=n>cellForRowAtIndexPath</span> <span class=n>indexPath</span><span class=p>:</span> <span class=bp>NSIndexPath</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=bp>UITableViewCell</span> <span class=p>{</span>
-        <span class=c1>// 再利用するCellを取得する.</span>
-        <span class=kd>let</span> <span class=nv>cell</span> <span class=p>=</span> <span class=n>tableView</span><span class=p>.</span><span class=n>dequeueReusableCellWithIdentifier</span><span class=p>(</span><span class=s>&quot;MyCell&quot;</span><span class=p>,</span> <span class=n>forIndexPath</span><span class=p>:</span> <span class=n>indexPath</span><span class=p>)</span>
-
-        <span class=c1>// Cellに値を設定する.</span>
-        <span class=n>cell</span><span class=p>.</span><span class=n>textLabel</span><span class=p>!.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;</span><span class=si>\(</span><span class=n>aizuDatas</span><span class=p>[</span><span class=n>indexPath</span><span class=p>.</span><span class=n>row</span><span class=p>].</span><span class=n>title</span><span class=si>)</span><span class=s>&quot;</span>
-
-        <span class=k>return</span> <span class=n>cell</span>
-    <span class=p>}</span>
-
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+<div class=md-fenced-code-tabs id=tab-tab-group-2><input name=tab-group-2 type=radio id=tab-group-2-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-2-0_swift-panel role=tab><label for=tab-group-2-0_swift class=code-tab-label data-lang=swift id=tab-group-2-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-2-0_swift-panel aria-labelledby=tab-group-2-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  CoreData001
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+import CoreData
+
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
+
+    private let AIZU_DATA_STORE: String = &quot;AizuDataStore&quot;
+    private var aizuDatas: [AizuDataStore] = []
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        insertDataFromJson()
+
+        aizuDatas = loadDatas()
+
+        // Table View.
+        let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
+        let displayWidth: CGFloat = self.view.frame.width
+        let displayHeight: CGFloat = self.view.frame.height
+        let myTableView: UITableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight))
+        myTableView.register(UITableViewCell.self, forCellReuseIdentifier: &quot;MyCell&quot;)
+        myTableView.dataSource = self
+        myTableView.delegate = self
+        self.view.addSubview(myTableView)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    /*
+     CoreDataからデータの読み込み
+     */
+    func loadDatas() -&gt; [AizuDataStore] {
+
+        let appDel: AppDelegate = (UIApplication.shared.delegate as! AppDelegate)
+        let context = appDel.persistentContainer.viewContext
+
+        // Request
+        let fetchRequest: NSFetchRequest&lt;NSFetchRequestResult&gt; = NSFetchRequest(entityName: AIZU_DATA_STORE)
+
+
+        fetchRequest.returnsObjectsAsFaults = false
+
+        // Access to CoreData
+        do {
+            if let aizuDatas = try context.fetch(fetchRequest) as? [AizuDataStore] {
+                return aizuDatas
+            }
+            else  {
+                return []
+            }
+
+        } catch let error as NSError{
+            print(error.localizedDescription)
+            return []
+        }
+    }
+
+    /*
+     JSONファイルを読み込みCoreDataにInsert.
+     */
+    private func insertDataFromJson() {
+
+        // Path.
+        let jsonDataPath: NSString = Bundle.main.path(forResource: &quot;AizuData&quot;, ofType: &quot;json&quot;)! as NSString
+        // Data.
+        let jsonRawData: NSData! = NSData(contentsOfFile: jsonDataPath as String)
+        print(&quot;jsonRawData:\(jsonRawData)&quot;)
+
+        // JSONのパース.
+        let jsonDictionary: [[String: AnyObject]]
+        do {
+            jsonDictionary = try JSONSerialization.jsonObject(with: jsonRawData as Data, options: []) as! [[String: AnyObject]]
+        }
+        catch {
+            print(&quot;Error JSONObjectWithData:\(error)&quot;)
+            return
+        }
+
+        let appDel: AppDelegate = (UIApplication.shared.delegate as! AppDelegate)
+        let context = appDel.persistentContainer.viewContext
+
+        let fetchRequest: NSFetchRequest&lt;NSFetchRequestResult&gt; = NSFetchRequest(entityName: AIZU_DATA_STORE)
+        let deleteAll = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do {
+            try context.execute(deleteAll)
+        }
+        catch {
+            print(&quot;Error excuteRequest(deleteAll):\(error)&quot;)
+        }
+
+
+        // Entityを定義.
+        let entity: NSEntityDescription! = NSEntityDescription.entity(forEntityName: AIZU_DATA_STORE, in: context)
+
+        // JSONデータを配列分、CoreDataに格納.
+        for jsonData in jsonDictionary {
+            print(&quot;jsonData:\(jsonData)&quot;)
+
+            let aizuDataStore: AizuDataStore = AizuDataStore(entity: entity, insertInto: context)
+
+            do {
+                try aizuDataStore.updateFromDictionary(dataDictionary: jsonData )
+            } catch {
+                print(&quot;Error updateFromDictionary:\(error)&quot;)
+            }
+
+            do {
+
+                try context.save()
+            }
+            catch {
+                print(&quot;Error save:\(error)&quot;)
+            }
+        }
+
+    }
+
+    /*
+     Cellが選択された際に呼び出される
+     */
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(&quot;Num: \(indexPath.row)&quot;)
+        print(&quot;Value: \(aizuDatas[indexPath.row])&quot;)
+    }
+
+    /*
+     Cellの総数を返す.
+     */
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -&gt; Int {
+        return aizuDatas.count
+    }
+
+    /*
+     Cellに値を設定する
+     */
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&gt; UITableViewCell {
+        // 再利用するCellを取得する.
+        let cell = tableView.dequeueReusableCell(withIdentifier: &quot;MyCell&quot;, for: indexPath as IndexPath)
+
+        // Cellに値を設定する.
+        cell.textLabel!.text = &quot;\(aizuDatas[indexPath.row].title)&quot;
+
+        return cell
+    }
+
+}
+</code></pre></div><input name=tab-group-2 type=radio id=tab-group-2-1_swift class=code-tab data-lang=swift aria-controls=tab-group-2-1_swift-panel role=tab><label for=tab-group-2-1_swift class=code-tab-label data-lang=swift id=tab-group-2-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-2-1_swift-panel aria-labelledby=tab-group-2-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  CoreData001
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+import CoreData
+
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
+
+    private let AIZU_DATA_STORE: String = &quot;AizuDataStore&quot;
+    private var aizuDatas: [AizuDataStore] = []
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        insertDataFromJson()
+
+        aizuDatas = loadDatas()
+
+        // Table View.
+        let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
+        let displayWidth: CGFloat = self.view.frame.width
+        let displayHeight: CGFloat = self.view.frame.height
+        let myTableView: UITableView = UITableView(frame: CGRect(x: 0, y: barHeight, width: displayWidth, height: displayHeight))
+        myTableView.register(UITableViewCell.self, forCellReuseIdentifier: &quot;MyCell&quot;)
+        myTableView.dataSource = self
+        myTableView.delegate = self
+        self.view.addSubview(myTableView)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    /*
+     CoreDataからデータの読み込み
+     */
+    func loadDatas() -&gt; [AizuDataStore] {
+
+        let appDel: AppDelegate = (UIApplication.shared.delegate as! AppDelegate)
+        let context = appDel.persistentContainer.viewContext
+
+        // Request
+        let fetchRequest: NSFetchRequest&lt;NSFetchRequestResult&gt; = NSFetchRequest(entityName: AIZU_DATA_STORE)
+
+
+        fetchRequest.returnsObjectsAsFaults = false
+
+        // Access to CoreData
+        do {
+            if let aizuDatas = try context.fetch(fetchRequest) as? [AizuDataStore] {
+                return aizuDatas
+            }
+            else  {
+                return []
+            }
+
+        } catch let error as NSError{
+            print(error.localizedDescription)
+            return []
+        }
+    }
+
+    /*
+     JSONファイルを読み込みCoreDataにInsert.
+     */
+    private func insertDataFromJson() {
+
+        // Path.
+        let jsonDataPath: NSString = Bundle.main.path(forResource: &quot;AizuData&quot;, ofType: &quot;json&quot;)!
+        // Data.
+        let jsonRawData: NSData! = NSData(contentsOfFile: jsonDataPath as String)
+        print(&quot;jsonRawData:\(jsonRawData)&quot;)
+
+        // JSONのパース.
+        let jsonDictionary: [[String: AnyObject]]
+        do {
+            jsonDictionary = try JSONSerialization.jsonObject(with: jsonRawData as Data, options: []) as! [[String: AnyObject]]
+        }
+        catch {
+            print(&quot;Error JSONObjectWithData:\(error)&quot;)
+            return
+        }
+
+        let appDel: AppDelegate = (UIApplication.shared.delegate as! AppDelegate)
+        let context = appDel.persistentContainer.viewContext
+
+        let fetchRequest: NSFetchRequest&lt;NSFetchRequestResult&gt; = NSFetchRequest(entityName: AIZU_DATA_STORE)
+        let deleteAll = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do {
+            try context.execute(deleteAll)
+        }
+        catch {
+            print(&quot;Error excuteRequest(deleteAll):\(error)&quot;)
+        }
+
+
+        // Entityを定義.
+        let entity: NSEntityDescription! = NSEntityDescription.entity(forEntityName: AIZU_DATA_STORE, in: context)
+
+        // JSONデータを配列分、CoreDataに格納.
+        for jsonData: AnyObject in jsonDictionary {
+            print(&quot;jsonData:\(jsonData)&quot;)
+
+            let aizuDataStore: AizuDataStore = AizuDataStore(entity: entity, insertInto: context)
+
+            do {
+                try aizuDataStore.updateFromDictionary(dataDictionary: jsonData as! [String : AnyObject])
+            } catch {
+                print(&quot;Error updateFromDictionary:\(error)&quot;)
+            }
+
+            do {
+
+                try context.save()
+            }
+            catch {
+                print(&quot;Error save:\(error)&quot;)
+            }
+        }
+
+    }
+
+    /*
+     Cellが選択された際に呼び出される
+     */
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(&quot;Num: \(indexPath.row)&quot;)
+        print(&quot;Value: \(aizuDatas[indexPath.row])&quot;)
+    }
+
+    /*
+     Cellの総数を返す.
+     */
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -&gt; Int {
+        return aizuDatas.count
+    }
+
+    /*
+     Cellに値を設定する
+     */
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&gt; UITableViewCell {
+        // 再利用するCellを取得する.
+        let cell = tableView.dequeueReusableCell(withIdentifier: &quot;MyCell&quot;, for: indexPath as IndexPath)
+
+        // Cellに値を設定する.
+        cell.textLabel!.text = &quot;\(aizuDatas[indexPath.row].title)&quot;
+
+        return cell
+    }
+
+}
+
+</code></pre></div><input name=tab-group-2 type=radio id=tab-group-2-2_swift class=code-tab data-lang=swift aria-controls=tab-group-2-2_swift-panel role=tab><label for=tab-group-2-2_swift class=code-tab-label data-lang=swift id=tab-group-2-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-2-2_swift-panel aria-labelledby=tab-group-2-2_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  CoreData001
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+import CoreData
+
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource  {
+
+    private let AIZU_DATA_STORE: String = &quot;AizuDataStore&quot;
+    private var aizuDatas: [AizuDataStore] = []
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        insertDataFromJson()
+
+        aizuDatas = loadDatas()
+
+        // Table View.
+        let barHeight: CGFloat = UIApplication.sharedApplication().statusBarFrame.size.height
+        let displayWidth: CGFloat = self.view.frame.width
+        let displayHeight: CGFloat = self.view.frame.height
+        let myTableView: UITableView = UITableView(frame: CGRectMake(0, barHeight, displayWidth, displayHeight))
+        myTableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: &quot;MyCell&quot;)
+        myTableView.dataSource = self
+        myTableView.delegate = self
+        self.view.addSubview(myTableView)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    /*
+     CoreDataからデータの読み込み
+    */
+    func loadDatas() -&gt; [AizuDataStore] {
+
+        // Context
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context: NSManagedObjectContext = appDel.managedObjectContext
+
+        // Request
+        let fetchRequest: NSFetchRequest = NSFetchRequest(entityName: AIZU_DATA_STORE)
+        fetchRequest.returnsObjectsAsFaults = false
+
+        // Access to CoreData
+        do {
+            if let aizuDatas = try context.executeFetchRequest(fetchRequest) as? [AizuDataStore] {
+                return aizuDatas
+            }
+            else  {
+                return []
+            }
+
+        } catch let error as NSError{
+            print(error.localizedDescription)
+            return []
+        }
+    }
+
+    /*
+     JSONファイルを読み込みCoreDataにInsert.
+     */
+    private func insertDataFromJson() {
+
+        // Path.
+        let jsonDataPath: NSString = NSBundle.mainBundle().pathForResource(&quot;AizuData&quot;, ofType: &quot;json&quot;)!
+        // Data.
+        let jsonRawData: NSData! = NSData(contentsOfFile: jsonDataPath as String)
+        print(&quot;jsonRawData:\(jsonRawData)&quot;)
+
+        // JSONのパース.
+        let jsonDictionary: [[String: AnyObject]]
+        do {
+            jsonDictionary = try NSJSONSerialization.JSONObjectWithData(jsonRawData, options: []) as! [[String: AnyObject]]
+        }
+        catch {
+            print(&quot;Error JSONObjectWithData:\(error)&quot;)
+            return
+        }
+
+        let appDel: AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let context: NSManagedObjectContext = appDel.managedObjectContext
+
+        // 全データを削除.
+        let fetchRequest = NSFetchRequest(entityName: AIZU_DATA_STORE)
+        let deleteAll = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do {
+            try context.executeRequest(deleteAll)
+        }
+        catch {
+            print(&quot;Error excuteRequest(deleteAll):\(error)&quot;)
+        }
+
+        // Entityを定義.
+        let entity: NSEntityDescription! = NSEntityDescription.entityForName(AIZU_DATA_STORE, inManagedObjectContext: context)
+
+        // JSONデータを配列分、CoreDataに格納.
+        for jsonData: AnyObject in jsonDictionary {
+            print(&quot;jsonData:\(jsonData)&quot;)
+
+            let aizuDataStore: AizuDataStore = AizuDataStore(entity: entity, insertIntoManagedObjectContext: context)
+
+            do {
+                try aizuDataStore.updateFromDictionary(jsonData as! [String : AnyObject])
+            } catch {
+                print(&quot;Error updateFromDictionary:\(error)&quot;)
+            }
+
+            do {
+
+                try context.save()
+            }
+            catch {
+                print(&quot;Error save:\(error)&quot;)
+            }
+        }
+    }
+
+    /*
+     Cellが選択された際に呼び出される
+     */
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        print(&quot;Num: \(indexPath.row)&quot;)
+        print(&quot;Value: \(aizuDatas[indexPath.row])&quot;)
+    }
+
+    /*
+     Cellの総数を返す.
+     */
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -&gt; Int {
+        return aizuDatas.count
+    }
+
+    /*
+     Cellに値を設定する
+     */
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -&gt; UITableViewCell {
+        // 再利用するCellを取得する.
+        let cell = tableView.dequeueReusableCellWithIdentifier(&quot;MyCell&quot;, forIndexPath: indexPath)
+
+        // Cellに値を設定する.
+        cell.textLabel!.text = &quot;\(aizuDatas[indexPath.row].title)&quot;
+
+        return cell
+    }
+
+}
+</code></pre></div></div>
 <h3 id="aizudatastoreswift">AizuDataStore.swift</h3>
-<div class=md-fenced-code-tabs id=tab-tab-group-3><input name=tab-group-3 type=radio id=tab-group-3-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-3-0_swift-panel role=tab><label for=tab-group-3-0_swift class=code-tab-label data-lang=swift id=tab-group-3-0_swift-label>Swift 5.x/4.x/3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-3-0_swift-panel aria-labelledby=tab-group-3-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  AizuDataStore.swift</span>
-<span class=c1>//</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-3><input name=tab-group-3 type=radio id=tab-group-3-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-3-0_swift-panel role=tab><label for=tab-group-3-0_swift class=code-tab-label data-lang=swift id=tab-group-3-0_swift-label>Swift 5.x/4.x/3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-3-0_swift-panel aria-labelledby=tab-group-3-0_swift-label><pre><code class=swift>//
+//  AizuDataStore.swift
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
-<span class=kd>import</span> <span class=nc>CoreData</span>
+import UIKit
+import CoreData
 
-<span class=kr>@objc</span><span class=p>(</span><span class=n>AizuDataStore</span><span class=p>)</span>
-<span class=kd>class</span> <span class=nc>AizuDataStore</span><span class=p>:</span> <span class=bp>NSManagedObject</span> <span class=p>{</span>
+@objc(AizuDataStore)
+class AizuDataStore: NSManagedObject {
 
-    <span class=kr>@NSManaged</span> <span class=kd>var</span> <span class=nv>id</span><span class=p>:</span> <span class=bp>NSNumber</span>
-    <span class=kr>@NSManaged</span> <span class=kd>var</span> <span class=nv>title</span><span class=p>:</span> <span class=nb>String</span>
-    <span class=kr>@NSManaged</span> <span class=kd>var</span> <span class=nv>content</span><span class=p>:</span> <span class=nb>String</span>
+    @NSManaged var id: NSNumber
+    @NSManaged var title: String
+    @NSManaged var content: String
 
-    <span class=kd>func</span> <span class=nf>updateFromDictionary</span><span class=p>(</span><span class=n>dataDictionary</span><span class=p>:</span> <span class=p>[</span><span class=nb>String</span><span class=p>:</span> <span class=nb>AnyObject</span><span class=p>])</span> <span class=kr>throws</span> <span class=p>{</span>
+    func updateFromDictionary(dataDictionary: [String: AnyObject]) throws {
 
-        <span class=c1>// バリデーション.</span>
-        <span class=k>guard</span> <span class=kd>let</span> <span class=nv>tmp_id</span><span class=p>:</span> <span class=bp>NSNumber</span>  <span class=p>=</span> <span class=n>dataDictionary</span><span class=p>[</span><span class=s>&quot;id&quot;</span><span class=p>]</span> <span class=k>as</span><span class=p>?</span> <span class=bp>NSNumber</span><span class=p>,</span>
-            <span class=kd>let</span> <span class=nv>tmp_title</span><span class=p>:</span> <span class=nb>String</span>   <span class=p>=</span> <span class=n>dataDictionary</span><span class=p>[</span><span class=s>&quot;title&quot;</span><span class=p>]</span> <span class=k>as</span><span class=p>?</span> <span class=nb>String</span><span class=p>,</span>
-            <span class=kd>let</span> <span class=nv>tmp_content</span><span class=p>:</span> <span class=nb>String</span> <span class=p>=</span> <span class=n>dataDictionary</span><span class=p>[</span><span class=s>&quot;content&quot;</span><span class=p>]</span> <span class=k>as</span><span class=p>?</span> <span class=nb>String</span>
+        // バリデーション.
+        guard let tmp_id: NSNumber  = dataDictionary[&quot;id&quot;] as? NSNumber,
+            let tmp_title: String   = dataDictionary[&quot;title&quot;] as? String,
+            let tmp_content: String = dataDictionary[&quot;content&quot;] as? String
 
-            <span class=k>else</span><span class=p>{</span>
-                <span class=k>throw</span> <span class=bp>NSError</span><span class=p>(</span><span class=n>domain</span><span class=p>:</span> <span class=s>&quot;Failed validation of JSON object. &quot;</span><span class=p>,</span> <span class=n>code</span><span class=p>:</span> <span class=o>-</span><span class=mi>1</span><span class=p>,</span> <span class=n>userInfo</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-        <span class=p>}</span>
+            else{
+                throw NSError(domain: &quot;Failed validation of JSON object. &quot;, code: -1, userInfo: nil)
+        }
 
-        <span class=c1>// データを反映.</span>
-        <span class=n>id</span> <span class=p>=</span> <span class=n>tmp_id</span>
-        <span class=n>title</span> <span class=p>=</span> <span class=n>tmp_title</span>
-        <span class=n>content</span> <span class=p>=</span> <span class=n>tmp_content</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-3 type=radio id=tab-group-3-1_swift class=code-tab data-lang=swift aria-controls=tab-group-3-1_swift-panel role=tab><label for=tab-group-3-1_swift class=code-tab-label data-lang=swift id=tab-group-3-1_swift-label>Swift 2.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-3-1_swift-panel aria-labelledby=tab-group-3-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  AizuDataStore.swift</span>
-<span class=c1>//</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+        // データを反映.
+        id = tmp_id
+        title = tmp_title
+        content = tmp_content
+    }
+}
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
-<span class=kd>import</span> <span class=nc>CoreData</span>
+</code></pre></div><input name=tab-group-3 type=radio id=tab-group-3-1_swift class=code-tab data-lang=swift aria-controls=tab-group-3-1_swift-panel role=tab><label for=tab-group-3-1_swift class=code-tab-label data-lang=swift id=tab-group-3-1_swift-label>Swift 2.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-3-1_swift-panel aria-labelledby=tab-group-3-1_swift-label><pre><code class=swift>//
+//  AizuDataStore.swift
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kr>@objc</span><span class=p>(</span><span class=n>AizuDataStore</span><span class=p>)</span>
-<span class=kd>class</span> <span class=nc>AizuDataStore</span><span class=p>:</span> <span class=bp>NSManagedObject</span> <span class=p>{</span>
+import UIKit
+import CoreData
 
-    <span class=kr>@NSManaged</span> <span class=kd>var</span> <span class=nv>id</span><span class=p>:</span> <span class=bp>NSNumber</span>
-    <span class=kr>@NSManaged</span> <span class=kd>var</span> <span class=nv>title</span><span class=p>:</span> <span class=nb>String</span>
-    <span class=kr>@NSManaged</span> <span class=kd>var</span> <span class=nv>content</span><span class=p>:</span> <span class=nb>String</span>
+@objc(AizuDataStore)
+class AizuDataStore: NSManagedObject {
 
-    <span class=kd>func</span> <span class=nf>updateFromDictionary</span><span class=p>(</span><span class=n>dataDictionary</span><span class=p>:</span> <span class=p>[</span><span class=nb>String</span><span class=p>:</span> <span class=nb>AnyObject</span><span class=p>])</span> <span class=kr>throws</span> <span class=p>{</span>
+    @NSManaged var id: NSNumber
+    @NSManaged var title: String
+    @NSManaged var content: String
 
-        <span class=c1>// バリデーション.</span>
-        <span class=k>guard</span> <span class=kd>let</span> <span class=nv>tmp_id</span><span class=p>:</span> <span class=bp>NSNumber</span>  <span class=p>=</span> <span class=n>dataDictionary</span><span class=p>[</span><span class=s>&quot;id&quot;</span><span class=p>]</span> <span class=k>as</span><span class=p>?</span> <span class=bp>NSNumber</span><span class=p>,</span>
-            <span class=n>tmp_title</span><span class=p>:</span> <span class=nb>String</span>       <span class=p>=</span> <span class=n>dataDictionary</span><span class=p>[</span><span class=s>&quot;title&quot;</span><span class=p>]</span> <span class=k>as</span><span class=p>?</span> <span class=nb>String</span><span class=p>,</span>
-            <span class=n>tmp_content</span><span class=p>:</span> <span class=nb>String</span>     <span class=p>=</span> <span class=n>dataDictionary</span><span class=p>[</span><span class=s>&quot;content&quot;</span><span class=p>]</span> <span class=k>as</span><span class=p>?</span> <span class=nb>String</span>
+    func updateFromDictionary(dataDictionary: [String: AnyObject]) throws {
 
-            <span class=k>else</span><span class=p>{</span>
-                <span class=k>throw</span> <span class=bp>NSError</span><span class=p>(</span><span class=n>domain</span><span class=p>:</span> <span class=s>&quot;Failed validation of JSON object. &quot;</span><span class=p>,</span> <span class=n>code</span><span class=p>:</span> <span class=o>-</span><span class=mi>1</span><span class=p>,</span> <span class=n>userInfo</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-        <span class=p>}</span>
+        // バリデーション.
+        guard let tmp_id: NSNumber  = dataDictionary[&quot;id&quot;] as? NSNumber,
+            tmp_title: String       = dataDictionary[&quot;title&quot;] as? String,
+            tmp_content: String     = dataDictionary[&quot;content&quot;] as? String
 
-        <span class=c1>// データを反映.</span>
-        <span class=n>id</span> <span class=p>=</span> <span class=n>tmp_id</span>
-        <span class=n>title</span> <span class=p>=</span> <span class=n>tmp_title</span>
-        <span class=n>content</span> <span class=p>=</span> <span class=n>tmp_content</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+            else{
+                throw NSError(domain: &quot;Failed validation of JSON object. &quot;, code: -1, userInfo: nil)
+        }
+
+        // データを反映.
+        id = tmp_id
+        title = tmp_title
+        content = tmp_content
+    }
+}
+</code></pre></div></div>
 <h2 id="3x4x">3.xと4.xの差分</h2>
 <ul>
 <li><code>CoreData001.xcdatamodeld</code> の <code>AizuDataStore</code> の <code>Class/Codegen</code> を <code>Manual/None</code> に変更</li>

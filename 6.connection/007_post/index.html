@@ -2346,512 +2346,261 @@
                 <h1 id="post">POSTを送信する</h1>
 <p><img alt="Preview connection007" src="../img/Connection007.png" /></p>
 <h3 id="ios9ats">iOS9からリクエスト先によってはATSを無効化・対処する必要があります</h3>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span>
-<span class=normal>73</span>
-<span class=normal>74</span>
-<span class=normal>75</span>
-<span class=normal>76</span>
-<span class=normal>77</span>
-<span class=normal>78</span>
-<span class=normal>79</span>
-<span class=normal>80</span>
-<span class=normal>81</span>
-<span class=normal>82</span>
-<span class=normal>83</span>
-<span class=normal>84</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  Connection007</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  Connection007
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=n>URLSessionDelegate</span><span class=p>,</span> <span class=n>URLSessionDataDelegate</span><span class=p>{</span>
+class ViewController: UIViewController, URLSessionDelegate, URLSessionDataDelegate{
 
-    <span class=kd>var</span> <span class=nv>myTextView</span><span class=p>:</span> <span class=bp>UITextView</span><span class=p>!</span>
+    var myTextView: UITextView!
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>lightGray</span>
+        self.view.backgroundColor = UIColor.lightGray
 
-        <span class=c1>//表示用のTextViewを用意</span>
-        <span class=n>myTextView</span> <span class=p>=</span> <span class=bp>UITextView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>10</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>50</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span> <span class=o>-</span> <span class=mi>20</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>500</span><span class=p>))</span>
+        //表示用のTextViewを用意
+        myTextView = UITextView(frame: CGRect(x: 10, y: 50, width: self.view.frame.width - 20, height: 500))
 
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>(</span><span class=n>red</span><span class=p>:</span> <span class=mf>0.9</span><span class=p>,</span> <span class=n>green</span><span class=p>:</span> <span class=mf>0.9</span><span class=p>,</span> <span class=n>blue</span><span class=p>:</span> <span class=mi>1</span><span class=p>,</span> <span class=n>alpha</span><span class=p>:</span> <span class=mf>1.0</span><span class=p>)</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>borderWidth</span> <span class=p>=</span> <span class=mi>1</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>borderColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span><span class=p>.</span><span class=n>cgColor</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>font</span> <span class=p>=</span> <span class=bp>UIFont</span><span class=p>.</span><span class=n>systemFont</span><span class=p>(</span><span class=n>ofSize</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=mi>20</span><span class=p>))</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=n>NSTextAlignment</span><span class=p>.</span><span class=kr>left</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>dataDetectorTypes</span> <span class=p>=</span> <span class=n>UIDataDetectorTypes</span><span class=p>.</span><span class=n>all</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>shadowOpacity</span> <span class=p>=</span> <span class=mf>0.5</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>false</span>
+        myTextView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 1, alpha: 1.0)
+        myTextView.layer.masksToBounds = true
+        myTextView.layer.cornerRadius = 20.0
+        myTextView.layer.borderWidth = 1
+        myTextView.layer.borderColor = UIColor.black.cgColor
+        myTextView.font = UIFont.systemFont(ofSize: CGFloat(20))
+        myTextView.textColor = UIColor.black
+        myTextView.textAlignment = NSTextAlignment.left
+        myTextView.dataDetectorTypes = UIDataDetectorTypes.all
+        myTextView.layer.shadowOpacity = 0.5
+        myTextView.layer.masksToBounds = false
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myTextView</span><span class=p>)</span>
+        self.view.addSubview(myTextView)
 
-        <span class=c1>// 通信用のConfigを生成.</span>
-        <span class=kd>let</span> <span class=nv>config</span><span class=p>:</span><span class=n>URLSessionConfiguration</span> <span class=p>=</span> <span class=n>URLSessionConfiguration</span><span class=p>.</span><span class=n>background</span><span class=p>(</span><span class=n>withIdentifier</span><span class=p>:</span> <span class=s>&quot;backgroundTask&quot;</span><span class=p>)</span>
-        <span class=c1>// Sessionを生成.</span>
-        <span class=kd>let</span> <span class=nv>session</span><span class=p>:</span> <span class=n>URLSession</span> <span class=p>=</span> <span class=n>URLSession</span><span class=p>(</span><span class=n>configuration</span><span class=p>:</span> <span class=n>config</span><span class=p>,</span> <span class=n>delegate</span><span class=p>:</span> <span class=kc>self</span><span class=p>,</span> <span class=n>delegateQueue</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-        <span class=c1>// 通信先のURLを生成.</span>
-        <span class=kd>let</span> <span class=nv>url</span><span class=p>:</span> <span class=bp>NSURL</span> <span class=p>=</span> <span class=bp>NSURL</span><span class=p>(</span><span class=n>string</span><span class=p>:</span> <span class=s>&quot;http://localhost/swift/post.php&quot;</span><span class=p>)</span><span class=o>!</span>
+        // 通信用のConfigを生成.
+        let config:URLSessionConfiguration = URLSessionConfiguration.background(withIdentifier: &quot;backgroundTask&quot;)
+        // Sessionを生成.
+        let session: URLSession = URLSession(configuration: config, delegate: self, delegateQueue: nil)
+        // 通信先のURLを生成.
+        let url: NSURL = NSURL(string: &quot;http://localhost/swift/post.php&quot;)!
 
-        <span class=c1>// POST用のリクエストを生成.</span>
-        <span class=kd>let</span> <span class=nv>request</span><span class=p>:</span> <span class=bp>NSMutableURLRequest</span> <span class=p>=</span> <span class=bp>NSMutableURLRequest</span><span class=p>(</span><span class=n>url</span><span class=p>:</span> <span class=n>url</span> <span class=k>as</span> <span class=n>URL</span><span class=p>)</span>
-        <span class=c1>// POSTのメソッドを指定.</span>
-        <span class=n>request</span><span class=p>.</span><span class=n>httpMethod</span> <span class=p>=</span> <span class=s>&quot;POST&quot;</span>
+        // POST用のリクエストを生成.
+        let request: NSMutableURLRequest = NSMutableURLRequest(url: url as URL)
+        // POSTのメソッドを指定.
+        request.httpMethod = &quot;POST&quot;
 
-        <span class=c1>// 送信するデータを生成・リクエストにセット.</span>
-        <span class=kd>let</span> <span class=nv>str</span><span class=p>:</span> <span class=bp>NSString</span> <span class=p>=</span> <span class=s>&quot;data=Send Data String&quot;</span>
-        <span class=kd>let</span> <span class=nv>myData</span><span class=p>:</span> <span class=bp>NSData</span> <span class=p>=</span> <span class=n>str</span><span class=p>.</span><span class=n>data</span><span class=p>(</span><span class=n>using</span><span class=p>:</span> <span class=nb>String</span><span class=p>.</span><span class=n>Encoding</span><span class=p>.</span><span class=n>utf8</span><span class=p>.</span><span class=n>rawValue</span><span class=p>)</span><span class=o>!</span> <span class=k>as</span> <span class=bp>NSData</span>
-        <span class=n>request</span><span class=p>.</span><span class=n>httpBody</span> <span class=p>=</span> <span class=n>myData</span> <span class=k>as</span> <span class=n>Data</span>
+        // 送信するデータを生成・リクエストにセット.
+        let str: NSString = &quot;data=Send Data String&quot;
+        let myData: NSData = str.data(using: String.Encoding.utf8.rawValue)! as NSData
+        request.httpBody = myData as Data
 
-        <span class=c1>// タスクの生成.</span>
-        <span class=kd>let</span> <span class=nv>task</span><span class=p>:</span> <span class=n>URLSessionDataTask</span> <span class=p>=</span> <span class=n>session</span><span class=p>.</span><span class=n>dataTask</span><span class=p>(</span><span class=n>with</span><span class=p>:</span> <span class=n>request</span> <span class=k>as</span> <span class=n>URLRequest</span><span class=p>)</span>
+        // タスクの生成.
+        let task: URLSessionDataTask = session.dataTask(with: request as URLRequest)
 
-        <span class=c1>// タスクの実行.</span>
-        <span class=n>task</span><span class=p>.</span><span class=n>resume</span><span class=p>()</span>
-    <span class=p>}</span>
+        // タスクの実行.
+        task.resume()
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     通信が終了したときに呼び出されるデリゲート.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>urlSession</span><span class=p>(</span><span class=kc>_</span> <span class=n>session</span><span class=p>:</span> <span class=n>URLSession</span><span class=p>,</span> <span class=n>dataTask</span><span class=p>:</span> <span class=n>URLSessionDataTask</span><span class=p>,</span> <span class=n>didReceive</span> <span class=n>data</span><span class=p>:</span> <span class=n>Data</span><span class=p>)</span> <span class=p>{</span>
-        <span class=c1>// 帰ってきたデータを文字列に変換.</span>
-        <span class=kd>let</span> <span class=nv>getData</span><span class=p>:</span><span class=bp>NSString</span> <span class=p>=</span> <span class=bp>NSString</span><span class=p>(</span><span class=n>data</span><span class=p>:</span> <span class=n>data</span><span class=p>,</span> <span class=n>encoding</span><span class=p>:</span> <span class=nb>String</span><span class=p>.</span><span class=n>Encoding</span><span class=p>.</span><span class=n>utf8</span><span class=p>.</span><span class=n>rawValue</span><span class=p>)</span><span class=o>!</span>
+    /*
+     通信が終了したときに呼び出されるデリゲート.
+     */
+    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
+        // 帰ってきたデータを文字列に変換.
+        let getData:NSString = NSString(data: data, encoding: String.Encoding.utf8.rawValue)!
 
-        <span class=c1>// バックグラウンドだとUIの処理が出来ないので、メインスレッドでUIの処理を行わせる.</span>
-        <span class=n>DispatchQueue</span><span class=p>.</span><span class=n>main</span><span class=p>.</span><span class=n>async</span><span class=p>(</span><span class=n>execute</span><span class=p>:</span> <span class=p>{</span>
-            <span class=kc>self</span><span class=p>.</span><span class=n>myTextView</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=n>getData</span> <span class=k>as</span> <span class=nb>String</span>
-        <span class=p>})</span>
-    <span class=p>}</span>
+        // バックグラウンドだとUIの処理が出来ないので、メインスレッドでUIの処理を行わせる.
+        DispatchQueue.main.async(execute: {
+            self.myTextView.text = getData as String
+        })
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     バックグラウンドからフォアグラウンドの復帰時に呼び出されるデリゲート.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>urlSessionDidFinishEvents</span><span class=p>(</span><span class=n>forBackgroundURLSession</span> <span class=n>session</span><span class=p>:</span> <span class=n>URLSession</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;URLSessionDidFinishEventsForBackgroundURLSession&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+    /*
+     バックグラウンドからフォアグラウンドの復帰時に呼び出されるデリゲート.
+     */
+    func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
+        print(&quot;URLSessionDidFinishEventsForBackgroundURLSession&quot;)
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span>
-<span class=normal>73</span>
-<span class=normal>74</span>
-<span class=normal>75</span>
-<span class=normal>76</span>
-<span class=normal>77</span>
-<span class=normal>78</span>
-<span class=normal>79</span>
-<span class=normal>80</span>
-<span class=normal>81</span>
-<span class=normal>82</span>
-<span class=normal>83</span>
-<span class=normal>84</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  Connection007</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  Connection007
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=n>URLSessionDelegate</span><span class=p>,</span> <span class=n>URLSessionDataDelegate</span><span class=p>{</span>
+class ViewController: UIViewController, URLSessionDelegate, URLSessionDataDelegate{
 
-    <span class=kd>var</span> <span class=nv>myTextView</span><span class=p>:</span> <span class=bp>UITextView</span><span class=p>!</span>
+    var myTextView: UITextView!
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>lightGray</span>
+        self.view.backgroundColor = UIColor.lightGray
 
-        <span class=c1>//表示用のTextViewを用意</span>
-        <span class=n>myTextView</span> <span class=p>=</span> <span class=bp>UITextView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>10</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>50</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span> <span class=o>-</span> <span class=mi>20</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>500</span><span class=p>))</span>
+        //表示用のTextViewを用意
+        myTextView = UITextView(frame: CGRect(x: 10, y: 50, width: self.view.frame.width - 20, height: 500))
 
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>(</span><span class=n>red</span><span class=p>:</span> <span class=mf>0.9</span><span class=p>,</span> <span class=n>green</span><span class=p>:</span> <span class=mf>0.9</span><span class=p>,</span> <span class=n>blue</span><span class=p>:</span> <span class=mi>1</span><span class=p>,</span> <span class=n>alpha</span><span class=p>:</span> <span class=mf>1.0</span><span class=p>)</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>borderWidth</span> <span class=p>=</span> <span class=mi>1</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>borderColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span><span class=p>.</span><span class=n>cgColor</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>font</span> <span class=p>=</span> <span class=bp>UIFont</span><span class=p>.</span><span class=n>systemFont</span><span class=p>(</span><span class=n>ofSize</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=mi>20</span><span class=p>))</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=n>NSTextAlignment</span><span class=p>.</span><span class=kr>left</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>dataDetectorTypes</span> <span class=p>=</span> <span class=n>UIDataDetectorTypes</span><span class=p>.</span><span class=n>all</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>shadowOpacity</span> <span class=p>=</span> <span class=mf>0.5</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>false</span>
+        myTextView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 1, alpha: 1.0)
+        myTextView.layer.masksToBounds = true
+        myTextView.layer.cornerRadius = 20.0
+        myTextView.layer.borderWidth = 1
+        myTextView.layer.borderColor = UIColor.black.cgColor
+        myTextView.font = UIFont.systemFont(ofSize: CGFloat(20))
+        myTextView.textColor = UIColor.black
+        myTextView.textAlignment = NSTextAlignment.left
+        myTextView.dataDetectorTypes = UIDataDetectorTypes.all
+        myTextView.layer.shadowOpacity = 0.5
+        myTextView.layer.masksToBounds = false
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myTextView</span><span class=p>)</span>
+        self.view.addSubview(myTextView)
 
-        <span class=c1>// 通信用のConfigを生成.</span>
-        <span class=kd>let</span> <span class=nv>config</span><span class=p>:</span><span class=n>URLSessionConfiguration</span> <span class=p>=</span> <span class=n>URLSessionConfiguration</span><span class=p>.</span><span class=n>background</span><span class=p>(</span><span class=n>withIdentifier</span><span class=p>:</span> <span class=s>&quot;backgroundTask&quot;</span><span class=p>)</span>
-        <span class=c1>// Sessionを生成.</span>
-        <span class=kd>let</span> <span class=nv>session</span><span class=p>:</span> <span class=n>URLSession</span> <span class=p>=</span> <span class=n>URLSession</span><span class=p>(</span><span class=n>configuration</span><span class=p>:</span> <span class=n>config</span><span class=p>,</span> <span class=n>delegate</span><span class=p>:</span> <span class=kc>self</span><span class=p>,</span> <span class=n>delegateQueue</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-        <span class=c1>// 通信先のURLを生成.</span>
-        <span class=kd>let</span> <span class=nv>url</span><span class=p>:</span> <span class=bp>NSURL</span> <span class=p>=</span> <span class=bp>NSURL</span><span class=p>(</span><span class=n>string</span><span class=p>:</span> <span class=s>&quot;http://localhost/swift/post.php&quot;</span><span class=p>)</span><span class=o>!</span>
+        // 通信用のConfigを生成.
+        let config:URLSessionConfiguration = URLSessionConfiguration.background(withIdentifier: &quot;backgroundTask&quot;)
+        // Sessionを生成.
+        let session: URLSession = URLSession(configuration: config, delegate: self, delegateQueue: nil)
+        // 通信先のURLを生成.
+        let url: NSURL = NSURL(string: &quot;http://localhost/swift/post.php&quot;)!
 
-        <span class=c1>// POST用のリクエストを生成.</span>
-        <span class=kd>let</span> <span class=nv>request</span><span class=p>:</span> <span class=bp>NSMutableURLRequest</span> <span class=p>=</span> <span class=bp>NSMutableURLRequest</span><span class=p>(</span><span class=n>url</span><span class=p>:</span> <span class=n>url</span> <span class=k>as</span> <span class=n>URL</span><span class=p>)</span>
-        <span class=c1>// POSTのメソッドを指定.</span>
-        <span class=n>request</span><span class=p>.</span><span class=n>httpMethod</span> <span class=p>=</span> <span class=s>&quot;POST&quot;</span>
+        // POST用のリクエストを生成.
+        let request: NSMutableURLRequest = NSMutableURLRequest(url: url as URL)
+        // POSTのメソッドを指定.
+        request.httpMethod = &quot;POST&quot;
 
-        <span class=c1>// 送信するデータを生成・リクエストにセット.</span>
-        <span class=kd>let</span> <span class=nv>str</span><span class=p>:</span> <span class=bp>NSString</span> <span class=p>=</span> <span class=s>&quot;data=Send Data String&quot;</span>
-        <span class=kd>let</span> <span class=nv>myData</span><span class=p>:</span> <span class=bp>NSData</span> <span class=p>=</span> <span class=n>str</span><span class=p>.</span><span class=n>data</span><span class=p>(</span><span class=n>using</span><span class=p>:</span> <span class=nb>String</span><span class=p>.</span><span class=n>Encoding</span><span class=p>.</span><span class=n>utf8</span><span class=p>.</span><span class=n>rawValue</span><span class=p>)</span><span class=o>!</span>
-        <span class=n>request</span><span class=p>.</span><span class=n>httpBody</span> <span class=p>=</span> <span class=n>myData</span> <span class=k>as</span> <span class=n>Data</span>
+        // 送信するデータを生成・リクエストにセット.
+        let str: NSString = &quot;data=Send Data String&quot;
+        let myData: NSData = str.data(using: String.Encoding.utf8.rawValue)!
+        request.httpBody = myData as Data
 
-        <span class=c1>// タスクの生成.</span>
-        <span class=kd>let</span> <span class=nv>task</span><span class=p>:</span> <span class=n>URLSessionDataTask</span> <span class=p>=</span> <span class=n>session</span><span class=p>.</span><span class=n>dataTask</span><span class=p>(</span><span class=n>with</span><span class=p>:</span> <span class=n>request</span> <span class=k>as</span> <span class=n>URLRequest</span><span class=p>)</span>
+        // タスクの生成.
+        let task: URLSessionDataTask = session.dataTask(with: request as URLRequest)
 
-        <span class=c1>// タスクの実行.</span>
-        <span class=n>task</span><span class=p>.</span><span class=n>resume</span><span class=p>()</span>
-    <span class=p>}</span>
+        // タスクの実行.
+        task.resume()
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     通信が終了したときに呼び出されるデリゲート.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>urlSession</span><span class=p>(</span><span class=kc>_</span> <span class=n>session</span><span class=p>:</span> <span class=n>URLSession</span><span class=p>,</span> <span class=n>dataTask</span><span class=p>:</span> <span class=n>URLSessionDataTask</span><span class=p>,</span> <span class=n>didReceive</span> <span class=n>data</span><span class=p>:</span> <span class=n>Data</span><span class=p>)</span> <span class=p>{</span>
-        <span class=c1>// 帰ってきたデータを文字列に変換.</span>
-        <span class=kd>let</span> <span class=nv>getData</span><span class=p>:</span><span class=bp>NSString</span> <span class=p>=</span> <span class=bp>NSString</span><span class=p>(</span><span class=n>data</span><span class=p>:</span> <span class=n>data</span><span class=p>,</span> <span class=n>encoding</span><span class=p>:</span> <span class=nb>String</span><span class=p>.</span><span class=n>Encoding</span><span class=p>.</span><span class=n>utf8</span><span class=p>.</span><span class=n>rawValue</span><span class=p>)</span><span class=o>!</span>
+    /*
+     通信が終了したときに呼び出されるデリゲート.
+     */
+    func urlSession(_ session: URLSession, dataTask: URLSessionDataTask, didReceive data: Data) {
+        // 帰ってきたデータを文字列に変換.
+        let getData:NSString = NSString(data: data, encoding: String.Encoding.utf8.rawValue)!
 
-        <span class=c1>// バックグラウンドだとUIの処理が出来ないので、メインスレッドでUIの処理を行わせる.</span>
-        <span class=n>DispatchQueue</span><span class=p>.</span><span class=n>main</span><span class=p>.</span><span class=n>async</span><span class=p>(</span><span class=n>execute</span><span class=p>:</span> <span class=p>{</span>
-            <span class=kc>self</span><span class=p>.</span><span class=n>myTextView</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=n>getData</span> <span class=k>as</span> <span class=nb>String</span>
-        <span class=p>})</span>
-    <span class=p>}</span>
+        // バックグラウンドだとUIの処理が出来ないので、メインスレッドでUIの処理を行わせる.
+        DispatchQueue.main.async(execute: {
+            self.myTextView.text = getData as String
+        })
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     バックグラウンドからフォアグラウンドの復帰時に呼び出されるデリゲート.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>urlSessionDidFinishEvents</span><span class=p>(</span><span class=n>forBackgroundURLSession</span> <span class=n>session</span><span class=p>:</span> <span class=n>URLSession</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;URLSessionDidFinishEventsForBackgroundURLSession&quot;</span><span class=p>)</span>
-    <span class=p>}</span> 
+    /*
+     バックグラウンドからフォアグラウンドの復帰時に呼び出されるデリゲート.
+     */
+    func urlSessionDidFinishEvents(forBackgroundURLSession session: URLSession) {
+        print(&quot;URLSessionDidFinishEventsForBackgroundURLSession&quot;)
+    } 
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span>
-<span class=normal>73</span>
-<span class=normal>74</span>
-<span class=normal>75</span>
-<span class=normal>76</span>
-<span class=normal>77</span>
-<span class=normal>78</span>
-<span class=normal>79</span>
-<span class=normal>80</span>
-<span class=normal>81</span>
-<span class=normal>82</span>
-<span class=normal>83</span>
-<span class=normal>84</span>
-<span class=normal>85</span>
-<span class=normal>86</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  Connection007</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  Connection007
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>NSURLSessionDelegate</span><span class=p>,</span> <span class=bp>NSURLSessionDataDelegate</span><span class=p>{</span>
+class ViewController: UIViewController, NSURLSessionDelegate, NSURLSessionDataDelegate{
 
-    <span class=kd>var</span> <span class=nv>myTextView</span><span class=p>:</span> <span class=bp>UITextView</span><span class=p>!</span>
+    var myTextView: UITextView!
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>lightGrayColor</span><span class=p>()</span>
+        self.view.backgroundColor = UIColor.lightGrayColor()
 
-        <span class=c1>//表示用のTextViewを用意</span>
-        <span class=n>myTextView</span> <span class=p>=</span> <span class=bp>UITextView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>10</span><span class=p>,</span> <span class=mi>50</span><span class=p>,</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span> <span class=o>-</span> <span class=mi>20</span><span class=p>,</span> <span class=mi>500</span><span class=p>))</span>
+        //表示用のTextViewを用意
+        myTextView = UITextView(frame: CGRectMake(10, 50, self.view.frame.width - 20, 500))
 
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>(</span><span class=n>red</span><span class=p>:</span> <span class=mf>0.9</span><span class=p>,</span> <span class=n>green</span><span class=p>:</span> <span class=mf>0.9</span><span class=p>,</span> <span class=n>blue</span><span class=p>:</span> <span class=mi>1</span><span class=p>,</span> <span class=n>alpha</span><span class=p>:</span> <span class=mf>1.0</span><span class=p>)</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>borderWidth</span> <span class=p>=</span> <span class=mi>1</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>borderColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blackColor</span><span class=p>().</span><span class=n>CGColor</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>font</span> <span class=p>=</span> <span class=bp>UIFont</span><span class=p>.</span><span class=n>systemFontOfSize</span><span class=p>(</span><span class=n>CGFloat</span><span class=p>(</span><span class=mi>20</span><span class=p>))</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blackColor</span><span class=p>()</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=n>NSTextAlignment</span><span class=p>.</span><span class=n>Left</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>dataDetectorTypes</span> <span class=p>=</span> <span class=n>UIDataDetectorTypes</span><span class=p>.</span><span class=n>All</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>shadowOpacity</span> <span class=p>=</span> <span class=mf>0.5</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>false</span>
+        myTextView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 1, alpha: 1.0)
+        myTextView.layer.masksToBounds = true
+        myTextView.layer.cornerRadius = 20.0
+        myTextView.layer.borderWidth = 1
+        myTextView.layer.borderColor = UIColor.blackColor().CGColor
+        myTextView.font = UIFont.systemFontOfSize(CGFloat(20))
+        myTextView.textColor = UIColor.blackColor()
+        myTextView.textAlignment = NSTextAlignment.Left
+        myTextView.dataDetectorTypes = UIDataDetectorTypes.All
+        myTextView.layer.shadowOpacity = 0.5
+        myTextView.layer.masksToBounds = false
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myTextView</span><span class=p>)</span>
+        self.view.addSubview(myTextView)
 
-        <span class=c1>// 通信用のConfigを生成.</span>
-        <span class=kd>let</span> <span class=nv>config</span><span class=p>:</span><span class=bp>NSURLSessionConfiguration</span> <span class=p>=</span> <span class=bp>NSURLSessionConfiguration</span><span class=p>.</span><span class=n>backgroundSessionConfigurationWithIdentifier</span><span class=p>(</span><span class=s>&quot;backgroundTask&quot;</span><span class=p>)</span>
-        <span class=c1>// Sessionを生成.</span>
-        <span class=kd>let</span> <span class=nv>session</span><span class=p>:</span> <span class=bp>NSURLSession</span> <span class=p>=</span> <span class=bp>NSURLSession</span><span class=p>(</span><span class=n>configuration</span><span class=p>:</span> <span class=n>config</span><span class=p>,</span> <span class=n>delegate</span><span class=p>:</span> <span class=kc>self</span><span class=p>,</span> <span class=n>delegateQueue</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-        <span class=c1>// 通信先のURLを生成.</span>
-        <span class=kd>let</span> <span class=nv>url</span><span class=p>:</span> <span class=bp>NSURL</span> <span class=p>=</span> <span class=bp>NSURL</span><span class=p>(</span><span class=n>string</span><span class=p>:</span> <span class=s>&quot;http://xxx/post.php&quot;</span><span class=p>)</span><span class=o>!</span>
+        // 通信用のConfigを生成.
+        let config:NSURLSessionConfiguration = NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier(&quot;backgroundTask&quot;)
+        // Sessionを生成.
+        let session: NSURLSession = NSURLSession(configuration: config, delegate: self, delegateQueue: nil)
+        // 通信先のURLを生成.
+        let url: NSURL = NSURL(string: &quot;http://xxx/post.php&quot;)!
 
-        <span class=c1>// POST用のリクエストを生成.</span>
-        <span class=kd>let</span> <span class=nv>request</span><span class=p>:</span> <span class=bp>NSMutableURLRequest</span> <span class=p>=</span> <span class=bp>NSMutableURLRequest</span><span class=p>(</span><span class=n>URL</span><span class=p>:</span> <span class=n>url</span><span class=p>)</span>
-        <span class=c1>// POSTのメソッドを指定.</span>
-        <span class=n>request</span><span class=p>.</span><span class=n>HTTPMethod</span> <span class=p>=</span> <span class=s>&quot;POST&quot;</span>
+        // POST用のリクエストを生成.
+        let request: NSMutableURLRequest = NSMutableURLRequest(URL: url)
+        // POSTのメソッドを指定.
+        request.HTTPMethod = &quot;POST&quot;
 
-        <span class=c1>// 送信するデータを生成・リクエストにセット.</span>
-        <span class=kd>let</span> <span class=nv>str</span><span class=p>:</span><span class=bp>NSString</span> <span class=p>=</span> <span class=s>&quot;data=Send Data String&quot;</span>
-        <span class=kd>let</span> <span class=nv>myData</span><span class=p>:</span><span class=bp>NSData</span> <span class=p>=</span> <span class=n>str</span><span class=p>.</span><span class=n>dataUsingEncoding</span><span class=p>(</span><span class=n>NSUTF8StringEncoding</span><span class=p>)</span><span class=o>!</span>
-        <span class=n>request</span><span class=p>.</span><span class=n>HTTPBody</span> <span class=p>=</span> <span class=n>myData</span>
+        // 送信するデータを生成・リクエストにセット.
+        let str:NSString = &quot;data=Send Data String&quot;
+        let myData:NSData = str.dataUsingEncoding(NSUTF8StringEncoding)!
+        request.HTTPBody = myData
 
-        <span class=c1>// タスクの生成.</span>
-        <span class=kd>let</span> <span class=nv>task</span><span class=p>:</span> <span class=bp>NSURLSessionDataTask</span> <span class=p>=</span> <span class=n>session</span><span class=p>.</span><span class=n>dataTaskWithRequest</span><span class=p>(</span><span class=n>request</span><span class=p>)</span>
+        // タスクの生成.
+        let task: NSURLSessionDataTask = session.dataTaskWithRequest(request)
 
-        <span class=c1>// タスクの実行.</span>
-        <span class=n>task</span><span class=p>.</span><span class=n>resume</span><span class=p>()</span>
-    <span class=p>}</span>
+        // タスクの実行.
+        task.resume()
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     通信が終了したときに呼び出されるデリゲート.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>URLSession</span><span class=p>(</span><span class=n>session</span><span class=p>:</span> <span class=bp>NSURLSession</span><span class=p>,</span> <span class=n>dataTask</span><span class=p>:</span> <span class=bp>NSURLSessionDataTask</span><span class=p>,</span> <span class=n>didReceiveData</span> <span class=n>data</span><span class=p>:</span> <span class=bp>NSData</span><span class=p>)</span> <span class=p>{</span>
+    /*
+     通信が終了したときに呼び出されるデリゲート.
+     */
+    func URLSession(session: NSURLSession, dataTask: NSURLSessionDataTask, didReceiveData data: NSData) {
 
-        <span class=c1>// 帰ってきたデータを文字列に変換.</span>
-        <span class=kd>let</span> <span class=nv>getData</span><span class=p>:</span><span class=bp>NSString</span> <span class=p>=</span> <span class=bp>NSString</span><span class=p>(</span><span class=n>data</span><span class=p>:</span> <span class=n>data</span><span class=p>,</span> <span class=n>encoding</span><span class=p>:</span> <span class=n>NSUTF8StringEncoding</span><span class=p>)</span><span class=o>!</span>
+        // 帰ってきたデータを文字列に変換.
+        let getData:NSString = NSString(data: data, encoding: NSUTF8StringEncoding)!
 
-        <span class=c1>// バックグラウンドだとUIの処理が出来ないので、メインスレッドでUIの処理を行わせる.</span>
-        <span class=n>dispatch_async</span><span class=p>(</span><span class=n>dispatch_get_main_queue</span><span class=p>(),</span> <span class=p>{</span>
-            <span class=kc>self</span><span class=p>.</span><span class=n>myTextView</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=n>getData</span> <span class=k>as</span> <span class=nb>String</span>
-        <span class=p>})</span>
+        // バックグラウンドだとUIの処理が出来ないので、メインスレッドでUIの処理を行わせる.
+        dispatch_async(dispatch_get_main_queue(), {
+            self.myTextView.text = getData as String
+        })
 
-    <span class=p>}</span>
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>    バックグラウンドからフォアグラウンドの復帰時に呼び出されるデリゲート.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>URLSessionDidFinishEventsForBackgroundURLSession</span><span class=p>(</span><span class=n>session</span><span class=p>:</span> <span class=bp>NSURLSession</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;URLSessionDidFinishEventsForBackgroundURLSession&quot;</span><span class=p>)</span>
+    /*
+    バックグラウンドからフォアグラウンドの復帰時に呼び出されるデリゲート.
+     */
+    func URLSessionDidFinishEventsForBackgroundURLSession(session: NSURLSession) {
+        print(&quot;URLSessionDidFinishEventsForBackgroundURLSession&quot;)
 
-    <span class=p>}</span>
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span> 
-</code></pre></div></td></tr></table></div></div>
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+} 
+</code></pre></div></div>
 <h2 id="3x4x">3.xと4.xの差分</h2>
 <ul>
 <li><code>str.data(using: String.Encoding.utf8.rawValue)!</code> が <code>str.data(using: String.Encoding.utf8.rawValue)! as NSData</code> に変更</li>

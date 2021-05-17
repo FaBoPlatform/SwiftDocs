@@ -2345,713 +2345,363 @@
                 
                 <h1 id="uialertcontroller">UIAlertControllerで文字数制限を設ける</h1>
 <p><img alt="Preview uikit042" src="../img/uikit042.png" /></p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span>
-<span class=normal>73</span>
-<span class=normal>74</span>
-<span class=normal>75</span>
-<span class=normal>76</span>
-<span class=normal>77</span>
-<span class=normal>78</span>
-<span class=normal>79</span>
-<span class=normal>80</span>
-<span class=normal>81</span>
-<span class=normal>82</span>
-<span class=normal>83</span>
-<span class=normal>84</span>
-<span class=normal>85</span>
-<span class=normal>86</span>
-<span class=normal>87</span>
-<span class=normal>88</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit042_5.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Copyright © 2020年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
-
-<span class=kd>import</span> <span class=nc>UIKit</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
-
-    <span class=kd>var</span> <span class=nv>InputStr</span><span class=p>:</span><span class=nb>String</span><span class=p>!</span>
-
-    <span class=c1>// 入力できる最大文字数.</span>
-    <span class=kd>let</span> <span class=nv>maxLength</span><span class=p>:</span> <span class=nb>Int</span> <span class=p>=</span> <span class=mi>6</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyan</span>
-
-        <span class=kd>let</span> <span class=nv>myButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=mi>200</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>40</span><span class=p>))</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>200</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>red</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;UIAlertを発動&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>touchUpInside</span><span class=p>)</span>
-
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-
-    <span class=kr>@objc</span> <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>)</span> <span class=p>{</span>
-
-        <span class=c1>// Alert生成.</span>
-        <span class=kd>let</span> <span class=nv>myAlert</span><span class=p>:</span> <span class=bp>UIAlertController</span> <span class=p>=</span> <span class=bp>UIAlertController</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;title&quot;</span><span class=p>,</span> <span class=n>message</span><span class=p>:</span> <span class=s>&quot;6文字以下で入力&quot;</span><span class=p>,</span> <span class=n>preferredStyle</span><span class=p>:</span> <span class=bp>UIAlertController</span><span class=p>.</span><span class=n>Style</span><span class=p>.</span><span class=n>alert</span><span class=p>)</span>
-
-
-        <span class=c1>// OKアクション生成.</span>
-        <span class=kd>let</span> <span class=nv>OkAction</span> <span class=p>=</span> <span class=bp>UIAlertAction</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;OK&quot;</span><span class=p>,</span> <span class=n>style</span><span class=p>:</span> <span class=bp>UIAlertAction</span><span class=p>.</span><span class=n>Style</span><span class=p>.</span><span class=k>default</span><span class=p>)</span> <span class=p>{</span> <span class=p>(</span><span class=n>action</span><span class=p>:</span> <span class=bp>UIAlertAction</span><span class=p>!)</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;OK&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
-
-        <span class=c1>// Cancelアクション生成.</span>
-        <span class=kd>let</span> <span class=nv>CancelAction</span> <span class=p>=</span> <span class=bp>UIAlertAction</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;Cancel&quot;</span><span class=p>,</span> <span class=n>style</span><span class=p>:</span> <span class=bp>UIAlertAction</span><span class=p>.</span><span class=n>Style</span><span class=p>.</span><span class=n>destructive</span><span class=p>)</span> <span class=p>{</span> <span class=p>(</span><span class=n>action</span><span class=p>:</span> <span class=bp>UIAlertAction</span><span class=p>!)</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Cancel&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
-
-        <span class=c1>// AlertにTextFieldを追加.</span>
-        <span class=n>myAlert</span><span class=p>.</span><span class=n>addTextField</span> <span class=p>{</span> <span class=p>(</span><span class=n>textField</span><span class=p>:</span> <span class=bp>UITextField</span><span class=p>!)</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
-
-            <span class=c1>// NotificationCenterを生成.</span>
-            <span class=kd>let</span> <span class=nv>myNotificationCenter</span> <span class=p>=</span> <span class=n>NotificationCenter</span><span class=p>.</span><span class=k>default</span>
-
-            <span class=c1>// textFieldに変更があればchangeTextFieldメソッドに通知.</span>
-            <span class=n>myNotificationCenter</span><span class=p>.</span><span class=n>addObserver</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>selector</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>changeTextField</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=n>name</span><span class=p>:</span> <span class=bp>UITextField</span><span class=p>.</span><span class=n>textDidChangeNotification</span><span class=p>,</span> <span class=n>object</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-        <span class=p>}</span>
-
-        <span class=c1>// Alertにアクションを追加.</span>
-        <span class=n>myAlert</span><span class=p>.</span><span class=n>addAction</span><span class=p>(</span><span class=n>OkAction</span><span class=p>)</span>
-        <span class=n>myAlert</span><span class=p>.</span><span class=n>addAction</span><span class=p>(</span><span class=n>CancelAction</span><span class=p>)</span>
-
-        <span class=c1>// Alertを発動する.</span>
-        <span class=n>present</span><span class=p>(</span><span class=n>myAlert</span><span class=p>,</span> <span class=n>animated</span><span class=p>:</span> <span class=kc>true</span><span class=p>,</span> <span class=n>completion</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=kr>@objc</span> <span class=kd>func</span> <span class=nf>changeTextField</span> <span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>NSNotification</span><span class=p>)</span> <span class=p>{</span>
-
-        <span class=kd>let</span> <span class=nv>textField</span> <span class=p>=</span> <span class=n>sender</span><span class=p>.</span><span class=n>object</span> <span class=k>as</span><span class=p>!</span> <span class=bp>UITextField</span>
-
-        <span class=c1>// 入力された文字を取得.</span>
-        <span class=n>InputStr</span> <span class=p>=</span> <span class=n>textField</span><span class=p>.</span><span class=n>text</span>
-
-        <span class=c1>// 入力された文字が6文字を超えたら入力を制限.</span>
-        <span class=k>if</span> <span class=n>InputStr</span><span class=p>.</span><span class=bp>count</span> <span class=o>&lt;=</span> <span class=n>maxLength</span> <span class=p>{</span>
-            <span class=n>textField</span><span class=p>.</span><span class=n>isEnabled</span> <span class=p>=</span> <span class=kc>true</span>
-
-            <span class=c1>// 入力された文字を表示.</span>
-            <span class=bp>print</span><span class=p>(</span><span class=n>textField</span><span class=p>.</span><span class=n>text</span><span class=p>!)</span>
-        <span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
-            <span class=n>textField</span><span class=p>.</span><span class=n>isEnabled</span> <span class=p>=</span> <span class=kc>false</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;6文字を超えています&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span>
-<span class=normal>73</span>
-<span class=normal>74</span>
-<span class=normal>75</span>
-<span class=normal>76</span>
-<span class=normal>77</span>
-<span class=normal>78</span>
-<span class=normal>79</span>
-<span class=normal>80</span>
-<span class=normal>81</span>
-<span class=normal>82</span>
-<span class=normal>83</span>
-<span class=normal>84</span>
-<span class=normal>85</span>
-<span class=normal>86</span>
-<span class=normal>87</span>
-<span class=normal>88</span>
-<span class=normal>89</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit042_4.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/21.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
-
-<span class=kd>import</span> <span class=nc>UIKit</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
-
-    <span class=kd>var</span> <span class=nv>InputStr</span><span class=p>:</span><span class=nb>String</span><span class=p>!</span>
-
-    <span class=c1>// 入力できる最大文字数.</span>
-    <span class=kd>let</span> <span class=nv>maxLength</span><span class=p>:</span> <span class=nb>Int</span> <span class=p>=</span> <span class=mi>6</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyan</span>
-
-        <span class=kd>let</span> <span class=nv>myButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=mi>200</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>40</span><span class=p>))</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>200</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>red</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;UIAlertを発動&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>touchUpInside</span><span class=p>)</span>
-
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-
-    <span class=kr>@objc</span> <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>)</span> <span class=p>{</span>
-
-        <span class=c1>// Alert生成.</span>
-        <span class=kd>let</span> <span class=nv>myAlert</span><span class=p>:</span> <span class=bp>UIAlertController</span> <span class=p>=</span> <span class=bp>UIAlertController</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;title&quot;</span><span class=p>,</span> <span class=n>message</span><span class=p>:</span> <span class=s>&quot;6文字以下で入力&quot;</span><span class=p>,</span> <span class=n>preferredStyle</span><span class=p>:</span> <span class=bp>UIAlertController</span><span class=p>.</span><span class=n>Style</span><span class=p>.</span><span class=n>alert</span><span class=p>)</span>
-
-
-        <span class=c1>// OKアクション生成.</span>
-        <span class=kd>let</span> <span class=nv>OkAction</span> <span class=p>=</span> <span class=bp>UIAlertAction</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;OK&quot;</span><span class=p>,</span> <span class=n>style</span><span class=p>:</span> <span class=bp>UIAlertAction</span><span class=p>.</span><span class=n>Style</span><span class=p>.</span><span class=k>default</span><span class=p>)</span> <span class=p>{</span> <span class=p>(</span><span class=n>action</span><span class=p>:</span> <span class=bp>UIAlertAction</span><span class=p>!)</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;OK&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
-
-        <span class=c1>// Cancelアクション生成.</span>
-        <span class=kd>let</span> <span class=nv>CancelAction</span> <span class=p>=</span> <span class=bp>UIAlertAction</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;Cancel&quot;</span><span class=p>,</span> <span class=n>style</span><span class=p>:</span> <span class=bp>UIAlertAction</span><span class=p>.</span><span class=n>Style</span><span class=p>.</span><span class=n>destructive</span><span class=p>)</span> <span class=p>{</span> <span class=p>(</span><span class=n>action</span><span class=p>:</span> <span class=bp>UIAlertAction</span><span class=p>!)</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Cancel&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
-
-        <span class=c1>// AlertにTextFieldを追加.</span>
-        <span class=n>myAlert</span><span class=p>.</span><span class=n>addTextField</span> <span class=p>{</span> <span class=p>(</span><span class=n>textField</span><span class=p>:</span> <span class=bp>UITextField</span><span class=p>!)</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
-
-            <span class=c1>// NotificationCenterを生成.</span>
-            <span class=kd>let</span> <span class=nv>myNotificationCenter</span> <span class=p>=</span> <span class=n>NotificationCenter</span><span class=p>.</span><span class=k>default</span>
-
-            <span class=c1>// textFieldに変更があればchangeTextFieldメソッドに通知.</span>
-            <span class=n>myNotificationCenter</span><span class=p>.</span><span class=n>addObserver</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>selector</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>changeTextField</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=n>name</span><span class=p>:</span> <span class=bp>UITextField</span><span class=p>.</span><span class=n>textDidChangeNotification</span><span class=p>,</span> <span class=n>object</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-        <span class=p>}</span>
-
-        <span class=c1>// Alertにアクションを追加.</span>
-        <span class=n>myAlert</span><span class=p>.</span><span class=n>addAction</span><span class=p>(</span><span class=n>OkAction</span><span class=p>)</span>
-        <span class=n>myAlert</span><span class=p>.</span><span class=n>addAction</span><span class=p>(</span><span class=n>CancelAction</span><span class=p>)</span>
-
-        <span class=c1>// Alertを発動する.</span>
-        <span class=n>present</span><span class=p>(</span><span class=n>myAlert</span><span class=p>,</span> <span class=n>animated</span><span class=p>:</span> <span class=kc>true</span><span class=p>,</span> <span class=n>completion</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=kr>@objc</span> <span class=kd>func</span> <span class=nf>changeTextField</span> <span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>NSNotification</span><span class=p>)</span> <span class=p>{</span>
-
-        <span class=kd>let</span> <span class=nv>textField</span> <span class=p>=</span> <span class=n>sender</span><span class=p>.</span><span class=n>object</span> <span class=k>as</span><span class=p>!</span> <span class=bp>UITextField</span>
-
-        <span class=c1>// 入力された文字を取得.</span>
-        <span class=n>InputStr</span> <span class=p>=</span> <span class=n>textField</span><span class=p>.</span><span class=n>text</span>
-
-        <span class=c1>// 入力された文字が6文字を超えたら入力を制限.</span>
-        <span class=k>if</span> <span class=n>InputStr</span><span class=p>.</span><span class=n>characters</span><span class=p>.</span><span class=bp>count</span> <span class=o>&lt;=</span> <span class=n>maxLength</span> <span class=p>{</span>
-            <span class=n>textField</span><span class=p>.</span><span class=n>isEnabled</span> <span class=p>=</span> <span class=kc>true</span>
-
-            <span class=c1>// 入力された文字を表示.</span>
-            <span class=bp>print</span><span class=p>(</span><span class=n>textField</span><span class=p>.</span><span class=n>text</span><span class=p>!)</span>
-        <span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
-            <span class=n>textField</span><span class=p>.</span><span class=n>isEnabled</span> <span class=p>=</span> <span class=kc>false</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;6文字を超えています&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span>
-<span class=normal>73</span>
-<span class=normal>74</span>
-<span class=normal>75</span>
-<span class=normal>76</span>
-<span class=normal>77</span>
-<span class=normal>78</span>
-<span class=normal>79</span>
-<span class=normal>80</span>
-<span class=normal>81</span>
-<span class=normal>82</span>
-<span class=normal>83</span>
-<span class=normal>84</span>
-<span class=normal>85</span>
-<span class=normal>86</span>
-<span class=normal>87</span>
-<span class=normal>88</span>
-<span class=normal>89</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit042_3.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/21.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
-
-<span class=kd>import</span> <span class=nc>UIKit</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
-
-    <span class=kd>var</span> <span class=nv>InputStr</span><span class=p>:</span><span class=nb>String</span><span class=p>!</span>
-
-    <span class=c1>// 入力できる最大文字数.</span>
-    <span class=kd>let</span> <span class=nv>maxLength</span><span class=p>:</span> <span class=nb>Int</span> <span class=p>=</span> <span class=mi>6</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyan</span>
-
-        <span class=kd>let</span> <span class=nv>myButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=mi>200</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>40</span><span class=p>))</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>200</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>red</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;UIAlertを発動&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>touchUpInside</span><span class=p>)</span>
-
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-
-    <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>)</span> <span class=p>{</span>
-
-        <span class=c1>// Alert生成.</span>
-        <span class=kd>let</span> <span class=nv>myAlert</span><span class=p>:</span> <span class=bp>UIAlertController</span> <span class=p>=</span> <span class=bp>UIAlertController</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;title&quot;</span><span class=p>,</span> <span class=n>message</span><span class=p>:</span> <span class=s>&quot;6文字以下で入力&quot;</span><span class=p>,</span> <span class=n>preferredStyle</span><span class=p>:</span> <span class=n>UIAlertControllerStyle</span><span class=p>.</span><span class=n>alert</span><span class=p>)</span>
-
-
-        <span class=c1>// OKアクション生成.</span>
-        <span class=kd>let</span> <span class=nv>OkAction</span> <span class=p>=</span> <span class=bp>UIAlertAction</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;OK&quot;</span><span class=p>,</span> <span class=n>style</span><span class=p>:</span> <span class=n>UIAlertActionStyle</span><span class=p>.</span><span class=k>default</span><span class=p>)</span> <span class=p>{</span> <span class=p>(</span><span class=n>action</span><span class=p>:</span> <span class=bp>UIAlertAction</span><span class=p>!)</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;OK&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
-
-        <span class=c1>// Cancelアクション生成.</span>
-        <span class=kd>let</span> <span class=nv>CancelAction</span> <span class=p>=</span> <span class=bp>UIAlertAction</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;Cancel&quot;</span><span class=p>,</span> <span class=n>style</span><span class=p>:</span> <span class=n>UIAlertActionStyle</span><span class=p>.</span><span class=n>destructive</span><span class=p>)</span> <span class=p>{</span> <span class=p>(</span><span class=n>action</span><span class=p>:</span> <span class=bp>UIAlertAction</span><span class=p>!)</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Cancel&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
-
-        <span class=c1>// AlertにTextFieldを追加.</span>
-        <span class=n>myAlert</span><span class=p>.</span><span class=n>addTextField</span> <span class=p>{</span> <span class=p>(</span><span class=n>textField</span><span class=p>:</span> <span class=bp>UITextField</span><span class=p>!)</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
-
-            <span class=c1>// NotificationCenterを生成.</span>
-            <span class=kd>let</span> <span class=nv>myNotificationCenter</span> <span class=p>=</span> <span class=n>NotificationCenter</span><span class=p>.</span><span class=k>default</span>
-
-            <span class=c1>// textFieldに変更があればchangeTextFieldメソッドに通知.</span>
-            <span class=n>myNotificationCenter</span><span class=p>.</span><span class=n>addObserver</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>selector</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>changeTextField</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=n>name</span><span class=p>:</span> <span class=bp>NSNotification</span><span class=p>.</span><span class=n>Name</span><span class=p>.</span><span class=n>UITextFieldTextDidChange</span><span class=p>,</span> <span class=n>object</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-        <span class=p>}</span>
-
-        <span class=c1>// Alertにアクションを追加.</span>
-        <span class=n>myAlert</span><span class=p>.</span><span class=n>addAction</span><span class=p>(</span><span class=n>OkAction</span><span class=p>)</span>
-        <span class=n>myAlert</span><span class=p>.</span><span class=n>addAction</span><span class=p>(</span><span class=n>CancelAction</span><span class=p>)</span>
-
-        <span class=c1>// Alertを発動する.</span>
-        <span class=n>present</span><span class=p>(</span><span class=n>myAlert</span><span class=p>,</span> <span class=n>animated</span><span class=p>:</span> <span class=kc>true</span><span class=p>,</span> <span class=n>completion</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=kd>func</span> <span class=nf>changeTextField</span> <span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>NSNotification</span><span class=p>)</span> <span class=p>{</span>
-
-        <span class=kd>let</span> <span class=nv>textField</span> <span class=p>=</span> <span class=n>sender</span><span class=p>.</span><span class=n>object</span> <span class=k>as</span><span class=p>!</span> <span class=bp>UITextField</span>
-
-        <span class=c1>// 入力された文字を取得.</span>
-        <span class=n>InputStr</span> <span class=p>=</span> <span class=n>textField</span><span class=p>.</span><span class=n>text</span>
-
-        <span class=c1>// 入力された文字が6文字を超えたら入力を制限.</span>
-        <span class=k>if</span> <span class=n>InputStr</span><span class=p>.</span><span class=n>characters</span><span class=p>.</span><span class=bp>count</span> <span class=o>&lt;=</span> <span class=n>maxLength</span> <span class=p>{</span>
-            <span class=n>textField</span><span class=p>.</span><span class=n>isEnabled</span> <span class=p>=</span> <span class=kc>true</span>
-
-            <span class=c1>// 入力された文字を表示.</span>
-            <span class=bp>print</span><span class=p>(</span><span class=n>textField</span><span class=p>.</span><span class=n>text</span><span class=p>!)</span>
-        <span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
-            <span class=n>textField</span><span class=p>.</span><span class=n>isEnabled</span> <span class=p>=</span> <span class=kc>false</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;6文字を超えています&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-3_swift class=code-tab data-lang=swift aria-controls=tab-group-0-3_swift-panel role=tab><label for=tab-group-0-3_swift class=code-tab-label data-lang=swift id=tab-group-0-3_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-3_swift-panel aria-labelledby=tab-group-0-3_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span>
-<span class=normal>73</span>
-<span class=normal>74</span>
-<span class=normal>75</span>
-<span class=normal>76</span>
-<span class=normal>77</span>
-<span class=normal>78</span>
-<span class=normal>79</span>
-<span class=normal>80</span>
-<span class=normal>81</span>
-<span class=normal>82</span>
-<span class=normal>83</span>
-<span class=normal>84</span>
-<span class=normal>85</span>
-<span class=normal>86</span>
-<span class=normal>87</span>
-<span class=normal>88</span>
-<span class=normal>89</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit042_2.3</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/21.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
-
-<span class=kd>import</span> <span class=nc>UIKit</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
-
-    <span class=kd>var</span> <span class=nv>InputStr</span><span class=p>:</span><span class=nb>String</span><span class=p>!</span>
-
-    <span class=c1>// 入力できる最大文字数.</span>
-    <span class=kd>let</span> <span class=nv>maxLength</span><span class=p>:</span> <span class=nb>Int</span> <span class=p>=</span> <span class=mi>6</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyanColor</span><span class=p>()</span>
-
-        <span class=kd>let</span> <span class=nv>myButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=mi>200</span><span class=p>,</span> <span class=mi>40</span><span class=p>))</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=mi>200</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>redColor</span><span class=p>()</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;UIAlertを発動&quot;</span><span class=p>,</span> <span class=n>forState</span><span class=p>:</span> <span class=p>.</span><span class=n>Normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=kc>_</span><span class=p>:)),</span> <span class=n>forControlEvents</span><span class=p>:</span> <span class=p>.</span><span class=n>TouchUpInside</span><span class=p>)</span>
-
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-
-    <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>)</span> <span class=p>{</span>
-
-        <span class=c1>// Alert生成.</span>
-        <span class=kd>let</span> <span class=nv>myAlert</span><span class=p>:</span> <span class=bp>UIAlertController</span> <span class=p>=</span> <span class=bp>UIAlertController</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;title&quot;</span><span class=p>,</span> <span class=n>message</span><span class=p>:</span> <span class=s>&quot;6文字以下で入力&quot;</span><span class=p>,</span> <span class=n>preferredStyle</span><span class=p>:</span> <span class=n>UIAlertControllerStyle</span><span class=p>.</span><span class=n>Alert</span><span class=p>)</span>
-
-
-        <span class=c1>// OKアクション生成.</span>
-        <span class=kd>let</span> <span class=nv>OkAction</span> <span class=p>=</span> <span class=bp>UIAlertAction</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;OK&quot;</span><span class=p>,</span> <span class=n>style</span><span class=p>:</span> <span class=n>UIAlertActionStyle</span><span class=p>.</span><span class=n>Default</span><span class=p>)</span> <span class=p>{</span> <span class=p>(</span><span class=n>action</span><span class=p>:</span> <span class=bp>UIAlertAction</span><span class=p>!)</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;OK&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
-
-        <span class=c1>// Cancelアクション生成.</span>
-        <span class=kd>let</span> <span class=nv>CancelAction</span> <span class=p>=</span> <span class=bp>UIAlertAction</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;Cancel&quot;</span><span class=p>,</span> <span class=n>style</span><span class=p>:</span> <span class=n>UIAlertActionStyle</span><span class=p>.</span><span class=n>Destructive</span><span class=p>)</span> <span class=p>{</span> <span class=p>(</span><span class=n>action</span><span class=p>:</span> <span class=bp>UIAlertAction</span><span class=p>!)</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Cancel&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
-
-        <span class=c1>// AlertにTextFieldを追加.</span>
-        <span class=n>myAlert</span><span class=p>.</span><span class=n>addTextFieldWithConfigurationHandler</span> <span class=p>{</span> <span class=p>(</span><span class=n>textField</span><span class=p>:</span> <span class=bp>UITextField</span><span class=p>!)</span> <span class=p>-&gt;</span> <span class=nb>Void</span> <span class=k>in</span>
-
-            <span class=c1>// NotificationCenterを生成.</span>
-            <span class=kd>let</span> <span class=nv>myNotificationCenter</span> <span class=p>=</span> <span class=bp>NSNotificationCenter</span><span class=p>.</span><span class=n>defaultCenter</span><span class=p>()</span>
-
-            <span class=c1>// textFieldに変更があればchangeTextFieldメソッドに通知.</span>
-            <span class=n>myNotificationCenter</span><span class=p>.</span><span class=n>addObserver</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>selector</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>changeTextField</span><span class=p>(</span><span class=kc>_</span><span class=p>:)),</span> <span class=n>name</span><span class=p>:</span> <span class=n>UITextFieldTextDidChangeNotification</span><span class=p>,</span> <span class=n>object</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-        <span class=p>}</span>
-
-        <span class=c1>// Alertにアクションを追加.</span>
-        <span class=n>myAlert</span><span class=p>.</span><span class=n>addAction</span><span class=p>(</span><span class=n>OkAction</span><span class=p>)</span>
-        <span class=n>myAlert</span><span class=p>.</span><span class=n>addAction</span><span class=p>(</span><span class=n>CancelAction</span><span class=p>)</span>
-
-        <span class=c1>// Alertを発動する.</span>
-        <span class=n>presentViewController</span><span class=p>(</span><span class=n>myAlert</span><span class=p>,</span> <span class=n>animated</span><span class=p>:</span> <span class=kc>true</span><span class=p>,</span> <span class=n>completion</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=kd>func</span> <span class=nf>changeTextField</span> <span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>NSNotification</span><span class=p>)</span> <span class=p>{</span>
-
-        <span class=kd>let</span> <span class=nv>textField</span> <span class=p>=</span> <span class=n>sender</span><span class=p>.</span><span class=n>object</span> <span class=k>as</span><span class=p>!</span> <span class=bp>UITextField</span>
-
-        <span class=c1>// 入力された文字を取得.</span>
-        <span class=n>InputStr</span> <span class=p>=</span> <span class=n>textField</span><span class=p>.</span><span class=n>text</span>
-
-        <span class=c1>// 入力された文字が6文字を超えたら入力を制限.</span>
-        <span class=k>if</span> <span class=n>InputStr</span><span class=p>.</span><span class=n>characters</span><span class=p>.</span><span class=bp>count</span> <span class=o>&lt;=</span> <span class=n>maxLength</span> <span class=p>{</span>
-            <span class=n>textField</span><span class=p>.</span><span class=n>enabled</span> <span class=p>=</span> <span class=kc>true</span>
-
-            <span class=c1>// 入力された文字を表示.</span>
-            <span class=bp>print</span><span class=p>(</span><span class=n>textField</span><span class=p>.</span><span class=n>text</span><span class=p>!)</span>
-        <span class=p>}</span> <span class=k>else</span> <span class=p>{</span>
-            <span class=n>textField</span><span class=p>.</span><span class=n>enabled</span> <span class=p>=</span> <span class=kc>false</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;6文字を超えています&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit042_5.0
+//
+//  Copyright © 2020年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+
+    var InputStr:String!
+
+    // 入力できる最大文字数.
+    let maxLength: Int = 6
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.view.backgroundColor = UIColor.cyan
+
+        let myButton = UIButton(frame: CGRect(x:0, y:0, width:200, height:40))
+        myButton.layer.position = CGPoint(x:self.view.frame.width/2, y:200)
+        myButton.layer.cornerRadius = 20.0
+        myButton.backgroundColor = UIColor.red
+        myButton.setTitle(&quot;UIAlertを発動&quot;, for: .normal)
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(sender:)), for: .touchUpInside)
+
+        self.view.addSubview(myButton)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
+    @objc func onClickMyButton(sender: UIButton) {
+
+        // Alert生成.
+        let myAlert: UIAlertController = UIAlertController(title: &quot;title&quot;, message: &quot;6文字以下で入力&quot;, preferredStyle: UIAlertController.Style.alert)
+
+
+        // OKアクション生成.
+        let OkAction = UIAlertAction(title: &quot;OK&quot;, style: UIAlertAction.Style.default) { (action: UIAlertAction!) -&gt; Void in
+            print(&quot;OK&quot;)
+        }
+
+        // Cancelアクション生成.
+        let CancelAction = UIAlertAction(title: &quot;Cancel&quot;, style: UIAlertAction.Style.destructive) { (action: UIAlertAction!) -&gt; Void in
+            print(&quot;Cancel&quot;)
+        }
+
+        // AlertにTextFieldを追加.
+        myAlert.addTextField { (textField: UITextField!) -&gt; Void in
+
+            // NotificationCenterを生成.
+            let myNotificationCenter = NotificationCenter.default
+
+            // textFieldに変更があればchangeTextFieldメソッドに通知.
+            myNotificationCenter.addObserver(self, selector: #selector(ViewController.changeTextField(sender:)), name: UITextField.textDidChangeNotification, object: nil)
+        }
+
+        // Alertにアクションを追加.
+        myAlert.addAction(OkAction)
+        myAlert.addAction(CancelAction)
+
+        // Alertを発動する.
+        present(myAlert, animated: true, completion: nil)
+    }
+
+    @objc func changeTextField (sender: NSNotification) {
+
+        let textField = sender.object as! UITextField
+
+        // 入力された文字を取得.
+        InputStr = textField.text
+
+        // 入力された文字が6文字を超えたら入力を制限.
+        if InputStr.count &lt;= maxLength {
+            textField.isEnabled = true
+
+            // 入力された文字を表示.
+            print(textField.text!)
+        } else {
+            textField.isEnabled = false
+            print(&quot;6文字を超えています&quot;)
+        }
+    }
+}
+
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit042_4.0
+//
+//  Created by KimikoWatanabe on 2016/08/21.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+
+    var InputStr:String!
+
+    // 入力できる最大文字数.
+    let maxLength: Int = 6
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.view.backgroundColor = UIColor.cyan
+
+        let myButton = UIButton(frame: CGRect(x:0, y:0, width:200, height:40))
+        myButton.layer.position = CGPoint(x:self.view.frame.width/2, y:200)
+        myButton.layer.cornerRadius = 20.0
+        myButton.backgroundColor = UIColor.red
+        myButton.setTitle(&quot;UIAlertを発動&quot;, for: .normal)
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(sender:)), for: .touchUpInside)
+
+        self.view.addSubview(myButton)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
+    @objc func onClickMyButton(sender: UIButton) {
+
+        // Alert生成.
+        let myAlert: UIAlertController = UIAlertController(title: &quot;title&quot;, message: &quot;6文字以下で入力&quot;, preferredStyle: UIAlertController.Style.alert)
+
+
+        // OKアクション生成.
+        let OkAction = UIAlertAction(title: &quot;OK&quot;, style: UIAlertAction.Style.default) { (action: UIAlertAction!) -&gt; Void in
+            print(&quot;OK&quot;)
+        }
+
+        // Cancelアクション生成.
+        let CancelAction = UIAlertAction(title: &quot;Cancel&quot;, style: UIAlertAction.Style.destructive) { (action: UIAlertAction!) -&gt; Void in
+            print(&quot;Cancel&quot;)
+        }
+
+        // AlertにTextFieldを追加.
+        myAlert.addTextField { (textField: UITextField!) -&gt; Void in
+
+            // NotificationCenterを生成.
+            let myNotificationCenter = NotificationCenter.default
+
+            // textFieldに変更があればchangeTextFieldメソッドに通知.
+            myNotificationCenter.addObserver(self, selector: #selector(ViewController.changeTextField(sender:)), name: UITextField.textDidChangeNotification, object: nil)
+        }
+
+        // Alertにアクションを追加.
+        myAlert.addAction(OkAction)
+        myAlert.addAction(CancelAction)
+
+        // Alertを発動する.
+        present(myAlert, animated: true, completion: nil)
+    }
+
+    @objc func changeTextField (sender: NSNotification) {
+
+        let textField = sender.object as! UITextField
+
+        // 入力された文字を取得.
+        InputStr = textField.text
+
+        // 入力された文字が6文字を超えたら入力を制限.
+        if InputStr.characters.count &lt;= maxLength {
+            textField.isEnabled = true
+
+            // 入力された文字を表示.
+            print(textField.text!)
+        } else {
+            textField.isEnabled = false
+            print(&quot;6文字を超えています&quot;)
+        }
+    }
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit042_3.0
+//
+//  Created by KimikoWatanabe on 2016/08/21.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+
+    var InputStr:String!
+
+    // 入力できる最大文字数.
+    let maxLength: Int = 6
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.view.backgroundColor = UIColor.cyan
+
+        let myButton = UIButton(frame: CGRect(x:0, y:0, width:200, height:40))
+        myButton.layer.position = CGPoint(x:self.view.frame.width/2, y:200)
+        myButton.layer.cornerRadius = 20.0
+        myButton.backgroundColor = UIColor.red
+        myButton.setTitle(&quot;UIAlertを発動&quot;, for: .normal)
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(sender:)), for: .touchUpInside)
+
+        self.view.addSubview(myButton)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
+    func onClickMyButton(sender: UIButton) {
+
+        // Alert生成.
+        let myAlert: UIAlertController = UIAlertController(title: &quot;title&quot;, message: &quot;6文字以下で入力&quot;, preferredStyle: UIAlertControllerStyle.alert)
+
+
+        // OKアクション生成.
+        let OkAction = UIAlertAction(title: &quot;OK&quot;, style: UIAlertActionStyle.default) { (action: UIAlertAction!) -&gt; Void in
+            print(&quot;OK&quot;)
+        }
+
+        // Cancelアクション生成.
+        let CancelAction = UIAlertAction(title: &quot;Cancel&quot;, style: UIAlertActionStyle.destructive) { (action: UIAlertAction!) -&gt; Void in
+            print(&quot;Cancel&quot;)
+        }
+
+        // AlertにTextFieldを追加.
+        myAlert.addTextField { (textField: UITextField!) -&gt; Void in
+
+            // NotificationCenterを生成.
+            let myNotificationCenter = NotificationCenter.default
+
+            // textFieldに変更があればchangeTextFieldメソッドに通知.
+            myNotificationCenter.addObserver(self, selector: #selector(ViewController.changeTextField(sender:)), name: NSNotification.Name.UITextFieldTextDidChange, object: nil)
+        }
+
+        // Alertにアクションを追加.
+        myAlert.addAction(OkAction)
+        myAlert.addAction(CancelAction)
+
+        // Alertを発動する.
+        present(myAlert, animated: true, completion: nil)
+    }
+
+    func changeTextField (sender: NSNotification) {
+
+        let textField = sender.object as! UITextField
+
+        // 入力された文字を取得.
+        InputStr = textField.text
+
+        // 入力された文字が6文字を超えたら入力を制限.
+        if InputStr.characters.count &lt;= maxLength {
+            textField.isEnabled = true
+
+            // 入力された文字を表示.
+            print(textField.text!)
+        } else {
+            textField.isEnabled = false
+            print(&quot;6文字を超えています&quot;)
+        }
+    }
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-3_swift class=code-tab data-lang=swift aria-controls=tab-group-0-3_swift-panel role=tab><label for=tab-group-0-3_swift class=code-tab-label data-lang=swift id=tab-group-0-3_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-3_swift-panel aria-labelledby=tab-group-0-3_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit042_2.3
+//
+//  Created by KimikoWatanabe on 2016/08/21.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+
+    var InputStr:String!
+
+    // 入力できる最大文字数.
+    let maxLength: Int = 6
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.view.backgroundColor = UIColor.cyanColor()
+
+        let myButton = UIButton(frame: CGRectMake(0, 0, 200, 40))
+        myButton.layer.position = CGPointMake(self.view.frame.width/2, 200)
+        myButton.layer.cornerRadius = 20.0
+        myButton.backgroundColor = UIColor.redColor()
+        myButton.setTitle(&quot;UIAlertを発動&quot;, forState: .Normal)
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(_:)), forControlEvents: .TouchUpInside)
+
+        self.view.addSubview(myButton)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
+    func onClickMyButton(sender: UIButton) {
+
+        // Alert生成.
+        let myAlert: UIAlertController = UIAlertController(title: &quot;title&quot;, message: &quot;6文字以下で入力&quot;, preferredStyle: UIAlertControllerStyle.Alert)
+
+
+        // OKアクション生成.
+        let OkAction = UIAlertAction(title: &quot;OK&quot;, style: UIAlertActionStyle.Default) { (action: UIAlertAction!) -&gt; Void in
+            print(&quot;OK&quot;)
+        }
+
+        // Cancelアクション生成.
+        let CancelAction = UIAlertAction(title: &quot;Cancel&quot;, style: UIAlertActionStyle.Destructive) { (action: UIAlertAction!) -&gt; Void in
+            print(&quot;Cancel&quot;)
+        }
+
+        // AlertにTextFieldを追加.
+        myAlert.addTextFieldWithConfigurationHandler { (textField: UITextField!) -&gt; Void in
+
+            // NotificationCenterを生成.
+            let myNotificationCenter = NSNotificationCenter.defaultCenter()
+
+            // textFieldに変更があればchangeTextFieldメソッドに通知.
+            myNotificationCenter.addObserver(self, selector: #selector(ViewController.changeTextField(_:)), name: UITextFieldTextDidChangeNotification, object: nil)
+        }
+
+        // Alertにアクションを追加.
+        myAlert.addAction(OkAction)
+        myAlert.addAction(CancelAction)
+
+        // Alertを発動する.
+        presentViewController(myAlert, animated: true, completion: nil)
+    }
+
+    func changeTextField (sender: NSNotification) {
+
+        let textField = sender.object as! UITextField
+
+        // 入力された文字を取得.
+        InputStr = textField.text
+
+        // 入力された文字が6文字を超えたら入力を制限.
+        if InputStr.characters.count &lt;= maxLength {
+            textField.enabled = true
+
+            // 入力された文字を表示.
+            print(textField.text!)
+        } else {
+            textField.enabled = false
+            print(&quot;6文字を超えています&quot;)
+        }
+    }
+}
+</code></pre></div></div>
 <h2 id="4x5x">4.xと5.xの差分</h2>
 <ul>
 <li><code>String.characters</code> が廃止のため、文字数は <code>String.count</code> から取得するように変更</li>

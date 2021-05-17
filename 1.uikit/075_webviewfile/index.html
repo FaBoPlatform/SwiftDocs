@@ -2331,220 +2331,115 @@
                 
                 <h1 id="uiwebview">UIWebViewでファイルの表示</h1>
 <p><img alt="Preview uikit075" src="../img/uikit075.png" /></p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit075</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit075
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class ViewController: UIViewController {
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// WebViewを生成.</span>
-        <span class=kd>let</span> <span class=nv>myWebView</span> <span class=p>=</span> <span class=bp>UIWebView</span><span class=p>()</span>
-        <span class=n>myWebView</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span>
+        // WebViewを生成.
+        let myWebView = UIWebView()
+        myWebView.frame = self.view.bounds
 
-        <span class=c1>// viewにWebViewを追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myWebView</span><span class=p>)</span>
+        // viewにWebViewを追加.
+        self.view.addSubview(myWebView)
 
-        <span class=c1>// プロジェクトに管理されているファイルのpathを取得.</span>
-        <span class=kd>let</span> <span class=nv>path</span><span class=p>:</span> <span class=nb>String</span> <span class=p>=</span> <span class=n>Bundle</span><span class=p>.</span><span class=n>main</span><span class=p>.</span><span class=n>path</span><span class=p>(</span><span class=n>forResource</span><span class=p>:</span> <span class=s>&quot;document&quot;</span><span class=p>,</span> <span class=n>ofType</span><span class=p>:</span> <span class=s>&quot;pdf&quot;</span><span class=p>)</span><span class=o>!</span>
+        // プロジェクトに管理されているファイルのpathを取得.
+        let path: String = Bundle.main.path(forResource: &quot;document&quot;, ofType: &quot;pdf&quot;)!
 
-        <span class=kd>let</span> <span class=nv>url</span> <span class=p>=</span> <span class=bp>NSURL</span><span class=p>(</span><span class=n>fileURLWithPath</span><span class=p>:</span> <span class=n>path</span> <span class=k>as</span> <span class=nb>String</span><span class=p>)</span>
-        <span class=kd>let</span> <span class=nv>request</span> <span class=p>=</span> <span class=bp>NSURLRequest</span><span class=p>(</span><span class=n>url</span><span class=p>:</span> <span class=n>url</span> <span class=k>as</span> <span class=n>URL</span><span class=p>)</span>
+        let url = NSURL(fileURLWithPath: path as String)
+        let request = NSURLRequest(url: url as URL)
 
-        <span class=c1>// リクエストロード.</span>
-        <span class=n>myWebView</span><span class=p>.</span><span class=n>loadRequest</span><span class=p>(</span><span class=n>request</span> <span class=k>as</span> <span class=n>URLRequest</span><span class=p>)</span>
-    <span class=p>}</span>
+        // リクエストロード.
+        myWebView.loadRequest(request as URLRequest)
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit075</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit075
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span> 
+class ViewController: UIViewController { 
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// WebViewを生成.</span>
-        <span class=kd>let</span> <span class=nv>myWebView</span> <span class=p>=</span> <span class=bp>UIWebView</span><span class=p>()</span>
-        <span class=n>myWebView</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span>
+        // WebViewを生成.
+        let myWebView = UIWebView()
+        myWebView.frame = self.view.bounds
 
-        <span class=c1>// viewにWebViewを追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myWebView</span><span class=p>)</span>
+        // viewにWebViewを追加.
+        self.view.addSubview(myWebView)
 
-        <span class=c1>// プロジェクトに管理されているファイルのpathを取得.</span>
-        <span class=kd>let</span> <span class=nv>path</span><span class=p>:</span> <span class=bp>NSString</span> <span class=p>=</span> <span class=n>Bundle</span><span class=p>.</span><span class=n>main</span><span class=p>.</span><span class=n>path</span><span class=p>(</span><span class=n>forResource</span><span class=p>:</span> <span class=s>&quot;document&quot;</span><span class=p>,</span> <span class=n>ofType</span><span class=p>:</span> <span class=s>&quot;pdf&quot;</span><span class=p>)</span><span class=o>!</span>
+        // プロジェクトに管理されているファイルのpathを取得.
+        let path: NSString = Bundle.main.path(forResource: &quot;document&quot;, ofType: &quot;pdf&quot;)!
 
-        <span class=kd>let</span> <span class=nv>url</span> <span class=p>=</span> <span class=bp>NSURL</span><span class=p>(</span><span class=n>fileURLWithPath</span><span class=p>:</span> <span class=n>path</span> <span class=k>as</span> <span class=nb>String</span><span class=p>)</span>
-        <span class=kd>let</span> <span class=nv>request</span> <span class=p>=</span> <span class=bp>NSURLRequest</span><span class=p>(</span><span class=n>url</span><span class=p>:</span> <span class=n>url</span> <span class=k>as</span> <span class=n>URL</span><span class=p>)</span>
+        let url = NSURL(fileURLWithPath: path as String)
+        let request = NSURLRequest(url: url as URL)
 
-        <span class=c1>// リクエストロード.</span>
-        <span class=n>myWebView</span><span class=p>.</span><span class=n>loadRequest</span><span class=p>(</span><span class=n>request</span> <span class=k>as</span> <span class=n>URLRequest</span><span class=p>)</span>
-    <span class=p>}</span>
+        // リクエストロード.
+        myWebView.loadRequest(request as URLRequest)
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span> 
-<span class=p>}</span> 
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit075</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    } 
+} 
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit075
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span> 
+class ViewController: UIViewController { 
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// WebViewを生成.</span>
-        <span class=kd>let</span> <span class=nv>myWebView</span> <span class=p>=</span> <span class=bp>UIWebView</span><span class=p>()</span>
-        <span class=n>myWebView</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span>
+        // WebViewを生成.
+        let myWebView = UIWebView()
+        myWebView.frame = self.view.bounds
 
-        <span class=c1>// viewにWebViewを追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myWebView</span><span class=p>)</span>
+        // viewにWebViewを追加.
+        self.view.addSubview(myWebView)
 
-        <span class=c1>// プロジェクトに管理されているファイルのpathを取得.</span>
-        <span class=kd>let</span> <span class=nv>path</span><span class=p>:</span> <span class=bp>NSString</span> <span class=p>=</span> <span class=bp>NSBundle</span><span class=p>.</span><span class=n>mainBundle</span><span class=p>().</span><span class=n>pathForResource</span><span class=p>(</span><span class=s>&quot;document&quot;</span><span class=p>,</span> <span class=n>ofType</span><span class=p>:</span> <span class=s>&quot;pdf&quot;</span><span class=p>)</span><span class=o>!</span>
+        // プロジェクトに管理されているファイルのpathを取得.
+        let path: NSString = NSBundle.mainBundle().pathForResource(&quot;document&quot;, ofType: &quot;pdf&quot;)!
 
-        <span class=kd>let</span> <span class=nv>url</span> <span class=p>=</span> <span class=bp>NSURL</span><span class=p>(</span><span class=n>fileURLWithPath</span><span class=p>:</span> <span class=n>path</span> <span class=k>as</span> <span class=nb>String</span><span class=p>)</span>
-        <span class=kd>let</span> <span class=nv>request</span> <span class=p>=</span> <span class=bp>NSURLRequest</span><span class=p>(</span><span class=n>URL</span><span class=p>:</span> <span class=n>url</span><span class=p>)</span>
+        let url = NSURL(fileURLWithPath: path as String)
+        let request = NSURLRequest(URL: url)
 
-        <span class=c1>// リクエストロード.</span>
-        <span class=n>myWebView</span><span class=p>.</span><span class=n>loadRequest</span><span class=p>(</span><span class=n>request</span><span class=p>)</span>
-    <span class=p>}</span>
+        // リクエストロード.
+        myWebView.loadRequest(request)
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span> 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    } 
+}
+</code></pre></div></div>
 <h2 id="3x4x">3.xと4.xの差分</h2>
 <ul>
 <li><code>let path: NSString</code> を <code>let path: String</code> に変更</li>

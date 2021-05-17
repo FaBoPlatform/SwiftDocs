@@ -2331,676 +2331,343 @@
                 
                 <h1 id="uiwebviewpdf">UIWebViewでPDFを開く</h1>
 <p><img alt="Preview uikit074" src="../img/uikit074.png" /></p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal>  1</span>
-<span class=normal>  2</span>
-<span class=normal>  3</span>
-<span class=normal>  4</span>
-<span class=normal>  5</span>
-<span class=normal>  6</span>
-<span class=normal>  7</span>
-<span class=normal>  8</span>
-<span class=normal>  9</span>
-<span class=normal> 10</span>
-<span class=normal> 11</span>
-<span class=normal> 12</span>
-<span class=normal> 13</span>
-<span class=normal> 14</span>
-<span class=normal> 15</span>
-<span class=normal> 16</span>
-<span class=normal> 17</span>
-<span class=normal> 18</span>
-<span class=normal> 19</span>
-<span class=normal> 20</span>
-<span class=normal> 21</span>
-<span class=normal> 22</span>
-<span class=normal> 23</span>
-<span class=normal> 24</span>
-<span class=normal> 25</span>
-<span class=normal> 26</span>
-<span class=normal> 27</span>
-<span class=normal> 28</span>
-<span class=normal> 29</span>
-<span class=normal> 30</span>
-<span class=normal> 31</span>
-<span class=normal> 32</span>
-<span class=normal> 33</span>
-<span class=normal> 34</span>
-<span class=normal> 35</span>
-<span class=normal> 36</span>
-<span class=normal> 37</span>
-<span class=normal> 38</span>
-<span class=normal> 39</span>
-<span class=normal> 40</span>
-<span class=normal> 41</span>
-<span class=normal> 42</span>
-<span class=normal> 43</span>
-<span class=normal> 44</span>
-<span class=normal> 45</span>
-<span class=normal> 46</span>
-<span class=normal> 47</span>
-<span class=normal> 48</span>
-<span class=normal> 49</span>
-<span class=normal> 50</span>
-<span class=normal> 51</span>
-<span class=normal> 52</span>
-<span class=normal> 53</span>
-<span class=normal> 54</span>
-<span class=normal> 55</span>
-<span class=normal> 56</span>
-<span class=normal> 57</span>
-<span class=normal> 58</span>
-<span class=normal> 59</span>
-<span class=normal> 60</span>
-<span class=normal> 61</span>
-<span class=normal> 62</span>
-<span class=normal> 63</span>
-<span class=normal> 64</span>
-<span class=normal> 65</span>
-<span class=normal> 66</span>
-<span class=normal> 67</span>
-<span class=normal> 68</span>
-<span class=normal> 69</span>
-<span class=normal> 70</span>
-<span class=normal> 71</span>
-<span class=normal> 72</span>
-<span class=normal> 73</span>
-<span class=normal> 74</span>
-<span class=normal> 75</span>
-<span class=normal> 76</span>
-<span class=normal> 77</span>
-<span class=normal> 78</span>
-<span class=normal> 79</span>
-<span class=normal> 80</span>
-<span class=normal> 81</span>
-<span class=normal> 82</span>
-<span class=normal> 83</span>
-<span class=normal> 84</span>
-<span class=normal> 85</span>
-<span class=normal> 86</span>
-<span class=normal> 87</span>
-<span class=normal> 88</span>
-<span class=normal> 89</span>
-<span class=normal> 90</span>
-<span class=normal> 91</span>
-<span class=normal> 92</span>
-<span class=normal> 93</span>
-<span class=normal> 94</span>
-<span class=normal> 95</span>
-<span class=normal> 96</span>
-<span class=normal> 97</span>
-<span class=normal> 98</span>
-<span class=normal> 99</span>
-<span class=normal>100</span>
-<span class=normal>101</span>
-<span class=normal>102</span>
-<span class=normal>103</span>
-<span class=normal>104</span>
-<span class=normal>105</span>
-<span class=normal>106</span>
-<span class=normal>107</span>
-<span class=normal>108</span>
-<span class=normal>109</span>
-<span class=normal>110</span>
-<span class=normal>111</span>
-<span class=normal>112</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  swiftdocs</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
-
-<span class=kd>import</span> <span class=nc>UIKit</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UIWebViewDelegate</span> <span class=p>{</span>
-
-    <span class=kd>var</span> <span class=nv>myWebView</span><span class=p>:</span> <span class=bp>UIWebView</span><span class=p>!</span>
-    <span class=kd>var</span> <span class=nv>myPDFurl</span><span class=p>:</span> <span class=bp>NSURL</span><span class=p>!</span>
-    <span class=kd>var</span> <span class=nv>myRequest</span><span class=p>:</span> <span class=bp>NSURLRequest</span><span class=p>!</span>
-    <span class=kd>var</span> <span class=nv>myIndiator</span><span class=p>:</span> <span class=bp>UIActivityIndicatorView</span><span class=p>!</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-
-        <span class=c1>// Buttonを生成.</span>
-        <span class=kd>let</span> <span class=nv>myButton</span><span class=p>:</span> <span class=bp>UIButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>200</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>50</span><span class=p>))</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span> <span class=o>-</span> <span class=mi>50</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>orange</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;Open PDF&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=bp>UIControl</span><span class=p>.</span><span class=n>State</span><span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=bp>UIControl</span><span class=p>.</span><span class=n>State</span><span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=bp>UIControl</span><span class=p>.</span><span class=n>Event</span><span class=p>.</span><span class=n>touchUpInside</span><span class=p>)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>)</span>
-
-        <span class=c1>// PDFを開くためのWebViewを生成.</span>
-        <span class=n>myWebView</span> <span class=p>=</span> <span class=bp>UIWebView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span><span class=p>))</span>
-        <span class=n>myWebView</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
-        <span class=n>myWebView</span><span class=p>.</span><span class=n>scalesPageToFit</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myWebView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span><span class=o>/</span><span class=mi>2</span><span class=p>)</span>
-
-        <span class=c1>// URLReqestを生成.</span>
-        <span class=n>myPDFurl</span> <span class=p>=</span> <span class=bp>NSURL</span><span class=p>(</span><span class=n>string</span><span class=p>:</span> <span class=s>&quot;https://developer.apple.com/jp/documentation/CocoaEncyclopedia.pdf&quot;</span><span class=p>)</span><span class=o>!</span>
-        <span class=n>myRequest</span> <span class=p>=</span> <span class=bp>NSURLRequest</span><span class=p>(</span><span class=n>url</span><span class=p>:</span> <span class=n>myPDFurl</span> <span class=k>as</span> <span class=n>URL</span><span class=p>)</span>
-
-        <span class=c1>// ページ読み込み中に表示させるインジケータを生成.</span>
-        <span class=n>myIndiator</span> <span class=p>=</span> <span class=bp>UIActivityIndicatorView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>50</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>50</span><span class=p>))</span>
-        <span class=n>myIndiator</span><span class=p>.</span><span class=n>center</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>center</span>
-        <span class=n>myIndiator</span><span class=p>.</span><span class=n>hidesWhenStopped</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myIndiator</span><span class=p>.</span><span class=n>style</span> <span class=p>=</span> <span class=bp>UIActivityIndicatorView</span><span class=p>.</span><span class=n>Style</span><span class=p>.</span><span class=n>gray</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     インジケータのアニメーション開始.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>startAnimation</span><span class=p>()</span> <span class=p>{</span>
-
-        <span class=c1>// NetworkActivityIndicatorを表示.</span>
-        <span class=bp>UIApplication</span><span class=p>.</span><span class=n>shared</span><span class=p>.</span><span class=n>isNetworkActivityIndicatorVisible</span> <span class=p>=</span> <span class=kc>true</span>
-
-        <span class=c1>// UIACtivityIndicatorを表示.</span>
-        <span class=k>if</span> <span class=o>!</span><span class=n>myIndiator</span><span class=p>.</span><span class=n>isAnimating</span> <span class=p>{</span>
-            <span class=n>myIndiator</span><span class=p>.</span><span class=n>startAnimating</span><span class=p>()</span>
-        <span class=p>}</span>
-
-        <span class=c1>// viewにインジケータを追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myIndiator</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     インジケータのアニメーション終了.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>stopAnimation</span><span class=p>()</span> <span class=p>{</span>
-        <span class=c1>// NetworkActivityIndicatorを非表示.</span>
-        <span class=bp>UIApplication</span><span class=p>.</span><span class=n>shared</span><span class=p>.</span><span class=n>isNetworkActivityIndicatorVisible</span> <span class=p>=</span> <span class=kc>false</span>
-
-        <span class=c1>// UIACtivityIndicatorを非表示.</span>
-        <span class=k>if</span> <span class=n>myIndiator</span><span class=p>.</span><span class=n>isAnimating</span> <span class=p>{</span>
-            <span class=n>myIndiator</span><span class=p>.</span><span class=n>stopAnimating</span><span class=p>()</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     Buttonが押された時に呼ばれるメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kr>@objc</span> <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>)</span> <span class=p>{</span>
-
-        <span class=c1>// WebViewのLoad開始.</span>
-        <span class=n>myWebView</span><span class=p>.</span><span class=n>loadRequest</span><span class=p>(</span><span class=n>myRequest</span> <span class=k>as</span> <span class=n>URLRequest</span><span class=p>)</span>
-
-        <span class=c1>// viewにWebViewを追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myWebView</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     WebViewのloadが開始された時に呼ばれるメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>webViewDidStartLoad</span><span class=p>(</span><span class=kc>_</span> <span class=n>webView</span><span class=p>:</span> <span class=bp>UIWebView</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;load started&quot;</span><span class=p>)</span>
-
-        <span class=n>startAnimation</span><span class=p>()</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     WebViewのloadが終了した時に呼ばれるメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>webViewDidFinishLoad</span><span class=p>(</span><span class=kc>_</span> <span class=n>webView</span><span class=p>:</span> <span class=bp>UIWebView</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;load finished&quot;</span><span class=p>)</span>
-
-        <span class=n>stopAnimation</span><span class=p>()</span>
-    <span class=p>}</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal>  1</span>
-<span class=normal>  2</span>
-<span class=normal>  3</span>
-<span class=normal>  4</span>
-<span class=normal>  5</span>
-<span class=normal>  6</span>
-<span class=normal>  7</span>
-<span class=normal>  8</span>
-<span class=normal>  9</span>
-<span class=normal> 10</span>
-<span class=normal> 11</span>
-<span class=normal> 12</span>
-<span class=normal> 13</span>
-<span class=normal> 14</span>
-<span class=normal> 15</span>
-<span class=normal> 16</span>
-<span class=normal> 17</span>
-<span class=normal> 18</span>
-<span class=normal> 19</span>
-<span class=normal> 20</span>
-<span class=normal> 21</span>
-<span class=normal> 22</span>
-<span class=normal> 23</span>
-<span class=normal> 24</span>
-<span class=normal> 25</span>
-<span class=normal> 26</span>
-<span class=normal> 27</span>
-<span class=normal> 28</span>
-<span class=normal> 29</span>
-<span class=normal> 30</span>
-<span class=normal> 31</span>
-<span class=normal> 32</span>
-<span class=normal> 33</span>
-<span class=normal> 34</span>
-<span class=normal> 35</span>
-<span class=normal> 36</span>
-<span class=normal> 37</span>
-<span class=normal> 38</span>
-<span class=normal> 39</span>
-<span class=normal> 40</span>
-<span class=normal> 41</span>
-<span class=normal> 42</span>
-<span class=normal> 43</span>
-<span class=normal> 44</span>
-<span class=normal> 45</span>
-<span class=normal> 46</span>
-<span class=normal> 47</span>
-<span class=normal> 48</span>
-<span class=normal> 49</span>
-<span class=normal> 50</span>
-<span class=normal> 51</span>
-<span class=normal> 52</span>
-<span class=normal> 53</span>
-<span class=normal> 54</span>
-<span class=normal> 55</span>
-<span class=normal> 56</span>
-<span class=normal> 57</span>
-<span class=normal> 58</span>
-<span class=normal> 59</span>
-<span class=normal> 60</span>
-<span class=normal> 61</span>
-<span class=normal> 62</span>
-<span class=normal> 63</span>
-<span class=normal> 64</span>
-<span class=normal> 65</span>
-<span class=normal> 66</span>
-<span class=normal> 67</span>
-<span class=normal> 68</span>
-<span class=normal> 69</span>
-<span class=normal> 70</span>
-<span class=normal> 71</span>
-<span class=normal> 72</span>
-<span class=normal> 73</span>
-<span class=normal> 74</span>
-<span class=normal> 75</span>
-<span class=normal> 76</span>
-<span class=normal> 77</span>
-<span class=normal> 78</span>
-<span class=normal> 79</span>
-<span class=normal> 80</span>
-<span class=normal> 81</span>
-<span class=normal> 82</span>
-<span class=normal> 83</span>
-<span class=normal> 84</span>
-<span class=normal> 85</span>
-<span class=normal> 86</span>
-<span class=normal> 87</span>
-<span class=normal> 88</span>
-<span class=normal> 89</span>
-<span class=normal> 90</span>
-<span class=normal> 91</span>
-<span class=normal> 92</span>
-<span class=normal> 93</span>
-<span class=normal> 94</span>
-<span class=normal> 95</span>
-<span class=normal> 96</span>
-<span class=normal> 97</span>
-<span class=normal> 98</span>
-<span class=normal> 99</span>
-<span class=normal>100</span>
-<span class=normal>101</span>
-<span class=normal>102</span>
-<span class=normal>103</span>
-<span class=normal>104</span>
-<span class=normal>105</span>
-<span class=normal>106</span>
-<span class=normal>107</span>
-<span class=normal>108</span>
-<span class=normal>109</span>
-<span class=normal>110</span>
-<span class=normal>111</span>
-<span class=normal>112</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  swiftdocs</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
-
-<span class=kd>import</span> <span class=nc>UIKit</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UIWebViewDelegate</span> <span class=p>{</span>
-
-    <span class=kd>var</span> <span class=nv>myWebView</span><span class=p>:</span> <span class=bp>UIWebView</span><span class=p>!</span>
-    <span class=kd>var</span> <span class=nv>myPDFurl</span><span class=p>:</span> <span class=bp>NSURL</span><span class=p>!</span>
-    <span class=kd>var</span> <span class=nv>myRequest</span><span class=p>:</span> <span class=bp>NSURLRequest</span><span class=p>!</span>
-    <span class=kd>var</span> <span class=nv>myIndiator</span><span class=p>:</span> <span class=bp>UIActivityIndicatorView</span><span class=p>!</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-
-        <span class=c1>// Buttonを生成.</span>
-        <span class=kd>let</span> <span class=nv>myButton</span><span class=p>:</span> <span class=bp>UIButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>200</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>50</span><span class=p>))</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span> <span class=o>-</span> <span class=mi>50</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>orange</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;Open PDF&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=n>UIControlState</span><span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=n>UIControlState</span><span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=n>UIControlEvents</span><span class=p>.</span><span class=n>touchUpInside</span><span class=p>)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>)</span>
-
-        <span class=c1>// PDFを開くためのWebViewを生成.</span>
-        <span class=n>myWebView</span> <span class=p>=</span> <span class=bp>UIWebView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span><span class=p>))</span>
-        <span class=n>myWebView</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
-        <span class=n>myWebView</span><span class=p>.</span><span class=n>scalesPageToFit</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myWebView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span><span class=o>/</span><span class=mi>2</span><span class=p>)</span>
-
-        <span class=c1>// URLReqestを生成.</span>
-        <span class=n>myPDFurl</span> <span class=p>=</span> <span class=bp>NSURL</span><span class=p>(</span><span class=n>string</span><span class=p>:</span> <span class=s>&quot;https://developer.apple.com/jp/documentation/CocoaEncyclopedia.pdf&quot;</span><span class=p>)</span><span class=o>!</span>
-        <span class=n>myRequest</span> <span class=p>=</span> <span class=bp>NSURLRequest</span><span class=p>(</span><span class=n>url</span><span class=p>:</span> <span class=n>myPDFurl</span> <span class=k>as</span> <span class=n>URL</span><span class=p>)</span>
-
-        <span class=c1>// ページ読み込み中に表示させるインジケータを生成.</span>
-        <span class=n>myIndiator</span> <span class=p>=</span> <span class=bp>UIActivityIndicatorView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>50</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>50</span><span class=p>))</span>
-        <span class=n>myIndiator</span><span class=p>.</span><span class=n>center</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>center</span>
-        <span class=n>myIndiator</span><span class=p>.</span><span class=n>hidesWhenStopped</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myIndiator</span><span class=p>.</span><span class=n>activityIndicatorViewStyle</span> <span class=p>=</span> <span class=n>UIActivityIndicatorViewStyle</span><span class=p>.</span><span class=n>gray</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     インジケータのアニメーション開始.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>startAnimation</span><span class=p>()</span> <span class=p>{</span>
-
-        <span class=c1>// NetworkActivityIndicatorを表示.</span>
-        <span class=bp>UIApplication</span><span class=p>.</span><span class=n>shared</span><span class=p>.</span><span class=n>isNetworkActivityIndicatorVisible</span> <span class=p>=</span> <span class=kc>true</span>
-
-        <span class=c1>// UIACtivityIndicatorを表示.</span>
-        <span class=k>if</span> <span class=o>!</span><span class=n>myIndiator</span><span class=p>.</span><span class=n>isAnimating</span> <span class=p>{</span>
-            <span class=n>myIndiator</span><span class=p>.</span><span class=n>startAnimating</span><span class=p>()</span>
-        <span class=p>}</span>
-
-        <span class=c1>// viewにインジケータを追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myIndiator</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     インジケータのアニメーション終了.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>stopAnimation</span><span class=p>()</span> <span class=p>{</span>
-        <span class=c1>// NetworkActivityIndicatorを非表示.</span>
-        <span class=bp>UIApplication</span><span class=p>.</span><span class=n>shared</span><span class=p>.</span><span class=n>isNetworkActivityIndicatorVisible</span> <span class=p>=</span> <span class=kc>false</span>
-
-        <span class=c1>// UIACtivityIndicatorを非表示.</span>
-        <span class=k>if</span> <span class=n>myIndiator</span><span class=p>.</span><span class=n>isAnimating</span> <span class=p>{</span>
-            <span class=n>myIndiator</span><span class=p>.</span><span class=n>stopAnimating</span><span class=p>()</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     Buttonが押された時に呼ばれるメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>)</span> <span class=p>{</span>
-
-        <span class=c1>// WebViewのLoad開始.</span>
-        <span class=n>myWebView</span><span class=p>.</span><span class=n>loadRequest</span><span class=p>(</span><span class=n>myRequest</span> <span class=k>as</span> <span class=n>URLRequest</span><span class=p>)</span>
-
-        <span class=c1>// viewにWebViewを追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myWebView</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     WebViewのloadが開始された時に呼ばれるメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>webViewDidStartLoad</span><span class=p>(</span><span class=kc>_</span> <span class=n>webView</span><span class=p>:</span> <span class=bp>UIWebView</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;load started&quot;</span><span class=p>)</span>
-
-        <span class=n>startAnimation</span><span class=p>()</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     WebViewのloadが終了した時に呼ばれるメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>webViewDidFinishLoad</span><span class=p>(</span><span class=kc>_</span> <span class=n>webView</span><span class=p>:</span> <span class=bp>UIWebView</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;load finished&quot;</span><span class=p>)</span>
-
-        <span class=n>stopAnimation</span><span class=p>()</span>
-    <span class=p>}</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal>  1</span>
-<span class=normal>  2</span>
-<span class=normal>  3</span>
-<span class=normal>  4</span>
-<span class=normal>  5</span>
-<span class=normal>  6</span>
-<span class=normal>  7</span>
-<span class=normal>  8</span>
-<span class=normal>  9</span>
-<span class=normal> 10</span>
-<span class=normal> 11</span>
-<span class=normal> 12</span>
-<span class=normal> 13</span>
-<span class=normal> 14</span>
-<span class=normal> 15</span>
-<span class=normal> 16</span>
-<span class=normal> 17</span>
-<span class=normal> 18</span>
-<span class=normal> 19</span>
-<span class=normal> 20</span>
-<span class=normal> 21</span>
-<span class=normal> 22</span>
-<span class=normal> 23</span>
-<span class=normal> 24</span>
-<span class=normal> 25</span>
-<span class=normal> 26</span>
-<span class=normal> 27</span>
-<span class=normal> 28</span>
-<span class=normal> 29</span>
-<span class=normal> 30</span>
-<span class=normal> 31</span>
-<span class=normal> 32</span>
-<span class=normal> 33</span>
-<span class=normal> 34</span>
-<span class=normal> 35</span>
-<span class=normal> 36</span>
-<span class=normal> 37</span>
-<span class=normal> 38</span>
-<span class=normal> 39</span>
-<span class=normal> 40</span>
-<span class=normal> 41</span>
-<span class=normal> 42</span>
-<span class=normal> 43</span>
-<span class=normal> 44</span>
-<span class=normal> 45</span>
-<span class=normal> 46</span>
-<span class=normal> 47</span>
-<span class=normal> 48</span>
-<span class=normal> 49</span>
-<span class=normal> 50</span>
-<span class=normal> 51</span>
-<span class=normal> 52</span>
-<span class=normal> 53</span>
-<span class=normal> 54</span>
-<span class=normal> 55</span>
-<span class=normal> 56</span>
-<span class=normal> 57</span>
-<span class=normal> 58</span>
-<span class=normal> 59</span>
-<span class=normal> 60</span>
-<span class=normal> 61</span>
-<span class=normal> 62</span>
-<span class=normal> 63</span>
-<span class=normal> 64</span>
-<span class=normal> 65</span>
-<span class=normal> 66</span>
-<span class=normal> 67</span>
-<span class=normal> 68</span>
-<span class=normal> 69</span>
-<span class=normal> 70</span>
-<span class=normal> 71</span>
-<span class=normal> 72</span>
-<span class=normal> 73</span>
-<span class=normal> 74</span>
-<span class=normal> 75</span>
-<span class=normal> 76</span>
-<span class=normal> 77</span>
-<span class=normal> 78</span>
-<span class=normal> 79</span>
-<span class=normal> 80</span>
-<span class=normal> 81</span>
-<span class=normal> 82</span>
-<span class=normal> 83</span>
-<span class=normal> 84</span>
-<span class=normal> 85</span>
-<span class=normal> 86</span>
-<span class=normal> 87</span>
-<span class=normal> 88</span>
-<span class=normal> 89</span>
-<span class=normal> 90</span>
-<span class=normal> 91</span>
-<span class=normal> 92</span>
-<span class=normal> 93</span>
-<span class=normal> 94</span>
-<span class=normal> 95</span>
-<span class=normal> 96</span>
-<span class=normal> 97</span>
-<span class=normal> 98</span>
-<span class=normal> 99</span>
-<span class=normal>100</span>
-<span class=normal>101</span>
-<span class=normal>102</span>
-<span class=normal>103</span>
-<span class=normal>104</span>
-<span class=normal>105</span>
-<span class=normal>106</span>
-<span class=normal>107</span>
-<span class=normal>108</span>
-<span class=normal>109</span>
-<span class=normal>110</span>
-<span class=normal>111</span>
-<span class=normal>112</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit074</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
-
-<span class=kd>import</span> <span class=nc>UIKit</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UIWebViewDelegate</span> <span class=p>{</span>
-
-    <span class=kd>var</span> <span class=nv>myWebView</span><span class=p>:</span> <span class=bp>UIWebView</span><span class=p>!</span>
-    <span class=kd>var</span> <span class=nv>myPDFurl</span><span class=p>:</span> <span class=bp>NSURL</span><span class=p>!</span>
-    <span class=kd>var</span> <span class=nv>myRequest</span><span class=p>:</span> <span class=bp>NSURLRequest</span><span class=p>!</span>
-    <span class=kd>var</span> <span class=nv>myIndiator</span><span class=p>:</span> <span class=bp>UIActivityIndicatorView</span><span class=p>!</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-
-        <span class=c1>// Buttonを生成.</span>
-        <span class=kd>let</span> <span class=nv>myButton</span><span class=p>:</span> <span class=bp>UIButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=mi>200</span><span class=p>,</span> <span class=mi>50</span><span class=p>))</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span> <span class=o>-</span> <span class=mi>50</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>orangeColor</span><span class=p>()</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;Open PDF&quot;</span><span class=p>,</span> <span class=n>forState</span><span class=p>:</span> <span class=n>UIControlState</span><span class=p>.</span><span class=n>Normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>whiteColor</span><span class=p>(),</span> <span class=n>forState</span><span class=p>:</span> <span class=n>UIControlState</span><span class=p>.</span><span class=n>Normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=kc>_</span><span class=p>:)),</span> <span class=n>forControlEvents</span><span class=p>:</span> <span class=n>UIControlEvents</span><span class=p>.</span><span class=n>TouchUpInside</span><span class=p>)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>)</span>
-
-        <span class=c1>// PDFを開くためのWebViewを生成.</span>
-        <span class=n>myWebView</span> <span class=p>=</span> <span class=bp>UIWebView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=p>,</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span><span class=p>))</span>
-        <span class=n>myWebView</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
-        <span class=n>myWebView</span><span class=p>.</span><span class=n>scalesPageToFit</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myWebView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span><span class=o>/</span><span class=mi>2</span><span class=p>)</span>
-
-        <span class=c1>// URLReqestを生成.</span>
-        <span class=n>myPDFurl</span> <span class=p>=</span> <span class=bp>NSURL</span><span class=p>(</span><span class=n>string</span><span class=p>:</span> <span class=s>&quot;https://developer.apple.com/jp/documentation/CocoaEncyclopedia.pdf&quot;</span><span class=p>)</span><span class=o>!</span>
-        <span class=n>myRequest</span> <span class=p>=</span> <span class=bp>NSURLRequest</span><span class=p>(</span><span class=n>URL</span><span class=p>:</span> <span class=n>myPDFurl</span><span class=p>)</span>
-
-        <span class=c1>// ページ読み込み中に表示させるインジケータを生成.</span>
-        <span class=n>myIndiator</span> <span class=p>=</span> <span class=bp>UIActivityIndicatorView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=mi>50</span><span class=p>,</span> <span class=mi>50</span><span class=p>))</span>
-        <span class=n>myIndiator</span><span class=p>.</span><span class=n>center</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>center</span>
-        <span class=n>myIndiator</span><span class=p>.</span><span class=n>hidesWhenStopped</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myIndiator</span><span class=p>.</span><span class=n>activityIndicatorViewStyle</span> <span class=p>=</span> <span class=n>UIActivityIndicatorViewStyle</span><span class=p>.</span><span class=n>Gray</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     インジケータのアニメーション開始.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>startAnimation</span><span class=p>()</span> <span class=p>{</span>
-
-        <span class=c1>// NetworkActivityIndicatorを表示.</span>
-        <span class=bp>UIApplication</span><span class=p>.</span><span class=n>sharedApplication</span><span class=p>().</span><span class=n>networkActivityIndicatorVisible</span> <span class=p>=</span> <span class=kc>true</span>
-
-        <span class=c1>// UIACtivityIndicatorを表示.</span>
-        <span class=k>if</span> <span class=o>!</span><span class=n>myIndiator</span><span class=p>.</span><span class=n>isAnimating</span><span class=p>()</span> <span class=p>{</span>
-            <span class=n>myIndiator</span><span class=p>.</span><span class=n>startAnimating</span><span class=p>()</span>
-        <span class=p>}</span>
-
-        <span class=c1>// viewにインジケータを追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myIndiator</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     インジケータのアニメーション終了.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>stopAnimation</span><span class=p>()</span> <span class=p>{</span>
-        <span class=c1>// NetworkActivityIndicatorを非表示.</span>
-        <span class=bp>UIApplication</span><span class=p>.</span><span class=n>sharedApplication</span><span class=p>().</span><span class=n>networkActivityIndicatorVisible</span> <span class=p>=</span> <span class=kc>false</span>
-
-        <span class=c1>// UIACtivityIndicatorを非表示.</span>
-        <span class=k>if</span> <span class=n>myIndiator</span><span class=p>.</span><span class=n>isAnimating</span><span class=p>()</span> <span class=p>{</span>
-            <span class=n>myIndiator</span><span class=p>.</span><span class=n>stopAnimating</span><span class=p>()</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     Buttonが押された時に呼ばれるメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>)</span> <span class=p>{</span>
-
-        <span class=c1>// WebViewのLoad開始.</span>
-        <span class=n>myWebView</span><span class=p>.</span><span class=n>loadRequest</span><span class=p>(</span><span class=n>myRequest</span><span class=p>)</span>
-
-        <span class=c1>// viewにWebViewを追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myWebView</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     WebViewのloadが開始された時に呼ばれるメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>webViewDidStartLoad</span><span class=p>(</span><span class=n>webView</span><span class=p>:</span> <span class=bp>UIWebView</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;load started&quot;</span><span class=p>)</span>
-
-        <span class=n>startAnimation</span><span class=p>()</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     WebViewのloadが終了した時に呼ばれるメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>webViewDidFinishLoad</span><span class=p>(</span><span class=n>webView</span><span class=p>:</span> <span class=bp>UIWebView</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;load finished&quot;</span><span class=p>)</span>
-
-        <span class=n>stopAnimation</span><span class=p>()</span>
-    <span class=p>}</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  swiftdocs
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController, UIWebViewDelegate {
+
+    var myWebView: UIWebView!
+    var myPDFurl: NSURL!
+    var myRequest: NSURLRequest!
+    var myIndiator: UIActivityIndicatorView!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Buttonを生成.
+        let myButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
+        myButton.layer.cornerRadius = 20.0
+        myButton.layer.masksToBounds = true
+        myButton.layer.position = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height - 50)
+        myButton.backgroundColor = UIColor.orange
+        myButton.setTitle(&quot;Open PDF&quot;, for: UIControl.State.normal)
+        myButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(sender:)), for: UIControl.Event.touchUpInside)
+        self.view.addSubview(myButton)
+
+        // PDFを開くためのWebViewを生成.
+        myWebView = UIWebView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        myWebView.delegate = self
+        myWebView.scalesPageToFit = true
+        myWebView.layer.position = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height/2)
+
+        // URLReqestを生成.
+        myPDFurl = NSURL(string: &quot;https://developer.apple.com/jp/documentation/CocoaEncyclopedia.pdf&quot;)!
+        myRequest = NSURLRequest(url: myPDFurl as URL)
+
+        // ページ読み込み中に表示させるインジケータを生成.
+        myIndiator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        myIndiator.center = self.view.center
+        myIndiator.hidesWhenStopped = true
+        myIndiator.style = UIActivityIndicatorView.Style.gray
+    }
+
+    /*
+     インジケータのアニメーション開始.
+     */
+    func startAnimation() {
+
+        // NetworkActivityIndicatorを表示.
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+
+        // UIACtivityIndicatorを表示.
+        if !myIndiator.isAnimating {
+            myIndiator.startAnimating()
+        }
+
+        // viewにインジケータを追加.
+        self.view.addSubview(myIndiator)
+    }
+
+    /*
+     インジケータのアニメーション終了.
+     */
+    func stopAnimation() {
+        // NetworkActivityIndicatorを非表示.
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+
+        // UIACtivityIndicatorを非表示.
+        if myIndiator.isAnimating {
+            myIndiator.stopAnimating()
+        }
+    }
+
+    /*
+     Buttonが押された時に呼ばれるメソッド.
+     */
+    @objc func onClickMyButton(sender: UIButton) {
+
+        // WebViewのLoad開始.
+        myWebView.loadRequest(myRequest as URLRequest)
+
+        // viewにWebViewを追加.
+        self.view.addSubview(myWebView)
+    }
+
+    /*
+     WebViewのloadが開始された時に呼ばれるメソッド.
+     */
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        print(&quot;load started&quot;)
+
+        startAnimation()
+    }
+
+    /*
+     WebViewのloadが終了した時に呼ばれるメソッド.
+     */
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        print(&quot;load finished&quot;)
+
+        stopAnimation()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  swiftdocs
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController, UIWebViewDelegate {
+
+    var myWebView: UIWebView!
+    var myPDFurl: NSURL!
+    var myRequest: NSURLRequest!
+    var myIndiator: UIActivityIndicatorView!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Buttonを生成.
+        let myButton: UIButton = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 50))
+        myButton.layer.cornerRadius = 20.0
+        myButton.layer.masksToBounds = true
+        myButton.layer.position = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height - 50)
+        myButton.backgroundColor = UIColor.orange
+        myButton.setTitle(&quot;Open PDF&quot;, for: UIControlState.normal)
+        myButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(sender:)), for: UIControlEvents.touchUpInside)
+        self.view.addSubview(myButton)
+
+        // PDFを開くためのWebViewを生成.
+        myWebView = UIWebView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+        myWebView.delegate = self
+        myWebView.scalesPageToFit = true
+        myWebView.layer.position = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height/2)
+
+        // URLReqestを生成.
+        myPDFurl = NSURL(string: &quot;https://developer.apple.com/jp/documentation/CocoaEncyclopedia.pdf&quot;)!
+        myRequest = NSURLRequest(url: myPDFurl as URL)
+
+        // ページ読み込み中に表示させるインジケータを生成.
+        myIndiator = UIActivityIndicatorView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        myIndiator.center = self.view.center
+        myIndiator.hidesWhenStopped = true
+        myIndiator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+    }
+
+    /*
+     インジケータのアニメーション開始.
+     */
+    func startAnimation() {
+
+        // NetworkActivityIndicatorを表示.
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+
+        // UIACtivityIndicatorを表示.
+        if !myIndiator.isAnimating {
+            myIndiator.startAnimating()
+        }
+
+        // viewにインジケータを追加.
+        self.view.addSubview(myIndiator)
+    }
+
+    /*
+     インジケータのアニメーション終了.
+     */
+    func stopAnimation() {
+        // NetworkActivityIndicatorを非表示.
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+
+        // UIACtivityIndicatorを非表示.
+        if myIndiator.isAnimating {
+            myIndiator.stopAnimating()
+        }
+    }
+
+    /*
+     Buttonが押された時に呼ばれるメソッド.
+     */
+    func onClickMyButton(sender: UIButton) {
+
+        // WebViewのLoad開始.
+        myWebView.loadRequest(myRequest as URLRequest)
+
+        // viewにWebViewを追加.
+        self.view.addSubview(myWebView)
+    }
+
+    /*
+     WebViewのloadが開始された時に呼ばれるメソッド.
+     */
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        print(&quot;load started&quot;)
+
+        startAnimation()
+    }
+
+    /*
+     WebViewのloadが終了した時に呼ばれるメソッド.
+     */
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        print(&quot;load finished&quot;)
+
+        stopAnimation()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit074
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController, UIWebViewDelegate {
+
+    var myWebView: UIWebView!
+    var myPDFurl: NSURL!
+    var myRequest: NSURLRequest!
+    var myIndiator: UIActivityIndicatorView!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Buttonを生成.
+        let myButton: UIButton = UIButton(frame: CGRectMake(0, 0, 200, 50))
+        myButton.layer.cornerRadius = 20.0
+        myButton.layer.masksToBounds = true
+        myButton.layer.position = CGPointMake(self.view.frame.width/2, self.view.frame.height - 50)
+        myButton.backgroundColor = UIColor.orangeColor()
+        myButton.setTitle(&quot;Open PDF&quot;, forState: UIControlState.Normal)
+        myButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(myButton)
+
+        // PDFを開くためのWebViewを生成.
+        myWebView = UIWebView(frame: CGRectMake(0, 0, self.view.frame.width, self.view.frame.height))
+        myWebView.delegate = self
+        myWebView.scalesPageToFit = true
+        myWebView.layer.position = CGPointMake(self.view.frame.width/2, self.view.frame.height/2)
+
+        // URLReqestを生成.
+        myPDFurl = NSURL(string: &quot;https://developer.apple.com/jp/documentation/CocoaEncyclopedia.pdf&quot;)!
+        myRequest = NSURLRequest(URL: myPDFurl)
+
+        // ページ読み込み中に表示させるインジケータを生成.
+        myIndiator = UIActivityIndicatorView(frame: CGRectMake(0, 0, 50, 50))
+        myIndiator.center = self.view.center
+        myIndiator.hidesWhenStopped = true
+        myIndiator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.Gray
+    }
+
+    /*
+     インジケータのアニメーション開始.
+     */
+    func startAnimation() {
+
+        // NetworkActivityIndicatorを表示.
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+
+        // UIACtivityIndicatorを表示.
+        if !myIndiator.isAnimating() {
+            myIndiator.startAnimating()
+        }
+
+        // viewにインジケータを追加.
+        self.view.addSubview(myIndiator)
+    }
+
+    /*
+     インジケータのアニメーション終了.
+     */
+    func stopAnimation() {
+        // NetworkActivityIndicatorを非表示.
+        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+
+        // UIACtivityIndicatorを非表示.
+        if myIndiator.isAnimating() {
+            myIndiator.stopAnimating()
+        }
+    }
+
+    /*
+     Buttonが押された時に呼ばれるメソッド.
+     */
+    func onClickMyButton(sender: UIButton) {
+
+        // WebViewのLoad開始.
+        myWebView.loadRequest(myRequest)
+
+        // viewにWebViewを追加.
+        self.view.addSubview(myWebView)
+    }
+
+    /*
+     WebViewのloadが開始された時に呼ばれるメソッド.
+     */
+    func webViewDidStartLoad(webView: UIWebView) {
+        print(&quot;load started&quot;)
+
+        startAnimation()
+    }
+
+    /*
+     WebViewのloadが終了した時に呼ばれるメソッド.
+     */
+    func webViewDidFinishLoad(webView: UIWebView) {
+        print(&quot;load finished&quot;)
+
+        stopAnimation()
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+</code></pre></div></div>
 <h2 id="3x4x">3.xと4.xの差分</h2>
 <ul>
 <li><code>UIControlState</code> が <code>UIControl.State</code> に変更</li>

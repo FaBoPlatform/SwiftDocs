@@ -2317,153 +2317,81 @@
                 
                 <h1 id="_1">地図の縮尺の変更</h1>
 <p><img alt="Preview mapkit002" src="../img/mapkit002.png" /></p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x/3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  MapKit002</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x/3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  MapKit002
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
-<span class=kd>import</span> <span class=nc>MapKit</span>
+import UIKit
+import MapKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class ViewController: UIViewController {
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// MapViewを生成.</span>
-        <span class=kd>let</span> <span class=nv>mapView</span> <span class=p>:</span> <span class=bp>MKMapView</span> <span class=p>=</span> <span class=bp>MKMapView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>height</span><span class=p>))</span>
+        // MapViewを生成.
+        let mapView : MKMapView = MKMapView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
 
-        <span class=c1>// MapViewの中心位置を指定.</span>
-        <span class=n>mapView</span><span class=p>.</span><span class=n>centerCoordinate</span> <span class=p>=</span> <span class=n>CLLocationCoordinate2DMake</span><span class=p>(</span><span class=mf>37.331741</span><span class=p>,</span> <span class=o>-</span><span class=mf>122.030333</span><span class=p>)</span>
+        // MapViewの中心位置を指定.
+        mapView.centerCoordinate = CLLocationCoordinate2DMake(37.331741, -122.030333)
 
-        <span class=c1>// 縮尺を変更.</span>
-        <span class=c1>// 倍率を指定.</span>
-        <span class=kd>let</span> <span class=nv>span</span> <span class=p>:</span> <span class=n>MKCoordinateSpan</span> <span class=p>=</span> <span class=n>MKCoordinateSpan</span><span class=p>(</span><span class=n>latitudeDelta</span><span class=p>:</span> <span class=mf>0.1</span><span class=p>,</span> <span class=n>longitudeDelta</span><span class=p>:</span> <span class=mf>0.1</span><span class=p>)</span>
+        // 縮尺を変更.
+        // 倍率を指定.
+        let span : MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
 
-        <span class=c1>// MapViewで指定した中心位置とMKCoordinateSapnで宣言したspanを指定する.</span>
-        <span class=kd>let</span> <span class=nv>region</span> <span class=p>:</span> <span class=n>MKCoordinateRegion</span> <span class=p>=</span> <span class=n>MKCoordinateRegion</span><span class=p>(</span><span class=n>center</span><span class=p>:</span> <span class=n>mapView</span><span class=p>.</span><span class=n>centerCoordinate</span><span class=p>,</span> <span class=n>span</span><span class=p>:</span> <span class=n>span</span><span class=p>)</span>
+        // MapViewで指定した中心位置とMKCoordinateSapnで宣言したspanを指定する.
+        let region : MKCoordinateRegion = MKCoordinateRegion(center: mapView.centerCoordinate, span: span)
 
-        <span class=c1>// MapViewのregionプロパティにregionを指定.</span>
-        <span class=n>mapView</span><span class=p>.</span><span class=n>region</span> <span class=p>=</span> <span class=n>region</span>
+        // MapViewのregionプロパティにregionを指定.
+        mapView.region = region
 
-        <span class=c1>// MapViewをviewに追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>mapView</span><span class=p>)</span>
+        // MapViewをviewに追加.
+        self.view.addSubview(mapView)
 
-    <span class=p>}</span> 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  MapKit002</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+    } 
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  MapKit002
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
-<span class=kd>import</span> <span class=nc>MapKit</span>
+import UIKit
+import MapKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class ViewController: UIViewController {
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// MapViewを生成.</span>
-        <span class=kd>let</span> <span class=nv>mapView</span> <span class=p>:</span> <span class=bp>MKMapView</span> <span class=p>=</span> <span class=bp>MKMapView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>width</span><span class=p>,</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>height</span><span class=p>))</span>
+        // MapViewを生成.
+        let mapView : MKMapView = MKMapView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
 
-        <span class=c1>// MapViewの中心位置を指定.</span>
-        <span class=n>mapView</span><span class=p>.</span><span class=n>centerCoordinate</span> <span class=p>=</span> <span class=n>CLLocationCoordinate2DMake</span><span class=p>(</span><span class=mf>37.331741</span><span class=p>,</span> <span class=o>-</span><span class=mf>122.030333</span><span class=p>)</span>
+        // MapViewの中心位置を指定.
+        mapView.centerCoordinate = CLLocationCoordinate2DMake(37.331741, -122.030333)
 
-        <span class=c1>// 縮尺を変更.</span>
-        <span class=c1>// 倍率を指定.</span>
-        <span class=kd>let</span> <span class=nv>span</span> <span class=p>:</span> <span class=n>MKCoordinateSpan</span> <span class=p>=</span> <span class=n>MKCoordinateSpan</span><span class=p>(</span><span class=n>latitudeDelta</span><span class=p>:</span> <span class=mf>0.1</span><span class=p>,</span> <span class=n>longitudeDelta</span><span class=p>:</span> <span class=mf>0.1</span><span class=p>)</span>
+        // 縮尺を変更.
+        // 倍率を指定.
+        let span : MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
 
-        <span class=c1>// MapViewで指定した中心位置とMKCoordinateSapnで宣言したspanを指定する.</span>
-        <span class=kd>let</span> <span class=nv>region</span> <span class=p>:</span> <span class=n>MKCoordinateRegion</span> <span class=p>=</span> <span class=n>MKCoordinateRegion</span><span class=p>(</span><span class=n>center</span><span class=p>:</span> <span class=n>mapView</span><span class=p>.</span><span class=n>centerCoordinate</span><span class=p>,</span> <span class=n>span</span><span class=p>:</span> <span class=n>span</span><span class=p>)</span>
+        // MapViewで指定した中心位置とMKCoordinateSapnで宣言したspanを指定する.
+        let region : MKCoordinateRegion = MKCoordinateRegion(center: mapView.centerCoordinate, span: span)
 
-        <span class=c1>// MapViewのregionプロパティにregionを指定.</span>
-        <span class=n>mapView</span><span class=p>.</span><span class=n>region</span> <span class=p>=</span> <span class=n>region</span>
+        // MapViewのregionプロパティにregionを指定.
+        mapView.region = region
 
-        <span class=c1>// MapViewをviewに追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>mapView</span><span class=p>)</span>
+        // MapViewをviewに追加.
+        self.view.addSubview(mapView)
 
-    <span class=p>}</span> 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+    } 
+}
+</code></pre></div></div>
 <h2 id="2330">2.3と3.0の差分</h2>
 <ul>
 <li>CGRectMakeが廃止</li>

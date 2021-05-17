@@ -2331,346 +2331,178 @@
                 
                 <h1 id="facebook">Facebookに投稿</h1>
 <p><img alt="Preview social002" src="../img/social002_001.png" /> <img alt="Preview social002" src="../img/social002_002.png" /></p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  Social002</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  Social002
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
-<span class=kd>import</span> <span class=nc>Social</span>
+import UIKit
+import Social
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class ViewController: UIViewController {
 
-    <span class=kd>var</span> <span class=nv>myComposeView</span> <span class=p>:</span> <span class=bp>SLComposeViewController</span><span class=p>!</span>
+    var myComposeView : SLComposeViewController!
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
+    override func viewDidLoad() {
 
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+        super.viewDidLoad()
 
-        <span class=c1>// Facebookカラーの作成.</span>
-        <span class=kd>let</span> <span class=nv>hex</span><span class=p>:</span> <span class=nb>Int</span> <span class=p>=</span> <span class=mh>0x3B5998</span>
-        <span class=kd>let</span> <span class=nv>red</span> <span class=p>=</span> <span class=nb>Double</span><span class=p>((</span><span class=n>hex</span> <span class=o>&amp;</span> <span class=mh>0xFF0000</span><span class=p>)</span> <span class=o>&gt;&gt;</span> <span class=mi>16</span><span class=p>)</span> <span class=o>/</span> <span class=mf>255.0</span>
-        <span class=kd>let</span> <span class=nv>green</span> <span class=p>=</span> <span class=nb>Double</span><span class=p>((</span><span class=n>hex</span> <span class=o>&amp;</span> <span class=mh>0xFF00</span><span class=p>)</span> <span class=o>&gt;&gt;</span> <span class=mi>8</span><span class=p>)</span> <span class=o>/</span> <span class=mf>255.0</span>
-        <span class=kd>let</span> <span class=nv>blue</span> <span class=p>=</span> <span class=nb>Double</span><span class=p>((</span><span class=n>hex</span> <span class=o>&amp;</span> <span class=mh>0xFF</span><span class=p>))</span> <span class=o>/</span> <span class=mf>255.0</span>
-        <span class=kd>let</span> <span class=nv>myColor</span><span class=p>:</span> <span class=bp>UIColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>(</span> <span class=n>red</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=n>red</span><span class=p>),</span> <span class=n>green</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=n>green</span><span class=p>),</span> <span class=n>blue</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=n>blue</span><span class=p>),</span> <span class=n>alpha</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=mf>1.0</span><span class=p>))</span>
+        // Facebookカラーの作成.
+        let hex: Int = 0x3B5998
+        let red = Double((hex &amp; 0xFF0000) &gt;&gt; 16) / 255.0
+        let green = Double((hex &amp; 0xFF00) &gt;&gt; 8) / 255.0
+        let blue = Double((hex &amp; 0xFF)) / 255.0
+        let myColor: UIColor = UIColor( red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(1.0))
 
-        <span class=c1>// Facebook用のUIButtonの生成.</span>
-        <span class=kd>let</span> <span class=nv>myFacebookButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>100</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>100</span><span class=p>))</span>
-        <span class=n>myFacebookButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=n>myColor</span>
-        <span class=n>myFacebookButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;Facebook&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=bp>UIControl</span><span class=p>.</span><span class=n>State</span><span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myFacebookButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=bp>UIControl</span><span class=p>.</span><span class=n>State</span><span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myFacebookButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>postToFacebook</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=bp>UIControl</span><span class=p>.</span><span class=n>Event</span><span class=p>.</span><span class=n>touchUpInside</span><span class=p>)</span>
-        <span class=n>myFacebookButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>50.0</span>
-        <span class=n>myFacebookButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span><span class=o>/</span><span class=mi>2</span><span class=p>)</span>
+        // Facebook用のUIButtonの生成.
+        let myFacebookButton = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        myFacebookButton.backgroundColor = myColor
+        myFacebookButton.setTitle(&quot;Facebook&quot;, for: UIControl.State.normal)
+        myFacebookButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
+        myFacebookButton.addTarget(self, action: #selector(ViewController.postToFacebook(sender:)), for: UIControl.Event.touchUpInside)
+        myFacebookButton.layer.cornerRadius = 50.0
+        myFacebookButton.layer.position = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height/2)
 
-        <span class=c1>// buttonをviewに追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myFacebookButton</span><span class=p>)</span>
-    <span class=p>}</span>
+        // buttonをviewに追加.
+        self.view.addSubview(myFacebookButton)
+    }
 
-    <span class=c1>// ボタンイベント.</span>
-    <span class=kr>@objc</span> <span class=kd>func</span> <span class=nf>postToFacebook</span><span class=p>(</span><span class=n>sender</span> <span class=p>:</span> <span class=bp>UIButton</span><span class=p>)</span> <span class=p>{</span>
+    // ボタンイベント.
+    @objc func postToFacebook(sender : UIButton) {
 
-        <span class=c1>// postToTwitterと同様.</span>
-        <span class=c1>// ServiceTypeをFacebookに指定.</span>
-        <span class=n>myComposeView</span> <span class=p>=</span> <span class=bp>SLComposeViewController</span><span class=p>(</span><span class=n>forServiceType</span><span class=p>:</span> <span class=n>SLServiceTypeFacebook</span><span class=p>)</span>
+        // postToTwitterと同様.
+        // ServiceTypeをFacebookに指定.
+        myComposeView = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
 
-        <span class=c1>// 投稿するテキストを指定.</span>
-        <span class=n>myComposeView</span><span class=p>.</span><span class=n>setInitialText</span><span class=p>(</span><span class=s>&quot;Facebook Test&quot;</span><span class=p>)</span>
+        // 投稿するテキストを指定.
+        myComposeView.setInitialText(&quot;Facebook Test&quot;)
 
-        <span class=c1>// 投稿する画像を指定.</span>
-        <span class=n>myComposeView</span><span class=p>.</span><span class=n>add</span><span class=p>(</span><span class=bp>UIImage</span><span class=p>(</span><span class=n>named</span><span class=p>:</span> <span class=s>&quot;sample1.jpg&quot;</span><span class=p>))</span>
+        // 投稿する画像を指定.
+        myComposeView.add(UIImage(named: &quot;sample1.jpg&quot;))
 
-        <span class=c1>// myComposeViewの画面遷移.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>present</span><span class=p>(</span><span class=n>myComposeView</span><span class=p>,</span> <span class=n>animated</span><span class=p>:</span> <span class=kc>true</span><span class=p>,</span> <span class=n>completion</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-    <span class=p>}</span>
+        // myComposeViewの画面遷移.
+        self.present(myComposeView, animated: true, completion: nil)
+    }
 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  Social002</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  Social002
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
-<span class=kd>import</span> <span class=nc>Social</span>
+import UIKit
+import Social
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class ViewController: UIViewController {
 
-    <span class=kd>var</span> <span class=nv>myComposeView</span> <span class=p>:</span> <span class=bp>SLComposeViewController</span><span class=p>!</span>
+    var myComposeView : SLComposeViewController!
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
+    override func viewDidLoad() {
 
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+        super.viewDidLoad()
 
-        <span class=c1>// Facebookカラーの作成.</span>
-        <span class=kd>let</span> <span class=nv>hex</span><span class=p>:</span> <span class=nb>Int</span> <span class=p>=</span> <span class=mh>0x3B5998</span>
-        <span class=kd>let</span> <span class=nv>red</span> <span class=p>=</span> <span class=nb>Double</span><span class=p>((</span><span class=n>hex</span> <span class=o>&amp;</span> <span class=mh>0xFF0000</span><span class=p>)</span> <span class=o>&gt;&gt;</span> <span class=mi>16</span><span class=p>)</span> <span class=o>/</span> <span class=mf>255.0</span>
-        <span class=kd>let</span> <span class=nv>green</span> <span class=p>=</span> <span class=nb>Double</span><span class=p>((</span><span class=n>hex</span> <span class=o>&amp;</span> <span class=mh>0xFF00</span><span class=p>)</span> <span class=o>&gt;&gt;</span> <span class=mi>8</span><span class=p>)</span> <span class=o>/</span> <span class=mf>255.0</span>
-        <span class=kd>let</span> <span class=nv>blue</span> <span class=p>=</span> <span class=nb>Double</span><span class=p>((</span><span class=n>hex</span> <span class=o>&amp;</span> <span class=mh>0xFF</span><span class=p>))</span> <span class=o>/</span> <span class=mf>255.0</span>
-        <span class=kd>let</span> <span class=nv>myColor</span><span class=p>:</span> <span class=bp>UIColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>(</span> <span class=n>red</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=n>red</span><span class=p>),</span> <span class=n>green</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=n>green</span><span class=p>),</span> <span class=n>blue</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=n>blue</span><span class=p>),</span> <span class=n>alpha</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=mf>1.0</span><span class=p>))</span>
+        // Facebookカラーの作成.
+        let hex: Int = 0x3B5998
+        let red = Double((hex &amp; 0xFF0000) &gt;&gt; 16) / 255.0
+        let green = Double((hex &amp; 0xFF00) &gt;&gt; 8) / 255.0
+        let blue = Double((hex &amp; 0xFF)) / 255.0
+        let myColor: UIColor = UIColor( red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(1.0))
 
-        <span class=c1>// Facebook用のUIButtonの生成.</span>
-        <span class=kd>let</span> <span class=nv>myFacebookButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>100</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>100</span><span class=p>))</span>
-        <span class=n>myFacebookButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=n>myColor</span>
-        <span class=n>myFacebookButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;Facebook&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=n>UIControlState</span><span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myFacebookButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=n>UIControlState</span><span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myFacebookButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>postToFacebook</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=n>UIControlEvents</span><span class=p>.</span><span class=n>touchUpInside</span><span class=p>)</span>
-        <span class=n>myFacebookButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>50.0</span>
-        <span class=n>myFacebookButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span><span class=o>/</span><span class=mi>2</span><span class=p>)</span>
+        // Facebook用のUIButtonの生成.
+        let myFacebookButton = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        myFacebookButton.backgroundColor = myColor
+        myFacebookButton.setTitle(&quot;Facebook&quot;, for: UIControlState.normal)
+        myFacebookButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        myFacebookButton.addTarget(self, action: #selector(ViewController.postToFacebook(sender:)), for: UIControlEvents.touchUpInside)
+        myFacebookButton.layer.cornerRadius = 50.0
+        myFacebookButton.layer.position = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height/2)
 
-        <span class=c1>// buttonをviewに追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myFacebookButton</span><span class=p>)</span>
-    <span class=p>}</span>
+        // buttonをviewに追加.
+        self.view.addSubview(myFacebookButton)
+    }
 
-    <span class=c1>// ボタンイベント.</span>
-    <span class=kd>func</span> <span class=nf>postToFacebook</span><span class=p>(</span><span class=n>sender</span> <span class=p>:</span> <span class=bp>UIButton</span><span class=p>)</span> <span class=p>{</span>
+    // ボタンイベント.
+    func postToFacebook(sender : UIButton) {
 
-        <span class=c1>// postToTwitterと同様.</span>
-        <span class=c1>// ServiceTypeをFacebookに指定.</span>
-        <span class=n>myComposeView</span> <span class=p>=</span> <span class=bp>SLComposeViewController</span><span class=p>(</span><span class=n>forServiceType</span><span class=p>:</span> <span class=n>SLServiceTypeFacebook</span><span class=p>)</span>
+        // postToTwitterと同様.
+        // ServiceTypeをFacebookに指定.
+        myComposeView = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
 
-        <span class=c1>// 投稿するテキストを指定.</span>
-        <span class=n>myComposeView</span><span class=p>.</span><span class=n>setInitialText</span><span class=p>(</span><span class=s>&quot;Facebook Test&quot;</span><span class=p>)</span>
+        // 投稿するテキストを指定.
+        myComposeView.setInitialText(&quot;Facebook Test&quot;)
 
-        <span class=c1>// 投稿する画像を指定.</span>
-        <span class=n>myComposeView</span><span class=p>.</span><span class=n>add</span><span class=p>(</span><span class=bp>UIImage</span><span class=p>(</span><span class=n>named</span><span class=p>:</span> <span class=s>&quot;sample1.jpg&quot;</span><span class=p>))</span>
+        // 投稿する画像を指定.
+        myComposeView.add(UIImage(named: &quot;sample1.jpg&quot;))
 
-        <span class=c1>// myComposeViewの画面遷移.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>present</span><span class=p>(</span><span class=n>myComposeView</span><span class=p>,</span> <span class=n>animated</span><span class=p>:</span> <span class=kc>true</span><span class=p>,</span> <span class=n>completion</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-    <span class=p>}</span>
+        // myComposeViewの画面遷移.
+        self.present(myComposeView, animated: true, completion: nil)
+    }
 
-<span class=p>}</span> 
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  Social002</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+} 
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  Social002
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
-<span class=kd>import</span> <span class=nc>Social</span>
+import UIKit
+import Social
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class ViewController: UIViewController {
 
-    <span class=kd>var</span> <span class=nv>myComposeView</span> <span class=p>:</span> <span class=bp>SLComposeViewController</span><span class=p>!</span>
+    var myComposeView : SLComposeViewController!
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
+    override func viewDidLoad() {
 
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+        super.viewDidLoad()
 
-        <span class=c1>// Facebookカラーの作成.</span>
-        <span class=kd>let</span> <span class=nv>hex</span><span class=p>:</span> <span class=nb>Int</span> <span class=p>=</span> <span class=mh>0x3B5998</span>
-        <span class=kd>let</span> <span class=nv>red</span> <span class=p>=</span> <span class=nb>Double</span><span class=p>((</span><span class=n>hex</span> <span class=o>&amp;</span> <span class=mh>0xFF0000</span><span class=p>)</span> <span class=o>&gt;&gt;</span> <span class=mi>16</span><span class=p>)</span> <span class=o>/</span> <span class=mf>255.0</span>
-        <span class=kd>let</span> <span class=nv>green</span> <span class=p>=</span> <span class=nb>Double</span><span class=p>((</span><span class=n>hex</span> <span class=o>&amp;</span> <span class=mh>0xFF00</span><span class=p>)</span> <span class=o>&gt;&gt;</span> <span class=mi>8</span><span class=p>)</span> <span class=o>/</span> <span class=mf>255.0</span>
-        <span class=kd>let</span> <span class=nv>blue</span> <span class=p>=</span> <span class=nb>Double</span><span class=p>((</span><span class=n>hex</span> <span class=o>&amp;</span> <span class=mh>0xFF</span><span class=p>))</span> <span class=o>/</span> <span class=mf>255.0</span>
-        <span class=kd>let</span> <span class=nv>myColor</span><span class=p>:</span> <span class=bp>UIColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>(</span> <span class=n>red</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=n>red</span><span class=p>),</span> <span class=n>green</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=n>green</span><span class=p>),</span> <span class=n>blue</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=n>blue</span><span class=p>),</span> <span class=n>alpha</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=mf>1.0</span><span class=p>))</span>
+        // Facebookカラーの作成.
+        let hex: Int = 0x3B5998
+        let red = Double((hex &amp; 0xFF0000) &gt;&gt; 16) / 255.0
+        let green = Double((hex &amp; 0xFF00) &gt;&gt; 8) / 255.0
+        let blue = Double((hex &amp; 0xFF)) / 255.0
+        let myColor: UIColor = UIColor( red: CGFloat(red), green: CGFloat(green), blue: CGFloat(blue), alpha: CGFloat(1.0))
 
-        <span class=c1>// Facebook用のUIButtonの生成.</span>
-        <span class=kd>let</span> <span class=nv>myFacebookButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=mi>100</span><span class=p>,</span> <span class=mi>100</span><span class=p>))</span>
-        <span class=n>myFacebookButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=n>myColor</span>
-        <span class=n>myFacebookButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;Facebook&quot;</span><span class=p>,</span> <span class=n>forState</span><span class=p>:</span> <span class=n>UIControlState</span><span class=p>.</span><span class=n>Normal</span><span class=p>)</span>
-        <span class=n>myFacebookButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>whiteColor</span><span class=p>(),</span> <span class=n>forState</span><span class=p>:</span> <span class=n>UIControlState</span><span class=p>.</span><span class=n>Normal</span><span class=p>)</span>
-        <span class=n>myFacebookButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>postToFacebook</span><span class=p>(</span><span class=kc>_</span><span class=p>:)),</span> <span class=n>forControlEvents</span><span class=p>:</span> <span class=n>UIControlEvents</span><span class=p>.</span><span class=n>TouchUpInside</span><span class=p>)</span>
-        <span class=n>myFacebookButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>50.0</span>
-        <span class=n>myFacebookButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span><span class=o>/</span><span class=mi>2</span><span class=p>)</span>
+        // Facebook用のUIButtonの生成.
+        let myFacebookButton = UIButton(frame: CGRectMake(0, 0, 100, 100))
+        myFacebookButton.backgroundColor = myColor
+        myFacebookButton.setTitle(&quot;Facebook&quot;, forState: UIControlState.Normal)
+        myFacebookButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        myFacebookButton.addTarget(self, action: #selector(ViewController.postToFacebook(_:)), forControlEvents: UIControlEvents.TouchUpInside)
+        myFacebookButton.layer.cornerRadius = 50.0
+        myFacebookButton.layer.position = CGPointMake(self.view.frame.width/2, self.view.frame.height/2)
 
-        <span class=c1>// buttonをviewに追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myFacebookButton</span><span class=p>)</span>
-    <span class=p>}</span>
+        // buttonをviewに追加.
+        self.view.addSubview(myFacebookButton)
+    }
 
-    <span class=c1>// ボタンイベント.</span>
-    <span class=kd>func</span> <span class=nf>postToFacebook</span><span class=p>(</span><span class=n>sender</span> <span class=p>:</span> <span class=bp>UIButton</span><span class=p>)</span> <span class=p>{</span>
+    // ボタンイベント.
+    func postToFacebook(sender : UIButton) {
 
-        <span class=c1>// postToTwitterと同様.</span>
-        <span class=c1>// ServiceTypeをFacebookに指定.</span>
-        <span class=n>myComposeView</span> <span class=p>=</span> <span class=bp>SLComposeViewController</span><span class=p>(</span><span class=n>forServiceType</span><span class=p>:</span> <span class=n>SLServiceTypeFacebook</span><span class=p>)</span>
+        // postToTwitterと同様.
+        // ServiceTypeをFacebookに指定.
+        myComposeView = SLComposeViewController(forServiceType: SLServiceTypeFacebook)
 
-        <span class=c1>// 投稿するテキストを指定.</span>
-        <span class=n>myComposeView</span><span class=p>.</span><span class=n>setInitialText</span><span class=p>(</span><span class=s>&quot;Facebook Test&quot;</span><span class=p>)</span>
+        // 投稿するテキストを指定.
+        myComposeView.setInitialText(&quot;Facebook Test&quot;)
 
-        <span class=c1>// 投稿する画像を指定.</span>
-        <span class=n>myComposeView</span><span class=p>.</span><span class=n>addImage</span><span class=p>(</span><span class=bp>UIImage</span><span class=p>(</span><span class=n>named</span><span class=p>:</span> <span class=s>&quot;sample1.jpg&quot;</span><span class=p>))</span>
+        // 投稿する画像を指定.
+        myComposeView.addImage(UIImage(named: &quot;sample1.jpg&quot;))
 
-        <span class=c1>// myComposeViewの画面遷移.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>presentViewController</span><span class=p>(</span><span class=n>myComposeView</span><span class=p>,</span> <span class=n>animated</span><span class=p>:</span> <span class=kc>true</span><span class=p>,</span> <span class=n>completion</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-    <span class=p>}</span>
+        // myComposeViewの画面遷移.
+        self.presentViewController(myComposeView, animated: true, completion: nil)
+    }
 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+}
+</code></pre></div></div>
 <h2 id="3x4x">3.xと4.xの差分</h2>
 <ul>
 <li><code>UIControlState</code> が <code>UIControl.State</code> に変更</li>

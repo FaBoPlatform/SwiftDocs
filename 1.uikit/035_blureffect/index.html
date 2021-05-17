@@ -2334,478 +2334,245 @@
 <img alt="Preview uikit035_002" src="../img/uikit035_002.png" />
 <img alt="Preview uikit035_003" src="../img/uikit035_003.png" />
 <img alt="Preview uikit035_004" src="../img/uikit035_004.png" /></p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span>
-<span class=normal>73</span>
-<span class=normal>74</span>
-<span class=normal>75</span>
-<span class=normal>76</span>
-<span class=normal>77</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit035</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit035
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class ViewController: UIViewController {
 
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>imageView</span> <span class=p>:</span> <span class=bp>UIImageView</span><span class=p>!</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>effectView</span> <span class=p>:</span> <span class=bp>UIVisualEffectView</span><span class=p>!</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>mySegcon</span> <span class=p>:</span> <span class=bp>UISegmentedControl</span><span class=p>!</span>
+    private var imageView : UIImageView!
+    private var effectView : UIVisualEffectView!
+    private var mySegcon : UISegmentedControl!
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
+    override func viewDidLoad() {
 
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+        super.viewDidLoad()
 
-        <span class=c1>// 背景画像を生成.</span>
-        <span class=n>imageView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>)</span>
-        <span class=n>imageView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>named</span><span class=p>:</span> <span class=s>&quot;ci005&quot;</span><span class=p>)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>imageView</span><span class=p>)</span>
+        // 背景画像を生成.
+        imageView = UIImageView(frame: self.view.bounds)
+        imageView.image = UIImage(named: &quot;ci005&quot;)
+        self.view.addSubview(imageView)
 
-        <span class=c1>// SegmentedControlを生成.</span>
-        <span class=n>mySegcon</span> <span class=p>=</span> <span class=bp>UISegmentedControl</span><span class=p>(</span><span class=n>items</span><span class=p>:</span> <span class=p>[</span><span class=s>&quot;Dark&quot;</span><span class=p>,</span> <span class=s>&quot;ExtraLight&quot;</span><span class=p>,</span> <span class=s>&quot;Light&quot;</span><span class=p>])</span>
-        <span class=n>mySegcon</span><span class=p>.</span><span class=n>center</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>center</span><span class=p>.</span><span class=n>x</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>maxY</span> <span class=o>-</span> <span class=mi>50</span><span class=p>)</span>
-        <span class=n>mySegcon</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>gray</span>
-        <span class=n>mySegcon</span><span class=p>.</span><span class=n>tintColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
-        <span class=n>mySegcon</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMySegmentedControl</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=bp>UIControl</span><span class=p>.</span><span class=n>Event</span><span class=p>.</span><span class=n>valueChanged</span><span class=p>)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>mySegcon</span><span class=p>)</span>
-    <span class=p>}</span>
+        // SegmentedControlを生成.
+        mySegcon = UISegmentedControl(items: [&quot;Dark&quot;, &quot;ExtraLight&quot;, &quot;Light&quot;])
+        mySegcon.center = CGPoint(x:self.view.center.x, y:self.view.bounds.maxY - 50)
+        mySegcon.backgroundColor = UIColor.gray
+        mySegcon.tintColor = UIColor.white
+        mySegcon.addTarget(self, action: #selector(ViewController.onClickMySegmentedControl(sender:)), for: UIControl.Event.valueChanged)
+        self.view.addSubview(mySegcon)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     エフェクトを適用する.</span>
-<span class=cm>     */</span>
-    <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>addVirtualEffectView</span><span class=p>(</span><span class=n>effect</span> <span class=p>:</span> <span class=bp>UIBlurEffect</span><span class=p>!){</span>
+    /*
+     エフェクトを適用する.
+     */
+    internal func addVirtualEffectView(effect : UIBlurEffect!){
 
-        <span class=k>if</span> <span class=n>effectView</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
-            <span class=n>effectView</span><span class=p>.</span><span class=n>removeFromSuperview</span><span class=p>()</span>
-        <span class=p>}</span>
+        if effectView != nil {
+            effectView.removeFromSuperview()
+        }
 
-        <span class=c1>// Blurエフェクトを適用するEffectViewを作成.</span>
-        <span class=n>effectView</span> <span class=p>=</span> <span class=bp>UIVisualEffectView</span><span class=p>(</span><span class=n>effect</span><span class=p>:</span> <span class=n>effect</span><span class=p>)</span>
-        <span class=n>effectView</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=n>imageView</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span> <span class=o>/</span> <span class=mi>2</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>imageView</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>height</span> <span class=o>/</span> <span class=mi>2</span><span class=p>)</span>
-        <span class=n>effectView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=n>imageView</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>midX</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=n>imageView</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>midY</span><span class=p>)</span>
-        <span class=n>effectView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>effectView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>imageView</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>effectView</span><span class=p>)</span>
-    <span class=p>}</span>
+        // Blurエフェクトを適用するEffectViewを作成.
+        effectView = UIVisualEffectView(effect: effect)
+        effectView.frame = CGRect(x: 0, y: 0, width: imageView.bounds.width / 2, height: imageView.bounds.height / 2)
+        effectView.layer.position = CGPoint(x:imageView.bounds.midX, y:imageView.bounds.midY)
+        effectView.layer.masksToBounds = true
+        effectView.layer.cornerRadius = 20.0
+        imageView.addSubview(effectView)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     SegmentedControlの値が変わった時に呼び出されるメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kr>@objc</span> <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onClickMySegmentedControl</span><span class=p>(</span><span class=n>sender</span> <span class=p>:</span> <span class=bp>UISegmentedControl</span><span class=p>){</span>
+    /*
+     SegmentedControlの値が変わった時に呼び出されるメソッド.
+     */
+    @objc internal func onClickMySegmentedControl(sender : UISegmentedControl){
 
-        <span class=kd>var</span> <span class=nv>effect</span> <span class=p>:</span> <span class=bp>UIBlurEffect</span><span class=p>!</span>
+        var effect : UIBlurEffect!
 
-        <span class=k>switch</span> <span class=n>sender</span><span class=p>.</span><span class=n>selectedSegmentIndex</span> <span class=p>{</span>
+        switch sender.selectedSegmentIndex {
 
-        <span class=k>case</span> <span class=mi>0</span><span class=p>:</span>
-            <span class=c1>// LightなBlurエフェクトを作る.</span>
-            <span class=n>effect</span> <span class=p>=</span> <span class=bp>UIBlurEffect</span><span class=p>(</span><span class=n>style</span><span class=p>:</span> <span class=bp>UIBlurEffect</span><span class=p>.</span><span class=n>Style</span><span class=p>.</span><span class=n>dark</span><span class=p>)</span>
+        case 0:
+            // LightなBlurエフェクトを作る.
+            effect = UIBlurEffect(style: UIBlurEffect.Style.dark)
 
-        <span class=k>case</span> <span class=mi>1</span><span class=p>:</span>
-            <span class=c1>// DarkなBlurエフェクトを作る.</span>
-            <span class=n>effect</span> <span class=p>=</span> <span class=bp>UIBlurEffect</span><span class=p>(</span><span class=n>style</span><span class=p>:</span> <span class=bp>UIBlurEffect</span><span class=p>.</span><span class=n>Style</span><span class=p>.</span><span class=n>light</span><span class=p>)</span>
+        case 1:
+            // DarkなBlurエフェクトを作る.
+            effect = UIBlurEffect(style: UIBlurEffect.Style.light)
 
-        <span class=k>case</span> <span class=mi>2</span><span class=p>:</span>
-            <span class=c1>// ExtraLightなBlurエフェクトを作る.</span>
-            <span class=n>effect</span> <span class=p>=</span> <span class=bp>UIBlurEffect</span><span class=p>(</span><span class=n>style</span><span class=p>:</span> <span class=bp>UIBlurEffect</span><span class=p>.</span><span class=n>Style</span><span class=p>.</span><span class=n>extraLight</span><span class=p>)</span>
+        case 2:
+            // ExtraLightなBlurエフェクトを作る.
+            effect = UIBlurEffect(style: UIBlurEffect.Style.extraLight)
 
-        <span class=k>default</span><span class=p>:</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Error&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
+        default:
+            print(&quot;Error&quot;)
+        }
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>addVirtualEffectView</span><span class=p>(</span><span class=n>effect</span><span class=p>:</span> <span class=n>effect</span><span class=p>)</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span>
-<span class=normal>73</span>
-<span class=normal>74</span>
-<span class=normal>75</span>
-<span class=normal>76</span>
-<span class=normal>77</span>
-<span class=normal>78</span>
-<span class=normal>79</span>
-<span class=normal>80</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit035_3.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/18.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+        self.addVirtualEffectView(effect: effect)
+    }
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit035_3.0
+//
+//  Created by KimikoWatanabe on 2016/08/18.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class ViewController: UIViewController {
 
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>effectView</span> <span class=p>:</span> <span class=bp>UIVisualEffectView</span><span class=p>!</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>mySegcon</span> <span class=p>:</span> <span class=bp>UISegmentedControl</span><span class=p>!</span>
+    private var effectView : UIVisualEffectView!
+    private var mySegcon : UISegmentedControl!
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
+    override func viewDidLoad() {
 
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+        super.viewDidLoad()
 
-        <span class=c1>// 背景画像を生成.</span>
-        <span class=kd>let</span> <span class=nv>image</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>named</span><span class=p>:</span> <span class=s>&quot;ci005&quot;</span><span class=p>)</span>
-        <span class=kd>let</span> <span class=nv>imageView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>)</span>
-        <span class=n>imageView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=n>image</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>imageView</span><span class=p>)</span>
+        // 背景画像を生成.
+        let image = UIImage(named: &quot;ci005&quot;)
+        let imageView = UIImageView(frame: self.view.bounds)
+        imageView.image = image
+        self.view.addSubview(imageView)
 
-        <span class=c1>// SegmentedControlを生成.</span>
-        <span class=n>mySegcon</span> <span class=p>=</span> <span class=bp>UISegmentedControl</span><span class=p>(</span><span class=n>items</span><span class=p>:</span> <span class=p>[</span><span class=s>&quot;Dark&quot;</span><span class=p>,</span> <span class=s>&quot;ExtraLight&quot;</span><span class=p>,</span> <span class=s>&quot;Light&quot;</span><span class=p>])</span>
-        <span class=n>mySegcon</span><span class=p>.</span><span class=n>center</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>center</span><span class=p>.</span><span class=n>x</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>maxY</span> <span class=o>-</span> <span class=mi>50</span><span class=p>)</span>
-        <span class=n>mySegcon</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>gray</span>
-        <span class=n>mySegcon</span><span class=p>.</span><span class=n>tintColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
-        <span class=n>mySegcon</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMySegmentedControl</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=n>UIControlEvents</span><span class=p>.</span><span class=n>valueChanged</span><span class=p>)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>mySegcon</span><span class=p>)</span>
-    <span class=p>}</span>
+        // SegmentedControlを生成.
+        mySegcon = UISegmentedControl(items: [&quot;Dark&quot;, &quot;ExtraLight&quot;, &quot;Light&quot;])
+        mySegcon.center = CGPoint(x:self.view.center.x, y:self.view.bounds.maxY - 50)
+        mySegcon.backgroundColor = UIColor.gray
+        mySegcon.tintColor = UIColor.white
+        mySegcon.addTarget(self, action: #selector(ViewController.onClickMySegmentedControl(sender:)), for: UIControlEvents.valueChanged)
+        self.view.addSubview(mySegcon)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     エフェクトを適用する.</span>
-<span class=cm>     */</span>
-    <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>addVirtualEffectView</span><span class=p>(</span><span class=n>effect</span> <span class=p>:</span> <span class=bp>UIBlurEffect</span><span class=p>!){</span>
+    /*
+     エフェクトを適用する.
+     */
+    internal func addVirtualEffectView(effect : UIBlurEffect!){
 
-        <span class=k>if</span> <span class=n>effectView</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
-            <span class=n>effectView</span><span class=p>.</span><span class=n>removeFromSuperview</span><span class=p>()</span>
-        <span class=p>}</span>
+        if effectView != nil {
+            effectView.removeFromSuperview()
+        }
 
-        <span class=c1>// Blurエフェクトを適用するEffectViewを作成.</span>
-        <span class=n>effectView</span> <span class=p>=</span> <span class=bp>UIVisualEffectView</span><span class=p>(</span><span class=n>effect</span><span class=p>:</span> <span class=n>effect</span><span class=p>)</span>
-        <span class=n>effectView</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=mi>200</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>400</span><span class=p>)</span>
-        <span class=n>effectView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=n>mySegcon</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>midX</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=o>-</span><span class=p>(</span><span class=n>effectView</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>midY</span> <span class=o>+</span> <span class=mi>20</span><span class=p>)</span> <span class=p>)</span>
-        <span class=n>effectView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>effectView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>mySegcon</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>effectView</span><span class=p>)</span>
-    <span class=p>}</span>
+        // Blurエフェクトを適用するEffectViewを作成.
+        effectView = UIVisualEffectView(effect: effect)
+        effectView.frame = CGRect(x:0, y:0, width:200, height:400)
+        effectView.layer.position = CGPoint(x:mySegcon.bounds.midX, y:-(effectView.frame.midY + 20) )
+        effectView.layer.masksToBounds = true
+        effectView.layer.cornerRadius = 20.0
+        mySegcon.addSubview(effectView)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     SegmentedControlの値が変わった時に呼び出されるメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onClickMySegmentedControl</span><span class=p>(</span><span class=n>sender</span> <span class=p>:</span> <span class=bp>UISegmentedControl</span><span class=p>){</span>
+    /*
+     SegmentedControlの値が変わった時に呼び出されるメソッド.
+     */
+    internal func onClickMySegmentedControl(sender : UISegmentedControl){
 
-        <span class=kd>var</span> <span class=nv>effect</span> <span class=p>:</span> <span class=bp>UIBlurEffect</span><span class=p>!</span>
+        var effect : UIBlurEffect!
 
-        <span class=k>switch</span> <span class=n>sender</span><span class=p>.</span><span class=n>selectedSegmentIndex</span> <span class=p>{</span>
+        switch sender.selectedSegmentIndex {
 
-        <span class=k>case</span> <span class=mi>0</span><span class=p>:</span>
-            <span class=c1>// LightなBlurエフェクトを作る.</span>
-            <span class=n>effect</span> <span class=p>=</span> <span class=bp>UIBlurEffect</span><span class=p>(</span><span class=n>style</span><span class=p>:</span> <span class=n>UIBlurEffectStyle</span><span class=p>.</span><span class=n>dark</span><span class=p>)</span>
+        case 0:
+            // LightなBlurエフェクトを作る.
+            effect = UIBlurEffect(style: UIBlurEffectStyle.dark)
 
-        <span class=k>case</span> <span class=mi>1</span><span class=p>:</span>
-            <span class=c1>// DarkなBlurエフェクトを作る.</span>
-            <span class=n>effect</span> <span class=p>=</span> <span class=bp>UIBlurEffect</span><span class=p>(</span><span class=n>style</span><span class=p>:</span> <span class=n>UIBlurEffectStyle</span><span class=p>.</span><span class=n>light</span><span class=p>)</span>
+        case 1:
+            // DarkなBlurエフェクトを作る.
+            effect = UIBlurEffect(style: UIBlurEffectStyle.light)
 
-        <span class=k>case</span> <span class=mi>2</span><span class=p>:</span>
-            <span class=c1>// ExtraLightなBlurエフェクトを作る.</span>
-            <span class=n>effect</span> <span class=p>=</span> <span class=bp>UIBlurEffect</span><span class=p>(</span><span class=n>style</span><span class=p>:</span> <span class=n>UIBlurEffectStyle</span><span class=p>.</span><span class=n>extraLight</span><span class=p>)</span>
+        case 2:
+            // ExtraLightなBlurエフェクトを作る.
+            effect = UIBlurEffect(style: UIBlurEffectStyle.extraLight)
 
-        <span class=k>default</span><span class=p>:</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Error&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
+        default:
+            print(&quot;Error&quot;)
+        }
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>addVirtualEffectView</span><span class=p>(</span><span class=n>effect</span><span class=p>:</span> <span class=n>effect</span><span class=p>)</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span>
-<span class=normal>73</span>
-<span class=normal>74</span>
-<span class=normal>75</span>
-<span class=normal>76</span>
-<span class=normal>77</span>
-<span class=normal>78</span>
-<span class=normal>79</span>
-<span class=normal>80</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit035_2.3</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/18.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+        self.addVirtualEffectView(effect: effect)
+    }
+}
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit035_2.3
+//
+//  Created by KimikoWatanabe on 2016/08/18.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+import UIKit
 
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>effectView</span> <span class=p>:</span> <span class=bp>UIVisualEffectView</span><span class=p>!</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>mySegcon</span> <span class=p>:</span> <span class=bp>UISegmentedControl</span><span class=p>!</span>
+class ViewController: UIViewController {
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
+    private var effectView : UIVisualEffectView!
+    private var mySegcon : UISegmentedControl!
 
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
 
-        <span class=c1>// 背景画像を生成.</span>
-        <span class=kd>let</span> <span class=nv>image</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>named</span><span class=p>:</span> <span class=s>&quot;ci005&quot;</span><span class=p>)</span>
-        <span class=kd>let</span> <span class=nv>imageView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>)</span>
-        <span class=n>imageView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=n>image</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>imageView</span><span class=p>)</span>
+        super.viewDidLoad()
 
-        <span class=c1>// SegmentedControlを生成.</span>
-        <span class=n>mySegcon</span> <span class=p>=</span> <span class=bp>UISegmentedControl</span><span class=p>(</span><span class=n>items</span><span class=p>:</span> <span class=p>[</span><span class=s>&quot;Dark&quot;</span><span class=p>,</span> <span class=s>&quot;ExtraLight&quot;</span><span class=p>,</span> <span class=s>&quot;Light&quot;</span><span class=p>])</span>
-        <span class=n>mySegcon</span><span class=p>.</span><span class=n>center</span> <span class=p>=</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>center</span><span class=p>.</span><span class=n>x</span><span class=p>,</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>maxY</span> <span class=o>-</span> <span class=mi>50</span><span class=p>)</span>
-        <span class=n>mySegcon</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>grayColor</span><span class=p>()</span>
-        <span class=n>mySegcon</span><span class=p>.</span><span class=n>tintColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>whiteColor</span><span class=p>()</span>
-        <span class=n>mySegcon</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMySegmentedControl</span><span class=p>(</span><span class=kc>_</span><span class=p>:)),</span> <span class=n>forControlEvents</span><span class=p>:</span> <span class=n>UIControlEvents</span><span class=p>.</span><span class=n>ValueChanged</span><span class=p>)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>mySegcon</span><span class=p>)</span>
-    <span class=p>}</span>
+        // 背景画像を生成.
+        let image = UIImage(named: &quot;ci005&quot;)
+        let imageView = UIImageView(frame: self.view.bounds)
+        imageView.image = image
+        self.view.addSubview(imageView)
 
-    <span class=cm>/*</span>
-<span class=cm>     エフェクトを適用する.</span>
-<span class=cm>     */</span>
-    <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>addVirtualEffectView</span><span class=p>(</span><span class=n>effect</span> <span class=p>:</span> <span class=bp>UIBlurEffect</span><span class=p>!){</span>
+        // SegmentedControlを生成.
+        mySegcon = UISegmentedControl(items: [&quot;Dark&quot;, &quot;ExtraLight&quot;, &quot;Light&quot;])
+        mySegcon.center = CGPointMake(self.view.center.x, self.view.bounds.maxY - 50)
+        mySegcon.backgroundColor = UIColor.grayColor()
+        mySegcon.tintColor = UIColor.whiteColor()
+        mySegcon.addTarget(self, action: #selector(ViewController.onClickMySegmentedControl(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        self.view.addSubview(mySegcon)
+    }
 
-        <span class=k>if</span> <span class=n>effectView</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
-            <span class=n>effectView</span><span class=p>.</span><span class=n>removeFromSuperview</span><span class=p>()</span>
-        <span class=p>}</span>
+    /*
+     エフェクトを適用する.
+     */
+    internal func addVirtualEffectView(effect : UIBlurEffect!){
 
-        <span class=c1>// Blurエフェクトを適用するEffectViewを作成.</span>
-        <span class=n>effectView</span> <span class=p>=</span> <span class=bp>UIVisualEffectView</span><span class=p>(</span><span class=n>effect</span><span class=p>:</span> <span class=n>effect</span><span class=p>)</span>
-        <span class=n>effectView</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=mi>200</span><span class=p>,</span> <span class=mi>400</span><span class=p>)</span>
-        <span class=n>effectView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=n>mySegcon</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>midX</span><span class=p>,</span> <span class=o>-</span><span class=p>(</span><span class=n>effectView</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>midY</span> <span class=o>+</span> <span class=mi>20</span><span class=p>)</span> <span class=p>)</span>
-        <span class=n>effectView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>effectView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>mySegcon</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>effectView</span><span class=p>)</span>
-    <span class=p>}</span>
+        if effectView != nil {
+            effectView.removeFromSuperview()
+        }
 
-    <span class=cm>/*</span>
-<span class=cm>     SegmentedControlの値が変わった時に呼び出されるメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onClickMySegmentedControl</span><span class=p>(</span><span class=n>sender</span> <span class=p>:</span> <span class=bp>UISegmentedControl</span><span class=p>){</span>
+        // Blurエフェクトを適用するEffectViewを作成.
+        effectView = UIVisualEffectView(effect: effect)
+        effectView.frame = CGRectMake(0, 0, 200, 400)
+        effectView.layer.position = CGPointMake(mySegcon.bounds.midX, -(effectView.frame.midY + 20) )
+        effectView.layer.masksToBounds = true
+        effectView.layer.cornerRadius = 20.0
+        mySegcon.addSubview(effectView)
+    }
 
-        <span class=kd>var</span> <span class=nv>effect</span> <span class=p>:</span> <span class=bp>UIBlurEffect</span><span class=p>!</span>
+    /*
+     SegmentedControlの値が変わった時に呼び出されるメソッド.
+     */
+    internal func onClickMySegmentedControl(sender : UISegmentedControl){
 
-        <span class=k>switch</span> <span class=n>sender</span><span class=p>.</span><span class=n>selectedSegmentIndex</span> <span class=p>{</span>
+        var effect : UIBlurEffect!
 
-        <span class=k>case</span> <span class=mi>0</span><span class=p>:</span>
-            <span class=c1>// LightなBlurエフェクトを作る.</span>
-            <span class=n>effect</span> <span class=p>=</span> <span class=bp>UIBlurEffect</span><span class=p>(</span><span class=n>style</span><span class=p>:</span> <span class=n>UIBlurEffectStyle</span><span class=p>.</span><span class=n>Dark</span><span class=p>)</span>
+        switch sender.selectedSegmentIndex {
 
-        <span class=k>case</span> <span class=mi>1</span><span class=p>:</span>
-            <span class=c1>// DarkなBlurエフェクトを作る.</span>
-            <span class=n>effect</span> <span class=p>=</span> <span class=bp>UIBlurEffect</span><span class=p>(</span><span class=n>style</span><span class=p>:</span> <span class=n>UIBlurEffectStyle</span><span class=p>.</span><span class=n>Light</span><span class=p>)</span>
+        case 0:
+            // LightなBlurエフェクトを作る.
+            effect = UIBlurEffect(style: UIBlurEffectStyle.Dark)
 
-        <span class=k>case</span> <span class=mi>2</span><span class=p>:</span>
-            <span class=c1>// ExtraLightなBlurエフェクトを作る.</span>
-            <span class=n>effect</span> <span class=p>=</span> <span class=bp>UIBlurEffect</span><span class=p>(</span><span class=n>style</span><span class=p>:</span> <span class=n>UIBlurEffectStyle</span><span class=p>.</span><span class=n>ExtraLight</span><span class=p>)</span>
+        case 1:
+            // DarkなBlurエフェクトを作る.
+            effect = UIBlurEffect(style: UIBlurEffectStyle.Light)
 
-        <span class=k>default</span><span class=p>:</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Error&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
+        case 2:
+            // ExtraLightなBlurエフェクトを作る.
+            effect = UIBlurEffect(style: UIBlurEffectStyle.ExtraLight)
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>addVirtualEffectView</span><span class=p>(</span><span class=n>effect</span><span class=p>)</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+        default:
+            print(&quot;Error&quot;)
+        }
+
+        self.addVirtualEffectView(effect)
+    }
+}
+</code></pre></div></div>
 <h2 id="3x4x">3.xと4.xの差分</h2>
 <ul>
 <li><code>UIControlEvents</code> が <code>UIControl.Event</code> に変更</li>

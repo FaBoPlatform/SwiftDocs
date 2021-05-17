@@ -2332,247 +2332,128 @@
                 <h1 id="_1">データの更新日時を取得</h1>
 <p><img alt="Preview connection012" src="../img/Connection012.png" /></p>
 <h3 id="ios9ats">iOS9からリクエスト先によってはATSを無効化・対処する必要があります</h3>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x/3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//  ViewController.swift</span>
-<span class=c1>//  Connection012</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x/3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//  ViewController.swift
+//  Connection012
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>NSURLConnectionDataDelegate</span><span class=p>{</span>
+class ViewController: UIViewController, NSURLConnectionDataDelegate{
 
-    <span class=kd>var</span> <span class=nv>myTextView</span><span class=p>:</span><span class=bp>UITextView</span><span class=p>!</span>
+    var myTextView:UITextView!
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// 画像のURLを初期化.</span>
-        <span class=kd>let</span> <span class=nv>url</span> <span class=p>=</span> <span class=bp>NSURL</span><span class=p>(</span><span class=n>string</span><span class=p>:</span> <span class=s>&quot;http://blogimg.goo.ne.jp/user_image/6b/5d/d7ecfd5f7dc8c1fd7384e5642abfe638.jpg&quot;</span><span class=p>)</span>
+        // 画像のURLを初期化.
+        let url = NSURL(string: &quot;http://blogimg.goo.ne.jp/user_image/6b/5d/d7ecfd5f7dc8c1fd7384e5642abfe638.jpg&quot;)
 
-        <span class=c1>// 参照するイメージを表示.</span>
-        <span class=kd>let</span> <span class=nv>imageData</span><span class=p>:</span> <span class=bp>NSData</span> <span class=p>=</span> <span class=bp>NSData</span><span class=p>(</span><span class=n>contentsOf</span><span class=p>:</span> <span class=n>url</span> <span class=k>as</span><span class=p>!</span> <span class=n>URL</span><span class=p>)</span><span class=o>!</span>
-        <span class=kd>let</span> <span class=nv>image</span><span class=p>:</span> <span class=bp>UIImage</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>data</span><span class=p>:</span> <span class=n>imageData</span> <span class=k>as</span> <span class=n>Data</span><span class=p>)</span><span class=o>!</span>
-        <span class=kd>let</span> <span class=nv>imageView</span><span class=p>:</span> <span class=bp>UIImageView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>100</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>120</span><span class=p>))</span>
-        <span class=n>imageView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=n>image</span>
-        <span class=n>imageView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mf>200.0</span><span class=p>)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>imageView</span><span class=p>)</span>
+        // 参照するイメージを表示.
+        let imageData: NSData = NSData(contentsOf: url as! URL)!
+        let image: UIImage = UIImage(data: imageData as Data)!
+        let imageView: UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 120))
+        imageView.image = image
+        imageView.layer.position = CGPoint(x: self.view.bounds.width/2, y: 200.0)
+        self.view.addSubview(imageView)
 
-        <span class=c1>// 更新日の表示用TextViewを用意.</span>
-        <span class=n>myTextView</span> <span class=p>=</span> <span class=bp>UITextView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>300</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>50</span><span class=p>))</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=n>NSTextAlignment</span><span class=p>.</span><span class=n>center</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mf>400.0</span><span class=p>)</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>isEditable</span> <span class=p>=</span> <span class=kc>false</span>
+        // 更新日の表示用TextViewを用意.
+        myTextView = UITextView(frame: CGRect(x: 0, y: 0, width: 300, height: 50))
+        myTextView.textAlignment = NSTextAlignment.center
+        myTextView.layer.position = CGPoint(x: self.view.bounds.width/2, y: 400.0)
+        myTextView.isEditable = false
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myTextView</span><span class=p>)</span>
+        self.view.addSubview(myTextView)
 
-        <span class=c1>// サーバーへのリクエストを初期化.</span>
-        <span class=kd>let</span> <span class=nv>req</span> <span class=p>=</span> <span class=bp>NSMutableURLRequest</span><span class=p>(</span><span class=n>url</span><span class=p>:</span> <span class=n>url</span> <span class=k>as</span><span class=p>!</span> <span class=n>URL</span><span class=p>)</span>
+        // サーバーへのリクエストを初期化.
+        let req = NSMutableURLRequest(url: url as! URL)
 
-        <span class=c1>// ヘッダー情報を得るように初期化.</span>
-        <span class=n>req</span><span class=p>.</span><span class=n>httpMethod</span> <span class=p>=</span> <span class=s>&quot;HEAD&quot;</span>
+        // ヘッダー情報を得るように初期化.
+        req.httpMethod = &quot;HEAD&quot;
 
-        <span class=c1>// サーバーへ通信.</span>
-        <span class=bp>NSURLConnection</span><span class=p>(</span><span class=n>request</span><span class=p>:</span> <span class=n>req</span> <span class=k>as</span> <span class=n>URLRequest</span><span class=p>,</span> <span class=n>delegate</span><span class=p>:</span> <span class=kc>self</span><span class=p>)</span>
+        // サーバーへ通信.
+        NSURLConnection(request: req as URLRequest, delegate: self)
 
-    <span class=p>}</span>
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     サーバからレスポンスが送られてきたとき呼び出されるメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>connection</span><span class=p>(</span><span class=kc>_</span> <span class=n>connection</span><span class=p>:</span> <span class=bp>NSURLConnection</span><span class=p>,</span> <span class=n>didReceive</span> <span class=n>response</span><span class=p>:</span> <span class=n>URLResponse</span><span class=p>)</span> <span class=p>{</span>
+    /*
+     サーバからレスポンスが送られてきたとき呼び出されるメソッド.
+     */
+    func connection(_ connection: NSURLConnection, didReceive response: URLResponse) {
 
-        <span class=c1>// URLのヘッダー情報を得る.</span>
-        <span class=kd>let</span> <span class=nv>head</span> <span class=p>=</span> <span class=n>response</span> <span class=k>as</span><span class=p>!</span> <span class=n>HTTPURLResponse</span>
+        // URLのヘッダー情報を得る.
+        let head = response as! HTTPURLResponse
 
-        <span class=c1>// 更新日時を得る.</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=n>head</span><span class=p>.</span><span class=n>allHeaderFields</span><span class=p>[</span><span class=s>&quot;Last-Modified&quot;</span><span class=p>]</span> <span class=k>as</span><span class=p>!</span> <span class=bp>NSString</span> <span class=k>as</span> <span class=nb>String</span>
-        <span class=bp>print</span><span class=p>(</span><span class=n>head</span><span class=p>.</span><span class=n>allHeaderFields</span><span class=p>[</span><span class=s>&quot;Last-Modified&quot;</span><span class=p>]</span> <span class=k>as</span><span class=p>!</span> <span class=bp>NSString</span><span class=p>)</span>
+        // 更新日時を得る.
+        myTextView.text = head.allHeaderFields[&quot;Last-Modified&quot;] as! NSString as String
+        print(head.allHeaderFields[&quot;Last-Modified&quot;] as! NSString)
 
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  Connection012</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+    }
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  Connection012
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>NSURLConnectionDataDelegate</span><span class=p>{</span>
+class ViewController: UIViewController, NSURLConnectionDataDelegate{
 
-    <span class=kd>var</span> <span class=nv>myTextView</span><span class=p>:</span><span class=bp>UITextView</span><span class=p>!</span>
+    var myTextView:UITextView!
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// 画像のURLを初期化.</span>
-        <span class=kd>let</span> <span class=nv>url</span> <span class=p>=</span> <span class=bp>NSURL</span><span class=p>(</span><span class=n>string</span><span class=p>:</span> <span class=s>&quot;http://blogimg.goo.ne.jp/user_image/6b/5d/d7ecfd5f7dc8c1fd7384e5642abfe638.jpg&quot;</span><span class=p>)</span>
+        // 画像のURLを初期化.
+        let url = NSURL(string: &quot;http://blogimg.goo.ne.jp/user_image/6b/5d/d7ecfd5f7dc8c1fd7384e5642abfe638.jpg&quot;)
 
-        <span class=c1>// 参照するイメージを表示.</span>
-        <span class=kd>let</span> <span class=nv>imageData</span><span class=p>:</span> <span class=bp>NSData</span> <span class=p>=</span> <span class=bp>NSData</span><span class=p>(</span><span class=n>contentsOfURL</span><span class=p>:</span> <span class=n>url</span><span class=p>!)</span><span class=o>!</span>
-        <span class=kd>let</span> <span class=nv>image</span><span class=p>:</span> <span class=bp>UIImage</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>data</span><span class=p>:</span> <span class=n>imageData</span><span class=p>)</span><span class=o>!</span>
-        <span class=kd>let</span> <span class=nv>imageView</span><span class=p>:</span> <span class=bp>UIImageView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>100</span><span class=p>,</span><span class=mi>120</span><span class=p>))</span>
-        <span class=n>imageView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=n>image</span>
-        <span class=n>imageView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mf>200.0</span><span class=p>)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>imageView</span><span class=p>)</span>
+        // 参照するイメージを表示.
+        let imageData: NSData = NSData(contentsOfURL: url!)!
+        let image: UIImage = UIImage(data: imageData)!
+        let imageView: UIImageView = UIImageView(frame: CGRectMake(0,0,100,120))
+        imageView.image = image
+        imageView.layer.position = CGPoint(x: self.view.bounds.width/2, y: 200.0)
+        self.view.addSubview(imageView)
 
-        <span class=c1>// 更新日の表示用TextViewを用意.</span>
-        <span class=n>myTextView</span> <span class=p>=</span> <span class=bp>UITextView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=mi>300</span><span class=p>,</span> <span class=mi>50</span><span class=p>))</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=n>NSTextAlignment</span><span class=p>.</span><span class=n>Center</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mf>400.0</span><span class=p>)</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>editable</span> <span class=p>=</span> <span class=kc>false</span>
+        // 更新日の表示用TextViewを用意.
+        myTextView = UITextView(frame: CGRectMake(0, 0, 300, 50))
+        myTextView.textAlignment = NSTextAlignment.Center
+        myTextView.layer.position = CGPoint(x: self.view.bounds.width/2, y: 400.0)
+        myTextView.editable = false
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myTextView</span><span class=p>)</span>
+        self.view.addSubview(myTextView)
 
-        <span class=c1>// サーバーへのリクエストを初期化.</span>
-        <span class=kd>let</span> <span class=nv>req</span> <span class=p>=</span> <span class=bp>NSMutableURLRequest</span><span class=p>(</span><span class=n>URL</span><span class=p>:</span> <span class=n>url</span><span class=p>!)</span>
+        // サーバーへのリクエストを初期化.
+        let req = NSMutableURLRequest(URL: url!)
 
-        <span class=c1>// ヘッダー情報を得るように初期化.</span>
-        <span class=n>req</span><span class=p>.</span><span class=n>HTTPMethod</span> <span class=p>=</span> <span class=s>&quot;HEAD&quot;</span>
+        // ヘッダー情報を得るように初期化.
+        req.HTTPMethod = &quot;HEAD&quot;
 
-        <span class=c1>// サーバーへ通信.</span>
-        <span class=bp>NSURLConnection</span><span class=p>(</span><span class=n>request</span><span class=p>:</span> <span class=n>req</span><span class=p>,</span> <span class=n>delegate</span><span class=p>:</span> <span class=kc>self</span><span class=p>)</span>
+        // サーバーへ通信.
+        NSURLConnection(request: req, delegate: self)
 
-    <span class=p>}</span>
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     サーバからレスポンスが送られてきたとき呼び出されるメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>connection</span><span class=p>(</span><span class=n>connection</span><span class=p>:</span> <span class=bp>NSURLConnection</span><span class=p>,</span> <span class=n>didReceiveResponse</span> <span class=n>response</span><span class=p>:</span> <span class=bp>NSURLResponse</span><span class=p>)</span> <span class=p>{</span>
+    /*
+     サーバからレスポンスが送られてきたとき呼び出されるメソッド.
+     */
+    func connection(connection: NSURLConnection, didReceiveResponse response: NSURLResponse) {
 
-        <span class=c1>// URLのヘッダー情報を得る.</span>
-        <span class=kd>let</span> <span class=nv>head</span> <span class=p>=</span> <span class=n>response</span> <span class=k>as</span><span class=p>!</span> <span class=bp>NSHTTPURLResponse</span>
+        // URLのヘッダー情報を得る.
+        let head = response as! NSHTTPURLResponse
 
-        <span class=c1>// 更新日時を得る.</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=n>head</span><span class=p>.</span><span class=n>allHeaderFields</span><span class=p>[</span><span class=s>&quot;Last-Modified&quot;</span><span class=p>]</span> <span class=k>as</span><span class=p>!</span> <span class=bp>NSString</span> <span class=k>as</span> <span class=nb>String</span>
-        <span class=bp>print</span><span class=p>(</span><span class=n>head</span><span class=p>.</span><span class=n>allHeaderFields</span><span class=p>[</span><span class=s>&quot;Last-Modified&quot;</span><span class=p>]</span> <span class=k>as</span><span class=p>!</span> <span class=bp>NSString</span><span class=p>)</span>
+        // 更新日時を得る.
+        myTextView.text = head.allHeaderFields[&quot;Last-Modified&quot;] as! NSString as String
+        print(head.allHeaderFields[&quot;Last-Modified&quot;] as! NSString)
 
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+    }
+}
+</code></pre></div></div>
 <h2 id="2x3x">2.xと3.xの差分</h2>
 <ul>
 <li><code>HTTPMethod</code> から <code>httpMethod</code> に変更 </li>

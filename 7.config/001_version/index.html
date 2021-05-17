@@ -2317,181 +2317,99 @@
                 
                 <h1 id="version">Versionを表示する</h1>
 <p><img alt="Preview config001" src="../img/config001.png" /></p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x/3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  Config001</span>
-<span class=c1>//</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x/3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  Config001
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class ViewController: UIViewController {
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-        <span class=c1>// Do any additional setup after loading the view, typically from a nib.</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
 
-        <span class=c1>// Versionを取得.</span>
-        <span class=kd>let</span> <span class=nv>version</span> <span class=p>=</span> <span class=n>Bundle</span><span class=p>.</span><span class=n>main</span><span class=p>.</span><span class=n>object</span><span class=p>(</span><span class=n>forInfoDictionaryKey</span><span class=p>:</span> <span class=s>&quot;CFBundleShortVersionString&quot;</span><span class=p>)</span> <span class=k>as</span><span class=p>!</span> <span class=nb>String</span>
-        <span class=c1>// Build番号を取得.</span>
-        <span class=kd>let</span> <span class=nv>build</span> <span class=p>=</span> <span class=n>Bundle</span><span class=p>.</span><span class=n>main</span><span class=p>.</span><span class=n>object</span><span class=p>(</span><span class=n>forInfoDictionaryKey</span><span class=p>:</span> <span class=n>kCFBundleVersionKey</span> <span class=k>as</span> <span class=nb>String</span><span class=p>)</span> <span class=k>as</span><span class=p>!</span> <span class=nb>String</span>
+        // Versionを取得.
+        let version = Bundle.main.object(forInfoDictionaryKey: &quot;CFBundleShortVersionString&quot;) as! String
+        // Build番号を取得.
+        let build = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) as! String
 
-        <span class=c1>// 背景を青に.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blue</span>
+        // 背景を青に.
+        self.view.backgroundColor = UIColor.blue
 
-        <span class=c1>// 画面右下に表示.</span>
-        <span class=kd>let</span> <span class=nv>myLabel</span><span class=p>:</span> <span class=bp>UILabel</span> <span class=p>=</span> <span class=bp>UILabel</span><span class=p>()</span>
-        <span class=kd>let</span> <span class=nv>labelWidth</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>150</span>
-        <span class=kd>let</span> <span class=nv>labelHeight</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>20</span>
-        <span class=kd>let</span> <span class=nv>posX</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span> <span class=o>-</span> <span class=n>labelWidth</span>
-        <span class=kd>let</span> <span class=nv>posY</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>height</span> <span class=o>-</span> <span class=n>labelHeight</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=n>posX</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=n>posY</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=n>labelWidth</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>labelHeight</span><span class=p>)</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;version: </span><span class=si>\(</span><span class=n>version</span><span class=si>)</span><span class=s> build: </span><span class=si>\(</span><span class=n>build</span><span class=si>)</span><span class=s>&quot;</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
+        // 画面右下に表示.
+        let myLabel: UILabel = UILabel()
+        let labelWidth: CGFloat = 150
+        let labelHeight: CGFloat = 20
+        let posX: CGFloat = self.view.bounds.width - labelWidth
+        let posY: CGFloat = self.view.bounds.height - labelHeight
+        myLabel.frame = CGRect(x: posX, y: posY, width: labelWidth, height: labelHeight)
+        myLabel.text = &quot;version: \(version) build: \(build)&quot;
+        myLabel.textColor = UIColor.white
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myLabel</span><span class=p>)</span>
+        self.view.addSubview(myLabel)
 
-    <span class=p>}</span>
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-        <span class=c1>// Dispose of any resources that can be recreated.</span>
-    <span class=p>}</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 
 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>///</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  Config001</span>
-<span class=c1>//</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
-
-<span class=kd>import</span> <span class=nc>UIKit</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-        <span class=c1>// Do any additional setup after loading the view, typically from a nib.</span>
-
-        <span class=c1>// Versionを取得.</span>
-        <span class=kd>let</span> <span class=nv>version</span> <span class=p>=</span> <span class=bp>NSBundle</span><span class=p>.</span><span class=n>mainBundle</span><span class=p>().</span><span class=n>objectForInfoDictionaryKey</span><span class=p>(</span><span class=s>&quot;CFBundleShortVersionString&quot;</span><span class=p>)</span> <span class=k>as</span><span class=p>!</span> <span class=nb>String</span>
-        <span class=c1>// Build番号を取得.</span>
-        <span class=kd>let</span> <span class=nv>build</span> <span class=p>=</span> <span class=bp>NSBundle</span><span class=p>.</span><span class=n>mainBundle</span><span class=p>().</span><span class=n>objectForInfoDictionaryKey</span><span class=p>(</span><span class=n>kCFBundleVersionKey</span> <span class=k>as</span> <span class=nb>String</span><span class=p>)</span> <span class=k>as</span><span class=p>!</span> <span class=nb>String</span>
-
-        <span class=c1>// 背景を青に.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blueColor</span><span class=p>()</span>
-
-        <span class=c1>// 画面右下に表示.</span>
-        <span class=kd>let</span> <span class=nv>myLabel</span><span class=p>:</span> <span class=bp>UILabel</span> <span class=p>=</span> <span class=bp>UILabel</span><span class=p>()</span>
-        <span class=kd>let</span> <span class=nv>labelWidth</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>150</span>
-        <span class=kd>let</span> <span class=nv>labelHeight</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>20</span>
-        <span class=kd>let</span> <span class=nv>posX</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span> <span class=o>-</span> <span class=n>labelWidth</span>
-        <span class=kd>let</span> <span class=nv>posY</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>height</span> <span class=o>-</span> <span class=n>labelHeight</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=n>posX</span><span class=p>,</span> <span class=n>posY</span><span class=p>,</span> <span class=n>labelWidth</span><span class=p>,</span> <span class=n>labelHeight</span><span class=p>)</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;version: </span><span class=si>\(</span><span class=n>version</span><span class=si>)</span><span class=s> build: </span><span class=si>\(</span><span class=n>build</span><span class=si>)</span><span class=s>&quot;</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>whiteColor</span><span class=p>()</span>
-
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myLabel</span><span class=p>)</span>
-
-    <span class=p>}</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-        <span class=c1>// Dispose of any resources that can be recreated.</span>
-    <span class=p>}</span>
+}
 
 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>///
+//  ViewController.swift
+//  Config001
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+
+        // Versionを取得.
+        let version = NSBundle.mainBundle().objectForInfoDictionaryKey(&quot;CFBundleShortVersionString&quot;) as! String
+        // Build番号を取得.
+        let build = NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleVersionKey as String) as! String
+
+        // 背景を青に.
+        self.view.backgroundColor = UIColor.blueColor()
+
+        // 画面右下に表示.
+        let myLabel: UILabel = UILabel()
+        let labelWidth: CGFloat = 150
+        let labelHeight: CGFloat = 20
+        let posX: CGFloat = self.view.bounds.width - labelWidth
+        let posY: CGFloat = self.view.bounds.height - labelHeight
+        myLabel.frame = CGRectMake(posX, posY, labelWidth, labelHeight)
+        myLabel.text = &quot;version: \(version) build: \(build)&quot;
+        myLabel.textColor = UIColor.whiteColor()
+
+        self.view.addSubview(myLabel)
+
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+
+}
+
+
+</code></pre></div></div>
 <h2 id="2x3x">2.xと3.xの差分</h2>
 <ul>
 <li><code>NSBundle.mainBundle().objectForInfoDictionaryKey(キー名)</code>が<code>Bundle.main.object(forInfoDictionaryKey: キー名)</code>に変更</li>

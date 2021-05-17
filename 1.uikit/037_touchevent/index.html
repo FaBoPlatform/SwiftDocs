@@ -2331,702 +2331,358 @@
                 
                 <h1 id="_1">タッチイベントの有効/無効を切り替える</h1>
 <p><img alt="Preview uikit037" src="../img/uikit037.png" /></p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal>  1</span>
-<span class=normal>  2</span>
-<span class=normal>  3</span>
-<span class=normal>  4</span>
-<span class=normal>  5</span>
-<span class=normal>  6</span>
-<span class=normal>  7</span>
-<span class=normal>  8</span>
-<span class=normal>  9</span>
-<span class=normal> 10</span>
-<span class=normal> 11</span>
-<span class=normal> 12</span>
-<span class=normal> 13</span>
-<span class=normal> 14</span>
-<span class=normal> 15</span>
-<span class=normal> 16</span>
-<span class=normal> 17</span>
-<span class=normal> 18</span>
-<span class=normal> 19</span>
-<span class=normal> 20</span>
-<span class=normal> 21</span>
-<span class=normal> 22</span>
-<span class=normal> 23</span>
-<span class=normal> 24</span>
-<span class=normal> 25</span>
-<span class=normal> 26</span>
-<span class=normal> 27</span>
-<span class=normal> 28</span>
-<span class=normal> 29</span>
-<span class=normal> 30</span>
-<span class=normal> 31</span>
-<span class=normal> 32</span>
-<span class=normal> 33</span>
-<span class=normal> 34</span>
-<span class=normal> 35</span>
-<span class=normal> 36</span>
-<span class=normal> 37</span>
-<span class=normal> 38</span>
-<span class=normal> 39</span>
-<span class=normal> 40</span>
-<span class=normal> 41</span>
-<span class=normal> 42</span>
-<span class=normal> 43</span>
-<span class=normal> 44</span>
-<span class=normal> 45</span>
-<span class=normal> 46</span>
-<span class=normal> 47</span>
-<span class=normal> 48</span>
-<span class=normal> 49</span>
-<span class=normal> 50</span>
-<span class=normal> 51</span>
-<span class=normal> 52</span>
-<span class=normal> 53</span>
-<span class=normal> 54</span>
-<span class=normal> 55</span>
-<span class=normal> 56</span>
-<span class=normal> 57</span>
-<span class=normal> 58</span>
-<span class=normal> 59</span>
-<span class=normal> 60</span>
-<span class=normal> 61</span>
-<span class=normal> 62</span>
-<span class=normal> 63</span>
-<span class=normal> 64</span>
-<span class=normal> 65</span>
-<span class=normal> 66</span>
-<span class=normal> 67</span>
-<span class=normal> 68</span>
-<span class=normal> 69</span>
-<span class=normal> 70</span>
-<span class=normal> 71</span>
-<span class=normal> 72</span>
-<span class=normal> 73</span>
-<span class=normal> 74</span>
-<span class=normal> 75</span>
-<span class=normal> 76</span>
-<span class=normal> 77</span>
-<span class=normal> 78</span>
-<span class=normal> 79</span>
-<span class=normal> 80</span>
-<span class=normal> 81</span>
-<span class=normal> 82</span>
-<span class=normal> 83</span>
-<span class=normal> 84</span>
-<span class=normal> 85</span>
-<span class=normal> 86</span>
-<span class=normal> 87</span>
-<span class=normal> 88</span>
-<span class=normal> 89</span>
-<span class=normal> 90</span>
-<span class=normal> 91</span>
-<span class=normal> 92</span>
-<span class=normal> 93</span>
-<span class=normal> 94</span>
-<span class=normal> 95</span>
-<span class=normal> 96</span>
-<span class=normal> 97</span>
-<span class=normal> 98</span>
-<span class=normal> 99</span>
-<span class=normal>100</span>
-<span class=normal>101</span>
-<span class=normal>102</span>
-<span class=normal>103</span>
-<span class=normal>104</span>
-<span class=normal>105</span>
-<span class=normal>106</span>
-<span class=normal>107</span>
-<span class=normal>108</span>
-<span class=normal>109</span>
-<span class=normal>110</span>
-<span class=normal>111</span>
-<span class=normal>112</span>
-<span class=normal>113</span>
-<span class=normal>114</span>
-<span class=normal>115</span>
-<span class=normal>116</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit037_4.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/18.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
-
-<span class=kd>import</span> <span class=nc>UIKit</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
-
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>cnt</span> <span class=p>:</span> <span class=nb>Float</span> <span class=p>=</span> <span class=mi>0</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myLabel</span> <span class=p>:</span> <span class=bp>UILabel</span><span class=p>!</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>ButtonCnt</span><span class=p>:</span> <span class=nb>Int</span> <span class=p>=</span> <span class=mi>0</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>TimerMergin</span><span class=p>:</span> <span class=nb>Float</span> <span class=p>=</span> <span class=mi>0</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>ignoreBegineTime</span><span class=p>:</span> <span class=nb>Float</span> <span class=p>=</span> <span class=mi>0</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-
-        <span class=c1>// 背景を青色に設定.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyan</span>
-
-        <span class=c1>// UIButtonを作る.</span>
-        <span class=kd>let</span> <span class=nv>myButton</span><span class=p>:</span> <span class=bp>UIButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>()</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=mi>200</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>50</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>400</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>red</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;有効/無効&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>touchUpInside</span><span class=p>)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>)</span>
-
-        <span class=c1>// タイマー用ラベルを作る.</span>
-        <span class=n>myLabel</span> <span class=p>=</span> <span class=bp>UILabel</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span><span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span><span class=n>width</span><span class=p>:</span><span class=mi>200</span><span class=p>,</span><span class=n>height</span><span class=p>:</span><span class=mi>50</span><span class=p>))</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>orange</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;Time:</span><span class=si>\(</span><span class=nb>Int</span><span class=si>(</span><span class=n>cnt</span><span class=si>))</span><span class=s>&quot;</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>shadowColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>gray</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=n>NSTextAlignment</span><span class=p>.</span><span class=n>center</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span><span class=n>y</span><span class=p>:</span> <span class=mi>200</span><span class=p>)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myLabel</span><span class=p>)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyan</span>
-    <span class=p>}</span>
-
-    <span class=c1>//NSTimerIntervalで指定された秒数毎に呼び出されるメソッド.</span>
-    <span class=kr>@objc</span> <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onUpdate</span><span class=p>(</span><span class=n>timer</span> <span class=p>:</span> <span class=n>Timer</span><span class=p>){</span>
-
-        <span class=n>cnt</span> <span class=o>+=</span> <span class=mf>0.1</span>
-
-        <span class=c1>//桁数を指定して文字列を作る.</span>
-        <span class=kd>let</span> <span class=nv>str</span> <span class=p>=</span> <span class=s>&quot;Time: </span><span class=si>\(</span><span class=nb>Int</span><span class=si>(</span><span class=n>cnt</span><span class=si>))</span><span class=s>&quot;</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=n>str</span>
-
-        <span class=c1>// 現在のタイマー時間から無効が始まった時間の差.</span>
-        <span class=n>TimerMergin</span> <span class=p>=</span> <span class=n>cnt</span> <span class=o>-</span> <span class=n>ignoreBegineTime</span>
-
-        <span class=c1>// タッチイベントが無効のとき.</span>
-        <span class=k>if</span> <span class=bp>UIApplication</span><span class=p>.</span><span class=n>shared</span><span class=p>.</span><span class=n>isIgnoringInteractionEvents</span> <span class=p>{</span>
-
-            <span class=c1>// 無効になってから5秒経った時.</span>
-            <span class=k>if</span> <span class=nb>Int</span><span class=p>(</span><span class=n>TimerMergin</span><span class=p>)</span> <span class=p>==</span> <span class=mi>5</span> <span class=p>{</span>
-
-                <span class=bp>print</span><span class=p>(</span><span class=s>&quot;タッチイベントが無効です&quot;</span><span class=p>)</span>
-                <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyan</span>
-
-                <span class=c1>// タッチイベントを有効にする.</span>
-                <span class=bp>UIApplication</span><span class=p>.</span><span class=n>shared</span><span class=p>.</span><span class=n>endIgnoringInteractionEvents</span><span class=p>()</span>
-                <span class=bp>print</span><span class=p>(</span><span class=s>&quot;タッチイベントを有効にしました&quot;</span><span class=p>)</span>
-            <span class=p>}</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-
-    <span class=kr>@objc</span> <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>)</span> <span class=p>{</span>
-
-        <span class=c1>// ボタンを押した回数.</span>
-        <span class=n>ButtonCnt</span> <span class=o>+=</span> <span class=mi>1</span>
-
-        <span class=c1>// タッチイベントが有効のとき.</span>
-        <span class=k>if</span> <span class=bp>UIApplication</span><span class=p>.</span><span class=n>shared</span><span class=p>.</span><span class=n>isIgnoringInteractionEvents</span> <span class=p>==</span> <span class=kc>false</span> <span class=p>{</span>
-
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;タッチイベントが有効です&quot;</span><span class=p>)</span>
-            <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>green</span>
-
-            <span class=c1>// タッチイベントを無効にする.</span>
-            <span class=bp>UIApplication</span><span class=p>.</span><span class=n>shared</span><span class=p>.</span><span class=n>beginIgnoringInteractionEvents</span><span class=p>()</span>
-
-            <span class=c1>// 無効が始まった時間を取得.</span>
-            <span class=n>ignoreBegineTime</span> <span class=p>=</span> <span class=n>cnt</span>
-
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;タッチイベントを無効にしました&quot;</span><span class=p>)</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;5秒後に有効になります&quot;</span><span class=p>)</span>
-
-            <span class=c1>// 最初にボタンを押したときだけタイマーを作る.</span>
-            <span class=k>if</span> <span class=n>ButtonCnt</span> <span class=p>==</span> <span class=mi>1</span> <span class=p>{</span>
-
-                <span class=c1>// タイマーを作る.</span>
-                <span class=c1>// 更新のインターバル(0.1秒).</span>
-                <span class=n>Timer</span><span class=p>.</span><span class=n>scheduledTimer</span><span class=p>(</span><span class=n>timeInterval</span><span class=p>:</span> <span class=mf>0.1</span><span class=p>,</span>
-
-                                     <span class=c1>// そのクラスのメソッドか.</span>
-                    <span class=n>target</span><span class=p>:</span> <span class=kc>self</span><span class=p>,</span>
-
-                    <span class=c1>// メソッド.</span>
-                    <span class=n>selector</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onUpdate</span><span class=p>(</span><span class=n>timer</span><span class=p>:)),</span>
-                    <span class=n>userInfo</span><span class=p>:</span> <span class=kc>nil</span><span class=p>,</span>
-
-                    <span class=c1>// 何回も呼び出すかどうか.</span>
-                    <span class=n>repeats</span><span class=p>:</span> <span class=kc>true</span><span class=p>)</span>
-            <span class=p>}</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal>  1</span>
-<span class=normal>  2</span>
-<span class=normal>  3</span>
-<span class=normal>  4</span>
-<span class=normal>  5</span>
-<span class=normal>  6</span>
-<span class=normal>  7</span>
-<span class=normal>  8</span>
-<span class=normal>  9</span>
-<span class=normal> 10</span>
-<span class=normal> 11</span>
-<span class=normal> 12</span>
-<span class=normal> 13</span>
-<span class=normal> 14</span>
-<span class=normal> 15</span>
-<span class=normal> 16</span>
-<span class=normal> 17</span>
-<span class=normal> 18</span>
-<span class=normal> 19</span>
-<span class=normal> 20</span>
-<span class=normal> 21</span>
-<span class=normal> 22</span>
-<span class=normal> 23</span>
-<span class=normal> 24</span>
-<span class=normal> 25</span>
-<span class=normal> 26</span>
-<span class=normal> 27</span>
-<span class=normal> 28</span>
-<span class=normal> 29</span>
-<span class=normal> 30</span>
-<span class=normal> 31</span>
-<span class=normal> 32</span>
-<span class=normal> 33</span>
-<span class=normal> 34</span>
-<span class=normal> 35</span>
-<span class=normal> 36</span>
-<span class=normal> 37</span>
-<span class=normal> 38</span>
-<span class=normal> 39</span>
-<span class=normal> 40</span>
-<span class=normal> 41</span>
-<span class=normal> 42</span>
-<span class=normal> 43</span>
-<span class=normal> 44</span>
-<span class=normal> 45</span>
-<span class=normal> 46</span>
-<span class=normal> 47</span>
-<span class=normal> 48</span>
-<span class=normal> 49</span>
-<span class=normal> 50</span>
-<span class=normal> 51</span>
-<span class=normal> 52</span>
-<span class=normal> 53</span>
-<span class=normal> 54</span>
-<span class=normal> 55</span>
-<span class=normal> 56</span>
-<span class=normal> 57</span>
-<span class=normal> 58</span>
-<span class=normal> 59</span>
-<span class=normal> 60</span>
-<span class=normal> 61</span>
-<span class=normal> 62</span>
-<span class=normal> 63</span>
-<span class=normal> 64</span>
-<span class=normal> 65</span>
-<span class=normal> 66</span>
-<span class=normal> 67</span>
-<span class=normal> 68</span>
-<span class=normal> 69</span>
-<span class=normal> 70</span>
-<span class=normal> 71</span>
-<span class=normal> 72</span>
-<span class=normal> 73</span>
-<span class=normal> 74</span>
-<span class=normal> 75</span>
-<span class=normal> 76</span>
-<span class=normal> 77</span>
-<span class=normal> 78</span>
-<span class=normal> 79</span>
-<span class=normal> 80</span>
-<span class=normal> 81</span>
-<span class=normal> 82</span>
-<span class=normal> 83</span>
-<span class=normal> 84</span>
-<span class=normal> 85</span>
-<span class=normal> 86</span>
-<span class=normal> 87</span>
-<span class=normal> 88</span>
-<span class=normal> 89</span>
-<span class=normal> 90</span>
-<span class=normal> 91</span>
-<span class=normal> 92</span>
-<span class=normal> 93</span>
-<span class=normal> 94</span>
-<span class=normal> 95</span>
-<span class=normal> 96</span>
-<span class=normal> 97</span>
-<span class=normal> 98</span>
-<span class=normal> 99</span>
-<span class=normal>100</span>
-<span class=normal>101</span>
-<span class=normal>102</span>
-<span class=normal>103</span>
-<span class=normal>104</span>
-<span class=normal>105</span>
-<span class=normal>106</span>
-<span class=normal>107</span>
-<span class=normal>108</span>
-<span class=normal>109</span>
-<span class=normal>110</span>
-<span class=normal>111</span>
-<span class=normal>112</span>
-<span class=normal>113</span>
-<span class=normal>114</span>
-<span class=normal>115</span>
-<span class=normal>116</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit037_3.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/18.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
-
-<span class=kd>import</span> <span class=nc>UIKit</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
-
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>cnt</span> <span class=p>:</span> <span class=nb>Float</span> <span class=p>=</span> <span class=mi>0</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myLabel</span> <span class=p>:</span> <span class=bp>UILabel</span><span class=p>!</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>ButtonCnt</span><span class=p>:</span> <span class=nb>Int</span> <span class=p>=</span> <span class=mi>0</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>TimerMergin</span><span class=p>:</span> <span class=nb>Float</span> <span class=p>=</span> <span class=mi>0</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>ignoreBegineTime</span><span class=p>:</span> <span class=nb>Float</span> <span class=p>=</span> <span class=mi>0</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-
-        <span class=c1>// 背景を青色に設定.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyan</span>
-
-        <span class=c1>// UIButtonを作る.</span>
-        <span class=kd>let</span> <span class=nv>myButton</span><span class=p>:</span> <span class=bp>UIButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>()</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=mi>200</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>50</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>400</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>red</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;有効/無効&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>touchUpInside</span><span class=p>)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>)</span>
-
-        <span class=c1>// タイマー用ラベルを作る.</span>
-        <span class=n>myLabel</span> <span class=p>=</span> <span class=bp>UILabel</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span><span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span><span class=n>width</span><span class=p>:</span><span class=mi>200</span><span class=p>,</span><span class=n>height</span><span class=p>:</span><span class=mi>50</span><span class=p>))</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>orange</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;Time:</span><span class=si>\(</span><span class=nb>Int</span><span class=si>(</span><span class=n>cnt</span><span class=si>))</span><span class=s>&quot;</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>shadowColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>gray</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=n>NSTextAlignment</span><span class=p>.</span><span class=n>center</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span><span class=n>y</span><span class=p>:</span> <span class=mi>200</span><span class=p>)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myLabel</span><span class=p>)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyan</span>
-    <span class=p>}</span>
-
-    <span class=c1>//NSTimerIntervalで指定された秒数毎に呼び出されるメソッド.</span>
-    <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onUpdate</span><span class=p>(</span><span class=n>timer</span> <span class=p>:</span> <span class=n>Timer</span><span class=p>){</span>
-
-        <span class=n>cnt</span> <span class=o>+=</span> <span class=mf>0.1</span>
-
-        <span class=c1>//桁数を指定して文字列を作る.</span>
-        <span class=kd>let</span> <span class=nv>str</span> <span class=p>=</span> <span class=s>&quot;Time: </span><span class=si>\(</span><span class=nb>Int</span><span class=si>(</span><span class=n>cnt</span><span class=si>))</span><span class=s>&quot;</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=n>str</span>
-
-        <span class=c1>// 現在のタイマー時間から無効が始まった時間の差.</span>
-        <span class=n>TimerMergin</span> <span class=p>=</span> <span class=n>cnt</span> <span class=o>-</span> <span class=n>ignoreBegineTime</span>
-
-        <span class=c1>// タッチイベントが無効のとき.</span>
-        <span class=k>if</span> <span class=bp>UIApplication</span><span class=p>.</span><span class=n>shared</span><span class=p>.</span><span class=n>isIgnoringInteractionEvents</span> <span class=p>{</span>
-
-            <span class=c1>// 無効になってから5秒経った時.</span>
-            <span class=k>if</span> <span class=nb>Int</span><span class=p>(</span><span class=n>TimerMergin</span><span class=p>)</span> <span class=p>==</span> <span class=mi>5</span> <span class=p>{</span>
-
-                <span class=bp>print</span><span class=p>(</span><span class=s>&quot;タッチイベントが無効です&quot;</span><span class=p>)</span>
-                <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyan</span>
-
-                <span class=c1>// タッチイベントを有効にする.</span>
-                <span class=bp>UIApplication</span><span class=p>.</span><span class=n>shared</span><span class=p>.</span><span class=n>endIgnoringInteractionEvents</span><span class=p>()</span>
-                <span class=bp>print</span><span class=p>(</span><span class=s>&quot;タッチイベントを有効にしました&quot;</span><span class=p>)</span>
-            <span class=p>}</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-
-    <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>)</span> <span class=p>{</span>
-
-        <span class=c1>// ボタンを押した回数.</span>
-        <span class=n>ButtonCnt</span> <span class=o>+=</span> <span class=mi>1</span>
-
-        <span class=c1>// タッチイベントが有効のとき.</span>
-        <span class=k>if</span> <span class=bp>UIApplication</span><span class=p>.</span><span class=n>shared</span><span class=p>.</span><span class=n>isIgnoringInteractionEvents</span> <span class=p>==</span> <span class=kc>false</span> <span class=p>{</span>
-
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;タッチイベントが有効です&quot;</span><span class=p>)</span>
-            <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>green</span>
-
-            <span class=c1>// タッチイベントを無効にする.</span>
-            <span class=bp>UIApplication</span><span class=p>.</span><span class=n>shared</span><span class=p>.</span><span class=n>beginIgnoringInteractionEvents</span><span class=p>()</span>
-
-            <span class=c1>// 無効が始まった時間を取得.</span>
-            <span class=n>ignoreBegineTime</span> <span class=p>=</span> <span class=n>cnt</span>
-
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;タッチイベントを無効にしました&quot;</span><span class=p>)</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;5秒後に有効になります&quot;</span><span class=p>)</span>
-
-            <span class=c1>// 最初にボタンを押したときだけタイマーを作る.</span>
-            <span class=k>if</span> <span class=n>ButtonCnt</span> <span class=p>==</span> <span class=mi>1</span> <span class=p>{</span>
-
-                <span class=c1>// タイマーを作る.</span>
-                <span class=c1>// 更新のインターバル(0.1秒).</span>
-                <span class=n>Timer</span><span class=p>.</span><span class=n>scheduledTimer</span><span class=p>(</span><span class=n>timeInterval</span><span class=p>:</span> <span class=mf>0.1</span><span class=p>,</span>
-
-                                                       <span class=c1>// そのクラスのメソッドか.</span>
-                    <span class=n>target</span><span class=p>:</span> <span class=kc>self</span><span class=p>,</span>
-
-                    <span class=c1>// メソッド.</span>
-                    <span class=n>selector</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onUpdate</span><span class=p>(</span><span class=n>timer</span><span class=p>:)),</span>
-                    <span class=n>userInfo</span><span class=p>:</span> <span class=kc>nil</span><span class=p>,</span>
-
-                    <span class=c1>// 何回も呼び出すかどうか.</span>
-                    <span class=n>repeats</span><span class=p>:</span> <span class=kc>true</span><span class=p>)</span>
-            <span class=p>}</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal>  1</span>
-<span class=normal>  2</span>
-<span class=normal>  3</span>
-<span class=normal>  4</span>
-<span class=normal>  5</span>
-<span class=normal>  6</span>
-<span class=normal>  7</span>
-<span class=normal>  8</span>
-<span class=normal>  9</span>
-<span class=normal> 10</span>
-<span class=normal> 11</span>
-<span class=normal> 12</span>
-<span class=normal> 13</span>
-<span class=normal> 14</span>
-<span class=normal> 15</span>
-<span class=normal> 16</span>
-<span class=normal> 17</span>
-<span class=normal> 18</span>
-<span class=normal> 19</span>
-<span class=normal> 20</span>
-<span class=normal> 21</span>
-<span class=normal> 22</span>
-<span class=normal> 23</span>
-<span class=normal> 24</span>
-<span class=normal> 25</span>
-<span class=normal> 26</span>
-<span class=normal> 27</span>
-<span class=normal> 28</span>
-<span class=normal> 29</span>
-<span class=normal> 30</span>
-<span class=normal> 31</span>
-<span class=normal> 32</span>
-<span class=normal> 33</span>
-<span class=normal> 34</span>
-<span class=normal> 35</span>
-<span class=normal> 36</span>
-<span class=normal> 37</span>
-<span class=normal> 38</span>
-<span class=normal> 39</span>
-<span class=normal> 40</span>
-<span class=normal> 41</span>
-<span class=normal> 42</span>
-<span class=normal> 43</span>
-<span class=normal> 44</span>
-<span class=normal> 45</span>
-<span class=normal> 46</span>
-<span class=normal> 47</span>
-<span class=normal> 48</span>
-<span class=normal> 49</span>
-<span class=normal> 50</span>
-<span class=normal> 51</span>
-<span class=normal> 52</span>
-<span class=normal> 53</span>
-<span class=normal> 54</span>
-<span class=normal> 55</span>
-<span class=normal> 56</span>
-<span class=normal> 57</span>
-<span class=normal> 58</span>
-<span class=normal> 59</span>
-<span class=normal> 60</span>
-<span class=normal> 61</span>
-<span class=normal> 62</span>
-<span class=normal> 63</span>
-<span class=normal> 64</span>
-<span class=normal> 65</span>
-<span class=normal> 66</span>
-<span class=normal> 67</span>
-<span class=normal> 68</span>
-<span class=normal> 69</span>
-<span class=normal> 70</span>
-<span class=normal> 71</span>
-<span class=normal> 72</span>
-<span class=normal> 73</span>
-<span class=normal> 74</span>
-<span class=normal> 75</span>
-<span class=normal> 76</span>
-<span class=normal> 77</span>
-<span class=normal> 78</span>
-<span class=normal> 79</span>
-<span class=normal> 80</span>
-<span class=normal> 81</span>
-<span class=normal> 82</span>
-<span class=normal> 83</span>
-<span class=normal> 84</span>
-<span class=normal> 85</span>
-<span class=normal> 86</span>
-<span class=normal> 87</span>
-<span class=normal> 88</span>
-<span class=normal> 89</span>
-<span class=normal> 90</span>
-<span class=normal> 91</span>
-<span class=normal> 92</span>
-<span class=normal> 93</span>
-<span class=normal> 94</span>
-<span class=normal> 95</span>
-<span class=normal> 96</span>
-<span class=normal> 97</span>
-<span class=normal> 98</span>
-<span class=normal> 99</span>
-<span class=normal>100</span>
-<span class=normal>101</span>
-<span class=normal>102</span>
-<span class=normal>103</span>
-<span class=normal>104</span>
-<span class=normal>105</span>
-<span class=normal>106</span>
-<span class=normal>107</span>
-<span class=normal>108</span>
-<span class=normal>109</span>
-<span class=normal>110</span>
-<span class=normal>111</span>
-<span class=normal>112</span>
-<span class=normal>113</span>
-<span class=normal>114</span>
-<span class=normal>115</span>
-<span class=normal>116</span>
-<span class=normal>117</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit037_2.3</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/18.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
-
-<span class=kd>import</span> <span class=nc>UIKit</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
-
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>cnt</span> <span class=p>:</span> <span class=nb>Float</span> <span class=p>=</span> <span class=mi>0</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myLabel</span> <span class=p>:</span> <span class=bp>UILabel</span><span class=p>!</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>ButtonCnt</span><span class=p>:</span> <span class=nb>Int</span> <span class=p>=</span> <span class=mi>0</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>TimerMergin</span><span class=p>:</span> <span class=nb>Float</span> <span class=p>=</span> <span class=mi>0</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>ignoreBegineTime</span><span class=p>:</span> <span class=nb>Float</span> <span class=p>=</span> <span class=mi>0</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-
-        <span class=c1>// 背景を青色に設定.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyanColor</span><span class=p>()</span>
-
-        <span class=c1>// UIButtonを作る.</span>
-        <span class=kd>let</span> <span class=nv>myButton</span><span class=p>:</span> <span class=bp>UIButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>()</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=mi>200</span><span class=p>,</span> <span class=mi>50</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=mi>400</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>redColor</span><span class=p>()</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;有効/無効&quot;</span><span class=p>,</span> <span class=n>forState</span><span class=p>:</span> <span class=p>.</span><span class=n>Normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=kc>_</span><span class=p>:)),</span> <span class=n>forControlEvents</span><span class=p>:</span> <span class=p>.</span><span class=n>TouchUpInside</span><span class=p>)</span>
-
-        <span class=c1>// タイマー用ラベルを作る.</span>
-        <span class=n>myLabel</span> <span class=p>=</span> <span class=bp>UILabel</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>200</span><span class=p>,</span><span class=mi>50</span><span class=p>))</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>orangeColor</span><span class=p>()</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;Time:</span><span class=si>\(</span><span class=nb>Int</span><span class=si>(</span><span class=n>cnt</span><span class=si>))</span><span class=s>&quot;</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>whiteColor</span><span class=p>()</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>shadowColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>grayColor</span><span class=p>()</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=n>NSTextAlignment</span><span class=p>.</span><span class=n>Center</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span><span class=n>y</span><span class=p>:</span> <span class=mi>200</span><span class=p>)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyanColor</span><span class=p>()</span>
-
-        <span class=c1>// viewにラベルとボタンを追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myLabel</span><span class=p>)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=c1>//NSTimerIntervalで指定された秒数毎に呼び出されるメソッド.</span>
-    <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onUpdate</span><span class=p>(</span><span class=n>timer</span> <span class=p>:</span> <span class=bp>NSTimer</span><span class=p>){</span>
-
-        <span class=n>cnt</span> <span class=o>+=</span> <span class=mf>0.1</span>
-
-        <span class=c1>//桁数を指定して文字列を作る.</span>
-        <span class=kd>let</span> <span class=nv>str</span> <span class=p>=</span> <span class=s>&quot;Time: </span><span class=si>\(</span><span class=nb>Int</span><span class=si>(</span><span class=n>cnt</span><span class=si>))</span><span class=s>&quot;</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=n>str</span>
-
-        <span class=c1>// 現在のタイマー時間から無効が始まった時間の差.</span>
-        <span class=n>TimerMergin</span> <span class=p>=</span> <span class=n>cnt</span> <span class=o>-</span> <span class=n>ignoreBegineTime</span>
-
-        <span class=c1>// タッチイベントが無効のとき.</span>
-        <span class=k>if</span> <span class=bp>UIApplication</span><span class=p>.</span><span class=n>sharedApplication</span><span class=p>().</span><span class=n>isIgnoringInteractionEvents</span><span class=p>()</span> <span class=p>{</span>
-
-            <span class=c1>// 無効になってから5秒経った時.</span>
-            <span class=k>if</span> <span class=nb>Int</span><span class=p>(</span><span class=n>TimerMergin</span><span class=p>)</span> <span class=p>==</span> <span class=mi>5</span> <span class=p>{</span>
-
-                <span class=bp>print</span><span class=p>(</span><span class=s>&quot;タッチイベントが無効です&quot;</span><span class=p>)</span>
-                <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyanColor</span><span class=p>()</span>
-
-                <span class=c1>// タッチイベントを有効にする.</span>
-                <span class=bp>UIApplication</span><span class=p>.</span><span class=n>sharedApplication</span><span class=p>().</span><span class=n>endIgnoringInteractionEvents</span><span class=p>()</span>
-                <span class=bp>print</span><span class=p>(</span><span class=s>&quot;タッチイベントを有効にしました&quot;</span><span class=p>)</span>
-            <span class=p>}</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-
-    <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>)</span> <span class=p>{</span>
-
-        <span class=c1>// ボタンを押した回数.</span>
-        <span class=n>ButtonCnt</span> <span class=o>+=</span> <span class=mi>1</span>
-
-        <span class=c1>// タッチイベントが有効のとき.</span>
-        <span class=k>if</span> <span class=bp>UIApplication</span><span class=p>.</span><span class=n>sharedApplication</span><span class=p>().</span><span class=n>isIgnoringInteractionEvents</span><span class=p>()</span> <span class=p>==</span> <span class=kc>false</span> <span class=p>{</span>
-
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;タッチイベントが有効です&quot;</span><span class=p>)</span>
-            <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>greenColor</span><span class=p>()</span>
-
-            <span class=c1>// タッチイベントを無効にする.</span>
-            <span class=bp>UIApplication</span><span class=p>.</span><span class=n>sharedApplication</span><span class=p>().</span><span class=n>beginIgnoringInteractionEvents</span><span class=p>()</span>
-            <span class=c1>// 無効が始まった時間を取得.</span>
-            <span class=n>ignoreBegineTime</span> <span class=p>=</span> <span class=n>cnt</span>
-
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;タッチイベントを無効にしました&quot;</span><span class=p>)</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;5秒後に有効になります&quot;</span><span class=p>)</span>
-
-            <span class=c1>// 最初にボタンを押したときだけタイマーを作る.</span>
-            <span class=k>if</span> <span class=n>ButtonCnt</span> <span class=p>==</span> <span class=mi>1</span> <span class=p>{</span>
-
-                <span class=c1>// タイマーを作る.</span>
-                <span class=c1>// 更新のインターバル(0.1秒).</span>
-                <span class=bp>NSTimer</span><span class=p>.</span><span class=n>scheduledTimerWithTimeInterval</span><span class=p>(</span><span class=mf>0.1</span><span class=p>,</span>
-
-                                                       <span class=c1>// そのクラスのメソッドか.</span>
-                    <span class=n>target</span><span class=p>:</span> <span class=kc>self</span><span class=p>,</span>
-
-                    <span class=c1>// メソッド.</span>
-                    <span class=n>selector</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onUpdate</span><span class=p>(</span><span class=kc>_</span><span class=p>:)),</span>
-                    <span class=n>userInfo</span><span class=p>:</span> <span class=kc>nil</span><span class=p>,</span>
-
-                    <span class=c1>// 何回も呼び出すかどうか.</span>
-                    <span class=n>repeats</span><span class=p>:</span> <span class=kc>true</span><span class=p>)</span>
-            <span class=p>}</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit037_4.0
+//
+//  Created by KimikoWatanabe on 2016/08/18.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+
+    private var cnt : Float = 0
+    private var myLabel : UILabel!
+    private var ButtonCnt: Int = 0
+    private var TimerMergin: Float = 0
+    private var ignoreBegineTime: Float = 0
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // 背景を青色に設定.
+        self.view.backgroundColor = UIColor.cyan
+
+        // UIButtonを作る.
+        let myButton: UIButton = UIButton()
+        myButton.frame = CGRect(x:0, y:0, width:200, height:50)
+        myButton.layer.cornerRadius = 20.0
+        myButton.layer.position = CGPoint(x:self.view.frame.width/2, y:400)
+        myButton.backgroundColor = UIColor.red
+        myButton.setTitle(&quot;有効/無効&quot;, for: .normal)
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(sender:)), for: .touchUpInside)
+        self.view.addSubview(myButton)
+
+        // タイマー用ラベルを作る.
+        myLabel = UILabel(frame: CGRect(x:0,y:0,width:200,height:50))
+        myLabel.backgroundColor = UIColor.orange
+        myLabel.layer.masksToBounds = true
+        myLabel.layer.cornerRadius = 20.0
+        myLabel.text = &quot;Time:\(Int(cnt))&quot;
+        myLabel.textColor = UIColor.white
+        myLabel.shadowColor = UIColor.gray
+        myLabel.textAlignment = NSTextAlignment.center
+        myLabel.layer.position = CGPoint(x: self.view.bounds.width/2,y: 200)
+        self.view.addSubview(myLabel)
+        self.view.backgroundColor = UIColor.cyan
+    }
+
+    //NSTimerIntervalで指定された秒数毎に呼び出されるメソッド.
+    @objc internal func onUpdate(timer : Timer){
+
+        cnt += 0.1
+
+        //桁数を指定して文字列を作る.
+        let str = &quot;Time: \(Int(cnt))&quot;
+        myLabel.text = str
+
+        // 現在のタイマー時間から無効が始まった時間の差.
+        TimerMergin = cnt - ignoreBegineTime
+
+        // タッチイベントが無効のとき.
+        if UIApplication.shared.isIgnoringInteractionEvents {
+
+            // 無効になってから5秒経った時.
+            if Int(TimerMergin) == 5 {
+
+                print(&quot;タッチイベントが無効です&quot;)
+                self.view.backgroundColor = UIColor.cyan
+
+                // タッチイベントを有効にする.
+                UIApplication.shared.endIgnoringInteractionEvents()
+                print(&quot;タッチイベントを有効にしました&quot;)
+            }
+        }
+    }
+
+    @objc internal func onClickMyButton(sender: UIButton) {
+
+        // ボタンを押した回数.
+        ButtonCnt += 1
+
+        // タッチイベントが有効のとき.
+        if UIApplication.shared.isIgnoringInteractionEvents == false {
+
+            print(&quot;タッチイベントが有効です&quot;)
+            self.view.backgroundColor = UIColor.green
+
+            // タッチイベントを無効にする.
+            UIApplication.shared.beginIgnoringInteractionEvents()
+
+            // 無効が始まった時間を取得.
+            ignoreBegineTime = cnt
+
+            print(&quot;タッチイベントを無効にしました&quot;)
+            print(&quot;5秒後に有効になります&quot;)
+
+            // 最初にボタンを押したときだけタイマーを作る.
+            if ButtonCnt == 1 {
+
+                // タイマーを作る.
+                // 更新のインターバル(0.1秒).
+                Timer.scheduledTimer(timeInterval: 0.1,
+
+                                     // そのクラスのメソッドか.
+                    target: self,
+
+                    // メソッド.
+                    selector: #selector(ViewController.onUpdate(timer:)),
+                    userInfo: nil,
+
+                    // 何回も呼び出すかどうか.
+                    repeats: true)
+            }
+        }
+    }
+}
+
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit037_3.0
+//
+//  Created by KimikoWatanabe on 2016/08/18.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+
+    private var cnt : Float = 0
+    private var myLabel : UILabel!
+    private var ButtonCnt: Int = 0
+    private var TimerMergin: Float = 0
+    private var ignoreBegineTime: Float = 0
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // 背景を青色に設定.
+        self.view.backgroundColor = UIColor.cyan
+
+        // UIButtonを作る.
+        let myButton: UIButton = UIButton()
+        myButton.frame = CGRect(x:0, y:0, width:200, height:50)
+        myButton.layer.cornerRadius = 20.0
+        myButton.layer.position = CGPoint(x:self.view.frame.width/2, y:400)
+        myButton.backgroundColor = UIColor.red
+        myButton.setTitle(&quot;有効/無効&quot;, for: .normal)
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(sender:)), for: .touchUpInside)
+        self.view.addSubview(myButton)
+
+        // タイマー用ラベルを作る.
+        myLabel = UILabel(frame: CGRect(x:0,y:0,width:200,height:50))
+        myLabel.backgroundColor = UIColor.orange
+        myLabel.layer.masksToBounds = true
+        myLabel.layer.cornerRadius = 20.0
+        myLabel.text = &quot;Time:\(Int(cnt))&quot;
+        myLabel.textColor = UIColor.white
+        myLabel.shadowColor = UIColor.gray
+        myLabel.textAlignment = NSTextAlignment.center
+        myLabel.layer.position = CGPoint(x: self.view.bounds.width/2,y: 200)
+        self.view.addSubview(myLabel)
+        self.view.backgroundColor = UIColor.cyan
+    }
+
+    //NSTimerIntervalで指定された秒数毎に呼び出されるメソッド.
+    internal func onUpdate(timer : Timer){
+
+        cnt += 0.1
+
+        //桁数を指定して文字列を作る.
+        let str = &quot;Time: \(Int(cnt))&quot;
+        myLabel.text = str
+
+        // 現在のタイマー時間から無効が始まった時間の差.
+        TimerMergin = cnt - ignoreBegineTime
+
+        // タッチイベントが無効のとき.
+        if UIApplication.shared.isIgnoringInteractionEvents {
+
+            // 無効になってから5秒経った時.
+            if Int(TimerMergin) == 5 {
+
+                print(&quot;タッチイベントが無効です&quot;)
+                self.view.backgroundColor = UIColor.cyan
+
+                // タッチイベントを有効にする.
+                UIApplication.shared.endIgnoringInteractionEvents()
+                print(&quot;タッチイベントを有効にしました&quot;)
+            }
+        }
+    }
+
+    internal func onClickMyButton(sender: UIButton) {
+
+        // ボタンを押した回数.
+        ButtonCnt += 1
+
+        // タッチイベントが有効のとき.
+        if UIApplication.shared.isIgnoringInteractionEvents == false {
+
+            print(&quot;タッチイベントが有効です&quot;)
+            self.view.backgroundColor = UIColor.green
+
+            // タッチイベントを無効にする.
+            UIApplication.shared.beginIgnoringInteractionEvents()
+
+            // 無効が始まった時間を取得.
+            ignoreBegineTime = cnt
+
+            print(&quot;タッチイベントを無効にしました&quot;)
+            print(&quot;5秒後に有効になります&quot;)
+
+            // 最初にボタンを押したときだけタイマーを作る.
+            if ButtonCnt == 1 {
+
+                // タイマーを作る.
+                // 更新のインターバル(0.1秒).
+                Timer.scheduledTimer(timeInterval: 0.1,
+
+                                                       // そのクラスのメソッドか.
+                    target: self,
+
+                    // メソッド.
+                    selector: #selector(ViewController.onUpdate(timer:)),
+                    userInfo: nil,
+
+                    // 何回も呼び出すかどうか.
+                    repeats: true)
+            }
+        }
+    }
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit037_2.3
+//
+//  Created by KimikoWatanabe on 2016/08/18.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+
+    private var cnt : Float = 0
+    private var myLabel : UILabel!
+    private var ButtonCnt: Int = 0
+    private var TimerMergin: Float = 0
+    private var ignoreBegineTime: Float = 0
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // 背景を青色に設定.
+        self.view.backgroundColor = UIColor.cyanColor()
+
+        // UIButtonを作る.
+        let myButton: UIButton = UIButton()
+        myButton.frame = CGRectMake(0, 0, 200, 50)
+        myButton.layer.cornerRadius = 20.0
+        myButton.layer.position = CGPointMake(self.view.frame.width/2, 400)
+        myButton.backgroundColor = UIColor.redColor()
+        myButton.setTitle(&quot;有効/無効&quot;, forState: .Normal)
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(_:)), forControlEvents: .TouchUpInside)
+
+        // タイマー用ラベルを作る.
+        myLabel = UILabel(frame: CGRectMake(0,0,200,50))
+        myLabel.backgroundColor = UIColor.orangeColor()
+        myLabel.layer.masksToBounds = true
+        myLabel.layer.cornerRadius = 20.0
+        myLabel.text = &quot;Time:\(Int(cnt))&quot;
+        myLabel.textColor = UIColor.whiteColor()
+        myLabel.shadowColor = UIColor.grayColor()
+        myLabel.textAlignment = NSTextAlignment.Center
+        myLabel.layer.position = CGPoint(x: self.view.bounds.width/2,y: 200)
+        self.view.backgroundColor = UIColor.cyanColor()
+
+        // viewにラベルとボタンを追加.
+        self.view.addSubview(myLabel)
+        self.view.addSubview(myButton)
+    }
+
+    //NSTimerIntervalで指定された秒数毎に呼び出されるメソッド.
+    internal func onUpdate(timer : NSTimer){
+
+        cnt += 0.1
+
+        //桁数を指定して文字列を作る.
+        let str = &quot;Time: \(Int(cnt))&quot;
+        myLabel.text = str
+
+        // 現在のタイマー時間から無効が始まった時間の差.
+        TimerMergin = cnt - ignoreBegineTime
+
+        // タッチイベントが無効のとき.
+        if UIApplication.sharedApplication().isIgnoringInteractionEvents() {
+
+            // 無効になってから5秒経った時.
+            if Int(TimerMergin) == 5 {
+
+                print(&quot;タッチイベントが無効です&quot;)
+                self.view.backgroundColor = UIColor.cyanColor()
+
+                // タッチイベントを有効にする.
+                UIApplication.sharedApplication().endIgnoringInteractionEvents()
+                print(&quot;タッチイベントを有効にしました&quot;)
+            }
+        }
+    }
+
+    internal func onClickMyButton(sender: UIButton) {
+
+        // ボタンを押した回数.
+        ButtonCnt += 1
+
+        // タッチイベントが有効のとき.
+        if UIApplication.sharedApplication().isIgnoringInteractionEvents() == false {
+
+            print(&quot;タッチイベントが有効です&quot;)
+            self.view.backgroundColor = UIColor.greenColor()
+
+            // タッチイベントを無効にする.
+            UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+            // 無効が始まった時間を取得.
+            ignoreBegineTime = cnt
+
+            print(&quot;タッチイベントを無効にしました&quot;)
+            print(&quot;5秒後に有効になります&quot;)
+
+            // 最初にボタンを押したときだけタイマーを作る.
+            if ButtonCnt == 1 {
+
+                // タイマーを作る.
+                // 更新のインターバル(0.1秒).
+                NSTimer.scheduledTimerWithTimeInterval(0.1,
+
+                                                       // そのクラスのメソッドか.
+                    target: self,
+
+                    // メソッド.
+                    selector: #selector(ViewController.onUpdate(_:)),
+                    userInfo: nil,
+
+                    // 何回も呼び出すかどうか.
+                    repeats: true)
+            }
+        }
+    }
+}
+
+</code></pre></div></div>
 <h2 id="3x4x">3.xと4.xの差分</h2>
 <ul>
 <li><code>onUpdate</code> 、 <code>onClickMyButton</code> に <code>@objc</code> を追加</li>

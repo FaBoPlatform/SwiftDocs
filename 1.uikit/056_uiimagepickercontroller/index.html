@@ -2388,857 +2388,440 @@
                 <h1 id="uiimagepickercontroller">UIImagePickerControllerでライブラリから画像を選択</h1>
 <p><img alt="Preview uikit056_1" src="../img/uikit056_1.png" /> <img alt="Preview uikit056_2" src="../img/uikit056_2.png" /></p>
 <h3 id="appdelegateswift">AppDelegate.swift</h3>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  AppDelegate.swift</span>
-<span class=c1>//  UIKit051_4.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/21.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  AppDelegate.swift
+//  UIKit051_4.0
+//
+//  Created by KimikoWatanabe on 2016/08/21.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kr>@UIApplicationMain</span>
-<span class=kd>class</span> <span class=nc>AppDelegate</span><span class=p>:</span> <span class=bp>UIResponder</span><span class=p>,</span> <span class=bp>UIApplicationDelegate</span> <span class=p>{</span>
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    <span class=kd>var</span> <span class=nv>window</span><span class=p>:</span> <span class=bp>UIWindow</span><span class=p>?</span>
-    <span class=kd>var</span> <span class=nv>myViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>?</span>
+    var window: UIWindow?
+    var myViewController: UIViewController?
 
-    <span class=kd>func</span> <span class=nf>application</span><span class=p>(</span><span class=kc>_</span> <span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>,</span> <span class=n>didFinishLaunchingWithOptions</span> <span class=n>launchOptions</span><span class=p>:</span> <span class=p>[</span><span class=bp>UIApplication</span><span class=p>.</span><span class=n>LaunchOptionsKey</span> <span class=p>:</span> <span class=nb>Any</span><span class=p>]?</span> <span class=p>=</span> <span class=kc>nil</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Bool</span> <span class=p>{</span>
-        <span class=c1>//ViewControllerのインスタンス化</span>
-        <span class=n>myViewController</span> <span class=p>=</span> <span class=n>ViewController</span><span class=p>()</span>
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -&gt; Bool {
+        //ViewControllerのインスタンス化
+        myViewController = ViewController()
 
-        <span class=c1>//UINavigationControllerのインスタンス化とrootViewControllerの指定</span>
-        <span class=kd>let</span> <span class=nv>myNavigationController</span> <span class=p>=</span> <span class=bp>UINavigationController</span><span class=p>(</span><span class=n>rootViewController</span><span class=p>:</span> <span class=n>myViewController</span><span class=p>!)</span>
+        //UINavigationControllerのインスタンス化とrootViewControllerの指定
+        let myNavigationController = UINavigationController(rootViewController: myViewController!)
 
-        <span class=c1>//UIWindowのインスタンス化</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>window</span> <span class=p>=</span> <span class=bp>UIWindow</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=bp>UIScreen</span><span class=p>.</span><span class=n>main</span><span class=p>.</span><span class=n>bounds</span><span class=p>)</span>
+        //UIWindowのインスタンス化
+        self.window = UIWindow(frame: UIScreen.main.bounds)
 
-        <span class=c1>//UIWindowのrootViewControllerにnavigationControllerを指定</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>window</span><span class=p>?.</span><span class=n>rootViewController</span> <span class=p>=</span> <span class=n>myNavigationController</span>
+        //UIWindowのrootViewControllerにnavigationControllerを指定
+        self.window?.rootViewController = myNavigationController
 
-        <span class=c1>//UIWindowの表示</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>window</span><span class=p>?.</span><span class=n>makeKeyAndVisible</span><span class=p>()</span>
+        //UIWindowの表示
+        self.window?.makeKeyAndVisible()
 
-        <span class=k>return</span> <span class=kc>true</span>
+        return true
 
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  AppDelegate.swift</span>
-<span class=c1>//  UIKit056</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+    }
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  AppDelegate.swift
+//  UIKit056
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kr>@UIApplicationMain</span>
-<span class=kd>class</span> <span class=nc>AppDelegate</span><span class=p>:</span> <span class=bp>UIResponder</span><span class=p>,</span> <span class=bp>UIApplicationDelegate</span> <span class=p>{</span>
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    <span class=kd>var</span> <span class=nv>window</span><span class=p>:</span> <span class=bp>UIWindow</span><span class=p>?</span>
-    <span class=kd>var</span> <span class=nv>myViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>?</span>
+    var window: UIWindow?
+    var myViewController: UIViewController?
 
-    <span class=kd>func</span> <span class=nf>application</span><span class=p>(</span><span class=kc>_</span> <span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>,</span> <span class=n>didFinishLaunchingWithOptions</span> <span class=n>launchOptions</span><span class=p>:</span> <span class=p>[</span><span class=bp>NSObject</span><span class=p>:</span> <span class=nb>AnyObject</span><span class=p>]?)</span> <span class=p>-&gt;</span> <span class=nb>Bool</span> <span class=p>{</span>
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -&gt; Bool {
 
-        <span class=c1>//ViewControllerのインスタンス化</span>
-        <span class=n>myViewController</span> <span class=p>=</span> <span class=n>ViewController</span><span class=p>()</span>
+        //ViewControllerのインスタンス化
+        myViewController = ViewController()
 
-        <span class=c1>//UINavigationControllerのインスタンス化とrootViewControllerの指定</span>
-        <span class=kd>let</span> <span class=nv>myNavigationController</span> <span class=p>=</span> <span class=bp>UINavigationController</span><span class=p>(</span><span class=n>rootViewController</span><span class=p>:</span> <span class=n>myViewController</span><span class=p>!)</span>
+        //UINavigationControllerのインスタンス化とrootViewControllerの指定
+        let myNavigationController = UINavigationController(rootViewController: myViewController!)
 
-        <span class=c1>//UIWindowのインスタンス化</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>window</span> <span class=p>=</span> <span class=bp>UIWindow</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=bp>UIScreen</span><span class=p>.</span><span class=n>main</span><span class=p>.</span><span class=n>bounds</span><span class=p>)</span>
+        //UIWindowのインスタンス化
+        self.window = UIWindow(frame: UIScreen.main.bounds)
 
-        <span class=c1>//UIWindowのrootViewControllerにnavigationControllerを指定</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>window</span><span class=p>?.</span><span class=n>rootViewController</span> <span class=p>=</span> <span class=n>myNavigationController</span>
+        //UIWindowのrootViewControllerにnavigationControllerを指定
+        self.window?.rootViewController = myNavigationController
 
-        <span class=c1>//UIWindowの表示</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>window</span><span class=p>?.</span><span class=n>makeKeyAndVisible</span><span class=p>()</span>
+        //UIWindowの表示
+        self.window?.makeKeyAndVisible()
 
-        <span class=k>return</span> <span class=kc>true</span>
-    <span class=p>}</span>
-<span class=p>}</span> 
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  AppDelegate.swift</span>
-<span class=c1>//  UIKit056</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+        return true
+    }
+} 
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><pre><code class=swift>//
+//  AppDelegate.swift
+//  UIKit056
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kr>@UIApplicationMain</span>
-<span class=kd>class</span> <span class=nc>AppDelegate</span><span class=p>:</span> <span class=bp>UIResponder</span><span class=p>,</span> <span class=bp>UIApplicationDelegate</span> <span class=p>{</span>
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    <span class=kd>var</span> <span class=nv>window</span><span class=p>:</span> <span class=bp>UIWindow</span><span class=p>?</span>
-    <span class=kd>var</span> <span class=nv>myViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>?</span>
+    var window: UIWindow?
+    var myViewController: UIViewController?
 
-    <span class=kd>func</span> <span class=nf>application</span><span class=p>(</span><span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>,</span> <span class=n>didFinishLaunchingWithOptions</span> <span class=n>launchOptions</span><span class=p>:</span> <span class=p>[</span><span class=bp>NSObject</span><span class=p>:</span> <span class=nb>AnyObject</span><span class=p>]?)</span> <span class=p>-&gt;</span> <span class=nb>Bool</span> <span class=p>{</span>
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -&gt; Bool {
 
-        <span class=c1>//ViewControllerのインスタンス化</span>
-        <span class=n>myViewController</span> <span class=p>=</span> <span class=n>ViewController</span><span class=p>()</span>
+        //ViewControllerのインスタンス化
+        myViewController = ViewController()
 
-        <span class=c1>//UINavigationControllerのインスタンス化とrootViewControllerの指定</span>
-        <span class=kd>let</span> <span class=nv>myNavigationController</span> <span class=p>=</span> <span class=bp>UINavigationController</span><span class=p>(</span><span class=n>rootViewController</span><span class=p>:</span> <span class=n>myViewController</span><span class=p>!)</span>
+        //UINavigationControllerのインスタンス化とrootViewControllerの指定
+        let myNavigationController = UINavigationController(rootViewController: myViewController!)
 
-        <span class=c1>//UIWindowのインスタンス化</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>window</span> <span class=p>=</span> <span class=bp>UIWindow</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=bp>UIScreen</span><span class=p>.</span><span class=n>mainScreen</span><span class=p>().</span><span class=n>bounds</span><span class=p>)</span>
+        //UIWindowのインスタンス化
+        self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
 
-        <span class=c1>//UIWindowのrootViewControllerにnavigationControllerを指定</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>window</span><span class=p>?.</span><span class=n>rootViewController</span> <span class=p>=</span> <span class=n>myNavigationController</span>
+        //UIWindowのrootViewControllerにnavigationControllerを指定
+        self.window?.rootViewController = myNavigationController
 
-        <span class=c1>//UIWindowの表示</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>window</span><span class=p>?.</span><span class=n>makeKeyAndVisible</span><span class=p>()</span>
+        //UIWindowの表示
+        self.window?.makeKeyAndVisible()
 
-        <span class=k>return</span> <span class=kc>true</span>
-    <span class=p>}</span> 
-<span class=p>}</span> 
-</code></pre></div></td></tr></table></div></div>
+        return true
+    } 
+} 
+</code></pre></div></div>
 <h3 id="viewcontrollerswift">ViewController.swift</h3>
-<div class=md-fenced-code-tabs id=tab-tab-group-1><input name=tab-group-1 type=radio id=tab-group-1-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-1-0_swift-panel role=tab><label for=tab-group-1-0_swift class=code-tab-label data-lang=swift id=tab-group-1-0_swift-label>Swift 4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-0_swift-panel aria-labelledby=tab-group-1-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit056</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-1><input name=tab-group-1 type=radio id=tab-group-1-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-1-0_swift-panel role=tab><label for=tab-group-1-0_swift class=code-tab-label data-lang=swift id=tab-group-1-0_swift-label>Swift 4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-0_swift-panel aria-labelledby=tab-group-1-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit056
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UINavigationControllerDelegate</span><span class=p>,</span> <span class=bp>UIImagePickerControllerDelegate</span> <span class=p>{</span>
+class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
-    <span class=kd>var</span> <span class=nv>myImagePicker</span><span class=p>:</span> <span class=bp>UIImagePickerController</span><span class=p>!</span>
-    <span class=kd>var</span> <span class=nv>myImageView</span><span class=p>:</span> <span class=bp>UIImageView</span><span class=p>!</span>
+    var myImagePicker: UIImagePickerController!
+    var myImageView: UIImageView!
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>title</span> <span class=p>=</span> <span class=s>&quot;Select a Image&quot;</span>
+        self.title = &quot;Select a Image&quot;
 
-        <span class=n>myImageView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>)</span>
+        myImageView = UIImageView(frame: self.view.bounds)
 
-        <span class=c1>// インスタンス生成</span>
-        <span class=n>myImagePicker</span> <span class=p>=</span> <span class=bp>UIImagePickerController</span><span class=p>()</span>
+        // インスタンス生成
+        myImagePicker = UIImagePickerController()
 
-        <span class=c1>// デリゲート設定</span>
-        <span class=n>myImagePicker</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
+        // デリゲート設定
+        myImagePicker.delegate = self
 
-        <span class=c1>// 画像の取得先はフォトライブラリ</span>
-        <span class=n>myImagePicker</span><span class=p>.</span><span class=n>sourceType</span> <span class=p>=</span> <span class=bp>UIImagePickerController</span><span class=p>.</span><span class=n>SourceType</span><span class=p>.</span><span class=n>photoLibrary</span>
+        // 画像の取得先はフォトライブラリ
+        myImagePicker.sourceType = UIImagePickerController.SourceType.photoLibrary
 
-        <span class=c1>// 画像取得後の編集を不可に</span>
-        <span class=n>myImagePicker</span><span class=p>.</span><span class=n>allowsEditing</span> <span class=p>=</span> <span class=kc>false</span>
-    <span class=p>}</span>
+        // 画像取得後の編集を不可に
+        myImagePicker.allowsEditing = false
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidAppear</span><span class=p>(</span><span class=kc>_</span> <span class=n>animated</span><span class=p>:</span> <span class=nb>Bool</span><span class=p>)</span> <span class=p>{</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>present</span><span class=p>(</span><span class=n>myImagePicker</span><span class=p>,</span> <span class=n>animated</span><span class=p>:</span> <span class=kc>true</span><span class=p>,</span> <span class=n>completion</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
+    override func viewDidAppear(_ animated: Bool) {
+        self.present(myImagePicker, animated: true, completion: nil)
 
-    <span class=p>}</span>
+    }
 
-    <span class=cm>/**</span>
-<span class=cm>     画像が選択された時に呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>imagePickerController</span><span class=p>(</span><span class=kc>_</span> <span class=n>picker</span><span class=p>:</span> <span class=bp>UIImagePickerController</span><span class=p>,</span> <span class=n>didFinishPickingMediaWithInfo</span> <span class=n>info</span><span class=p>:</span> <span class=p>[</span><span class=bp>UIImagePickerController</span><span class=p>.</span><span class=n>InfoKey</span> <span class=p>:</span> <span class=nb>Any</span><span class=p>])</span> <span class=p>{</span>
+    /**
+     画像が選択された時に呼ばれる.
+     */
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 
-        <span class=c1>//選択された画像を取得.</span>
-        <span class=kd>let</span> <span class=nv>myImage</span><span class=p>:</span> <span class=nb>AnyObject</span><span class=p>?</span>  <span class=p>=</span> <span class=n>info</span><span class=p>[</span><span class=bp>UIImagePickerController</span><span class=p>.</span><span class=n>InfoKey</span><span class=p>.</span><span class=n>originalImage</span><span class=p>]</span> <span class=k>as</span> <span class=nb>AnyObject</span>
+        //選択された画像を取得.
+        let myImage: AnyObject?  = info[UIImagePickerController.InfoKey.originalImage] as AnyObject
 
-        <span class=c1>//選択された画像を表示するViewControllerを生成.</span>
-        <span class=kd>let</span> <span class=nv>secondViewController</span> <span class=p>=</span> <span class=n>SecondViewController</span><span class=p>()</span>
+        //選択された画像を表示するViewControllerを生成.
+        let secondViewController = SecondViewController()
 
-        <span class=c1>//選択された画像を表示するViewContorllerにセットする.</span>
-        <span class=n>secondViewController</span><span class=p>.</span><span class=n>mySelectedImage</span> <span class=p>=</span> <span class=n>myImage</span> <span class=k>as</span><span class=p>?</span> <span class=bp>UIImage</span>
+        //選択された画像を表示するViewContorllerにセットする.
+        secondViewController.mySelectedImage = myImage as? UIImage
 
-        <span class=n>myImagePicker</span><span class=p>.</span><span class=n>pushViewController</span><span class=p>(</span><span class=n>secondViewController</span><span class=p>,</span> <span class=n>animated</span><span class=p>:</span> <span class=kc>true</span><span class=p>)</span>
+        myImagePicker.pushViewController(secondViewController, animated: true)
 
-    <span class=p>}</span>
+    }
 
-    <span class=cm>/**</span>
-<span class=cm>     画像選択がキャンセルされた時に呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>imagePickerControllerDidCancel</span><span class=p>(</span><span class=kc>_</span> <span class=n>picker</span><span class=p>:</span> <span class=bp>UIImagePickerController</span><span class=p>)</span> <span class=p>{</span>
+    /**
+     画像選択がキャンセルされた時に呼ばれる.
+     */
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
 
-        <span class=c1>// モーダルビューを閉じる</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>dismiss</span><span class=p>(</span><span class=n>animated</span><span class=p>:</span> <span class=kc>true</span><span class=p>,</span> <span class=n>completion</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-    <span class=p>}</span>
+        // モーダルビューを閉じる
+        self.dismiss(animated: true, completion: nil)
+    }
 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-1 type=radio id=tab-group-1-1_swift class=code-tab data-lang=swift aria-controls=tab-group-1-1_swift-panel role=tab><label for=tab-group-1-1_swift class=code-tab-label data-lang=swift id=tab-group-1-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-1_swift-panel aria-labelledby=tab-group-1-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit056</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+}
+</code></pre></div><input name=tab-group-1 type=radio id=tab-group-1-1_swift class=code-tab data-lang=swift aria-controls=tab-group-1-1_swift-panel role=tab><label for=tab-group-1-1_swift class=code-tab-label data-lang=swift id=tab-group-1-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-1_swift-panel aria-labelledby=tab-group-1-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit056
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UINavigationControllerDelegate</span><span class=p>,</span> <span class=bp>UIImagePickerControllerDelegate</span> <span class=p>{</span>
+class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
-    <span class=kd>var</span> <span class=nv>myImagePicker</span><span class=p>:</span> <span class=bp>UIImagePickerController</span><span class=p>!</span>
-    <span class=kd>var</span> <span class=nv>myImageView</span><span class=p>:</span> <span class=bp>UIImageView</span><span class=p>!</span>
+    var myImagePicker: UIImagePickerController!
+    var myImageView: UIImageView!
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>title</span> <span class=p>=</span> <span class=s>&quot;Select a Image&quot;</span>
+        self.title = &quot;Select a Image&quot;
 
-        <span class=n>myImageView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>)</span>
+        myImageView = UIImageView(frame: self.view.bounds)
 
-        <span class=c1>// インスタンス生成</span>
-        <span class=n>myImagePicker</span> <span class=p>=</span> <span class=bp>UIImagePickerController</span><span class=p>()</span>
+        // インスタンス生成
+        myImagePicker = UIImagePickerController()
 
-        <span class=c1>// デリゲート設定</span>
-        <span class=n>myImagePicker</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
+        // デリゲート設定
+        myImagePicker.delegate = self
 
-        <span class=c1>// 画像の取得先はフォトライブラリ</span>
-        <span class=n>myImagePicker</span><span class=p>.</span><span class=n>sourceType</span> <span class=p>=</span> <span class=n>UIImagePickerControllerSourceType</span><span class=p>.</span><span class=n>photoLibrary</span>
+        // 画像の取得先はフォトライブラリ
+        myImagePicker.sourceType = UIImagePickerControllerSourceType.photoLibrary
 
-        <span class=c1>// 画像取得後の編集を不可に</span>
-        <span class=n>myImagePicker</span><span class=p>.</span><span class=n>allowsEditing</span> <span class=p>=</span> <span class=kc>false</span>
-    <span class=p>}</span>
+        // 画像取得後の編集を不可に
+        myImagePicker.allowsEditing = false
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidAppear</span><span class=p>(</span><span class=kc>_</span> <span class=n>animated</span><span class=p>:</span> <span class=nb>Bool</span><span class=p>)</span> <span class=p>{</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>present</span><span class=p>(</span><span class=n>myImagePicker</span><span class=p>,</span> <span class=n>animated</span><span class=p>:</span> <span class=kc>true</span><span class=p>,</span> <span class=n>completion</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
+    override func viewDidAppear(_ animated: Bool) {
+        self.present(myImagePicker, animated: true, completion: nil)
 
-    <span class=p>}</span>
+    }
 
-    <span class=cm>/**</span>
-<span class=cm>     画像が選択された時に呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>imagePickerController</span><span class=p>(</span><span class=kc>_</span> <span class=n>picker</span><span class=p>:</span> <span class=bp>UIImagePickerController</span><span class=p>,</span> <span class=n>didFinishPickingMediaWithInfo</span> <span class=n>info</span><span class=p>:</span> <span class=p>[</span><span class=nb>String</span> <span class=p>:</span> <span class=nb>AnyObject</span><span class=p>])</span> <span class=p>{</span>
+    /**
+     画像が選択された時に呼ばれる.
+     */
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
 
-        <span class=c1>//選択された画像を取得.</span>
-        <span class=kd>let</span> <span class=nv>myImage</span><span class=p>:</span> <span class=nb>AnyObject</span><span class=p>?</span>  <span class=p>=</span> <span class=n>info</span><span class=p>[</span><span class=n>UIImagePickerControllerOriginalImage</span><span class=p>]</span>
+        //選択された画像を取得.
+        let myImage: AnyObject?  = info[UIImagePickerControllerOriginalImage]
 
-        <span class=c1>//選択された画像を表示するViewControllerを生成.</span>
-        <span class=kd>let</span> <span class=nv>secondViewController</span> <span class=p>=</span> <span class=n>SecondViewController</span><span class=p>()</span>
+        //選択された画像を表示するViewControllerを生成.
+        let secondViewController = SecondViewController()
 
-        <span class=c1>//選択された画像を表示するViewContorllerにセットする.</span>
-        <span class=n>secondViewController</span><span class=p>.</span><span class=n>mySelectedImage</span> <span class=p>=</span> <span class=n>myImage</span> <span class=k>as</span><span class=p>!</span> <span class=bp>UIImage</span>
+        //選択された画像を表示するViewContorllerにセットする.
+        secondViewController.mySelectedImage = myImage as! UIImage
 
-        <span class=n>myImagePicker</span><span class=p>.</span><span class=n>pushViewController</span><span class=p>(</span><span class=n>secondViewController</span><span class=p>,</span> <span class=n>animated</span><span class=p>:</span> <span class=kc>true</span><span class=p>)</span>
+        myImagePicker.pushViewController(secondViewController, animated: true)
 
-    <span class=p>}</span>
+    }
 
-    <span class=cm>/**</span>
-<span class=cm>     画像選択がキャンセルされた時に呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>imagePickerControllerDidCancel</span><span class=p>(</span><span class=kc>_</span> <span class=n>picker</span><span class=p>:</span> <span class=bp>UIImagePickerController</span><span class=p>)</span> <span class=p>{</span>
+    /**
+     画像選択がキャンセルされた時に呼ばれる.
+     */
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
 
-        <span class=c1>// モーダルビューを閉じる</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>dismiss</span><span class=p>(</span><span class=n>animated</span><span class=p>:</span> <span class=kc>true</span><span class=p>,</span> <span class=n>completion</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-    <span class=p>}</span>
+        // モーダルビューを閉じる
+        self.dismiss(animated: true, completion: nil)
+    }
 
-<span class=p>}</span> 
-</code></pre></div></td></tr></table></div><input name=tab-group-1 type=radio id=tab-group-1-2_swift class=code-tab data-lang=swift aria-controls=tab-group-1-2_swift-panel role=tab><label for=tab-group-1-2_swift class=code-tab-label data-lang=swift id=tab-group-1-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-2_swift-panel aria-labelledby=tab-group-1-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit056</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+} 
+</code></pre></div><input name=tab-group-1 type=radio id=tab-group-1-2_swift class=code-tab data-lang=swift aria-controls=tab-group-1-2_swift-panel role=tab><label for=tab-group-1-2_swift class=code-tab-label data-lang=swift id=tab-group-1-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-2_swift-panel aria-labelledby=tab-group-1-2_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit056
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UINavigationControllerDelegate</span><span class=p>,</span> <span class=bp>UIImagePickerControllerDelegate</span> <span class=p>{</span>
+class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
-    <span class=kd>var</span> <span class=nv>myImagePicker</span><span class=p>:</span> <span class=bp>UIImagePickerController</span><span class=p>!</span>
-    <span class=kd>var</span> <span class=nv>myImageView</span><span class=p>:</span> <span class=bp>UIImageView</span><span class=p>!</span>
+    var myImagePicker: UIImagePickerController!
+    var myImageView: UIImageView!
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>title</span> <span class=p>=</span> <span class=s>&quot;Select a Image&quot;</span>
+        self.title = &quot;Select a Image&quot;
 
-        <span class=n>myImageView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>)</span>
+        myImageView = UIImageView(frame: self.view.bounds)
 
-        <span class=c1>// インスタンス生成</span>
-        <span class=n>myImagePicker</span> <span class=p>=</span> <span class=bp>UIImagePickerController</span><span class=p>()</span>
+        // インスタンス生成
+        myImagePicker = UIImagePickerController()
 
-        <span class=c1>// デリゲート設定</span>
-        <span class=n>myImagePicker</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
+        // デリゲート設定
+        myImagePicker.delegate = self
 
-        <span class=c1>// 画像の取得先はフォトライブラリ</span>
-        <span class=n>myImagePicker</span><span class=p>.</span><span class=n>sourceType</span> <span class=p>=</span> <span class=n>UIImagePickerControllerSourceType</span><span class=p>.</span><span class=n>PhotoLibrary</span>
+        // 画像の取得先はフォトライブラリ
+        myImagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
 
-        <span class=c1>// 画像取得後の編集を不可に</span>
-        <span class=n>myImagePicker</span><span class=p>.</span><span class=n>allowsEditing</span> <span class=p>=</span> <span class=kc>false</span>
-    <span class=p>}</span>
+        // 画像取得後の編集を不可に
+        myImagePicker.allowsEditing = false
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidAppear</span><span class=p>(</span><span class=n>animated</span><span class=p>:</span> <span class=nb>Bool</span><span class=p>)</span> <span class=p>{</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>presentViewController</span><span class=p>(</span><span class=n>myImagePicker</span><span class=p>,</span> <span class=n>animated</span><span class=p>:</span> <span class=kc>true</span><span class=p>,</span> <span class=n>completion</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
+    override func viewDidAppear(animated: Bool) {
+        self.presentViewController(myImagePicker, animated: true, completion: nil)
 
-    <span class=p>}</span>
+    }
 
-    <span class=cm>/**</span>
-<span class=cm>     画像が選択された時に呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>imagePickerController</span><span class=p>(</span><span class=n>picker</span><span class=p>:</span> <span class=bp>UIImagePickerController</span><span class=p>,</span> <span class=n>didFinishPickingMediaWithInfo</span> <span class=n>info</span><span class=p>:</span> <span class=p>[</span><span class=nb>String</span> <span class=p>:</span> <span class=nb>AnyObject</span><span class=p>])</span> <span class=p>{</span>
+    /**
+     画像が選択された時に呼ばれる.
+     */
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
 
-        <span class=c1>//選択された画像を取得.</span>
-        <span class=kd>let</span> <span class=nv>myImage</span><span class=p>:</span> <span class=nb>AnyObject</span><span class=p>?</span>  <span class=p>=</span> <span class=n>info</span><span class=p>[</span><span class=n>UIImagePickerControllerOriginalImage</span><span class=p>]</span>
+        //選択された画像を取得.
+        let myImage: AnyObject?  = info[UIImagePickerControllerOriginalImage]
 
-        <span class=c1>//選択された画像を表示するViewControllerを生成.</span>
-        <span class=kd>let</span> <span class=nv>secondViewController</span> <span class=p>=</span> <span class=n>SecondViewController</span><span class=p>()</span>
+        //選択された画像を表示するViewControllerを生成.
+        let secondViewController = SecondViewController()
 
-        <span class=c1>//選択された画像を表示するViewContorllerにセットする.</span>
-        <span class=n>secondViewController</span><span class=p>.</span><span class=n>mySelectedImage</span> <span class=p>=</span> <span class=n>myImage</span> <span class=k>as</span><span class=p>!</span> <span class=bp>UIImage</span>
+        //選択された画像を表示するViewContorllerにセットする.
+        secondViewController.mySelectedImage = myImage as! UIImage
 
-        <span class=n>myImagePicker</span><span class=p>.</span><span class=n>pushViewController</span><span class=p>(</span><span class=n>secondViewController</span><span class=p>,</span> <span class=n>animated</span><span class=p>:</span> <span class=kc>true</span><span class=p>)</span>
+        myImagePicker.pushViewController(secondViewController, animated: true)
 
-    <span class=p>}</span>
+    }
 
-    <span class=cm>/**</span>
-<span class=cm>     画像選択がキャンセルされた時に呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>imagePickerControllerDidCancel</span><span class=p>(</span><span class=n>picker</span><span class=p>:</span> <span class=bp>UIImagePickerController</span><span class=p>)</span> <span class=p>{</span>
+    /**
+     画像選択がキャンセルされた時に呼ばれる.
+     */
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
 
-        <span class=c1>// モーダルビューを閉じる</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>dismissViewControllerAnimated</span><span class=p>(</span><span class=kc>true</span><span class=p>,</span> <span class=n>completion</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-    <span class=p>}</span>
+        // モーダルビューを閉じる
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+}
+</code></pre></div></div>
 <h3 id="secondviewcontroller">SecondViewController</h3>
-<div class=md-fenced-code-tabs id=tab-tab-group-2><input name=tab-group-2 type=radio id=tab-group-2-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-2-0_swift-panel role=tab><label for=tab-group-2-0_swift class=code-tab-label data-lang=swift id=tab-group-2-0_swift-label>Swift 4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-2-0_swift-panel aria-labelledby=tab-group-2-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  SecondViewController.swift</span>
-<span class=c1>//  UIKit056</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/22.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-2><input name=tab-group-2 type=radio id=tab-group-2-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-2-0_swift-panel role=tab><label for=tab-group-2-0_swift class=code-tab-label data-lang=swift id=tab-group-2-0_swift-label>Swift 4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-2-0_swift-panel aria-labelledby=tab-group-2-0_swift-label><pre><code class=swift>//
+//  SecondViewController.swift
+//  UIKit056
+//
+//  Created by Misato Morino on 2016/08/22.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>Foundation</span>
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import Foundation
+import UIKit
 
-<span class=kd>class</span> <span class=nc>SecondViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class SecondViewController: UIViewController {
 
-    <span class=kd>var</span> <span class=nv>mySelectedImage</span><span class=p>:</span> <span class=bp>UIImage</span><span class=p>!</span>
-    <span class=kd>var</span> <span class=nv>mySelectedImageView</span><span class=p>:</span> <span class=bp>UIImageView</span><span class=p>!</span>
+    var mySelectedImage: UIImage!
+    var mySelectedImageView: UIImageView!
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
+    override func viewDidLoad() {
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>edgesForExtendedLayout</span> <span class=p>=</span> <span class=p>[]</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
+        self.edgesForExtendedLayout = []
+        self.view.backgroundColor = UIColor.white
 
-        <span class=n>setImage</span><span class=p>()</span>
-    <span class=p>}</span>
+        setImage()
+    }
 
-    <span class=cm>/**</span>
-<span class=cm>     選択された画像をUIImageViewにセットする.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>setImage</span><span class=p>(){</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>title</span> <span class=p>=</span> <span class=s>&quot;Selected Image&quot;</span>
+    /**
+     選択された画像をUIImageViewにセットする.
+     */
+    func setImage(){
+        self.title = &quot;Selected Image&quot;
 
-        <span class=n>mySelectedImageView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>)</span>
-        <span class=n>mySelectedImageView</span><span class=p>.</span><span class=n>contentMode</span> <span class=p>=</span> <span class=bp>UIView</span><span class=p>.</span><span class=n>ContentMode</span><span class=p>.</span><span class=n>scaleAspectFit</span>
-        <span class=n>mySelectedImageView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=n>mySelectedImage</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>mySelectedImageView</span><span class=p>)</span>
-    <span class=p>}</span>
+        mySelectedImageView = UIImageView(frame: self.view.bounds)
+        mySelectedImageView.contentMode = UIView.ContentMode.scaleAspectFit
+        mySelectedImageView.image = mySelectedImage
+        self.view.addSubview(mySelectedImageView)
+    }
 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-2 type=radio id=tab-group-2-1_swift class=code-tab data-lang=swift aria-controls=tab-group-2-1_swift-panel role=tab><label for=tab-group-2-1_swift class=code-tab-label data-lang=swift id=tab-group-2-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-2-1_swift-panel aria-labelledby=tab-group-2-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  SecondViewController.swift</span>
-<span class=c1>//  UIKit056</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/22.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+}
+</code></pre></div><input name=tab-group-2 type=radio id=tab-group-2-1_swift class=code-tab data-lang=swift aria-controls=tab-group-2-1_swift-panel role=tab><label for=tab-group-2-1_swift class=code-tab-label data-lang=swift id=tab-group-2-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-2-1_swift-panel aria-labelledby=tab-group-2-1_swift-label><pre><code class=swift>//
+//  SecondViewController.swift
+//  UIKit056
+//
+//  Created by Misato Morino on 2016/08/22.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>Foundation</span>
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import Foundation
+import UIKit
 
-<span class=kd>class</span> <span class=nc>SecondViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class SecondViewController: UIViewController {
 
-    <span class=kd>var</span> <span class=nv>mySelectedImage</span><span class=p>:</span> <span class=bp>UIImage</span><span class=p>!</span>
-    <span class=kd>var</span> <span class=nv>mySelectedImageView</span><span class=p>:</span> <span class=bp>UIImageView</span><span class=p>!</span>
+    var mySelectedImage: UIImage!
+    var mySelectedImageView: UIImageView!
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
+    override func viewDidLoad() {
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>edgesForExtendedLayout</span> <span class=p>=</span> <span class=p>[]</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
+        self.edgesForExtendedLayout = []
+        self.view.backgroundColor = UIColor.white
 
-        <span class=n>setImage</span><span class=p>()</span>
-    <span class=p>}</span>
+        setImage()
+    }
 
-    <span class=cm>/**</span>
-<span class=cm>     選択された画像をUIImageViewにセットする.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>setImage</span><span class=p>(){</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>title</span> <span class=p>=</span> <span class=s>&quot;Selected Image&quot;</span>
+    /**
+     選択された画像をUIImageViewにセットする.
+     */
+    func setImage(){
+        self.title = &quot;Selected Image&quot;
 
-        <span class=n>mySelectedImageView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>)</span>
-        <span class=n>mySelectedImageView</span><span class=p>.</span><span class=n>contentMode</span> <span class=p>=</span> <span class=n>UIViewContentMode</span><span class=p>.</span><span class=n>scaleAspectFit</span>
-        <span class=n>mySelectedImageView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=n>mySelectedImage</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>mySelectedImageView</span><span class=p>)</span>
-    <span class=p>}</span>
+        mySelectedImageView = UIImageView(frame: self.view.bounds)
+        mySelectedImageView.contentMode = UIViewContentMode.scaleAspectFit
+        mySelectedImageView.image = mySelectedImage
+        self.view.addSubview(mySelectedImageView)
+    }
 
-<span class=p>}</span> 
-</code></pre></div></td></tr></table></div><input name=tab-group-2 type=radio id=tab-group-2-2_swift class=code-tab data-lang=swift aria-controls=tab-group-2-2_swift-panel role=tab><label for=tab-group-2-2_swift class=code-tab-label data-lang=swift id=tab-group-2-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-2-2_swift-panel aria-labelledby=tab-group-2-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  SecondViewController.swift</span>
-<span class=c1>//  UIKit056</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/22.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+} 
+</code></pre></div><input name=tab-group-2 type=radio id=tab-group-2-2_swift class=code-tab data-lang=swift aria-controls=tab-group-2-2_swift-panel role=tab><label for=tab-group-2-2_swift class=code-tab-label data-lang=swift id=tab-group-2-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-2-2_swift-panel aria-labelledby=tab-group-2-2_swift-label><pre><code class=swift>//
+//  SecondViewController.swift
+//  UIKit056
+//
+//  Created by Misato Morino on 2016/08/22.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>Foundation</span>
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import Foundation
+import UIKit
 
-<span class=kd>class</span> <span class=nc>SecondViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class SecondViewController: UIViewController {
 
-    <span class=kd>var</span> <span class=nv>mySelectedImage</span><span class=p>:</span> <span class=bp>UIImage</span><span class=p>!</span>
-    <span class=kd>var</span> <span class=nv>mySelectedImageView</span><span class=p>:</span> <span class=bp>UIImageView</span><span class=p>!</span>
+    var mySelectedImage: UIImage!
+    var mySelectedImageView: UIImageView!
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
+    override func viewDidLoad() {
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>edgesForExtendedLayout</span> <span class=p>=</span> <span class=n>UIRectEdge</span><span class=p>.</span><span class=n>None</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>whiteColor</span><span class=p>()</span>
+        self.edgesForExtendedLayout = UIRectEdge.None
+        self.view.backgroundColor = UIColor.whiteColor()
 
-        <span class=n>setImage</span><span class=p>()</span>
-    <span class=p>}</span>
+        setImage()
+    }
 
-    <span class=cm>/**</span>
-<span class=cm>     選択された画像をUIImageViewにセットする.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>setImage</span><span class=p>(){</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>title</span> <span class=p>=</span> <span class=s>&quot;Selected Image&quot;</span>
+    /**
+     選択された画像をUIImageViewにセットする.
+     */
+    func setImage(){
+        self.title = &quot;Selected Image&quot;
 
-        <span class=n>mySelectedImageView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>)</span>
-        <span class=n>mySelectedImageView</span><span class=p>.</span><span class=n>contentMode</span> <span class=p>=</span> <span class=n>UIViewContentMode</span><span class=p>.</span><span class=n>ScaleAspectFit</span>
-        <span class=n>mySelectedImageView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=n>mySelectedImage</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>mySelectedImageView</span><span class=p>)</span>
-    <span class=p>}</span>
+        mySelectedImageView = UIImageView(frame: self.view.bounds)
+        mySelectedImageView.contentMode = UIViewContentMode.ScaleAspectFit
+        mySelectedImageView.image = mySelectedImage
+        self.view.addSubview(mySelectedImageView)
+    }
 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+}
+</code></pre></div></div>
 <h3 id="infoplist">Info,plist</h3>
-<p> <table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal>1</span>
-<span class=normal>2</span>
-<span class=normal>3</span>
-<span class=normal>4</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=p>&lt;</span><span class=n>key</span><span class=p>&gt;</span><span class=n>NSPhotoLibraryUsageDescription</span><span class=o>&lt;/</span><span class=n>key</span><span class=p>&gt;</span>
-<span class=p>&lt;</span><span class=n>string</span><span class=p>&gt;</span><span class=n>YES</span><span class=o>&lt;/</span><span class=n>string</span><span class=p>&gt;</span>
-<span class=p>&lt;</span><span class=n>key</span><span class=p>&gt;</span><span class=n>NSAppleMusicUsageDescription</span><span class=o>&lt;/</span><span class=n>key</span><span class=p>&gt;</span>
-<span class=p>&lt;</span><span class=n>string</span><span class=p>&gt;</span><span class=n>YES</span><span class=o>&lt;/</span><span class=n>string</span><span class=p>&gt;</span>
-</code></pre></div></td></tr></table></p>
+<p> <pre><code class=swift>&lt;key&gt;NSPhotoLibraryUsageDescription&lt;/key&gt;
+&lt;string&gt;YES&lt;/string&gt;
+&lt;key&gt;NSAppleMusicUsageDescription&lt;/key&gt;
+&lt;string&gt;YES&lt;/string&gt;
+</code></pre></p>
 <p>Info.plistに上記を追加（2.3には必要ない）</p>
 <h2 id="3x4x">3.xと4.xの差分</h2>
 <ul>

@@ -2375,690 +2375,354 @@
 <p><img alt="Preview uikit013" src="../img/uikit013.png" />
 <img alt="Preview uikit013_1" src="../img/uikit013_1.png" /></p>
 <h3 id="appdelegateswift">AppDelegate.swift</h3>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  AppDelegate.swift</span>
-<span class=c1>//  UIKit013_3.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by akira on 2016/08/13.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  AppDelegate.swift
+//  UIKit013_3.0
+//
+//  Created by akira on 2016/08/13.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kr>@UIApplicationMain</span>
-<span class=kd>class</span> <span class=nc>AppDelegate</span><span class=p>:</span> <span class=bp>UIResponder</span><span class=p>,</span> <span class=bp>UIApplicationDelegate</span> <span class=p>{</span>
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    <span class=kd>var</span> <span class=nv>window</span><span class=p>:</span> <span class=bp>UIWindow</span><span class=p>?</span>
+    var window: UIWindow?
 
 
-    <span class=kd>func</span> <span class=nf>application</span><span class=p>(</span><span class=kc>_</span> <span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>,</span> <span class=n>didFinishLaunchingWithOptions</span> <span class=n>launchOptions</span><span class=p>:</span> <span class=p>[</span><span class=bp>UIApplication</span><span class=p>.</span><span class=n>LaunchOptionsKey</span> <span class=p>:</span> <span class=nb>Any</span><span class=p>]?</span> <span class=p>=</span> <span class=kc>nil</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Bool</span> <span class=p>{</span>
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -&gt; Bool {
 
-        <span class=c1>// Tabに設定するViewControllerのインスタンスを生成.</span>
-        <span class=kd>let</span> <span class=nv>myFirstTab</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>=</span> <span class=n>FirstViewController</span><span class=p>()</span>
-        <span class=kd>let</span> <span class=nv>mySecondTab</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>=</span> <span class=n>SecondViewController</span><span class=p>()</span>
+        // Tabに設定するViewControllerのインスタンスを生成.
+        let myFirstTab: UIViewController = FirstViewController()
+        let mySecondTab: UIViewController = SecondViewController()
 
-        <span class=c1>// タブを要素に持つArrayの.を作成する.</span>
-        <span class=kd>let</span> <span class=nv>myTabs</span> <span class=p>=</span> <span class=bp>NSArray</span><span class=p>(</span><span class=n>objects</span><span class=p>:</span> <span class=n>myFirstTab</span><span class=p>,</span> <span class=n>mySecondTab</span><span class=p>)</span>
+        // タブを要素に持つArrayの.を作成する.
+        let myTabs = NSArray(objects: myFirstTab, mySecondTab)
 
-        <span class=c1>// UITabControllerの作成する.</span>
-        <span class=kd>let</span> <span class=nv>myTabBarController</span><span class=p>:</span> <span class=bp>UITabBarController</span> <span class=p>=</span> <span class=bp>UITabBarController</span><span class=p>()</span>
+        // UITabControllerの作成する.
+        let myTabBarController: UITabBarController = UITabBarController()
 
-        <span class=c1>// ViewControllerを設定する.</span>
-        <span class=n>myTabBarController</span><span class=p>.</span><span class=n>setViewControllers</span><span class=p>(</span><span class=n>myTabs</span> <span class=k>as</span><span class=p>?</span> <span class=p>[</span><span class=bp>UIViewController</span><span class=p>],</span> <span class=n>animated</span><span class=p>:</span> <span class=kc>false</span><span class=p>)</span>
+        // ViewControllerを設定する.
+        myTabBarController.setViewControllers(myTabs as? [UIViewController], animated: false)
 
-        <span class=c1>// RootViewControllerに設定する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>window</span><span class=p>!.</span><span class=n>rootViewController</span> <span class=p>=</span> <span class=n>myTabBarController</span>
+        // RootViewControllerに設定する.
+        self.window!.rootViewController = myTabBarController
 
-        <span class=c1>// Windowを表示する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>window</span><span class=p>!.</span><span class=n>makeKeyAndVisible</span><span class=p>()</span>
+        // Windowを表示する.
+        self.window!.makeKeyAndVisible()
 
-        <span class=k>return</span> <span class=kc>true</span>
-    <span class=p>}</span>
+        return true
+    }
 
-    <span class=kd>func</span> <span class=nf>applicationWillResignActive</span><span class=p>(</span><span class=kc>_</span> <span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>)</span> <span class=p>{</span>
-        <span class=c1>// Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.</span>
-        <span class=c1>// Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.</span>
-    <span class=p>}</span>
+    func applicationWillResignActive(_ application: UIApplication) {
+        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
+        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+    }
 
-    <span class=kd>func</span> <span class=nf>applicationDidEnterBackground</span><span class=p>(</span><span class=kc>_</span> <span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>)</span> <span class=p>{</span>
-        <span class=c1>// Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.</span>
-        <span class=c1>// If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.</span>
-    <span class=p>}</span>
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    }
 
-    <span class=kd>func</span> <span class=nf>applicationWillEnterForeground</span><span class=p>(</span><span class=kc>_</span> <span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>)</span> <span class=p>{</span>
-        <span class=c1>// Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.</span>
-    <span class=p>}</span>
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    }
 
-    <span class=kd>func</span> <span class=nf>applicationDidBecomeActive</span><span class=p>(</span><span class=kc>_</span> <span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>)</span> <span class=p>{</span>
-        <span class=c1>// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.</span>
-    <span class=p>}</span>
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    }
 
-    <span class=kd>func</span> <span class=nf>applicationWillTerminate</span><span class=p>(</span><span class=kc>_</span> <span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>)</span> <span class=p>{</span>
-        <span class=c1>// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.</span>
-    <span class=p>}</span>
-
-
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  AppDelegate.swift</span>
-<span class=c1>//  UIKit013_3.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by akira on 2016/08/13.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
-
-<span class=kd>import</span> <span class=nc>UIKit</span>
-
-<span class=kr>@UIApplicationMain</span>
-<span class=kd>class</span> <span class=nc>AppDelegate</span><span class=p>:</span> <span class=bp>UIResponder</span><span class=p>,</span> <span class=bp>UIApplicationDelegate</span> <span class=p>{</span>
-
-    <span class=kd>var</span> <span class=nv>window</span><span class=p>:</span> <span class=bp>UIWindow</span><span class=p>?</span>
+    func applicationWillTerminate(_ application: UIApplication) {
+        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
 
 
-    <span class=kd>func</span> <span class=nf>application</span><span class=p>(</span><span class=kc>_</span> <span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>,</span> <span class=n>didFinishLaunchingWithOptions</span> <span class=n>launchOptions</span><span class=p>:</span> <span class=p>[</span><span class=bp>NSObject</span><span class=p>:</span> <span class=nb>AnyObject</span><span class=p>]?)</span> <span class=p>-&gt;</span> <span class=nb>Bool</span> <span class=p>{</span>
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  AppDelegate.swift
+//  UIKit013_3.0
+//
+//  Created by akira on 2016/08/13.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-        <span class=c1>// Tabに設定するViewControllerのインスタンスを生成.</span>
-        <span class=kd>let</span> <span class=nv>myFirstTab</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>=</span> <span class=n>FirstViewController</span><span class=p>()</span>
-        <span class=kd>let</span> <span class=nv>mySecondTab</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>=</span> <span class=n>SecondViewController</span><span class=p>()</span>
+import UIKit
 
-        <span class=c1>// タブを要素に持つArrayの.を作成する.</span>
-        <span class=kd>let</span> <span class=nv>myTabs</span> <span class=p>=</span> <span class=bp>NSArray</span><span class=p>(</span><span class=n>objects</span><span class=p>:</span> <span class=n>myFirstTab</span><span class=p>,</span> <span class=n>mySecondTab</span><span class=p>)</span>
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
-        <span class=c1>// UITabControllerの作成する.</span>
-        <span class=kd>let</span> <span class=nv>myTabBarController</span><span class=p>:</span> <span class=bp>UITabBarController</span> <span class=p>=</span> <span class=bp>UITabBarController</span><span class=p>()</span>
-
-        <span class=c1>// ViewControllerを設定する.</span>
-        <span class=n>myTabBarController</span><span class=p>.</span><span class=n>setViewControllers</span><span class=p>(</span><span class=n>myTabs</span> <span class=k>as</span><span class=p>?</span> <span class=p>[</span><span class=bp>UIViewController</span><span class=p>],</span> <span class=n>animated</span><span class=p>:</span> <span class=kc>false</span><span class=p>)</span>
-
-        <span class=c1>// RootViewControllerに設定する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>window</span><span class=p>!.</span><span class=n>rootViewController</span> <span class=p>=</span> <span class=n>myTabBarController</span>
-
-        <span class=c1>// Windowを表示する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>window</span><span class=p>!.</span><span class=n>makeKeyAndVisible</span><span class=p>()</span>
-
-        <span class=k>return</span> <span class=kc>true</span>
-    <span class=p>}</span>
-
-    <span class=kd>func</span> <span class=nf>applicationWillResignActive</span><span class=p>(</span><span class=kc>_</span> <span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>)</span> <span class=p>{</span>
-        <span class=c1>// Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.</span>
-        <span class=c1>// Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.</span>
-    <span class=p>}</span>
-
-    <span class=kd>func</span> <span class=nf>applicationDidEnterBackground</span><span class=p>(</span><span class=kc>_</span> <span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>)</span> <span class=p>{</span>
-        <span class=c1>// Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.</span>
-        <span class=c1>// If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.</span>
-    <span class=p>}</span>
-
-    <span class=kd>func</span> <span class=nf>applicationWillEnterForeground</span><span class=p>(</span><span class=kc>_</span> <span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>)</span> <span class=p>{</span>
-        <span class=c1>// Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.</span>
-    <span class=p>}</span>
-
-    <span class=kd>func</span> <span class=nf>applicationDidBecomeActive</span><span class=p>(</span><span class=kc>_</span> <span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>)</span> <span class=p>{</span>
-        <span class=c1>// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.</span>
-    <span class=p>}</span>
-
-    <span class=kd>func</span> <span class=nf>applicationWillTerminate</span><span class=p>(</span><span class=kc>_</span> <span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>)</span> <span class=p>{</span>
-        <span class=c1>// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.</span>
-    <span class=p>}</span>
+    var window: UIWindow?
 
 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  AppDelegate.swift</span>
-<span class=c1>//  UIKit013</span>
-<span class=c1>//</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -&gt; Bool {
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+        // Tabに設定するViewControllerのインスタンスを生成.
+        let myFirstTab: UIViewController = FirstViewController()
+        let mySecondTab: UIViewController = SecondViewController()
 
-<span class=kr>@UIApplicationMain</span>
-<span class=kd>class</span> <span class=nc>AppDelegate</span><span class=p>:</span> <span class=bp>UIResponder</span><span class=p>,</span> <span class=bp>UIApplicationDelegate</span> <span class=p>{</span>
+        // タブを要素に持つArrayの.を作成する.
+        let myTabs = NSArray(objects: myFirstTab, mySecondTab)
 
-    <span class=kd>var</span> <span class=nv>window</span><span class=p>:</span> <span class=bp>UIWindow</span><span class=p>?</span>
+        // UITabControllerの作成する.
+        let myTabBarController: UITabBarController = UITabBarController()
+
+        // ViewControllerを設定する.
+        myTabBarController.setViewControllers(myTabs as? [UIViewController], animated: false)
+
+        // RootViewControllerに設定する.
+        self.window!.rootViewController = myTabBarController
+
+        // Windowを表示する.
+        self.window!.makeKeyAndVisible()
+
+        return true
+    }
+
+    func applicationWillResignActive(_ application: UIApplication) {
+        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
+        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+    }
+
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    }
+
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    }
+
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    }
+
+    func applicationWillTerminate(_ application: UIApplication) {
+        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
 
 
-    <span class=kd>func</span> <span class=nf>application</span><span class=p>(</span><span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>,</span> <span class=n>didFinishLaunchingWithOptions</span> <span class=n>launchOptions</span><span class=p>:</span> <span class=p>[</span><span class=bp>NSObject</span><span class=p>:</span> <span class=nb>AnyObject</span><span class=p>]?)</span> <span class=p>-&gt;</span> <span class=nb>Bool</span> <span class=p>{</span>
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><pre><code class=swift>//
+//  AppDelegate.swift
+//  UIKit013
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-        <span class=c1>// Tabに設定するViewControllerのインスタンスを生成.</span>
-        <span class=kd>let</span> <span class=nv>myFirstTab</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>=</span> <span class=n>FirstViewController</span><span class=p>()</span>
-        <span class=kd>let</span> <span class=nv>mySecondTab</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>=</span> <span class=n>SecondViewController</span><span class=p>()</span>
+import UIKit
 
-        <span class=c1>// タブを要素に持つArrayの.を作成する.</span>
-        <span class=kd>let</span> <span class=nv>myTabs</span> <span class=p>=</span> <span class=bp>NSArray</span><span class=p>(</span><span class=n>objects</span><span class=p>:</span> <span class=n>myFirstTab</span><span class=p>,</span> <span class=n>mySecondTab</span><span class=p>)</span>
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
-        <span class=c1>// UITabControllerの作成する.</span>
-        <span class=kd>let</span> <span class=nv>myTabBarController</span><span class=p>:</span> <span class=bp>UITabBarController</span> <span class=p>=</span> <span class=bp>UITabBarController</span><span class=p>()</span>
-
-        <span class=c1>// ViewControllerを設定する.</span>
-        <span class=n>myTabBarController</span><span class=p>.</span><span class=n>setViewControllers</span><span class=p>(</span><span class=n>myTabs</span> <span class=k>as</span><span class=p>?</span> <span class=p>[</span><span class=bp>UIViewController</span><span class=p>],</span> <span class=n>animated</span><span class=p>:</span> <span class=kc>false</span><span class=p>)</span>
-
-        <span class=c1>// RootViewControllerに設定する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>window</span><span class=p>!.</span><span class=n>rootViewController</span> <span class=p>=</span> <span class=n>myTabBarController</span>
-
-        <span class=c1>// Windowを表示する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>window</span><span class=p>!.</span><span class=n>makeKeyAndVisible</span><span class=p>()</span>
-
-        <span class=k>return</span> <span class=kc>true</span>
-    <span class=p>}</span>
-
-    <span class=kd>func</span> <span class=nf>applicationWillResignActive</span><span class=p>(</span><span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>)</span> <span class=p>{</span>
-        <span class=c1>// Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.</span>
-        <span class=c1>// Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.</span>
-    <span class=p>}</span>
-
-    <span class=kd>func</span> <span class=nf>applicationDidEnterBackground</span><span class=p>(</span><span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>)</span> <span class=p>{</span>
-        <span class=c1>// Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.</span>
-        <span class=c1>// If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.</span>
-    <span class=p>}</span>
-
-    <span class=kd>func</span> <span class=nf>applicationWillEnterForeground</span><span class=p>(</span><span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>)</span> <span class=p>{</span>
-        <span class=c1>// Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.</span>
-    <span class=p>}</span>
-
-    <span class=kd>func</span> <span class=nf>applicationDidBecomeActive</span><span class=p>(</span><span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>)</span> <span class=p>{</span>
-        <span class=c1>// Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.</span>
-    <span class=p>}</span>
-
-    <span class=kd>func</span> <span class=nf>applicationWillTerminate</span><span class=p>(</span><span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>)</span> <span class=p>{</span>
-        <span class=c1>// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.</span>
-    <span class=p>}</span>
+    var window: UIWindow?
 
 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -&gt; Bool {
+
+        // Tabに設定するViewControllerのインスタンスを生成.
+        let myFirstTab: UIViewController = FirstViewController()
+        let mySecondTab: UIViewController = SecondViewController()
+
+        // タブを要素に持つArrayの.を作成する.
+        let myTabs = NSArray(objects: myFirstTab, mySecondTab)
+
+        // UITabControllerの作成する.
+        let myTabBarController: UITabBarController = UITabBarController()
+
+        // ViewControllerを設定する.
+        myTabBarController.setViewControllers(myTabs as? [UIViewController], animated: false)
+
+        // RootViewControllerに設定する.
+        self.window!.rootViewController = myTabBarController
+
+        // Windowを表示する.
+        self.window!.makeKeyAndVisible()
+
+        return true
+    }
+
+    func applicationWillResignActive(application: UIApplication) {
+        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
+        // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    }
+
+    func applicationDidEnterBackground(application: UIApplication) {
+        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
+        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    }
+
+    func applicationWillEnterForeground(application: UIApplication) {
+        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
+    }
+
+    func applicationDidBecomeActive(application: UIApplication) {
+        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    }
+
+    func applicationWillTerminate(application: UIApplication) {
+        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+
+
+}
+</code></pre></div></div>
 <h3 id="firstviewcontrollerswift">FirstViewController.swift</h3>
-<div class=md-fenced-code-tabs id=tab-tab-group-1><input name=tab-group-1 type=radio id=tab-group-1-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-1-0_swift-panel role=tab><label for=tab-group-1-0_swift class=code-tab-label data-lang=swift id=tab-group-1-0_swift-label>Swift 4.x/Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-0_swift-panel aria-labelledby=tab-group-1-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  FirstViewController.swift</span>
-<span class=c1>//  UIKit013</span>
-<span class=c1>//</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-1><input name=tab-group-1 type=radio id=tab-group-1-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-1-0_swift-panel role=tab><label for=tab-group-1-0_swift class=code-tab-label data-lang=swift id=tab-group-1-0_swift-label>Swift 4.x/Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-0_swift-panel aria-labelledby=tab-group-1-0_swift-label><pre><code class=swift>//
+//  FirstViewController.swift
+//  UIKit013
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>FirstViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class FirstViewController: UIViewController {
 
-    <span class=kd>init</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>nibName</span><span class=p>:</span> <span class=kc>nil</span><span class=p>,</span> <span class=n>bundle</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
+    init() {
+        super.init(nibName: nil, bundle: nil)
 
-        <span class=c1>// Viewの背景色をCyanに設定する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyan</span>
+        // Viewの背景色をCyanに設定する.
+        self.view.backgroundColor = UIColor.cyan
 
-        <span class=c1>//tabBarItemのアイコンをFeaturedに、タグを1と定義する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>tabBarItem</span> <span class=p>=</span> <span class=bp>UITabBarItem</span><span class=p>(</span><span class=n>tabBarSystemItem</span><span class=p>:</span> <span class=p>.</span><span class=n>featured</span><span class=p>,</span> <span class=n>tag</span><span class=p>:</span> <span class=mi>1</span><span class=p>)</span>
-    <span class=p>}</span>
+        //tabBarItemのアイコンをFeaturedに、タグを1と定義する.
+        self.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 1)
+    }
 
-    <span class=kr>required</span> <span class=kd>init</span><span class=p>?(</span><span class=n>coder</span> <span class=n>aDecoder</span><span class=p>:</span> <span class=bp>NSCoder</span><span class=p>)</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>coder</span><span class=p>:</span> <span class=n>aDecoder</span><span class=p>)</span>
-    <span class=p>}</span>
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
 
-    <span class=kr>required</span> <span class=kr>override</span> <span class=kd>init</span><span class=p>(</span><span class=n>nibName</span> <span class=n>nibNameOrNil</span><span class=p>:</span> <span class=nb>String</span><span class=p>!,</span> <span class=n>bundle</span> <span class=n>nibBundleOrNil</span><span class=p>:</span> <span class=n>Bundle</span><span class=p>!)</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>nibName</span><span class=p>:</span> <span class=n>nibNameOrNil</span><span class=p>,</span> <span class=n>bundle</span><span class=p>:</span> <span class=n>nibBundleOrNil</span><span class=p>)</span>
-    <span class=p>}</span>
+    required override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-    <span class=p>}</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-1 type=radio id=tab-group-1-1_swift class=code-tab data-lang=swift aria-controls=tab-group-1-1_swift-panel role=tab><label for=tab-group-1-1_swift class=code-tab-label data-lang=swift id=tab-group-1-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-1_swift-panel aria-labelledby=tab-group-1-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  FirstViewController.swift</span>
-<span class=c1>//  UIKit013</span>
-<span class=c1>//</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+</code></pre></div><input name=tab-group-1 type=radio id=tab-group-1-1_swift class=code-tab data-lang=swift aria-controls=tab-group-1-1_swift-panel role=tab><label for=tab-group-1-1_swift class=code-tab-label data-lang=swift id=tab-group-1-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-1_swift-panel aria-labelledby=tab-group-1-1_swift-label><pre><code class=swift>//
+//  FirstViewController.swift
+//  UIKit013
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>FirstViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class FirstViewController: UIViewController {
 
-    <span class=kd>init</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>nibName</span><span class=p>:</span> <span class=kc>nil</span><span class=p>,</span> <span class=n>bundle</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
+    init() {
+        super.init(nibName: nil, bundle: nil)
 
-        <span class=c1>// Viewの背景色をCyanに設定する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyanColor</span><span class=p>()</span>
+        // Viewの背景色をCyanに設定する.
+        self.view.backgroundColor = UIColor.cyanColor()
 
-        <span class=c1>//tabBarItemのアイコンをFeaturedに、タグを1と定義する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>tabBarItem</span> <span class=p>=</span> <span class=bp>UITabBarItem</span><span class=p>(</span><span class=n>tabBarSystemItem</span><span class=p>:</span> <span class=n>UITabBarSystemItem</span><span class=p>.</span><span class=n>Featured</span><span class=p>,</span> <span class=n>tag</span><span class=p>:</span> <span class=mi>1</span><span class=p>)</span>
-    <span class=p>}</span>
+        //tabBarItemのアイコンをFeaturedに、タグを1と定義する.
+        self.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Featured, tag: 1)
+    }
 
-    <span class=kr>required</span> <span class=kd>init</span><span class=p>?(</span><span class=n>coder</span> <span class=n>aDecoder</span><span class=p>:</span> <span class=bp>NSCoder</span><span class=p>)</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>coder</span><span class=p>:</span> <span class=n>aDecoder</span><span class=p>)</span>
-    <span class=p>}</span>
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
 
-    <span class=kr>required</span> <span class=kr>override</span> <span class=kd>init</span><span class=p>(</span><span class=n>nibName</span> <span class=n>nibNameOrNil</span><span class=p>:</span> <span class=nb>String</span><span class=p>!,</span> <span class=n>bundle</span> <span class=n>nibBundleOrNil</span><span class=p>:</span> <span class=bp>NSBundle</span><span class=p>!)</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>nibName</span><span class=p>:</span> <span class=n>nibNameOrNil</span><span class=p>,</span> <span class=n>bundle</span><span class=p>:</span> <span class=n>nibBundleOrNil</span><span class=p>)</span>
-    <span class=p>}</span>
+    required override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-    <span class=p>}</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+</code></pre></div></div>
 <h3 id="secondviewcontrollerswift">SecondViewController.swift</h3>
-<div class=md-fenced-code-tabs id=tab-tab-group-2><input name=tab-group-2 type=radio id=tab-group-2-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-2-0_swift-panel role=tab><label for=tab-group-2-0_swift class=code-tab-label data-lang=swift id=tab-group-2-0_swift-label>Swift 4.x/Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-2-0_swift-panel aria-labelledby=tab-group-2-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  SecondViewController.swift</span>
-<span class=c1>//  UIKit013</span>
-<span class=c1>//</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-2><input name=tab-group-2 type=radio id=tab-group-2-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-2-0_swift-panel role=tab><label for=tab-group-2-0_swift class=code-tab-label data-lang=swift id=tab-group-2-0_swift-label>Swift 4.x/Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-2-0_swift-panel aria-labelledby=tab-group-2-0_swift-label><pre><code class=swift>//
+//  SecondViewController.swift
+//  UIKit013
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>SecondViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class SecondViewController: UIViewController {
 
-    <span class=kd>init</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>nibName</span><span class=p>:</span> <span class=kc>nil</span><span class=p>,</span> <span class=n>bundle</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
+    init() {
+        super.init(nibName: nil, bundle: nil)
 
-        <span class=c1>// Viewの背景色をGreenに設定する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>green</span>
+        // Viewの背景色をGreenに設定する.
+        self.view.backgroundColor = UIColor.green
 
-        <span class=c1>// tabBarItemのアイコンをFeaturedに、タグを2と定義する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>tabBarItem</span> <span class=p>=</span> <span class=bp>UITabBarItem</span><span class=p>(</span><span class=n>tabBarSystemItem</span><span class=p>:</span> <span class=p>.</span><span class=n>featured</span><span class=p>,</span> <span class=n>tag</span><span class=p>:</span> <span class=mi>2</span><span class=p>)</span>
-    <span class=p>}</span>
+        // tabBarItemのアイコンをFeaturedに、タグを2と定義する.
+        self.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 2)
+    }
 
-    <span class=kr>required</span> <span class=kd>init</span><span class=p>?(</span><span class=n>coder</span> <span class=n>aDecoder</span><span class=p>:</span> <span class=bp>NSCoder</span><span class=p>)</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>coder</span><span class=p>:</span> <span class=n>aDecoder</span><span class=p>)</span>
-    <span class=p>}</span>
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
 
-    <span class=kr>required</span> <span class=kr>override</span> <span class=kd>init</span><span class=p>(</span><span class=n>nibName</span> <span class=n>nibNameOrNil</span><span class=p>:</span> <span class=nb>String</span><span class=p>!,</span> <span class=n>bundle</span> <span class=n>nibBundleOrNil</span><span class=p>:</span> <span class=n>Bundle</span><span class=p>!)</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>nibName</span><span class=p>:</span> <span class=n>nibNameOrNil</span><span class=p>,</span> <span class=n>bundle</span><span class=p>:</span> <span class=n>nibBundleOrNil</span><span class=p>)</span>
-    <span class=p>}</span>
+    required override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: Bundle!) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-    <span class=p>}</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
 
 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-2 type=radio id=tab-group-2-1_swift class=code-tab data-lang=swift aria-controls=tab-group-2-1_swift-panel role=tab><label for=tab-group-2-1_swift class=code-tab-label data-lang=swift id=tab-group-2-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-2-1_swift-panel aria-labelledby=tab-group-2-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>///</span>
-<span class=c1>//  SecondViewController.swift</span>
-<span class=c1>//  UIKit013</span>
-<span class=c1>//</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+}
+</code></pre></div><input name=tab-group-2 type=radio id=tab-group-2-1_swift class=code-tab data-lang=swift aria-controls=tab-group-2-1_swift-panel role=tab><label for=tab-group-2-1_swift class=code-tab-label data-lang=swift id=tab-group-2-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-2-1_swift-panel aria-labelledby=tab-group-2-1_swift-label><pre><code class=swift>///
+//  SecondViewController.swift
+//  UIKit013
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>SecondViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class SecondViewController: UIViewController {
 
-    <span class=kd>init</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>nibName</span><span class=p>:</span> <span class=kc>nil</span><span class=p>,</span> <span class=n>bundle</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
+    init() {
+        super.init(nibName: nil, bundle: nil)
 
-        <span class=c1>// Viewの背景色をGreenに設定する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>greenColor</span><span class=p>()</span>
+        // Viewの背景色をGreenに設定する.
+        self.view.backgroundColor = UIColor.greenColor()
 
-        <span class=c1>// tabBarItemのアイコンをFeaturedに、タグを2と定義する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>tabBarItem</span> <span class=p>=</span> <span class=bp>UITabBarItem</span><span class=p>(</span><span class=n>tabBarSystemItem</span><span class=p>:</span> <span class=n>UITabBarSystemItem</span><span class=p>.</span><span class=n>Featured</span><span class=p>,</span> <span class=n>tag</span><span class=p>:</span> <span class=mi>2</span><span class=p>)</span>
-    <span class=p>}</span>
+        // tabBarItemのアイコンをFeaturedに、タグを2と定義する.
+        self.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Featured, tag: 2)
+    }
 
-    <span class=kr>required</span> <span class=kd>init</span><span class=p>?(</span><span class=n>coder</span> <span class=n>aDecoder</span><span class=p>:</span> <span class=bp>NSCoder</span><span class=p>)</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>coder</span><span class=p>:</span> <span class=n>aDecoder</span><span class=p>)</span>
-    <span class=p>}</span>
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
 
-    <span class=kr>required</span> <span class=kr>override</span> <span class=kd>init</span><span class=p>(</span><span class=n>nibName</span> <span class=n>nibNameOrNil</span><span class=p>:</span> <span class=nb>String</span><span class=p>!,</span> <span class=n>bundle</span> <span class=n>nibBundleOrNil</span><span class=p>:</span> <span class=bp>NSBundle</span><span class=p>!)</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>nibName</span><span class=p>:</span> <span class=n>nibNameOrNil</span><span class=p>,</span> <span class=n>bundle</span><span class=p>:</span> <span class=n>nibBundleOrNil</span><span class=p>)</span>
-    <span class=p>}</span>
+    required override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-    <span class=p>}</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
 
 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+}
+</code></pre></div></div>
 <h2 id="3040">3.0と4.0の差分</h2>
 <ul>
 <li><code>[NSObject: AnyObject]?</code> が、 <code>[UIApplication.LaunchOptionsKey : Any]? = nil</code> に変更</li>

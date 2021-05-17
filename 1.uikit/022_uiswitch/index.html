@@ -2332,414 +2332,215 @@
                 <h1 id="uiswitch">UISwitchの表示</h1>
 <p><img alt="Preview uikit022_001" src="../img/uikit022_001.png" />
 <img alt="Preview uikit022_002" src="../img/uikit022_002.png" /></p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit022_4.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/17.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit022_4.0
+//
+//  Created by KimikoWatanabe on 2016/08/17.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class ViewController: UIViewController {
 
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myLabel</span><span class=p>:</span> <span class=bp>UILabel</span><span class=p>!</span>
+    private var myLabel: UILabel!
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// 背景色をCyanに設定する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyan</span>
+        // 背景色をCyanに設定する.
+        self.view.backgroundColor = UIColor.cyan
 
-        <span class=c1>// Swicthを作成する.</span>
-        <span class=kd>let</span> <span class=nv>mySwicth</span><span class=p>:</span> <span class=bp>UISwitch</span> <span class=p>=</span> <span class=bp>UISwitch</span><span class=p>()</span>
-        <span class=n>mySwicth</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span> <span class=o>-</span> <span class=mi>200</span><span class=p>)</span>
+        // Swicthを作成する.
+        let mySwicth: UISwitch = UISwitch()
+        mySwicth.layer.position = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height - 200)
 
-        <span class=c1>// Swicthの枠線を表示する.</span>
-        <span class=n>mySwicth</span><span class=p>.</span><span class=n>tintColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span>
+        // Swicthの枠線を表示する.
+        mySwicth.tintColor = UIColor.black
 
-        <span class=c1>// SwitchをOnに設定する.</span>
-        <span class=n>mySwicth</span><span class=p>.</span><span class=n>isOn</span> <span class=p>=</span> <span class=kc>true</span>
+        // SwitchをOnに設定する.
+        mySwicth.isOn = true
 
-        <span class=c1>// SwitchのOn/Off切り替わりの際に、呼ばれるイベントを設定する.</span>
-        <span class=n>mySwicth</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMySwicth</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=bp>UIControl</span><span class=p>.</span><span class=n>Event</span><span class=p>.</span><span class=n>valueChanged</span><span class=p>)</span>
+        // SwitchのOn/Off切り替わりの際に、呼ばれるイベントを設定する.
+        mySwicth.addTarget(self, action: #selector(ViewController.onClickMySwicth(sender:)), for: UIControl.Event.valueChanged)
 
 
-        <span class=c1>// SwitchをViewに追加する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>mySwicth</span><span class=p>)</span>
+        // SwitchをViewに追加する.
+        self.view.addSubview(mySwicth)
 
-        <span class=c1>// On/Offを表示するラベルを作成する.</span>
-        <span class=n>myLabel</span> <span class=p>=</span> <span class=bp>UILabel</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span><span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span><span class=n>width</span><span class=p>:</span><span class=mi>150</span><span class=p>,</span><span class=n>height</span><span class=p>:</span><span class=mi>150</span><span class=p>))</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>orange</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>75.0</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>shadowColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>gray</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>font</span> <span class=p>=</span> <span class=bp>UIFont</span><span class=p>.</span><span class=n>systemFont</span><span class=p>(</span><span class=n>ofSize</span><span class=p>:</span> <span class=mf>30.0</span><span class=p>)</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=n>NSTextAlignment</span><span class=p>.</span><span class=n>center</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span><span class=n>y</span><span class=p>:</span> <span class=mi>200</span><span class=p>)</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;On&quot;</span>
+        // On/Offを表示するラベルを作成する.
+        myLabel = UILabel(frame: CGRect(x:0,y:0,width:150,height:150))
+        myLabel.backgroundColor = UIColor.orange
+        myLabel.layer.masksToBounds = true
+        myLabel.layer.cornerRadius = 75.0
+        myLabel.textColor = UIColor.white
+        myLabel.shadowColor = UIColor.gray
+        myLabel.font = UIFont.systemFont(ofSize: 30.0)
+        myLabel.textAlignment = NSTextAlignment.center
+        myLabel.layer.position = CGPoint(x: self.view.bounds.width/2,y: 200)
+        myLabel.text = &quot;On&quot;
 
-        <span class=c1>// ラベルをviewに追加</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myLabel</span><span class=p>)</span>
-    <span class=p>}</span>
+        // ラベルをviewに追加
+        self.view.addSubview(myLabel)
+    }
 
-    <span class=kr>@objc</span> <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onClickMySwicth</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UISwitch</span><span class=p>){</span>
+    @objc internal func onClickMySwicth(sender: UISwitch){
 
-        <span class=k>if</span> <span class=n>sender</span><span class=p>.</span><span class=n>isOn</span> <span class=p>{</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;On&quot;</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>orange</span>
-        <span class=p>}</span>
-        <span class=k>else</span> <span class=p>{</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;Off&quot;</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>gray</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
+        if sender.isOn {
+            myLabel.text = &quot;On&quot;
+            myLabel.backgroundColor = UIColor.orange
+        }
+        else {
+            myLabel.text = &quot;Off&quot;
+            myLabel.backgroundColor = UIColor.gray
+        }
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit022_3.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/17.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit022_3.0
+//
+//  Created by KimikoWatanabe on 2016/08/17.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+import UIKit
 
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myLabel</span><span class=p>:</span> <span class=bp>UILabel</span><span class=p>!</span>
+class ViewController: UIViewController {
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    private var myLabel: UILabel!
 
-        <span class=c1>// 背景色をCyanに設定する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyan</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// Swicthを作成する.</span>
-        <span class=kd>let</span> <span class=nv>mySwicth</span><span class=p>:</span> <span class=bp>UISwitch</span> <span class=p>=</span> <span class=bp>UISwitch</span><span class=p>()</span>
-        <span class=n>mySwicth</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span> <span class=o>-</span> <span class=mi>200</span><span class=p>)</span>
+        // 背景色をCyanに設定する.
+        self.view.backgroundColor = UIColor.cyan
 
-        <span class=c1>// Swicthの枠線を表示する.</span>
-        <span class=n>mySwicth</span><span class=p>.</span><span class=n>tintColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span>
+        // Swicthを作成する.
+        let mySwicth: UISwitch = UISwitch()
+        mySwicth.layer.position = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height - 200)
 
-        <span class=c1>// SwitchをOnに設定する.</span>
-        <span class=n>mySwicth</span><span class=p>.</span><span class=n>isOn</span> <span class=p>=</span> <span class=kc>true</span>
+        // Swicthの枠線を表示する.
+        mySwicth.tintColor = UIColor.black
 
-        <span class=c1>// SwitchのOn/Off切り替わりの際に、呼ばれるイベントを設定する.</span>
-        <span class=n>mySwicth</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMySwicth</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=n>UIControlEvents</span><span class=p>.</span><span class=n>valueChanged</span><span class=p>)</span>
+        // SwitchをOnに設定する.
+        mySwicth.isOn = true
 
-        <span class=c1>// SwitchをViewに追加する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>mySwicth</span><span class=p>)</span>
+        // SwitchのOn/Off切り替わりの際に、呼ばれるイベントを設定する.
+        mySwicth.addTarget(self, action: #selector(ViewController.onClickMySwicth(sender:)), for: UIControlEvents.valueChanged)
 
-        <span class=c1>// On/Offを表示するラベルを作成する.</span>
-        <span class=n>myLabel</span> <span class=p>=</span> <span class=bp>UILabel</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span><span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span><span class=n>width</span><span class=p>:</span><span class=mi>150</span><span class=p>,</span><span class=n>height</span><span class=p>:</span><span class=mi>150</span><span class=p>))</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>orange</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>75.0</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>shadowColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>gray</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>font</span> <span class=p>=</span> <span class=bp>UIFont</span><span class=p>.</span><span class=n>systemFont</span><span class=p>(</span><span class=n>ofSize</span><span class=p>:</span> <span class=mf>30.0</span><span class=p>)</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=n>NSTextAlignment</span><span class=p>.</span><span class=n>center</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span><span class=n>y</span><span class=p>:</span> <span class=mi>200</span><span class=p>)</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;On&quot;</span>
+        // SwitchをViewに追加する.
+        self.view.addSubview(mySwicth)
 
-        <span class=c1>// ラベルをviewに追加</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myLabel</span><span class=p>)</span>
-    <span class=p>}</span>
+        // On/Offを表示するラベルを作成する.
+        myLabel = UILabel(frame: CGRect(x:0,y:0,width:150,height:150))
+        myLabel.backgroundColor = UIColor.orange
+        myLabel.layer.masksToBounds = true
+        myLabel.layer.cornerRadius = 75.0
+        myLabel.textColor = UIColor.white
+        myLabel.shadowColor = UIColor.gray
+        myLabel.font = UIFont.systemFont(ofSize: 30.0)
+        myLabel.textAlignment = NSTextAlignment.center
+        myLabel.layer.position = CGPoint(x: self.view.bounds.width/2,y: 200)
+        myLabel.text = &quot;On&quot;
 
-    <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onClickMySwicth</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UISwitch</span><span class=p>){</span>
+        // ラベルをviewに追加
+        self.view.addSubview(myLabel)
+    }
 
-        <span class=k>if</span> <span class=n>sender</span><span class=p>.</span><span class=n>isOn</span> <span class=p>{</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;On&quot;</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>orange</span>
-        <span class=p>}</span>
-        <span class=k>else</span> <span class=p>{</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;Off&quot;</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>gray</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
+    internal func onClickMySwicth(sender: UISwitch){
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit022_2.3</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/17.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+        if sender.isOn {
+            myLabel.text = &quot;On&quot;
+            myLabel.backgroundColor = UIColor.orange
+        }
+        else {
+            myLabel.text = &quot;Off&quot;
+            myLabel.backgroundColor = UIColor.gray
+        }
+    }
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit022_2.3
+//
+//  Created by KimikoWatanabe on 2016/08/17.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myLabel</span><span class=p>:</span> <span class=bp>UILabel</span><span class=p>!</span>
+import UIKit
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+class ViewController: UIViewController {
 
-        <span class=c1>// 背景色をCyanに設定する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyanColor</span><span class=p>()</span>
+    private var myLabel: UILabel!
 
-        <span class=c1>// Swicthを作成する.</span>
-        <span class=kd>let</span> <span class=nv>mySwicth</span><span class=p>:</span> <span class=bp>UISwitch</span> <span class=p>=</span> <span class=bp>UISwitch</span><span class=p>()</span>
-        <span class=n>mySwicth</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span> <span class=o>-</span> <span class=mi>200</span><span class=p>)</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// Swicthの枠線を表示する.</span>
-        <span class=n>mySwicth</span><span class=p>.</span><span class=n>tintColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blackColor</span><span class=p>()</span>
+        // 背景色をCyanに設定する.
+        self.view.backgroundColor = UIColor.cyanColor()
 
-        <span class=c1>// SwitchをOnに設定する.</span>
-        <span class=n>mySwicth</span><span class=p>.</span><span class=n>on</span> <span class=p>=</span> <span class=kc>true</span>
+        // Swicthを作成する.
+        let mySwicth: UISwitch = UISwitch()
+        mySwicth.layer.position = CGPoint(x: self.view.frame.width/2, y: self.view.frame.height - 200)
 
-        <span class=c1>// SwitchのOn/Off切り替わりの際に、呼ばれるイベントを設定する.</span>
-        <span class=n>mySwicth</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMySwicth</span><span class=p>(</span><span class=kc>_</span><span class=p>:)),</span> <span class=n>forControlEvents</span><span class=p>:</span> <span class=n>UIControlEvents</span><span class=p>.</span><span class=n>ValueChanged</span><span class=p>)</span>
+        // Swicthの枠線を表示する.
+        mySwicth.tintColor = UIColor.blackColor()
 
-        <span class=c1>// SwitchをViewに追加する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>mySwicth</span><span class=p>)</span>
+        // SwitchをOnに設定する.
+        mySwicth.on = true
 
-        <span class=c1>// On/Offを表示するラベルを作成する.</span>
-        <span class=n>myLabel</span> <span class=p>=</span> <span class=bp>UILabel</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>150</span><span class=p>,</span><span class=mi>150</span><span class=p>))</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>orangeColor</span><span class=p>()</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>75.0</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>whiteColor</span><span class=p>()</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>shadowColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>grayColor</span><span class=p>()</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>font</span> <span class=p>=</span> <span class=bp>UIFont</span><span class=p>.</span><span class=n>systemFontOfSize</span><span class=p>(</span><span class=n>CGFloat</span><span class=p>(</span><span class=mi>30</span><span class=p>))</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=n>NSTextAlignment</span><span class=p>.</span><span class=n>Center</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span><span class=n>y</span><span class=p>:</span> <span class=mi>200</span><span class=p>)</span>
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;On&quot;</span>
+        // SwitchのOn/Off切り替わりの際に、呼ばれるイベントを設定する.
+        mySwicth.addTarget(self, action: #selector(ViewController.onClickMySwicth(_:)), forControlEvents: UIControlEvents.ValueChanged)
 
-        <span class=c1>// ラベルをviewに追加</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myLabel</span><span class=p>)</span>
-    <span class=p>}</span>
+        // SwitchをViewに追加する.
+        self.view.addSubview(mySwicth)
 
-    <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onClickMySwicth</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UISwitch</span><span class=p>){</span>
+        // On/Offを表示するラベルを作成する.
+        myLabel = UILabel(frame: CGRectMake(0,0,150,150))
+        myLabel.backgroundColor = UIColor.orangeColor()
+        myLabel.layer.masksToBounds = true
+        myLabel.layer.cornerRadius = 75.0
+        myLabel.textColor = UIColor.whiteColor()
+        myLabel.shadowColor = UIColor.grayColor()
+        myLabel.font = UIFont.systemFontOfSize(CGFloat(30))
+        myLabel.textAlignment = NSTextAlignment.Center
+        myLabel.layer.position = CGPoint(x: self.view.bounds.width/2,y: 200)
+        myLabel.text = &quot;On&quot;
 
-        <span class=k>if</span> <span class=n>sender</span><span class=p>.</span><span class=n>on</span> <span class=p>{</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;On&quot;</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>orangeColor</span><span class=p>()</span>
-        <span class=p>}</span>
-        <span class=k>else</span> <span class=p>{</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;Off&quot;</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>grayColor</span><span class=p>()</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
+        // ラベルをviewに追加
+        self.view.addSubview(myLabel)
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+    internal func onClickMySwicth(sender: UISwitch){
+
+        if sender.on {
+            myLabel.text = &quot;On&quot;
+            myLabel.backgroundColor = UIColor.orangeColor()
+        }
+        else {
+            myLabel.text = &quot;Off&quot;
+            myLabel.backgroundColor = UIColor.grayColor()
+        }
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+
+</code></pre></div></div>
 <h2 id="3040">3.0と4.0の差分</h2>
 <ul>
 <li><code>UIControlEvents</code>　が <code>UIControl.Event</code> に変更</li>

@@ -2347,532 +2347,275 @@
 <p><img alt="Preview uikit017_001" src="../img/uikit017_001.png" />
 <img alt="Preview uikit017_002" src="../img/uikit017_002.png" />
 <img alt="Preview uikit017_003" src="../img/uikit017_003.png" /></p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x/3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  AppDelegate.swift</span>
-<span class=c1>//  UIKit017_3.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/16.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x/3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  AppDelegate.swift
+//  UIKit017_3.0
+//
+//  Created by KimikoWatanabe on 2016/08/16.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kr>@UIApplicationMain</span>
-<span class=kd>class</span> <span class=nc>AppDelegate</span><span class=p>:</span> <span class=bp>UIResponder</span><span class=p>,</span> <span class=bp>UIApplicationDelegate</span> <span class=p>{</span>
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    <span class=kd>internal</span> <span class=kd>var</span> <span class=nv>window</span><span class=p>:</span> <span class=bp>UIWindow</span><span class=p>?</span>
+    internal var window: UIWindow?
 
-    <span class=kd>func</span> <span class=nf>applicationDidFinishLaunching</span><span class=p>(</span><span class=kc>_</span> <span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>)</span> <span class=p>{</span>
+    func applicationDidFinishLaunching(_ application: UIApplication) {
 
-        <span class=c1>// viewConrollerを生成.</span>
-        <span class=kd>let</span> <span class=nv>myViewController</span> <span class=p>=</span> <span class=n>ViewController</span><span class=p>()</span>
+        // viewConrollerを生成.
+        let myViewController = ViewController()
 
-        <span class=c1>// navigationControllerを生成.</span>
-        <span class=kd>let</span> <span class=nv>navigationController</span> <span class=p>=</span> <span class=bp>UINavigationController</span><span class=p>(</span><span class=n>rootViewController</span><span class=p>:</span> <span class=n>myViewController</span><span class=p>)</span>
+        // navigationControllerを生成.
+        let navigationController = UINavigationController(rootViewController: myViewController)
 
-        <span class=c1>// windowを生成.</span>
-        <span class=n>window</span> <span class=p>=</span> <span class=bp>UIWindow</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=bp>UIScreen</span><span class=p>.</span><span class=n>main</span><span class=p>.</span><span class=n>bounds</span><span class=p>)</span>
+        // windowを生成.
+        window = UIWindow(frame: UIScreen.main.bounds)
 
-        <span class=c1>// rootViewControllerにnavigationControllerを設定.</span>
-        <span class=n>window</span><span class=p>?.</span><span class=n>rootViewController</span> <span class=p>=</span> <span class=n>navigationController</span>
+        // rootViewControllerにnavigationControllerを設定.
+        window?.rootViewController = navigationController
 
-        <span class=n>window</span><span class=p>?.</span><span class=n>makeKeyAndVisible</span><span class=p>()</span>
+        window?.makeKeyAndVisible()
 
-        <span class=c1>//return true</span>
-    <span class=p>}</span>
+        //return true
+    }
 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  AppDelegate.swift</span>
-<span class=c1>//  UIKit017_2.3</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/16.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  AppDelegate.swift
+//  UIKit017_2.3
+//
+//  Created by KimikoWatanabe on 2016/08/16.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kr>@UIApplicationMain</span>
-<span class=kd>class</span> <span class=nc>AppDelegate</span><span class=p>:</span> <span class=bp>UIResponder</span><span class=p>,</span> <span class=bp>UIApplicationDelegate</span> <span class=p>{</span>
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    <span class=kd>internal</span> <span class=kd>var</span> <span class=nv>window</span><span class=p>:</span> <span class=bp>UIWindow</span><span class=p>?</span>
+    internal var window: UIWindow?
 
-    <span class=kd>func</span> <span class=nf>application</span><span class=p>(</span><span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>,</span> <span class=n>didFinishLaunchingWithOptions</span> <span class=n>launchOptions</span><span class=p>:</span> <span class=p>[</span><span class=bp>NSObject</span><span class=p>:</span> <span class=nb>AnyObject</span><span class=p>]?)</span> <span class=p>-&gt;</span> <span class=nb>Bool</span> <span class=p>{</span>
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -&gt; Bool {
 
-        <span class=c1>// viewConrollerを生成.</span>
-        <span class=kd>let</span> <span class=nv>myViewController</span> <span class=p>=</span> <span class=n>ViewController</span><span class=p>()</span>
+        // viewConrollerを生成.
+        let myViewController = ViewController()
 
-        <span class=c1>// navigationControllerを生成.</span>
-        <span class=kd>let</span> <span class=nv>navigationController</span> <span class=p>=</span> <span class=bp>UINavigationController</span><span class=p>(</span><span class=n>rootViewController</span><span class=p>:</span> <span class=n>myViewController</span><span class=p>)</span>
+        // navigationControllerを生成.
+        let navigationController = UINavigationController(rootViewController: myViewController)
 
-        <span class=c1>// windowを生成.</span>
-        <span class=n>window</span> <span class=p>=</span> <span class=bp>UIWindow</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=bp>UIScreen</span><span class=p>.</span><span class=n>mainScreen</span><span class=p>().</span><span class=n>bounds</span><span class=p>)</span>
+        // windowを生成.
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
 
-        <span class=c1>// rootViewControllerにnavigationControllerを設定.</span>
-        <span class=n>window</span><span class=p>?.</span><span class=n>rootViewController</span> <span class=p>=</span> <span class=n>navigationController</span>
+        // rootViewControllerにnavigationControllerを設定.
+        window?.rootViewController = navigationController
 
-        <span class=n>window</span><span class=p>?.</span><span class=n>makeKeyAndVisible</span><span class=p>()</span>
-        <span class=k>return</span> <span class=kc>true</span>
-    <span class=p>}</span>
+        window?.makeKeyAndVisible()
+        return true
+    }
 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+}
+</code></pre></div></div>
 <h3 id="viewcontrollerswift">ViewController.swift</h3>
-<div class=md-fenced-code-tabs id=tab-tab-group-1><input name=tab-group-1 type=radio id=tab-group-1-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-1-0_swift-panel role=tab><label for=tab-group-1-0_swift class=code-tab-label data-lang=swift id=tab-group-1-0_swift-label>Swift 4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-0_swift-panel aria-labelledby=tab-group-1-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit017_4.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/16.</span>
-<span class=c1>//  Copyright © 2018年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-1><input name=tab-group-1 type=radio id=tab-group-1-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-1-0_swift-panel role=tab><label for=tab-group-1-0_swift class=code-tab-label data-lang=swift id=tab-group-1-0_swift-label>Swift 4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-0_swift-panel aria-labelledby=tab-group-1-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit017_4.0
+//
+//  Created by KimikoWatanabe on 2016/08/16.
+//  Copyright © 2018年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class ViewController: UIViewController {
 
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myLeftButton</span><span class=p>:</span> <span class=bp>UIBarButtonItem</span><span class=p>!</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myRightButton</span><span class=p>:</span> <span class=bp>UIBarButtonItem</span><span class=p>!</span>
+    private var myLeftButton: UIBarButtonItem!
+    private var myRightButton: UIBarButtonItem!
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// 背景色をCyanに設定する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyan</span>
+        // 背景色をCyanに設定する.
+        self.view.backgroundColor = UIColor.cyan
 
-        <span class=c1>// NavigationControllerのタイトルを設定する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>title</span> <span class=p>=</span> <span class=s>&quot;My Navigation&quot;</span>
+        // NavigationControllerのタイトルを設定する.
+        self.title = &quot;My Navigation&quot;
 
-        <span class=c1>// 左ボタンを作成する..</span>
-        <span class=n>myLeftButton</span> <span class=p>=</span> <span class=bp>UIBarButtonItem</span><span class=p>(</span><span class=n>barButtonSystemItem</span><span class=p>:</span> <span class=p>.</span><span class=n>add</span><span class=p>,</span> <span class=n>target</span><span class=p>:</span> <span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)))</span>
+        // 左ボタンを作成する..
+        myLeftButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(ViewController.onClickMyButton(sender:)))
 
-        <span class=c1>// 右ボタンを作成する.</span>
-        <span class=n>myRightButton</span> <span class=p>=</span> <span class=bp>UIBarButtonItem</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;RightBtn&quot;</span><span class=p>,</span> <span class=n>style</span><span class=p>:</span> <span class=p>.</span><span class=n>plain</span><span class=p>,</span> <span class=n>target</span><span class=p>:</span> <span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)))</span>
+        // 右ボタンを作成する.
+        myRightButton = UIBarButtonItem(title: &quot;RightBtn&quot;, style: .plain, target: self, action: #selector(ViewController.onClickMyButton(sender:)))
 
-        <span class=c1>// tagを設定する.</span>
-        <span class=n>myLeftButton</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=mi>1</span>
-        <span class=n>myRightButton</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=mi>2</span>
+        // tagを設定する.
+        myLeftButton.tag = 1
+        myRightButton.tag = 2
 
-        <span class=c1>// ナビゲーションバーの左に設置する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>navigationItem</span><span class=p>.</span><span class=n>leftBarButtonItem</span> <span class=p>=</span> <span class=n>myLeftButton</span>
+        // ナビゲーションバーの左に設置する.
+        self.navigationItem.leftBarButtonItem = myLeftButton
 
-        <span class=c1>// ナビゲーションバーの右に設置する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>navigationItem</span><span class=p>.</span><span class=n>rightBarButtonItem</span> <span class=p>=</span> <span class=n>myRightButton</span>
-    <span class=p>}</span>
+        // ナビゲーションバーの右に設置する.
+        self.navigationItem.rightBarButtonItem = myRightButton
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     ボタンイベント.</span>
-<span class=cm>     */</span>
-    <span class=kr>@objc</span> <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>){</span>
+    /*
+     ボタンイベント.
+     */
+    @objc internal func onClickMyButton(sender: UIButton){
 
-        <span class=k>switch</span><span class=p>(</span><span class=n>sender</span><span class=p>.</span><span class=n>tag</span><span class=p>){</span>
+        switch(sender.tag){
 
-        <span class=k>case</span> <span class=mi>1</span><span class=p>:</span>
-            <span class=c1>// 背景色を青色に変える.</span>
-            <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blue</span>
+        case 1:
+            // 背景色を青色に変える.
+            self.view.backgroundColor = UIColor.blue
 
-        <span class=k>case</span> <span class=mi>2</span><span class=p>:</span>
-            <span class=c1>// 背景色を赤色に変える.</span>
-            <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>red</span>
+        case 2:
+            // 背景色を赤色に変える.
+            self.view.backgroundColor = UIColor.red
 
-        <span class=k>default</span><span class=p>:</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;error&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
+        default:
+            print(&quot;error&quot;)
+        }
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-1 type=radio id=tab-group-1-1_swift class=code-tab data-lang=swift aria-controls=tab-group-1-1_swift-panel role=tab><label for=tab-group-1-1_swift class=code-tab-label data-lang=swift id=tab-group-1-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-1_swift-panel aria-labelledby=tab-group-1-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit017_3.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/16.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+</code></pre></div><input name=tab-group-1 type=radio id=tab-group-1-1_swift class=code-tab data-lang=swift aria-controls=tab-group-1-1_swift-panel role=tab><label for=tab-group-1-1_swift class=code-tab-label data-lang=swift id=tab-group-1-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-1_swift-panel aria-labelledby=tab-group-1-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit017_3.0
+//
+//  Created by KimikoWatanabe on 2016/08/16.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+import UIKit
 
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myLeftButton</span><span class=p>:</span> <span class=bp>UIBarButtonItem</span><span class=p>!</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myRightButton</span><span class=p>:</span> <span class=bp>UIBarButtonItem</span><span class=p>!</span>
+class ViewController: UIViewController {
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    private var myLeftButton: UIBarButtonItem!
+    private var myRightButton: UIBarButtonItem!
 
-        <span class=c1>// 背景色をCyanに設定する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyan</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// NavigationControllerのタイトルを設定する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>title</span> <span class=p>=</span> <span class=s>&quot;My Navigation&quot;</span>
+        // 背景色をCyanに設定する.
+        self.view.backgroundColor = UIColor.cyan
 
-        <span class=c1>// 左ボタンを作成する..</span>
-        <span class=n>myLeftButton</span> <span class=p>=</span> <span class=bp>UIBarButtonItem</span><span class=p>(</span><span class=n>barButtonSystemItem</span><span class=p>:</span> <span class=p>.</span><span class=n>add</span><span class=p>,</span> <span class=n>target</span><span class=p>:</span> <span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)))</span>
+        // NavigationControllerのタイトルを設定する.
+        self.title = &quot;My Navigation&quot;
 
-        <span class=c1>// 右ボタンを作成する.</span>
-        <span class=n>myRightButton</span> <span class=p>=</span> <span class=bp>UIBarButtonItem</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;RightBtn&quot;</span><span class=p>,</span> <span class=n>style</span><span class=p>:</span> <span class=p>.</span><span class=n>plain</span><span class=p>,</span> <span class=n>target</span><span class=p>:</span> <span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)))</span>
+        // 左ボタンを作成する..
+        myLeftButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(ViewController.onClickMyButton(sender:)))
 
-        <span class=c1>// tagを設定する.</span>
-        <span class=n>myLeftButton</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=mi>1</span>
-        <span class=n>myRightButton</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=mi>2</span>
+        // 右ボタンを作成する.
+        myRightButton = UIBarButtonItem(title: &quot;RightBtn&quot;, style: .plain, target: self, action: #selector(ViewController.onClickMyButton(sender:)))
 
-        <span class=c1>// ナビゲーションバーの左に設置する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>navigationItem</span><span class=p>.</span><span class=n>leftBarButtonItem</span> <span class=p>=</span> <span class=n>myLeftButton</span>
+        // tagを設定する.
+        myLeftButton.tag = 1
+        myRightButton.tag = 2
 
-        <span class=c1>// ナビゲーションバーの右に設置する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>navigationItem</span><span class=p>.</span><span class=n>rightBarButtonItem</span> <span class=p>=</span> <span class=n>myRightButton</span>
-    <span class=p>}</span>
+        // ナビゲーションバーの左に設置する.
+        self.navigationItem.leftBarButtonItem = myLeftButton
 
-    <span class=cm>/*</span>
-<span class=cm>     ボタンイベント.</span>
-<span class=cm>     */</span>
-    <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>){</span>
+        // ナビゲーションバーの右に設置する.
+        self.navigationItem.rightBarButtonItem = myRightButton
+    }
 
-        <span class=k>switch</span><span class=p>(</span><span class=n>sender</span><span class=p>.</span><span class=n>tag</span><span class=p>){</span>
+    /*
+     ボタンイベント.
+     */
+    internal func onClickMyButton(sender: UIButton){
 
-        <span class=k>case</span> <span class=mi>1</span><span class=p>:</span>
-            <span class=c1>// 背景色を青色に変える.</span>
-            <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blue</span>
+        switch(sender.tag){
 
-        <span class=k>case</span> <span class=mi>2</span><span class=p>:</span>
-            <span class=c1>// 背景色を赤色に変える.</span>
-            <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>red</span>
+        case 1:
+            // 背景色を青色に変える.
+            self.view.backgroundColor = UIColor.blue
 
-        <span class=k>default</span><span class=p>:</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;error&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
+        case 2:
+            // 背景色を赤色に変える.
+            self.view.backgroundColor = UIColor.red
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-1 type=radio id=tab-group-1-2_swift class=code-tab data-lang=swift aria-controls=tab-group-1-2_swift-panel role=tab><label for=tab-group-1-2_swift class=code-tab-label data-lang=swift id=tab-group-1-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-2_swift-panel aria-labelledby=tab-group-1-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit017_2.3</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/16.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+        default:
+            print(&quot;error&quot;)
+        }
+    }
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+</code></pre></div><input name=tab-group-1 type=radio id=tab-group-1-2_swift class=code-tab data-lang=swift aria-controls=tab-group-1-2_swift-panel role=tab><label for=tab-group-1-2_swift class=code-tab-label data-lang=swift id=tab-group-1-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-2_swift-panel aria-labelledby=tab-group-1-2_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit017_2.3
+//
+//  Created by KimikoWatanabe on 2016/08/16.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myLeftButton</span><span class=p>:</span> <span class=bp>UIBarButtonItem</span><span class=p>!</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myRightButton</span><span class=p>:</span> <span class=bp>UIBarButtonItem</span><span class=p>!</span>
+import UIKit
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+class ViewController: UIViewController {
 
-        <span class=c1>// 背景色をCyanに設定する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyanColor</span><span class=p>()</span>
+    private var myLeftButton: UIBarButtonItem!
+    private var myRightButton: UIBarButtonItem!
 
-        <span class=c1>// NavigationControllerのタイトルを設定する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>title</span> <span class=p>=</span> <span class=s>&quot;My Navigation&quot;</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// 左ボタンを作成する..</span>
-        <span class=n>myLeftButton</span> <span class=p>=</span> <span class=bp>UIBarButtonItem</span><span class=p>(</span><span class=n>barButtonSystemItem</span><span class=p>:</span> <span class=p>.</span><span class=n>Add</span><span class=p>,</span> <span class=n>target</span><span class=p>:</span> <span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=s>&quot;onClickMyButton:&quot;</span><span class=p>)</span>
+        // 背景色をCyanに設定する.
+        self.view.backgroundColor = UIColor.cyanColor()
 
-        <span class=c1>// 右ボタンを作成する.</span>
-        <span class=n>myRightButton</span> <span class=p>=</span> <span class=bp>UIBarButtonItem</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;RightBtn&quot;</span><span class=p>,</span> <span class=n>style</span><span class=p>:</span> <span class=p>.</span><span class=n>Plain</span><span class=p>,</span> <span class=n>target</span><span class=p>:</span> <span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=s>&quot;onClickMyButton:&quot;</span><span class=p>)</span>
+        // NavigationControllerのタイトルを設定する.
+        self.title = &quot;My Navigation&quot;
 
-        <span class=c1>// tagを設定する.</span>
-        <span class=n>myLeftButton</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=mi>1</span>
-        <span class=n>myRightButton</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=mi>2</span>
+        // 左ボタンを作成する..
+        myLeftButton = UIBarButtonItem(barButtonSystemItem: .Add, target: self, action: &quot;onClickMyButton:&quot;)
 
-        <span class=c1>// ナビゲーションバーの左に設置する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>navigationItem</span><span class=p>.</span><span class=n>leftBarButtonItem</span> <span class=p>=</span> <span class=n>myLeftButton</span>
+        // 右ボタンを作成する.
+        myRightButton = UIBarButtonItem(title: &quot;RightBtn&quot;, style: .Plain, target: self, action: &quot;onClickMyButton:&quot;)
 
-        <span class=c1>// ナビゲーションバーの右に設置する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>navigationItem</span><span class=p>.</span><span class=n>rightBarButtonItem</span> <span class=p>=</span> <span class=n>myRightButton</span>
-    <span class=p>}</span>
+        // tagを設定する.
+        myLeftButton.tag = 1
+        myRightButton.tag = 2
 
-    <span class=cm>/*</span>
-<span class=cm>     ボタンイベント.</span>
-<span class=cm>     */</span>
-    <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>){</span>
+        // ナビゲーションバーの左に設置する.
+        self.navigationItem.leftBarButtonItem = myLeftButton
 
-        <span class=k>switch</span><span class=p>(</span><span class=n>sender</span><span class=p>.</span><span class=n>tag</span><span class=p>){</span>
+        // ナビゲーションバーの右に設置する.
+        self.navigationItem.rightBarButtonItem = myRightButton
+    }
 
-        <span class=k>case</span> <span class=mi>1</span><span class=p>:</span>
-            <span class=c1>// 背景色を青色に変える.</span>
-            <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blueColor</span><span class=p>()</span>
+    /*
+     ボタンイベント.
+     */
+    internal func onClickMyButton(sender: UIButton){
 
-        <span class=k>case</span> <span class=mi>2</span><span class=p>:</span>
-            <span class=c1>// 背景色を赤色に変える.</span>
-            <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>redColor</span><span class=p>()</span>
+        switch(sender.tag){
 
-        <span class=k>default</span><span class=p>:</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;error&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
+        case 1:
+            // 背景色を青色に変える.
+            self.view.backgroundColor = UIColor.blueColor()
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+        case 2:
+            // 背景色を赤色に変える.
+            self.view.backgroundColor = UIColor.redColor()
+
+        default:
+            print(&quot;error&quot;)
+        }
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+</code></pre></div></div>
 <h2 id="3x4x">3.xと4.xの差分</h2>
 <ul>
 <li><code>internal func onClickMyButton(sender: UIButton)</code> に <code>@objc</code> を追加</li>

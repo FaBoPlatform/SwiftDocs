@@ -2361,717 +2361,368 @@
 <p><img alt="Preview uikit043_001" src="../img/uikit043_001.png" />
 <img alt="Preview uikit043_002" src="../img/uikit043_002.png" /></p>
 <h3 id="appdelegateswift">AppDelegate.swift</h3>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  AppDelegate.swift</span>
-<span class=c1>//  UIKit043_4.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/21.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  AppDelegate.swift
+//  UIKit043_4.0
+//
+//  Created by KimikoWatanabe on 2016/08/21.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kr>@UIApplicationMain</span>
-<span class=kd>class</span> <span class=nc>AppDelegate</span><span class=p>:</span> <span class=bp>UIResponder</span><span class=p>,</span> <span class=bp>UIApplicationDelegate</span> <span class=p>{</span>
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    <span class=kd>var</span> <span class=nv>window</span><span class=p>:</span> <span class=bp>UIWindow</span><span class=p>?</span>
-    <span class=kd>var</span> <span class=nv>myEffectView</span><span class=p>:</span> <span class=bp>UIView</span><span class=p>!</span>
+    var window: UIWindow?
+    var myEffectView: UIView!
 
-    <span class=cm>/*</span>
-<span class=cm>     アプリ起動時に呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>application</span><span class=p>(</span><span class=kc>_</span> <span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>,</span> <span class=n>didFinishLaunchingWithOptions</span> <span class=n>launchOptions</span><span class=p>:</span> <span class=p>[</span><span class=bp>NSObject</span><span class=p>:</span> <span class=nb>AnyObject</span><span class=p>]?)</span> <span class=p>-&gt;</span> <span class=nb>Bool</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;didFinishLaunchingWithOptions&quot;</span><span class=p>)</span>
+    /*
+     アプリ起動時に呼ばれる.
+     */
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -&gt; Bool {
+        print(&quot;didFinishLaunchingWithOptions&quot;)
 
-        <span class=k>return</span> <span class=kc>true</span>
-    <span class=p>}</span>
+        return true
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     アプリがバックグラウンドになる直前に呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>applicationWillResignActive</span><span class=p>(</span><span class=kc>_</span> <span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;applicationWillResignActive&quot;</span><span class=p>)</span>
+    /*
+     アプリがバックグラウンドになる直前に呼ばれる.
+     */
+    func applicationWillResignActive(_ application: UIApplication) {
+        print(&quot;applicationWillResignActive&quot;)
 
-        <span class=kd>let</span> <span class=nv>effect</span><span class=p>:</span> <span class=bp>UIBlurEffect</span> <span class=p>=</span> <span class=bp>UIBlurEffect</span><span class=p>(</span><span class=n>style</span><span class=p>:</span> <span class=bp>UIBlurEffect</span><span class=p>.</span><span class=n>Style</span><span class=p>.</span><span class=n>light</span><span class=p>)</span>
-        <span class=n>myEffectView</span> <span class=p>=</span> <span class=bp>UIVisualEffectView</span><span class=p>(</span><span class=n>effect</span><span class=p>:</span> <span class=n>effect</span><span class=p>)</span>
-        <span class=n>myEffectView</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=bp>UIScreen</span><span class=p>.</span><span class=n>main</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=bp>UIScreen</span><span class=p>.</span><span class=n>main</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>height</span><span class=p>)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>window</span><span class=p>?.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myEffectView</span><span class=p>)</span>
+        let effect: UIBlurEffect = UIBlurEffect(style: UIBlurEffect.Style.light)
+        myEffectView = UIVisualEffectView(effect: effect)
+        myEffectView.frame = CGRect(x:0, y:0, width:UIScreen.main.bounds.size.width, height:UIScreen.main.bounds.size.height)
+        self.window?.addSubview(myEffectView)
 
-    <span class=p>}</span>
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     アプリがバックグラウンドになった時に呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>applicationDidEnterBackground</span><span class=p>(</span><span class=kc>_</span> <span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;viewDidDisappear&quot;</span><span class=p>)</span>
+    /*
+     アプリがバックグラウンドになった時に呼ばれる.
+     */
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        print(&quot;viewDidDisappear&quot;)
 
-    <span class=p>}</span>
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     アプリがフォアグラウンドになった時に呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>applicationWillEnterForeground</span><span class=p>(</span><span class=kc>_</span> <span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;applicationWillEnterForeground&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+    /*
+     アプリがフォアグラウンドになった時に呼ばれる.
+     */
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        print(&quot;applicationWillEnterForeground&quot;)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     アプリがアクティブになった時に呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>applicationDidBecomeActive</span><span class=p>(</span><span class=kc>_</span> <span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;applicationDidBecomeActive&quot;</span><span class=p>)</span>
+    /*
+     アプリがアクティブになった時に呼ばれる.
+     */
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        print(&quot;applicationDidBecomeActive&quot;)
 
-        <span class=k>if</span> <span class=n>myEffectView</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
-            <span class=kc>self</span><span class=p>.</span><span class=n>myEffectView</span><span class=p>.</span><span class=n>removeFromSuperview</span><span class=p>()</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
+        if myEffectView != nil {
+            self.myEffectView.removeFromSuperview()
+        }
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     アプリが終了する直前に呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>applicationWillTerminate</span><span class=p>(</span><span class=kc>_</span> <span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;applicationWillTerminate&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  AppDelegate.swift</span>
-<span class=c1>//  UIKit043_3.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/21.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+    /*
+     アプリが終了する直前に呼ばれる.
+     */
+    func applicationWillTerminate(_ application: UIApplication) {
+        print(&quot;applicationWillTerminate&quot;)
+    }
+}
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
-<span class=n>n</span>
-<span class=kr>@UIApplicationMain</span>
-<span class=kd>class</span> <span class=nc>AppDelegate</span><span class=p>:</span> <span class=bp>UIResponder</span><span class=p>,</span> <span class=bp>UIApplicationDelegate</span> <span class=p>{</span>
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  AppDelegate.swift
+//  UIKit043_3.0
+//
+//  Created by KimikoWatanabe on 2016/08/21.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-    <span class=kd>var</span> <span class=nv>window</span><span class=p>:</span> <span class=bp>UIWindow</span><span class=p>?</span>
-    <span class=kd>var</span> <span class=nv>myEffectView</span><span class=p>:</span> <span class=bp>UIView</span><span class=p>!</span>
+import UIKit
+n
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    <span class=cm>/*</span>
-<span class=cm>     アプリ起動時に呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>application</span><span class=p>(</span><span class=kc>_</span> <span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>,</span> <span class=n>didFinishLaunchingWithOptions</span> <span class=n>launchOptions</span><span class=p>:</span> <span class=p>[</span><span class=bp>NSObject</span><span class=p>:</span> <span class=nb>AnyObject</span><span class=p>]?)</span> <span class=p>-&gt;</span> <span class=nb>Bool</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;didFinishLaunchingWithOptions&quot;</span><span class=p>)</span>
+    var window: UIWindow?
+    var myEffectView: UIView!
 
-        <span class=k>return</span> <span class=kc>true</span>
-    <span class=p>}</span>
+    /*
+     アプリ起動時に呼ばれる.
+     */
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -&gt; Bool {
+        print(&quot;didFinishLaunchingWithOptions&quot;)
 
-    <span class=cm>/*</span>
-<span class=cm>     アプリがバックグラウンドになる直前に呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>applicationWillResignActive</span><span class=p>(</span><span class=kc>_</span> <span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;applicationWillResignActive&quot;</span><span class=p>)</span>
+        return true
+    }
 
-        <span class=kd>let</span> <span class=nv>effect</span><span class=p>:</span> <span class=bp>UIBlurEffect</span> <span class=p>=</span> <span class=bp>UIBlurEffect</span><span class=p>(</span><span class=n>style</span><span class=p>:</span> <span class=n>UIBlurEffectStyle</span><span class=p>.</span><span class=n>light</span><span class=p>)</span>
-        <span class=n>myEffectView</span> <span class=p>=</span> <span class=bp>UIVisualEffectView</span><span class=p>(</span><span class=n>effect</span><span class=p>:</span> <span class=n>effect</span><span class=p>)</span>
-        <span class=n>myEffectView</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=bp>UIScreen</span><span class=p>.</span><span class=n>main</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=bp>UIScreen</span><span class=p>.</span><span class=n>main</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>height</span><span class=p>)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>window</span><span class=p>?.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myEffectView</span><span class=p>)</span>
+    /*
+     アプリがバックグラウンドになる直前に呼ばれる.
+     */
+    func applicationWillResignActive(_ application: UIApplication) {
+        print(&quot;applicationWillResignActive&quot;)
 
-    <span class=p>}</span>
+        let effect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.light)
+        myEffectView = UIVisualEffectView(effect: effect)
+        myEffectView.frame = CGRect(x:0, y:0, width:UIScreen.main.bounds.size.width, height:UIScreen.main.bounds.size.height)
+        self.window?.addSubview(myEffectView)
 
-    <span class=cm>/*</span>
-<span class=cm>     アプリがバックグラウンドになった時に呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>applicationDidEnterBackground</span><span class=p>(</span><span class=kc>_</span> <span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;viewDidDisappear&quot;</span><span class=p>)</span>
+    }
 
-    <span class=p>}</span>
+    /*
+     アプリがバックグラウンドになった時に呼ばれる.
+     */
+    func applicationDidEnterBackground(_ application: UIApplication) {
+        print(&quot;viewDidDisappear&quot;)
 
-    <span class=cm>/*</span>
-<span class=cm>     アプリがフォアグラウンドになった時に呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>applicationWillEnterForeground</span><span class=p>(</span><span class=kc>_</span> <span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;applicationWillEnterForeground&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     アプリがアクティブになった時に呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>applicationDidBecomeActive</span><span class=p>(</span><span class=kc>_</span> <span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;applicationDidBecomeActive&quot;</span><span class=p>)</span>
+    /*
+     アプリがフォアグラウンドになった時に呼ばれる.
+     */
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        print(&quot;applicationWillEnterForeground&quot;)
+    }
 
-        <span class=k>if</span> <span class=n>myEffectView</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
-            <span class=kc>self</span><span class=p>.</span><span class=n>myEffectView</span><span class=p>.</span><span class=n>removeFromSuperview</span><span class=p>()</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
+    /*
+     アプリがアクティブになった時に呼ばれる.
+     */
+    func applicationDidBecomeActive(_ application: UIApplication) {
+        print(&quot;applicationDidBecomeActive&quot;)
 
-    <span class=cm>/*</span>
-<span class=cm>     アプリが終了する直前に呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>applicationWillTerminate</span><span class=p>(</span><span class=kc>_</span> <span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;applicationWillTerminate&quot;</span><span class=p>)</span>
-    <span class=p>}</span>   
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  AppDelegate.swift</span>
-<span class=c1>//  UIKit043_2.3</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/21.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+        if myEffectView != nil {
+            self.myEffectView.removeFromSuperview()
+        }
+    }
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+    /*
+     アプリが終了する直前に呼ばれる.
+     */
+    func applicationWillTerminate(_ application: UIApplication) {
+        print(&quot;applicationWillTerminate&quot;)
+    }   
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><pre><code class=swift>//
+//  AppDelegate.swift
+//  UIKit043_2.3
+//
+//  Created by KimikoWatanabe on 2016/08/21.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kr>@UIApplicationMain</span>
-<span class=kd>class</span> <span class=nc>AppDelegate</span><span class=p>:</span> <span class=bp>UIResponder</span><span class=p>,</span> <span class=bp>UIApplicationDelegate</span> <span class=p>{</span>
+import UIKit
 
-    <span class=kd>var</span> <span class=nv>window</span><span class=p>:</span> <span class=bp>UIWindow</span><span class=p>?</span>
-    <span class=kd>var</span> <span class=nv>myEffectView</span><span class=p>:</span> <span class=bp>UIView</span><span class=p>!</span>
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    <span class=cm>/*</span>
-<span class=cm>     アプリ起動時に呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>application</span><span class=p>(</span><span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>,</span> <span class=n>didFinishLaunchingWithOptions</span> <span class=n>launchOptions</span><span class=p>:</span> <span class=p>[</span><span class=bp>NSObject</span><span class=p>:</span> <span class=nb>AnyObject</span><span class=p>]?)</span> <span class=p>-&gt;</span> <span class=nb>Bool</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;didFinishLaunchingWithOptions&quot;</span><span class=p>)</span>
+    var window: UIWindow?
+    var myEffectView: UIView!
 
-        <span class=k>return</span> <span class=kc>true</span>
-    <span class=p>}</span>
+    /*
+     アプリ起動時に呼ばれる.
+     */
+    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -&gt; Bool {
+        print(&quot;didFinishLaunchingWithOptions&quot;)
 
-    <span class=cm>/*</span>
-<span class=cm>     アプリがバックグラウンドになる直前に呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>applicationWillResignActive</span><span class=p>(</span><span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;applicationWillResignActive&quot;</span><span class=p>)</span>
+        return true
+    }
 
-        <span class=kd>let</span> <span class=nv>effect</span><span class=p>:</span> <span class=bp>UIBlurEffect</span> <span class=p>=</span> <span class=bp>UIBlurEffect</span><span class=p>(</span><span class=n>style</span><span class=p>:</span> <span class=n>UIBlurEffectStyle</span><span class=p>.</span><span class=n>Light</span><span class=p>)</span>
-        <span class=n>myEffectView</span> <span class=p>=</span> <span class=bp>UIVisualEffectView</span><span class=p>(</span><span class=n>effect</span><span class=p>:</span> <span class=n>effect</span><span class=p>)</span>
-        <span class=n>myEffectView</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=bp>UIScreen</span><span class=p>.</span><span class=n>mainScreen</span><span class=p>().</span><span class=n>bounds</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>width</span><span class=p>,</span> <span class=bp>UIScreen</span><span class=p>.</span><span class=n>mainScreen</span><span class=p>().</span><span class=n>bounds</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>height</span><span class=p>)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>window</span><span class=p>?.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myEffectView</span><span class=p>)</span>
+    /*
+     アプリがバックグラウンドになる直前に呼ばれる.
+     */
+    func applicationWillResignActive(application: UIApplication) {
+        print(&quot;applicationWillResignActive&quot;)
 
-    <span class=p>}</span>
+        let effect: UIBlurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+        myEffectView = UIVisualEffectView(effect: effect)
+        myEffectView.frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, UIScreen.mainScreen().bounds.size.height)
+        self.window?.addSubview(myEffectView)
 
-    <span class=cm>/*</span>
-<span class=cm>     アプリがバックグラウンドになった時に呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>applicationDidEnterBackground</span><span class=p>(</span><span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;viewDidDisappear&quot;</span><span class=p>)</span>
+    }
 
-    <span class=p>}</span>
+    /*
+     アプリがバックグラウンドになった時に呼ばれる.
+     */
+    func applicationDidEnterBackground(application: UIApplication) {
+        print(&quot;viewDidDisappear&quot;)
 
-    <span class=cm>/*</span>
-<span class=cm>     アプリがフォアグラウンドになった時に呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>applicationWillEnterForeground</span><span class=p>(</span><span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;applicationWillEnterForeground&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     アプリがアクティブになった時に呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>applicationDidBecomeActive</span><span class=p>(</span><span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;applicationDidBecomeActive&quot;</span><span class=p>)</span>
+    /*
+     アプリがフォアグラウンドになった時に呼ばれる.
+     */
+    func applicationWillEnterForeground(application: UIApplication) {
+        print(&quot;applicationWillEnterForeground&quot;)
+    }
 
-        <span class=k>if</span> <span class=n>myEffectView</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
-            <span class=kc>self</span><span class=p>.</span><span class=n>myEffectView</span><span class=p>.</span><span class=n>removeFromSuperview</span><span class=p>()</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
+    /*
+     アプリがアクティブになった時に呼ばれる.
+     */
+    func applicationDidBecomeActive(application: UIApplication) {
+        print(&quot;applicationDidBecomeActive&quot;)
 
-    <span class=cm>/*</span>
-<span class=cm>     アプリが終了する直前に呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>applicationWillTerminate</span><span class=p>(</span><span class=n>application</span><span class=p>:</span> <span class=bp>UIApplication</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;applicationWillTerminate&quot;</span><span class=p>)</span>
-    <span class=p>}</span>   
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+        if myEffectView != nil {
+            self.myEffectView.removeFromSuperview()
+        }
+    }
+
+    /*
+     アプリが終了する直前に呼ばれる.
+     */
+    func applicationWillTerminate(application: UIApplication) {
+        print(&quot;applicationWillTerminate&quot;)
+    }   
+}
+</code></pre></div></div>
 <h3 id="viewcontrollerswift">ViewController.swift</h3>
-<div class=md-fenced-code-tabs id=tab-tab-group-1><input name=tab-group-1 type=radio id=tab-group-1-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-1-0_swift-panel role=tab><label for=tab-group-1-0_swift class=code-tab-label data-lang=swift id=tab-group-1-0_swift-label>Swift 4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-0_swift-panel aria-labelledby=tab-group-1-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit043_4.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/21.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-1><input name=tab-group-1 type=radio id=tab-group-1-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-1-0_swift-panel role=tab><label for=tab-group-1-0_swift class=code-tab-label data-lang=swift id=tab-group-1-0_swift-label>Swift 4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-0_swift-panel aria-labelledby=tab-group-1-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit043_4.0
+//
+//  Created by KimikoWatanabe on 2016/08/21.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UIWebViewDelegate</span> <span class=p>{</span>
+class ViewController: UIViewController, UIWebViewDelegate {
 
-    <span class=kd>var</span> <span class=nv>myWebView</span> <span class=p>:</span> <span class=bp>UIWebView</span><span class=p>!</span>
+    var myWebView : UIWebView!
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// WebViewを開く.</span>
-        <span class=n>myWebView</span> <span class=p>=</span> <span class=bp>UIWebView</span><span class=p>()</span>
-        <span class=n>myWebView</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
-        <span class=n>myWebView</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myWebView</span><span class=p>)</span>
+        // WebViewを開く.
+        myWebView = UIWebView()
+        myWebView.delegate = self
+        myWebView.frame = self.view.bounds
+        self.view.addSubview(myWebView)
 
-        <span class=kd>let</span> <span class=nv>url</span><span class=p>:</span> <span class=n>URL</span><span class=p>!</span> <span class=p>=</span> <span class=n>URL</span><span class=p>(</span><span class=n>string</span><span class=p>:</span> <span class=s>&quot;http://www.apple.com&quot;</span><span class=p>)</span>
-        <span class=kd>let</span> <span class=nv>request</span><span class=p>:</span> <span class=bp>NSURLRequest</span> <span class=p>=</span> <span class=bp>NSURLRequest</span><span class=p>(</span><span class=n>url</span><span class=p>:</span> <span class=n>url</span><span class=p>)</span>
+        let url: URL! = URL(string: &quot;http://www.apple.com&quot;)
+        let request: NSURLRequest = NSURLRequest(url: url)
 
-        <span class=c1>// ロード開始.</span>
-        <span class=n>myWebView</span><span class=p>.</span><span class=n>loadRequest</span><span class=p>(</span><span class=n>request</span> <span class=k>as</span> <span class=n>URLRequest</span><span class=p>)</span>
-    <span class=p>}</span>
+        // ロード開始.
+        myWebView.loadRequest(request as URLRequest)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     Webがすべて読み込み終わった時呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>webViewDidFinishLoad</span><span class=p>(</span><span class=kc>_</span> <span class=n>webView</span><span class=p>:</span> <span class=bp>UIWebView</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;webViewDidFinishLoad&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+    /*
+     Webがすべて読み込み終わった時呼ばれる.
+     */
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        print(&quot;webViewDidFinishLoad&quot;)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     Webがloadされ始めた時、呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>webViewDidStartLoad</span><span class=p>(</span><span class=kc>_</span> <span class=n>webView</span><span class=p>:</span> <span class=bp>UIWebView</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;webViewDidStartLoad&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+    /*
+     Webがloadされ始めた時、呼ばれる.
+     */
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        print(&quot;webViewDidStartLoad&quot;)
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-1 type=radio id=tab-group-1-1_swift class=code-tab data-lang=swift aria-controls=tab-group-1-1_swift-panel role=tab><label for=tab-group-1-1_swift class=code-tab-label data-lang=swift id=tab-group-1-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-1_swift-panel aria-labelledby=tab-group-1-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit043_3.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/21.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+</code></pre></div><input name=tab-group-1 type=radio id=tab-group-1-1_swift class=code-tab data-lang=swift aria-controls=tab-group-1-1_swift-panel role=tab><label for=tab-group-1-1_swift class=code-tab-label data-lang=swift id=tab-group-1-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-1_swift-panel aria-labelledby=tab-group-1-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit043_3.0
+//
+//  Created by KimikoWatanabe on 2016/08/21.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UIWebViewDelegate</span> <span class=p>{</span>
+class ViewController: UIViewController, UIWebViewDelegate {
 
-    <span class=kd>var</span> <span class=nv>myWebView</span> <span class=p>:</span> <span class=bp>UIWebView</span><span class=p>!</span>
+    var myWebView : UIWebView!
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// WebViewを開く.</span>
-        <span class=n>myWebView</span> <span class=p>=</span> <span class=bp>UIWebView</span><span class=p>()</span>
-        <span class=n>myWebView</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
-        <span class=n>myWebView</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myWebView</span><span class=p>)</span>
+        // WebViewを開く.
+        myWebView = UIWebView()
+        myWebView.delegate = self
+        myWebView.frame = self.view.bounds
+        self.view.addSubview(myWebView)
 
-        <span class=kd>let</span> <span class=nv>url</span><span class=p>:</span> <span class=n>URL</span><span class=p>!</span> <span class=p>=</span> <span class=n>URL</span><span class=p>(</span><span class=n>string</span><span class=p>:</span> <span class=s>&quot;http://www.apple.com&quot;</span><span class=p>)</span>
-        <span class=kd>let</span> <span class=nv>request</span><span class=p>:</span> <span class=bp>NSURLRequest</span> <span class=p>=</span> <span class=bp>NSURLRequest</span><span class=p>(</span><span class=n>url</span><span class=p>:</span> <span class=n>url</span><span class=p>)</span>
+        let url: URL! = URL(string: &quot;http://www.apple.com&quot;)
+        let request: NSURLRequest = NSURLRequest(url: url)
 
-        <span class=c1>// ロード開始.</span>
-        <span class=n>myWebView</span><span class=p>.</span><span class=n>loadRequest</span><span class=p>(</span><span class=n>request</span> <span class=k>as</span> <span class=n>URLRequest</span><span class=p>)</span>
-    <span class=p>}</span>
+        // ロード開始.
+        myWebView.loadRequest(request as URLRequest)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     Webがすべて読み込み終わった時呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>webViewDidFinishLoad</span><span class=p>(</span><span class=kc>_</span> <span class=n>webView</span><span class=p>:</span> <span class=bp>UIWebView</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;webViewDidFinishLoad&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+    /*
+     Webがすべて読み込み終わった時呼ばれる.
+     */
+    func webViewDidFinishLoad(_ webView: UIWebView) {
+        print(&quot;webViewDidFinishLoad&quot;)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     Webがloadされ始めた時、呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>webViewDidStartLoad</span><span class=p>(</span><span class=kc>_</span> <span class=n>webView</span><span class=p>:</span> <span class=bp>UIWebView</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;webViewDidStartLoad&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+    /*
+     Webがloadされ始めた時、呼ばれる.
+     */
+    func webViewDidStartLoad(_ webView: UIWebView) {
+        print(&quot;webViewDidStartLoad&quot;)
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-1 type=radio id=tab-group-1-2_swift class=code-tab data-lang=swift aria-controls=tab-group-1-2_swift-panel role=tab><label for=tab-group-1-2_swift class=code-tab-label data-lang=swift id=tab-group-1-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-2_swift-panel aria-labelledby=tab-group-1-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit043_2.3</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/21.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+</code></pre></div><input name=tab-group-1 type=radio id=tab-group-1-2_swift class=code-tab data-lang=swift aria-controls=tab-group-1-2_swift-panel role=tab><label for=tab-group-1-2_swift class=code-tab-label data-lang=swift id=tab-group-1-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-2_swift-panel aria-labelledby=tab-group-1-2_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit043_2.3
+//
+//  Created by KimikoWatanabe on 2016/08/21.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UIWebViewDelegate</span> <span class=p>{</span>
+import UIKit
 
-    <span class=kd>var</span> <span class=nv>myWebView</span> <span class=p>:</span> <span class=bp>UIWebView</span><span class=p>!</span>
+class ViewController: UIViewController, UIWebViewDelegate {
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    var myWebView : UIWebView!
 
-        <span class=c1>// WebViewを開く.</span>
-        <span class=n>myWebView</span> <span class=p>=</span> <span class=bp>UIWebView</span><span class=p>()</span>
-        <span class=n>myWebView</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
-        <span class=n>myWebView</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myWebView</span><span class=p>)</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=kd>let</span> <span class=nv>url</span><span class=p>:</span> <span class=bp>NSURL</span><span class=p>!</span> <span class=p>=</span> <span class=bp>NSURL</span><span class=p>(</span><span class=n>string</span><span class=p>:</span> <span class=s>&quot;http://www.apple.com&quot;</span><span class=p>)</span>
-        <span class=kd>let</span> <span class=nv>request</span><span class=p>:</span> <span class=bp>NSURLRequest</span> <span class=p>=</span> <span class=bp>NSURLRequest</span><span class=p>(</span><span class=n>URL</span><span class=p>:</span> <span class=n>url</span><span class=p>)</span>
+        // WebViewを開く.
+        myWebView = UIWebView()
+        myWebView.delegate = self
+        myWebView.frame = self.view.bounds
+        self.view.addSubview(myWebView)
 
-        <span class=c1>// ロード開始.</span>
-        <span class=n>myWebView</span><span class=p>.</span><span class=n>loadRequest</span><span class=p>(</span><span class=n>request</span><span class=p>)</span>
-    <span class=p>}</span>
+        let url: NSURL! = NSURL(string: &quot;http://www.apple.com&quot;)
+        let request: NSURLRequest = NSURLRequest(URL: url)
 
-    <span class=cm>/*</span>
-<span class=cm>     Webがすべて読み込み終わった時呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>webViewDidFinishLoad</span><span class=p>(</span><span class=n>webView</span><span class=p>:</span> <span class=bp>UIWebView</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;webViewDidFinishLoad&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+        // ロード開始.
+        myWebView.loadRequest(request)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     Webがloadされ始めた時、呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>webViewDidStartLoad</span><span class=p>(</span><span class=n>webView</span><span class=p>:</span> <span class=bp>UIWebView</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;webViewDidStartLoad&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+    /*
+     Webがすべて読み込み終わった時呼ばれる.
+     */
+    func webViewDidFinishLoad(webView: UIWebView) {
+        print(&quot;webViewDidFinishLoad&quot;)
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+    /*
+     Webがloadされ始めた時、呼ばれる.
+     */
+    func webViewDidStartLoad(webView: UIWebView) {
+        print(&quot;webViewDidStartLoad&quot;)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+</code></pre></div></div>
 <h2 id="3x4x">3.xと4.xの差分</h2>
 <ul>
 <li><code>UIBlurEffectStyle</code> が <code>UIBlurEffect.Style</code></li>

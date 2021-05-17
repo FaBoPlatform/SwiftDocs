@@ -2388,1228 +2388,628 @@
                 <h1 id="uibezierpath">UIBezierPathで図形を描画</h1>
 <p><img alt="Preview uikit052" src="../img/uikit052.png" /></p>
 <h3 id="viewcontrollerswift">ViewController.swift</h3>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit052_4.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/21.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit052_4.0
+//
+//  Created by KimikoWatanabe on 2016/08/21.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class ViewController: UIViewController {
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// viewの背景色を設定.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>(</span><span class=n>red</span><span class=p>:</span> <span class=mf>0.902</span><span class=p>,</span> <span class=n>green</span><span class=p>:</span> <span class=mf>0.803</span><span class=p>,</span> <span class=n>blue</span><span class=p>:</span> <span class=mf>0.890</span><span class=p>,</span> <span class=n>alpha</span><span class=p>:</span> <span class=mf>1.0</span><span class=p>)</span>
+        // viewの背景色を設定.
+        self.view.backgroundColor = UIColor(red: 0.902, green: 0.803, blue: 0.890, alpha: 1.0)
 
-        <span class=c1>// SegmentedControllerを生成.</span>
-        <span class=kd>let</span> <span class=nv>mySegcon</span> <span class=p>=</span> <span class=bp>UISegmentedControl</span><span class=p>(</span><span class=n>items</span><span class=p>:</span> <span class=p>[</span><span class=s>&quot;Circle&quot;</span><span class=p>,</span> <span class=s>&quot;Rectangle&quot;</span><span class=p>,</span> <span class=s>&quot;Line&quot;</span><span class=p>])</span>
-        <span class=n>mySegcon</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span> <span class=o>-</span> <span class=mi>50</span><span class=p>)</span>
-        <span class=n>mySegcon</span><span class=p>.</span><span class=n>tintColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blue</span>
-        <span class=n>mySegcon</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>changedValue</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=bp>UIControl</span><span class=p>.</span><span class=n>Event</span><span class=p>.</span><span class=n>valueChanged</span><span class=p>)</span>
+        // SegmentedControllerを生成.
+        let mySegcon = UISegmentedControl(items: [&quot;Circle&quot;, &quot;Rectangle&quot;, &quot;Line&quot;])
+        mySegcon.layer.position = CGPoint(x:self.view.frame.width/2, y:self.view.frame.height - 50)
+        mySegcon.tintColor = UIColor.blue
+        mySegcon.addTarget(self, action: #selector(ViewController.changedValue(sender:)), for: UIControl.Event.valueChanged)
 
-        <span class=c1>// viewにSegmentedControllerを追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>mySegcon</span><span class=p>)</span>
-    <span class=p>}</span>
+        // viewにSegmentedControllerを追加.
+        self.view.addSubview(mySegcon)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     SegmentedControllerの値が変わった時に呼ばれるメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kr>@objc</span> <span class=kd>func</span> <span class=nf>changedValue</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UISegmentedControl</span><span class=p>)</span> <span class=p>{</span>
-        <span class=kd>var</span> <span class=nv>myDrawView</span><span class=p>:</span> <span class=bp>UIView</span><span class=p>!</span>
+    /*
+     SegmentedControllerの値が変わった時に呼ばれるメソッド.
+     */
+    @objc func changedValue(sender: UISegmentedControl) {
+        var myDrawView: UIView!
 
-        <span class=c1>// SegmentedControllerの値によってそれぞれのクラスのインスタンスを生成.</span>
-        <span class=k>switch</span><span class=p>(</span><span class=n>sender</span><span class=p>.</span><span class=n>selectedSegmentIndex</span><span class=p>)</span> <span class=p>{</span>
+        // SegmentedControllerの値によってそれぞれのクラスのインスタンスを生成.
+        switch(sender.selectedSegmentIndex) {
 
-        <span class=k>case</span> <span class=mi>0</span><span class=p>:</span>
-            <span class=n>myDrawView</span> <span class=p>=</span> <span class=n>drawCircleView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=mi>300</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>300</span><span class=p>))</span>
+        case 0:
+            myDrawView = drawCircleView(frame: CGRect(x:0, y:0, width:300, height:300))
 
-        <span class=k>case</span> <span class=mi>1</span><span class=p>:</span>
-            <span class=n>myDrawView</span> <span class=p>=</span> <span class=n>drawRectangleView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=mi>300</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>300</span><span class=p>))</span>
+        case 1:
+            myDrawView = drawRectangleView(frame: CGRect(x:0, y:0, width:300, height:300))
 
-        <span class=k>case</span> <span class=mi>2</span><span class=p>:</span>
-            <span class=n>myDrawView</span> <span class=p>=</span> <span class=n>drawLineView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=mi>300</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>300</span><span class=p>))</span>
+        case 2:
+            myDrawView = drawLineView(frame: CGRect(x:0, y:0, width:300, height:300))
 
-        <span class=k>default</span><span class=p>:</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;error&quot;</span><span class=p>)</span>
-            <span class=k>return</span>
-        <span class=p>}</span>
+        default:
+            print(&quot;error&quot;)
+            return
+        }
 
-        <span class=c1>// 描画用viewの中心を設定.</span>
-        <span class=n>myDrawView</span><span class=p>.</span><span class=n>center</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>170</span><span class=p>)</span>
-        <span class=n>myDrawView</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
+        // 描画用viewの中心を設定.
+        myDrawView.center = CGPoint(x:self.view.frame.width/2, y:170)
+        myDrawView.backgroundColor = UIColor.white
 
-        <span class=c1>// 描画用viewをviewに追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myDrawView</span><span class=p>)</span>
-    <span class=p>}</span>
+        // 描画用viewをviewに追加.
+        self.view.addSubview(myDrawView)
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit052_3.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/21.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit052_3.0
+//
+//  Created by KimikoWatanabe on 2016/08/21.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+import UIKit
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+class ViewController: UIViewController {
 
-        <span class=c1>// viewの背景色を設定.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>(</span><span class=n>red</span><span class=p>:</span> <span class=mf>0.902</span><span class=p>,</span> <span class=n>green</span><span class=p>:</span> <span class=mf>0.803</span><span class=p>,</span> <span class=n>blue</span><span class=p>:</span> <span class=mf>0.890</span><span class=p>,</span> <span class=n>alpha</span><span class=p>:</span> <span class=mf>1.0</span><span class=p>)</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// SegmentedControllerを生成.</span>
-        <span class=kd>let</span> <span class=nv>mySegcon</span> <span class=p>=</span> <span class=bp>UISegmentedControl</span><span class=p>(</span><span class=n>items</span><span class=p>:</span> <span class=p>[</span><span class=s>&quot;Circle&quot;</span><span class=p>,</span> <span class=s>&quot;Rectangle&quot;</span><span class=p>,</span> <span class=s>&quot;Line&quot;</span><span class=p>])</span>
-        <span class=n>mySegcon</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span> <span class=o>-</span> <span class=mi>50</span><span class=p>)</span>
-        <span class=n>mySegcon</span><span class=p>.</span><span class=n>tintColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blue</span>
-        <span class=n>mySegcon</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>changedValue</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=n>UIControlEvents</span><span class=p>.</span><span class=n>valueChanged</span><span class=p>)</span>
+        // viewの背景色を設定.
+        self.view.backgroundColor = UIColor(red: 0.902, green: 0.803, blue: 0.890, alpha: 1.0)
 
-        <span class=c1>// viewにSegmentedControllerを追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>mySegcon</span><span class=p>)</span>
-    <span class=p>}</span>
+        // SegmentedControllerを生成.
+        let mySegcon = UISegmentedControl(items: [&quot;Circle&quot;, &quot;Rectangle&quot;, &quot;Line&quot;])
+        mySegcon.layer.position = CGPoint(x:self.view.frame.width/2, y:self.view.frame.height - 50)
+        mySegcon.tintColor = UIColor.blue
+        mySegcon.addTarget(self, action: #selector(ViewController.changedValue(sender:)), for: UIControlEvents.valueChanged)
 
-    <span class=cm>/*</span>
-<span class=cm>     SegmentedControllerの値が変わった時に呼ばれるメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>changedValue</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UISegmentedControl</span><span class=p>)</span> <span class=p>{</span>
-        <span class=kd>var</span> <span class=nv>myDrawView</span><span class=p>:</span> <span class=bp>UIView</span><span class=p>!</span>
+        // viewにSegmentedControllerを追加.
+        self.view.addSubview(mySegcon)
+    }
 
-        <span class=c1>// SegmentedControllerの値によってそれぞれのクラスのインスタンスを生成.</span>
-        <span class=k>switch</span><span class=p>(</span><span class=n>sender</span><span class=p>.</span><span class=n>selectedSegmentIndex</span><span class=p>)</span> <span class=p>{</span>
+    /*
+     SegmentedControllerの値が変わった時に呼ばれるメソッド.
+     */
+    func changedValue(sender: UISegmentedControl) {
+        var myDrawView: UIView!
 
-        <span class=k>case</span> <span class=mi>0</span><span class=p>:</span>
-            <span class=n>myDrawView</span> <span class=p>=</span> <span class=n>drawCircleView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=mi>300</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>300</span><span class=p>))</span>
+        // SegmentedControllerの値によってそれぞれのクラスのインスタンスを生成.
+        switch(sender.selectedSegmentIndex) {
 
-        <span class=k>case</span> <span class=mi>1</span><span class=p>:</span>
-            <span class=n>myDrawView</span> <span class=p>=</span> <span class=n>drawRectangleView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=mi>300</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>300</span><span class=p>))</span>
+        case 0:
+            myDrawView = drawCircleView(frame: CGRect(x:0, y:0, width:300, height:300))
 
-        <span class=k>case</span> <span class=mi>2</span><span class=p>:</span>
-            <span class=n>myDrawView</span> <span class=p>=</span> <span class=n>drawLineView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=mi>300</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>300</span><span class=p>))</span>
+        case 1:
+            myDrawView = drawRectangleView(frame: CGRect(x:0, y:0, width:300, height:300))
 
-        <span class=k>default</span><span class=p>:</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;error&quot;</span><span class=p>)</span>
-            <span class=k>return</span>
-        <span class=p>}</span>
+        case 2:
+            myDrawView = drawLineView(frame: CGRect(x:0, y:0, width:300, height:300))
 
-        <span class=c1>// 描画用viewの中心を設定.</span>
-        <span class=n>myDrawView</span><span class=p>.</span><span class=n>center</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>170</span><span class=p>)</span>
-        <span class=n>myDrawView</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
+        default:
+            print(&quot;error&quot;)
+            return
+        }
 
-        <span class=c1>// 描画用viewをviewに追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myDrawView</span><span class=p>)</span>
-    <span class=p>}</span>
+        // 描画用viewの中心を設定.
+        myDrawView.center = CGPoint(x:self.view.frame.width/2, y:170)
+        myDrawView.backgroundColor = UIColor.white
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit052_2.3</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/21.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
+        // 描画用viewをviewに追加.
+        self.view.addSubview(myDrawView)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit052_2.3
+//
+//  Created by KimikoWatanabe on 2016/08/21.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
 
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class ViewController: UIViewController {
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// viewの背景色を設定.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>(</span><span class=n>red</span><span class=p>:</span> <span class=mf>0.902</span><span class=p>,</span> <span class=n>green</span><span class=p>:</span> <span class=mf>0.803</span><span class=p>,</span> <span class=n>blue</span><span class=p>:</span> <span class=mf>0.890</span><span class=p>,</span> <span class=n>alpha</span><span class=p>:</span> <span class=mf>1.0</span><span class=p>)</span>
+        // viewの背景色を設定.
+        self.view.backgroundColor = UIColor(red: 0.902, green: 0.803, blue: 0.890, alpha: 1.0)
 
-        <span class=c1>// SegmentedControllerを生成.</span>
-        <span class=kd>let</span> <span class=nv>mySegcon</span> <span class=p>=</span> <span class=bp>UISegmentedControl</span><span class=p>(</span><span class=n>items</span><span class=p>:</span> <span class=p>[</span><span class=s>&quot;Circle&quot;</span><span class=p>,</span> <span class=s>&quot;Rectangle&quot;</span><span class=p>,</span> <span class=s>&quot;Line&quot;</span><span class=p>])</span>
-        <span class=n>mySegcon</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span> <span class=o>-</span> <span class=mi>50</span><span class=p>)</span>
-        <span class=n>mySegcon</span><span class=p>.</span><span class=n>tintColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blueColor</span><span class=p>()</span>
-        <span class=n>mySegcon</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>changedValue</span><span class=p>(</span><span class=kc>_</span><span class=p>:)),</span> <span class=n>forControlEvents</span><span class=p>:</span> <span class=n>UIControlEvents</span><span class=p>.</span><span class=n>ValueChanged</span><span class=p>)</span>
+        // SegmentedControllerを生成.
+        let mySegcon = UISegmentedControl(items: [&quot;Circle&quot;, &quot;Rectangle&quot;, &quot;Line&quot;])
+        mySegcon.layer.position = CGPointMake(self.view.frame.width/2, self.view.frame.height - 50)
+        mySegcon.tintColor = UIColor.blueColor()
+        mySegcon.addTarget(self, action: #selector(ViewController.changedValue(_:)), forControlEvents: UIControlEvents.ValueChanged)
 
-        <span class=c1>// viewにSegmentedControllerを追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>mySegcon</span><span class=p>)</span>
-    <span class=p>}</span>
+        // viewにSegmentedControllerを追加.
+        self.view.addSubview(mySegcon)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     SegmentedControllerの値が変わった時に呼ばれるメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>changedValue</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UISegmentedControl</span><span class=p>)</span> <span class=p>{</span>
-        <span class=kd>var</span> <span class=nv>myDrawView</span><span class=p>:</span> <span class=bp>UIView</span><span class=p>!</span>
+    /*
+     SegmentedControllerの値が変わった時に呼ばれるメソッド.
+     */
+    func changedValue(sender: UISegmentedControl) {
+        var myDrawView: UIView!
 
-        <span class=c1>// SegmentedControllerの値によってそれぞれのクラスのインスタンスを生成.</span>
-        <span class=k>switch</span><span class=p>(</span><span class=n>sender</span><span class=p>.</span><span class=n>selectedSegmentIndex</span><span class=p>)</span> <span class=p>{</span>
+        // SegmentedControllerの値によってそれぞれのクラスのインスタンスを生成.
+        switch(sender.selectedSegmentIndex) {
 
-        <span class=k>case</span> <span class=mi>0</span><span class=p>:</span>
-            <span class=n>myDrawView</span> <span class=p>=</span> <span class=n>drawCircleView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=mi>300</span><span class=p>,</span> <span class=mi>300</span><span class=p>))</span>
+        case 0:
+            myDrawView = drawCircleView(frame: CGRectMake(0, 0, 300, 300))
 
-        <span class=k>case</span> <span class=mi>1</span><span class=p>:</span>
-            <span class=n>myDrawView</span> <span class=p>=</span> <span class=n>drawRectangleView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=mi>300</span><span class=p>,</span> <span class=mi>300</span><span class=p>))</span>
+        case 1:
+            myDrawView = drawRectangleView(frame: CGRectMake(0, 0, 300, 300))
 
-        <span class=k>case</span> <span class=mi>2</span><span class=p>:</span>
-            <span class=n>myDrawView</span> <span class=p>=</span> <span class=n>drawLineView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=mi>300</span><span class=p>,</span> <span class=mi>300</span><span class=p>))</span>
+        case 2:
+            myDrawView = drawLineView(frame: CGRectMake(0, 0, 300, 300))
 
-        <span class=k>default</span><span class=p>:</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;error&quot;</span><span class=p>)</span>
-            <span class=k>return</span>
-        <span class=p>}</span>
+        default:
+            print(&quot;error&quot;)
+            return
+        }
 
-        <span class=c1>// 描画用viewの中心を設定.</span>
-        <span class=n>myDrawView</span><span class=p>.</span><span class=n>center</span> <span class=p>=</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=mi>170</span><span class=p>)</span>
-        <span class=n>myDrawView</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>whiteColor</span><span class=p>()</span>
+        // 描画用viewの中心を設定.
+        myDrawView.center = CGPointMake(self.view.frame.width/2, 170)
+        myDrawView.backgroundColor = UIColor.whiteColor()
 
-        <span class=c1>// 描画用viewをviewに追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myDrawView</span><span class=p>)</span>
-    <span class=p>}</span>
+        // 描画用viewをviewに追加.
+        self.view.addSubview(myDrawView)
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+</code></pre></div></div>
 <h3 id="drawcircleviewswift">drawCircleView.swift</h3>
-<div class=md-fenced-code-tabs id=tab-tab-group-1><input name=tab-group-1 type=radio id=tab-group-1-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-1-0_swift-panel role=tab><label for=tab-group-1-0_swift class=code-tab-label data-lang=swift id=tab-group-1-0_swift-label>Swift 4.x/Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-0_swift-panel aria-labelledby=tab-group-1-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span>
-<span class=normal>73</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  drawCircleView.swift</span>
-<span class=c1>//  UIKit052_4.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/21.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-1><input name=tab-group-1 type=radio id=tab-group-1-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-1-0_swift-panel role=tab><label for=tab-group-1-0_swift class=code-tab-label data-lang=swift id=tab-group-1-0_swift-label>Swift 4.x/Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-0_swift-panel aria-labelledby=tab-group-1-0_swift-label><pre><code class=swift>//
+//  drawCircleView.swift
+//  UIKit052_4.0
+//
+//  Created by KimikoWatanabe on 2016/08/21.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=cm>/*</span>
-<span class=cm> 直線を描写するclass.</span>
-<span class=cm> */</span>
-<span class=kd>class</span> <span class=nc>drawCircleView</span><span class=p>:</span> <span class=bp>UIView</span> <span class=p>{</span>
+/*
+ 直線を描写するclass.
+ */
+class drawCircleView: UIView {
 
-    <span class=kr>override</span> <span class=kd>init</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>)</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>frame</span><span class=p>)</span>
-    <span class=p>}</span>
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
 
-    <span class=kr>required</span> <span class=kd>init</span><span class=p>(</span><span class=n>coder</span> <span class=n>aDecoder</span><span class=p>:</span> <span class=bp>NSCoder</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>fatalError</span><span class=p>(</span><span class=s>&quot;init(coder:) has not been implemented&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+    required init(coder aDecoder: NSCoder) {
+        fatalError(&quot;init(coder:) has not been implemented&quot;)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     表示を更新する必要が生ずると自動的に呼び出される.</span>
-<span class=cm>     */</span>
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>draw</span><span class=p>(</span><span class=kc>_</span> <span class=n>rect</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>)</span> <span class=p>{</span>
+    /*
+     表示を更新する必要が生ずると自動的に呼び出される.
+     */
+    override func draw(_ rect: CGRect) {
 
-        <span class=c1>// viewの設定.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>borderColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>brown</span><span class=p>.</span><span class=n>cgColor</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>borderWidth</span> <span class=p>=</span> <span class=mf>0.5</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>10.0</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
+        // viewの設定.
+        self.layer.borderColor = UIColor.brown.cgColor
+        self.layer.borderWidth = 0.5
+        self.layer.cornerRadius = 10.0
+        self.layer.masksToBounds = true
 
-        <span class=kd>let</span> <span class=nv>circlePoint</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>100</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>100</span><span class=p>)</span>
+        let circlePoint = CGPoint(x:100, y:100)
 
-        <span class=c1>// 円のBezierPathを生成</span>
-        <span class=kd>let</span> <span class=nv>myCircle</span><span class=p>:</span> <span class=bp>UIBezierPath</span> <span class=p>=</span> <span class=bp>UIBezierPath</span><span class=p>(</span><span class=n>arcCenter</span><span class=p>:</span> <span class=n>circlePoint</span><span class=p>,</span>
-                                                  <span class=c1>// 半径.</span>
-            <span class=n>radius</span><span class=p>:</span> <span class=mf>70.0</span><span class=p>,</span>
-            <span class=c1>// 初角度.</span>
-            <span class=n>startAngle</span><span class=p>:</span> <span class=mf>0.0</span><span class=p>,</span>
-            <span class=c1>// 最終角度.</span>
-            <span class=n>endAngle</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=n>M_PI</span><span class=o>*</span><span class=mi>2</span><span class=o>/</span><span class=mi>4</span><span class=p>),</span>
-            <span class=c1>// 反時計回り.</span>
-            <span class=n>clockwise</span><span class=p>:</span> <span class=kc>false</span><span class=p>)</span>
+        // 円のBezierPathを生成
+        let myCircle: UIBezierPath = UIBezierPath(arcCenter: circlePoint,
+                                                  // 半径.
+            radius: 70.0,
+            // 初角度.
+            startAngle: 0.0,
+            // 最終角度.
+            endAngle: CGFloat(M_PI*2/4),
+            // 反時計回り.
+            clockwise: false)
 
-        <span class=c1>// 線の色を赤色に設定.</span>
-        <span class=bp>UIColor</span><span class=p>.</span><span class=n>red</span><span class=p>.</span><span class=n>setStroke</span><span class=p>()</span>
+        // 線の色を赤色に設定.
+        UIColor.red.setStroke()
 
-        <span class=c1>// 塗りつぶしの色を黄色に設定.</span>
-        <span class=bp>UIColor</span><span class=p>.</span><span class=n>yellow</span><span class=p>.</span><span class=n>setFill</span><span class=p>()</span>
+        // 塗りつぶしの色を黄色に設定.
+        UIColor.yellow.setFill()
 
-        <span class=c1>// 線で閉じた内側を塗りつぶす.</span>
-        <span class=n>myCircle</span><span class=p>.</span><span class=n>fill</span><span class=p>()</span>
+        // 線で閉じた内側を塗りつぶす.
+        myCircle.fill()
 
-        <span class=c1>// 線の太さを設定.</span>
-        <span class=n>myCircle</span><span class=p>.</span><span class=n>lineWidth</span> <span class=p>=</span> <span class=mf>3.0</span>
+        // 線の太さを設定.
+        myCircle.lineWidth = 3.0
 
-        <span class=c1>// 描画.</span>
-        <span class=n>myCircle</span><span class=p>.</span><span class=n>stroke</span><span class=p>()</span>
+        // 描画.
+        myCircle.stroke()
 
-        <span class=c1>// 楕円のBezierPathを生成.</span>
-        <span class=kd>let</span> <span class=nv>myOval</span><span class=p>:</span> <span class=bp>UIBezierPath</span> <span class=p>=</span> <span class=bp>UIBezierPath</span><span class=p>(</span><span class=n>ovalIn</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>130</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>150</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=mi>150</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>100</span><span class=p>))</span>
-        <span class=bp>UIColor</span><span class=p>.</span><span class=n>blue</span><span class=p>.</span><span class=n>setStroke</span><span class=p>()</span>
-        <span class=bp>UIColor</span><span class=p>.</span><span class=n>gray</span><span class=p>.</span><span class=n>setFill</span><span class=p>()</span>
-        <span class=n>myOval</span><span class=p>.</span><span class=n>fill</span><span class=p>()</span>
-        <span class=n>myOval</span><span class=p>.</span><span class=n>lineWidth</span> <span class=p>=</span> <span class=mf>2.0</span>
+        // 楕円のBezierPathを生成.
+        let myOval: UIBezierPath = UIBezierPath(ovalIn: CGRect(x:130, y:150, width:150, height:100))
+        UIColor.blue.setStroke()
+        UIColor.gray.setFill()
+        myOval.fill()
+        myOval.lineWidth = 2.0
 
-        <span class=c1>// 描画.</span>
-        <span class=n>myOval</span><span class=p>.</span><span class=n>stroke</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-1 type=radio id=tab-group-1-1_swift class=code-tab data-lang=swift aria-controls=tab-group-1-1_swift-panel role=tab><label for=tab-group-1-1_swift class=code-tab-label data-lang=swift id=tab-group-1-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-1_swift-panel aria-labelledby=tab-group-1-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span>
-<span class=normal>73</span>
-<span class=normal>74</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  drawCircleView.swift</span>
-<span class=c1>//  UIKit052_2.3</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/21.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+        // 描画.
+        myOval.stroke()
+    }
+}
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+</code></pre></div><input name=tab-group-1 type=radio id=tab-group-1-1_swift class=code-tab data-lang=swift aria-controls=tab-group-1-1_swift-panel role=tab><label for=tab-group-1-1_swift class=code-tab-label data-lang=swift id=tab-group-1-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-1_swift-panel aria-labelledby=tab-group-1-1_swift-label><pre><code class=swift>//
+//  drawCircleView.swift
+//  UIKit052_2.3
+//
+//  Created by KimikoWatanabe on 2016/08/21.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=cm>/*</span>
-<span class=cm> 直線を描写するclass.</span>
-<span class=cm> */</span>
-<span class=kd>class</span> <span class=nc>drawCircleView</span><span class=p>:</span> <span class=bp>UIView</span> <span class=p>{</span>
+import UIKit
 
-    <span class=kr>override</span> <span class=kd>init</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>)</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>frame</span><span class=p>)</span>
-    <span class=p>}</span>
+/*
+ 直線を描写するclass.
+ */
+class drawCircleView: UIView {
 
-    <span class=kr>required</span> <span class=kd>init</span><span class=p>(</span><span class=n>coder</span> <span class=n>aDecoder</span><span class=p>:</span> <span class=bp>NSCoder</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>fatalError</span><span class=p>(</span><span class=s>&quot;init(coder:) has not been implemented&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     表示を更新する必要が生ずると自動的に呼び出される.</span>
-<span class=cm>     */</span>
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>drawRect</span><span class=p>(</span><span class=n>rect</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>)</span> <span class=p>{</span>
+    required init(coder aDecoder: NSCoder) {
+        fatalError(&quot;init(coder:) has not been implemented&quot;)
+    }
 
-        <span class=c1>// viewの設定.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>borderColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>brownColor</span><span class=p>().</span><span class=n>CGColor</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>borderWidth</span> <span class=p>=</span> <span class=mf>0.5</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>10.0</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
+    /*
+     表示を更新する必要が生ずると自動的に呼び出される.
+     */
+    override func drawRect(rect: CGRect) {
 
-        <span class=kd>let</span> <span class=nv>circlePoint</span> <span class=p>=</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=mi>100</span><span class=p>,</span> <span class=mi>100</span><span class=p>)</span>
-        <span class=kd>let</span> <span class=nv>ovalPoint</span> <span class=p>=</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=mi>200</span><span class=p>,</span> <span class=mi>200</span><span class=p>)</span>
+        // viewの設定.
+        self.layer.borderColor = UIColor.brownColor().CGColor
+        self.layer.borderWidth = 0.5
+        self.layer.cornerRadius = 10.0
+        self.layer.masksToBounds = true
 
-        <span class=c1>// 円のBezierPathを生成</span>
-        <span class=kd>let</span> <span class=nv>myCircle</span><span class=p>:</span> <span class=bp>UIBezierPath</span> <span class=p>=</span> <span class=bp>UIBezierPath</span><span class=p>(</span><span class=n>arcCenter</span><span class=p>:</span> <span class=n>circlePoint</span><span class=p>,</span>
-                                                  <span class=c1>// 半径.</span>
-            <span class=n>radius</span><span class=p>:</span> <span class=mf>70.0</span><span class=p>,</span>
-            <span class=c1>// 初角度.</span>
-            <span class=n>startAngle</span><span class=p>:</span> <span class=mf>0.0</span><span class=p>,</span>
-            <span class=c1>// 最終角度.</span>
-            <span class=n>endAngle</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=n>M_PI</span><span class=o>*</span><span class=mi>2</span><span class=o>/</span><span class=mi>4</span><span class=p>),</span>
-            <span class=c1>// 反時計回り.</span>
-            <span class=n>clockwise</span><span class=p>:</span> <span class=kc>false</span><span class=p>)</span>
+        let circlePoint = CGPointMake(100, 100)
+        let ovalPoint = CGPointMake(200, 200)
 
-        <span class=c1>// 線の色を赤色に設定.</span>
-        <span class=bp>UIColor</span><span class=p>.</span><span class=n>redColor</span><span class=p>().</span><span class=n>setStroke</span><span class=p>()</span>
+        // 円のBezierPathを生成
+        let myCircle: UIBezierPath = UIBezierPath(arcCenter: circlePoint,
+                                                  // 半径.
+            radius: 70.0,
+            // 初角度.
+            startAngle: 0.0,
+            // 最終角度.
+            endAngle: CGFloat(M_PI*2/4),
+            // 反時計回り.
+            clockwise: false)
 
-        <span class=c1>// 塗りつぶしの色を黄色に設定.</span>
-        <span class=bp>UIColor</span><span class=p>.</span><span class=n>yellowColor</span><span class=p>().</span><span class=n>setFill</span><span class=p>()</span>
+        // 線の色を赤色に設定.
+        UIColor.redColor().setStroke()
 
-        <span class=c1>// 線で閉じた内側を塗りつぶす.</span>
-        <span class=n>myCircle</span><span class=p>.</span><span class=n>fill</span><span class=p>()</span>
+        // 塗りつぶしの色を黄色に設定.
+        UIColor.yellowColor().setFill()
 
-        <span class=c1>// 線の太さを設定.</span>
-        <span class=n>myCircle</span><span class=p>.</span><span class=n>lineWidth</span> <span class=p>=</span> <span class=mf>3.0</span>
+        // 線で閉じた内側を塗りつぶす.
+        myCircle.fill()
 
-        <span class=c1>// 描画.</span>
-        <span class=n>myCircle</span><span class=p>.</span><span class=n>stroke</span><span class=p>()</span>
+        // 線の太さを設定.
+        myCircle.lineWidth = 3.0
 
-        <span class=c1>// 楕円のBezierPathを生成.</span>
-        <span class=kd>let</span> <span class=nv>myOval</span><span class=p>:</span> <span class=bp>UIBezierPath</span> <span class=p>=</span> <span class=bp>UIBezierPath</span><span class=p>(</span><span class=n>ovalInRect</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>130</span><span class=p>,</span> <span class=mi>150</span><span class=p>,</span> <span class=mi>150</span><span class=p>,</span> <span class=mi>100</span><span class=p>))</span>
-        <span class=bp>UIColor</span><span class=p>.</span><span class=n>blueColor</span><span class=p>().</span><span class=n>setStroke</span><span class=p>()</span>
-        <span class=bp>UIColor</span><span class=p>.</span><span class=n>grayColor</span><span class=p>().</span><span class=n>setFill</span><span class=p>()</span>
-        <span class=n>myOval</span><span class=p>.</span><span class=n>fill</span><span class=p>()</span>
-        <span class=n>myOval</span><span class=p>.</span><span class=n>lineWidth</span> <span class=p>=</span> <span class=mf>2.0</span>
+        // 描画.
+        myCircle.stroke()
 
-        <span class=c1>// 描画.</span>
-        <span class=n>myOval</span><span class=p>.</span><span class=n>stroke</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+        // 楕円のBezierPathを生成.
+        let myOval: UIBezierPath = UIBezierPath(ovalInRect: CGRectMake(130, 150, 150, 100))
+        UIColor.blueColor().setStroke()
+        UIColor.grayColor().setFill()
+        myOval.fill()
+        myOval.lineWidth = 2.0
+
+        // 描画.
+        myOval.stroke()
+    }
+}
+</code></pre></div></div>
 <h3 id="drawrectangleviewswift">drawRectangleView.swift</h3>
-<div class=md-fenced-code-tabs id=tab-tab-group-2><input name=tab-group-2 type=radio id=tab-group-2-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-2-0_swift-panel role=tab><label for=tab-group-2-0_swift class=code-tab-label data-lang=swift id=tab-group-2-0_swift-label>Swift 4.x/Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-2-0_swift-panel aria-labelledby=tab-group-2-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  drawRectangleView.swift</span>
-<span class=c1>//  UIKit052_4.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/21.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-2><input name=tab-group-2 type=radio id=tab-group-2-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-2-0_swift-panel role=tab><label for=tab-group-2-0_swift class=code-tab-label data-lang=swift id=tab-group-2-0_swift-label>Swift 4.x/Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-2-0_swift-panel aria-labelledby=tab-group-2-0_swift-label><pre><code class=swift>//
+//  drawRectangleView.swift
+//  UIKit052_4.0
+//
+//  Created by KimikoWatanabe on 2016/08/21.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=cm>/*</span>
-<span class=cm> 直線を描写するclass.</span>
-<span class=cm> */</span>
-<span class=kd>class</span> <span class=nc>drawRectangleView</span><span class=p>:</span> <span class=bp>UIView</span> <span class=p>{</span>
+/*
+ 直線を描写するclass.
+ */
+class drawRectangleView: UIView {
 
-    <span class=kr>override</span> <span class=kd>init</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>)</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>frame</span><span class=p>)</span>
-    <span class=p>}</span>
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
 
-    <span class=kr>required</span> <span class=kd>init</span><span class=p>(</span><span class=n>coder</span> <span class=n>aDecoder</span><span class=p>:</span> <span class=bp>NSCoder</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>fatalError</span><span class=p>(</span><span class=s>&quot;init(coder:) has not been implemented&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+    required init(coder aDecoder: NSCoder) {
+        fatalError(&quot;init(coder:) has not been implemented&quot;)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     表示を更新する必要が生ずると自動的に呼び出される.</span>
-<span class=cm>     */</span>
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>draw</span><span class=p>(</span><span class=kc>_</span> <span class=n>rect</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>)</span> <span class=p>{</span>
+    /*
+     表示を更新する必要が生ずると自動的に呼び出される.
+     */
+    override func draw(_ rect: CGRect) {
 
-        <span class=c1>// viewの設定.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>borderColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>brown</span><span class=p>.</span><span class=n>cgColor</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>borderWidth</span> <span class=p>=</span> <span class=mf>0.5</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>10.0</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
+        // viewの設定.
+        self.layer.borderColor = UIColor.brown.cgColor
+        self.layer.borderWidth = 0.5
+        self.layer.cornerRadius = 10.0
+        self.layer.masksToBounds = true
 
-        <span class=c1>// 長方形のUIBezierPathを生成.</span>
-        <span class=kd>let</span> <span class=nv>myRect1</span><span class=p>:</span> <span class=bp>UIBezierPath</span> <span class=p>=</span> <span class=bp>UIBezierPath</span><span class=p>(</span><span class=n>rect</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>5</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>5</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=mi>290</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>290</span><span class=p>))</span>
+        // 長方形のUIBezierPathを生成.
+        let myRect1: UIBezierPath = UIBezierPath(rect: CGRect(x:5, y:5, width:290, height:290))
 
-        <span class=c1>// 線の色を青色に設定.</span>
-        <span class=bp>UIColor</span><span class=p>.</span><span class=n>blue</span><span class=p>.</span><span class=n>setStroke</span><span class=p>()</span>
+        // 線の色を青色に設定.
+        UIColor.blue.setStroke()
 
-        <span class=c1>// 線の太さを設定.</span>
-        <span class=n>myRect1</span><span class=p>.</span><span class=n>lineWidth</span> <span class=p>=</span> <span class=mf>1.0</span>
+        // 線の太さを設定.
+        myRect1.lineWidth = 1.0
 
-        <span class=c1>// 描画.</span>
-        <span class=n>myRect1</span><span class=p>.</span><span class=n>stroke</span><span class=p>()</span>
+        // 描画.
+        myRect1.stroke()
 
-        <span class=c1>// 角丸の長方形のUIBezierPathを生成.</span>
-        <span class=kd>let</span> <span class=nv>myRect2</span><span class=p>:</span> <span class=bp>UIBezierPath</span> <span class=p>=</span> <span class=bp>UIBezierPath</span><span class=p>(</span><span class=n>roundedRect</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>50</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>50</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=mi>200</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>100</span><span class=p>),</span>
+        // 角丸の長方形のUIBezierPathを生成.
+        let myRect2: UIBezierPath = UIBezierPath(roundedRect: CGRect(x:50, y:50, width:200, height:100),
 
-                                                 <span class=c1>// 全ての角を丸くする.</span>
-            <span class=n>byRoundingCorners</span><span class=p>:</span> <span class=n>UIRectCorner</span><span class=p>.</span><span class=n>allCorners</span><span class=p>,</span>
+                                                 // 全ての角を丸くする.
+            byRoundingCorners: UIRectCorner.allCorners,
 
-            <span class=c1>// 丸くする度を設定.</span>
-            <span class=n>cornerRadii</span><span class=p>:</span> <span class=n>CGSize</span><span class=p>(</span><span class=n>width</span><span class=p>:</span><span class=mf>5.0</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mf>5.0</span><span class=p>))</span>
+            // 丸くする度を設定.
+            cornerRadii: CGSize(width:5.0, height:5.0))
 
-        <span class=c1>// 線の色をオレンジ色に設定.</span>
-        <span class=bp>UIColor</span><span class=p>.</span><span class=n>orange</span><span class=p>.</span><span class=n>setStroke</span><span class=p>()</span>
+        // 線の色をオレンジ色に設定.
+        UIColor.orange.setStroke()
 
-        <span class=c1>// 塗りつぶしの色を黄色に設定.</span>
-        <span class=bp>UIColor</span><span class=p>.</span><span class=n>yellow</span><span class=p>.</span><span class=n>setFill</span><span class=p>()</span>
+        // 塗りつぶしの色を黄色に設定.
+        UIColor.yellow.setFill()
 
-        <span class=c1>// 塗りつぶし.</span>
-        <span class=n>myRect2</span><span class=p>.</span><span class=n>fill</span><span class=p>()</span>
+        // 塗りつぶし.
+        myRect2.fill()
 
-        <span class=c1>// 線の太さを設定.</span>
-        <span class=n>myRect2</span><span class=p>.</span><span class=n>lineWidth</span> <span class=p>=</span> <span class=mf>3.0</span>
+        // 線の太さを設定.
+        myRect2.lineWidth = 3.0
 
-        <span class=c1>// 描画.</span>
-        <span class=n>myRect2</span><span class=p>.</span><span class=n>stroke</span><span class=p>()</span>
+        // 描画.
+        myRect2.stroke()
 
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-2 type=radio id=tab-group-2-1_swift class=code-tab data-lang=swift aria-controls=tab-group-2-1_swift-panel role=tab><label for=tab-group-2-1_swift class=code-tab-label data-lang=swift id=tab-group-2-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-2-1_swift-panel aria-labelledby=tab-group-2-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  drawRectangleView.swift</span>
-<span class=c1>//  UIKit052_2.3</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/21.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+    }
+}
+</code></pre></div><input name=tab-group-2 type=radio id=tab-group-2-1_swift class=code-tab data-lang=swift aria-controls=tab-group-2-1_swift-panel role=tab><label for=tab-group-2-1_swift class=code-tab-label data-lang=swift id=tab-group-2-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-2-1_swift-panel aria-labelledby=tab-group-2-1_swift-label><pre><code class=swift>//
+//  drawRectangleView.swift
+//  UIKit052_2.3
+//
+//  Created by KimikoWatanabe on 2016/08/21.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=cm>/*</span>
-<span class=cm> 直線を描写するclass.</span>
-<span class=cm> */</span>
-<span class=kd>class</span> <span class=nc>drawRectangleView</span><span class=p>:</span> <span class=bp>UIView</span> <span class=p>{</span>
+/*
+ 直線を描写するclass.
+ */
+class drawRectangleView: UIView {
 
-    <span class=kr>override</span> <span class=kd>init</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>)</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>frame</span><span class=p>)</span>
-    <span class=p>}</span>
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
 
-    <span class=kr>required</span> <span class=kd>init</span><span class=p>(</span><span class=n>coder</span> <span class=n>aDecoder</span><span class=p>:</span> <span class=bp>NSCoder</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>fatalError</span><span class=p>(</span><span class=s>&quot;init(coder:) has not been implemented&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+    required init(coder aDecoder: NSCoder) {
+        fatalError(&quot;init(coder:) has not been implemented&quot;)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     表示を更新する必要が生ずると自動的に呼び出される.</span>
-<span class=cm>     */</span>
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>drawRect</span><span class=p>(</span><span class=n>rect</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>)</span> <span class=p>{</span>
+    /*
+     表示を更新する必要が生ずると自動的に呼び出される.
+     */
+    override func drawRect(rect: CGRect) {
 
-        <span class=c1>// viewの設定.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>borderColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>brownColor</span><span class=p>().</span><span class=n>CGColor</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>borderWidth</span> <span class=p>=</span> <span class=mf>0.5</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>10.0</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
+        // viewの設定.
+        self.layer.borderColor = UIColor.brownColor().CGColor
+        self.layer.borderWidth = 0.5
+        self.layer.cornerRadius = 10.0
+        self.layer.masksToBounds = true
 
-        <span class=c1>// 長方形のUIBezierPathを生成.</span>
-        <span class=kd>let</span> <span class=nv>myRect1</span><span class=p>:</span> <span class=bp>UIBezierPath</span> <span class=p>=</span> <span class=bp>UIBezierPath</span><span class=p>(</span><span class=n>rect</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>5</span><span class=p>,</span> <span class=mi>5</span><span class=p>,</span> <span class=mi>290</span><span class=p>,</span> <span class=mi>290</span><span class=p>))</span>
+        // 長方形のUIBezierPathを生成.
+        let myRect1: UIBezierPath = UIBezierPath(rect: CGRectMake(5, 5, 290, 290))
 
-        <span class=c1>// 線の色を青色に設定.</span>
-        <span class=bp>UIColor</span><span class=p>.</span><span class=n>blueColor</span><span class=p>().</span><span class=n>setStroke</span><span class=p>()</span>
+        // 線の色を青色に設定.
+        UIColor.blueColor().setStroke()
 
-        <span class=c1>// 線の太さを設定.</span>
-        <span class=n>myRect1</span><span class=p>.</span><span class=n>lineWidth</span> <span class=p>=</span> <span class=mf>1.0</span>
+        // 線の太さを設定.
+        myRect1.lineWidth = 1.0
 
-        <span class=c1>// 描画.</span>
-        <span class=n>myRect1</span><span class=p>.</span><span class=n>stroke</span><span class=p>()</span>
+        // 描画.
+        myRect1.stroke()
 
-        <span class=c1>// 角丸の長方形のUIBezierPathを生成.</span>
-        <span class=kd>let</span> <span class=nv>myRect2</span><span class=p>:</span> <span class=bp>UIBezierPath</span> <span class=p>=</span> <span class=bp>UIBezierPath</span><span class=p>(</span><span class=n>roundedRect</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>50</span><span class=p>,</span> <span class=mi>50</span><span class=p>,</span> <span class=mi>200</span><span class=p>,</span> <span class=mi>100</span><span class=p>),</span>
+        // 角丸の長方形のUIBezierPathを生成.
+        let myRect2: UIBezierPath = UIBezierPath(roundedRect: CGRectMake(50, 50, 200, 100),
 
-                                                 <span class=c1>// 全ての角を丸くする.</span>
-            <span class=n>byRoundingCorners</span><span class=p>:</span> <span class=n>UIRectCorner</span><span class=p>.</span><span class=n>AllCorners</span><span class=p>,</span>
+                                                 // 全ての角を丸くする.
+            byRoundingCorners: UIRectCorner.AllCorners,
 
-            <span class=c1>// 丸くする度を設定.</span>
-            <span class=n>cornerRadii</span><span class=p>:</span> <span class=n>CGSizeMake</span><span class=p>(</span><span class=mf>5.0</span><span class=p>,</span> <span class=mf>5.0</span><span class=p>))</span>
+            // 丸くする度を設定.
+            cornerRadii: CGSizeMake(5.0, 5.0))
 
-        <span class=c1>// 線の色をオレンジ色に設定.</span>
-        <span class=bp>UIColor</span><span class=p>.</span><span class=n>orangeColor</span><span class=p>().</span><span class=n>setStroke</span><span class=p>()</span>
+        // 線の色をオレンジ色に設定.
+        UIColor.orangeColor().setStroke()
 
-        <span class=c1>// 塗りつぶしの色を黄色に設定.</span>
-        <span class=bp>UIColor</span><span class=p>.</span><span class=n>yellowColor</span><span class=p>().</span><span class=n>setFill</span><span class=p>()</span>
+        // 塗りつぶしの色を黄色に設定.
+        UIColor.yellowColor().setFill()
 
-        <span class=c1>// 塗りつぶし.</span>
-        <span class=n>myRect2</span><span class=p>.</span><span class=n>fill</span><span class=p>()</span>
+        // 塗りつぶし.
+        myRect2.fill()
 
-        <span class=c1>// 線の太さを設定.</span>
-        <span class=n>myRect2</span><span class=p>.</span><span class=n>lineWidth</span> <span class=p>=</span> <span class=mf>3.0</span>
+        // 線の太さを設定.
+        myRect2.lineWidth = 3.0
 
-        <span class=c1>// 描画.</span>
-        <span class=n>myRect2</span><span class=p>.</span><span class=n>stroke</span><span class=p>()</span>
+        // 描画.
+        myRect2.stroke()
 
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+    }
+}
+</code></pre></div></div>
 <h3 id="drawlineviewswift">drawLineView.swift</h3>
-<div class=md-fenced-code-tabs id=tab-tab-group-3><input name=tab-group-3 type=radio id=tab-group-3-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-3-0_swift-panel role=tab><label for=tab-group-3-0_swift class=code-tab-label data-lang=swift id=tab-group-3-0_swift-label>Swift 4.x/Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-3-0_swift-panel aria-labelledby=tab-group-3-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  drawLineView.swift</span>
-<span class=c1>//  UIKit052_4.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/21.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-3><input name=tab-group-3 type=radio id=tab-group-3-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-3-0_swift-panel role=tab><label for=tab-group-3-0_swift class=code-tab-label data-lang=swift id=tab-group-3-0_swift-label>Swift 4.x/Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-3-0_swift-panel aria-labelledby=tab-group-3-0_swift-label><pre><code class=swift>//
+//  drawLineView.swift
+//  UIKit052_4.0
+//
+//  Created by KimikoWatanabe on 2016/08/21.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=cm>/*</span>
-<span class=cm> 直線を描写するclass.</span>
-<span class=cm> */</span>
-<span class=kd>class</span> <span class=nc>drawLineView</span><span class=p>:</span> <span class=bp>UIView</span> <span class=p>{</span>
+/*
+ 直線を描写するclass.
+ */
+class drawLineView: UIView {
 
-    <span class=kr>override</span> <span class=kd>init</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>)</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>frame</span><span class=p>)</span>
-    <span class=p>}</span>
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
 
-    <span class=kr>required</span> <span class=kd>init</span><span class=p>(</span><span class=n>coder</span> <span class=n>aDecoder</span><span class=p>:</span> <span class=bp>NSCoder</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>fatalError</span><span class=p>(</span><span class=s>&quot;init(coder:) has not been implemented&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+    required init(coder aDecoder: NSCoder) {
+        fatalError(&quot;init(coder:) has not been implemented&quot;)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     表示を更新する必要が生ずると自動的に呼び出される.</span>
-<span class=cm>     */</span>
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>draw</span><span class=p>(</span><span class=kc>_</span> <span class=n>rect</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>)</span> <span class=p>{</span>
+    /*
+     表示を更新する必要が生ずると自動的に呼び出される.
+     */
+    override func draw(_ rect: CGRect) {
 
-        <span class=c1>// viewの設定.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>borderColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>brown</span><span class=p>.</span><span class=n>cgColor</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>borderWidth</span> <span class=p>=</span> <span class=mf>0.5</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>10.0</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
+        // viewの設定.
+        self.layer.borderColor = UIColor.brown.cgColor
+        self.layer.borderWidth = 0.5
+        self.layer.cornerRadius = 10.0
+        self.layer.masksToBounds = true
 
-        <span class=c1>// BezierPathを生成.</span>
-        <span class=kd>let</span> <span class=nv>myLine</span><span class=p>:</span> <span class=bp>UIBezierPath</span> <span class=p>=</span> <span class=bp>UIBezierPath</span><span class=p>()</span>
+        // BezierPathを生成.
+        let myLine: UIBezierPath = UIBezierPath()
 
-        <span class=c1>// 線の色を青色に設定.</span>
-        <span class=bp>UIColor</span><span class=p>.</span><span class=n>red</span><span class=p>.</span><span class=n>setStroke</span><span class=p>()</span>
+        // 線の色を青色に設定.
+        UIColor.red.setStroke()
 
-        <span class=c1>// 始点を設定.</span>
-        <span class=n>myLine</span><span class=p>.</span><span class=n>move</span><span class=p>(</span><span class=n>to</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>.</span><span class=n>zero</span><span class=p>)</span>
+        // 始点を設定.
+        myLine.move(to: CGPoint.zero)
 
-        <span class=c1>// 次点を設定.</span>
-        <span class=n>myLine</span><span class=p>.</span><span class=n>addLine</span><span class=p>(</span><span class=n>to</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>50</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>150</span><span class=p>))</span>
-        <span class=n>myLine</span><span class=p>.</span><span class=n>addLine</span><span class=p>(</span><span class=n>to</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>200</span><span class=p>,</span><span class=n>y</span><span class=p>:</span><span class=mi>100</span><span class=p>))</span>
+        // 次点を設定.
+        myLine.addLine(to: CGPoint(x:50, y:150))
+        myLine.addLine(to: CGPoint(x:200,y:100))
 
-        <span class=c1>// 終点を設定.</span>
-        <span class=n>myLine</span><span class=p>.</span><span class=n>addLine</span><span class=p>(</span><span class=n>to</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>height</span><span class=p>))</span>
+        // 終点を設定.
+        myLine.addLine(to: CGPoint(x:self.bounds.width, y:self.bounds.height))
 
-        <span class=c1>// 始点と終着点を繋いで閉じる.</span>
-        <span class=n>myLine</span><span class=p>.</span><span class=n>close</span><span class=p>()</span>
+        // 始点と終着点を繋いで閉じる.
+        myLine.close()
 
-        <span class=c1>// 塗りつぶしの色を設定.</span>
-        <span class=bp>UIColor</span><span class=p>.</span><span class=n>yellow</span><span class=p>.</span><span class=n>setFill</span><span class=p>()</span>
+        // 塗りつぶしの色を設定.
+        UIColor.yellow.setFill()
 
-        <span class=c1>// 線で閉じた内側を塗りつぶす.</span>
-        <span class=n>myLine</span><span class=p>.</span><span class=n>fill</span><span class=p>()</span>
+        // 線で閉じた内側を塗りつぶす.
+        myLine.fill()
 
-        <span class=c1>// 線の太さを設定.</span>
-        <span class=n>myLine</span><span class=p>.</span><span class=n>lineWidth</span> <span class=p>=</span> <span class=mf>3.0</span>
+        // 線の太さを設定.
+        myLine.lineWidth = 3.0
 
-        <span class=c1>// 描画.</span>
-        <span class=n>myLine</span><span class=p>.</span><span class=n>stroke</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-3 type=radio id=tab-group-3-1_swift class=code-tab data-lang=swift aria-controls=tab-group-3-1_swift-panel role=tab><label for=tab-group-3-1_swift class=code-tab-label data-lang=swift id=tab-group-3-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-3-1_swift-panel aria-labelledby=tab-group-3-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  drawLineView.swift</span>
-<span class=c1>//  UIKit052_2.3</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/21.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+        // 描画.
+        myLine.stroke()
+    }
+}
+</code></pre></div><input name=tab-group-3 type=radio id=tab-group-3-1_swift class=code-tab data-lang=swift aria-controls=tab-group-3-1_swift-panel role=tab><label for=tab-group-3-1_swift class=code-tab-label data-lang=swift id=tab-group-3-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-3-1_swift-panel aria-labelledby=tab-group-3-1_swift-label><pre><code class=swift>//
+//  drawLineView.swift
+//  UIKit052_2.3
+//
+//  Created by KimikoWatanabe on 2016/08/21.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=cm>/*</span>
-<span class=cm> 直線を描写するclass.</span>
-<span class=cm> */</span>
-<span class=kd>class</span> <span class=nc>drawLineView</span><span class=p>:</span> <span class=bp>UIView</span> <span class=p>{</span>
+/*
+ 直線を描写するclass.
+ */
+class drawLineView: UIView {
 
-    <span class=kr>override</span> <span class=kd>init</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>)</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>frame</span><span class=p>)</span>
-    <span class=p>}</span>
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
 
-    <span class=kr>required</span> <span class=kd>init</span><span class=p>(</span><span class=n>coder</span> <span class=n>aDecoder</span><span class=p>:</span> <span class=bp>NSCoder</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>fatalError</span><span class=p>(</span><span class=s>&quot;init(coder:) has not been implemented&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+    required init(coder aDecoder: NSCoder) {
+        fatalError(&quot;init(coder:) has not been implemented&quot;)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     表示を更新する必要が生ずると自動的に呼び出される.</span>
-<span class=cm>     */</span>
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>drawRect</span><span class=p>(</span><span class=n>rect</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>)</span> <span class=p>{</span>
+    /*
+     表示を更新する必要が生ずると自動的に呼び出される.
+     */
+    override func drawRect(rect: CGRect) {
 
-        <span class=c1>// viewの設定.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>borderColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>brownColor</span><span class=p>().</span><span class=n>CGColor</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>borderWidth</span> <span class=p>=</span> <span class=mf>0.5</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>10.0</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
+        // viewの設定.
+        self.layer.borderColor = UIColor.brownColor().CGColor
+        self.layer.borderWidth = 0.5
+        self.layer.cornerRadius = 10.0
+        self.layer.masksToBounds = true
 
-        <span class=c1>// BezierPathを生成.</span>
-        <span class=kd>let</span> <span class=nv>myLine</span><span class=p>:</span> <span class=bp>UIBezierPath</span> <span class=p>=</span> <span class=bp>UIBezierPath</span><span class=p>()</span>
+        // BezierPathを生成.
+        let myLine: UIBezierPath = UIBezierPath()
 
-        <span class=c1>// 線の色を青色に設定.</span>
-        <span class=bp>UIColor</span><span class=p>.</span><span class=n>redColor</span><span class=p>().</span><span class=n>setStroke</span><span class=p>()</span>
+        // 線の色を青色に設定.
+        UIColor.redColor().setStroke()
 
-        <span class=c1>// 始点を設定.</span>
-        <span class=n>myLine</span><span class=p>.</span><span class=n>moveToPoint</span><span class=p>(</span><span class=n>CGPointZero</span><span class=p>)</span>
+        // 始点を設定.
+        myLine.moveToPoint(CGPointZero)
 
-        <span class=c1>// 次点を設定.</span>
-        <span class=n>myLine</span><span class=p>.</span><span class=n>addLineToPoint</span><span class=p>(</span><span class=n>CGPointMake</span><span class=p>(</span><span class=mi>50</span><span class=p>,</span> <span class=mi>150</span><span class=p>))</span>
-        <span class=n>myLine</span><span class=p>.</span><span class=n>addLineToPoint</span><span class=p>(</span><span class=n>CGPointMake</span><span class=p>(</span><span class=mi>200</span><span class=p>,</span> <span class=mi>100</span><span class=p>))</span>
+        // 次点を設定.
+        myLine.addLineToPoint(CGPointMake(50, 150))
+        myLine.addLineToPoint(CGPointMake(200, 100))
 
-        <span class=c1>// 終点を設定.</span>
-        <span class=n>myLine</span><span class=p>.</span><span class=n>addLineToPoint</span><span class=p>(</span><span class=n>CGPointMake</span><span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=p>,</span> <span class=kc>self</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>height</span><span class=p>))</span>
+        // 終点を設定.
+        myLine.addLineToPoint(CGPointMake(self.bounds.width, self.bounds.height))
 
-        <span class=c1>// 始点と終着点を繋いで閉じる.</span>
-        <span class=n>myLine</span><span class=p>.</span><span class=n>closePath</span><span class=p>()</span>
+        // 始点と終着点を繋いで閉じる.
+        myLine.closePath()
 
-        <span class=c1>// 塗りつぶしの色を設定.</span>
-        <span class=bp>UIColor</span><span class=p>.</span><span class=n>yellowColor</span><span class=p>().</span><span class=n>setFill</span><span class=p>()</span>
+        // 塗りつぶしの色を設定.
+        UIColor.yellowColor().setFill()
 
-        <span class=c1>// 線で閉じた内側を塗りつぶす.</span>
-        <span class=n>myLine</span><span class=p>.</span><span class=n>fill</span><span class=p>()</span>
+        // 線で閉じた内側を塗りつぶす.
+        myLine.fill()
 
-        <span class=c1>// 線の太さを設定.</span>
-        <span class=n>myLine</span><span class=p>.</span><span class=n>lineWidth</span> <span class=p>=</span> <span class=mf>3.0</span>
+        // 線の太さを設定.
+        myLine.lineWidth = 3.0
 
-        <span class=c1>// 描画.</span>
-        <span class=n>myLine</span><span class=p>.</span><span class=n>stroke</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+        // 描画.
+        myLine.stroke()
+    }
+}
+</code></pre></div></div>
 <h2 id="3x4x">3.xと4.xの差分</h2>
 <ul>
 <li><code>UIControlEvents</code> が <code>UIControl.Event</code> に変更</li>

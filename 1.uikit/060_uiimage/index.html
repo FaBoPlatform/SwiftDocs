@@ -2317,333 +2317,172 @@
                 
                 <h1 id="uiimage">UIImageを合成する</h1>
 <p><img alt="Preview uikit060_1" src="../img/uikit060_1.png" /> <img alt="Preview uikit060_2" src="../img/uikit060_2.png" /> <img alt="Preview uikit060_3" src="../img/uikit060_3.png" /></p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x/3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span>
-<span class=normal>73</span>
-<span class=normal>74</span>
-<span class=normal>75</span>
-<span class=normal>76</span>
-<span class=normal>77</span>
-<span class=normal>78</span>
-<span class=normal>79</span>
-<span class=normal>80</span>
-<span class=normal>81</span>
-<span class=normal>82</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit060</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x/3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit060
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>extension</span> <span class=bp>UIImage</span> <span class=p>{</span>
+extension UIImage {
 
-    <span class=cm>/*</span>
-<span class=cm>     画像をResizeするクラスメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>class</span> <span class=nc>func</span> <span class=n>ResizeÜIImage</span><span class=p>(</span><span class=n>image</span> <span class=p>:</span> <span class=bp>UIImage</span><span class=p>,</span><span class=n>width</span> <span class=p>:</span> <span class=n>CGFloat</span><span class=p>,</span> <span class=n>height</span> <span class=p>:</span> <span class=n>CGFloat</span><span class=p>)-&gt;</span> <span class=bp>UIImage</span><span class=p>!{</span>
+    /*
+     画像をResizeするクラスメソッド.
+     */
+    class func ResizeÜIImage(image : UIImage,width : CGFloat, height : CGFloat)-&gt; UIImage!{
 
-        <span class=c1>// 指定された画像の大きさのコンテキストを用意.</span>
-        <span class=n>UIGraphicsBeginImageContext</span><span class=p>(</span><span class=n>CGSize</span><span class=p>(</span><span class=n>width</span><span class=p>:</span> <span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>height</span><span class=p>))</span>
+        // 指定された画像の大きさのコンテキストを用意.
+        UIGraphicsBeginImageContext(CGSize(width: width, height: height))
 
-        <span class=c1>// コンテキストに画像を描画する.</span>
-        <span class=n>image</span><span class=p>.</span><span class=n>draw</span><span class=p>(</span><span class=k>in</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>height</span><span class=p>))</span>
+        // コンテキストに画像を描画する.
+        image.draw(in: CGRect(x: 0, y: 0, width: width, height: height))
 
-        <span class=c1>// コンテキストからUIImageを作る.</span>
-        <span class=kd>let</span> <span class=nv>newImage</span> <span class=p>=</span> <span class=n>UIGraphicsGetImageFromCurrentImageContext</span><span class=p>()</span>
+        // コンテキストからUIImageを作る.
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
 
-        <span class=c1>// コンテキストを閉じる.</span>
-        <span class=n>UIGraphicsEndImageContext</span><span class=p>()</span>
+        // コンテキストを閉じる.
+        UIGraphicsEndImageContext()
 
-        <span class=k>return</span> <span class=n>newImage</span>
-    <span class=p>}</span>
+        return newImage
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     画像を合成するクラスメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>class</span> <span class=nc>func</span> <span class=n>ComposeUIImage</span><span class=p>(</span><span class=n>UIImageArray</span> <span class=p>:</span> <span class=p>[</span><span class=bp>UIImage</span><span class=p>],</span> <span class=n>width</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>,</span> <span class=n>height</span> <span class=p>:</span> <span class=n>CGFloat</span><span class=p>)-&gt;</span><span class=bp>UIImage</span><span class=p>!{</span>
+    /*
+     画像を合成するクラスメソッド.
+     */
+    class func ComposeUIImage(UIImageArray : [UIImage], width: CGFloat, height : CGFloat)-&gt;UIImage!{
 
-        <span class=c1>// 指定された画像の大きさのコンテキストを用意.</span>
-        <span class=n>UIGraphicsBeginImageContext</span><span class=p>(</span><span class=n>CGSize</span><span class=p>(</span><span class=n>width</span><span class=p>:</span> <span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>height</span><span class=p>))</span>
+        // 指定された画像の大きさのコンテキストを用意.
+        UIGraphicsBeginImageContext(CGSize(width: width, height: height))
 
-        <span class=c1>// UIImageのある分回す.</span>
-        <span class=k>for</span> <span class=n>image</span> <span class=p>:</span> <span class=bp>UIImage</span> <span class=k>in</span> <span class=n>UIImageArray</span> <span class=p>{</span>
+        // UIImageのある分回す.
+        for image : UIImage in UIImageArray {
 
-            <span class=c1>// コンテキストに画像を描画する.</span>
-            <span class=n>image</span><span class=p>.</span><span class=n>draw</span><span class=p>(</span><span class=k>in</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=n>image</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>image</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>height</span><span class=p>))</span>
-        <span class=p>}</span>
+            // コンテキストに画像を描画する.
+            image.draw(in: CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height))
+        }
 
-        <span class=c1>// コンテキストからUIImageを作る.</span>
-        <span class=kd>let</span> <span class=nv>newImage</span> <span class=p>=</span> <span class=n>UIGraphicsGetImageFromCurrentImageContext</span><span class=p>()</span>
+        // コンテキストからUIImageを作る.
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
 
-        <span class=c1>// コンテキストを閉じる.</span>
-        <span class=n>UIGraphicsEndImageContext</span><span class=p>()</span>
+        // コンテキストを閉じる.
+        UIGraphicsEndImageContext()
 
-        <span class=k>return</span> <span class=n>newImage</span>
-    <span class=p>}</span>
-<span class=p>}</span>
+        return newImage
+    }
+}
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class ViewController: UIViewController {
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
+    override func viewDidLoad() {
 
-        <span class=c1>// 1つ目のUIImageを作る.</span>
-        <span class=kd>var</span> <span class=nv>myImage1</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>named</span><span class=p>:</span> <span class=s>&quot;sample1&quot;</span><span class=p>)</span><span class=o>!</span>
+        // 1つ目のUIImageを作る.
+        var myImage1 = UIImage(named: &quot;sample1&quot;)!
 
-        <span class=c1>// リサイズする.</span>
-        <span class=n>myImage1</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>.</span><span class=n>ResizeÜIImage</span><span class=p>(</span><span class=n>image</span><span class=p>:</span> <span class=n>myImage1</span><span class=p>,</span><span class=n>width</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxX</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxY</span><span class=p>)</span>
+        // リサイズする.
+        myImage1 = UIImage.ResizeÜIImage(image: myImage1,width: self.view.frame.maxX, height: self.view.frame.maxY)
 
-        <span class=c1>// 2つ目のUIImageを作る.</span>
-        <span class=kd>var</span> <span class=nv>myImage2</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>named</span><span class=p>:</span> <span class=s>&quot;sample2&quot;</span><span class=p>)</span><span class=o>!</span>
+        // 2つ目のUIImageを作る.
+        var myImage2 = UIImage(named: &quot;sample2&quot;)!
 
-        <span class=c1>// リサイズする.</span>
-        <span class=n>myImage2</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>.</span><span class=n>ResizeÜIImage</span><span class=p>(</span><span class=n>image</span><span class=p>:</span> <span class=n>myImage2</span><span class=p>,</span><span class=n>width</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>midX</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>midY</span><span class=p>)</span>
+        // リサイズする.
+        myImage2 = UIImage.ResizeÜIImage(image: myImage2,width: self.view.frame.midX, height: self.view.frame.midY)
 
-        <span class=c1>// 画像を合成する.</span>
-        <span class=kd>let</span> <span class=nv>ComposedImage</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>.</span><span class=n>ComposeUIImage</span><span class=p>(</span><span class=n>UIImageArray</span><span class=p>:</span> <span class=p>[</span><span class=n>myImage1</span><span class=p>,</span> <span class=n>myImage2</span><span class=p>],</span> <span class=n>width</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxX</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxY</span><span class=p>)</span>
+        // 画像を合成する.
+        let ComposedImage = UIImage.ComposeUIImage(UIImageArray: [myImage1, myImage2], width: self.view.frame.maxX, height: self.view.frame.maxY)
 
-        <span class=c1>// UIImageViewに合成されたUIImageを指定する.</span>
-        <span class=kd>let</span> <span class=nv>myImageView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>image</span><span class=p>:</span> <span class=n>ComposedImage</span><span class=p>)</span>
+        // UIImageViewに合成されたUIImageを指定する.
+        let myImageView = UIImageView(image: ComposedImage)
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myImageView</span><span class=p>)</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span>
-<span class=normal>73</span>
-<span class=normal>74</span>
-<span class=normal>75</span>
-<span class=normal>76</span>
-<span class=normal>77</span>
-<span class=normal>78</span>
-<span class=normal>79</span>
-<span class=normal>80</span>
-<span class=normal>81</span>
-<span class=normal>82</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit060</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+        self.view.addSubview(myImageView)
+    }
+}
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit060
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>extension</span> <span class=bp>UIImage</span><span class=p>{</span>
+import UIKit
 
-    <span class=cm>/*</span>
-<span class=cm>     画像をResizeするクラスメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>class</span> <span class=nc>func</span> <span class=n>ResizeÜIImage</span><span class=p>(</span><span class=n>image</span> <span class=p>:</span> <span class=bp>UIImage</span><span class=p>,</span><span class=n>width</span> <span class=p>:</span> <span class=n>CGFloat</span><span class=p>,</span> <span class=n>height</span> <span class=p>:</span> <span class=n>CGFloat</span><span class=p>)-&gt;</span> <span class=bp>UIImage</span><span class=p>!{</span>
+extension UIImage{
 
-        <span class=c1>// 指定された画像の大きさのコンテキストを用意.</span>
-        <span class=n>UIGraphicsBeginImageContext</span><span class=p>(</span><span class=n>CGSizeMake</span><span class=p>(</span><span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>))</span>
+    /*
+     画像をResizeするクラスメソッド.
+     */
+    class func ResizeÜIImage(image : UIImage,width : CGFloat, height : CGFloat)-&gt; UIImage!{
 
-        <span class=c1>// コンテキストに画像を描画する.</span>
-        <span class=n>image</span><span class=p>.</span><span class=n>drawInRect</span><span class=p>(</span><span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>))</span>
+        // 指定された画像の大きさのコンテキストを用意.
+        UIGraphicsBeginImageContext(CGSizeMake(width, height))
 
-        <span class=c1>// コンテキストからUIImageを作る.</span>
-        <span class=kd>let</span> <span class=nv>newImage</span> <span class=p>=</span> <span class=n>UIGraphicsGetImageFromCurrentImageContext</span><span class=p>()</span>
+        // コンテキストに画像を描画する.
+        image.drawInRect(CGRectMake(0, 0, width, height))
 
-        <span class=c1>// コンテキストを閉じる.</span>
-        <span class=n>UIGraphicsEndImageContext</span><span class=p>()</span>
+        // コンテキストからUIImageを作る.
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
 
-        <span class=k>return</span> <span class=n>newImage</span>
-    <span class=p>}</span>
+        // コンテキストを閉じる.
+        UIGraphicsEndImageContext()
 
-    <span class=cm>/*</span>
-<span class=cm>     画像を合成するクラスメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>class</span> <span class=nc>func</span> <span class=n>ComposeUIImage</span><span class=p>(</span><span class=n>UIImageArray</span> <span class=p>:</span> <span class=p>[</span><span class=bp>UIImage</span><span class=p>],</span> <span class=n>width</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>,</span> <span class=n>height</span> <span class=p>:</span> <span class=n>CGFloat</span><span class=p>)-&gt;</span><span class=bp>UIImage</span><span class=p>!{</span>
+        return newImage
+    }
 
-        <span class=c1>// 指定された画像の大きさのコンテキストを用意.</span>
-        <span class=n>UIGraphicsBeginImageContext</span><span class=p>(</span><span class=n>CGSizeMake</span><span class=p>(</span><span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>))</span>
+    /*
+     画像を合成するクラスメソッド.
+     */
+    class func ComposeUIImage(UIImageArray : [UIImage], width: CGFloat, height : CGFloat)-&gt;UIImage!{
 
-        <span class=c1>// UIImageのある分回す.</span>
-        <span class=k>for</span> <span class=n>image</span> <span class=p>:</span> <span class=bp>UIImage</span> <span class=k>in</span> <span class=n>UIImageArray</span> <span class=p>{</span>
+        // 指定された画像の大きさのコンテキストを用意.
+        UIGraphicsBeginImageContext(CGSizeMake(width, height))
 
-            <span class=c1>// コンテキストに画像を描画する.</span>
-            <span class=n>image</span><span class=p>.</span><span class=n>drawInRect</span><span class=p>(</span><span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=n>image</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>width</span><span class=p>,</span> <span class=n>image</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>height</span><span class=p>))</span>
-        <span class=p>}</span>
+        // UIImageのある分回す.
+        for image : UIImage in UIImageArray {
 
-        <span class=c1>// コンテキストからUIImageを作る.</span>
-        <span class=kd>let</span> <span class=nv>newImage</span> <span class=p>=</span> <span class=n>UIGraphicsGetImageFromCurrentImageContext</span><span class=p>()</span>
+            // コンテキストに画像を描画する.
+            image.drawInRect(CGRectMake(0, 0, image.size.width, image.size.height))
+        }
 
-        <span class=c1>// コンテキストを閉じる.</span>
-        <span class=n>UIGraphicsEndImageContext</span><span class=p>()</span>
+        // コンテキストからUIImageを作る.
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
 
-        <span class=k>return</span> <span class=n>newImage</span>
-    <span class=p>}</span>
-<span class=p>}</span>
+        // コンテキストを閉じる.
+        UIGraphicsEndImageContext()
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+        return newImage
+    }
+}
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
+class ViewController: UIViewController {
 
-        <span class=c1>// 1つ目のUIImageを作る.</span>
-        <span class=kd>var</span> <span class=nv>myImage1</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>named</span><span class=p>:</span> <span class=s>&quot;sample1&quot;</span><span class=p>)</span><span class=o>!</span>
+    override func viewDidLoad() {
 
-        <span class=c1>// リサイズする.</span>
-        <span class=n>myImage1</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>.</span><span class=n>ResizeÜIImage</span><span class=p>(</span><span class=n>myImage1</span><span class=p>,</span><span class=n>width</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxX</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxY</span><span class=p>)</span>
+        // 1つ目のUIImageを作る.
+        var myImage1 = UIImage(named: &quot;sample1&quot;)!
 
-        <span class=c1>// 2つ目のUIImageを作る.</span>
-        <span class=kd>var</span> <span class=nv>myImage2</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>named</span><span class=p>:</span> <span class=s>&quot;sample2&quot;</span><span class=p>)</span><span class=o>!</span>
+        // リサイズする.
+        myImage1 = UIImage.ResizeÜIImage(myImage1,width: self.view.frame.maxX, height: self.view.frame.maxY)
 
-        <span class=c1>// リサイズする.</span>
-        <span class=n>myImage2</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>.</span><span class=n>ResizeÜIImage</span><span class=p>(</span><span class=n>myImage2</span><span class=p>,</span><span class=n>width</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>midX</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>midY</span><span class=p>)</span>
+        // 2つ目のUIImageを作る.
+        var myImage2 = UIImage(named: &quot;sample2&quot;)!
 
-        <span class=c1>// 画像を合成する.</span>
-        <span class=kd>let</span> <span class=nv>ComposedImage</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>.</span><span class=n>ComposeUIImage</span><span class=p>([</span><span class=n>myImage1</span><span class=p>,</span> <span class=n>myImage2</span><span class=p>],</span> <span class=n>width</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxX</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxY</span><span class=p>)</span>
+        // リサイズする.
+        myImage2 = UIImage.ResizeÜIImage(myImage2,width: self.view.frame.midX, height: self.view.frame.midY)
 
-        <span class=c1>// UIImageViewに合成されたUIImageを指定する.</span>
-        <span class=kd>let</span> <span class=nv>myImageView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>image</span><span class=p>:</span> <span class=n>ComposedImage</span><span class=p>)</span>
+        // 画像を合成する.
+        let ComposedImage = UIImage.ComposeUIImage([myImage1, myImage2], width: self.view.frame.maxX, height: self.view.frame.maxY)
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myImageView</span><span class=p>)</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+        // UIImageViewに合成されたUIImageを指定する.
+        let myImageView = UIImageView(image: ComposedImage)
+
+        self.view.addSubview(myImageView)
+    }
+}
+</code></pre></div></div>
 <h2 id="2330">2.3と3.0の差分</h2>
 <ul>
 <li>CGRectMakeが廃止</li>

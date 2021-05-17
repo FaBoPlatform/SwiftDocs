@@ -2317,409 +2317,210 @@
                 
                 <h1 id="uiimageview">UIImageViewで画像を表示</h1>
 <p><img alt="Preview uikit014" src="../img/uikit014.png" /></p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x/3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal>  1</span>
-<span class=normal>  2</span>
-<span class=normal>  3</span>
-<span class=normal>  4</span>
-<span class=normal>  5</span>
-<span class=normal>  6</span>
-<span class=normal>  7</span>
-<span class=normal>  8</span>
-<span class=normal>  9</span>
-<span class=normal> 10</span>
-<span class=normal> 11</span>
-<span class=normal> 12</span>
-<span class=normal> 13</span>
-<span class=normal> 14</span>
-<span class=normal> 15</span>
-<span class=normal> 16</span>
-<span class=normal> 17</span>
-<span class=normal> 18</span>
-<span class=normal> 19</span>
-<span class=normal> 20</span>
-<span class=normal> 21</span>
-<span class=normal> 22</span>
-<span class=normal> 23</span>
-<span class=normal> 24</span>
-<span class=normal> 25</span>
-<span class=normal> 26</span>
-<span class=normal> 27</span>
-<span class=normal> 28</span>
-<span class=normal> 29</span>
-<span class=normal> 30</span>
-<span class=normal> 31</span>
-<span class=normal> 32</span>
-<span class=normal> 33</span>
-<span class=normal> 34</span>
-<span class=normal> 35</span>
-<span class=normal> 36</span>
-<span class=normal> 37</span>
-<span class=normal> 38</span>
-<span class=normal> 39</span>
-<span class=normal> 40</span>
-<span class=normal> 41</span>
-<span class=normal> 42</span>
-<span class=normal> 43</span>
-<span class=normal> 44</span>
-<span class=normal> 45</span>
-<span class=normal> 46</span>
-<span class=normal> 47</span>
-<span class=normal> 48</span>
-<span class=normal> 49</span>
-<span class=normal> 50</span>
-<span class=normal> 51</span>
-<span class=normal> 52</span>
-<span class=normal> 53</span>
-<span class=normal> 54</span>
-<span class=normal> 55</span>
-<span class=normal> 56</span>
-<span class=normal> 57</span>
-<span class=normal> 58</span>
-<span class=normal> 59</span>
-<span class=normal> 60</span>
-<span class=normal> 61</span>
-<span class=normal> 62</span>
-<span class=normal> 63</span>
-<span class=normal> 64</span>
-<span class=normal> 65</span>
-<span class=normal> 66</span>
-<span class=normal> 67</span>
-<span class=normal> 68</span>
-<span class=normal> 69</span>
-<span class=normal> 70</span>
-<span class=normal> 71</span>
-<span class=normal> 72</span>
-<span class=normal> 73</span>
-<span class=normal> 74</span>
-<span class=normal> 75</span>
-<span class=normal> 76</span>
-<span class=normal> 77</span>
-<span class=normal> 78</span>
-<span class=normal> 79</span>
-<span class=normal> 80</span>
-<span class=normal> 81</span>
-<span class=normal> 82</span>
-<span class=normal> 83</span>
-<span class=normal> 84</span>
-<span class=normal> 85</span>
-<span class=normal> 86</span>
-<span class=normal> 87</span>
-<span class=normal> 88</span>
-<span class=normal> 89</span>
-<span class=normal> 90</span>
-<span class=normal> 91</span>
-<span class=normal> 92</span>
-<span class=normal> 93</span>
-<span class=normal> 94</span>
-<span class=normal> 95</span>
-<span class=normal> 96</span>
-<span class=normal> 97</span>
-<span class=normal> 98</span>
-<span class=normal> 99</span>
-<span class=normal>100</span>
-<span class=normal>101</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit014</span>
-<span class=c1>//</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x/3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit014
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class ViewController: UIViewController {
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// 画像を設定する.</span>
-        <span class=kd>let</span> <span class=nv>myImage</span><span class=p>:</span> <span class=bp>UIImage</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>named</span><span class=p>:</span> <span class=s>&quot;fabo_logo.png&quot;</span><span class=p>)</span><span class=o>!</span>
-        <span class=kd>let</span> <span class=nv>imageWidth</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>300</span>
-        <span class=kd>let</span> <span class=nv>imageHeight</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>100</span>
+        // 画像を設定する.
+        let myImage: UIImage = UIImage(named: &quot;fabo_logo.png&quot;)!
+        let imageWidth: CGFloat = 300
+        let imageHeight: CGFloat = 100
 
-        <span class=c1>// 画像を縮小する(0.5倍)</span>
-        <span class=c1>// 表示する座標を設定.</span>
-        <span class=kd>let</span> <span class=nv>downPosX</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span> <span class=o>-</span> <span class=n>imageWidth</span><span class=p>)</span> <span class=o>/</span> <span class=mi>2</span>
-        <span class=kd>let</span> <span class=nv>downPosY</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>50</span>
+        // 画像を縮小する(0.5倍)
+        // 表示する座標を設定.
+        let downPosX: CGFloat = (self.view.bounds.width - imageWidth) / 2
+        let downPosY: CGFloat = 50
 
-        <span class=c1>// 表示用のUIImageViewを生成.</span>
-        <span class=kd>let</span> <span class=nv>myScaleDownView</span><span class=p>:</span> <span class=bp>UIImageView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span>  <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=n>downPosX</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=n>downPosY</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=n>imageWidth</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>imageHeight</span><span class=p>))</span>
+        // 表示用のUIImageViewを生成.
+        let myScaleDownView: UIImageView = UIImageView(frame:  CGRect(x: downPosX, y: downPosY, width: imageWidth, height: imageHeight))
 
-        <span class=c1>// UIImageViewに画像を設定する.</span>
-        <span class=n>myScaleDownView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=n>myImage</span>
+        // UIImageViewに画像を設定する.
+        myScaleDownView.image = myImage
 
-        <span class=c1>// 縮小用(0.5倍)のアフィン行列を生成する.</span>
-        <span class=n>myScaleDownView</span><span class=p>.</span><span class=n>transform</span> <span class=p>=</span> <span class=bp>CGAffineTransform</span><span class=p>(</span><span class=n>scaleX</span><span class=p>:</span> <span class=mf>0.5</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mf>0.5</span><span class=p>)</span>
+        // 縮小用(0.5倍)のアフィン行列を生成する.
+        myScaleDownView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
 
-        <span class=c1>// Viewに追加する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myScaleDownView</span><span class=p>)</span>
+        // Viewに追加する.
+        self.view.addSubview(myScaleDownView)
 
 
-        <span class=c1>// 画像を拡大(1.2倍)</span>
-        <span class=c1>// 表示する座標を設定.</span>
-        <span class=kd>let</span> <span class=nv>upPosX</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span> <span class=o>-</span> <span class=n>imageWidth</span><span class=p>)</span> <span class=o>/</span> <span class=mi>2</span>
-        <span class=kd>let</span> <span class=nv>upPosY</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>150</span>
+        // 画像を拡大(1.2倍)
+        // 表示する座標を設定.
+        let upPosX: CGFloat = (self.view.bounds.width - imageWidth) / 2
+        let upPosY: CGFloat = 150
 
-        <span class=c1>// 表示用のUIImageViewを生成.</span>
-        <span class=kd>let</span> <span class=nv>myScaleUpView</span><span class=p>:</span> <span class=bp>UIImageView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span>  <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=n>upPosX</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=n>upPosY</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=n>imageWidth</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>imageHeight</span><span class=p>))</span>
+        // 表示用のUIImageViewを生成.
+        let myScaleUpView: UIImageView = UIImageView(frame:  CGRect(x: upPosX, y: upPosY, width: imageWidth, height: imageHeight))
 
-        <span class=c1>// UIImageViewに画像を設定する.</span>
-        <span class=n>myScaleUpView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=n>myImage</span>
+        // UIImageViewに画像を設定する.
+        myScaleUpView.image = myImage
 
-        <span class=c1>// 縮小用(0.5倍)のアフィン行列を生成する.</span>
-        <span class=n>myScaleUpView</span><span class=p>.</span><span class=n>transform</span> <span class=p>=</span> <span class=bp>CGAffineTransform</span><span class=p>(</span><span class=n>scaleX</span><span class=p>:</span> <span class=mf>1.2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mf>1.2</span><span class=p>)</span>
+        // 縮小用(0.5倍)のアフィン行列を生成する.
+        myScaleUpView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
 
-        <span class=c1>// Viewに追加する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myScaleUpView</span><span class=p>)</span>
-
-
-        <span class=c1>// 画像を回転する.</span>
-        <span class=c1>// 表示する座標を設定.</span>
-        <span class=kd>let</span> <span class=nv>rotatePosX</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span> <span class=o>-</span> <span class=n>imageWidth</span><span class=p>)</span> <span class=o>/</span> <span class=mi>2</span>
-        <span class=kd>let</span> <span class=nv>rotatePosY</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>350</span>
-
-        <span class=c1>// 表示用のUIImageViewを生成.</span>
-        <span class=kd>let</span> <span class=nv>myRotateView</span><span class=p>:</span><span class=bp>UIImageView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=n>rotatePosX</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=n>rotatePosY</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=n>imageWidth</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>imageHeight</span><span class=p>))</span>
-
-        <span class=c1>// UIImageViewに画像を設定する.</span>
-        <span class=n>myRotateView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=n>myImage</span>
-
-        <span class=c1>// radianで回転角度を指定(30度)する.</span>
-        <span class=kd>let</span> <span class=nv>angle</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=n>CGFloat</span><span class=p>((</span><span class=mf>30.0</span> <span class=o>*</span> <span class=n>M_PI</span><span class=p>)</span> <span class=o>/</span> <span class=mf>180.0</span><span class=p>)</span>
-
-        <span class=c1>// 回転用のアフィン行列を生成する.</span>
-        <span class=n>myRotateView</span><span class=p>.</span><span class=n>transform</span> <span class=p>=</span> <span class=bp>CGAffineTransform</span><span class=p>(</span><span class=n>rotationAngle</span><span class=p>:</span> <span class=n>angle</span><span class=p>)</span>
-
-        <span class=c1>// Viewに追加する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myRotateView</span><span class=p>)</span>
+        // Viewに追加する.
+        self.view.addSubview(myScaleUpView)
 
 
-        <span class=c1>// 画像を反転する.</span>
-        <span class=c1>// 表示する座標を設定.</span>
-        <span class=kd>let</span> <span class=nv>reversePosX</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span> <span class=o>-</span> <span class=n>imageWidth</span><span class=p>)</span> <span class=o>/</span> <span class=mi>2</span>
-        <span class=kd>let</span> <span class=nv>reversePosY</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>550</span>
+        // 画像を回転する.
+        // 表示する座標を設定.
+        let rotatePosX: CGFloat = (self.view.bounds.width - imageWidth) / 2
+        let rotatePosY: CGFloat = 350
 
-        <span class=c1>// 表示用のUIImageViewを生成.</span>
-        <span class=kd>let</span> <span class=nv>myReverseView</span><span class=p>:</span> <span class=bp>UIImageView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span>  <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=n>reversePosX</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=n>reversePosY</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=n>imageWidth</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>imageHeight</span><span class=p>))</span>
+        // 表示用のUIImageViewを生成.
+        let myRotateView:UIImageView = UIImageView(frame: CGRect(x: rotatePosX, y: rotatePosY, width: imageWidth, height: imageHeight))
 
-        <span class=c1>// 画像を設定する.</span>
-        <span class=n>myReverseView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=n>myImage</span>
+        // UIImageViewに画像を設定する.
+        myRotateView.image = myImage
 
-        <span class=c1>// 縮小用(0.5倍)のアフィン行列を生成する.</span>
-        <span class=n>myReverseView</span><span class=p>.</span><span class=n>transform</span> <span class=p>=</span> <span class=n>myReverseView</span><span class=p>.</span><span class=n>transform</span><span class=p>.</span><span class=n>scaledBy</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=o>-</span><span class=mf>1.0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mf>1.0</span><span class=p>)</span>
+        // radianで回転角度を指定(30度)する.
+        let angle: CGFloat = CGFloat((30.0 * M_PI) / 180.0)
 
-        <span class=c1>// Viewに追加する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myReverseView</span><span class=p>)</span>
+        // 回転用のアフィン行列を生成する.
+        myRotateView.transform = CGAffineTransform(rotationAngle: angle)
 
-    <span class=p>}</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-        <span class=c1>// Dispose of any resources that can be recreated.</span>
-    <span class=p>}</span>
-
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal>  1</span>
-<span class=normal>  2</span>
-<span class=normal>  3</span>
-<span class=normal>  4</span>
-<span class=normal>  5</span>
-<span class=normal>  6</span>
-<span class=normal>  7</span>
-<span class=normal>  8</span>
-<span class=normal>  9</span>
-<span class=normal> 10</span>
-<span class=normal> 11</span>
-<span class=normal> 12</span>
-<span class=normal> 13</span>
-<span class=normal> 14</span>
-<span class=normal> 15</span>
-<span class=normal> 16</span>
-<span class=normal> 17</span>
-<span class=normal> 18</span>
-<span class=normal> 19</span>
-<span class=normal> 20</span>
-<span class=normal> 21</span>
-<span class=normal> 22</span>
-<span class=normal> 23</span>
-<span class=normal> 24</span>
-<span class=normal> 25</span>
-<span class=normal> 26</span>
-<span class=normal> 27</span>
-<span class=normal> 28</span>
-<span class=normal> 29</span>
-<span class=normal> 30</span>
-<span class=normal> 31</span>
-<span class=normal> 32</span>
-<span class=normal> 33</span>
-<span class=normal> 34</span>
-<span class=normal> 35</span>
-<span class=normal> 36</span>
-<span class=normal> 37</span>
-<span class=normal> 38</span>
-<span class=normal> 39</span>
-<span class=normal> 40</span>
-<span class=normal> 41</span>
-<span class=normal> 42</span>
-<span class=normal> 43</span>
-<span class=normal> 44</span>
-<span class=normal> 45</span>
-<span class=normal> 46</span>
-<span class=normal> 47</span>
-<span class=normal> 48</span>
-<span class=normal> 49</span>
-<span class=normal> 50</span>
-<span class=normal> 51</span>
-<span class=normal> 52</span>
-<span class=normal> 53</span>
-<span class=normal> 54</span>
-<span class=normal> 55</span>
-<span class=normal> 56</span>
-<span class=normal> 57</span>
-<span class=normal> 58</span>
-<span class=normal> 59</span>
-<span class=normal> 60</span>
-<span class=normal> 61</span>
-<span class=normal> 62</span>
-<span class=normal> 63</span>
-<span class=normal> 64</span>
-<span class=normal> 65</span>
-<span class=normal> 66</span>
-<span class=normal> 67</span>
-<span class=normal> 68</span>
-<span class=normal> 69</span>
-<span class=normal> 70</span>
-<span class=normal> 71</span>
-<span class=normal> 72</span>
-<span class=normal> 73</span>
-<span class=normal> 74</span>
-<span class=normal> 75</span>
-<span class=normal> 76</span>
-<span class=normal> 77</span>
-<span class=normal> 78</span>
-<span class=normal> 79</span>
-<span class=normal> 80</span>
-<span class=normal> 81</span>
-<span class=normal> 82</span>
-<span class=normal> 83</span>
-<span class=normal> 84</span>
-<span class=normal> 85</span>
-<span class=normal> 86</span>
-<span class=normal> 87</span>
-<span class=normal> 88</span>
-<span class=normal> 89</span>
-<span class=normal> 90</span>
-<span class=normal> 91</span>
-<span class=normal> 92</span>
-<span class=normal> 93</span>
-<span class=normal> 94</span>
-<span class=normal> 95</span>
-<span class=normal> 96</span>
-<span class=normal> 97</span>
-<span class=normal> 98</span>
-<span class=normal> 99</span>
-<span class=normal>100</span>
-<span class=normal>101</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit014</span>
-<span class=c1>//</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
-
-<span class=kd>import</span> <span class=nc>UIKit</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-
-        <span class=c1>// 画像を設定する.</span>
-        <span class=kd>let</span> <span class=nv>myImage</span><span class=p>:</span> <span class=bp>UIImage</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>named</span><span class=p>:</span> <span class=s>&quot;fabo_logo.png&quot;</span><span class=p>)</span><span class=o>!</span>
-        <span class=kd>let</span> <span class=nv>imageWidth</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>300</span>
-        <span class=kd>let</span> <span class=nv>imageHeight</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>100</span>
-
-        <span class=c1>// 画像を縮小する(0.5倍)</span>
-        <span class=c1>// 表示する座標を設定.</span>
-        <span class=kd>let</span> <span class=nv>downPosX</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span> <span class=o>-</span> <span class=n>imageWidth</span><span class=p>)</span> <span class=o>/</span> <span class=mi>2</span>
-        <span class=kd>let</span> <span class=nv>downPosY</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>50</span>
-
-        <span class=c1>// 表示用のUIImageViewを生成.</span>
-        <span class=kd>let</span> <span class=nv>myScaleDownView</span><span class=p>:</span> <span class=bp>UIImageView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span>  <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=n>downPosX</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=n>downPosY</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=n>imageWidth</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>imageHeight</span><span class=p>))</span>
-
-        <span class=c1>// UIImageViewに画像を設定する.</span>
-        <span class=n>myScaleDownView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=n>myImage</span>
-
-        <span class=c1>// 縮小用(0.5倍)のアフィン行列を生成する.</span>
-        <span class=n>myScaleDownView</span><span class=p>.</span><span class=n>transform</span> <span class=p>=</span> <span class=n>CGAffineTransformMakeScale</span><span class=p>(</span><span class=mf>0.5</span><span class=p>,</span> <span class=mf>0.5</span><span class=p>)</span>
-
-        <span class=c1>// Viewに追加する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myScaleDownView</span><span class=p>)</span>
+        // Viewに追加する.
+        self.view.addSubview(myRotateView)
 
 
-        <span class=c1>// 画像を拡大(1.2倍)</span>
-        <span class=c1>// 表示する座標を設定.</span>
-        <span class=kd>let</span> <span class=nv>upPosX</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span> <span class=o>-</span> <span class=n>imageWidth</span><span class=p>)</span> <span class=o>/</span> <span class=mi>2</span>
-        <span class=kd>let</span> <span class=nv>upPosY</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>150</span>
+        // 画像を反転する.
+        // 表示する座標を設定.
+        let reversePosX: CGFloat = (self.view.bounds.width - imageWidth) / 2
+        let reversePosY: CGFloat = 550
 
-        <span class=c1>// 表示用のUIImageViewを生成.</span>
-        <span class=kd>let</span> <span class=nv>myScaleUpView</span><span class=p>:</span> <span class=bp>UIImageView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span>  <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=n>upPosX</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=n>upPosY</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=n>imageWidth</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>imageHeight</span><span class=p>))</span>
+        // 表示用のUIImageViewを生成.
+        let myReverseView: UIImageView = UIImageView(frame:  CGRect(x: reversePosX, y: reversePosY, width: imageWidth, height: imageHeight))
 
-        <span class=c1>// UIImageViewに画像を設定する.</span>
-        <span class=n>myScaleUpView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=n>myImage</span>
+        // 画像を設定する.
+        myReverseView.image = myImage
 
-        <span class=c1>// 縮小用(0.5倍)のアフィン行列を生成する.</span>
-        <span class=n>myScaleUpView</span><span class=p>.</span><span class=n>transform</span> <span class=p>=</span> <span class=n>CGAffineTransformMakeScale</span><span class=p>(</span><span class=mf>1.2</span><span class=p>,</span> <span class=mf>1.2</span><span class=p>)</span>
+        // 縮小用(0.5倍)のアフィン行列を生成する.
+        myReverseView.transform = myReverseView.transform.scaledBy(x: -1.0, y: 1.0)
 
-        <span class=c1>// Viewに追加する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myScaleUpView</span><span class=p>)</span>
+        // Viewに追加する.
+        self.view.addSubview(myReverseView)
+
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit014
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // 画像を設定する.
+        let myImage: UIImage = UIImage(named: &quot;fabo_logo.png&quot;)!
+        let imageWidth: CGFloat = 300
+        let imageHeight: CGFloat = 100
+
+        // 画像を縮小する(0.5倍)
+        // 表示する座標を設定.
+        let downPosX: CGFloat = (self.view.bounds.width - imageWidth) / 2
+        let downPosY: CGFloat = 50
+
+        // 表示用のUIImageViewを生成.
+        let myScaleDownView: UIImageView = UIImageView(frame:  CGRect(x: downPosX, y: downPosY, width: imageWidth, height: imageHeight))
+
+        // UIImageViewに画像を設定する.
+        myScaleDownView.image = myImage
+
+        // 縮小用(0.5倍)のアフィン行列を生成する.
+        myScaleDownView.transform = CGAffineTransformMakeScale(0.5, 0.5)
+
+        // Viewに追加する.
+        self.view.addSubview(myScaleDownView)
 
 
-        <span class=c1>// 画像を回転する.</span>
-        <span class=c1>// 表示する座標を設定.</span>
-        <span class=kd>let</span> <span class=nv>rotatePosX</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span> <span class=o>-</span> <span class=n>imageWidth</span><span class=p>)</span> <span class=o>/</span> <span class=mi>2</span>
-        <span class=kd>let</span> <span class=nv>rotatePosY</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>350</span>
+        // 画像を拡大(1.2倍)
+        // 表示する座標を設定.
+        let upPosX: CGFloat = (self.view.bounds.width - imageWidth) / 2
+        let upPosY: CGFloat = 150
 
-        <span class=c1>// 表示用のUIImageViewを生成.</span>
-        <span class=kd>let</span> <span class=nv>myRotateView</span><span class=p>:</span><span class=bp>UIImageView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=n>rotatePosX</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=n>rotatePosY</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=n>imageWidth</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>imageHeight</span><span class=p>))</span>
+        // 表示用のUIImageViewを生成.
+        let myScaleUpView: UIImageView = UIImageView(frame:  CGRect(x: upPosX, y: upPosY, width: imageWidth, height: imageHeight))
 
-        <span class=c1>// UIImageViewに画像を設定する.</span>
-        <span class=n>myRotateView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=n>myImage</span>
+        // UIImageViewに画像を設定する.
+        myScaleUpView.image = myImage
 
-        <span class=c1>// radianで回転角度を指定(30度)する.</span>
-        <span class=kd>let</span> <span class=nv>angle</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=n>CGFloat</span><span class=p>((</span><span class=mf>30.0</span> <span class=o>*</span> <span class=n>M_PI</span><span class=p>)</span> <span class=o>/</span> <span class=mf>180.0</span><span class=p>)</span>
+        // 縮小用(0.5倍)のアフィン行列を生成する.
+        myScaleUpView.transform = CGAffineTransformMakeScale(1.2, 1.2)
 
-        <span class=c1>// 回転用のアフィン行列を生成する.</span>
-        <span class=n>myRotateView</span><span class=p>.</span><span class=n>transform</span> <span class=p>=</span> <span class=n>CGAffineTransformMakeRotation</span><span class=p>(</span><span class=n>angle</span><span class=p>)</span>
-
-        <span class=c1>// Viewに追加する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myRotateView</span><span class=p>)</span>
+        // Viewに追加する.
+        self.view.addSubview(myScaleUpView)
 
 
-        <span class=c1>// 画像を反転する.</span>
-        <span class=c1>// 表示する座標を設定.</span>
-        <span class=kd>let</span> <span class=nv>reversePosX</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span> <span class=o>-</span> <span class=n>imageWidth</span><span class=p>)</span> <span class=o>/</span> <span class=mi>2</span>
-        <span class=kd>let</span> <span class=nv>reversePosY</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>550</span>
+        // 画像を回転する.
+        // 表示する座標を設定.
+        let rotatePosX: CGFloat = (self.view.bounds.width - imageWidth) / 2
+        let rotatePosY: CGFloat = 350
 
-        <span class=c1>// 表示用のUIImageViewを生成.</span>
-        <span class=kd>let</span> <span class=nv>myReverseView</span><span class=p>:</span> <span class=bp>UIImageView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span>  <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=n>reversePosX</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=n>reversePosY</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=n>imageWidth</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>imageHeight</span><span class=p>))</span>
+        // 表示用のUIImageViewを生成.
+        let myRotateView:UIImageView = UIImageView(frame: CGRect(x: rotatePosX, y: rotatePosY, width: imageWidth, height: imageHeight))
 
-        <span class=c1>// 画像を設定する.</span>
-        <span class=n>myReverseView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=n>myImage</span>
+        // UIImageViewに画像を設定する.
+        myRotateView.image = myImage
 
-        <span class=c1>// 縮小用(0.5倍)のアフィン行列を生成する.</span>
-        <span class=n>myReverseView</span><span class=p>.</span><span class=n>transform</span> <span class=p>=</span> <span class=n>CGAffineTransformScale</span><span class=p>(</span><span class=n>myReverseView</span><span class=p>.</span><span class=n>transform</span><span class=p>,</span> <span class=o>-</span><span class=mf>1.0</span><span class=p>,</span> <span class=mf>1.0</span><span class=p>)</span>
+        // radianで回転角度を指定(30度)する.
+        let angle: CGFloat = CGFloat((30.0 * M_PI) / 180.0)
 
-        <span class=c1>// Viewに追加する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myReverseView</span><span class=p>)</span>
+        // 回転用のアフィン行列を生成する.
+        myRotateView.transform = CGAffineTransformMakeRotation(angle)
 
-    <span class=p>}</span>
+        // Viewに追加する.
+        self.view.addSubview(myRotateView)
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-        <span class=c1>// Dispose of any resources that can be recreated.</span>
-    <span class=p>}</span>
 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+        // 画像を反転する.
+        // 表示する座標を設定.
+        let reversePosX: CGFloat = (self.view.bounds.width - imageWidth) / 2
+        let reversePosY: CGFloat = 550
+
+        // 表示用のUIImageViewを生成.
+        let myReverseView: UIImageView = UIImageView(frame:  CGRect(x: reversePosX, y: reversePosY, width: imageWidth, height: imageHeight))
+
+        // 画像を設定する.
+        myReverseView.image = myImage
+
+        // 縮小用(0.5倍)のアフィン行列を生成する.
+        myReverseView.transform = CGAffineTransformScale(myReverseView.transform, -1.0, 1.0)
+
+        // Viewに追加する.
+        self.view.addSubview(myReverseView)
+
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+}
+
+</code></pre></div></div>
 <h2 id="2330">2.3と3.0の差分</h2>
 <ul>
 <li>CGAffineTransformの引数定義の変更.</li>

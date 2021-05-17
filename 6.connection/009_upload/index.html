@@ -2346,428 +2346,219 @@
                 <h1 id="_1">ファイルのアップロード</h1>
 <p><img alt="Preview connection009" src="../img/Connection009.png" /></p>
 <h3 id="ios9ats">iOS9からリクエスト先によってはATSを無効化・対処する必要があります</h3>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swfit 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  Connection009</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swfit 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  Connection009
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=n>URLSessionTaskDelegate</span> <span class=p>{</span>
-    <span class=kd>var</span> <span class=nv>json</span><span class=p>:</span><span class=bp>NSData</span><span class=p>!</span>
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+class ViewController: UIViewController, URLSessionTaskDelegate {
+    var json:NSData!
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// 通信のリクエスト生成.</span>
-        <span class=kd>let</span> <span class=nv>myCofig</span><span class=p>:</span> <span class=n>URLSessionConfiguration</span> <span class=p>=</span> <span class=n>URLSessionConfiguration</span><span class=p>.</span><span class=k>default</span>
+        // 通信のリクエスト生成.
+        let myCofig: URLSessionConfiguration = URLSessionConfiguration.default
 
-        <span class=kd>let</span> <span class=nv>url</span><span class=p>:</span><span class=bp>NSURL</span> <span class=p>=</span> <span class=bp>NSURL</span><span class=p>(</span><span class=n>string</span><span class=p>:</span> <span class=s>&quot;http://xxx/hogehoge/upload.php&quot;</span><span class=p>)</span><span class=o>!</span>
+        let url:NSURL = NSURL(string: &quot;http://xxx/hogehoge/upload.php&quot;)!
 
-        <span class=kd>var</span> <span class=nv>request</span><span class=p>:</span> <span class=n>URLRequest</span> <span class=p>=</span> <span class=n>URLRequest</span><span class=p>(</span><span class=n>url</span><span class=p>:</span> <span class=n>url</span> <span class=k>as</span> <span class=n>URL</span><span class=p>)</span>
-        <span class=n>request</span><span class=p>.</span><span class=n>httpMethod</span> <span class=p>=</span> <span class=s>&quot;POST&quot;</span>
+        var request: URLRequest = URLRequest(url: url as URL)
+        request.httpMethod = &quot;POST&quot;
 
-        <span class=kd>let</span> <span class=nv>session</span><span class=p>:</span><span class=n>URLSession</span> <span class=p>=</span> <span class=n>URLSession</span><span class=p>(</span><span class=n>configuration</span><span class=p>:</span> <span class=n>myCofig</span><span class=p>,</span> <span class=n>delegate</span><span class=p>:</span> <span class=kc>self</span><span class=p>,</span> <span class=n>delegateQueue</span><span class=p>:</span> <span class=n>OperationQueue</span><span class=p>.</span><span class=n>main</span><span class=p>)</span>
+        let session:URLSession = URLSession(configuration: myCofig, delegate: self, delegateQueue: OperationQueue.main)
 
-        <span class=c1>// 画像データを読み出し、Data型に変換する.</span>
-        <span class=c1>//        let file:NSData = UIImageJPEGRepresentation(UIImage(named: &quot;sample&quot;))</span>
-        <span class=kd>let</span> <span class=nv>file</span><span class=p>:</span> <span class=bp>NSData</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>named</span><span class=p>:</span> <span class=s>&quot;sample&quot;</span><span class=p>)</span><span class=o>!</span><span class=p>.</span><span class=n>pngData</span><span class=p>()</span><span class=o>!</span> <span class=k>as</span> <span class=bp>NSData</span>
-        <span class=kd>let</span> <span class=nv>image</span><span class=p>:</span> <span class=bp>UIImage</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>data</span><span class=p>:</span> <span class=n>file</span> <span class=k>as</span> <span class=n>Data</span><span class=p>)</span><span class=o>!</span>
+        // 画像データを読み出し、Data型に変換する.
+        //        let file:NSData = UIImageJPEGRepresentation(UIImage(named: &quot;sample&quot;))
+        let file: NSData = UIImage(named: &quot;sample&quot;)!.pngData()! as NSData
+        let image: UIImage = UIImage(data: file as Data)!
 
-        <span class=c1>// 送信するファイルのプレビュー.</span>
-        <span class=kd>let</span> <span class=nv>myImageView</span><span class=p>:</span> <span class=bp>UIImageView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>100</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>120</span><span class=p>))</span>
-        <span class=n>myImageView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=n>image</span>
-        <span class=n>myImageView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mf>200.0</span><span class=p>)</span>
+        // 送信するファイルのプレビュー.
+        let myImageView: UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 120))
+        myImageView.image = image
+        myImageView.layer.position = CGPoint(x: self.view.bounds.width/2, y: 200.0)
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myImageView</span><span class=p>)</span>
+        self.view.addSubview(myImageView)
 
-        <span class=c1>// アップロード用のタスクを生成.</span>
-        <span class=kd>let</span> <span class=nv>task</span><span class=p>:</span><span class=n>URLSessionUploadTask</span> <span class=p>=</span> <span class=n>session</span><span class=p>.</span><span class=n>uploadTask</span><span class=p>(</span><span class=n>with</span><span class=p>:</span> <span class=n>request</span><span class=p>,</span> <span class=n>from</span><span class=p>:</span> <span class=n>file</span> <span class=k>as</span> <span class=n>Data</span><span class=p>)</span>
+        // アップロード用のタスクを生成.
+        let task:URLSessionUploadTask = session.uploadTask(with: request, from: file as Data)
 
-        <span class=c1>// タスクの実行.</span>
-        <span class=n>task</span><span class=p>.</span><span class=n>resume</span><span class=p>()</span>
+        // タスクの実行.
+        task.resume()
 
-    <span class=p>}</span>
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     通信終了時に呼び出されるデリゲート.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>urlSession</span><span class=p>(</span><span class=kc>_</span> <span class=n>session</span><span class=p>:</span> <span class=n>URLSession</span><span class=p>,</span> <span class=n>task</span><span class=p>:</span> <span class=n>URLSessionTask</span><span class=p>,</span> <span class=n>didCompleteWithError</span> <span class=n>error</span><span class=p>:</span> <span class=n>Error</span><span class=p>?)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;didCompleteWithError&quot;</span><span class=p>)</span>
+    /*
+     通信終了時に呼び出されるデリゲート.
+     */
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        print(&quot;didCompleteWithError&quot;)
 
-        <span class=c1>// エラーが有る場合にはエラーのコードを取得.</span>
-        <span class=k>if</span> <span class=n>error</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
-            <span class=bp>print</span><span class=p>(</span><span class=n>error</span><span class=p>)</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
+        // エラーが有る場合にはエラーのコードを取得.
+        if error != nil {
+            print(error)
+        }
+    }
 
-    <span class=kd>func</span> <span class=nf>urlSession</span><span class=p>(</span><span class=kc>_</span> <span class=n>session</span><span class=p>:</span> <span class=n>URLSession</span><span class=p>,</span> <span class=n>task</span><span class=p>:</span> <span class=n>URLSessionTask</span><span class=p>,</span> <span class=n>willPerformHTTPRedirection</span> <span class=n>response</span><span class=p>:</span> <span class=n>HTTPURLResponse</span><span class=p>,</span> <span class=n>newRequest</span> <span class=n>request</span><span class=p>:</span> <span class=n>URLRequest</span><span class=p>,</span> <span class=n>completionHandler</span><span class=p>:</span> <span class=p>(</span><span class=n>URLRequest</span><span class=p>?)</span> <span class=p>-&gt;</span> <span class=nb>Void</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;willPerformHTTPRedirection&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+    func urlSession(_ session: URLSession, task: URLSessionTask, willPerformHTTPRedirection response: HTTPURLResponse, newRequest request: URLRequest, completionHandler: (URLRequest?) -&gt; Void) {
+        print(&quot;willPerformHTTPRedirection&quot;)
+    }
 
-    <span class=kd>func</span> <span class=nf>urlSession</span><span class=p>(</span><span class=kc>_</span> <span class=n>session</span><span class=p>:</span> <span class=n>URLSession</span><span class=p>,</span> <span class=n>task</span><span class=p>:</span> <span class=n>URLSessionTask</span><span class=p>,</span> <span class=n>didSendBodyData</span> <span class=n>bytesSent</span><span class=p>:</span> <span class=nb>Int64</span><span class=p>,</span> <span class=n>totalBytesSent</span><span class=p>:</span> <span class=nb>Int64</span><span class=p>,</span> <span class=n>totalBytesExpectedToSend</span><span class=p>:</span> <span class=nb>Int64</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;didSendBodyData&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+    func urlSession(_ session: URLSession, task: URLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
+        print(&quot;didSendBodyData&quot;)
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
 
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  Connection009</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+    }
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  Connection009
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=n>URLSessionTaskDelegate</span> <span class=p>{</span>
-    <span class=kd>var</span> <span class=nv>json</span><span class=p>:</span><span class=bp>NSData</span><span class=p>!</span>
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+class ViewController: UIViewController, URLSessionTaskDelegate {
+    var json:NSData!
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// 通信のリクエスト生成.</span>
-        <span class=kd>let</span> <span class=nv>myCofig</span><span class=p>:</span> <span class=n>URLSessionConfiguration</span> <span class=p>=</span> <span class=n>URLSessionConfiguration</span><span class=p>.</span><span class=k>default</span>
+        // 通信のリクエスト生成.
+        let myCofig: URLSessionConfiguration = URLSessionConfiguration.default
 
-        <span class=kd>let</span> <span class=nv>url</span><span class=p>:</span><span class=bp>NSURL</span> <span class=p>=</span> <span class=bp>NSURL</span><span class=p>(</span><span class=n>string</span><span class=p>:</span> <span class=s>&quot;http://xxx/hogehoge/upload.php&quot;</span><span class=p>)</span><span class=o>!</span>
+        let url:NSURL = NSURL(string: &quot;http://xxx/hogehoge/upload.php&quot;)!
 
-        <span class=kd>var</span> <span class=nv>request</span><span class=p>:</span> <span class=n>URLRequest</span> <span class=p>=</span> <span class=n>URLRequest</span><span class=p>(</span><span class=n>url</span><span class=p>:</span> <span class=n>url</span> <span class=k>as</span> <span class=n>URL</span><span class=p>)</span>
-        <span class=n>request</span><span class=p>.</span><span class=n>httpMethod</span> <span class=p>=</span> <span class=s>&quot;POST&quot;</span>
+        var request: URLRequest = URLRequest(url: url as URL)
+        request.httpMethod = &quot;POST&quot;
 
-        <span class=kd>let</span> <span class=nv>session</span><span class=p>:</span><span class=n>URLSession</span> <span class=p>=</span> <span class=n>URLSession</span><span class=p>(</span><span class=n>configuration</span><span class=p>:</span> <span class=n>myCofig</span><span class=p>,</span> <span class=n>delegate</span><span class=p>:</span> <span class=kc>self</span><span class=p>,</span> <span class=n>delegateQueue</span><span class=p>:</span> <span class=n>OperationQueue</span><span class=p>.</span><span class=n>main</span><span class=p>)</span>
+        let session:URLSession = URLSession(configuration: myCofig, delegate: self, delegateQueue: OperationQueue.main)
 
-        <span class=c1>// 画像データを読み出し、Data型に変換する.</span>
-        <span class=c1>//        let file:NSData = UIImageJPEGRepresentation(UIImage(named: &quot;sample&quot;))</span>
-        <span class=kd>let</span> <span class=nv>file</span><span class=p>:</span> <span class=bp>NSData</span> <span class=p>=</span> <span class=n>UIImagePNGRepresentation</span><span class=p>(</span><span class=bp>UIImage</span><span class=p>(</span><span class=n>named</span><span class=p>:</span> <span class=s>&quot;sample&quot;</span><span class=p>)</span><span class=o>!</span><span class=p>)</span><span class=o>!</span>
-        <span class=kd>let</span> <span class=nv>image</span><span class=p>:</span> <span class=bp>UIImage</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>data</span><span class=p>:</span> <span class=n>file</span> <span class=k>as</span> <span class=n>Data</span><span class=p>)</span><span class=o>!</span>
+        // 画像データを読み出し、Data型に変換する.
+        //        let file:NSData = UIImageJPEGRepresentation(UIImage(named: &quot;sample&quot;))
+        let file: NSData = UIImagePNGRepresentation(UIImage(named: &quot;sample&quot;)!)!
+        let image: UIImage = UIImage(data: file as Data)!
 
-        <span class=c1>// 送信するファイルのプレビュー.</span>
-        <span class=kd>let</span> <span class=nv>myImageView</span><span class=p>:</span> <span class=bp>UIImageView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>100</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>120</span><span class=p>))</span>
-        <span class=n>myImageView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=n>image</span>
-        <span class=n>myImageView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mf>200.0</span><span class=p>)</span>
+        // 送信するファイルのプレビュー.
+        let myImageView: UIImageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 120))
+        myImageView.image = image
+        myImageView.layer.position = CGPoint(x: self.view.bounds.width/2, y: 200.0)
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myImageView</span><span class=p>)</span>
+        self.view.addSubview(myImageView)
 
-        <span class=c1>// アップロード用のタスクを生成.</span>
-        <span class=kd>let</span> <span class=nv>task</span><span class=p>:</span><span class=n>URLSessionUploadTask</span> <span class=p>=</span> <span class=n>session</span><span class=p>.</span><span class=n>uploadTask</span><span class=p>(</span><span class=n>with</span><span class=p>:</span> <span class=n>request</span><span class=p>,</span> <span class=n>from</span><span class=p>:</span> <span class=n>file</span> <span class=k>as</span> <span class=n>Data</span><span class=p>)</span>
+        // アップロード用のタスクを生成.
+        let task:URLSessionUploadTask = session.uploadTask(with: request, from: file as Data)
 
-        <span class=c1>// タスクの実行.</span>
-        <span class=n>task</span><span class=p>.</span><span class=n>resume</span><span class=p>()</span>
+        // タスクの実行.
+        task.resume()
 
-    <span class=p>}</span>
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     通信終了時に呼び出されるデリゲート.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>urlSession</span><span class=p>(</span><span class=kc>_</span> <span class=n>session</span><span class=p>:</span> <span class=n>URLSession</span><span class=p>,</span> <span class=n>task</span><span class=p>:</span> <span class=n>URLSessionTask</span><span class=p>,</span> <span class=n>didCompleteWithError</span> <span class=n>error</span><span class=p>:</span> <span class=n>Error</span><span class=p>?)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;didCompleteWithError&quot;</span><span class=p>)</span>
+    /*
+     通信終了時に呼び出されるデリゲート.
+     */
+    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
+        print(&quot;didCompleteWithError&quot;)
 
-        <span class=c1>// エラーが有る場合にはエラーのコードを取得.</span>
-        <span class=k>if</span> <span class=n>error</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
-            <span class=bp>print</span><span class=p>(</span><span class=n>error</span><span class=p>)</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
+        // エラーが有る場合にはエラーのコードを取得.
+        if error != nil {
+            print(error)
+        }
+    }
 
-    <span class=kd>func</span> <span class=nf>urlSession</span><span class=p>(</span><span class=kc>_</span> <span class=n>session</span><span class=p>:</span> <span class=n>URLSession</span><span class=p>,</span> <span class=n>task</span><span class=p>:</span> <span class=n>URLSessionTask</span><span class=p>,</span> <span class=n>willPerformHTTPRedirection</span> <span class=n>response</span><span class=p>:</span> <span class=n>HTTPURLResponse</span><span class=p>,</span> <span class=n>newRequest</span> <span class=n>request</span><span class=p>:</span> <span class=n>URLRequest</span><span class=p>,</span> <span class=n>completionHandler</span><span class=p>:</span> <span class=p>(</span><span class=n>URLRequest</span><span class=p>?)</span> <span class=p>-&gt;</span> <span class=nb>Void</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;willPerformHTTPRedirection&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+    func urlSession(_ session: URLSession, task: URLSessionTask, willPerformHTTPRedirection response: HTTPURLResponse, newRequest request: URLRequest, completionHandler: (URLRequest?) -&gt; Void) {
+        print(&quot;willPerformHTTPRedirection&quot;)
+    }
 
-    <span class=kd>func</span> <span class=nf>urlSession</span><span class=p>(</span><span class=kc>_</span> <span class=n>session</span><span class=p>:</span> <span class=n>URLSession</span><span class=p>,</span> <span class=n>task</span><span class=p>:</span> <span class=n>URLSessionTask</span><span class=p>,</span> <span class=n>didSendBodyData</span> <span class=n>bytesSent</span><span class=p>:</span> <span class=nb>Int64</span><span class=p>,</span> <span class=n>totalBytesSent</span><span class=p>:</span> <span class=nb>Int64</span><span class=p>,</span> <span class=n>totalBytesExpectedToSend</span><span class=p>:</span> <span class=nb>Int64</span><span class=p>)</span> <span class=p>{</span>
-         <span class=bp>print</span><span class=p>(</span><span class=s>&quot;didSendBodyData&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+    func urlSession(_ session: URLSession, task: URLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
+         print(&quot;didSendBodyData&quot;)
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
 
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  Connection009</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+    }
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  Connection009
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>NSURLSessionTaskDelegate</span> <span class=p>{</span>
-    <span class=kd>var</span> <span class=nv>json</span><span class=p>:</span><span class=bp>NSData</span><span class=p>!</span>
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+class ViewController: UIViewController, NSURLSessionTaskDelegate {
+    var json:NSData!
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// 通信のリクエスト生成.</span>
-        <span class=kd>let</span> <span class=nv>myCofig</span><span class=p>:</span><span class=bp>NSURLSessionConfiguration</span> <span class=p>=</span> <span class=bp>NSURLSessionConfiguration</span><span class=p>.</span><span class=n>defaultSessionConfiguration</span><span class=p>()</span>
+        // 通信のリクエスト生成.
+        let myCofig:NSURLSessionConfiguration = NSURLSessionConfiguration.defaultSessionConfiguration()
 
-        <span class=kd>let</span> <span class=nv>url</span><span class=p>:</span><span class=bp>NSURL</span> <span class=p>=</span> <span class=bp>NSURL</span><span class=p>(</span><span class=n>string</span><span class=p>:</span> <span class=s>&quot;http://xxx/hogehoge/upload.php&quot;</span><span class=p>)</span><span class=o>!</span>
+        let url:NSURL = NSURL(string: &quot;http://xxx/hogehoge/upload.php&quot;)!
 
-        <span class=kd>let</span> <span class=nv>request</span><span class=p>:</span><span class=bp>NSMutableURLRequest</span> <span class=p>=</span> <span class=bp>NSMutableURLRequest</span><span class=p>(</span><span class=n>URL</span><span class=p>:</span> <span class=n>url</span><span class=p>)</span>
-        <span class=n>request</span><span class=p>.</span><span class=n>HTTPMethod</span> <span class=p>=</span> <span class=s>&quot;POST&quot;</span>
+        let request:NSMutableURLRequest = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = &quot;POST&quot;
 
-        <span class=kd>let</span> <span class=nv>session</span><span class=p>:</span><span class=bp>NSURLSession</span> <span class=p>=</span> <span class=bp>NSURLSession</span><span class=p>(</span><span class=n>configuration</span><span class=p>:</span> <span class=n>myCofig</span><span class=p>,</span> <span class=n>delegate</span><span class=p>:</span> <span class=kc>self</span><span class=p>,</span> <span class=n>delegateQueue</span><span class=p>:</span> <span class=bp>NSOperationQueue</span><span class=p>.</span><span class=n>mainQueue</span><span class=p>())</span>
+        let session:NSURLSession = NSURLSession(configuration: myCofig, delegate: self, delegateQueue: NSOperationQueue.mainQueue())
 
-        <span class=c1>// 画像データを読み出し、Data型に変換する.</span>
-<span class=c1>//        let file:NSData = UIImageJPEGRepresentation(UIImage(named: &quot;sample&quot;))</span>
-        <span class=kd>let</span> <span class=nv>file</span><span class=p>:</span> <span class=bp>NSData</span> <span class=p>=</span> <span class=n>UIImagePNGRepresentation</span><span class=p>(</span><span class=bp>UIImage</span><span class=p>(</span><span class=n>named</span><span class=p>:</span> <span class=s>&quot;sample&quot;</span><span class=p>)</span><span class=o>!</span><span class=p>)</span><span class=o>!</span>
-        <span class=kd>let</span> <span class=nv>image</span><span class=p>:</span> <span class=bp>UIImage</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>data</span><span class=p>:</span> <span class=n>file</span><span class=p>)</span><span class=o>!</span>
+        // 画像データを読み出し、Data型に変換する.
+//        let file:NSData = UIImageJPEGRepresentation(UIImage(named: &quot;sample&quot;))
+        let file: NSData = UIImagePNGRepresentation(UIImage(named: &quot;sample&quot;)!)!
+        let image: UIImage = UIImage(data: file)!
 
-        <span class=c1>// 送信するファイルのプレビュー.</span>
-        <span class=kd>let</span> <span class=nv>myImageView</span><span class=p>:</span> <span class=bp>UIImageView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>100</span><span class=p>,</span><span class=mi>120</span><span class=p>))</span>
-        <span class=n>myImageView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=n>image</span>
-        <span class=n>myImageView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mf>200.0</span><span class=p>)</span>
+        // 送信するファイルのプレビュー.
+        let myImageView: UIImageView = UIImageView(frame: CGRectMake(0,0,100,120))
+        myImageView.image = image
+        myImageView.layer.position = CGPoint(x: self.view.bounds.width/2, y: 200.0)
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myImageView</span><span class=p>)</span>
+        self.view.addSubview(myImageView)
 
-        <span class=c1>// アップロード用のタスクを生成.</span>
-        <span class=kd>let</span> <span class=nv>task</span><span class=p>:</span><span class=bp>NSURLSessionUploadTask</span> <span class=p>=</span> <span class=n>session</span><span class=p>.</span><span class=n>uploadTaskWithRequest</span><span class=p>(</span><span class=n>request</span><span class=p>,</span> <span class=n>fromData</span><span class=p>:</span> <span class=n>file</span><span class=p>)</span>
+        // アップロード用のタスクを生成.
+        let task:NSURLSessionUploadTask = session.uploadTaskWithRequest(request, fromData: file)
 
-        <span class=c1>// タスクの実行.</span>
-        <span class=n>task</span><span class=p>.</span><span class=n>resume</span><span class=p>()</span>
+        // タスクの実行.
+        task.resume()
 
-    <span class=p>}</span>
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     通信終了時に呼び出されるデリゲート.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>URLSession</span><span class=p>(</span><span class=n>session</span><span class=p>:</span> <span class=bp>NSURLSession</span><span class=p>,</span> <span class=n>task</span><span class=p>:</span> <span class=bp>NSURLSessionTask</span><span class=p>,</span> <span class=n>didCompleteWithError</span> <span class=n>error</span><span class=p>:</span> <span class=bp>NSError</span><span class=p>?)</span> <span class=p>{</span>
+    /*
+     通信終了時に呼び出されるデリゲート.
+     */
+    func URLSession(session: NSURLSession, task: NSURLSessionTask, didCompleteWithError error: NSError?) {
 
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;didCompleteWithError&quot;</span><span class=p>)</span>
+        print(&quot;didCompleteWithError&quot;)
 
-        <span class=c1>// エラーが有る場合にはエラーのコードを取得.</span>
-        <span class=k>if</span> <span class=n>error</span> <span class=o>!=</span> <span class=kc>nil</span> <span class=p>{</span>
-            <span class=bp>print</span><span class=p>(</span><span class=n>error</span><span class=p>?.</span><span class=n>code</span><span class=p>)</span>
-        <span class=p>}</span>
-    <span class=p>}</span> 
+        // エラーが有る場合にはエラーのコードを取得.
+        if error != nil {
+            print(error?.code)
+        }
+    } 
 
-    <span class=kd>func</span> <span class=nf>URLSession</span><span class=p>(</span><span class=n>session</span><span class=p>:</span> <span class=bp>NSURLSession</span><span class=p>,</span> <span class=n>task</span><span class=p>:</span> <span class=bp>NSURLSessionTask</span><span class=p>,</span> <span class=n>willPerformHTTPRedirection</span> <span class=n>response</span><span class=p>:</span> <span class=bp>NSHTTPURLResponse</span><span class=p>,</span> <span class=n>newRequest</span> <span class=n>request</span><span class=p>:</span> <span class=bp>NSURLRequest</span><span class=p>,</span> <span class=n>completionHandler</span><span class=p>:</span> <span class=p>(</span><span class=bp>NSURLRequest</span><span class=p>?)</span> <span class=p>-&gt;</span> <span class=nb>Void</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;willPerformHTTPRedirection&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+    func URLSession(session: NSURLSession, task: NSURLSessionTask, willPerformHTTPRedirection response: NSHTTPURLResponse, newRequest request: NSURLRequest, completionHandler: (NSURLRequest?) -&gt; Void) {
+        print(&quot;willPerformHTTPRedirection&quot;)
+    }
 
-    <span class=kd>func</span> <span class=nf>URLSession</span><span class=p>(</span><span class=n>session</span><span class=p>:</span> <span class=bp>NSURLSession</span><span class=p>,</span> <span class=n>task</span><span class=p>:</span> <span class=bp>NSURLSessionTask</span><span class=p>,</span> <span class=n>didSendBodyData</span> <span class=n>bytesSent</span><span class=p>:</span> <span class=nb>Int64</span><span class=p>,</span> <span class=n>totalBytesSent</span><span class=p>:</span> <span class=nb>Int64</span><span class=p>,</span> <span class=n>totalBytesExpectedToSend</span><span class=p>:</span> <span class=nb>Int64</span><span class=p>)</span> <span class=p>{</span>
+    func URLSession(session: NSURLSession, task: NSURLSessionTask, didSendBodyData bytesSent: Int64, totalBytesSent: Int64, totalBytesExpectedToSend: Int64) {
 
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;didSendBodyData&quot;</span><span class=p>)</span>
+        print(&quot;didSendBodyData&quot;)
 
-    <span class=p>}</span>
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
+    }
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
 
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+    }
+}
+</code></pre></div></div>
 <h2 id="3x4x">3.xと4.xの差分</h2>
 <ul>
 <li><code>UIImagePNGRepresentation(UIImage(named: "sample")!)!</code> が <code>UIImage(named: "sample")!.pngData()! as NSData</code> に変更</li>

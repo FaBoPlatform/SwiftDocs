@@ -2331,650 +2331,330 @@
                 
                 <h1 id="_1">アノテーションに画像を追加</h1>
 <p><img alt="Preview mapkit007" src="../img/mapkit007.png" /></p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal>  1</span>
-<span class=normal>  2</span>
-<span class=normal>  3</span>
-<span class=normal>  4</span>
-<span class=normal>  5</span>
-<span class=normal>  6</span>
-<span class=normal>  7</span>
-<span class=normal>  8</span>
-<span class=normal>  9</span>
-<span class=normal> 10</span>
-<span class=normal> 11</span>
-<span class=normal> 12</span>
-<span class=normal> 13</span>
-<span class=normal> 14</span>
-<span class=normal> 15</span>
-<span class=normal> 16</span>
-<span class=normal> 17</span>
-<span class=normal> 18</span>
-<span class=normal> 19</span>
-<span class=normal> 20</span>
-<span class=normal> 21</span>
-<span class=normal> 22</span>
-<span class=normal> 23</span>
-<span class=normal> 24</span>
-<span class=normal> 25</span>
-<span class=normal> 26</span>
-<span class=normal> 27</span>
-<span class=normal> 28</span>
-<span class=normal> 29</span>
-<span class=normal> 30</span>
-<span class=normal> 31</span>
-<span class=normal> 32</span>
-<span class=normal> 33</span>
-<span class=normal> 34</span>
-<span class=normal> 35</span>
-<span class=normal> 36</span>
-<span class=normal> 37</span>
-<span class=normal> 38</span>
-<span class=normal> 39</span>
-<span class=normal> 40</span>
-<span class=normal> 41</span>
-<span class=normal> 42</span>
-<span class=normal> 43</span>
-<span class=normal> 44</span>
-<span class=normal> 45</span>
-<span class=normal> 46</span>
-<span class=normal> 47</span>
-<span class=normal> 48</span>
-<span class=normal> 49</span>
-<span class=normal> 50</span>
-<span class=normal> 51</span>
-<span class=normal> 52</span>
-<span class=normal> 53</span>
-<span class=normal> 54</span>
-<span class=normal> 55</span>
-<span class=normal> 56</span>
-<span class=normal> 57</span>
-<span class=normal> 58</span>
-<span class=normal> 59</span>
-<span class=normal> 60</span>
-<span class=normal> 61</span>
-<span class=normal> 62</span>
-<span class=normal> 63</span>
-<span class=normal> 64</span>
-<span class=normal> 65</span>
-<span class=normal> 66</span>
-<span class=normal> 67</span>
-<span class=normal> 68</span>
-<span class=normal> 69</span>
-<span class=normal> 70</span>
-<span class=normal> 71</span>
-<span class=normal> 72</span>
-<span class=normal> 73</span>
-<span class=normal> 74</span>
-<span class=normal> 75</span>
-<span class=normal> 76</span>
-<span class=normal> 77</span>
-<span class=normal> 78</span>
-<span class=normal> 79</span>
-<span class=normal> 80</span>
-<span class=normal> 81</span>
-<span class=normal> 82</span>
-<span class=normal> 83</span>
-<span class=normal> 84</span>
-<span class=normal> 85</span>
-<span class=normal> 86</span>
-<span class=normal> 87</span>
-<span class=normal> 88</span>
-<span class=normal> 89</span>
-<span class=normal> 90</span>
-<span class=normal> 91</span>
-<span class=normal> 92</span>
-<span class=normal> 93</span>
-<span class=normal> 94</span>
-<span class=normal> 95</span>
-<span class=normal> 96</span>
-<span class=normal> 97</span>
-<span class=normal> 98</span>
-<span class=normal> 99</span>
-<span class=normal>100</span>
-<span class=normal>101</span>
-<span class=normal>102</span>
-<span class=normal>103</span>
-<span class=normal>104</span>
-<span class=normal>105</span>
-<span class=normal>106</span>
-<span class=normal>107</span>
-<span class=normal>108</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  MapKit007</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  MapKit007
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
-<span class=kd>import</span> <span class=nc>MapKit</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>MKMapViewDelegate</span> <span class=p>{</span>
-
-    <span class=c1>// 経度緯度.</span>
-    <span class=kd>let</span> <span class=nv>myLan</span><span class=p>:</span> <span class=n>CLLocationDegrees</span> <span class=p>=</span> <span class=mf>37.331741</span>
-    <span class=kd>let</span> <span class=nv>myLon</span><span class=p>:</span> <span class=n>CLLocationDegrees</span> <span class=p>=</span> <span class=o>-</span><span class=mf>122.030333</span>
-
-    <span class=kd>var</span> <span class=nv>center</span><span class=p>:</span> <span class=bp>CLLocationCoordinate2D</span><span class=p>!</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-
-        <span class=c1>// 地図の中心の座標.</span>
-        <span class=n>center</span> <span class=p>=</span> <span class=n>CLLocationCoordinate2DMake</span><span class=p>(</span><span class=n>myLan</span><span class=p>,</span> <span class=n>myLon</span><span class=p>)</span>
-
-        <span class=c1>// mapViewを生成.</span>
-        <span class=kd>let</span> <span class=nv>myMapView</span><span class=p>:</span> <span class=bp>MKMapView</span> <span class=p>=</span> <span class=bp>MKMapView</span><span class=p>()</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>center</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>center</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>centerCoordinate</span> <span class=p>=</span> <span class=n>center</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
-
-        <span class=c1>// 縮尺を指定.</span>
-        <span class=kd>let</span> <span class=nv>mySpan</span><span class=p>:</span> <span class=n>MKCoordinateSpan</span> <span class=p>=</span> <span class=n>MKCoordinateSpan</span><span class=p>(</span><span class=n>latitudeDelta</span><span class=p>:</span> <span class=mf>0.1</span><span class=p>,</span> <span class=n>longitudeDelta</span><span class=p>:</span> <span class=mf>0.1</span><span class=p>)</span>
-        <span class=kd>let</span> <span class=nv>myRegion</span><span class=p>:</span> <span class=n>MKCoordinateRegion</span> <span class=p>=</span> <span class=n>MKCoordinateRegion</span><span class=p>(</span><span class=n>center</span><span class=p>:</span> <span class=n>center</span><span class=p>,</span> <span class=n>span</span><span class=p>:</span> <span class=n>mySpan</span><span class=p>)</span>
-
-        <span class=c1>// regionをmapViewに追加.</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>region</span> <span class=p>=</span> <span class=n>myRegion</span>
-
-        <span class=c1>// viewにmapViewを追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myMapView</span><span class=p>)</span>
-
-        <span class=c1>// 円を描画する(半径500m).</span>
-        <span class=c1>// let myCircle: MKCircle = MKCircle(centerCoordinate: center, radius: CLLocationDistance(500))</span>
-        <span class=kd>let</span> <span class=nv>myCircle</span><span class=p>:</span> <span class=bp>MKCircle</span> <span class=p>=</span> <span class=bp>MKCircle</span><span class=p>(</span><span class=n>center</span><span class=p>:</span> <span class=n>center</span><span class=p>,</span> <span class=n>radius</span><span class=p>:</span> <span class=n>CLLocationDistance</span><span class=p>(</span><span class=mi>500</span><span class=p>))</span>
-
-        <span class=c1>// mapViewにcircleを追加.</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>addOverlay</span><span class=p>(</span><span class=n>myCircle</span><span class=p>)</span>
-
-        <span class=c1>// centerを指すアノテーションを生成.</span>
-        <span class=kd>let</span> <span class=nv>myPointAnnotation</span><span class=p>:</span> <span class=bp>MKPointAnnotation</span> <span class=p>=</span> <span class=bp>MKPointAnnotation</span><span class=p>()</span>
-        <span class=n>myPointAnnotation</span><span class=p>.</span><span class=n>title</span> <span class=p>=</span> <span class=s>&quot;title&quot;</span>
-        <span class=n>myPointAnnotation</span><span class=p>.</span><span class=n>subtitle</span> <span class=p>=</span> <span class=s>&quot;subtitle&quot;</span>
-        <span class=n>myPointAnnotation</span><span class=p>.</span><span class=n>coordinate</span> <span class=p>=</span> <span class=n>center</span>
-
-        <span class=c1>// mapViewにアノテーションを追加.</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>addAnnotation</span><span class=p>(</span><span class=n>myPointAnnotation</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     addAnnotationした際に呼ばれるデリゲートメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>mapView</span><span class=p>(</span><span class=kc>_</span> <span class=n>mapView</span><span class=p>:</span> <span class=bp>MKMapView</span><span class=p>,</span> <span class=n>viewFor</span> <span class=n>annotation</span><span class=p>:</span> <span class=bp>MKAnnotation</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=bp>MKAnnotationView</span><span class=p>?</span> <span class=p>{</span>
-
-        <span class=c1>// Identifier生成.</span>
-        <span class=kd>let</span> <span class=nv>myAnnotationIdentifier</span><span class=p>:</span> <span class=nb>String</span> <span class=p>=</span> <span class=s>&quot;myAnnotation&quot;</span>
-
-        <span class=c1>// アノテーション生成.</span>
-        <span class=kd>var</span> <span class=nv>myAnnotationView</span> <span class=p>=</span> <span class=n>mapView</span><span class=p>.</span><span class=n>dequeueReusableAnnotationView</span><span class=p>(</span><span class=n>withIdentifier</span><span class=p>:</span> <span class=n>myAnnotationIdentifier</span><span class=p>)</span>
-
-        <span class=k>if</span> <span class=n>myAnnotationView</span> <span class=p>==</span> <span class=kc>nil</span> <span class=p>{</span>
-
-            <span class=n>myAnnotationView</span> <span class=p>=</span> <span class=bp>MKPinAnnotationView</span><span class=p>(</span><span class=n>annotation</span><span class=p>:</span> <span class=n>annotation</span><span class=p>,</span> <span class=n>reuseIdentifier</span><span class=p>:</span> <span class=n>myAnnotationIdentifier</span><span class=p>)</span>
-
-            <span class=c1>// アノテーションのコールアウトを許可.</span>
-            <span class=n>myAnnotationView</span><span class=p>!.</span><span class=n>canShowCallout</span> <span class=p>=</span> <span class=kc>true</span>
-
-            <span class=c1>// アノテーションに画像を追加.</span>
-            <span class=n>myAnnotationView</span><span class=p>!.</span><span class=n>leftCalloutAccessoryView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>image</span><span class=p>:</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>named</span><span class=p>:</span> <span class=s>&quot;logo&quot;</span><span class=p>))</span>
-        <span class=p>}</span>
-
-        <span class=k>return</span> <span class=n>myAnnotationView</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     addOverlayした際に呼ばれるデリゲートメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>mapView</span><span class=p>(</span><span class=kc>_</span> <span class=n>mapView</span><span class=p>:</span> <span class=bp>MKMapView</span><span class=p>,</span> <span class=n>rendererFor</span> <span class=n>overlay</span><span class=p>:</span> <span class=bp>MKOverlay</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=bp>MKOverlayRenderer</span> <span class=p>{</span>
-
-        <span class=c1>// rendererを生成.</span>
-        <span class=kd>let</span> <span class=nv>myCircleView</span><span class=p>:</span> <span class=bp>MKCircleRenderer</span> <span class=p>=</span> <span class=bp>MKCircleRenderer</span><span class=p>(</span><span class=n>overlay</span><span class=p>:</span> <span class=n>overlay</span><span class=p>)</span>
-
-        <span class=c1>// 円の内部を青色で塗りつぶす.</span>
-        <span class=n>myCircleView</span><span class=p>.</span><span class=n>fillColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blue</span>
-
-        <span class=c1>// 円を透過させる.</span>
-        <span class=n>myCircleView</span><span class=p>.</span><span class=n>alpha</span> <span class=p>=</span> <span class=mf>0.5</span>
-
-        <span class=c1>// 円周の線の太さ.</span>
-        <span class=n>myCircleView</span><span class=p>.</span><span class=n>lineWidth</span> <span class=p>=</span> <span class=mf>0.5</span>
-
-        <span class=k>return</span> <span class=n>myCircleView</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal>  1</span>
-<span class=normal>  2</span>
-<span class=normal>  3</span>
-<span class=normal>  4</span>
-<span class=normal>  5</span>
-<span class=normal>  6</span>
-<span class=normal>  7</span>
-<span class=normal>  8</span>
-<span class=normal>  9</span>
-<span class=normal> 10</span>
-<span class=normal> 11</span>
-<span class=normal> 12</span>
-<span class=normal> 13</span>
-<span class=normal> 14</span>
-<span class=normal> 15</span>
-<span class=normal> 16</span>
-<span class=normal> 17</span>
-<span class=normal> 18</span>
-<span class=normal> 19</span>
-<span class=normal> 20</span>
-<span class=normal> 21</span>
-<span class=normal> 22</span>
-<span class=normal> 23</span>
-<span class=normal> 24</span>
-<span class=normal> 25</span>
-<span class=normal> 26</span>
-<span class=normal> 27</span>
-<span class=normal> 28</span>
-<span class=normal> 29</span>
-<span class=normal> 30</span>
-<span class=normal> 31</span>
-<span class=normal> 32</span>
-<span class=normal> 33</span>
-<span class=normal> 34</span>
-<span class=normal> 35</span>
-<span class=normal> 36</span>
-<span class=normal> 37</span>
-<span class=normal> 38</span>
-<span class=normal> 39</span>
-<span class=normal> 40</span>
-<span class=normal> 41</span>
-<span class=normal> 42</span>
-<span class=normal> 43</span>
-<span class=normal> 44</span>
-<span class=normal> 45</span>
-<span class=normal> 46</span>
-<span class=normal> 47</span>
-<span class=normal> 48</span>
-<span class=normal> 49</span>
-<span class=normal> 50</span>
-<span class=normal> 51</span>
-<span class=normal> 52</span>
-<span class=normal> 53</span>
-<span class=normal> 54</span>
-<span class=normal> 55</span>
-<span class=normal> 56</span>
-<span class=normal> 57</span>
-<span class=normal> 58</span>
-<span class=normal> 59</span>
-<span class=normal> 60</span>
-<span class=normal> 61</span>
-<span class=normal> 62</span>
-<span class=normal> 63</span>
-<span class=normal> 64</span>
-<span class=normal> 65</span>
-<span class=normal> 66</span>
-<span class=normal> 67</span>
-<span class=normal> 68</span>
-<span class=normal> 69</span>
-<span class=normal> 70</span>
-<span class=normal> 71</span>
-<span class=normal> 72</span>
-<span class=normal> 73</span>
-<span class=normal> 74</span>
-<span class=normal> 75</span>
-<span class=normal> 76</span>
-<span class=normal> 77</span>
-<span class=normal> 78</span>
-<span class=normal> 79</span>
-<span class=normal> 80</span>
-<span class=normal> 81</span>
-<span class=normal> 82</span>
-<span class=normal> 83</span>
-<span class=normal> 84</span>
-<span class=normal> 85</span>
-<span class=normal> 86</span>
-<span class=normal> 87</span>
-<span class=normal> 88</span>
-<span class=normal> 89</span>
-<span class=normal> 90</span>
-<span class=normal> 91</span>
-<span class=normal> 92</span>
-<span class=normal> 93</span>
-<span class=normal> 94</span>
-<span class=normal> 95</span>
-<span class=normal> 96</span>
-<span class=normal> 97</span>
-<span class=normal> 98</span>
-<span class=normal> 99</span>
-<span class=normal>100</span>
-<span class=normal>101</span>
-<span class=normal>102</span>
-<span class=normal>103</span>
-<span class=normal>104</span>
-<span class=normal>105</span>
-<span class=normal>106</span>
-<span class=normal>107</span>
-<span class=normal>108</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  MapKit007</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
-
-<span class=kd>import</span> <span class=nc>UIKit</span>
-<span class=kd>import</span> <span class=nc>MapKit</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>MKMapViewDelegate</span> <span class=p>{</span>
-
-    <span class=c1>// 経度緯度.</span>
-    <span class=kd>let</span> <span class=nv>myLan</span><span class=p>:</span> <span class=n>CLLocationDegrees</span> <span class=p>=</span> <span class=mf>37.331741</span>
-    <span class=kd>let</span> <span class=nv>myLon</span><span class=p>:</span> <span class=n>CLLocationDegrees</span> <span class=p>=</span> <span class=o>-</span><span class=mf>122.030333</span>
-
-    <span class=kd>var</span> <span class=nv>center</span><span class=p>:</span> <span class=bp>CLLocationCoordinate2D</span><span class=p>!</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-
-        <span class=c1>// 地図の中心の座標.</span>
-        <span class=n>center</span> <span class=p>=</span> <span class=n>CLLocationCoordinate2DMake</span><span class=p>(</span><span class=n>myLan</span><span class=p>,</span> <span class=n>myLon</span><span class=p>)</span>
-
-        <span class=c1>// mapViewを生成.</span>
-        <span class=kd>let</span> <span class=nv>myMapView</span><span class=p>:</span> <span class=bp>MKMapView</span> <span class=p>=</span> <span class=bp>MKMapView</span><span class=p>()</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>center</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>center</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>centerCoordinate</span> <span class=p>=</span> <span class=n>center</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
-
-        <span class=c1>// 縮尺を指定.</span>
-        <span class=kd>let</span> <span class=nv>mySpan</span><span class=p>:</span> <span class=n>MKCoordinateSpan</span> <span class=p>=</span> <span class=n>MKCoordinateSpan</span><span class=p>(</span><span class=n>latitudeDelta</span><span class=p>:</span> <span class=mf>0.1</span><span class=p>,</span> <span class=n>longitudeDelta</span><span class=p>:</span> <span class=mf>0.1</span><span class=p>)</span>
-        <span class=kd>let</span> <span class=nv>myRegion</span><span class=p>:</span> <span class=n>MKCoordinateRegion</span> <span class=p>=</span> <span class=n>MKCoordinateRegion</span><span class=p>(</span><span class=n>center</span><span class=p>:</span> <span class=n>center</span><span class=p>,</span> <span class=n>span</span><span class=p>:</span> <span class=n>mySpan</span><span class=p>)</span>
-
-        <span class=c1>// regionをmapViewに追加.</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>region</span> <span class=p>=</span> <span class=n>myRegion</span>
-
-        <span class=c1>// viewにmapViewを追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myMapView</span><span class=p>)</span>
-
-        <span class=c1>// 円を描画する(半径500m).</span>
-       <span class=c1>// let myCircle: MKCircle = MKCircle(centerCoordinate: center, radius: CLLocationDistance(500))</span>
-        <span class=kd>let</span> <span class=nv>myCircle</span><span class=p>:</span> <span class=bp>MKCircle</span> <span class=p>=</span> <span class=bp>MKCircle</span><span class=p>(</span><span class=n>center</span><span class=p>:</span> <span class=n>center</span><span class=p>,</span> <span class=n>radius</span><span class=p>:</span> <span class=n>CLLocationDistance</span><span class=p>(</span><span class=mi>500</span><span class=p>))</span>
-
-        <span class=c1>// mapViewにcircleを追加.</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>add</span><span class=p>(</span><span class=n>myCircle</span><span class=p>)</span>
-
-        <span class=c1>// centerを指すアノテーションを生成.</span>
-        <span class=kd>let</span> <span class=nv>myPointAnnotation</span><span class=p>:</span> <span class=bp>MKPointAnnotation</span> <span class=p>=</span> <span class=bp>MKPointAnnotation</span><span class=p>()</span>
-        <span class=n>myPointAnnotation</span><span class=p>.</span><span class=n>title</span> <span class=p>=</span> <span class=s>&quot;title&quot;</span>
-        <span class=n>myPointAnnotation</span><span class=p>.</span><span class=n>subtitle</span> <span class=p>=</span> <span class=s>&quot;subtitle&quot;</span>
-        <span class=n>myPointAnnotation</span><span class=p>.</span><span class=n>coordinate</span> <span class=p>=</span> <span class=n>center</span>
-
-        <span class=c1>// mapViewにアノテーションを追加.</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>addAnnotation</span><span class=p>(</span><span class=n>myPointAnnotation</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     addAnnotationした際に呼ばれるデリゲートメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>mapView</span><span class=p>(</span><span class=kc>_</span> <span class=n>mapView</span><span class=p>:</span> <span class=bp>MKMapView</span><span class=p>,</span> <span class=n>viewFor</span> <span class=n>annotation</span><span class=p>:</span> <span class=bp>MKAnnotation</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=bp>MKAnnotationView</span><span class=p>?</span> <span class=p>{</span>
-
-        <span class=c1>// Identifier生成.</span>
-        <span class=kd>let</span> <span class=nv>myAnnotationIdentifier</span><span class=p>:</span> <span class=nb>String</span> <span class=p>=</span> <span class=s>&quot;myAnnotation&quot;</span>
-
-        <span class=c1>// アノテーション生成.</span>
-        <span class=kd>var</span> <span class=nv>myAnnotationView</span> <span class=p>=</span> <span class=n>mapView</span><span class=p>.</span><span class=n>dequeueReusableAnnotationView</span><span class=p>(</span><span class=n>withIdentifier</span><span class=p>:</span> <span class=n>myAnnotationIdentifier</span><span class=p>)</span>
-
-        <span class=k>if</span> <span class=n>myAnnotationView</span> <span class=p>==</span> <span class=kc>nil</span> <span class=p>{</span>
-
-            <span class=n>myAnnotationView</span> <span class=p>=</span> <span class=bp>MKPinAnnotationView</span><span class=p>(</span><span class=n>annotation</span><span class=p>:</span> <span class=n>annotation</span><span class=p>,</span> <span class=n>reuseIdentifier</span><span class=p>:</span> <span class=n>myAnnotationIdentifier</span><span class=p>)</span>
-
-            <span class=c1>// アノテーションのコールアウトを許可.</span>
-            <span class=n>myAnnotationView</span><span class=p>!.</span><span class=n>canShowCallout</span> <span class=p>=</span> <span class=kc>true</span>
-
-            <span class=c1>// アノテーションに画像を追加.</span>
-            <span class=n>myAnnotationView</span><span class=p>!.</span><span class=n>leftCalloutAccessoryView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>image</span><span class=p>:</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>named</span><span class=p>:</span> <span class=s>&quot;logo&quot;</span><span class=p>))</span>
-        <span class=p>}</span>
-
-        <span class=k>return</span> <span class=n>myAnnotationView</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     addOverlayした際に呼ばれるデリゲートメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>mapView</span><span class=p>(</span><span class=kc>_</span> <span class=n>mapView</span><span class=p>:</span> <span class=bp>MKMapView</span><span class=p>,</span> <span class=n>rendererFor</span> <span class=n>overlay</span><span class=p>:</span> <span class=bp>MKOverlay</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=bp>MKOverlayRenderer</span> <span class=p>{</span>
-
-        <span class=c1>// rendererを生成.</span>
-        <span class=kd>let</span> <span class=nv>myCircleView</span><span class=p>:</span> <span class=bp>MKCircleRenderer</span> <span class=p>=</span> <span class=bp>MKCircleRenderer</span><span class=p>(</span><span class=n>overlay</span><span class=p>:</span> <span class=n>overlay</span><span class=p>)</span>
-
-        <span class=c1>// 円の内部を青色で塗りつぶす.</span>
-        <span class=n>myCircleView</span><span class=p>.</span><span class=n>fillColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blue</span>
-
-        <span class=c1>// 円を透過させる.</span>
-        <span class=n>myCircleView</span><span class=p>.</span><span class=n>alpha</span> <span class=p>=</span> <span class=mf>0.5</span>
-
-        <span class=c1>// 円周の線の太さ.</span>
-        <span class=n>myCircleView</span><span class=p>.</span><span class=n>lineWidth</span> <span class=p>=</span> <span class=mf>0.5</span>
-
-        <span class=k>return</span> <span class=n>myCircleView</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal>  1</span>
-<span class=normal>  2</span>
-<span class=normal>  3</span>
-<span class=normal>  4</span>
-<span class=normal>  5</span>
-<span class=normal>  6</span>
-<span class=normal>  7</span>
-<span class=normal>  8</span>
-<span class=normal>  9</span>
-<span class=normal> 10</span>
-<span class=normal> 11</span>
-<span class=normal> 12</span>
-<span class=normal> 13</span>
-<span class=normal> 14</span>
-<span class=normal> 15</span>
-<span class=normal> 16</span>
-<span class=normal> 17</span>
-<span class=normal> 18</span>
-<span class=normal> 19</span>
-<span class=normal> 20</span>
-<span class=normal> 21</span>
-<span class=normal> 22</span>
-<span class=normal> 23</span>
-<span class=normal> 24</span>
-<span class=normal> 25</span>
-<span class=normal> 26</span>
-<span class=normal> 27</span>
-<span class=normal> 28</span>
-<span class=normal> 29</span>
-<span class=normal> 30</span>
-<span class=normal> 31</span>
-<span class=normal> 32</span>
-<span class=normal> 33</span>
-<span class=normal> 34</span>
-<span class=normal> 35</span>
-<span class=normal> 36</span>
-<span class=normal> 37</span>
-<span class=normal> 38</span>
-<span class=normal> 39</span>
-<span class=normal> 40</span>
-<span class=normal> 41</span>
-<span class=normal> 42</span>
-<span class=normal> 43</span>
-<span class=normal> 44</span>
-<span class=normal> 45</span>
-<span class=normal> 46</span>
-<span class=normal> 47</span>
-<span class=normal> 48</span>
-<span class=normal> 49</span>
-<span class=normal> 50</span>
-<span class=normal> 51</span>
-<span class=normal> 52</span>
-<span class=normal> 53</span>
-<span class=normal> 54</span>
-<span class=normal> 55</span>
-<span class=normal> 56</span>
-<span class=normal> 57</span>
-<span class=normal> 58</span>
-<span class=normal> 59</span>
-<span class=normal> 60</span>
-<span class=normal> 61</span>
-<span class=normal> 62</span>
-<span class=normal> 63</span>
-<span class=normal> 64</span>
-<span class=normal> 65</span>
-<span class=normal> 66</span>
-<span class=normal> 67</span>
-<span class=normal> 68</span>
-<span class=normal> 69</span>
-<span class=normal> 70</span>
-<span class=normal> 71</span>
-<span class=normal> 72</span>
-<span class=normal> 73</span>
-<span class=normal> 74</span>
-<span class=normal> 75</span>
-<span class=normal> 76</span>
-<span class=normal> 77</span>
-<span class=normal> 78</span>
-<span class=normal> 79</span>
-<span class=normal> 80</span>
-<span class=normal> 81</span>
-<span class=normal> 82</span>
-<span class=normal> 83</span>
-<span class=normal> 84</span>
-<span class=normal> 85</span>
-<span class=normal> 86</span>
-<span class=normal> 87</span>
-<span class=normal> 88</span>
-<span class=normal> 89</span>
-<span class=normal> 90</span>
-<span class=normal> 91</span>
-<span class=normal> 92</span>
-<span class=normal> 93</span>
-<span class=normal> 94</span>
-<span class=normal> 95</span>
-<span class=normal> 96</span>
-<span class=normal> 97</span>
-<span class=normal> 98</span>
-<span class=normal> 99</span>
-<span class=normal>100</span>
-<span class=normal>101</span>
-<span class=normal>102</span>
-<span class=normal>103</span>
-<span class=normal>104</span>
-<span class=normal>105</span>
-<span class=normal>106</span>
-<span class=normal>107</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  MapKit007</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
-
-<span class=kd>import</span> <span class=nc>UIKit</span>
-<span class=kd>import</span> <span class=nc>MapKit</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>MKMapViewDelegate</span> <span class=p>{</span>
-
-    <span class=c1>// 経度緯度.</span>
-    <span class=kd>let</span> <span class=nv>myLan</span><span class=p>:</span> <span class=n>CLLocationDegrees</span> <span class=p>=</span> <span class=mf>37.331741</span>
-    <span class=kd>let</span> <span class=nv>myLon</span><span class=p>:</span> <span class=n>CLLocationDegrees</span> <span class=p>=</span> <span class=o>-</span><span class=mf>122.030333</span>
-
-    <span class=kd>var</span> <span class=nv>center</span><span class=p>:</span> <span class=bp>CLLocationCoordinate2D</span><span class=p>!</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-
-        <span class=c1>// 地図の中心の座標.</span>
-        <span class=n>center</span> <span class=p>=</span> <span class=n>CLLocationCoordinate2DMake</span><span class=p>(</span><span class=n>myLan</span><span class=p>,</span> <span class=n>myLon</span><span class=p>)</span>
-
-        <span class=c1>// mapViewを生成.</span>
-        <span class=kd>let</span> <span class=nv>myMapView</span><span class=p>:</span> <span class=bp>MKMapView</span> <span class=p>=</span> <span class=bp>MKMapView</span><span class=p>()</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>center</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>center</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>centerCoordinate</span> <span class=p>=</span> <span class=n>center</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
-
-        <span class=c1>// 縮尺を指定.</span>
-        <span class=kd>let</span> <span class=nv>mySpan</span><span class=p>:</span> <span class=n>MKCoordinateSpan</span> <span class=p>=</span> <span class=n>MKCoordinateSpan</span><span class=p>(</span><span class=n>latitudeDelta</span><span class=p>:</span> <span class=mf>0.1</span><span class=p>,</span> <span class=n>longitudeDelta</span><span class=p>:</span> <span class=mf>0.1</span><span class=p>)</span>
-        <span class=kd>let</span> <span class=nv>myRegion</span><span class=p>:</span> <span class=n>MKCoordinateRegion</span> <span class=p>=</span> <span class=n>MKCoordinateRegion</span><span class=p>(</span><span class=n>center</span><span class=p>:</span> <span class=n>center</span><span class=p>,</span> <span class=n>span</span><span class=p>:</span> <span class=n>mySpan</span><span class=p>)</span>
-
-        <span class=c1>// regionをmapViewに追加.</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>region</span> <span class=p>=</span> <span class=n>myRegion</span>
-
-        <span class=c1>// viewにmapViewを追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myMapView</span><span class=p>)</span>
-
-        <span class=c1>// 円を描画する(半径500m).</span>
-        <span class=kd>let</span> <span class=nv>myCircle</span><span class=p>:</span> <span class=bp>MKCircle</span> <span class=p>=</span> <span class=bp>MKCircle</span><span class=p>(</span><span class=n>centerCoordinate</span><span class=p>:</span> <span class=n>center</span><span class=p>,</span> <span class=n>radius</span><span class=p>:</span> <span class=n>CLLocationDistance</span><span class=p>(</span><span class=mi>500</span><span class=p>))</span>
-
-        <span class=c1>// mapViewにcircleを追加.</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>addOverlay</span><span class=p>(</span><span class=n>myCircle</span><span class=p>)</span>
-
-        <span class=c1>// centerを指すアノテーションを生成.</span>
-        <span class=kd>let</span> <span class=nv>myPointAnnotation</span><span class=p>:</span> <span class=bp>MKPointAnnotation</span> <span class=p>=</span> <span class=bp>MKPointAnnotation</span><span class=p>()</span>
-        <span class=n>myPointAnnotation</span><span class=p>.</span><span class=n>title</span> <span class=p>=</span> <span class=s>&quot;title&quot;</span>
-        <span class=n>myPointAnnotation</span><span class=p>.</span><span class=n>subtitle</span> <span class=p>=</span> <span class=s>&quot;subtitle&quot;</span>
-        <span class=n>myPointAnnotation</span><span class=p>.</span><span class=n>coordinate</span> <span class=p>=</span> <span class=n>center</span>
-
-        <span class=c1>// mapViewにアノテーションを追加.</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>addAnnotation</span><span class=p>(</span><span class=n>myPointAnnotation</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     addAnnotationした際に呼ばれるデリゲートメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>mapView</span><span class=p>(</span><span class=n>mapView</span><span class=p>:</span> <span class=bp>MKMapView</span><span class=p>,</span> <span class=n>viewForAnnotation</span> <span class=n>annotation</span><span class=p>:</span> <span class=bp>MKAnnotation</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=bp>MKAnnotationView</span><span class=p>?</span> <span class=p>{</span>
-
-        <span class=c1>// Identifier生成.</span>
-        <span class=kd>let</span> <span class=nv>myAnnotationIdentifier</span><span class=p>:</span> <span class=nb>String</span> <span class=p>=</span> <span class=s>&quot;myAnnotation&quot;</span>
-
-        <span class=c1>// アノテーション生成.</span>
-        <span class=kd>var</span> <span class=nv>myAnnotationView</span> <span class=p>=</span> <span class=n>mapView</span><span class=p>.</span><span class=n>dequeueReusableAnnotationViewWithIdentifier</span><span class=p>(</span><span class=n>myAnnotationIdentifier</span><span class=p>)</span>
-
-        <span class=k>if</span> <span class=n>myAnnotationView</span> <span class=p>==</span> <span class=kc>nil</span> <span class=p>{</span>
-
-            <span class=n>myAnnotationView</span> <span class=p>=</span> <span class=bp>MKPinAnnotationView</span><span class=p>(</span><span class=n>annotation</span><span class=p>:</span> <span class=n>annotation</span><span class=p>,</span> <span class=n>reuseIdentifier</span><span class=p>:</span> <span class=n>myAnnotationIdentifier</span><span class=p>)</span>
-
-            <span class=c1>// アノテーションのコールアウトを許可.</span>
-            <span class=n>myAnnotationView</span><span class=p>!.</span><span class=n>canShowCallout</span> <span class=p>=</span> <span class=kc>true</span>
-
-            <span class=c1>// アノテーションに画像を追加.</span>
-            <span class=n>myAnnotationView</span><span class=p>!.</span><span class=n>leftCalloutAccessoryView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>image</span><span class=p>:</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>named</span><span class=p>:</span> <span class=s>&quot;logo&quot;</span><span class=p>))</span>
-        <span class=p>}</span>
-
-        <span class=k>return</span> <span class=n>myAnnotationView</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     addOverlayした際に呼ばれるデリゲートメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>mapView</span><span class=p>(</span><span class=n>mapView</span><span class=p>:</span> <span class=bp>MKMapView</span><span class=p>,</span> <span class=n>rendererForOverlay</span> <span class=n>overlay</span><span class=p>:</span> <span class=bp>MKOverlay</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=bp>MKOverlayRenderer</span> <span class=p>{</span>
-
-        <span class=c1>// rendererを生成.</span>
-        <span class=kd>let</span> <span class=nv>myCircleView</span><span class=p>:</span> <span class=bp>MKCircleRenderer</span> <span class=p>=</span> <span class=bp>MKCircleRenderer</span><span class=p>(</span><span class=n>overlay</span><span class=p>:</span> <span class=n>overlay</span><span class=p>)</span>
-
-        <span class=c1>// 円の内部を青色で塗りつぶす.</span>
-        <span class=n>myCircleView</span><span class=p>.</span><span class=n>fillColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blueColor</span><span class=p>()</span>
-
-        <span class=c1>// 円を透過させる.</span>
-        <span class=n>myCircleView</span><span class=p>.</span><span class=n>alpha</span> <span class=p>=</span> <span class=mf>0.5</span>
-
-        <span class=c1>// 円周の線の太さ.</span>
-        <span class=n>myCircleView</span><span class=p>.</span><span class=n>lineWidth</span> <span class=p>=</span> <span class=mf>0.5</span>
-
-        <span class=k>return</span> <span class=n>myCircleView</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+import UIKit
+import MapKit
+
+class ViewController: UIViewController, MKMapViewDelegate {
+
+    // 経度緯度.
+    let myLan: CLLocationDegrees = 37.331741
+    let myLon: CLLocationDegrees = -122.030333
+
+    var center: CLLocationCoordinate2D!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // 地図の中心の座標.
+        center = CLLocationCoordinate2DMake(myLan, myLon)
+
+        // mapViewを生成.
+        let myMapView: MKMapView = MKMapView()
+        myMapView.frame = self.view.frame
+        myMapView.center = self.view.center
+        myMapView.centerCoordinate = center
+        myMapView.delegate = self
+
+        // 縮尺を指定.
+        let mySpan: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+        let myRegion: MKCoordinateRegion = MKCoordinateRegion(center: center, span: mySpan)
+
+        // regionをmapViewに追加.
+        myMapView.region = myRegion
+
+        // viewにmapViewを追加.
+        self.view.addSubview(myMapView)
+
+        // 円を描画する(半径500m).
+        // let myCircle: MKCircle = MKCircle(centerCoordinate: center, radius: CLLocationDistance(500))
+        let myCircle: MKCircle = MKCircle(center: center, radius: CLLocationDistance(500))
+
+        // mapViewにcircleを追加.
+        myMapView.addOverlay(myCircle)
+
+        // centerを指すアノテーションを生成.
+        let myPointAnnotation: MKPointAnnotation = MKPointAnnotation()
+        myPointAnnotation.title = &quot;title&quot;
+        myPointAnnotation.subtitle = &quot;subtitle&quot;
+        myPointAnnotation.coordinate = center
+
+        // mapViewにアノテーションを追加.
+        myMapView.addAnnotation(myPointAnnotation)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
+    /*
+     addAnnotationした際に呼ばれるデリゲートメソッド.
+     */
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -&gt; MKAnnotationView? {
+
+        // Identifier生成.
+        let myAnnotationIdentifier: String = &quot;myAnnotation&quot;
+
+        // アノテーション生成.
+        var myAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: myAnnotationIdentifier)
+
+        if myAnnotationView == nil {
+
+            myAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: myAnnotationIdentifier)
+
+            // アノテーションのコールアウトを許可.
+            myAnnotationView!.canShowCallout = true
+
+            // アノテーションに画像を追加.
+            myAnnotationView!.leftCalloutAccessoryView = UIImageView(image: UIImage(named: &quot;logo&quot;))
+        }
+
+        return myAnnotationView
+    }
+
+    /*
+     addOverlayした際に呼ばれるデリゲートメソッド.
+     */
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -&gt; MKOverlayRenderer {
+
+        // rendererを生成.
+        let myCircleView: MKCircleRenderer = MKCircleRenderer(overlay: overlay)
+
+        // 円の内部を青色で塗りつぶす.
+        myCircleView.fillColor = UIColor.blue
+
+        // 円を透過させる.
+        myCircleView.alpha = 0.5
+
+        // 円周の線の太さ.
+        myCircleView.lineWidth = 0.5
+
+        return myCircleView
+    }
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  MapKit007
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
+
+import UIKit
+import MapKit
+
+class ViewController: UIViewController, MKMapViewDelegate {
+
+    // 経度緯度.
+    let myLan: CLLocationDegrees = 37.331741
+    let myLon: CLLocationDegrees = -122.030333
+
+    var center: CLLocationCoordinate2D!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // 地図の中心の座標.
+        center = CLLocationCoordinate2DMake(myLan, myLon)
+
+        // mapViewを生成.
+        let myMapView: MKMapView = MKMapView()
+        myMapView.frame = self.view.frame
+        myMapView.center = self.view.center
+        myMapView.centerCoordinate = center
+        myMapView.delegate = self
+
+        // 縮尺を指定.
+        let mySpan: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+        let myRegion: MKCoordinateRegion = MKCoordinateRegion(center: center, span: mySpan)
+
+        // regionをmapViewに追加.
+        myMapView.region = myRegion
+
+        // viewにmapViewを追加.
+        self.view.addSubview(myMapView)
+
+        // 円を描画する(半径500m).
+       // let myCircle: MKCircle = MKCircle(centerCoordinate: center, radius: CLLocationDistance(500))
+        let myCircle: MKCircle = MKCircle(center: center, radius: CLLocationDistance(500))
+
+        // mapViewにcircleを追加.
+        myMapView.add(myCircle)
+
+        // centerを指すアノテーションを生成.
+        let myPointAnnotation: MKPointAnnotation = MKPointAnnotation()
+        myPointAnnotation.title = &quot;title&quot;
+        myPointAnnotation.subtitle = &quot;subtitle&quot;
+        myPointAnnotation.coordinate = center
+
+        // mapViewにアノテーションを追加.
+        myMapView.addAnnotation(myPointAnnotation)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
+    /*
+     addAnnotationした際に呼ばれるデリゲートメソッド.
+     */
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -&gt; MKAnnotationView? {
+
+        // Identifier生成.
+        let myAnnotationIdentifier: String = &quot;myAnnotation&quot;
+
+        // アノテーション生成.
+        var myAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: myAnnotationIdentifier)
+
+        if myAnnotationView == nil {
+
+            myAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: myAnnotationIdentifier)
+
+            // アノテーションのコールアウトを許可.
+            myAnnotationView!.canShowCallout = true
+
+            // アノテーションに画像を追加.
+            myAnnotationView!.leftCalloutAccessoryView = UIImageView(image: UIImage(named: &quot;logo&quot;))
+        }
+
+        return myAnnotationView
+    }
+
+    /*
+     addOverlayした際に呼ばれるデリゲートメソッド.
+     */
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -&gt; MKOverlayRenderer {
+
+        // rendererを生成.
+        let myCircleView: MKCircleRenderer = MKCircleRenderer(overlay: overlay)
+
+        // 円の内部を青色で塗りつぶす.
+        myCircleView.fillColor = UIColor.blue
+
+        // 円を透過させる.
+        myCircleView.alpha = 0.5
+
+        // 円周の線の太さ.
+        myCircleView.lineWidth = 0.5
+
+        return myCircleView
+    }
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  MapKit007
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
+
+import UIKit
+import MapKit
+
+class ViewController: UIViewController, MKMapViewDelegate {
+
+    // 経度緯度.
+    let myLan: CLLocationDegrees = 37.331741
+    let myLon: CLLocationDegrees = -122.030333
+
+    var center: CLLocationCoordinate2D!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // 地図の中心の座標.
+        center = CLLocationCoordinate2DMake(myLan, myLon)
+
+        // mapViewを生成.
+        let myMapView: MKMapView = MKMapView()
+        myMapView.frame = self.view.frame
+        myMapView.center = self.view.center
+        myMapView.centerCoordinate = center
+        myMapView.delegate = self
+
+        // 縮尺を指定.
+        let mySpan: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+        let myRegion: MKCoordinateRegion = MKCoordinateRegion(center: center, span: mySpan)
+
+        // regionをmapViewに追加.
+        myMapView.region = myRegion
+
+        // viewにmapViewを追加.
+        self.view.addSubview(myMapView)
+
+        // 円を描画する(半径500m).
+        let myCircle: MKCircle = MKCircle(centerCoordinate: center, radius: CLLocationDistance(500))
+
+        // mapViewにcircleを追加.
+        myMapView.addOverlay(myCircle)
+
+        // centerを指すアノテーションを生成.
+        let myPointAnnotation: MKPointAnnotation = MKPointAnnotation()
+        myPointAnnotation.title = &quot;title&quot;
+        myPointAnnotation.subtitle = &quot;subtitle&quot;
+        myPointAnnotation.coordinate = center
+
+        // mapViewにアノテーションを追加.
+        myMapView.addAnnotation(myPointAnnotation)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
+    /*
+     addAnnotationした際に呼ばれるデリゲートメソッド.
+     */
+    func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -&gt; MKAnnotationView? {
+
+        // Identifier生成.
+        let myAnnotationIdentifier: String = &quot;myAnnotation&quot;
+
+        // アノテーション生成.
+        var myAnnotationView = mapView.dequeueReusableAnnotationViewWithIdentifier(myAnnotationIdentifier)
+
+        if myAnnotationView == nil {
+
+            myAnnotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: myAnnotationIdentifier)
+
+            // アノテーションのコールアウトを許可.
+            myAnnotationView!.canShowCallout = true
+
+            // アノテーションに画像を追加.
+            myAnnotationView!.leftCalloutAccessoryView = UIImageView(image: UIImage(named: &quot;logo&quot;))
+        }
+
+        return myAnnotationView
+    }
+
+    /*
+     addOverlayした際に呼ばれるデリゲートメソッド.
+     */
+    func mapView(mapView: MKMapView, rendererForOverlay overlay: MKOverlay) -&gt; MKOverlayRenderer {
+
+        // rendererを生成.
+        let myCircleView: MKCircleRenderer = MKCircleRenderer(overlay: overlay)
+
+        // 円の内部を青色で塗りつぶす.
+        myCircleView.fillColor = UIColor.blueColor()
+
+        // 円を透過させる.
+        myCircleView.alpha = 0.5
+
+        // 円周の線の太さ.
+        myCircleView.lineWidth = 0.5
+
+        return myCircleView
+    }
+}
+</code></pre></div></div>
 <h2 id="3x4x">3.xと4.xの差分</h2>
 <ul>
 <li><code>add</code> が <code>addOverlay</code> に変更</li>

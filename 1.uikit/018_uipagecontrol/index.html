@@ -2332,532 +2332,274 @@
                 <h1 id="uipagecontrol">UIPageControlの表示</h1>
 <p><img alt="Preview uikit018_001" src="../img/uikit018_001.png" />
 <img alt="Preview uikit018_002" src="../img/uikit018_002.png" /></p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span>
-<span class=normal>73</span>
-<span class=normal>74</span>
-<span class=normal>75</span>
-<span class=normal>76</span>
-<span class=normal>77</span>
-<span class=normal>78</span>
-<span class=normal>79</span>
-<span class=normal>80</span>
-<span class=normal>81</span>
-<span class=normal>82</span>
-<span class=normal>83</span>
-<span class=normal>84</span>
-<span class=normal>85</span>
-<span class=normal>86</span>
-<span class=normal>87</span>
-<span class=normal>88</span>
-<span class=normal>89</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit018_4.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/13.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
-
-<span class=kd>import</span> <span class=nc>UIKit</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UIScrollViewDelegate</span><span class=p>{</span>
-
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>pageControl</span><span class=p>:</span> <span class=bp>UIPageControl</span><span class=p>!</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>scrollView</span><span class=p>:</span> <span class=bp>UIScrollView</span><span class=p>!</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-
-        <span class=c1>// ビューの縦、横のサイズを取得する.</span>
-        <span class=kd>let</span> <span class=nv>width</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxX</span><span class=p>,</span> <span class=n>height</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxY</span>
-
-        <span class=c1>// 背景の色をCyanに設定する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyan</span>
-
-        <span class=c1>// ScrollViewを取得する.</span>
-        <span class=n>scrollView</span> <span class=p>=</span> <span class=bp>UIScrollView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>)</span>
-
-        <span class=c1>// ページ数を定義する.</span>
-        <span class=kd>let</span> <span class=nv>pageSize</span> <span class=p>=</span> <span class=mi>4</span>
-
-        <span class=c1>// 縦方向と、横方向のインディケータを非表示にする.</span>
-        <span class=n>scrollView</span><span class=p>.</span><span class=n>showsHorizontalScrollIndicator</span> <span class=p>=</span> <span class=kc>false</span><span class=p>;</span>
-        <span class=n>scrollView</span><span class=p>.</span><span class=n>showsVerticalScrollIndicator</span> <span class=p>=</span> <span class=kc>false</span>
-
-        <span class=c1>// ページングを許可する.</span>
-        <span class=n>scrollView</span><span class=p>.</span><span class=n>isPagingEnabled</span> <span class=p>=</span> <span class=kc>true</span>
-
-        <span class=c1>// ScrollViewのデリゲートを設定する.</span>
-        <span class=n>scrollView</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
-
-        <span class=c1>// スクロールの画面サイズを指定する.</span>
-
-        <span class=n>scrollView</span><span class=p>.</span><span class=n>contentSize</span> <span class=p>=</span> <span class=n>CGSize</span><span class=p>(</span><span class=n>width</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=n>pageSize</span><span class=p>)</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>0</span><span class=p>)</span>
-
-        <span class=c1>// ScrollViewをViewに追加する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>scrollView</span><span class=p>)</span>
-
-        <span class=c1>// ページ数分ボタンを生成する.</span>
-        <span class=k>for</span> <span class=n>i</span> <span class=k>in</span> <span class=mi>0</span> <span class=p>..</span><span class=o>&lt;</span> <span class=n>pageSize</span> <span class=p>{</span>
-
-            <span class=c1>// ページごとに異なるラベルを生成する.</span>
-
-            <span class=kd>let</span> <span class=nv>myLabel</span><span class=p>:</span><span class=bp>UILabel</span> <span class=p>=</span> <span class=bp>UILabel</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=n>i</span><span class=p>)</span> <span class=o>*</span> <span class=n>width</span> <span class=o>+</span> <span class=n>width</span><span class=o>/</span><span class=mi>2</span> <span class=o>-</span> <span class=mi>40</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=n>height</span><span class=o>/</span><span class=mi>2</span> <span class=o>-</span> <span class=mi>40</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>80</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>80</span><span class=p>))</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=n>NSTextAlignment</span><span class=p>.</span><span class=n>center</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;Page</span><span class=si>\(</span><span class=n>i</span><span class=si>)</span><span class=s>&quot;</span>
-
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>font</span> <span class=p>=</span> <span class=bp>UIFont</span><span class=p>.</span><span class=n>systemFont</span><span class=p>(</span><span class=n>ofSize</span><span class=p>:</span> <span class=bp>UIFont</span><span class=p>.</span><span class=n>smallSystemFontSize</span><span class=p>)</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>40.0</span>
-
-            <span class=n>scrollView</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myLabel</span><span class=p>)</span>
-        <span class=p>}</span>
-
-        <span class=c1>// PageControlを作成する.</span>
-        <span class=n>pageControl</span> <span class=p>=</span> <span class=bp>UIPageControl</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxY</span> <span class=o>-</span> <span class=mi>100</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>50</span><span class=p>))</span>
-        <span class=n>pageControl</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>orange</span>
-
-        <span class=c1>// PageControlするページ数を設定する.</span>
-        <span class=n>pageControl</span><span class=p>.</span><span class=n>numberOfPages</span> <span class=p>=</span> <span class=n>pageSize</span>
-
-        <span class=c1>// 現在ページを設定する.</span>
-        <span class=n>pageControl</span><span class=p>.</span><span class=n>currentPage</span> <span class=p>=</span> <span class=mi>0</span>
-        <span class=n>pageControl</span><span class=p>.</span><span class=n>isUserInteractionEnabled</span> <span class=p>=</span> <span class=kc>false</span>
-
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>pageControl</span><span class=p>)</span>
-    <span class=p>}</span>
-
-
-    <span class=kd>func</span> <span class=nf>scrollViewDidEndDecelerating</span><span class=p>(</span><span class=kc>_</span> <span class=n>scrollView</span><span class=p>:</span> <span class=bp>UIScrollView</span><span class=p>)</span> <span class=p>{</span>
-
-        <span class=c1>// スクロール数が1ページ分になったら時.</span>
-        <span class=k>if</span> <span class=n>fmod</span><span class=p>(</span><span class=n>scrollView</span><span class=p>.</span><span class=n>contentOffset</span><span class=p>.</span><span class=n>x</span><span class=p>,</span> <span class=n>scrollView</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxX</span><span class=p>)</span> <span class=p>==</span> <span class=mi>0</span> <span class=p>{</span>
-            <span class=c1>// ページの場所を切り替える.</span>
-            <span class=n>pageControl</span><span class=p>.</span><span class=n>currentPage</span> <span class=p>=</span> <span class=nb>Int</span><span class=p>(</span><span class=n>scrollView</span><span class=p>.</span><span class=n>contentOffset</span><span class=p>.</span><span class=n>x</span> <span class=o>/</span> <span class=n>scrollView</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxX</span><span class=p>)</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span>
-<span class=normal>73</span>
-<span class=normal>74</span>
-<span class=normal>75</span>
-<span class=normal>76</span>
-<span class=normal>77</span>
-<span class=normal>78</span>
-<span class=normal>79</span>
-<span class=normal>80</span>
-<span class=normal>81</span>
-<span class=normal>82</span>
-<span class=normal>83</span>
-<span class=normal>84</span>
-<span class=normal>85</span>
-<span class=normal>86</span>
-<span class=normal>87</span>
-<span class=normal>88</span>
-<span class=normal>89</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit018_3.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/13.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
-
-<span class=kd>import</span> <span class=nc>UIKit</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UIScrollViewDelegate</span><span class=p>{</span>
-
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>pageControl</span><span class=p>:</span> <span class=bp>UIPageControl</span><span class=p>!</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>scrollView</span><span class=p>:</span> <span class=bp>UIScrollView</span><span class=p>!</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-
-        <span class=c1>// ビューの縦、横のサイズを取得する.</span>
-        <span class=kd>let</span> <span class=nv>width</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxX</span><span class=p>,</span> <span class=n>height</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxY</span>
-
-        <span class=c1>// 背景の色をCyanに設定する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyan</span>
-
-        <span class=c1>// ScrollViewを取得する.</span>
-        <span class=n>scrollView</span> <span class=p>=</span> <span class=bp>UIScrollView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>)</span>
-
-        <span class=c1>// ページ数を定義する.</span>
-        <span class=kd>let</span> <span class=nv>pageSize</span> <span class=p>=</span> <span class=mi>4</span>
-
-        <span class=c1>// 縦方向と、横方向のインディケータを非表示にする.</span>
-        <span class=n>scrollView</span><span class=p>.</span><span class=n>showsHorizontalScrollIndicator</span> <span class=p>=</span> <span class=kc>false</span><span class=p>;</span>
-        <span class=n>scrollView</span><span class=p>.</span><span class=n>showsVerticalScrollIndicator</span> <span class=p>=</span> <span class=kc>false</span>
-
-        <span class=c1>// ページングを許可する.</span>
-        <span class=n>scrollView</span><span class=p>.</span><span class=n>isPagingEnabled</span> <span class=p>=</span> <span class=kc>true</span>
-
-        <span class=c1>// ScrollViewのデリゲートを設定する.</span>
-        <span class=n>scrollView</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
-
-        <span class=c1>// スクロールの画面サイズを指定する.</span>
-
-        <span class=n>scrollView</span><span class=p>.</span><span class=n>contentSize</span> <span class=p>=</span> <span class=n>CGSize</span><span class=p>(</span><span class=n>width</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=n>pageSize</span><span class=p>)</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>0</span><span class=p>)</span>
-
-        <span class=c1>// ScrollViewをViewに追加する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>scrollView</span><span class=p>)</span>
-
-        <span class=c1>// ページ数分ボタンを生成する.</span>
-        <span class=k>for</span> <span class=n>i</span> <span class=k>in</span> <span class=mi>0</span> <span class=p>..</span><span class=o>&lt;</span> <span class=n>pageSize</span> <span class=p>{</span>
-
-            <span class=c1>// ページごとに異なるラベルを生成する.</span>
-
-            <span class=kd>let</span> <span class=nv>myLabel</span><span class=p>:</span><span class=bp>UILabel</span> <span class=p>=</span> <span class=bp>UILabel</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=n>i</span><span class=p>)</span> <span class=o>*</span> <span class=n>width</span> <span class=o>+</span> <span class=n>width</span><span class=o>/</span><span class=mi>2</span> <span class=o>-</span> <span class=mi>40</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=n>height</span><span class=o>/</span><span class=mi>2</span> <span class=o>-</span> <span class=mi>40</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>80</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>80</span><span class=p>))</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=n>NSTextAlignment</span><span class=p>.</span><span class=n>center</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;Page</span><span class=si>\(</span><span class=n>i</span><span class=si>)</span><span class=s>&quot;</span>
-
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>font</span> <span class=p>=</span> <span class=bp>UIFont</span><span class=p>.</span><span class=n>systemFont</span><span class=p>(</span><span class=n>ofSize</span><span class=p>:</span> <span class=bp>UIFont</span><span class=p>.</span><span class=n>smallSystemFontSize</span><span class=p>)</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>40.0</span>
-
-            <span class=n>scrollView</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myLabel</span><span class=p>)</span>
-        <span class=p>}</span>
-
-        <span class=c1>// PageControlを作成する.</span>
-        <span class=n>pageControl</span> <span class=p>=</span> <span class=bp>UIPageControl</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxY</span> <span class=o>-</span> <span class=mi>100</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>50</span><span class=p>))</span>
-        <span class=n>pageControl</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>orange</span>
-
-        <span class=c1>// PageControlするページ数を設定する.</span>
-        <span class=n>pageControl</span><span class=p>.</span><span class=n>numberOfPages</span> <span class=p>=</span> <span class=n>pageSize</span>
-
-        <span class=c1>// 現在ページを設定する.</span>
-        <span class=n>pageControl</span><span class=p>.</span><span class=n>currentPage</span> <span class=p>=</span> <span class=mi>0</span>
-        <span class=n>pageControl</span><span class=p>.</span><span class=n>isUserInteractionEnabled</span> <span class=p>=</span> <span class=kc>false</span>
-
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>pageControl</span><span class=p>)</span>
-    <span class=p>}</span>
-
-
-    <span class=kd>func</span> <span class=nf>scrollViewDidEndDecelerating</span><span class=p>(</span><span class=n>scrollView</span><span class=p>:</span> <span class=bp>UIScrollView</span><span class=p>)</span> <span class=p>{</span>
-
-        <span class=c1>// スクロール数が1ページ分になったら時.</span>
-        <span class=k>if</span> <span class=n>fmod</span><span class=p>(</span><span class=n>scrollView</span><span class=p>.</span><span class=n>contentOffset</span><span class=p>.</span><span class=n>x</span><span class=p>,</span> <span class=n>scrollView</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxX</span><span class=p>)</span> <span class=p>==</span> <span class=mi>0</span> <span class=p>{</span>
-            <span class=c1>// ページの場所を切り替える.</span>
-            <span class=n>pageControl</span><span class=p>.</span><span class=n>currentPage</span> <span class=p>=</span> <span class=nb>Int</span><span class=p>(</span><span class=n>scrollView</span><span class=p>.</span><span class=n>contentOffset</span><span class=p>.</span><span class=n>x</span> <span class=o>/</span> <span class=n>scrollView</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxX</span><span class=p>)</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span>
-<span class=normal>73</span>
-<span class=normal>74</span>
-<span class=normal>75</span>
-<span class=normal>76</span>
-<span class=normal>77</span>
-<span class=normal>78</span>
-<span class=normal>79</span>
-<span class=normal>80</span>
-<span class=normal>81</span>
-<span class=normal>82</span>
-<span class=normal>83</span>
-<span class=normal>84</span>
-<span class=normal>85</span>
-<span class=normal>86</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit018_2.3</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/16.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
-
-<span class=kd>import</span> <span class=nc>UIKit</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UIScrollViewDelegate</span><span class=p>{</span>
-
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>pageControl</span><span class=p>:</span> <span class=bp>UIPageControl</span><span class=p>!</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>scrollView</span><span class=p>:</span> <span class=bp>UIScrollView</span><span class=p>!</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-
-        <span class=c1>// ビューの縦、横のサイズを取得する.</span>
-        <span class=kd>let</span> <span class=nv>width</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxX</span><span class=p>,</span> <span class=n>height</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxY</span>
-
-        <span class=c1>// 背景の色をCyanに設定する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyanColor</span><span class=p>()</span>
-
-        <span class=c1>// ScrollViewを取得する.</span>
-        <span class=n>scrollView</span> <span class=p>=</span> <span class=bp>UIScrollView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>)</span>
-
-        <span class=c1>// ページ数を定義する.</span>
-        <span class=kd>let</span> <span class=nv>pageSize</span> <span class=p>=</span> <span class=mi>4</span>
-
-        <span class=c1>// 縦方向と、横方向のインディケータを非表示にする.</span>
-        <span class=n>scrollView</span><span class=p>.</span><span class=n>showsHorizontalScrollIndicator</span> <span class=p>=</span> <span class=kc>false</span><span class=p>;</span>
-        <span class=n>scrollView</span><span class=p>.</span><span class=n>showsVerticalScrollIndicator</span> <span class=p>=</span> <span class=kc>false</span>
-
-        <span class=c1>// ページングを許可する.</span>
-        <span class=n>scrollView</span><span class=p>.</span><span class=n>pagingEnabled</span> <span class=p>=</span> <span class=kc>true</span>
-
-        <span class=c1>// ScrollViewのデリゲートを設定する.</span>
-        <span class=n>scrollView</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
-
-        <span class=c1>// スクロールの画面サイズを指定する.</span>
-        <span class=n>scrollView</span><span class=p>.</span><span class=n>contentSize</span> <span class=p>=</span> <span class=n>CGSizeMake</span><span class=p>(</span><span class=n>CGFloat</span><span class=p>(</span><span class=n>pageSize</span><span class=p>)</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mi>0</span><span class=p>)</span>
-
-        <span class=c1>// ScrollViewをViewに追加する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>scrollView</span><span class=p>)</span>
-
-        <span class=c1>// ページ数分ボタンを生成する.</span>
-        <span class=k>for</span> <span class=kd>var</span> <span class=nv>i</span> <span class=p>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>pageSize</span><span class=p>;</span> <span class=n>i</span><span class=o>++</span> <span class=p>{</span>
-
-            <span class=c1>// ページごとに異なるラベルを生成する.</span>
-            <span class=kd>let</span> <span class=nv>myLabel</span><span class=p>:</span><span class=bp>UILabel</span> <span class=p>=</span> <span class=bp>UILabel</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=n>CGFloat</span><span class=p>(</span><span class=n>i</span><span class=p>)</span> <span class=o>*</span> <span class=n>width</span> <span class=o>+</span> <span class=n>width</span><span class=o>/</span><span class=mi>2</span> <span class=o>-</span> <span class=mi>40</span><span class=p>,</span> <span class=n>height</span><span class=o>/</span><span class=mi>2</span> <span class=o>-</span> <span class=mi>40</span><span class=p>,</span> <span class=mi>80</span><span class=p>,</span> <span class=mi>80</span><span class=p>))</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blackColor</span><span class=p>()</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>whiteColor</span><span class=p>()</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=n>NSTextAlignment</span><span class=p>.</span><span class=n>Center</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;Page</span><span class=si>\(</span><span class=n>i</span><span class=si>)</span><span class=s>&quot;</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>font</span> <span class=p>=</span> <span class=bp>UIFont</span><span class=p>.</span><span class=n>systemFontOfSize</span><span class=p>(</span><span class=bp>UIFont</span><span class=p>.</span><span class=n>smallSystemFontSize</span><span class=p>())</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>40.0</span>
-
-            <span class=n>scrollView</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myLabel</span><span class=p>)</span>
-        <span class=p>}</span>
-
-        <span class=c1>// PageControlを作成する.</span>
-        <span class=n>pageControl</span> <span class=p>=</span> <span class=bp>UIPageControl</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxY</span> <span class=o>-</span> <span class=mi>100</span><span class=p>,</span> <span class=n>width</span><span class=p>,</span> <span class=mi>50</span><span class=p>))</span>
-        <span class=n>pageControl</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>orangeColor</span><span class=p>()</span>
-
-        <span class=c1>// PageControlするページ数を設定する.</span>
-        <span class=n>pageControl</span><span class=p>.</span><span class=n>numberOfPages</span> <span class=p>=</span> <span class=n>pageSize</span>
-
-        <span class=c1>// 現在ページを設定する.</span>
-        <span class=n>pageControl</span><span class=p>.</span><span class=n>currentPage</span> <span class=p>=</span> <span class=mi>0</span>
-        <span class=n>pageControl</span><span class=p>.</span><span class=n>userInteractionEnabled</span> <span class=p>=</span> <span class=kc>false</span>
-
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>pageControl</span><span class=p>)</span>
-    <span class=p>}</span>
-
-
-    <span class=kd>func</span> <span class=nf>scrollViewDidEndDecelerating</span><span class=p>(</span><span class=n>scrollView</span><span class=p>:</span> <span class=bp>UIScrollView</span><span class=p>)</span> <span class=p>{</span>
-
-        <span class=c1>// スクロール数が1ページ分になったら時.</span>
-        <span class=k>if</span> <span class=n>fmod</span><span class=p>(</span><span class=n>scrollView</span><span class=p>.</span><span class=n>contentOffset</span><span class=p>.</span><span class=n>x</span><span class=p>,</span> <span class=n>scrollView</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxX</span><span class=p>)</span> <span class=p>==</span> <span class=mi>0</span> <span class=p>{</span>
-            <span class=c1>// ページの場所を切り替える.</span>
-            <span class=n>pageControl</span><span class=p>.</span><span class=n>currentPage</span> <span class=p>=</span> <span class=nb>Int</span><span class=p>(</span><span class=n>scrollView</span><span class=p>.</span><span class=n>contentOffset</span><span class=p>.</span><span class=n>x</span> <span class=o>/</span> <span class=n>scrollView</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxX</span><span class=p>)</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit018_4.0
+//
+//  Created by KimikoWatanabe on 2016/08/13.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController, UIScrollViewDelegate{
+
+    private var pageControl: UIPageControl!
+    private var scrollView: UIScrollView!
+
+    override func viewDidLoad() {
+
+        // ビューの縦、横のサイズを取得する.
+        let width = self.view.frame.maxX, height = self.view.frame.maxY
+
+        // 背景の色をCyanに設定する.
+        self.view.backgroundColor = UIColor.cyan
+
+        // ScrollViewを取得する.
+        scrollView = UIScrollView(frame: self.view.frame)
+
+        // ページ数を定義する.
+        let pageSize = 4
+
+        // 縦方向と、横方向のインディケータを非表示にする.
+        scrollView.showsHorizontalScrollIndicator = false;
+        scrollView.showsVerticalScrollIndicator = false
+
+        // ページングを許可する.
+        scrollView.isPagingEnabled = true
+
+        // ScrollViewのデリゲートを設定する.
+        scrollView.delegate = self
+
+        // スクロールの画面サイズを指定する.
+
+        scrollView.contentSize = CGSize(width: CGFloat(pageSize) * width, height: 0)
+
+        // ScrollViewをViewに追加する.
+        self.view.addSubview(scrollView)
+
+        // ページ数分ボタンを生成する.
+        for i in 0 ..&lt; pageSize {
+
+            // ページごとに異なるラベルを生成する.
+
+            let myLabel:UILabel = UILabel(frame: CGRect(x: CGFloat(i) * width + width/2 - 40, y: height/2 - 40, width: 80, height: 80))
+            myLabel.backgroundColor = UIColor.black
+            myLabel.textColor = UIColor.white
+            myLabel.textAlignment = NSTextAlignment.center
+            myLabel.layer.masksToBounds = true
+            myLabel.text = &quot;Page\(i)&quot;
+
+            myLabel.font = UIFont.systemFont(ofSize: UIFont.smallSystemFontSize)
+            myLabel.layer.cornerRadius = 40.0
+
+            scrollView.addSubview(myLabel)
+        }
+
+        // PageControlを作成する.
+        pageControl = UIPageControl(frame: CGRect(x:0, y:self.view.frame.maxY - 100, width:width, height:50))
+        pageControl.backgroundColor = UIColor.orange
+
+        // PageControlするページ数を設定する.
+        pageControl.numberOfPages = pageSize
+
+        // 現在ページを設定する.
+        pageControl.currentPage = 0
+        pageControl.isUserInteractionEnabled = false
+
+        self.view.addSubview(pageControl)
+    }
+
+
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+
+        // スクロール数が1ページ分になったら時.
+        if fmod(scrollView.contentOffset.x, scrollView.frame.maxX) == 0 {
+            // ページの場所を切り替える.
+            pageControl.currentPage = Int(scrollView.contentOffset.x / scrollView.frame.maxX)
+        }
+    }
+
+}
+
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit018_3.0
+//
+//  Created by KimikoWatanabe on 2016/08/13.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController, UIScrollViewDelegate{
+
+    private var pageControl: UIPageControl!
+    private var scrollView: UIScrollView!
+
+    override func viewDidLoad() {
+
+        // ビューの縦、横のサイズを取得する.
+        let width = self.view.frame.maxX, height = self.view.frame.maxY
+
+        // 背景の色をCyanに設定する.
+        self.view.backgroundColor = UIColor.cyan
+
+        // ScrollViewを取得する.
+        scrollView = UIScrollView(frame: self.view.frame)
+
+        // ページ数を定義する.
+        let pageSize = 4
+
+        // 縦方向と、横方向のインディケータを非表示にする.
+        scrollView.showsHorizontalScrollIndicator = false;
+        scrollView.showsVerticalScrollIndicator = false
+
+        // ページングを許可する.
+        scrollView.isPagingEnabled = true
+
+        // ScrollViewのデリゲートを設定する.
+        scrollView.delegate = self
+
+        // スクロールの画面サイズを指定する.
+
+        scrollView.contentSize = CGSize(width: CGFloat(pageSize) * width, height: 0)
+
+        // ScrollViewをViewに追加する.
+        self.view.addSubview(scrollView)
+
+        // ページ数分ボタンを生成する.
+        for i in 0 ..&lt; pageSize {
+
+            // ページごとに異なるラベルを生成する.
+
+            let myLabel:UILabel = UILabel(frame: CGRect(x: CGFloat(i) * width + width/2 - 40, y: height/2 - 40, width: 80, height: 80))
+            myLabel.backgroundColor = UIColor.black
+            myLabel.textColor = UIColor.white
+            myLabel.textAlignment = NSTextAlignment.center
+            myLabel.layer.masksToBounds = true
+            myLabel.text = &quot;Page\(i)&quot;
+
+            myLabel.font = UIFont.systemFont(ofSize: UIFont.smallSystemFontSize)
+            myLabel.layer.cornerRadius = 40.0
+
+            scrollView.addSubview(myLabel)
+        }
+
+        // PageControlを作成する.
+        pageControl = UIPageControl(frame: CGRect(x:0, y:self.view.frame.maxY - 100, width:width, height:50))
+        pageControl.backgroundColor = UIColor.orange
+
+        // PageControlするページ数を設定する.
+        pageControl.numberOfPages = pageSize
+
+        // 現在ページを設定する.
+        pageControl.currentPage = 0
+        pageControl.isUserInteractionEnabled = false
+
+        self.view.addSubview(pageControl)
+    }
+
+
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+
+        // スクロール数が1ページ分になったら時.
+        if fmod(scrollView.contentOffset.x, scrollView.frame.maxX) == 0 {
+            // ページの場所を切り替える.
+            pageControl.currentPage = Int(scrollView.contentOffset.x / scrollView.frame.maxX)
+        }
+    }
+
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit018_2.3
+//
+//  Created by KimikoWatanabe on 2016/08/16.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController, UIScrollViewDelegate{
+
+    private var pageControl: UIPageControl!
+    private var scrollView: UIScrollView!
+
+    override func viewDidLoad() {
+
+        // ビューの縦、横のサイズを取得する.
+        let width = self.view.frame.maxX, height = self.view.frame.maxY
+
+        // 背景の色をCyanに設定する.
+        self.view.backgroundColor = UIColor.cyanColor()
+
+        // ScrollViewを取得する.
+        scrollView = UIScrollView(frame: self.view.frame)
+
+        // ページ数を定義する.
+        let pageSize = 4
+
+        // 縦方向と、横方向のインディケータを非表示にする.
+        scrollView.showsHorizontalScrollIndicator = false;
+        scrollView.showsVerticalScrollIndicator = false
+
+        // ページングを許可する.
+        scrollView.pagingEnabled = true
+
+        // ScrollViewのデリゲートを設定する.
+        scrollView.delegate = self
+
+        // スクロールの画面サイズを指定する.
+        scrollView.contentSize = CGSizeMake(CGFloat(pageSize) * width, 0)
+
+        // ScrollViewをViewに追加する.
+        self.view.addSubview(scrollView)
+
+        // ページ数分ボタンを生成する.
+        for var i = 0; i &lt; pageSize; i++ {
+
+            // ページごとに異なるラベルを生成する.
+            let myLabel:UILabel = UILabel(frame: CGRectMake(CGFloat(i) * width + width/2 - 40, height/2 - 40, 80, 80))
+            myLabel.backgroundColor = UIColor.blackColor()
+            myLabel.textColor = UIColor.whiteColor()
+            myLabel.textAlignment = NSTextAlignment.Center
+            myLabel.layer.masksToBounds = true
+            myLabel.text = &quot;Page\(i)&quot;
+            myLabel.font = UIFont.systemFontOfSize(UIFont.smallSystemFontSize())
+            myLabel.layer.cornerRadius = 40.0
+
+            scrollView.addSubview(myLabel)
+        }
+
+        // PageControlを作成する.
+        pageControl = UIPageControl(frame: CGRectMake(0, self.view.frame.maxY - 100, width, 50))
+        pageControl.backgroundColor = UIColor.orangeColor()
+
+        // PageControlするページ数を設定する.
+        pageControl.numberOfPages = pageSize
+
+        // 現在ページを設定する.
+        pageControl.currentPage = 0
+        pageControl.userInteractionEnabled = false
+
+        self.view.addSubview(pageControl)
+    }
+
+
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
+
+        // スクロール数が1ページ分になったら時.
+        if fmod(scrollView.contentOffset.x, scrollView.frame.maxX) == 0 {
+            // ページの場所を切り替える.
+            pageControl.currentPage = Int(scrollView.contentOffset.x / scrollView.frame.maxX)
+        }
+    }
+
+}
+
+
+</code></pre></div></div>
 <h2 id="3x4x">3.xと4.xの差分</h2>
 <ul>
 <li><code>scrollViewDidEndDecelerating(scrollView: UIScrollView)</code> が、 <code>scrollViewDidEndDecelerating(_ scrollView: UIScrollView)</code> に変更</li>

@@ -2317,145 +2317,77 @@
                 
                 <h1 id="_1">動画から静止画を取り出す</h1>
 <p><img alt="Preview coremotion001" src="../img/AVFoundation005.png" /></p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x/3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  avfoundation005</span>
-<span class=c1>//</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
-<span class=kd>import</span> <span class=nc>UIKit</span>
-<span class=kd>import</span> <span class=nc>AVFoundation</span>
-<span class=kd>import</span> <span class=nc>AssetsLibrary</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x/3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  avfoundation005
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+import UIKit
+import AVFoundation
+import AssetsLibrary
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class ViewController: UIViewController {
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
+    override func viewDidLoad() {
 
-        <span class=c1>// パスからassetを生成.</span>
-        <span class=kd>let</span> <span class=nv>path</span> <span class=p>=</span> <span class=n>Bundle</span><span class=p>.</span><span class=n>main</span><span class=p>.</span><span class=n>path</span><span class=p>(</span><span class=n>forResource</span><span class=p>:</span> <span class=s>&quot;test&quot;</span><span class=p>,</span> <span class=n>ofType</span><span class=p>:</span> <span class=s>&quot;mov&quot;</span><span class=p>)</span>
-        <span class=kd>let</span> <span class=nv>fileURL</span> <span class=p>=</span> <span class=n>URL</span><span class=p>(</span><span class=n>fileURLWithPath</span><span class=p>:</span> <span class=n>path</span><span class=p>!)</span>
-        <span class=kd>let</span> <span class=nv>avAsset</span> <span class=p>=</span> <span class=bp>AVURLAsset</span><span class=p>(</span><span class=n>url</span><span class=p>:</span> <span class=n>fileURL</span><span class=p>,</span> <span class=n>options</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
+        // パスからassetを生成.
+        let path = Bundle.main.path(forResource: &quot;test&quot;, ofType: &quot;mov&quot;)
+        let fileURL = URL(fileURLWithPath: path!)
+        let avAsset = AVURLAsset(url: fileURL, options: nil)
 
-        <span class=c1>// assetから画像をキャプチャーする為のジュネレーターを生成.</span>
-        <span class=kd>let</span> <span class=nv>generator</span> <span class=p>=</span> <span class=bp>AVAssetImageGenerator</span><span class=p>(</span><span class=n>asset</span><span class=p>:</span> <span class=n>avAsset</span><span class=p>)</span>
-        <span class=n>generator</span><span class=p>.</span><span class=n>maximumSize</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>size</span>
+        // assetから画像をキャプチャーする為のジュネレーターを生成.
+        let generator = AVAssetImageGenerator(asset: avAsset)
+        generator.maximumSize = self.view.frame.size
 
-        <span class=c1>// 動画の指定した時間での画像を得る(今回は動画の最後のキャプチャを撮る).</span>
-        <span class=kd>let</span> <span class=nv>capturedImage</span> <span class=p>=</span> <span class=k>try</span><span class=p>!</span> <span class=n>generator</span><span class=p>.</span><span class=n>copyCGImage</span><span class=p>(</span><span class=n>at</span><span class=p>:</span> <span class=n>avAsset</span><span class=p>.</span><span class=n>duration</span><span class=p>,</span> <span class=n>actualTime</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
+        // 動画の指定した時間での画像を得る(今回は動画の最後のキャプチャを撮る).
+        let capturedImage = try! generator.copyCGImage(at: avAsset.duration, actualTime: nil)
 
-        <span class=c1>// 静止画用のImageViewを生成.</span>
-        <span class=kd>let</span> <span class=nv>imageView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>)</span>
-        <span class=n>imageView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>cgImage</span><span class=p>:</span> <span class=n>capturedImage</span><span class=p>)</span>
-        <span class=bp>print</span><span class=p>(</span><span class=n>avAsset</span><span class=p>.</span><span class=n>duration</span><span class=p>)</span>
+        // 静止画用のImageViewを生成.
+        let imageView = UIImageView(frame: self.view.frame)
+        imageView.image = UIImage(cgImage: capturedImage)
+        print(avAsset.duration)
 
-        <span class=c1>// imageViewをviewに追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>imageView</span><span class=p>)</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  avfoundation005</span>
-<span class=c1>//</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
-<span class=kd>import</span> <span class=nc>UIKit</span>
-<span class=kd>import</span> <span class=nc>AVFoundation</span>
-<span class=kd>import</span> <span class=nc>AssetsLibrary</span>
+        // imageViewをviewに追加.
+        self.view.addSubview(imageView)
+    }
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  avfoundation005
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+import UIKit
+import AVFoundation
+import AssetsLibrary
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class ViewController: UIViewController {
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
+    override func viewDidLoad() {
 
-        <span class=c1>// パスからassetを生成.</span>
-        <span class=kd>let</span> <span class=nv>path</span> <span class=p>=</span> <span class=bp>NSBundle</span><span class=p>.</span><span class=n>mainBundle</span><span class=p>().</span><span class=n>pathForResource</span><span class=p>(</span><span class=s>&quot;test&quot;</span><span class=p>,</span> <span class=n>ofType</span><span class=p>:</span> <span class=s>&quot;mov&quot;</span><span class=p>)</span>
-        <span class=kd>let</span> <span class=nv>fileURL</span> <span class=p>=</span> <span class=bp>NSURL</span><span class=p>(</span><span class=n>fileURLWithPath</span><span class=p>:</span> <span class=n>path</span><span class=p>!)</span>
-        <span class=kd>let</span> <span class=nv>avAsset</span> <span class=p>=</span> <span class=bp>AVURLAsset</span><span class=p>(</span><span class=n>URL</span><span class=p>:</span> <span class=n>fileURL</span><span class=p>,</span> <span class=n>options</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
+        // パスからassetを生成.
+        let path = NSBundle.mainBundle().pathForResource(&quot;test&quot;, ofType: &quot;mov&quot;)
+        let fileURL = NSURL(fileURLWithPath: path!)
+        let avAsset = AVURLAsset(URL: fileURL, options: nil)
 
-        <span class=c1>// assetから画像をキャプチャーする為のジュネレーターを生成.</span>
-        <span class=kd>let</span> <span class=nv>generator</span> <span class=p>=</span> <span class=bp>AVAssetImageGenerator</span><span class=p>(</span><span class=n>asset</span><span class=p>:</span> <span class=n>avAsset</span><span class=p>)</span>
-        <span class=n>generator</span><span class=p>.</span><span class=n>maximumSize</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>size</span>
+        // assetから画像をキャプチャーする為のジュネレーターを生成.
+        let generator = AVAssetImageGenerator(asset: avAsset)
+        generator.maximumSize = self.view.frame.size
 
-        <span class=c1>// 動画の指定した時間での画像を得る(今回は動画の最後のキャプチャを撮る).</span>
-        <span class=kd>let</span> <span class=nv>capturedImage</span> <span class=p>=</span> <span class=k>try</span><span class=p>!</span> <span class=n>generator</span><span class=p>.</span><span class=n>copyCGImageAtTime</span><span class=p>(</span><span class=n>avAsset</span><span class=p>.</span><span class=n>duration</span><span class=p>,</span> <span class=n>actualTime</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
+        // 動画の指定した時間での画像を得る(今回は動画の最後のキャプチャを撮る).
+        let capturedImage = try! generator.copyCGImageAtTime(avAsset.duration, actualTime: nil)
 
-        <span class=c1>// 静止画用のImageViewを生成.</span>
-        <span class=kd>let</span> <span class=nv>imageView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>)</span>
-        <span class=n>imageView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>CGImage</span><span class=p>:</span> <span class=n>capturedImage</span><span class=p>)</span>
-        <span class=bp>print</span><span class=p>(</span><span class=n>avAsset</span><span class=p>.</span><span class=n>duration</span><span class=p>)</span>
+        // 静止画用のImageViewを生成.
+        let imageView = UIImageView(frame: self.view.frame)
+        imageView.image = UIImage(CGImage: capturedImage)
+        print(avAsset.duration)
 
-        <span class=c1>// imageViewをviewに追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>imageView</span><span class=p>)</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+        // imageViewをviewに追加.
+        self.view.addSubview(imageView)
+    }
+}
+</code></pre></div></div>
 <h2 id="2x3x">2.xと3.xの差分</h2>
 <ul>
 <li><code>NSBundle.mainBundle().pathForResource(String?, ofType: String?)</code>から<code>Bundle.main.path(forResource: String?, ofType: String?)</code>に変更</li>

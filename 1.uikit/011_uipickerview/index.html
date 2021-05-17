@@ -2317,273 +2317,144 @@
                 
                 <h1 id="uipickerview">UIPickerViewで値の選択</h1>
 <p><img alt="Preview uikit011" src="../img/uikit011.png" /></p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 4.x/Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit011</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 4.x/Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit011
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UIPickerViewDelegate</span><span class=p>,</span> <span class=bp>UIPickerViewDataSource</span> <span class=p>{</span>
+class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
-    <span class=c1>// UIPickerView.</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myUIPicker</span><span class=p>:</span> <span class=bp>UIPickerView</span><span class=p>!</span>
+    // UIPickerView.
+    private var myUIPicker: UIPickerView!
 
-    <span class=c1>// 表示する値の配列.</span>
-    <span class=kd>private</span> <span class=kd>let</span> <span class=nv>myValues</span><span class=p>:</span> <span class=bp>NSArray</span> <span class=p>=</span> <span class=p>[</span><span class=s>&quot;その一&quot;</span><span class=p>,</span><span class=s>&quot;その二&quot;</span><span class=p>,</span><span class=s>&quot;その三&quot;</span><span class=p>,</span><span class=s>&quot;その四&quot;</span><span class=p>]</span>
+    // 表示する値の配列.
+    private let myValues: NSArray = [&quot;その一&quot;,&quot;その二&quot;,&quot;その三&quot;,&quot;その四&quot;]
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// UIPickerViewを生成.</span>
-        <span class=n>myUIPicker</span> <span class=p>=</span> <span class=bp>UIPickerView</span><span class=p>()</span>
+        // UIPickerViewを生成.
+        myUIPicker = UIPickerView()
 
-        <span class=c1>// サイズを指定する.</span>
-        <span class=n>myUIPicker</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mf>180.0</span><span class=p>)</span>
+        // サイズを指定する.
+        myUIPicker.frame = CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 180.0)
 
-        <span class=c1>// Delegateを設定する.</span>
-        <span class=n>myUIPicker</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
+        // Delegateを設定する.
+        myUIPicker.delegate = self
 
-        <span class=c1>// DataSourceを設定する.</span>
-        <span class=n>myUIPicker</span><span class=p>.</span><span class=n>dataSource</span> <span class=p>=</span> <span class=kc>self</span>
+        // DataSourceを設定する.
+        myUIPicker.dataSource = self
 
-        <span class=c1>// Viewに追加する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myUIPicker</span><span class=p>)</span>
-    <span class=p>}</span>
+        // Viewに追加する.
+        self.view.addSubview(myUIPicker)
+    }
 
-    <span class=kd>func</span> <span class=nf>numberOfComponents</span><span class=p>(</span><span class=k>in</span> <span class=n>pickerView</span><span class=p>:</span> <span class=bp>UIPickerView</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Int</span> <span class=p>{</span>
-        <span class=k>return</span> <span class=mi>1</span>
-    <span class=p>}</span>
+    func numberOfComponents(in pickerView: UIPickerView) -&gt; Int {
+        return 1
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     pickerに表示する行数を返すデータソースメソッド.</span>
-<span class=cm>     (実装必須)</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>pickerView</span><span class=p>(</span><span class=kc>_</span> <span class=n>pickerView</span><span class=p>:</span> <span class=bp>UIPickerView</span><span class=p>,</span> <span class=n>numberOfRowsInComponent</span> <span class=n>component</span><span class=p>:</span> <span class=nb>Int</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Int</span> <span class=p>{</span>
-        <span class=k>return</span> <span class=n>myValues</span><span class=p>.</span><span class=bp>count</span>
-    <span class=p>}</span>
+    /*
+     pickerに表示する行数を返すデータソースメソッド.
+     (実装必須)
+     */
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -&gt; Int {
+        return myValues.count
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     pickerに表示する値を返すデリゲートメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>pickerView</span><span class=p>(</span><span class=kc>_</span> <span class=n>pickerView</span><span class=p>:</span> <span class=bp>UIPickerView</span><span class=p>,</span> <span class=n>titleForRow</span> <span class=n>row</span><span class=p>:</span> <span class=nb>Int</span><span class=p>,</span> <span class=n>forComponent</span> <span class=n>component</span><span class=p>:</span> <span class=nb>Int</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>String</span><span class=p>?</span> <span class=p>{</span>
-        <span class=k>return</span> <span class=n>myValues</span><span class=p>[</span><span class=n>row</span><span class=p>]</span> <span class=k>as</span><span class=p>?</span> <span class=nb>String</span>
-    <span class=p>}</span>
+    /*
+     pickerに表示する値を返すデリゲートメソッド.
+     */
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -&gt; String? {
+        return myValues[row] as? String
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     pickerが選択された際に呼ばれるデリゲートメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>pickerView</span><span class=p>(</span><span class=kc>_</span> <span class=n>pickerView</span><span class=p>:</span> <span class=bp>UIPickerView</span><span class=p>,</span> <span class=n>didSelectRow</span> <span class=n>row</span><span class=p>:</span> <span class=nb>Int</span><span class=p>,</span> <span class=n>inComponent</span> <span class=n>component</span><span class=p>:</span> <span class=nb>Int</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;row: </span><span class=si>\(</span><span class=n>row</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;value: </span><span class=si>\(</span><span class=n>myValues</span><span class=p>[</span><span class=n>row</span><span class=p>]</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+    /*
+     pickerが選択された際に呼ばれるデリゲートメソッド.
+     */
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print(&quot;row: \(row)&quot;)
+        print(&quot;value: \(myValues[row])&quot;)
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit011</span>
-<span class=c1>//</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit011
+//
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UIPickerViewDelegate</span><span class=p>,</span> <span class=bp>UIPickerViewDataSource</span> <span class=p>{</span>
+import UIKit
 
-    <span class=c1>// UIPickerView.</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myUIPicker</span><span class=p>:</span> <span class=bp>UIPickerView</span><span class=p>!</span>
+class ViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
 
-    <span class=c1>// 表示する値の配列.</span>
-    <span class=kd>private</span> <span class=kd>let</span> <span class=nv>myValues</span><span class=p>:</span> <span class=bp>NSArray</span> <span class=p>=</span> <span class=p>[</span><span class=s>&quot;その一&quot;</span><span class=p>,</span><span class=s>&quot;その二&quot;</span><span class=p>,</span><span class=s>&quot;その三&quot;</span><span class=p>,</span><span class=s>&quot;その四&quot;</span><span class=p>]</span>
+    // UIPickerView.
+    private var myUIPicker: UIPickerView!
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    // 表示する値の配列.
+    private let myValues: NSArray = [&quot;その一&quot;,&quot;その二&quot;,&quot;その三&quot;,&quot;その四&quot;]
 
-        <span class=c1>// UIPickerViewを生成.</span>
-        <span class=n>myUIPicker</span> <span class=p>=</span> <span class=bp>UIPickerView</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// サイズを指定する.</span>
-        <span class=n>myUIPicker</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=p>,</span> <span class=mf>180.0</span><span class=p>)</span>
+        // UIPickerViewを生成.
+        myUIPicker = UIPickerView()
 
-        <span class=c1>// Delegateを設定する.</span>
-        <span class=n>myUIPicker</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
+        // サイズを指定する.
+        myUIPicker.frame = CGRectMake(0, 0, self.view.bounds.width, 180.0)
 
-        <span class=c1>// DataSourceを設定する.</span>
-        <span class=n>myUIPicker</span><span class=p>.</span><span class=n>dataSource</span> <span class=p>=</span> <span class=kc>self</span>
+        // Delegateを設定する.
+        myUIPicker.delegate = self
 
-        <span class=c1>// Viewに追加する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myUIPicker</span><span class=p>)</span>
-    <span class=p>}</span>
+        // DataSourceを設定する.
+        myUIPicker.dataSource = self
 
-    <span class=cm>/*</span>
-<span class=cm>     pickerに表示する列数を返すデータソースメソッド.</span>
-<span class=cm>     (実装必須)</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>numberOfComponentsInPickerView</span><span class=p>(</span><span class=n>pickerView</span><span class=p>:</span> <span class=bp>UIPickerView</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Int</span> <span class=p>{</span>
-        <span class=k>return</span> <span class=mi>1</span>
-    <span class=p>}</span>
+        // Viewに追加する.
+        self.view.addSubview(myUIPicker)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     pickerに表示する行数を返すデータソースメソッド.</span>
-<span class=cm>     (実装必須)</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>pickerView</span><span class=p>(</span><span class=n>pickerView</span><span class=p>:</span> <span class=bp>UIPickerView</span><span class=p>,</span> <span class=n>numberOfRowsInComponent</span> <span class=n>component</span><span class=p>:</span> <span class=nb>Int</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Int</span> <span class=p>{</span>
-        <span class=k>return</span> <span class=n>myValues</span><span class=p>.</span><span class=bp>count</span>
-    <span class=p>}</span>
+    /*
+     pickerに表示する列数を返すデータソースメソッド.
+     (実装必須)
+     */
+    func numberOfComponentsInPickerView(pickerView: UIPickerView) -&gt; Int {
+        return 1
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     pickerに表示する値を返すデリゲートメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>pickerView</span><span class=p>(</span><span class=n>pickerView</span><span class=p>:</span> <span class=bp>UIPickerView</span><span class=p>,</span> <span class=n>titleForRow</span> <span class=n>row</span><span class=p>:</span> <span class=nb>Int</span><span class=p>,</span> <span class=n>forComponent</span> <span class=n>component</span><span class=p>:</span> <span class=nb>Int</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>String</span><span class=p>?</span> <span class=p>{</span>
-        <span class=k>return</span> <span class=n>myValues</span><span class=p>[</span><span class=n>row</span><span class=p>]</span> <span class=k>as</span><span class=p>?</span> <span class=nb>String</span>
-    <span class=p>}</span>
+    /*
+     pickerに表示する行数を返すデータソースメソッド.
+     (実装必須)
+     */
+    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -&gt; Int {
+        return myValues.count
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     pickerが選択された際に呼ばれるデリゲートメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>pickerView</span><span class=p>(</span><span class=n>pickerView</span><span class=p>:</span> <span class=bp>UIPickerView</span><span class=p>,</span> <span class=n>didSelectRow</span> <span class=n>row</span><span class=p>:</span> <span class=nb>Int</span><span class=p>,</span> <span class=n>inComponent</span> <span class=n>component</span><span class=p>:</span> <span class=nb>Int</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;row: </span><span class=si>\(</span><span class=n>row</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;value: </span><span class=si>\(</span><span class=n>myValues</span><span class=p>[</span><span class=n>row</span><span class=p>]</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+    /*
+     pickerに表示する値を返すデリゲートメソッド.
+     */
+    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -&gt; String? {
+        return myValues[row] as? String
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+    /*
+     pickerが選択された際に呼ばれるデリゲートメソッド.
+     */
+    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        print(&quot;row: \(row)&quot;)
+        print(&quot;value: \(myValues[row])&quot;)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+
+
+</code></pre></div></div>
 <h2 id="2330">2.3と3.0の差分</h2>
 <ul>
 <li>numberOfComponentsInPickerView()が、numberOfComponents()に変更.</li>

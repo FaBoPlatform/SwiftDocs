@@ -2333,430 +2333,225 @@
 <p><img alt="Preview uikit027_001" src="../img/uikit027_001.png" />
 <img alt="Preview uikit027_002" src="../img/uikit027_002.png" />
 <img alt="Preview uikit027_003" src="../img/uikit027_003.png" /></p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit027_4.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/13.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit027_4.0
+//
+//  Created by KimikoWatanabe on 2016/08/13.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UIToolbarDelegate</span><span class=p>{</span>
+class ViewController: UIViewController, UIToolbarDelegate{
 
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myToolbar</span><span class=p>:</span> <span class=bp>UIToolbar</span><span class=p>!</span>
+    private var myToolbar: UIToolbar!
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// 背景を青色に変更する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyan</span>
+        // 背景を青色に変更する.
+        self.view.backgroundColor = UIColor.cyan
 
-        <span class=c1>// ツールバーのサイズを決める.</span>
-        <span class=n>myToolbar</span> <span class=p>=</span> <span class=bp>UIToolbar</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>height</span> <span class=o>-</span> <span class=mi>44</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mf>40.0</span><span class=p>))</span>
+        // ツールバーのサイズを決める.
+        myToolbar = UIToolbar(frame: CGRect(x:0, y:self.view.bounds.size.height - 44, width:self.view.bounds.size.width, height:40.0))
 
-        <span class=c1>// ツールバーの位置を決める.</span>
-        <span class=n>myToolbar</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>height</span><span class=o>-</span><span class=mf>20.0</span><span class=p>)</span>
+        // ツールバーの位置を決める.
+        myToolbar.layer.position = CGPoint(x: self.view.bounds.width/2, y: self.view.bounds.height-20.0)
 
-        <span class=c1>// ツールバーの色を決める.</span>
-        <span class=n>myToolbar</span><span class=p>.</span><span class=n>barStyle</span> <span class=p>=</span> <span class=p>.</span><span class=n>blackTranslucent</span>
-        <span class=n>myToolbar</span><span class=p>.</span><span class=n>tintColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
-        <span class=n>myToolbar</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span>
+        // ツールバーの色を決める.
+        myToolbar.barStyle = .blackTranslucent
+        myToolbar.tintColor = UIColor.white
+        myToolbar.backgroundColor = UIColor.black
 
-        <span class=c1>// ボタン１を生成する.</span>
-        <span class=kd>let</span> <span class=nv>myUIBarButtonGreen</span><span class=p>:</span> <span class=bp>UIBarButtonItem</span> <span class=p>=</span> <span class=bp>UIBarButtonItem</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;Green&quot;</span><span class=p>,</span> <span class=n>style</span><span class=p>:.</span><span class=n>plain</span><span class=p>,</span> <span class=n>target</span><span class=p>:</span> <span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickBarButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)))</span>
-        <span class=n>myUIBarButtonGreen</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=mi>1</span>
+        // ボタン１を生成する.
+        let myUIBarButtonGreen: UIBarButtonItem = UIBarButtonItem(title: &quot;Green&quot;, style:.plain, target: self, action: #selector(ViewController.onClickBarButton(sender:)))
+        myUIBarButtonGreen.tag = 1
 
-        <span class=c1>// ボタン２を生成する.</span>
-        <span class=kd>let</span> <span class=nv>myUIBarButtonBlue</span><span class=p>:</span> <span class=bp>UIBarButtonItem</span> <span class=p>=</span> <span class=bp>UIBarButtonItem</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;Blue&quot;</span><span class=p>,</span> <span class=n>style</span><span class=p>:.</span><span class=n>plain</span><span class=p>,</span> <span class=n>target</span><span class=p>:</span> <span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickBarButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)))</span>
-        <span class=n>myUIBarButtonBlue</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=mi>2</span>
+        // ボタン２を生成する.
+        let myUIBarButtonBlue: UIBarButtonItem = UIBarButtonItem(title: &quot;Blue&quot;, style:.plain, target: self, action: #selector(ViewController.onClickBarButton(sender:)))
+        myUIBarButtonBlue.tag = 2
 
-        <span class=c1>// ボタン3を生成する.</span>
-        <span class=kd>let</span> <span class=nv>myUIBarButtonRed</span><span class=p>:</span> <span class=bp>UIBarButtonItem</span> <span class=p>=</span> <span class=bp>UIBarButtonItem</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;Red&quot;</span><span class=p>,</span> <span class=n>style</span><span class=p>:.</span><span class=n>plain</span><span class=p>,</span> <span class=n>target</span><span class=p>:</span> <span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickBarButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)))</span>
-        <span class=n>myUIBarButtonRed</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=mi>3</span>
+        // ボタン3を生成する.
+        let myUIBarButtonRed: UIBarButtonItem = UIBarButtonItem(title: &quot;Red&quot;, style:.plain, target: self, action: #selector(ViewController.onClickBarButton(sender:)))
+        myUIBarButtonRed.tag = 3
 
-        <span class=c1>// ボタンをツールバーに入れる.</span>
-        <span class=n>myToolbar</span><span class=p>.</span><span class=n>items</span> <span class=p>=</span> <span class=p>[</span><span class=n>myUIBarButtonGreen</span><span class=p>,</span> <span class=n>myUIBarButtonBlue</span><span class=p>,</span> <span class=n>myUIBarButtonRed</span><span class=p>]</span>
+        // ボタンをツールバーに入れる.
+        myToolbar.items = [myUIBarButtonGreen, myUIBarButtonBlue, myUIBarButtonRed]
 
-        <span class=c1>// ツールバーに追加する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myToolbar</span><span class=p>)</span>
-    <span class=p>}</span>
+        // ツールバーに追加する.
+        self.view.addSubview(myToolbar)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     UIBarButtonItemが押された際に呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kr>@objc</span> <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onClickBarButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIBarButtonItem</span><span class=p>)</span> <span class=p>{</span>
+    /*
+     UIBarButtonItemが押された際に呼ばれる.
+     */
+    @objc internal func onClickBarButton(sender: UIBarButtonItem) {
 
-        <span class=k>switch</span> <span class=n>sender</span><span class=p>.</span><span class=n>tag</span> <span class=p>{</span>
-        <span class=k>case</span> <span class=mi>1</span><span class=p>:</span>
-            <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>green</span>
-        <span class=k>case</span> <span class=mi>2</span><span class=p>:</span>
-            <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blue</span>
-        <span class=k>case</span> <span class=mi>3</span><span class=p>:</span>
-            <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>red</span>
-        <span class=k>default</span><span class=p>:</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;ERROR!!&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
+        switch sender.tag {
+        case 1:
+            self.view.backgroundColor = UIColor.green
+        case 2:
+            self.view.backgroundColor = UIColor.blue
+        case 3:
+            self.view.backgroundColor = UIColor.red
+        default:
+            print(&quot;ERROR!!&quot;)
+        }
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit027_3.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/13.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit027_3.0
+//
+//  Created by KimikoWatanabe on 2016/08/13.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UIToolbarDelegate</span><span class=p>{</span>
+import UIKit
 
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myToolbar</span><span class=p>:</span> <span class=bp>UIToolbar</span><span class=p>!</span>
+class ViewController: UIViewController, UIToolbarDelegate{
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    private var myToolbar: UIToolbar!
 
-        <span class=c1>// 背景を青色に変更する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyan</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// ツールバーのサイズを決める.</span>
-        <span class=n>myToolbar</span> <span class=p>=</span> <span class=bp>UIToolbar</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>height</span> <span class=o>-</span> <span class=mi>44</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mf>40.0</span><span class=p>))</span>
+        // 背景を青色に変更する.
+        self.view.backgroundColor = UIColor.cyan
 
-        <span class=c1>// ツールバーの位置を決める.</span>
-        <span class=n>myToolbar</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>height</span><span class=o>-</span><span class=mf>20.0</span><span class=p>)</span>
+        // ツールバーのサイズを決める.
+        myToolbar = UIToolbar(frame: CGRect(x:0, y:self.view.bounds.size.height - 44, width:self.view.bounds.size.width, height:40.0))
 
-        <span class=c1>// ツールバーの色を決める.</span>
-        <span class=n>myToolbar</span><span class=p>.</span><span class=n>barStyle</span> <span class=p>=</span> <span class=p>.</span><span class=n>blackTranslucent</span>
-        <span class=n>myToolbar</span><span class=p>.</span><span class=n>tintColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
-        <span class=n>myToolbar</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span>
+        // ツールバーの位置を決める.
+        myToolbar.layer.position = CGPoint(x: self.view.bounds.width/2, y: self.view.bounds.height-20.0)
 
-        <span class=c1>// ボタン１を生成する.</span>
-        <span class=kd>let</span> <span class=nv>myUIBarButtonGreen</span><span class=p>:</span> <span class=bp>UIBarButtonItem</span> <span class=p>=</span> <span class=bp>UIBarButtonItem</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;Green&quot;</span><span class=p>,</span> <span class=n>style</span><span class=p>:.</span><span class=n>plain</span><span class=p>,</span> <span class=n>target</span><span class=p>:</span> <span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickBarButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)))</span>
-        <span class=n>myUIBarButtonGreen</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=mi>1</span>
+        // ツールバーの色を決める.
+        myToolbar.barStyle = .blackTranslucent
+        myToolbar.tintColor = UIColor.white
+        myToolbar.backgroundColor = UIColor.black
 
-        <span class=c1>// ボタン２を生成する.</span>
-        <span class=kd>let</span> <span class=nv>myUIBarButtonBlue</span><span class=p>:</span> <span class=bp>UIBarButtonItem</span> <span class=p>=</span> <span class=bp>UIBarButtonItem</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;Blue&quot;</span><span class=p>,</span> <span class=n>style</span><span class=p>:.</span><span class=n>plain</span><span class=p>,</span> <span class=n>target</span><span class=p>:</span> <span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickBarButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)))</span>
-        <span class=n>myUIBarButtonBlue</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=mi>2</span>
+        // ボタン１を生成する.
+        let myUIBarButtonGreen: UIBarButtonItem = UIBarButtonItem(title: &quot;Green&quot;, style:.plain, target: self, action: #selector(ViewController.onClickBarButton(sender:)))
+        myUIBarButtonGreen.tag = 1
 
-        <span class=c1>// ボタン3を生成する.</span>
-        <span class=kd>let</span> <span class=nv>myUIBarButtonRed</span><span class=p>:</span> <span class=bp>UIBarButtonItem</span> <span class=p>=</span> <span class=bp>UIBarButtonItem</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;Red&quot;</span><span class=p>,</span> <span class=n>style</span><span class=p>:.</span><span class=n>plain</span><span class=p>,</span> <span class=n>target</span><span class=p>:</span> <span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickBarButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)))</span>
-        <span class=n>myUIBarButtonRed</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=mi>3</span>
+        // ボタン２を生成する.
+        let myUIBarButtonBlue: UIBarButtonItem = UIBarButtonItem(title: &quot;Blue&quot;, style:.plain, target: self, action: #selector(ViewController.onClickBarButton(sender:)))
+        myUIBarButtonBlue.tag = 2
 
-        <span class=c1>// ボタンをツールバーに入れる.</span>
-        <span class=n>myToolbar</span><span class=p>.</span><span class=n>items</span> <span class=p>=</span> <span class=p>[</span><span class=n>myUIBarButtonGreen</span><span class=p>,</span> <span class=n>myUIBarButtonBlue</span><span class=p>,</span> <span class=n>myUIBarButtonRed</span><span class=p>]</span>
+        // ボタン3を生成する.
+        let myUIBarButtonRed: UIBarButtonItem = UIBarButtonItem(title: &quot;Red&quot;, style:.plain, target: self, action: #selector(ViewController.onClickBarButton(sender:)))
+        myUIBarButtonRed.tag = 3
 
-        <span class=c1>// ツールバーに追加する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myToolbar</span><span class=p>)</span>
-    <span class=p>}</span>
+        // ボタンをツールバーに入れる.
+        myToolbar.items = [myUIBarButtonGreen, myUIBarButtonBlue, myUIBarButtonRed]
 
-    <span class=cm>/*</span>
-<span class=cm>     UIBarButtonItemが押された際に呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onClickBarButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIBarButtonItem</span><span class=p>)</span> <span class=p>{</span>
+        // ツールバーに追加する.
+        self.view.addSubview(myToolbar)
+    }
 
-        <span class=k>switch</span> <span class=n>sender</span><span class=p>.</span><span class=n>tag</span> <span class=p>{</span>
-        <span class=k>case</span> <span class=mi>1</span><span class=p>:</span>
-            <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>green</span>
-        <span class=k>case</span> <span class=mi>2</span><span class=p>:</span>
-            <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blue</span>
-        <span class=k>case</span> <span class=mi>3</span><span class=p>:</span>
-            <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>red</span>
-        <span class=k>default</span><span class=p>:</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;ERROR!!&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
+    /*
+     UIBarButtonItemが押された際に呼ばれる.
+     */
+    internal func onClickBarButton(sender: UIBarButtonItem) {
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit027_2.3</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/16.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+        switch sender.tag {
+        case 1:
+            self.view.backgroundColor = UIColor.green
+        case 2:
+            self.view.backgroundColor = UIColor.blue
+        case 3:
+            self.view.backgroundColor = UIColor.red
+        default:
+            print(&quot;ERROR!!&quot;)
+        }
+    }
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UIToolbarDelegate</span><span class=p>{</span>
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit027_2.3
+//
+//  Created by KimikoWatanabe on 2016/08/16.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myToolbar</span><span class=p>:</span> <span class=bp>UIToolbar</span><span class=p>!</span>
+import UIKit
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+class ViewController: UIViewController, UIToolbarDelegate{
 
-        <span class=c1>// 背景を青色に変更する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyanColor</span><span class=p>()</span>
+    private var myToolbar: UIToolbar!
 
-        <span class=c1>// ツールバーのサイズを決める.</span>
-        <span class=n>myToolbar</span> <span class=p>=</span> <span class=bp>UIToolbar</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>height</span> <span class=o>-</span> <span class=mi>44</span><span class=p>,</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>width</span><span class=p>,</span> <span class=mf>40.0</span><span class=p>))</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// ツールバーの位置を決める.</span>
-        <span class=n>myToolbar</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>height</span><span class=o>-</span><span class=mf>20.0</span><span class=p>)</span>
+        // 背景を青色に変更する.
+        self.view.backgroundColor = UIColor.cyanColor()
 
-        <span class=c1>// ツールバーの色を決める.</span>
-        <span class=n>myToolbar</span><span class=p>.</span><span class=n>barStyle</span> <span class=p>=</span> <span class=p>.</span><span class=n>BlackTranslucent</span>
-        <span class=n>myToolbar</span><span class=p>.</span><span class=n>tintColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>whiteColor</span><span class=p>()</span>
-        <span class=n>myToolbar</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blackColor</span><span class=p>()</span>
+        // ツールバーのサイズを決める.
+        myToolbar = UIToolbar(frame: CGRectMake(0, self.view.bounds.size.height - 44, self.view.bounds.size.width, 40.0))
 
-        <span class=c1>// ボタン１を生成する.</span>
-        <span class=kd>let</span> <span class=nv>myUIBarButtonGreen</span><span class=p>:</span> <span class=bp>UIBarButtonItem</span> <span class=p>=</span> <span class=bp>UIBarButtonItem</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;Green&quot;</span><span class=p>,</span> <span class=n>style</span><span class=p>:.</span><span class=n>Plain</span><span class=p>,</span> <span class=n>target</span><span class=p>:</span> <span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickBarButton</span><span class=p>(</span><span class=kc>_</span><span class=p>:)))</span>
-        <span class=n>myUIBarButtonGreen</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=mi>1</span>
+        // ツールバーの位置を決める.
+        myToolbar.layer.position = CGPoint(x: self.view.bounds.width/2, y: self.view.bounds.height-20.0)
 
-        <span class=c1>// ボタン２を生成する.</span>
-        <span class=kd>let</span> <span class=nv>myUIBarButtonBlue</span><span class=p>:</span> <span class=bp>UIBarButtonItem</span> <span class=p>=</span> <span class=bp>UIBarButtonItem</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;Blue&quot;</span><span class=p>,</span> <span class=n>style</span><span class=p>:.</span><span class=n>Plain</span><span class=p>,</span> <span class=n>target</span><span class=p>:</span> <span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickBarButton</span><span class=p>(</span><span class=kc>_</span><span class=p>:)))</span>
-        <span class=n>myUIBarButtonBlue</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=mi>2</span>
+        // ツールバーの色を決める.
+        myToolbar.barStyle = .BlackTranslucent
+        myToolbar.tintColor = UIColor.whiteColor()
+        myToolbar.backgroundColor = UIColor.blackColor()
 
-        <span class=c1>// ボタン3を生成する.</span>
-        <span class=kd>let</span> <span class=nv>myUIBarButtonRed</span><span class=p>:</span> <span class=bp>UIBarButtonItem</span> <span class=p>=</span> <span class=bp>UIBarButtonItem</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;Red&quot;</span><span class=p>,</span> <span class=n>style</span><span class=p>:.</span><span class=n>Plain</span><span class=p>,</span> <span class=n>target</span><span class=p>:</span> <span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickBarButton</span><span class=p>(</span><span class=kc>_</span><span class=p>:)))</span>
-        <span class=n>myUIBarButtonRed</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=mi>3</span>
+        // ボタン１を生成する.
+        let myUIBarButtonGreen: UIBarButtonItem = UIBarButtonItem(title: &quot;Green&quot;, style:.Plain, target: self, action: #selector(ViewController.onClickBarButton(_:)))
+        myUIBarButtonGreen.tag = 1
 
-        <span class=c1>// ボタンをツールバーに入れる.</span>
-        <span class=n>myToolbar</span><span class=p>.</span><span class=n>items</span> <span class=p>=</span> <span class=p>[</span><span class=n>myUIBarButtonGreen</span><span class=p>,</span> <span class=n>myUIBarButtonBlue</span><span class=p>,</span> <span class=n>myUIBarButtonRed</span><span class=p>]</span>
+        // ボタン２を生成する.
+        let myUIBarButtonBlue: UIBarButtonItem = UIBarButtonItem(title: &quot;Blue&quot;, style:.Plain, target: self, action: #selector(ViewController.onClickBarButton(_:)))
+        myUIBarButtonBlue.tag = 2
 
-        <span class=c1>// ツールバーに追加する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myToolbar</span><span class=p>)</span>
-    <span class=p>}</span>
+        // ボタン3を生成する.
+        let myUIBarButtonRed: UIBarButtonItem = UIBarButtonItem(title: &quot;Red&quot;, style:.Plain, target: self, action: #selector(ViewController.onClickBarButton(_:)))
+        myUIBarButtonRed.tag = 3
 
-    <span class=cm>/*</span>
-<span class=cm>     UIBarButtonItemが押された際に呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onClickBarButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIBarButtonItem</span><span class=p>)</span> <span class=p>{</span>
+        // ボタンをツールバーに入れる.
+        myToolbar.items = [myUIBarButtonGreen, myUIBarButtonBlue, myUIBarButtonRed]
 
-        <span class=k>switch</span> <span class=n>sender</span><span class=p>.</span><span class=n>tag</span> <span class=p>{</span>
-        <span class=k>case</span> <span class=mi>1</span><span class=p>:</span>
-            <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>greenColor</span><span class=p>()</span>
-        <span class=k>case</span> <span class=mi>2</span><span class=p>:</span>
-            <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blueColor</span><span class=p>()</span>
-        <span class=k>case</span> <span class=mi>3</span><span class=p>:</span>
-            <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>redColor</span><span class=p>()</span>
-        <span class=k>default</span><span class=p>:</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;ERROR!!&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
+        // ツールバーに追加する.
+        self.view.addSubview(myToolbar)
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+    /*
+     UIBarButtonItemが押された際に呼ばれる.
+     */
+    internal func onClickBarButton(sender: UIBarButtonItem) {
+
+        switch sender.tag {
+        case 1:
+            self.view.backgroundColor = UIColor.greenColor()
+        case 2:
+            self.view.backgroundColor = UIColor.blueColor()
+        case 3:
+            self.view.backgroundColor = UIColor.redColor()
+        default:
+            print(&quot;ERROR!!&quot;)
+        }
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+
+
+
+</code></pre></div></div>
 <h2 id="3040">3.0と4.0の差分</h2>
 <ul>
 <li><code>internal func onClickBarButton(sender: UIBarButtonItem)</code> に <code>@objc</code> を追加</li>

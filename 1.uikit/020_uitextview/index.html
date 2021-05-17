@@ -2317,267 +2317,141 @@
                 
                 <h1 id="uitextview">UITextViewで複数行のテキストの表示</h1>
 <p><img alt="Preview uikit020_001" src="../img/uikit020.png" /></p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x/3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit020_3.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/13.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x/3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit020_3.0
+//
+//  Created by KimikoWatanabe on 2016/08/13.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class ViewController: UIViewController {
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// 背景を灰色に設定する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>(</span><span class=n>red</span><span class=p>:</span> <span class=mf>0.9</span><span class=p>,</span> <span class=n>green</span><span class=p>:</span> <span class=mf>0.9</span><span class=p>,</span> <span class=n>blue</span><span class=p>:</span> <span class=mf>0.9</span><span class=p>,</span> <span class=n>alpha</span><span class=p>:</span> <span class=mf>1.0</span><span class=p>)</span>
+        // 背景を灰色に設定する.
+        self.view.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
 
-        <span class=c1>// TextView生成する.</span>
-        <span class=kd>let</span> <span class=nv>myTextView</span><span class=p>:</span> <span class=bp>UITextView</span> <span class=p>=</span> <span class=bp>UITextView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>10</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>50</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span> <span class=o>-</span> <span class=mi>20</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>500</span><span class=p>))</span>
+        // TextView生成する.
+        let myTextView: UITextView = UITextView(frame: CGRect(x:10, y:50, width:self.view.frame.width - 20, height:500))
 
-        <span class=c1>// TextViewの背景を黃色に設定する.</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>(</span><span class=n>red</span><span class=p>:</span> <span class=mf>0.9</span><span class=p>,</span> <span class=n>green</span><span class=p>:</span> <span class=mf>0.9</span><span class=p>,</span> <span class=n>blue</span><span class=p>:</span> <span class=mi>1</span><span class=p>,</span> <span class=n>alpha</span><span class=p>:</span> <span class=mf>1.0</span><span class=p>)</span>
+        // TextViewの背景を黃色に設定する.
+        myTextView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 1, alpha: 1.0)
 
-        <span class=c1>// 表示させるテキストを設定する.</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;1234567890abcdefghijklmnopqrstuwxyz 1234567890 abcdefghijklmnopqrstuwxyz </span><span class=se>\n</span><span class=s>a</span><span class=se>\n</span><span class=s>b</span><span class=se>\n</span><span class=s>c</span><span class=se>\n</span><span class=s>defghijklmnopqrstuwxyz </span><span class=se>\n</span><span class=s> http://www.gclue.com</span><span class=se>\n</span><span class=s>&quot;</span>
+        // 表示させるテキストを設定する.
+        myTextView.text = &quot;1234567890abcdefghijklmnopqrstuwxyz 1234567890 abcdefghijklmnopqrstuwxyz \na\nb\nc\ndefghijklmnopqrstuwxyz \n http://www.gclue.com\n&quot;
 
-        <span class=c1>// 角に丸みをつける.</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
+        // 角に丸みをつける.
+        myTextView.layer.masksToBounds = true
 
-        <span class=c1>// 丸みのサイズを設定する.</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
+        // 丸みのサイズを設定する.
+        myTextView.layer.cornerRadius = 20.0
 
-        <span class=c1>// 枠線の太さを設定する.</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>borderWidth</span> <span class=p>=</span> <span class=mi>1</span>
+        // 枠線の太さを設定する.
+        myTextView.layer.borderWidth = 1
 
-        <span class=c1>// 枠線の色を黒に設定する.</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>borderColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span><span class=p>.</span><span class=n>cgColor</span>
+        // 枠線の色を黒に設定する.
+        myTextView.layer.borderColor = UIColor.black.cgColor
 
-        <span class=c1>// フォントの設定をする.</span>
+        // フォントの設定をする.
 
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>font</span> <span class=p>=</span> <span class=bp>UIFont</span><span class=p>.</span><span class=n>systemFont</span><span class=p>(</span><span class=n>ofSize</span><span class=p>:</span> <span class=mf>20.0</span><span class=p>)</span>
+        myTextView.font = UIFont.systemFont(ofSize: 20.0)
 
-        <span class=c1>// フォントの色の設定をする.</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span>
+        // フォントの色の設定をする.
+        myTextView.textColor = UIColor.black
 
-        <span class=c1>// 左詰めの設定をする.</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=n>NSTextAlignment</span><span class=p>.</span><span class=kr>left</span>
+        // 左詰めの設定をする.
+        myTextView.textAlignment = NSTextAlignment.left
 
-        <span class=c1>// リンク、日付などを自動的に検出してリンクに変換する.</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>dataDetectorTypes</span> <span class=p>=</span> <span class=n>UIDataDetectorTypes</span><span class=p>.</span><span class=n>all</span>
+        // リンク、日付などを自動的に検出してリンクに変換する.
+        myTextView.dataDetectorTypes = UIDataDetectorTypes.all
 
-        <span class=c1>// 影の濃さを設定する.</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>shadowOpacity</span> <span class=p>=</span> <span class=mf>0.5</span>
+        // 影の濃さを設定する.
+        myTextView.layer.shadowOpacity = 0.5
 
-        <span class=c1>// テキストを編集不可にする.</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>isEditable</span> <span class=p>=</span> <span class=kc>false</span>
+        // テキストを編集不可にする.
+        myTextView.isEditable = false
 
-        <span class=c1>// TextViewをViewに追加する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myTextView</span><span class=p>)</span>
-    <span class=p>}</span>
+        // TextViewをViewに追加する.
+        self.view.addSubview(myTextView)
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit020_2.3</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/16.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit020_2.3
+//
+//  Created by KimikoWatanabe on 2016/08/16.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+import UIKit
 
-        <span class=c1>// 背景を灰色に設定する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>(</span><span class=n>red</span><span class=p>:</span> <span class=mf>0.9</span><span class=p>,</span> <span class=n>green</span><span class=p>:</span> <span class=mf>0.9</span><span class=p>,</span> <span class=n>blue</span><span class=p>:</span> <span class=mf>0.9</span><span class=p>,</span> <span class=n>alpha</span><span class=p>:</span> <span class=mf>1.0</span><span class=p>)</span>
+class ViewController: UIViewController {
 
-        <span class=c1>// TextView生成する.</span>
-        <span class=kd>let</span> <span class=nv>myTextView</span><span class=p>:</span> <span class=bp>UITextView</span> <span class=p>=</span> <span class=bp>UITextView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>10</span><span class=p>,</span> <span class=mi>50</span><span class=p>,</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span> <span class=o>-</span> <span class=mi>20</span><span class=p>,</span> <span class=mi>500</span><span class=p>))</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// TextViewの背景を黃色に設定する.</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>(</span><span class=n>red</span><span class=p>:</span> <span class=mf>0.9</span><span class=p>,</span> <span class=n>green</span><span class=p>:</span> <span class=mf>0.9</span><span class=p>,</span> <span class=n>blue</span><span class=p>:</span> <span class=mi>1</span><span class=p>,</span> <span class=n>alpha</span><span class=p>:</span> <span class=mf>1.0</span><span class=p>)</span>
+        // 背景を灰色に設定する.
+        self.view.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
 
-        <span class=c1>// 表示させるテキストを設定する.</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;1234567890abcdefghijklmnopqrstuwxyz 1234567890 abcdefghijklmnopqrstuwxyz </span><span class=se>\n</span><span class=s>a</span><span class=se>\n</span><span class=s>b</span><span class=se>\n</span><span class=s>c</span><span class=se>\n</span><span class=s>defghijklmnopqrstuwxyz </span><span class=se>\n</span><span class=s> http://www.gclue.com</span><span class=se>\n</span><span class=s>&quot;</span>
+        // TextView生成する.
+        let myTextView: UITextView = UITextView(frame: CGRectMake(10, 50, self.view.frame.width - 20, 500))
 
-        <span class=c1>// 角に丸みをつける.</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
+        // TextViewの背景を黃色に設定する.
+        myTextView.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 1, alpha: 1.0)
 
-        <span class=c1>// 丸みのサイズを設定する.</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
+        // 表示させるテキストを設定する.
+        myTextView.text = &quot;1234567890abcdefghijklmnopqrstuwxyz 1234567890 abcdefghijklmnopqrstuwxyz \na\nb\nc\ndefghijklmnopqrstuwxyz \n http://www.gclue.com\n&quot;
 
-        <span class=c1>// 枠線の太さを設定する.</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>borderWidth</span> <span class=p>=</span> <span class=mi>1</span>
+        // 角に丸みをつける.
+        myTextView.layer.masksToBounds = true
 
-        <span class=c1>// 枠線の色を黒に設定する.</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>borderColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blackColor</span><span class=p>().</span><span class=n>CGColor</span>
+        // 丸みのサイズを設定する.
+        myTextView.layer.cornerRadius = 20.0
 
-        <span class=c1>// フォントの設定をする.</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>font</span> <span class=p>=</span> <span class=bp>UIFont</span><span class=p>.</span><span class=n>systemFontOfSize</span><span class=p>(</span><span class=n>CGFloat</span><span class=p>(</span><span class=mi>20</span><span class=p>))</span>
+        // 枠線の太さを設定する.
+        myTextView.layer.borderWidth = 1
 
-        <span class=c1>// フォントの色の設定をする.</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blackColor</span><span class=p>()</span>
+        // 枠線の色を黒に設定する.
+        myTextView.layer.borderColor = UIColor.blackColor().CGColor
 
-        <span class=c1>// 左詰めの設定をする.</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=n>NSTextAlignment</span><span class=p>.</span><span class=n>Left</span>
+        // フォントの設定をする.
+        myTextView.font = UIFont.systemFontOfSize(CGFloat(20))
 
-        <span class=c1>// リンク、日付などを自動的に検出してリンクに変換する.</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>dataDetectorTypes</span> <span class=p>=</span> <span class=n>UIDataDetectorTypes</span><span class=p>.</span><span class=n>All</span>
+        // フォントの色の設定をする.
+        myTextView.textColor = UIColor.blackColor()
 
-        <span class=c1>// 影の濃さを設定する.</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>shadowOpacity</span> <span class=p>=</span> <span class=mf>0.5</span>
+        // 左詰めの設定をする.
+        myTextView.textAlignment = NSTextAlignment.Left
 
-        <span class=c1>// テキストを編集不可にする.</span>
-        <span class=n>myTextView</span><span class=p>.</span><span class=n>editable</span> <span class=p>=</span> <span class=kc>false</span>
+        // リンク、日付などを自動的に検出してリンクに変換する.
+        myTextView.dataDetectorTypes = UIDataDetectorTypes.All
 
-        <span class=c1>// TextViewをViewに追加する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myTextView</span><span class=p>)</span>
-    <span class=p>}</span>
+        // 影の濃さを設定する.
+        myTextView.layer.shadowOpacity = 0.5
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+        // テキストを編集不可にする.
+        myTextView.editable = false
+
+        // TextViewをViewに追加する.
+        self.view.addSubview(myTextView)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+
+</code></pre></div></div>
 <h2 id="2330">2.3と3.0の差分</h2>
 <ul>
 <li>NSTextAlignmentの名称が変更(頭文字が大文字から小文字に)</li>

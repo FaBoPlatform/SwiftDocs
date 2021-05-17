@@ -2331,382 +2331,200 @@
                 
                 <h1 id="uidatepicker">UIDatePickerの表示</h1>
 <p><img alt="Preview uikit023" src="../img/uikit023.png" /></p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit023_4.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/17.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit023_4.0
+//
+//  Created by KimikoWatanabe on 2016/08/17.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UIPickerViewDelegate</span> <span class=p>{</span>
+class ViewController: UIViewController, UIPickerViewDelegate {
 
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myTextField</span><span class=p>:</span> <span class=bp>UITextField</span><span class=p>!</span>
+    private var myTextField: UITextField!
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
+        self.view.backgroundColor = UIColor.white
 
-        <span class=c1>// DatePickerを生成する.</span>
-        <span class=kd>let</span> <span class=nv>myDatePicker</span><span class=p>:</span> <span class=bp>UIDatePicker</span> <span class=p>=</span> <span class=bp>UIDatePicker</span><span class=p>()</span>
+        // DatePickerを生成する.
+        let myDatePicker: UIDatePicker = UIDatePicker()
 
-        <span class=c1>// datePickerを設定（デフォルトでは位置は画面上部）する.</span>
-        <span class=n>myDatePicker</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>50</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>200</span><span class=p>)</span>
-        <span class=n>myDatePicker</span><span class=p>.</span><span class=n>timeZone</span> <span class=p>=</span> <span class=bp>NSTimeZone</span><span class=p>.</span><span class=n>local</span>
-        <span class=n>myDatePicker</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
-        <span class=n>myDatePicker</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>5.0</span>
-        <span class=n>myDatePicker</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>shadowOpacity</span> <span class=p>=</span> <span class=mf>0.5</span>
+        // datePickerを設定（デフォルトでは位置は画面上部）する.
+        myDatePicker.frame = CGRect(x:0, y:50, width:self.view.frame.width, height:200)
+        myDatePicker.timeZone = NSTimeZone.local
+        myDatePicker.backgroundColor = UIColor.white
+        myDatePicker.layer.cornerRadius = 5.0
+        myDatePicker.layer.shadowOpacity = 0.5
 
-        <span class=c1>// 値が変わった際のイベントを登録する.</span>
-        <span class=n>myDatePicker</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onDidChangeDate</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>valueChanged</span><span class=p>)</span>
+        // 値が変わった際のイベントを登録する.
+        myDatePicker.addTarget(self, action: #selector(ViewController.onDidChangeDate(sender:)), for: .valueChanged)
 
-        <span class=c1>// DataPickerをViewに追加する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myDatePicker</span><span class=p>)</span>
+        // DataPickerをViewに追加する.
+        self.view.addSubview(myDatePicker)
 
-        <span class=c1>// UITextFieldを作成する.</span>
-        <span class=n>myTextField</span> <span class=p>=</span> <span class=bp>UITextField</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span><span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span><span class=n>width</span><span class=p>:</span><span class=mi>200</span><span class=p>,</span><span class=n>height</span><span class=p>:</span><span class=mi>30</span><span class=p>))</span>
-        <span class=n>myTextField</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;&quot;</span>
-        <span class=n>myTextField</span><span class=p>.</span><span class=n>borderStyle</span> <span class=p>=</span> <span class=bp>UITextField</span><span class=p>.</span><span class=n>BorderStyle</span><span class=p>.</span><span class=n>roundedRect</span>
-        <span class=n>myTextField</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span><span class=n>y</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>height</span> <span class=o>-</span> <span class=mi>100</span><span class=p>);</span>
+        // UITextFieldを作成する.
+        myTextField = UITextField(frame: CGRect(x:0,y:0,width:200,height:30))
+        myTextField.text = &quot;&quot;
+        myTextField.borderStyle = UITextField.BorderStyle.roundedRect
+        myTextField.layer.position = CGPoint(x: self.view.bounds.width/2,y: self.view.bounds.height - 100);
 
-        <span class=c1>// UITextFieldをViewに追加する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myTextField</span><span class=p>)</span>
-    <span class=p>}</span>
+        // UITextFieldをViewに追加する.
+        self.view.addSubview(myTextField)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     DatePickerが選ばれた際に呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kr>@objc</span> <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onDidChangeDate</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIDatePicker</span><span class=p>){</span>
+    /*
+     DatePickerが選ばれた際に呼ばれる.
+     */
+    @objc internal func onDidChangeDate(sender: UIDatePicker){
 
-        <span class=c1>// フォーマットを生成.</span>
-        <span class=kd>let</span> <span class=nv>myDateFormatter</span><span class=p>:</span> <span class=n>DateFormatter</span> <span class=p>=</span> <span class=n>DateFormatter</span><span class=p>()</span>
-        <span class=n>myDateFormatter</span><span class=p>.</span><span class=n>dateFormat</span> <span class=p>=</span> <span class=s>&quot;yyyy/MM/dd hh:mm&quot;</span>
+        // フォーマットを生成.
+        let myDateFormatter: DateFormatter = DateFormatter()
+        myDateFormatter.dateFormat = &quot;yyyy/MM/dd hh:mm&quot;
 
-        <span class=c1>// 日付をフォーマットに則って取得.</span>
-        <span class=kd>let</span> <span class=nv>mySelectedDate</span><span class=p>:</span> <span class=bp>NSString</span> <span class=p>=</span> <span class=n>myDateFormatter</span><span class=p>.</span><span class=n>string</span><span class=p>(</span><span class=n>from</span><span class=p>:</span> <span class=n>sender</span><span class=p>.</span><span class=n>date</span><span class=p>)</span> <span class=k>as</span> <span class=bp>NSString</span>
-        <span class=n>myTextField</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=n>mySelectedDate</span> <span class=k>as</span> <span class=nb>String</span>
-    <span class=p>}</span>
+        // 日付をフォーマットに則って取得.
+        let mySelectedDate: NSString = myDateFormatter.string(from: sender.date) as NSString
+        myTextField.text = mySelectedDate as String
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit023_3.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/17.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit023_3.0
+//
+//  Created by KimikoWatanabe on 2016/08/17.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UIPickerViewDelegate</span> <span class=p>{</span>
+import UIKit
 
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myTextField</span><span class=p>:</span> <span class=bp>UITextField</span><span class=p>!</span>
+class ViewController: UIViewController, UIPickerViewDelegate {
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    private var myTextField: UITextField!
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// DatePickerを生成する.</span>
-        <span class=kd>let</span> <span class=nv>myDatePicker</span><span class=p>:</span> <span class=bp>UIDatePicker</span> <span class=p>=</span> <span class=bp>UIDatePicker</span><span class=p>()</span>
+        self.view.backgroundColor = UIColor.white
 
-        <span class=c1>// datePickerを設定（デフォルトでは位置は画面上部）する.</span>
-        <span class=n>myDatePicker</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>50</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>200</span><span class=p>)</span>
-        <span class=n>myDatePicker</span><span class=p>.</span><span class=n>timeZone</span> <span class=p>=</span> <span class=bp>NSTimeZone</span><span class=p>.</span><span class=n>local</span>
-        <span class=n>myDatePicker</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
-        <span class=n>myDatePicker</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>5.0</span>
-        <span class=n>myDatePicker</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>shadowOpacity</span> <span class=p>=</span> <span class=mf>0.5</span>
+        // DatePickerを生成する.
+        let myDatePicker: UIDatePicker = UIDatePicker()
 
-        <span class=c1>// 値が変わった際のイベントを登録する.</span>
-        <span class=n>myDatePicker</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onDidChangeDate</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>valueChanged</span><span class=p>)</span>
+        // datePickerを設定（デフォルトでは位置は画面上部）する.
+        myDatePicker.frame = CGRect(x:0, y:50, width:self.view.frame.width, height:200)
+        myDatePicker.timeZone = NSTimeZone.local
+        myDatePicker.backgroundColor = UIColor.white
+        myDatePicker.layer.cornerRadius = 5.0
+        myDatePicker.layer.shadowOpacity = 0.5
 
-        <span class=c1>// DataPickerをViewに追加する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myDatePicker</span><span class=p>)</span>
+        // 値が変わった際のイベントを登録する.
+        myDatePicker.addTarget(self, action: #selector(ViewController.onDidChangeDate(sender:)), for: .valueChanged)
 
-        <span class=c1>// UITextFieldを作成する.</span>
-        <span class=n>myTextField</span> <span class=p>=</span> <span class=bp>UITextField</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span><span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span><span class=n>width</span><span class=p>:</span><span class=mi>200</span><span class=p>,</span><span class=n>height</span><span class=p>:</span><span class=mi>30</span><span class=p>))</span>
-        <span class=n>myTextField</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;&quot;</span>
-        <span class=n>myTextField</span><span class=p>.</span><span class=n>borderStyle</span> <span class=p>=</span> <span class=n>UITextBorderStyle</span><span class=p>.</span><span class=n>roundedRect</span>
-        <span class=n>myTextField</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span><span class=n>y</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>height</span> <span class=o>-</span> <span class=mi>100</span><span class=p>);</span>
+        // DataPickerをViewに追加する.
+        self.view.addSubview(myDatePicker)
 
-        <span class=c1>// UITextFieldをViewに追加する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myTextField</span><span class=p>)</span>
-    <span class=p>}</span>
+        // UITextFieldを作成する.
+        myTextField = UITextField(frame: CGRect(x:0,y:0,width:200,height:30))
+        myTextField.text = &quot;&quot;
+        myTextField.borderStyle = UITextBorderStyle.roundedRect
+        myTextField.layer.position = CGPoint(x: self.view.bounds.width/2,y: self.view.bounds.height - 100);
 
-    <span class=cm>/*</span>
-<span class=cm>     DatePickerが選ばれた際に呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onDidChangeDate</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIDatePicker</span><span class=p>){</span>
+        // UITextFieldをViewに追加する.
+        self.view.addSubview(myTextField)
+    }
 
-        <span class=c1>// フォーマットを生成.</span>
-        <span class=kd>let</span> <span class=nv>myDateFormatter</span><span class=p>:</span> <span class=n>DateFormatter</span> <span class=p>=</span> <span class=n>DateFormatter</span><span class=p>()</span>
-        <span class=n>myDateFormatter</span><span class=p>.</span><span class=n>dateFormat</span> <span class=p>=</span> <span class=s>&quot;yyyy/MM/dd hh:mm&quot;</span>
+    /*
+     DatePickerが選ばれた際に呼ばれる.
+     */
+    internal func onDidChangeDate(sender: UIDatePicker){
 
-        <span class=c1>// 日付をフォーマットに則って取得.</span>
-        <span class=kd>let</span> <span class=nv>mySelectedDate</span><span class=p>:</span> <span class=bp>NSString</span> <span class=p>=</span> <span class=n>myDateFormatter</span><span class=p>.</span><span class=n>string</span><span class=p>(</span><span class=n>from</span><span class=p>:</span> <span class=n>sender</span><span class=p>.</span><span class=n>date</span><span class=p>)</span>
-        <span class=n>myTextField</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=n>mySelectedDate</span> <span class=k>as</span> <span class=nb>String</span>
-    <span class=p>}</span>
+        // フォーマットを生成.
+        let myDateFormatter: DateFormatter = DateFormatter()
+        myDateFormatter.dateFormat = &quot;yyyy/MM/dd hh:mm&quot;
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit023_2.3</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/17.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+        // 日付をフォーマットに則って取得.
+        let mySelectedDate: NSString = myDateFormatter.string(from: sender.date)
+        myTextField.text = mySelectedDate as String
+    }
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UIPickerViewDelegate</span> <span class=p>{</span>
 
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myTextField</span><span class=p>:</span> <span class=bp>UITextField</span><span class=p>!</span>
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit023_2.3
+//
+//  Created by KimikoWatanabe on 2016/08/17.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+import UIKit
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>whiteColor</span><span class=p>()</span>
+class ViewController: UIViewController, UIPickerViewDelegate {
 
-        <span class=c1>// DatePickerを生成する.</span>
-        <span class=kd>let</span> <span class=nv>myDatePicker</span><span class=p>:</span> <span class=bp>UIDatePicker</span> <span class=p>=</span> <span class=bp>UIDatePicker</span><span class=p>()</span>
+    private var myTextField: UITextField!
 
-        <span class=c1>// datePickerを設定（デフォルトでは位置は画面上部）する.</span>
-        <span class=n>myDatePicker</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>50</span><span class=p>,</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=p>,</span> <span class=mi>200</span><span class=p>)</span>
-        <span class=n>myDatePicker</span><span class=p>.</span><span class=n>timeZone</span> <span class=p>=</span> <span class=bp>NSTimeZone</span><span class=p>.</span><span class=n>localTimeZone</span><span class=p>()</span>
-        <span class=n>myDatePicker</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>whiteColor</span><span class=p>()</span>
-        <span class=n>myDatePicker</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>5.0</span>
-        <span class=n>myDatePicker</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>shadowOpacity</span> <span class=p>=</span> <span class=mf>0.5</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// 値が変わった際のイベントを登録する.</span>
-        <span class=n>myDatePicker</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onDidChangeDate</span><span class=p>(</span><span class=kc>_</span><span class=p>:)),</span> <span class=n>forControlEvents</span><span class=p>:</span> <span class=p>.</span><span class=n>ValueChanged</span><span class=p>)</span>
+        self.view.backgroundColor = UIColor.whiteColor()
 
-        <span class=c1>// DataPickerをViewに追加する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myDatePicker</span><span class=p>)</span>
+        // DatePickerを生成する.
+        let myDatePicker: UIDatePicker = UIDatePicker()
 
-        <span class=c1>// UITextFieldを作成する.</span>
-        <span class=n>myTextField</span> <span class=p>=</span> <span class=bp>UITextField</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>200</span><span class=p>,</span><span class=mi>30</span><span class=p>))</span>
-        <span class=n>myTextField</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;&quot;</span>
-        <span class=n>myTextField</span><span class=p>.</span><span class=n>borderStyle</span> <span class=p>=</span> <span class=n>UITextBorderStyle</span><span class=p>.</span><span class=n>RoundedRect</span>
-        <span class=n>myTextField</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span><span class=n>y</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>height</span> <span class=o>-</span> <span class=mi>100</span><span class=p>);</span>
+        // datePickerを設定（デフォルトでは位置は画面上部）する.
+        myDatePicker.frame = CGRectMake(0, 50, self.view.frame.width, 200)
+        myDatePicker.timeZone = NSTimeZone.localTimeZone()
+        myDatePicker.backgroundColor = UIColor.whiteColor()
+        myDatePicker.layer.cornerRadius = 5.0
+        myDatePicker.layer.shadowOpacity = 0.5
 
-        <span class=c1>// UITextFieldをViewに追加する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myTextField</span><span class=p>)</span>
-    <span class=p>}</span>
+        // 値が変わった際のイベントを登録する.
+        myDatePicker.addTarget(self, action: #selector(ViewController.onDidChangeDate(_:)), forControlEvents: .ValueChanged)
 
-    <span class=cm>/*</span>
-<span class=cm>     DatePickerが選ばれた際に呼ばれる.</span>
-<span class=cm>     */</span>
-    <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onDidChangeDate</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIDatePicker</span><span class=p>){</span>
+        // DataPickerをViewに追加する.
+        self.view.addSubview(myDatePicker)
 
-        <span class=c1>// フォーマットを生成.</span>
-        <span class=kd>let</span> <span class=nv>myDateFormatter</span><span class=p>:</span> <span class=bp>NSDateFormatter</span> <span class=p>=</span> <span class=bp>NSDateFormatter</span><span class=p>()</span>
-        <span class=n>myDateFormatter</span><span class=p>.</span><span class=n>dateFormat</span> <span class=p>=</span> <span class=s>&quot;yyyy/MM/dd hh:mm&quot;</span>
+        // UITextFieldを作成する.
+        myTextField = UITextField(frame: CGRectMake(0,0,200,30))
+        myTextField.text = &quot;&quot;
+        myTextField.borderStyle = UITextBorderStyle.RoundedRect
+        myTextField.layer.position = CGPoint(x: self.view.bounds.width/2,y: self.view.bounds.height - 100);
 
-        <span class=c1>// 日付をフォーマットに則って取得.</span>
-        <span class=kd>let</span> <span class=nv>mySelectedDate</span><span class=p>:</span> <span class=bp>NSString</span> <span class=p>=</span> <span class=n>myDateFormatter</span><span class=p>.</span><span class=n>stringFromDate</span><span class=p>(</span><span class=n>sender</span><span class=p>.</span><span class=n>date</span><span class=p>)</span>
-        <span class=n>myTextField</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=n>mySelectedDate</span> <span class=k>as</span> <span class=nb>String</span>
-    <span class=p>}</span>
+        // UITextFieldをViewに追加する.
+        self.view.addSubview(myTextField)
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+    /*
+     DatePickerが選ばれた際に呼ばれる.
+     */
+    internal func onDidChangeDate(sender: UIDatePicker){
+
+        // フォーマットを生成.
+        let myDateFormatter: NSDateFormatter = NSDateFormatter()
+        myDateFormatter.dateFormat = &quot;yyyy/MM/dd hh:mm&quot;
+
+        // 日付をフォーマットに則って取得.
+        let mySelectedDate: NSString = myDateFormatter.stringFromDate(sender.date)
+        myTextField.text = mySelectedDate as String
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+
+</code></pre></div></div>
 <h2 id="3040">3.0と4.0の差分</h2>
 <ul>
 <li><code>UITextBorderStyle.roundedRect</code> が、 <code>UITextField.BorderStyle.roundedRect</code> に変更</li>

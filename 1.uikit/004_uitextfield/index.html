@@ -2317,297 +2317,154 @@
                 
                 <h1 id="uitextfield">UITextFieldで文字を入力</h1>
 <p><img alt="Preview uikit004" src="../img/uikit004.png" /></p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x/3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span>
-<span class=normal>73</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit004</span>
-<span class=c1>//</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x/3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit004
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UITextFieldDelegate</span> <span class=p>{</span>
+class ViewController: UIViewController, UITextFieldDelegate {
 
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myTextField</span><span class=p>:</span> <span class=bp>UITextField</span><span class=p>!</span>
+    private var myTextField: UITextField!
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// UITextFieldの配置するx,yと幅と高さを設定.</span>
-        <span class=kd>let</span> <span class=nv>tWidth</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>200</span>
-        <span class=kd>let</span> <span class=nv>tHeight</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>30</span>
-        <span class=kd>let</span> <span class=nv>posX</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span> <span class=o>-</span> <span class=n>tWidth</span><span class=p>)</span><span class=o>/</span><span class=mi>2</span>
-        <span class=kd>let</span> <span class=nv>posY</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>height</span> <span class=o>-</span> <span class=n>tHeight</span><span class=p>)</span><span class=o>/</span><span class=mi>2</span>
+        // UITextFieldの配置するx,yと幅と高さを設定.
+        let tWidth: CGFloat = 200
+        let tHeight: CGFloat = 30
+        let posX: CGFloat = (self.view.bounds.width - tWidth)/2
+        let posY: CGFloat = (self.view.bounds.height - tHeight)/2
 
-        <span class=c1>// UITextFieldを作成する.</span>
-        <span class=n>myTextField</span> <span class=p>=</span> <span class=bp>UITextField</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=n>posX</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=n>posY</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=n>tWidth</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>tHeight</span><span class=p>))</span>
+        // UITextFieldを作成する.
+        myTextField = UITextField(frame: CGRect(x: posX, y: posY, width: tWidth, height: tHeight))
 
-        <span class=c1>// 表示する文字を代入する.</span>
-        <span class=n>myTextField</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;Hello TextField&quot;</span>
+        // 表示する文字を代入する.
+        myTextField.text = &quot;Hello TextField&quot;
 
-        <span class=c1>// Delegateを自身に設定する</span>
-        <span class=n>myTextField</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
+        // Delegateを自身に設定する
+        myTextField.delegate = self
 
-        <span class=c1>// 枠を表示する.</span>
-        <span class=n>myTextField</span><span class=p>.</span><span class=n>borderStyle</span> <span class=p>=</span> <span class=p>.</span><span class=n>roundedRect</span>
+        // 枠を表示する.
+        myTextField.borderStyle = .roundedRect
 
-        <span class=c1>// クリアボタンを追加.</span>
-        <span class=n>myTextField</span><span class=p>.</span><span class=n>clearButtonMode</span> <span class=p>=</span> <span class=p>.</span><span class=n>whileEditing</span>
+        // クリアボタンを追加.
+        myTextField.clearButtonMode = .whileEditing
 
-        <span class=c1>// Viewに追加する</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myTextField</span><span class=p>)</span>
+        // Viewに追加する
+        self.view.addSubview(myTextField)
 
-    <span class=p>}</span>
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     UITextFieldが編集された直前に呼ばれる</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>textFieldDidBeginEditing</span><span class=p>(</span><span class=kc>_</span> <span class=n>textField</span><span class=p>:</span> <span class=bp>UITextField</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;textFieldDidBeginEditing: </span><span class=si>\(</span><span class=n>textField</span><span class=p>.</span><span class=n>text</span><span class=p>!</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+    /*
+     UITextFieldが編集された直前に呼ばれる
+     */
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        print(&quot;textFieldDidBeginEditing: \(textField.text!)&quot;)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     UITextFieldが編集された直後に呼ばれる</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>textFieldDidEndEditing</span><span class=p>(</span><span class=kc>_</span> <span class=n>textField</span><span class=p>:</span> <span class=bp>UITextField</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;textFieldDidEndEditing: </span><span class=si>\(</span><span class=n>textField</span><span class=p>.</span><span class=n>text</span><span class=p>!</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+    /*
+     UITextFieldが編集された直後に呼ばれる
+     */
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print(&quot;textFieldDidEndEditing: \(textField.text!)&quot;)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     改行ボタンが押された際に呼ばれる</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>textFieldShouldReturn</span><span class=p>(</span><span class=kc>_</span> <span class=n>textField</span><span class=p>:</span> <span class=bp>UITextField</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Bool</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;textFieldShouldReturn </span><span class=si>\(</span><span class=n>textField</span><span class=p>.</span><span class=n>text</span><span class=p>!</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
+    /*
+     改行ボタンが押された際に呼ばれる
+     */
+    func textFieldShouldReturn(_ textField: UITextField) -&gt; Bool {
+        print(&quot;textFieldShouldReturn \(textField.text!)&quot;)
 
-        <span class=c1>// 改行ボタンが押されたらKeyboardを閉じる処理.</span>
-        <span class=n>textField</span><span class=p>.</span><span class=n>resignFirstResponder</span><span class=p>()</span>
+        // 改行ボタンが押されたらKeyboardを閉じる処理.
+        textField.resignFirstResponder()
 
-        <span class=k>return</span> <span class=kc>true</span>
-    <span class=p>}</span>
+        return true
+    }
 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span>
-<span class=normal>73</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit004</span>
-<span class=c1>//</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+}
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit004
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UITextFieldDelegate</span> <span class=p>{</span>
+import UIKit
 
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myTextField</span><span class=p>:</span> <span class=bp>UITextField</span><span class=p>!</span>
+class ViewController: UIViewController, UITextFieldDelegate {
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    private var myTextField: UITextField!
 
-        <span class=c1>// UITextFieldの配置するx,yと幅と高さを設定.</span>
-        <span class=kd>let</span> <span class=nv>tWidth</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>200</span>
-        <span class=kd>let</span> <span class=nv>tHeight</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>30</span>
-        <span class=kd>let</span> <span class=nv>posX</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span> <span class=o>-</span> <span class=n>tWidth</span><span class=p>)</span><span class=o>/</span><span class=mi>2</span>
-        <span class=kd>let</span> <span class=nv>posY</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>height</span> <span class=o>-</span> <span class=n>tHeight</span><span class=p>)</span><span class=o>/</span><span class=mi>2</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// UITextFieldを作成する.</span>
-        <span class=n>myTextField</span> <span class=p>=</span> <span class=bp>UITextField</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=n>posX</span><span class=p>,</span> <span class=n>posY</span><span class=p>,</span> <span class=n>tWidth</span><span class=p>,</span> <span class=n>tHeight</span><span class=p>))</span>
+        // UITextFieldの配置するx,yと幅と高さを設定.
+        let tWidth: CGFloat = 200
+        let tHeight: CGFloat = 30
+        let posX: CGFloat = (self.view.bounds.width - tWidth)/2
+        let posY: CGFloat = (self.view.bounds.height - tHeight)/2
 
-        <span class=c1>// 表示する文字を代入する.</span>
-        <span class=n>myTextField</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;Hello TextField&quot;</span>
+        // UITextFieldを作成する.
+        myTextField = UITextField(frame: CGRectMake(posX, posY, tWidth, tHeight))
 
-        <span class=c1>// Delegateを自身に設定する</span>
-        <span class=n>myTextField</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
+        // 表示する文字を代入する.
+        myTextField.text = &quot;Hello TextField&quot;
 
-        <span class=c1>// 枠を表示する.</span>
-        <span class=n>myTextField</span><span class=p>.</span><span class=n>borderStyle</span> <span class=p>=</span> <span class=p>.</span><span class=n>RoundedRect</span>
+        // Delegateを自身に設定する
+        myTextField.delegate = self
 
-        <span class=c1>// クリアボタンを追加.</span>
-        <span class=n>myTextField</span><span class=p>.</span><span class=n>clearButtonMode</span> <span class=p>=</span> <span class=p>.</span><span class=n>WhileEditing</span>
+        // 枠を表示する.
+        myTextField.borderStyle = .RoundedRect
 
-        <span class=c1>// Viewに追加する</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myTextField</span><span class=p>)</span>
+        // クリアボタンを追加.
+        myTextField.clearButtonMode = .WhileEditing
 
-    <span class=p>}</span>
+        // Viewに追加する
+        self.view.addSubview(myTextField)
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     UITextFieldが編集された直前に呼ばれる</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>textFieldDidBeginEditing</span><span class=p>(</span><span class=n>textField</span><span class=p>:</span> <span class=bp>UITextField</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;textFieldDidBeginEditing: </span><span class=si>\(</span><span class=n>textField</span><span class=p>.</span><span class=n>text</span><span class=p>!</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     UITextFieldが編集された直後に呼ばれる</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>textFieldDidEndEditing</span><span class=p>(</span><span class=n>textField</span><span class=p>:</span> <span class=bp>UITextField</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;textFieldDidEndEditing: </span><span class=si>\(</span><span class=n>textField</span><span class=p>.</span><span class=n>text</span><span class=p>!</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+    /*
+     UITextFieldが編集された直前に呼ばれる
+     */
+    func textFieldDidBeginEditing(textField: UITextField) {
+        print(&quot;textFieldDidBeginEditing: \(textField.text!)&quot;)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     改行ボタンが押された際に呼ばれる</span>
-<span class=cm>    */</span>
-    <span class=kd>func</span> <span class=nf>textFieldShouldReturn</span><span class=p>(</span><span class=n>textField</span><span class=p>:</span> <span class=bp>UITextField</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Bool</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;textFieldShouldReturn </span><span class=si>\(</span><span class=n>textField</span><span class=p>.</span><span class=n>text</span><span class=p>!</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
+    /*
+     UITextFieldが編集された直後に呼ばれる
+     */
+    func textFieldDidEndEditing(textField: UITextField) {
+        print(&quot;textFieldDidEndEditing: \(textField.text!)&quot;)
+    }
 
-        <span class=c1>// 改行ボタンが押されたらKeyboardを閉じる処理.</span>
-        <span class=n>textField</span><span class=p>.</span><span class=n>resignFirstResponder</span><span class=p>()</span>
+    /*
+     改行ボタンが押された際に呼ばれる
+    */
+    func textFieldShouldReturn(textField: UITextField) -&gt; Bool {
+        print(&quot;textFieldShouldReturn \(textField.text!)&quot;)
 
-        <span class=k>return</span> <span class=kc>true</span>
-    <span class=p>}</span>
+        // 改行ボタンが押されたらKeyboardを閉じる処理.
+        textField.resignFirstResponder()
 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+        return true
+    }
+
+}
+</code></pre></div></div>
 <h2 id="2330">2.3と3.0の差分</h2>
 <ul>
 <li>textFieldDidBeginEditing(textField: UITextField)がtextFieldDidBeginEditing(_ textField: UITextField)に変更</li>

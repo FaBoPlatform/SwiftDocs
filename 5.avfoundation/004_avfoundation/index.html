@@ -2332,876 +2332,443 @@
                 <h1 id="_1">撮影した動画を保存する</h1>
 <p><img alt="Preview coremotion001" src="../img/AVFoundation004.png" /></p>
 <p><code>Info.plist</code>に<code>NSMicrophoneUsageDescription</code>と<code>NSCameraUsageDescription</code>、<code>NSPhotoLibraryUsageDescription</code>を追加します</p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal>  1</span>
-<span class=normal>  2</span>
-<span class=normal>  3</span>
-<span class=normal>  4</span>
-<span class=normal>  5</span>
-<span class=normal>  6</span>
-<span class=normal>  7</span>
-<span class=normal>  8</span>
-<span class=normal>  9</span>
-<span class=normal> 10</span>
-<span class=normal> 11</span>
-<span class=normal> 12</span>
-<span class=normal> 13</span>
-<span class=normal> 14</span>
-<span class=normal> 15</span>
-<span class=normal> 16</span>
-<span class=normal> 17</span>
-<span class=normal> 18</span>
-<span class=normal> 19</span>
-<span class=normal> 20</span>
-<span class=normal> 21</span>
-<span class=normal> 22</span>
-<span class=normal> 23</span>
-<span class=normal> 24</span>
-<span class=normal> 25</span>
-<span class=normal> 26</span>
-<span class=normal> 27</span>
-<span class=normal> 28</span>
-<span class=normal> 29</span>
-<span class=normal> 30</span>
-<span class=normal> 31</span>
-<span class=normal> 32</span>
-<span class=normal> 33</span>
-<span class=normal> 34</span>
-<span class=normal> 35</span>
-<span class=normal> 36</span>
-<span class=normal> 37</span>
-<span class=normal> 38</span>
-<span class=normal> 39</span>
-<span class=normal> 40</span>
-<span class=normal> 41</span>
-<span class=normal> 42</span>
-<span class=normal> 43</span>
-<span class=normal> 44</span>
-<span class=normal> 45</span>
-<span class=normal> 46</span>
-<span class=normal> 47</span>
-<span class=normal> 48</span>
-<span class=normal> 49</span>
-<span class=normal> 50</span>
-<span class=normal> 51</span>
-<span class=normal> 52</span>
-<span class=normal> 53</span>
-<span class=normal> 54</span>
-<span class=normal> 55</span>
-<span class=normal> 56</span>
-<span class=normal> 57</span>
-<span class=normal> 58</span>
-<span class=normal> 59</span>
-<span class=normal> 60</span>
-<span class=normal> 61</span>
-<span class=normal> 62</span>
-<span class=normal> 63</span>
-<span class=normal> 64</span>
-<span class=normal> 65</span>
-<span class=normal> 66</span>
-<span class=normal> 67</span>
-<span class=normal> 68</span>
-<span class=normal> 69</span>
-<span class=normal> 70</span>
-<span class=normal> 71</span>
-<span class=normal> 72</span>
-<span class=normal> 73</span>
-<span class=normal> 74</span>
-<span class=normal> 75</span>
-<span class=normal> 76</span>
-<span class=normal> 77</span>
-<span class=normal> 78</span>
-<span class=normal> 79</span>
-<span class=normal> 80</span>
-<span class=normal> 81</span>
-<span class=normal> 82</span>
-<span class=normal> 83</span>
-<span class=normal> 84</span>
-<span class=normal> 85</span>
-<span class=normal> 86</span>
-<span class=normal> 87</span>
-<span class=normal> 88</span>
-<span class=normal> 89</span>
-<span class=normal> 90</span>
-<span class=normal> 91</span>
-<span class=normal> 92</span>
-<span class=normal> 93</span>
-<span class=normal> 94</span>
-<span class=normal> 95</span>
-<span class=normal> 96</span>
-<span class=normal> 97</span>
-<span class=normal> 98</span>
-<span class=normal> 99</span>
-<span class=normal>100</span>
-<span class=normal>101</span>
-<span class=normal>102</span>
-<span class=normal>103</span>
-<span class=normal>104</span>
-<span class=normal>105</span>
-<span class=normal>106</span>
-<span class=normal>107</span>
-<span class=normal>108</span>
-<span class=normal>109</span>
-<span class=normal>110</span>
-<span class=normal>111</span>
-<span class=normal>112</span>
-<span class=normal>113</span>
-<span class=normal>114</span>
-<span class=normal>115</span>
-<span class=normal>116</span>
-<span class=normal>117</span>
-<span class=normal>118</span>
-<span class=normal>119</span>
-<span class=normal>120</span>
-<span class=normal>121</span>
-<span class=normal>122</span>
-<span class=normal>123</span>
-<span class=normal>124</span>
-<span class=normal>125</span>
-<span class=normal>126</span>
-<span class=normal>127</span>
-<span class=normal>128</span>
-<span class=normal>129</span>
-<span class=normal>130</span>
-<span class=normal>131</span>
-<span class=normal>132</span>
-<span class=normal>133</span>
-<span class=normal>134</span>
-<span class=normal>135</span>
-<span class=normal>136</span>
-<span class=normal>137</span>
-<span class=normal>138</span>
-<span class=normal>139</span>
-<span class=normal>140</span>
-<span class=normal>141</span>
-<span class=normal>142</span>
-<span class=normal>143</span>
-<span class=normal>144</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  avfoundation004</span>
-<span class=c1>//</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
-<span class=kd>import</span> <span class=nc>UIKit</span>
-<span class=kd>import</span> <span class=nc>AVFoundation</span>
-<span class=kd>import</span> <span class=nc>AssetsLibrary</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>AVCaptureFileOutputRecordingDelegate</span> <span class=p>{</span>
-
-    <span class=c1>// スタートボタン.</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myButtonStart</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>!</span>
-
-    <span class=c1>// ストップボタン.</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myButtonStop</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>!</span>
-
-    <span class=c1>// ビデオのアウトプット.</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myVideoOutput</span><span class=p>:</span> <span class=bp>AVCaptureMovieFileOutput</span><span class=p>!</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-
-        <span class=c1>// セッションの作成.</span>
-        <span class=kd>let</span> <span class=nv>mySession</span> <span class=p>=</span> <span class=bp>AVCaptureSession</span><span class=p>()</span>
-
-        <span class=c1>// デバイス.</span>
-        <span class=kd>var</span> <span class=nv>myDevice</span><span class=p>:</span> <span class=bp>AVCaptureDevice</span><span class=p>!</span>
-
-        <span class=c1>// 出力先を生成.</span>
-        <span class=kd>let</span> <span class=nv>myImageOutput</span> <span class=p>=</span> <span class=bp>AVCaptureStillImageOutput</span><span class=p>()</span>
-
-        <span class=c1>// マイクを取得.</span>
-        <span class=kd>let</span> <span class=nv>audioCaptureDevice</span> <span class=p>=</span> <span class=bp>AVCaptureDevice</span><span class=p>.</span><span class=n>devices</span><span class=p>(</span><span class=k>for</span><span class=p>:</span> <span class=n>AVMediaType</span><span class=p>.</span><span class=n>audio</span><span class=p>)</span>
-
-        <span class=c1>// マイクをセッションのInputに追加.</span>
-        <span class=kd>let</span> <span class=nv>audioInput</span> <span class=p>=</span> <span class=k>try</span><span class=p>!</span> <span class=bp>AVCaptureDeviceInput</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>device</span><span class=p>:</span> <span class=n>audioCaptureDevice</span><span class=p>.</span><span class=bp>first</span><span class=p>!)</span>
-
-        <span class=c1>// デバイス一覧の取得.</span>
-        <span class=kd>let</span> <span class=nv>devices</span> <span class=p>=</span> <span class=bp>AVCaptureDevice</span><span class=p>.</span><span class=n>devices</span><span class=p>()</span>
-
-        <span class=c1>// バックライトをmyDeviceに格納.</span>
-        <span class=k>for</span> <span class=n>device</span> <span class=k>in</span> <span class=n>devices</span> <span class=p>{</span>
-            <span class=k>if</span><span class=p>(</span><span class=n>device</span><span class=p>.</span><span class=n>position</span> <span class=p>==</span> <span class=bp>AVCaptureDevice</span><span class=p>.</span><span class=n>Position</span><span class=p>.</span><span class=n>back</span><span class=p>){</span>
-                <span class=n>myDevice</span> <span class=p>=</span> <span class=n>device</span>
-            <span class=p>}</span>
-        <span class=p>}</span>
-
-        <span class=c1>// バックカメラを取得.</span>
-        <span class=kd>let</span> <span class=nv>videoInput</span> <span class=p>=</span> <span class=k>try</span><span class=p>!</span> <span class=bp>AVCaptureDeviceInput</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>device</span><span class=p>:</span> <span class=n>myDevice</span><span class=p>)</span>
-
-        <span class=c1>// ビデオをセッションのInputに追加.</span>
-        <span class=n>mySession</span><span class=p>.</span><span class=n>addInput</span><span class=p>(</span><span class=n>videoInput</span><span class=p>)</span>
-
-        <span class=c1>// オーディオをセッションに追加.</span>
-        <span class=n>mySession</span><span class=p>.</span><span class=n>addInput</span><span class=p>(</span><span class=n>audioInput</span><span class=p>);</span>
-
-        <span class=c1>// セッションに追加.</span>
-        <span class=n>mySession</span><span class=p>.</span><span class=n>addOutput</span><span class=p>(</span><span class=n>myImageOutput</span><span class=p>)</span>
-
-        <span class=c1>// 動画の保存.</span>
-        <span class=n>myVideoOutput</span> <span class=p>=</span> <span class=bp>AVCaptureMovieFileOutput</span><span class=p>()</span>
-
-        <span class=c1>// ビデオ出力をOutputに追加.</span>
-        <span class=n>mySession</span><span class=p>.</span><span class=n>addOutput</span><span class=p>(</span><span class=n>myVideoOutput</span><span class=p>)</span>
-
-        <span class=c1>// 画像を表示するレイヤーを生成.</span>
-        <span class=kd>let</span> <span class=nv>myVideoLayer</span> <span class=p>=</span> <span class=bp>AVCaptureVideoPreviewLayer</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>session</span><span class=p>:</span> <span class=n>mySession</span><span class=p>)</span>
-        <span class=n>myVideoLayer</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span>
-        <span class=n>myVideoLayer</span><span class=p>.</span><span class=n>videoGravity</span> <span class=p>=</span> <span class=n>AVLayerVideoGravity</span><span class=p>.</span><span class=n>resizeAspectFill</span>
-
-        <span class=c1>// Viewに追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>addSublayer</span><span class=p>(</span><span class=n>myVideoLayer</span><span class=p>)</span>
-
-        <span class=c1>// セッション開始.</span>
-        <span class=n>mySession</span><span class=p>.</span><span class=n>startRunning</span><span class=p>()</span>
-
-        <span class=c1>// UIボタンを作成.</span>
-        <span class=n>myButtonStart</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>120</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>50</span><span class=p>))</span>
-        <span class=n>myButtonStop</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>120</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>50</span><span class=p>))</span>
-
-        <span class=n>myButtonStart</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>red</span>
-        <span class=n>myButtonStop</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>gray</span>
-
-        <span class=n>myButtonStart</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myButtonStop</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-
-        <span class=n>myButtonStart</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;撮影&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButtonStop</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;停止&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-
-        <span class=n>myButtonStart</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myButtonStop</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-
-        <span class=n>myButtonStart</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span> <span class=o>-</span> <span class=mi>70</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>height</span><span class=o>-</span><span class=mi>50</span><span class=p>)</span>
-        <span class=n>myButtonStop</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span> <span class=o>+</span> <span class=mi>70</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>height</span><span class=o>-</span><span class=mi>50</span><span class=p>)</span>
-
-        <span class=n>myButtonStart</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>),</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>touchUpInside</span><span class=p>)</span>
-        <span class=n>myButtonStop</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>),</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>touchUpInside</span><span class=p>)</span>
-
-        <span class=c1>// UIボタンをViewに追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButtonStart</span><span class=p>);</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButtonStop</span><span class=p>);</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     ボタンイベント.</span>
-<span class=cm>     */</span>
-    <span class=kr>@objc</span> <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>){</span>
-
-        <span class=c1>// 撮影開始.</span>
-        <span class=k>if</span><span class=p>(</span> <span class=n>sender</span> <span class=p>==</span> <span class=n>myButtonStart</span> <span class=p>){</span>
-            <span class=kd>let</span> <span class=nv>paths</span> <span class=p>=</span> <span class=n>NSSearchPathForDirectoriesInDomains</span><span class=p>(.</span><span class=n>documentDirectory</span><span class=p>,</span> <span class=p>.</span><span class=n>userDomainMask</span><span class=p>,</span> <span class=kc>true</span><span class=p>)</span>
-
-            <span class=c1>// フォルダ.</span>
-            <span class=kd>let</span> <span class=nv>documentsDirectory</span> <span class=p>=</span> <span class=n>paths</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span>
-
-            <span class=c1>// ファイル名.</span>
-            <span class=kd>let</span> <span class=nv>filePath</span> <span class=p>=</span> <span class=s>&quot;</span><span class=si>\(</span><span class=n>documentsDirectory</span><span class=si>)</span><span class=s>/test.mp4&quot;</span>
-
-            <span class=c1>// URL.</span>
-            <span class=kd>let</span> <span class=nv>fileURL</span> <span class=p>=</span> <span class=n>URL</span><span class=p>(</span><span class=n>fileURLWithPath</span><span class=p>:</span> <span class=n>filePath</span><span class=p>)</span>
-
-            <span class=c1>// 録画開始.</span>
-            <span class=n>myVideoOutput</span><span class=p>.</span><span class=n>startRecording</span><span class=p>(</span><span class=n>to</span><span class=p>:</span> <span class=n>fileURL</span><span class=p>,</span> <span class=n>recordingDelegate</span><span class=p>:</span> <span class=kc>self</span><span class=p>)</span>
-        <span class=p>}</span>
-            <span class=c1>// 撮影停止.</span>
-        <span class=k>else</span> <span class=k>if</span> <span class=p>(</span> <span class=n>sender</span> <span class=p>==</span> <span class=n>myButtonStop</span> <span class=p>){</span>
-            <span class=n>myVideoOutput</span><span class=p>.</span><span class=n>stopRecording</span><span class=p>()</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-
-    <span class=c1>// </span><span class=cs>MARK:</span><span class=c1> - AVCaptureFileOutputRecordingDelegate</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     動画のキャプチャーが終わった時に呼ばれるメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>fileOutput</span><span class=p>(</span><span class=kc>_</span> <span class=n>output</span><span class=p>:</span> <span class=bp>AVCaptureFileOutput</span><span class=p>,</span> <span class=n>didFinishRecordingTo</span> <span class=n>outputFileURL</span><span class=p>:</span> <span class=n>URL</span><span class=p>,</span> <span class=n>from</span> <span class=n>connections</span><span class=p>:</span> <span class=p>[</span><span class=bp>AVCaptureConnection</span><span class=p>],</span> <span class=n>error</span><span class=p>:</span> <span class=n>Error</span><span class=p>?)</span> <span class=p>{</span>
-        <span class=c1>//AssetsLibraryを生成する.</span>
-        <span class=kd>let</span> <span class=nv>assetsLib</span> <span class=p>=</span> <span class=bp>ALAssetsLibrary</span><span class=p>()</span>
-
-        <span class=c1>//動画のパスから動画をフォトライブラリに保存する.</span>
-        <span class=n>assetsLib</span><span class=p>.</span><span class=n>writeVideoAtPath</span><span class=p>(</span><span class=n>toSavedPhotosAlbum</span><span class=p>:</span> <span class=n>outputFileURL</span><span class=p>,</span> <span class=n>completionBlock</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal>  1</span>
-<span class=normal>  2</span>
-<span class=normal>  3</span>
-<span class=normal>  4</span>
-<span class=normal>  5</span>
-<span class=normal>  6</span>
-<span class=normal>  7</span>
-<span class=normal>  8</span>
-<span class=normal>  9</span>
-<span class=normal> 10</span>
-<span class=normal> 11</span>
-<span class=normal> 12</span>
-<span class=normal> 13</span>
-<span class=normal> 14</span>
-<span class=normal> 15</span>
-<span class=normal> 16</span>
-<span class=normal> 17</span>
-<span class=normal> 18</span>
-<span class=normal> 19</span>
-<span class=normal> 20</span>
-<span class=normal> 21</span>
-<span class=normal> 22</span>
-<span class=normal> 23</span>
-<span class=normal> 24</span>
-<span class=normal> 25</span>
-<span class=normal> 26</span>
-<span class=normal> 27</span>
-<span class=normal> 28</span>
-<span class=normal> 29</span>
-<span class=normal> 30</span>
-<span class=normal> 31</span>
-<span class=normal> 32</span>
-<span class=normal> 33</span>
-<span class=normal> 34</span>
-<span class=normal> 35</span>
-<span class=normal> 36</span>
-<span class=normal> 37</span>
-<span class=normal> 38</span>
-<span class=normal> 39</span>
-<span class=normal> 40</span>
-<span class=normal> 41</span>
-<span class=normal> 42</span>
-<span class=normal> 43</span>
-<span class=normal> 44</span>
-<span class=normal> 45</span>
-<span class=normal> 46</span>
-<span class=normal> 47</span>
-<span class=normal> 48</span>
-<span class=normal> 49</span>
-<span class=normal> 50</span>
-<span class=normal> 51</span>
-<span class=normal> 52</span>
-<span class=normal> 53</span>
-<span class=normal> 54</span>
-<span class=normal> 55</span>
-<span class=normal> 56</span>
-<span class=normal> 57</span>
-<span class=normal> 58</span>
-<span class=normal> 59</span>
-<span class=normal> 60</span>
-<span class=normal> 61</span>
-<span class=normal> 62</span>
-<span class=normal> 63</span>
-<span class=normal> 64</span>
-<span class=normal> 65</span>
-<span class=normal> 66</span>
-<span class=normal> 67</span>
-<span class=normal> 68</span>
-<span class=normal> 69</span>
-<span class=normal> 70</span>
-<span class=normal> 71</span>
-<span class=normal> 72</span>
-<span class=normal> 73</span>
-<span class=normal> 74</span>
-<span class=normal> 75</span>
-<span class=normal> 76</span>
-<span class=normal> 77</span>
-<span class=normal> 78</span>
-<span class=normal> 79</span>
-<span class=normal> 80</span>
-<span class=normal> 81</span>
-<span class=normal> 82</span>
-<span class=normal> 83</span>
-<span class=normal> 84</span>
-<span class=normal> 85</span>
-<span class=normal> 86</span>
-<span class=normal> 87</span>
-<span class=normal> 88</span>
-<span class=normal> 89</span>
-<span class=normal> 90</span>
-<span class=normal> 91</span>
-<span class=normal> 92</span>
-<span class=normal> 93</span>
-<span class=normal> 94</span>
-<span class=normal> 95</span>
-<span class=normal> 96</span>
-<span class=normal> 97</span>
-<span class=normal> 98</span>
-<span class=normal> 99</span>
-<span class=normal>100</span>
-<span class=normal>101</span>
-<span class=normal>102</span>
-<span class=normal>103</span>
-<span class=normal>104</span>
-<span class=normal>105</span>
-<span class=normal>106</span>
-<span class=normal>107</span>
-<span class=normal>108</span>
-<span class=normal>109</span>
-<span class=normal>110</span>
-<span class=normal>111</span>
-<span class=normal>112</span>
-<span class=normal>113</span>
-<span class=normal>114</span>
-<span class=normal>115</span>
-<span class=normal>116</span>
-<span class=normal>117</span>
-<span class=normal>118</span>
-<span class=normal>119</span>
-<span class=normal>120</span>
-<span class=normal>121</span>
-<span class=normal>122</span>
-<span class=normal>123</span>
-<span class=normal>124</span>
-<span class=normal>125</span>
-<span class=normal>126</span>
-<span class=normal>127</span>
-<span class=normal>128</span>
-<span class=normal>129</span>
-<span class=normal>130</span>
-<span class=normal>131</span>
-<span class=normal>132</span>
-<span class=normal>133</span>
-<span class=normal>134</span>
-<span class=normal>135</span>
-<span class=normal>136</span>
-<span class=normal>137</span>
-<span class=normal>138</span>
-<span class=normal>139</span>
-<span class=normal>140</span>
-<span class=normal>141</span>
-<span class=normal>142</span>
-<span class=normal>143</span>
-<span class=normal>144</span>
-<span class=normal>145</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  avfoundation004</span>
-<span class=c1>//</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
-<span class=kd>import</span> <span class=nc>UIKit</span>
-<span class=kd>import</span> <span class=nc>AVFoundation</span>
-<span class=kd>import</span> <span class=nc>AssetsLibrary</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>AVCaptureFileOutputRecordingDelegate</span> <span class=p>{</span>
-
-    <span class=c1>// スタートボタン.</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myButtonStart</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>!</span>
-
-    <span class=c1>// ストップボタン.</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myButtonStop</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>!</span>
-
-    <span class=c1>// ビデオのアウトプット.</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myVideoOutput</span><span class=p>:</span> <span class=bp>AVCaptureMovieFileOutput</span><span class=p>!</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-
-        <span class=c1>// セッションの作成.</span>
-        <span class=kd>let</span> <span class=nv>mySession</span> <span class=p>=</span> <span class=bp>AVCaptureSession</span><span class=p>()</span>
-
-        <span class=c1>// デバイス.</span>
-        <span class=kd>var</span> <span class=nv>myDevice</span><span class=p>:</span> <span class=bp>AVCaptureDevice</span><span class=p>!</span>
-
-        <span class=c1>// 出力先を生成.</span>
-        <span class=kd>let</span> <span class=nv>myImageOutput</span> <span class=p>=</span> <span class=bp>AVCaptureStillImageOutput</span><span class=p>()</span>
-
-        <span class=c1>// マイクを取得.</span>
-        <span class=kd>let</span> <span class=nv>audioCaptureDevice</span> <span class=p>=</span> <span class=bp>AVCaptureDevice</span><span class=p>.</span><span class=n>devices</span><span class=p>(</span><span class=n>withMediaType</span><span class=p>:</span> <span class=n>AVMediaTypeAudio</span><span class=p>)</span>
-
-        <span class=c1>// マイクをセッションのInputに追加.</span>
-        <span class=kd>let</span> <span class=nv>audioInput</span> <span class=p>=</span> <span class=k>try</span><span class=p>!</span> <span class=bp>AVCaptureDeviceInput</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>device</span><span class=p>:</span> <span class=n>audioCaptureDevice</span><span class=p>?.</span><span class=bp>first</span> <span class=k>as</span><span class=p>!</span> <span class=bp>AVCaptureDevice</span><span class=p>)</span>
-
-        <span class=c1>// デバイス一覧の取得.</span>
-        <span class=kd>let</span> <span class=nv>devices</span> <span class=p>=</span> <span class=bp>AVCaptureDevice</span><span class=p>.</span><span class=n>devices</span><span class=p>()</span>
-
-        <span class=c1>// バックライトをmyDeviceに格納.</span>
-        <span class=k>for</span> <span class=n>device</span> <span class=k>in</span> <span class=n>devices</span><span class=p>!</span> <span class=p>{</span>
-            <span class=k>if</span><span class=p>(</span><span class=n>device</span><span class=p>.</span><span class=n>position</span> <span class=p>==</span> <span class=n>AVCaptureDevicePosition</span><span class=p>.</span><span class=n>back</span><span class=p>){</span>
-                <span class=n>myDevice</span> <span class=p>=</span> <span class=n>device</span> <span class=k>as</span><span class=p>?</span> <span class=bp>AVCaptureDevice</span>
-            <span class=p>}</span>
-        <span class=p>}</span>
-
-        <span class=c1>// バックカメラを取得.</span>
-        <span class=kd>let</span> <span class=nv>videoInput</span> <span class=p>=</span> <span class=k>try</span><span class=p>!</span> <span class=bp>AVCaptureDeviceInput</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>device</span><span class=p>:</span> <span class=n>myDevice</span><span class=p>)</span>
-
-        <span class=c1>// ビデオをセッションのInputに追加.</span>
-        <span class=n>mySession</span><span class=p>.</span><span class=n>addInput</span><span class=p>(</span><span class=n>videoInput</span><span class=p>)</span>
-
-        <span class=c1>// オーディオをセッションに追加.</span>
-        <span class=n>mySession</span><span class=p>.</span><span class=n>addInput</span><span class=p>(</span><span class=n>audioInput</span><span class=p>);</span>
-
-        <span class=c1>// セッションに追加.</span>
-        <span class=n>mySession</span><span class=p>.</span><span class=n>addOutput</span><span class=p>(</span><span class=n>myImageOutput</span><span class=p>)</span>
-
-        <span class=c1>// 動画の保存.</span>
-        <span class=n>myVideoOutput</span> <span class=p>=</span> <span class=bp>AVCaptureMovieFileOutput</span><span class=p>()</span>
-
-        <span class=c1>// ビデオ出力をOutputに追加.</span>
-        <span class=n>mySession</span><span class=p>.</span><span class=n>addOutput</span><span class=p>(</span><span class=n>myVideoOutput</span><span class=p>)</span>
-
-        <span class=c1>// 画像を表示するレイヤーを生成.</span>
-        <span class=kd>let</span> <span class=nv>myVideoLayer</span> <span class=p>=</span> <span class=bp>AVCaptureVideoPreviewLayer</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>session</span><span class=p>:</span> <span class=n>mySession</span><span class=p>)</span>
-        <span class=n>myVideoLayer</span><span class=p>?.</span><span class=n>frame</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span>
-        <span class=n>myVideoLayer</span><span class=p>?.</span><span class=n>videoGravity</span> <span class=p>=</span> <span class=n>AVLayerVideoGravityResizeAspectFill</span>
-
-        <span class=c1>// Viewに追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>addSublayer</span><span class=p>(</span><span class=n>myVideoLayer</span><span class=p>!)</span>
-
-        <span class=c1>// セッション開始.</span>
-        <span class=n>mySession</span><span class=p>.</span><span class=n>startRunning</span><span class=p>()</span>
-
-        <span class=c1>// UIボタンを作成.</span>
-        <span class=n>myButtonStart</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>120</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>50</span><span class=p>))</span>
-        <span class=n>myButtonStop</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>120</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>50</span><span class=p>))</span>
-
-        <span class=n>myButtonStart</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>red</span>
-        <span class=n>myButtonStop</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>gray</span>
-
-        <span class=n>myButtonStart</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myButtonStop</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-
-        <span class=n>myButtonStart</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;撮影&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButtonStop</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;停止&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-
-        <span class=n>myButtonStart</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myButtonStop</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-
-        <span class=n>myButtonStart</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span> <span class=o>-</span> <span class=mi>70</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>height</span><span class=o>-</span><span class=mi>50</span><span class=p>)</span>
-        <span class=n>myButtonStop</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span> <span class=o>+</span> <span class=mi>70</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>height</span><span class=o>-</span><span class=mi>50</span><span class=p>)</span>
-
-        <span class=n>myButtonStart</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>),</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>touchUpInside</span><span class=p>)</span>
-        <span class=n>myButtonStop</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>),</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>touchUpInside</span><span class=p>)</span>
-
-        <span class=c1>// UIボタンをViewに追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButtonStart</span><span class=p>);</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButtonStop</span><span class=p>);</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     ボタンイベント.</span>
-<span class=cm>     */</span>
-    <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>){</span>
-
-        <span class=c1>// 撮影開始.</span>
-        <span class=k>if</span><span class=p>(</span> <span class=n>sender</span> <span class=p>==</span> <span class=n>myButtonStart</span> <span class=p>){</span>
-            <span class=kd>let</span> <span class=nv>paths</span> <span class=p>=</span> <span class=n>NSSearchPathForDirectoriesInDomains</span><span class=p>(.</span><span class=n>documentDirectory</span><span class=p>,</span> <span class=p>.</span><span class=n>userDomainMask</span><span class=p>,</span> <span class=kc>true</span><span class=p>)</span>
-
-            <span class=c1>// フォルダ.</span>
-            <span class=kd>let</span> <span class=nv>documentsDirectory</span> <span class=p>=</span> <span class=n>paths</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span>
-
-            <span class=c1>// ファイル名.</span>
-            <span class=kd>let</span> <span class=nv>filePath</span> <span class=p>=</span> <span class=s>&quot;</span><span class=si>\(</span><span class=n>documentsDirectory</span><span class=si>)</span><span class=s>/test.mp4&quot;</span>
-
-            <span class=c1>// URL.</span>
-            <span class=kd>let</span> <span class=nv>fileURL</span> <span class=p>=</span> <span class=n>URL</span><span class=p>(</span><span class=n>fileURLWithPath</span><span class=p>:</span> <span class=n>filePath</span><span class=p>!)</span>
-
-            <span class=c1>// 録画開始.</span>
-            <span class=n>myVideoOutput</span><span class=p>.</span><span class=n>startRecording</span><span class=p>(</span><span class=n>toOutputFileURL</span><span class=p>:</span> <span class=n>fileURL</span><span class=p>,</span> <span class=n>recordingDelegate</span><span class=p>:</span> <span class=kc>self</span><span class=p>)</span>
-        <span class=p>}</span>
-            <span class=c1>// 撮影停止.</span>
-        <span class=k>else</span> <span class=k>if</span> <span class=p>(</span> <span class=n>sender</span> <span class=p>==</span> <span class=n>myButtonStop</span> <span class=p>){</span>
-            <span class=n>myVideoOutput</span><span class=p>.</span><span class=n>stopRecording</span><span class=p>()</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-
-    <span class=c1>// </span><span class=cs>MARK:</span><span class=c1> - AVCaptureFileOutputRecordingDelegate</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     動画のキャプチャーが終わった時に呼ばれるメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>capture</span><span class=p>(</span><span class=kc>_</span> <span class=n>captureOutput</span><span class=p>:</span> <span class=bp>AVCaptureFileOutput</span><span class=p>!,</span> <span class=n>didFinishRecordingToOutputFileAt</span> <span class=n>outputFileURL</span><span class=p>:</span> <span class=n>URL</span><span class=p>!,</span> <span class=n>fromConnections</span> <span class=n>connections</span><span class=p>:</span> <span class=p>[</span><span class=nb>AnyObject</span><span class=p>]</span><span class=o>!</span><span class=p>,</span> <span class=n>error</span><span class=p>:</span> <span class=n>Error</span><span class=p>!)</span> <span class=p>{</span>
-        <span class=c1>//AssetsLibraryを生成する.</span>
-        <span class=kd>let</span> <span class=nv>assetsLib</span> <span class=p>=</span> <span class=bp>ALAssetsLibrary</span><span class=p>()</span>
-
-        <span class=c1>//動画のパスから動画をフォトライブラリに保存する.</span>
-        <span class=n>assetsLib</span><span class=p>.</span><span class=n>writeVideoAtPath</span><span class=p>(</span><span class=n>toSavedPhotosAlbum</span><span class=p>:</span> <span class=n>outputFileURL</span><span class=p>,</span> <span class=n>completionBlock</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal>  1</span>
-<span class=normal>  2</span>
-<span class=normal>  3</span>
-<span class=normal>  4</span>
-<span class=normal>  5</span>
-<span class=normal>  6</span>
-<span class=normal>  7</span>
-<span class=normal>  8</span>
-<span class=normal>  9</span>
-<span class=normal> 10</span>
-<span class=normal> 11</span>
-<span class=normal> 12</span>
-<span class=normal> 13</span>
-<span class=normal> 14</span>
-<span class=normal> 15</span>
-<span class=normal> 16</span>
-<span class=normal> 17</span>
-<span class=normal> 18</span>
-<span class=normal> 19</span>
-<span class=normal> 20</span>
-<span class=normal> 21</span>
-<span class=normal> 22</span>
-<span class=normal> 23</span>
-<span class=normal> 24</span>
-<span class=normal> 25</span>
-<span class=normal> 26</span>
-<span class=normal> 27</span>
-<span class=normal> 28</span>
-<span class=normal> 29</span>
-<span class=normal> 30</span>
-<span class=normal> 31</span>
-<span class=normal> 32</span>
-<span class=normal> 33</span>
-<span class=normal> 34</span>
-<span class=normal> 35</span>
-<span class=normal> 36</span>
-<span class=normal> 37</span>
-<span class=normal> 38</span>
-<span class=normal> 39</span>
-<span class=normal> 40</span>
-<span class=normal> 41</span>
-<span class=normal> 42</span>
-<span class=normal> 43</span>
-<span class=normal> 44</span>
-<span class=normal> 45</span>
-<span class=normal> 46</span>
-<span class=normal> 47</span>
-<span class=normal> 48</span>
-<span class=normal> 49</span>
-<span class=normal> 50</span>
-<span class=normal> 51</span>
-<span class=normal> 52</span>
-<span class=normal> 53</span>
-<span class=normal> 54</span>
-<span class=normal> 55</span>
-<span class=normal> 56</span>
-<span class=normal> 57</span>
-<span class=normal> 58</span>
-<span class=normal> 59</span>
-<span class=normal> 60</span>
-<span class=normal> 61</span>
-<span class=normal> 62</span>
-<span class=normal> 63</span>
-<span class=normal> 64</span>
-<span class=normal> 65</span>
-<span class=normal> 66</span>
-<span class=normal> 67</span>
-<span class=normal> 68</span>
-<span class=normal> 69</span>
-<span class=normal> 70</span>
-<span class=normal> 71</span>
-<span class=normal> 72</span>
-<span class=normal> 73</span>
-<span class=normal> 74</span>
-<span class=normal> 75</span>
-<span class=normal> 76</span>
-<span class=normal> 77</span>
-<span class=normal> 78</span>
-<span class=normal> 79</span>
-<span class=normal> 80</span>
-<span class=normal> 81</span>
-<span class=normal> 82</span>
-<span class=normal> 83</span>
-<span class=normal> 84</span>
-<span class=normal> 85</span>
-<span class=normal> 86</span>
-<span class=normal> 87</span>
-<span class=normal> 88</span>
-<span class=normal> 89</span>
-<span class=normal> 90</span>
-<span class=normal> 91</span>
-<span class=normal> 92</span>
-<span class=normal> 93</span>
-<span class=normal> 94</span>
-<span class=normal> 95</span>
-<span class=normal> 96</span>
-<span class=normal> 97</span>
-<span class=normal> 98</span>
-<span class=normal> 99</span>
-<span class=normal>100</span>
-<span class=normal>101</span>
-<span class=normal>102</span>
-<span class=normal>103</span>
-<span class=normal>104</span>
-<span class=normal>105</span>
-<span class=normal>106</span>
-<span class=normal>107</span>
-<span class=normal>108</span>
-<span class=normal>109</span>
-<span class=normal>110</span>
-<span class=normal>111</span>
-<span class=normal>112</span>
-<span class=normal>113</span>
-<span class=normal>114</span>
-<span class=normal>115</span>
-<span class=normal>116</span>
-<span class=normal>117</span>
-<span class=normal>118</span>
-<span class=normal>119</span>
-<span class=normal>120</span>
-<span class=normal>121</span>
-<span class=normal>122</span>
-<span class=normal>123</span>
-<span class=normal>124</span>
-<span class=normal>125</span>
-<span class=normal>126</span>
-<span class=normal>127</span>
-<span class=normal>128</span>
-<span class=normal>129</span>
-<span class=normal>130</span>
-<span class=normal>131</span>
-<span class=normal>132</span>
-<span class=normal>133</span>
-<span class=normal>134</span>
-<span class=normal>135</span>
-<span class=normal>136</span>
-<span class=normal>137</span>
-<span class=normal>138</span>
-<span class=normal>139</span>
-<span class=normal>140</span>
-<span class=normal>141</span>
-<span class=normal>142</span>
-<span class=normal>143</span>
-<span class=normal>144</span>
-<span class=normal>145</span>
-<span class=normal>146</span>
-<span class=normal>147</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  avfoundation004</span>
-<span class=c1>//</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
-<span class=kd>import</span> <span class=nc>UIKit</span>
-<span class=kd>import</span> <span class=nc>AVFoundation</span>
-<span class=kd>import</span> <span class=nc>AssetsLibrary</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>AVCaptureFileOutputRecordingDelegate</span> <span class=p>{</span>
-
-    <span class=c1>// スタートボタン.</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myButtonStart</span> <span class=p>:</span> <span class=bp>UIButton</span><span class=p>!</span>
-
-    <span class=c1>// ストップボタン.</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myButtonStop</span> <span class=p>:</span> <span class=bp>UIButton</span><span class=p>!</span>
-
-    <span class=c1>// ビデオのアウトプット.</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myVideoOutput</span> <span class=p>:</span> <span class=bp>AVCaptureMovieFileOutput</span><span class=p>!</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-
-        <span class=c1>// セッションの作成.</span>
-        <span class=kd>let</span> <span class=nv>mySession</span> <span class=p>:</span> <span class=bp>AVCaptureSession</span> <span class=p>=</span> <span class=bp>AVCaptureSession</span><span class=p>()</span>
-
-        <span class=c1>// デバイス.</span>
-        <span class=kd>var</span> <span class=nv>myDevice</span> <span class=p>:</span> <span class=bp>AVCaptureDevice</span><span class=p>!</span>
-
-        <span class=c1>// 出力先を生成.</span>
-        <span class=kd>let</span> <span class=nv>myImageOutput</span> <span class=p>=</span> <span class=bp>AVCaptureStillImageOutput</span><span class=p>()</span>
-
-        <span class=c1>// マイクを取得.</span>
-        <span class=kd>let</span> <span class=nv>audioCaptureDevice</span> <span class=p>=</span> <span class=bp>AVCaptureDevice</span><span class=p>.</span><span class=n>devicesWithMediaType</span><span class=p>(</span><span class=n>AVMediaTypeAudio</span><span class=p>)</span>
-
-        <span class=c1>// マイクをセッションのInputに追加.</span>
-        <span class=kd>let</span> <span class=nv>audioInput</span> <span class=p>=</span> <span class=k>try</span><span class=p>!</span> <span class=bp>AVCaptureDeviceInput</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>device</span><span class=p>:</span> <span class=n>audioCaptureDevice</span><span class=p>?.</span><span class=bp>first</span> <span class=k>as</span><span class=p>!</span> <span class=bp>AVCaptureDevice</span><span class=p>)</span>
-
-        <span class=c1>// デバイス一覧の取得.</span>
-        <span class=kd>let</span> <span class=nv>devices</span> <span class=p>=</span> <span class=bp>AVCaptureDevice</span><span class=p>.</span><span class=n>devices</span><span class=p>()</span>
-
-        <span class=c1>// バックライトをmyDeviceに格納.</span>
-        <span class=k>for</span> <span class=n>device</span> <span class=k>in</span> <span class=n>devices</span><span class=p>{</span>
-            <span class=k>if</span><span class=p>(</span><span class=n>device</span><span class=p>.</span><span class=n>position</span> <span class=p>==</span> <span class=n>AVCaptureDevicePosition</span><span class=p>.</span><span class=n>Back</span><span class=p>){</span>
-                <span class=n>myDevice</span> <span class=p>=</span> <span class=n>device</span> <span class=k>as</span><span class=p>!</span> <span class=bp>AVCaptureDevice</span>
-            <span class=p>}</span>
-        <span class=p>}</span>
-
-        <span class=c1>// バックカメラを取得.</span>
-        <span class=kd>let</span> <span class=nv>videoInput</span> <span class=p>=</span> <span class=k>try</span><span class=p>!</span> <span class=bp>AVCaptureDeviceInput</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>device</span><span class=p>:</span> <span class=n>myDevice</span><span class=p>)</span>
-
-        <span class=c1>// ビデオをセッションのInputに追加.</span>
-        <span class=n>mySession</span><span class=p>.</span><span class=n>addInput</span><span class=p>(</span><span class=n>videoInput</span><span class=p>)</span>
-
-        <span class=c1>// オーディオをセッションに追加.</span>
-        <span class=n>mySession</span><span class=p>.</span><span class=n>addInput</span><span class=p>(</span><span class=n>audioInput</span><span class=p>);</span>
-
-        <span class=c1>// セッションに追加.</span>
-        <span class=n>mySession</span><span class=p>.</span><span class=n>addOutput</span><span class=p>(</span><span class=n>myImageOutput</span><span class=p>)</span>
-
-        <span class=c1>// 動画の保存.</span>
-        <span class=n>myVideoOutput</span> <span class=p>=</span> <span class=bp>AVCaptureMovieFileOutput</span><span class=p>()</span>
-
-        <span class=c1>// ビデオ出力をOutputに追加.</span>
-        <span class=n>mySession</span><span class=p>.</span><span class=n>addOutput</span><span class=p>(</span><span class=n>myVideoOutput</span><span class=p>)</span>
-
-        <span class=c1>// 画像を表示するレイヤーを生成.</span>
-        <span class=kd>let</span> <span class=nv>myVideoLayer</span> <span class=p>=</span> <span class=bp>AVCaptureVideoPreviewLayer</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>session</span><span class=p>:</span> <span class=n>mySession</span><span class=p>)</span>
-        <span class=n>myVideoLayer</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span>
-        <span class=n>myVideoLayer</span><span class=p>.</span><span class=n>videoGravity</span> <span class=p>=</span> <span class=n>AVLayerVideoGravityResizeAspectFill</span>
-
-        <span class=c1>// Viewに追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>addSublayer</span><span class=p>(</span><span class=n>myVideoLayer</span><span class=p>)</span>
-
-        <span class=c1>// セッション開始.</span>
-        <span class=n>mySession</span><span class=p>.</span><span class=n>startRunning</span><span class=p>()</span>
-
-        <span class=c1>// UIボタンを作成.</span>
-        <span class=n>myButtonStart</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>120</span><span class=p>,</span><span class=mi>50</span><span class=p>))</span>
-        <span class=n>myButtonStop</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>120</span><span class=p>,</span><span class=mi>50</span><span class=p>))</span>
-
-        <span class=n>myButtonStart</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>redColor</span><span class=p>();</span>
-        <span class=n>myButtonStop</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>grayColor</span><span class=p>();</span>
-
-        <span class=n>myButtonStart</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myButtonStop</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-
-        <span class=n>myButtonStart</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;撮影&quot;</span><span class=p>,</span> <span class=n>forState</span><span class=p>:</span> <span class=p>.</span><span class=n>Normal</span><span class=p>)</span>
-        <span class=n>myButtonStop</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;停止&quot;</span><span class=p>,</span> <span class=n>forState</span><span class=p>:</span> <span class=p>.</span><span class=n>Normal</span><span class=p>)</span>
-
-        <span class=n>myButtonStart</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myButtonStop</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-
-        <span class=n>myButtonStart</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span> <span class=o>-</span> <span class=mi>70</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>height</span><span class=o>-</span><span class=mi>50</span><span class=p>)</span>
-        <span class=n>myButtonStop</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span> <span class=o>+</span> <span class=mi>70</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>height</span><span class=o>-</span><span class=mi>50</span><span class=p>)</span>
-
-        <span class=n>myButtonStart</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=kc>_</span><span class=p>:)),</span> <span class=n>forControlEvents</span><span class=p>:</span> <span class=p>.</span><span class=n>TouchUpInside</span><span class=p>)</span>
-        <span class=n>myButtonStop</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=kc>_</span><span class=p>:)),</span> <span class=n>forControlEvents</span><span class=p>:</span> <span class=p>.</span><span class=n>TouchUpInside</span><span class=p>)</span>
-
-        <span class=c1>// UIボタンをViewに追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButtonStart</span><span class=p>);</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButtonStop</span><span class=p>);</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     ボタンイベント.</span>
-<span class=cm>     */</span>
-    <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>){</span>
-
-        <span class=c1>// 撮影開始.</span>
-        <span class=k>if</span><span class=p>(</span> <span class=n>sender</span> <span class=p>==</span> <span class=n>myButtonStart</span> <span class=p>){</span>
-            <span class=kd>let</span> <span class=nv>paths</span> <span class=p>=</span> <span class=n>NSSearchPathForDirectoriesInDomains</span><span class=p>(.</span><span class=n>DocumentDirectory</span><span class=p>,</span> <span class=p>.</span><span class=n>UserDomainMask</span><span class=p>,</span> <span class=kc>true</span><span class=p>)</span>
-
-            <span class=c1>// フォルダ.</span>
-            <span class=kd>let</span> <span class=nv>documentsDirectory</span> <span class=p>=</span> <span class=n>paths</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> 
-
-            <span class=c1>// ファイル名.</span>
-            <span class=kd>let</span> <span class=nv>filePath</span> <span class=p>:</span> <span class=nb>String</span><span class=p>?</span> <span class=p>=</span> <span class=s>&quot;</span><span class=si>\(</span><span class=n>documentsDirectory</span><span class=si>)</span><span class=s>/test.mp4&quot;</span>
-
-            <span class=c1>// URL.</span>
-            <span class=kd>let</span> <span class=nv>fileURL</span> <span class=p>=</span> <span class=bp>NSURL</span><span class=p>(</span><span class=n>fileURLWithPath</span><span class=p>:</span> <span class=n>filePath</span><span class=p>!)</span>
-
-            <span class=c1>// 録画開始.</span>
-            <span class=n>myVideoOutput</span><span class=p>.</span><span class=n>startRecordingToOutputFileURL</span><span class=p>(</span><span class=n>fileURL</span><span class=p>,</span> <span class=n>recordingDelegate</span><span class=p>:</span> <span class=kc>self</span><span class=p>)</span>
-        <span class=p>}</span>
-
-            <span class=c1>// 撮影停止.</span>
-        <span class=k>else</span> <span class=k>if</span> <span class=p>(</span> <span class=n>sender</span> <span class=p>==</span> <span class=n>myButtonStop</span> <span class=p>){</span>
-            <span class=n>myVideoOutput</span><span class=p>.</span><span class=n>stopRecording</span><span class=p>()</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-
-    <span class=c1>// </span><span class=cs>MARK:</span><span class=c1> - AVCaptureFileOutputRecordingDelegate</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     動画のキャプチャーが終わった時に呼ばれるメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>captureOutput</span><span class=p>(</span><span class=n>captureOutput</span><span class=p>:</span> <span class=bp>AVCaptureFileOutput</span><span class=p>!,</span> <span class=n>didFinishRecordingToOutputFileAtURL</span> <span class=n>outputFileURL</span><span class=p>:</span> <span class=bp>NSURL</span><span class=p>!,</span> <span class=n>fromConnections</span> <span class=n>connections</span><span class=p>:</span> <span class=p>[</span><span class=nb>AnyObject</span><span class=p>]</span><span class=o>!</span><span class=p>,</span> <span class=n>error</span><span class=p>:</span> <span class=bp>NSError</span><span class=p>!)</span> <span class=p>{</span>
-
-        <span class=c1>//AssetsLibraryを生成する.</span>
-        <span class=kd>let</span> <span class=nv>assetsLib</span> <span class=p>=</span> <span class=bp>ALAssetsLibrary</span><span class=p>()</span>
-
-        <span class=c1>//動画のパスから動画をフォトライブラリに保存する.</span>
-        <span class=n>assetsLib</span><span class=p>.</span><span class=n>writeVideoAtPathToSavedPhotosAlbum</span><span class=p>(</span><span class=n>outputFileURL</span><span class=p>,</span> <span class=n>completionBlock</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  avfoundation004
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+import UIKit
+import AVFoundation
+import AssetsLibrary
+
+class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
+
+    // スタートボタン.
+    private var myButtonStart: UIButton!
+
+    // ストップボタン.
+    private var myButtonStop: UIButton!
+
+    // ビデオのアウトプット.
+    private var myVideoOutput: AVCaptureMovieFileOutput!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // セッションの作成.
+        let mySession = AVCaptureSession()
+
+        // デバイス.
+        var myDevice: AVCaptureDevice!
+
+        // 出力先を生成.
+        let myImageOutput = AVCaptureStillImageOutput()
+
+        // マイクを取得.
+        let audioCaptureDevice = AVCaptureDevice.devices(for: AVMediaType.audio)
+
+        // マイクをセッションのInputに追加.
+        let audioInput = try! AVCaptureDeviceInput.init(device: audioCaptureDevice.first!)
+
+        // デバイス一覧の取得.
+        let devices = AVCaptureDevice.devices()
+
+        // バックライトをmyDeviceに格納.
+        for device in devices {
+            if(device.position == AVCaptureDevice.Position.back){
+                myDevice = device
+            }
+        }
+
+        // バックカメラを取得.
+        let videoInput = try! AVCaptureDeviceInput.init(device: myDevice)
+
+        // ビデオをセッションのInputに追加.
+        mySession.addInput(videoInput)
+
+        // オーディオをセッションに追加.
+        mySession.addInput(audioInput);
+
+        // セッションに追加.
+        mySession.addOutput(myImageOutput)
+
+        // 動画の保存.
+        myVideoOutput = AVCaptureMovieFileOutput()
+
+        // ビデオ出力をOutputに追加.
+        mySession.addOutput(myVideoOutput)
+
+        // 画像を表示するレイヤーを生成.
+        let myVideoLayer = AVCaptureVideoPreviewLayer.init(session: mySession)
+        myVideoLayer.frame = self.view.bounds
+        myVideoLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
+
+        // Viewに追加.
+        self.view.layer.addSublayer(myVideoLayer)
+
+        // セッション開始.
+        mySession.startRunning()
+
+        // UIボタンを作成.
+        myButtonStart = UIButton(frame: CGRect(x: 0, y: 0, width: 120, height: 50))
+        myButtonStop = UIButton(frame: CGRect(x: 0, y: 0, width: 120, height: 50))
+
+        myButtonStart.backgroundColor = UIColor.red
+        myButtonStop.backgroundColor = UIColor.gray
+
+        myButtonStart.layer.masksToBounds = true
+        myButtonStop.layer.masksToBounds = true
+
+        myButtonStart.setTitle(&quot;撮影&quot;, for: .normal)
+        myButtonStop.setTitle(&quot;停止&quot;, for: .normal)
+
+        myButtonStart.layer.cornerRadius = 20.0
+        myButtonStop.layer.cornerRadius = 20.0
+
+        myButtonStart.layer.position = CGPoint(x: self.view.bounds.width/2 - 70, y:self.view.bounds.height-50)
+        myButtonStop.layer.position = CGPoint(x: self.view.bounds.width/2 + 70, y:self.view.bounds.height-50)
+
+        myButtonStart.addTarget(self, action: #selector(ViewController.onClickMyButton), for: .touchUpInside)
+        myButtonStop.addTarget(self, action: #selector(ViewController.onClickMyButton), for: .touchUpInside)
+
+        // UIボタンをViewに追加.
+        self.view.addSubview(myButtonStart);
+        self.view.addSubview(myButtonStop);
+    }
+
+    /*
+     ボタンイベント.
+     */
+    @objc internal func onClickMyButton(sender: UIButton){
+
+        // 撮影開始.
+        if( sender == myButtonStart ){
+            let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+
+            // フォルダ.
+            let documentsDirectory = paths[0]
+
+            // ファイル名.
+            let filePath = &quot;\(documentsDirectory)/test.mp4&quot;
+
+            // URL.
+            let fileURL = URL(fileURLWithPath: filePath)
+
+            // 録画開始.
+            myVideoOutput.startRecording(to: fileURL, recordingDelegate: self)
+        }
+            // 撮影停止.
+        else if ( sender == myButtonStop ){
+            myVideoOutput.stopRecording()
+        }
+    }
+
+    // MARK: - AVCaptureFileOutputRecordingDelegate
+
+    /*
+     動画のキャプチャーが終わった時に呼ばれるメソッド.
+     */
+    func fileOutput(_ output: AVCaptureFileOutput, didFinishRecordingTo outputFileURL: URL, from connections: [AVCaptureConnection], error: Error?) {
+        //AssetsLibraryを生成する.
+        let assetsLib = ALAssetsLibrary()
+
+        //動画のパスから動画をフォトライブラリに保存する.
+        assetsLib.writeVideoAtPath(toSavedPhotosAlbum: outputFileURL, completionBlock: nil)    }
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  avfoundation004
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+import UIKit
+import AVFoundation
+import AssetsLibrary
+
+class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
+
+    // スタートボタン.
+    private var myButtonStart: UIButton!
+
+    // ストップボタン.
+    private var myButtonStop: UIButton!
+
+    // ビデオのアウトプット.
+    private var myVideoOutput: AVCaptureMovieFileOutput!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // セッションの作成.
+        let mySession = AVCaptureSession()
+
+        // デバイス.
+        var myDevice: AVCaptureDevice!
+
+        // 出力先を生成.
+        let myImageOutput = AVCaptureStillImageOutput()
+
+        // マイクを取得.
+        let audioCaptureDevice = AVCaptureDevice.devices(withMediaType: AVMediaTypeAudio)
+
+        // マイクをセッションのInputに追加.
+        let audioInput = try! AVCaptureDeviceInput.init(device: audioCaptureDevice?.first as! AVCaptureDevice)
+
+        // デバイス一覧の取得.
+        let devices = AVCaptureDevice.devices()
+
+        // バックライトをmyDeviceに格納.
+        for device in devices! {
+            if(device.position == AVCaptureDevicePosition.back){
+                myDevice = device as? AVCaptureDevice
+            }
+        }
+
+        // バックカメラを取得.
+        let videoInput = try! AVCaptureDeviceInput.init(device: myDevice)
+
+        // ビデオをセッションのInputに追加.
+        mySession.addInput(videoInput)
+
+        // オーディオをセッションに追加.
+        mySession.addInput(audioInput);
+
+        // セッションに追加.
+        mySession.addOutput(myImageOutput)
+
+        // 動画の保存.
+        myVideoOutput = AVCaptureMovieFileOutput()
+
+        // ビデオ出力をOutputに追加.
+        mySession.addOutput(myVideoOutput)
+
+        // 画像を表示するレイヤーを生成.
+        let myVideoLayer = AVCaptureVideoPreviewLayer.init(session: mySession)
+        myVideoLayer?.frame = self.view.bounds
+        myVideoLayer?.videoGravity = AVLayerVideoGravityResizeAspectFill
+
+        // Viewに追加.
+        self.view.layer.addSublayer(myVideoLayer!)
+
+        // セッション開始.
+        mySession.startRunning()
+
+        // UIボタンを作成.
+        myButtonStart = UIButton(frame: CGRect(x: 0, y: 0, width: 120, height: 50))
+        myButtonStop = UIButton(frame: CGRect(x: 0, y: 0, width: 120, height: 50))
+
+        myButtonStart.backgroundColor = UIColor.red
+        myButtonStop.backgroundColor = UIColor.gray
+
+        myButtonStart.layer.masksToBounds = true
+        myButtonStop.layer.masksToBounds = true
+
+        myButtonStart.setTitle(&quot;撮影&quot;, for: .normal)
+        myButtonStop.setTitle(&quot;停止&quot;, for: .normal)
+
+        myButtonStart.layer.cornerRadius = 20.0
+        myButtonStop.layer.cornerRadius = 20.0
+
+        myButtonStart.layer.position = CGPoint(x: self.view.bounds.width/2 - 70, y:self.view.bounds.height-50)
+        myButtonStop.layer.position = CGPoint(x: self.view.bounds.width/2 + 70, y:self.view.bounds.height-50)
+
+        myButtonStart.addTarget(self, action: #selector(ViewController.onClickMyButton), for: .touchUpInside)
+        myButtonStop.addTarget(self, action: #selector(ViewController.onClickMyButton), for: .touchUpInside)
+
+        // UIボタンをViewに追加.
+        self.view.addSubview(myButtonStart);
+        self.view.addSubview(myButtonStop);
+    }
+
+    /*
+     ボタンイベント.
+     */
+    internal func onClickMyButton(sender: UIButton){
+
+        // 撮影開始.
+        if( sender == myButtonStart ){
+            let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+
+            // フォルダ.
+            let documentsDirectory = paths[0]
+
+            // ファイル名.
+            let filePath = &quot;\(documentsDirectory)/test.mp4&quot;
+
+            // URL.
+            let fileURL = URL(fileURLWithPath: filePath!)
+
+            // 録画開始.
+            myVideoOutput.startRecording(toOutputFileURL: fileURL, recordingDelegate: self)
+        }
+            // 撮影停止.
+        else if ( sender == myButtonStop ){
+            myVideoOutput.stopRecording()
+        }
+    }
+
+    // MARK: - AVCaptureFileOutputRecordingDelegate
+
+    /*
+     動画のキャプチャーが終わった時に呼ばれるメソッド.
+     */
+    func capture(_ captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAt outputFileURL: URL!, fromConnections connections: [AnyObject]!, error: Error!) {
+        //AssetsLibraryを生成する.
+        let assetsLib = ALAssetsLibrary()
+
+        //動画のパスから動画をフォトライブラリに保存する.
+        assetsLib.writeVideoAtPath(toSavedPhotosAlbum: outputFileURL, completionBlock: nil)
+    }
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  avfoundation004
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+import UIKit
+import AVFoundation
+import AssetsLibrary
+
+class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
+
+    // スタートボタン.
+    private var myButtonStart : UIButton!
+
+    // ストップボタン.
+    private var myButtonStop : UIButton!
+
+    // ビデオのアウトプット.
+    private var myVideoOutput : AVCaptureMovieFileOutput!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // セッションの作成.
+        let mySession : AVCaptureSession = AVCaptureSession()
+
+        // デバイス.
+        var myDevice : AVCaptureDevice!
+
+        // 出力先を生成.
+        let myImageOutput = AVCaptureStillImageOutput()
+
+        // マイクを取得.
+        let audioCaptureDevice = AVCaptureDevice.devicesWithMediaType(AVMediaTypeAudio)
+
+        // マイクをセッションのInputに追加.
+        let audioInput = try! AVCaptureDeviceInput.init(device: audioCaptureDevice?.first as! AVCaptureDevice)
+
+        // デバイス一覧の取得.
+        let devices = AVCaptureDevice.devices()
+
+        // バックライトをmyDeviceに格納.
+        for device in devices{
+            if(device.position == AVCaptureDevicePosition.Back){
+                myDevice = device as! AVCaptureDevice
+            }
+        }
+
+        // バックカメラを取得.
+        let videoInput = try! AVCaptureDeviceInput.init(device: myDevice)
+
+        // ビデオをセッションのInputに追加.
+        mySession.addInput(videoInput)
+
+        // オーディオをセッションに追加.
+        mySession.addInput(audioInput);
+
+        // セッションに追加.
+        mySession.addOutput(myImageOutput)
+
+        // 動画の保存.
+        myVideoOutput = AVCaptureMovieFileOutput()
+
+        // ビデオ出力をOutputに追加.
+        mySession.addOutput(myVideoOutput)
+
+        // 画像を表示するレイヤーを生成.
+        let myVideoLayer = AVCaptureVideoPreviewLayer.init(session: mySession)
+        myVideoLayer.frame = self.view.bounds
+        myVideoLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+
+        // Viewに追加.
+        self.view.layer.addSublayer(myVideoLayer)
+
+        // セッション開始.
+        mySession.startRunning()
+
+        // UIボタンを作成.
+        myButtonStart = UIButton(frame: CGRectMake(0,0,120,50))
+        myButtonStop = UIButton(frame: CGRectMake(0,0,120,50))
+
+        myButtonStart.backgroundColor = UIColor.redColor();
+        myButtonStop.backgroundColor = UIColor.grayColor();
+
+        myButtonStart.layer.masksToBounds = true
+        myButtonStop.layer.masksToBounds = true
+
+        myButtonStart.setTitle(&quot;撮影&quot;, forState: .Normal)
+        myButtonStop.setTitle(&quot;停止&quot;, forState: .Normal)
+
+        myButtonStart.layer.cornerRadius = 20.0
+        myButtonStop.layer.cornerRadius = 20.0
+
+        myButtonStart.layer.position = CGPoint(x: self.view.bounds.width/2 - 70, y:self.view.bounds.height-50)
+        myButtonStop.layer.position = CGPoint(x: self.view.bounds.width/2 + 70, y:self.view.bounds.height-50)
+
+        myButtonStart.addTarget(self, action: #selector(ViewController.onClickMyButton(_:)), forControlEvents: .TouchUpInside)
+        myButtonStop.addTarget(self, action: #selector(ViewController.onClickMyButton(_:)), forControlEvents: .TouchUpInside)
+
+        // UIボタンをViewに追加.
+        self.view.addSubview(myButtonStart);
+        self.view.addSubview(myButtonStop);
+    }
+
+    /*
+     ボタンイベント.
+     */
+    internal func onClickMyButton(sender: UIButton){
+
+        // 撮影開始.
+        if( sender == myButtonStart ){
+            let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+
+            // フォルダ.
+            let documentsDirectory = paths[0] 
+
+            // ファイル名.
+            let filePath : String? = &quot;\(documentsDirectory)/test.mp4&quot;
+
+            // URL.
+            let fileURL = NSURL(fileURLWithPath: filePath!)
+
+            // 録画開始.
+            myVideoOutput.startRecordingToOutputFileURL(fileURL, recordingDelegate: self)
+        }
+
+            // 撮影停止.
+        else if ( sender == myButtonStop ){
+            myVideoOutput.stopRecording()
+        }
+    }
+
+    // MARK: - AVCaptureFileOutputRecordingDelegate
+
+    /*
+     動画のキャプチャーが終わった時に呼ばれるメソッド.
+     */
+    func captureOutput(captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAtURL outputFileURL: NSURL!, fromConnections connections: [AnyObject]!, error: NSError!) {
+
+        //AssetsLibraryを生成する.
+        let assetsLib = ALAssetsLibrary()
+
+        //動画のパスから動画をフォトライブラリに保存する.
+        assetsLib.writeVideoAtPathToSavedPhotosAlbum(outputFileURL, completionBlock: nil)
+    }
+}
+</code></pre></div></div>
 <h2 id="3x4x">3.xと4.xの差分</h2>
 <ul>
 <li><code>AVCaptureDevice.devices(withMediaType: AVMediaTypeAudio)</code> が <code>AVCaptureDevice.devices(for: AVMediaType.audio)</code> に変更</li>

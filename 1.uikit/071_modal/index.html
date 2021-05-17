@@ -2361,531 +2361,273 @@
 <p><img alt="Preview uikit071_1" src="../img/uikit071_1.png" />
 <img alt="Preview uikit071_2" src="../img/uikit071_2.png" /></p>
 <h3 id="viewcontrollerswift">ViewController.swift</h3>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit071</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit071
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>{</span>
+class ViewController: UIViewController{
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
+    override func viewDidLoad() {
 
-        <span class=c1>// PopButtonを生成.</span>
-        <span class=kd>let</span> <span class=nv>myButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>()</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>200</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>40</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>red</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;PopOver&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=bp>UIControl</span><span class=p>.</span><span class=n>State</span><span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=bp>UIControl</span><span class=p>.</span><span class=n>State</span><span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=bp>UIControl</span><span class=p>.</span><span class=n>State</span><span class=p>.</span><span class=n>highlighted</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>200</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=mi>0</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>touchUpInside</span><span class=p>)</span>
+        // PopButtonを生成.
+        let myButton = UIButton()
+        myButton.frame = CGRect(x: 0, y: 0, width: 200, height: 40)
+        myButton.backgroundColor = UIColor.red
+        myButton.layer.masksToBounds = true
+        myButton.setTitle(&quot;PopOver&quot;, for: UIControl.State.normal)
+        myButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
+        myButton.setTitleColor(UIColor.black, for: UIControl.State.highlighted)
+        myButton.layer.cornerRadius = 20.0
+        myButton.layer.position = CGPoint(x: self.view.frame.width/2, y:200)
+        myButton.tag = 0
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(sender:)), for: .touchUpInside)
 
-        <span class=c1>// viewにButtonを追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>)</span>
-    <span class=p>}</span>
+        // viewにButtonを追加.
+        self.view.addSubview(myButton)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     Buttonが押された時に呼ばれるメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kr>@objc</span> <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span> <span class=p>:</span> <span class=bp>UIButton</span><span class=p>){</span>
+    /*
+     Buttonが押された時に呼ばれるメソッド.
+     */
+    @objc func onClickMyButton(sender : UIButton){
 
-        <span class=c1>// secondViewControllerのインスタンス生成.</span>
-        <span class=kd>let</span> <span class=nv>second</span> <span class=p>=</span> <span class=n>SecondViewController</span><span class=p>()</span>
+        // secondViewControllerのインスタンス生成.
+        let second = SecondViewController()
 
-        <span class=c1>// navigationControllerのrootViewControllerにsecondViewControllerをセット.</span>
-        <span class=kd>let</span> <span class=nv>nav</span> <span class=p>=</span> <span class=bp>UINavigationController</span><span class=p>(</span><span class=n>rootViewController</span><span class=p>:</span> <span class=n>second</span><span class=p>)</span>
+        // navigationControllerのrootViewControllerにsecondViewControllerをセット.
+        let nav = UINavigationController(rootViewController: second)
 
-        <span class=c1>// 画面遷移.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>present</span><span class=p>(</span><span class=n>nav</span><span class=p>,</span> <span class=n>animated</span><span class=p>:</span> <span class=kc>true</span><span class=p>,</span> <span class=n>completion</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit071</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+        // 画面遷移.
+        self.present(nav, animated: true, completion: nil)
+    }
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit071
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>{</span>
+class ViewController: UIViewController{
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
+    override func viewDidLoad() {
 
-        <span class=c1>// PopButtonを生成.</span>
-        <span class=kd>let</span> <span class=nv>myButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>()</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>200</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>40</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>red</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;PopOver&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=n>UIControlState</span><span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=n>UIControlState</span><span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=n>UIControlState</span><span class=p>.</span><span class=n>highlighted</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>200</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=mi>0</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>touchUpInside</span><span class=p>)</span>
+        // PopButtonを生成.
+        let myButton = UIButton()
+        myButton.frame = CGRect(x: 0, y: 0, width: 200, height: 40)
+        myButton.backgroundColor = UIColor.red
+        myButton.layer.masksToBounds = true
+        myButton.setTitle(&quot;PopOver&quot;, for: UIControlState.normal)
+        myButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        myButton.setTitleColor(UIColor.black, for: UIControlState.highlighted)
+        myButton.layer.cornerRadius = 20.0
+        myButton.layer.position = CGPoint(x: self.view.frame.width/2, y:200)
+        myButton.tag = 0
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(sender:)), for: .touchUpInside)
 
-        <span class=c1>// viewにButtonを追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>)</span>
-    <span class=p>}</span>
+        // viewにButtonを追加.
+        self.view.addSubview(myButton)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     Buttonが押された時に呼ばれるメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span> <span class=p>:</span> <span class=bp>UIButton</span><span class=p>){</span>
+    /*
+     Buttonが押された時に呼ばれるメソッド.
+     */
+    func onClickMyButton(sender : UIButton){
 
-        <span class=c1>// secondViewControllerのインスタンス生成.</span>
-        <span class=kd>let</span> <span class=nv>second</span> <span class=p>=</span> <span class=n>SecondViewController</span><span class=p>()</span>
+        // secondViewControllerのインスタンス生成.
+        let second = SecondViewController()
 
-        <span class=c1>// navigationControllerのrootViewControllerにsecondViewControllerをセット.</span>
-        <span class=kd>let</span> <span class=nv>nav</span> <span class=p>=</span> <span class=bp>UINavigationController</span><span class=p>(</span><span class=n>rootViewController</span><span class=p>:</span> <span class=n>second</span><span class=p>)</span>
+        // navigationControllerのrootViewControllerにsecondViewControllerをセット.
+        let nav = UINavigationController(rootViewController: second)
 
-        <span class=c1>// 画面遷移.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>present</span><span class=p>(</span><span class=n>nav</span><span class=p>,</span> <span class=n>animated</span><span class=p>:</span> <span class=kc>true</span><span class=p>,</span> <span class=n>completion</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit071</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+        // 画面遷移.
+        self.present(nav, animated: true, completion: nil)
+    }
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit071
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>{</span>
+class ViewController: UIViewController{
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
+    override func viewDidLoad() {
 
-        <span class=c1>// PopButtonを生成.</span>
-        <span class=kd>let</span> <span class=nv>myButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>()</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>200</span><span class=p>,</span><span class=mi>40</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>redColor</span><span class=p>()</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;PopOver&quot;</span><span class=p>,</span> <span class=n>forState</span><span class=p>:</span> <span class=n>UIControlState</span><span class=p>.</span><span class=n>Normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>whiteColor</span><span class=p>(),</span> <span class=n>forState</span><span class=p>:</span> <span class=n>UIControlState</span><span class=p>.</span><span class=n>Normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>blackColor</span><span class=p>(),</span> <span class=n>forState</span><span class=p>:</span> <span class=n>UIControlState</span><span class=p>.</span><span class=n>Highlighted</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>200</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=mi>0</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=kc>_</span><span class=p>:)),</span> <span class=n>forControlEvents</span><span class=p>:</span> <span class=p>.</span><span class=n>TouchUpInside</span><span class=p>)</span>
+        // PopButtonを生成.
+        let myButton = UIButton()
+        myButton.frame = CGRectMake(0,0,200,40)
+        myButton.backgroundColor = UIColor.redColor()
+        myButton.layer.masksToBounds = true
+        myButton.setTitle(&quot;PopOver&quot;, forState: UIControlState.Normal)
+        myButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        myButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Highlighted)
+        myButton.layer.cornerRadius = 20.0
+        myButton.layer.position = CGPoint(x: self.view.frame.width/2, y:200)
+        myButton.tag = 0
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(_:)), forControlEvents: .TouchUpInside)
 
-        <span class=c1>// viewにButtonを追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>)</span>
-    <span class=p>}</span>
+        // viewにButtonを追加.
+        self.view.addSubview(myButton)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     Buttonが押された時に呼ばれるメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span> <span class=p>:</span> <span class=bp>UIButton</span><span class=p>){</span>
+    /*
+     Buttonが押された時に呼ばれるメソッド.
+     */
+    func onClickMyButton(sender : UIButton){
 
-        <span class=c1>// secondViewControllerのインスタンス生成.</span>
-        <span class=kd>let</span> <span class=nv>second</span> <span class=p>=</span> <span class=n>SecondViewController</span><span class=p>()</span>
+        // secondViewControllerのインスタンス生成.
+        let second = SecondViewController()
 
-        <span class=c1>// navigationControllerのrootViewControllerにsecondViewControllerをセット.</span>
-        <span class=kd>let</span> <span class=nv>nav</span> <span class=p>=</span> <span class=bp>UINavigationController</span><span class=p>(</span><span class=n>rootViewController</span><span class=p>:</span> <span class=n>second</span><span class=p>)</span>
+        // navigationControllerのrootViewControllerにsecondViewControllerをセット.
+        let nav = UINavigationController(rootViewController: second)
 
-        <span class=c1>// 画面遷移.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>presentViewController</span><span class=p>(</span><span class=n>nav</span><span class=p>,</span> <span class=n>animated</span><span class=p>:</span> <span class=kc>true</span><span class=p>,</span> <span class=n>completion</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+        // 画面遷移.
+        self.presentViewController(nav, animated: true, completion: nil)
+    }
+}
+</code></pre></div></div>
 <h3 id="secondviewcontrollerswift">SecondViewController.swift</h3>
-<div class=md-fenced-code-tabs id=tab-tab-group-1><input name=tab-group-1 type=radio id=tab-group-1-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-1-0_swift-panel role=tab><label for=tab-group-1-0_swift class=code-tab-label data-lang=swift id=tab-group-1-0_swift-label>Swift 4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-0_swift-panel aria-labelledby=tab-group-1-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  SecondViewController.swift</span>
-<span class=c1>//  UIKit071</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/19.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-1><input name=tab-group-1 type=radio id=tab-group-1-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-1-0_swift-panel role=tab><label for=tab-group-1-0_swift class=code-tab-label data-lang=swift id=tab-group-1-0_swift-label>Swift 4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-0_swift-panel aria-labelledby=tab-group-1-0_swift-label><pre><code class=swift>//
+//  SecondViewController.swift
+//  UIKit071
+//
+//  Created by Misato Morino on 2016/08/19.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>SecondViewController</span> <span class=p>:</span> <span class=bp>UIViewController</span><span class=p>{</span>
+class SecondViewController : UIViewController{
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
+    override func viewDidLoad() {
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span>
+        self.view.backgroundColor = UIColor.black
 
-        <span class=c1>// もどるButtonを生成.</span>
-        <span class=kd>let</span> <span class=nv>myButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>()</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>200</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>40</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>red</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;もどる&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=bp>UIControl</span><span class=p>.</span><span class=n>State</span><span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=bp>UIControl</span><span class=p>.</span><span class=n>State</span><span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=bp>UIControl</span><span class=p>.</span><span class=n>State</span><span class=p>.</span><span class=n>highlighted</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>200</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=mi>1</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>SecondViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>touchUpInside</span><span class=p>)</span>
+        // もどるButtonを生成.
+        let myButton = UIButton()
+        myButton.frame = CGRect(x: 0, y: 0, width: 200, height: 40)
+        myButton.backgroundColor = UIColor.red
+        myButton.layer.masksToBounds = true
+        myButton.setTitle(&quot;もどる&quot;, for: UIControl.State.normal)
+        myButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
+        myButton.setTitleColor(UIColor.black, for: UIControl.State.highlighted)
+        myButton.layer.cornerRadius = 20.0
+        myButton.layer.position = CGPoint(x: self.view.frame.width/2, y:200)
+        myButton.tag = 1
+        myButton.addTarget(self, action: #selector(SecondViewController.onClickMyButton(sender:)), for: .touchUpInside)
 
-        <span class=c1>// viewにButtonを追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>)</span>
-    <span class=p>}</span>
+        // viewにButtonを追加.
+        self.view.addSubview(myButton)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     Buttonを押した時に呼ばれるメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kr>@objc</span> <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span> <span class=p>:</span> <span class=bp>UIButton</span><span class=p>){</span>
+    /*
+     Buttonを押した時に呼ばれるメソッド.
+     */
+    @objc func onClickMyButton(sender : UIButton){
 
-        <span class=c1>// viewを閉じる.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>navigationController</span><span class=p>?.</span><span class=n>dismiss</span><span class=p>(</span><span class=n>animated</span><span class=p>:</span> <span class=kc>true</span><span class=p>,</span> <span class=n>completion</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-1 type=radio id=tab-group-1-1_swift class=code-tab data-lang=swift aria-controls=tab-group-1-1_swift-panel role=tab><label for=tab-group-1-1_swift class=code-tab-label data-lang=swift id=tab-group-1-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-1_swift-panel aria-labelledby=tab-group-1-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  SecondViewController.swift</span>
-<span class=c1>//  UIKit071</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/19.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+        // viewを閉じる.
+        self.navigationController?.dismiss(animated: true, completion: nil)
+    }
+}
+</code></pre></div><input name=tab-group-1 type=radio id=tab-group-1-1_swift class=code-tab data-lang=swift aria-controls=tab-group-1-1_swift-panel role=tab><label for=tab-group-1-1_swift class=code-tab-label data-lang=swift id=tab-group-1-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-1_swift-panel aria-labelledby=tab-group-1-1_swift-label><pre><code class=swift>//
+//  SecondViewController.swift
+//  UIKit071
+//
+//  Created by Misato Morino on 2016/08/19.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>SecondViewController</span> <span class=p>:</span> <span class=bp>UIViewController</span><span class=p>{</span>
+class SecondViewController : UIViewController{
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
+    override func viewDidLoad() {
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span>
+        self.view.backgroundColor = UIColor.black
 
-        <span class=c1>// もどるButtonを生成.</span>
-        <span class=kd>let</span> <span class=nv>myButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>()</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>200</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>40</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>red</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;もどる&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=n>UIControlState</span><span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=n>UIControlState</span><span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=n>UIControlState</span><span class=p>.</span><span class=n>highlighted</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>200</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=mi>1</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>SecondViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>touchUpInside</span><span class=p>)</span>
+        // もどるButtonを生成.
+        let myButton = UIButton()
+        myButton.frame = CGRect(x: 0, y: 0, width: 200, height: 40)
+        myButton.backgroundColor = UIColor.red
+        myButton.layer.masksToBounds = true
+        myButton.setTitle(&quot;もどる&quot;, for: UIControlState.normal)
+        myButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        myButton.setTitleColor(UIColor.black, for: UIControlState.highlighted)
+        myButton.layer.cornerRadius = 20.0
+        myButton.layer.position = CGPoint(x: self.view.frame.width/2, y:200)
+        myButton.tag = 1
+        myButton.addTarget(self, action: #selector(SecondViewController.onClickMyButton(sender:)), for: .touchUpInside)
 
-        <span class=c1>// viewにButtonを追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>)</span>
-    <span class=p>}</span>
+        // viewにButtonを追加.
+        self.view.addSubview(myButton)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     Buttonを押した時に呼ばれるメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span> <span class=p>:</span> <span class=bp>UIButton</span><span class=p>){</span>
+    /*
+     Buttonを押した時に呼ばれるメソッド.
+     */
+    func onClickMyButton(sender : UIButton){
 
-        <span class=c1>// viewを閉じる.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>navigationController</span><span class=p>?.</span><span class=n>dismiss</span><span class=p>(</span><span class=n>animated</span><span class=p>:</span> <span class=kc>true</span><span class=p>,</span> <span class=n>completion</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-    <span class=p>}</span>
-<span class=p>}</span> 
-</code></pre></div></td></tr></table></div><input name=tab-group-1 type=radio id=tab-group-1-2_swift class=code-tab data-lang=swift aria-controls=tab-group-1-2_swift-panel role=tab><label for=tab-group-1-2_swift class=code-tab-label data-lang=swift id=tab-group-1-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-2_swift-panel aria-labelledby=tab-group-1-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  SecondViewController.swift</span>
-<span class=c1>//  UIKit071</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/19.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+        // viewを閉じる.
+        self.navigationController?.dismiss(animated: true, completion: nil)
+    }
+} 
+</code></pre></div><input name=tab-group-1 type=radio id=tab-group-1-2_swift class=code-tab data-lang=swift aria-controls=tab-group-1-2_swift-panel role=tab><label for=tab-group-1-2_swift class=code-tab-label data-lang=swift id=tab-group-1-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-2_swift-panel aria-labelledby=tab-group-1-2_swift-label><pre><code class=swift>//
+//  SecondViewController.swift
+//  UIKit071
+//
+//  Created by Misato Morino on 2016/08/19.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>SecondViewController</span> <span class=p>:</span> <span class=bp>UIViewController</span><span class=p>{</span>
+class SecondViewController : UIViewController{
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
+    override func viewDidLoad() {
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blackColor</span><span class=p>()</span>
+        self.view.backgroundColor = UIColor.blackColor()
 
-        <span class=c1>// もどるButtonを生成.</span>
-        <span class=kd>let</span> <span class=nv>myButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>()</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>200</span><span class=p>,</span><span class=mi>40</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>redColor</span><span class=p>()</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;もどる&quot;</span><span class=p>,</span> <span class=n>forState</span><span class=p>:</span> <span class=n>UIControlState</span><span class=p>.</span><span class=n>Normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>whiteColor</span><span class=p>(),</span> <span class=n>forState</span><span class=p>:</span> <span class=n>UIControlState</span><span class=p>.</span><span class=n>Normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>blackColor</span><span class=p>(),</span> <span class=n>forState</span><span class=p>:</span> <span class=n>UIControlState</span><span class=p>.</span><span class=n>Highlighted</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>200</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=mi>1</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>SecondViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=kc>_</span><span class=p>:)),</span> <span class=n>forControlEvents</span><span class=p>:</span> <span class=p>.</span><span class=n>TouchUpInside</span><span class=p>)</span>
+        // もどるButtonを生成.
+        let myButton = UIButton()
+        myButton.frame = CGRectMake(0,0,200,40)
+        myButton.backgroundColor = UIColor.redColor()
+        myButton.layer.masksToBounds = true
+        myButton.setTitle(&quot;もどる&quot;, forState: UIControlState.Normal)
+        myButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        myButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Highlighted)
+        myButton.layer.cornerRadius = 20.0
+        myButton.layer.position = CGPoint(x: self.view.frame.width/2, y:200)
+        myButton.tag = 1
+        myButton.addTarget(self, action: #selector(SecondViewController.onClickMyButton(_:)), forControlEvents: .TouchUpInside)
 
-        <span class=c1>// viewにButtonを追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>)</span>
-    <span class=p>}</span>
+        // viewにButtonを追加.
+        self.view.addSubview(myButton)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     Buttonを押した時に呼ばれるメソッド.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span> <span class=p>:</span> <span class=bp>UIButton</span><span class=p>){</span>
+    /*
+     Buttonを押した時に呼ばれるメソッド.
+     */
+    func onClickMyButton(sender : UIButton){
 
-        <span class=c1>// viewを閉じる.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>navigationController</span><span class=p>?.</span><span class=n>dismissViewControllerAnimated</span><span class=p>(</span><span class=kc>true</span><span class=p>,</span> <span class=n>completion</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+        // viewを閉じる.
+        self.navigationController?.dismissViewControllerAnimated(true, completion: nil)
+    }
+}
+</code></pre></div></div>
 <h2 id="3x4x">3.xと4.xの差分</h2>
 <ul>
 <li><code>UIControlState</code> が <code>UIControl.State</code> に変更</li>

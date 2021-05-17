@@ -2332,346 +2332,182 @@
                 <h1 id="uialertcontroller">UIAlertControllerでアラートを表示</h1>
 <p><img alt="Preview uikit010" src="../img/uikit010.png" />
 <img alt="Preview uikit010_1" src="../img/uikit010_1.png" /></p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit010</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit010
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class ViewController: UIViewController {
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// Viewの背景をCyanに設定する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyan</span>
+        // Viewの背景をCyanに設定する.
+        self.view.backgroundColor = UIColor.cyan
 
-        <span class=c1>// Buttonの定義する.</span>
-        <span class=kd>let</span> <span class=nv>myButton</span><span class=p>:</span> <span class=bp>UIButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>()</span>
-        <span class=kd>let</span> <span class=nv>buttonWidth</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>200</span>
-        <span class=kd>let</span> <span class=nv>buttonHeight</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>40</span>
-        <span class=kd>let</span> <span class=nv>posX</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span> <span class=o>-</span> <span class=n>buttonWidth</span><span class=p>)</span><span class=o>/</span><span class=mi>2</span>
-        <span class=kd>let</span> <span class=nv>posY</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>200</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=n>posX</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=n>posY</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=n>buttonWidth</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>buttonHeight</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>red</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;UIAlertを発動&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>touchDown</span><span class=p>)</span>
+        // Buttonの定義する.
+        let myButton: UIButton = UIButton()
+        let buttonWidth: CGFloat = 200
+        let buttonHeight: CGFloat = 40
+        let posX: CGFloat = (self.view.bounds.width - buttonWidth)/2
+        let posY: CGFloat = 200
+        myButton.frame = CGRect(x: posX, y: posY, width: buttonWidth, height: buttonHeight)
+        myButton.backgroundColor = UIColor.red
+        myButton.layer.masksToBounds = true
+        myButton.layer.cornerRadius = 20.0
+        myButton.setTitle(&quot;UIAlertを発動&quot;, for: .normal)
+        myButton.setTitleColor(UIColor.white, for: .normal)
+        myButton.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchDown)
 
-        <span class=c1>// ボタンをViewに追加する</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>)</span>
-    <span class=p>}</span>
+        // ボタンをViewに追加する
+        self.view.addSubview(myButton)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     ボタンイベント</span>
-<span class=cm>     */</span>
-    <span class=kr>@objc</span> <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>){</span>
+    /*
+     ボタンイベント
+     */
+    @objc internal func onClickMyButton(sender: UIButton){
 
-        <span class=c1>// UIAlertControllerを作成する.</span>
-        <span class=kd>let</span> <span class=nv>myAlert</span><span class=p>:</span> <span class=bp>UIAlertController</span> <span class=p>=</span> <span class=bp>UIAlertController</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;タイトル&quot;</span><span class=p>,</span> <span class=n>message</span><span class=p>:</span> <span class=s>&quot;メッセージ&quot;</span><span class=p>,</span> <span class=n>preferredStyle</span><span class=p>:</span> <span class=p>.</span><span class=n>alert</span><span class=p>)</span>
+        // UIAlertControllerを作成する.
+        let myAlert: UIAlertController = UIAlertController(title: &quot;タイトル&quot;, message: &quot;メッセージ&quot;, preferredStyle: .alert)
 
-        <span class=c1>// OKのアクションを作成する.</span>
-        <span class=kd>let</span> <span class=nv>myOkAction</span> <span class=p>=</span> <span class=bp>UIAlertAction</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;OK&quot;</span><span class=p>,</span> <span class=n>style</span><span class=p>:</span> <span class=p>.</span><span class=k>default</span><span class=p>)</span> <span class=p>{</span> <span class=n>action</span> <span class=k>in</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Action OK!!&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
+        // OKのアクションを作成する.
+        let myOkAction = UIAlertAction(title: &quot;OK&quot;, style: .default) { action in
+            print(&quot;Action OK!!&quot;)
+        }
 
-        <span class=c1>// OKのActionを追加する.</span>
-        <span class=n>myAlert</span><span class=p>.</span><span class=n>addAction</span><span class=p>(</span><span class=n>myOkAction</span><span class=p>)</span>
+        // OKのActionを追加する.
+        myAlert.addAction(myOkAction)
 
-        <span class=c1>// UIAlertを発動する.</span>
-        <span class=n>present</span><span class=p>(</span><span class=n>myAlert</span><span class=p>,</span> <span class=n>animated</span><span class=p>:</span> <span class=kc>true</span><span class=p>,</span> <span class=n>completion</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-    <span class=p>}</span>
+        // UIAlertを発動する.
+        present(myAlert, animated: true, completion: nil)
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit010</span>
-<span class=c1>//</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit010
+//
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+import UIKit
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+class ViewController: UIViewController {
 
-        <span class=c1>// Viewの背景をCyanに設定する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyan</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// Buttonの定義する.</span>
-        <span class=kd>let</span> <span class=nv>myButton</span><span class=p>:</span> <span class=bp>UIButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>()</span>
-        <span class=kd>let</span> <span class=nv>buttonWidth</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>200</span>
-        <span class=kd>let</span> <span class=nv>buttonHeight</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>40</span>
-        <span class=kd>let</span> <span class=nv>posX</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span> <span class=o>-</span> <span class=n>buttonWidth</span><span class=p>)</span><span class=o>/</span><span class=mi>2</span>
-        <span class=kd>let</span> <span class=nv>posY</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>200</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=n>posX</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=n>posY</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=n>buttonWidth</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>buttonHeight</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>red</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;UIAlertを発動&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>touchDown</span><span class=p>)</span>
+        // Viewの背景をCyanに設定する.
+        self.view.backgroundColor = UIColor.cyan
 
-        <span class=c1>// ボタンをViewに追加する</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>)</span>
-    <span class=p>}</span>
+        // Buttonの定義する.
+        let myButton: UIButton = UIButton()
+        let buttonWidth: CGFloat = 200
+        let buttonHeight: CGFloat = 40
+        let posX: CGFloat = (self.view.bounds.width - buttonWidth)/2
+        let posY: CGFloat = 200
+        myButton.frame = CGRect(x: posX, y: posY, width: buttonWidth, height: buttonHeight)
+        myButton.backgroundColor = UIColor.red
+        myButton.layer.masksToBounds = true
+        myButton.layer.cornerRadius = 20.0
+        myButton.setTitle(&quot;UIAlertを発動&quot;, for: .normal)
+        myButton.setTitleColor(UIColor.white, for: .normal)
+        myButton.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchDown)
 
-    <span class=cm>/*</span>
-<span class=cm>     ボタンイベント</span>
-<span class=cm>     */</span>
-    <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>){</span>
+        // ボタンをViewに追加する
+        self.view.addSubview(myButton)
+    }
 
-        <span class=c1>// UIAlertControllerを作成する.</span>
-        <span class=kd>let</span> <span class=nv>myAlert</span><span class=p>:</span> <span class=bp>UIAlertController</span> <span class=p>=</span> <span class=bp>UIAlertController</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;タイトル&quot;</span><span class=p>,</span> <span class=n>message</span><span class=p>:</span> <span class=s>&quot;メッセージ&quot;</span><span class=p>,</span> <span class=n>preferredStyle</span><span class=p>:</span> <span class=p>.</span><span class=n>alert</span><span class=p>)</span>
+    /*
+     ボタンイベント
+     */
+    internal func onClickMyButton(sender: UIButton){
 
-        <span class=c1>// OKのアクションを作成する.</span>
-        <span class=kd>let</span> <span class=nv>myOkAction</span> <span class=p>=</span> <span class=bp>UIAlertAction</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;OK&quot;</span><span class=p>,</span> <span class=n>style</span><span class=p>:</span> <span class=p>.</span><span class=k>default</span><span class=p>)</span> <span class=p>{</span> <span class=n>action</span> <span class=k>in</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Action OK!!&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
+        // UIAlertControllerを作成する.
+        let myAlert: UIAlertController = UIAlertController(title: &quot;タイトル&quot;, message: &quot;メッセージ&quot;, preferredStyle: .alert)
 
-        <span class=c1>// OKのActionを追加する.</span>
-        <span class=n>myAlert</span><span class=p>.</span><span class=n>addAction</span><span class=p>(</span><span class=n>myOkAction</span><span class=p>)</span>
+        // OKのアクションを作成する.
+        let myOkAction = UIAlertAction(title: &quot;OK&quot;, style: .default) { action in
+            print(&quot;Action OK!!&quot;)
+        }
 
-        <span class=c1>// UIAlertを発動する.</span>
-        <span class=n>present</span><span class=p>(</span><span class=n>myAlert</span><span class=p>,</span> <span class=n>animated</span><span class=p>:</span> <span class=kc>true</span><span class=p>,</span> <span class=n>completion</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-    <span class=p>}</span>
+        // OKのActionを追加する.
+        myAlert.addAction(myOkAction)
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit010</span>
-<span class=c1>//</span>
+        // UIAlertを発動する.
+        present(myAlert, animated: true, completion: nil)
+    }
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit010
+//
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+import UIKit
 
-        <span class=c1>// Viewの背景をCyanに設定する.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyanColor</span><span class=p>()</span>
+class ViewController: UIViewController {
 
-        <span class=c1>// Buttonの定義する.</span>
-        <span class=kd>let</span> <span class=nv>myButton</span><span class=p>:</span> <span class=bp>UIButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>()</span>
-        <span class=kd>let</span> <span class=nv>buttonWidth</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>200</span>
-        <span class=kd>let</span> <span class=nv>buttonHeight</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>40</span>
-        <span class=kd>let</span> <span class=nv>posX</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span> <span class=o>-</span> <span class=n>buttonWidth</span><span class=p>)</span><span class=o>/</span><span class=mi>2</span>
-        <span class=kd>let</span> <span class=nv>posY</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>200</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=n>posX</span><span class=p>,</span> <span class=n>posY</span><span class=p>,</span> <span class=n>buttonWidth</span><span class=p>,</span> <span class=n>buttonHeight</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>redColor</span><span class=p>()</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;UIAlertを発動&quot;</span><span class=p>,</span> <span class=n>forState</span><span class=p>:</span> <span class=p>.</span><span class=n>Normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>whiteColor</span><span class=p>(),</span> <span class=n>forState</span><span class=p>:</span> <span class=p>.</span><span class=n>Normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=kc>_</span><span class=p>:)),</span> <span class=n>forControlEvents</span><span class=p>:</span> <span class=p>.</span><span class=n>TouchDown</span><span class=p>)</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// ボタンをViewに追加する</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>)</span>
-    <span class=p>}</span>
+        // Viewの背景をCyanに設定する.
+        self.view.backgroundColor = UIColor.cyanColor()
 
-    <span class=cm>/*</span>
-<span class=cm>     ボタンイベント</span>
-<span class=cm>     */</span>
-    <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>){</span>
+        // Buttonの定義する.
+        let myButton: UIButton = UIButton()
+        let buttonWidth: CGFloat = 200
+        let buttonHeight: CGFloat = 40
+        let posX: CGFloat = (self.view.bounds.width - buttonWidth)/2
+        let posY: CGFloat = 200
+        myButton.frame = CGRectMake(posX, posY, buttonWidth, buttonHeight)
+        myButton.backgroundColor = UIColor.redColor()
+        myButton.layer.masksToBounds = true
+        myButton.layer.cornerRadius = 20.0
+        myButton.setTitle(&quot;UIAlertを発動&quot;, forState: .Normal)
+        myButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        myButton.addTarget(self, action: #selector(onClickMyButton(_:)), forControlEvents: .TouchDown)
 
-        <span class=c1>// UIAlertControllerを作成する.</span>
-        <span class=kd>let</span> <span class=nv>myAlert</span><span class=p>:</span> <span class=bp>UIAlertController</span> <span class=p>=</span> <span class=bp>UIAlertController</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;タイトル&quot;</span><span class=p>,</span> <span class=n>message</span><span class=p>:</span> <span class=s>&quot;メッセージ&quot;</span><span class=p>,</span> <span class=n>preferredStyle</span><span class=p>:</span> <span class=p>.</span><span class=n>Alert</span><span class=p>)</span>
+        // ボタンをViewに追加する
+        self.view.addSubview(myButton)
+    }
 
-        <span class=c1>// OKのアクションを作成する.</span>
-        <span class=kd>let</span> <span class=nv>myOkAction</span> <span class=p>=</span> <span class=bp>UIAlertAction</span><span class=p>(</span><span class=n>title</span><span class=p>:</span> <span class=s>&quot;OK&quot;</span><span class=p>,</span> <span class=n>style</span><span class=p>:</span> <span class=p>.</span><span class=n>Default</span><span class=p>)</span> <span class=p>{</span> <span class=n>action</span> <span class=k>in</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Action OK!!&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
+    /*
+     ボタンイベント
+     */
+    internal func onClickMyButton(sender: UIButton){
 
-        <span class=c1>// OKのActionを追加する.</span>
-        <span class=n>myAlert</span><span class=p>.</span><span class=n>addAction</span><span class=p>(</span><span class=n>myOkAction</span><span class=p>)</span>
+        // UIAlertControllerを作成する.
+        let myAlert: UIAlertController = UIAlertController(title: &quot;タイトル&quot;, message: &quot;メッセージ&quot;, preferredStyle: .Alert)
 
-        <span class=c1>// UIAlertを発動する.</span>
-        <span class=n>presentViewController</span><span class=p>(</span><span class=n>myAlert</span><span class=p>,</span> <span class=n>animated</span><span class=p>:</span> <span class=kc>true</span><span class=p>,</span> <span class=n>completion</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-    <span class=p>}</span>
+        // OKのアクションを作成する.
+        let myOkAction = UIAlertAction(title: &quot;OK&quot;, style: .Default) { action in
+            print(&quot;Action OK!!&quot;)
+        }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+        // OKのActionを追加する.
+        myAlert.addAction(myOkAction)
+
+        // UIAlertを発動する.
+        presentViewController(myAlert, animated: true, completion: nil)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+}
+
+
+</code></pre></div></div>
 <h2 id="3040">3.0と4.0の差分</h2>
 <ul>
 <li><code>internal func onClickMyButton(sender: UIButton)</code> に <code>@objc</code> を追加</li>

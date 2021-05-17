@@ -2318,657 +2318,333 @@
                 <h1 id="uitableviewslide">UITableViewをSlideさせる</h1>
 <p><img alt="Preview uikit046_001" src="../img/uikit046_001.png" />
 <img alt="Preview uikit046_002" src="../img/uikit046_002.png" /></p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x/3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal>  1</span>
-<span class=normal>  2</span>
-<span class=normal>  3</span>
-<span class=normal>  4</span>
-<span class=normal>  5</span>
-<span class=normal>  6</span>
-<span class=normal>  7</span>
-<span class=normal>  8</span>
-<span class=normal>  9</span>
-<span class=normal> 10</span>
-<span class=normal> 11</span>
-<span class=normal> 12</span>
-<span class=normal> 13</span>
-<span class=normal> 14</span>
-<span class=normal> 15</span>
-<span class=normal> 16</span>
-<span class=normal> 17</span>
-<span class=normal> 18</span>
-<span class=normal> 19</span>
-<span class=normal> 20</span>
-<span class=normal> 21</span>
-<span class=normal> 22</span>
-<span class=normal> 23</span>
-<span class=normal> 24</span>
-<span class=normal> 25</span>
-<span class=normal> 26</span>
-<span class=normal> 27</span>
-<span class=normal> 28</span>
-<span class=normal> 29</span>
-<span class=normal> 30</span>
-<span class=normal> 31</span>
-<span class=normal> 32</span>
-<span class=normal> 33</span>
-<span class=normal> 34</span>
-<span class=normal> 35</span>
-<span class=normal> 36</span>
-<span class=normal> 37</span>
-<span class=normal> 38</span>
-<span class=normal> 39</span>
-<span class=normal> 40</span>
-<span class=normal> 41</span>
-<span class=normal> 42</span>
-<span class=normal> 43</span>
-<span class=normal> 44</span>
-<span class=normal> 45</span>
-<span class=normal> 46</span>
-<span class=normal> 47</span>
-<span class=normal> 48</span>
-<span class=normal> 49</span>
-<span class=normal> 50</span>
-<span class=normal> 51</span>
-<span class=normal> 52</span>
-<span class=normal> 53</span>
-<span class=normal> 54</span>
-<span class=normal> 55</span>
-<span class=normal> 56</span>
-<span class=normal> 57</span>
-<span class=normal> 58</span>
-<span class=normal> 59</span>
-<span class=normal> 60</span>
-<span class=normal> 61</span>
-<span class=normal> 62</span>
-<span class=normal> 63</span>
-<span class=normal> 64</span>
-<span class=normal> 65</span>
-<span class=normal> 66</span>
-<span class=normal> 67</span>
-<span class=normal> 68</span>
-<span class=normal> 69</span>
-<span class=normal> 70</span>
-<span class=normal> 71</span>
-<span class=normal> 72</span>
-<span class=normal> 73</span>
-<span class=normal> 74</span>
-<span class=normal> 75</span>
-<span class=normal> 76</span>
-<span class=normal> 77</span>
-<span class=normal> 78</span>
-<span class=normal> 79</span>
-<span class=normal> 80</span>
-<span class=normal> 81</span>
-<span class=normal> 82</span>
-<span class=normal> 83</span>
-<span class=normal> 84</span>
-<span class=normal> 85</span>
-<span class=normal> 86</span>
-<span class=normal> 87</span>
-<span class=normal> 88</span>
-<span class=normal> 89</span>
-<span class=normal> 90</span>
-<span class=normal> 91</span>
-<span class=normal> 92</span>
-<span class=normal> 93</span>
-<span class=normal> 94</span>
-<span class=normal> 95</span>
-<span class=normal> 96</span>
-<span class=normal> 97</span>
-<span class=normal> 98</span>
-<span class=normal> 99</span>
-<span class=normal>100</span>
-<span class=normal>101</span>
-<span class=normal>102</span>
-<span class=normal>103</span>
-<span class=normal>104</span>
-<span class=normal>105</span>
-<span class=normal>106</span>
-<span class=normal>107</span>
-<span class=normal>108</span>
-<span class=normal>109</span>
-<span class=normal>110</span>
-<span class=normal>111</span>
-<span class=normal>112</span>
-<span class=normal>113</span>
-<span class=normal>114</span>
-<span class=normal>115</span>
-<span class=normal>116</span>
-<span class=normal>117</span>
-<span class=normal>118</span>
-<span class=normal>119</span>
-<span class=normal>120</span>
-<span class=normal>121</span>
-<span class=normal>122</span>
-<span class=normal>123</span>
-<span class=normal>124</span>
-<span class=normal>125</span>
-<span class=normal>126</span>
-<span class=normal>127</span>
-<span class=normal>128</span>
-<span class=normal>129</span>
-<span class=normal>130</span>
-<span class=normal>131</span>
-<span class=normal>132</span>
-<span class=normal>133</span>
-<span class=normal>134</span>
-<span class=normal>135</span>
-<span class=normal>136</span>
-<span class=normal>137</span>
-<span class=normal>138</span>
-<span class=normal>139</span>
-<span class=normal>140</span>
-<span class=normal>141</span>
-<span class=normal>142</span>
-<span class=normal>143</span>
-<span class=normal>144</span>
-<span class=normal>145</span>
-<span class=normal>146</span>
-<span class=normal>147</span>
-<span class=normal>148</span>
-<span class=normal>149</span>
-<span class=normal>150</span>
-<span class=normal>151</span>
-<span class=normal>152</span>
-<span class=normal>153</span>
-<span class=normal>154</span>
-<span class=normal>155</span>
-<span class=normal>156</span>
-<span class=normal>157</span>
-<span class=normal>158</span>
-<span class=normal>159</span>
-<span class=normal>160</span>
-<span class=normal>161</span>
-<span class=normal>162</span>
-<span class=normal>163</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit046_4.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/21.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x/3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit046_4.0
+//
+//  Created by KimikoWatanabe on 2016/08/21.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UIScrollViewDelegate</span><span class=p>,</span> <span class=bp>UITableViewDelegate</span><span class=p>,</span> <span class=bp>UITableViewDataSource</span> <span class=p>{</span>
+class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource {
 
-    <span class=c1>// UIPageControl.</span>
-    <span class=kd>var</span> <span class=nv>pageControl</span><span class=p>:</span> <span class=bp>UIPageControl</span><span class=p>!</span>
-    <span class=c1>// UIScrollView.</span>
-    <span class=kd>var</span> <span class=nv>scrollView</span><span class=p>:</span> <span class=bp>UIScrollView</span><span class=p>!</span>
-    <span class=c1>// TableViewのアイテム.</span>
-    <span class=kd>let</span> <span class=nv>myItems</span><span class=p>:</span> <span class=p>[[</span><span class=nb>String</span><span class=p>]]</span> <span class=p>=</span> <span class=p>[[</span><span class=s>&quot;TEST1&quot;</span><span class=p>,</span> <span class=s>&quot;TEST2&quot;</span><span class=p>,</span> <span class=s>&quot;TEST3&quot;</span><span class=p>],[</span><span class=s>&quot;App1&quot;</span><span class=p>,</span> <span class=s>&quot;App2&quot;</span><span class=p>,</span> <span class=s>&quot;App3&quot;</span><span class=p>,</span> <span class=s>&quot;App4&quot;</span><span class=p>,</span> <span class=s>&quot;App5&quot;</span><span class=p>]]</span>
-    <span class=c1>// TableViewに表示するタイトル.</span>
-    <span class=kd>let</span> <span class=nv>myTitles</span><span class=p>:</span> <span class=p>[</span><span class=nb>String</span><span class=p>]</span> <span class=p>=</span> <span class=p>[</span><span class=s>&quot;title0&quot;</span><span class=p>,</span><span class=s>&quot;title1&quot;</span><span class=p>]</span>
-    <span class=c1>// TableView.</span>
-    <span class=kd>var</span> <span class=nv>myTableView</span><span class=p>:</span> <span class=p>[</span><span class=bp>UITableView</span><span class=p>]</span> <span class=p>=</span> <span class=p>[]</span>
-    <span class=c1>// ページ番号.</span>
-    <span class=kd>let</span> <span class=nv>pageSize</span> <span class=p>=</span> <span class=mi>2</span>
+    // UIPageControl.
+    var pageControl: UIPageControl!
+    // UIScrollView.
+    var scrollView: UIScrollView!
+    // TableViewのアイテム.
+    let myItems: [[String]] = [[&quot;TEST1&quot;, &quot;TEST2&quot;, &quot;TEST3&quot;],[&quot;App1&quot;, &quot;App2&quot;, &quot;App3&quot;, &quot;App4&quot;, &quot;App5&quot;]]
+    // TableViewに表示するタイトル.
+    let myTitles: [String] = [&quot;title0&quot;,&quot;title1&quot;]
+    // TableView.
+    var myTableView: [UITableView] = []
+    // ページ番号.
+    let pageSize = 2
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
+    override func viewDidLoad() {
 
-        <span class=c1>// ScrollViewの設定.</span>
-        <span class=kd>let</span> <span class=nv>width</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxX</span><span class=p>,</span> <span class=n>height</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxY</span>
-        <span class=n>scrollView</span> <span class=p>=</span> <span class=bp>UIScrollView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>)</span>
-        <span class=n>scrollView</span><span class=p>.</span><span class=n>showsHorizontalScrollIndicator</span> <span class=p>=</span> <span class=kc>false</span><span class=p>;</span>
-        <span class=n>scrollView</span><span class=p>.</span><span class=n>showsVerticalScrollIndicator</span> <span class=p>=</span> <span class=kc>false</span>
-        <span class=n>scrollView</span><span class=p>.</span><span class=n>isPagingEnabled</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>scrollView</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
-        <span class=n>scrollView</span><span class=p>.</span><span class=n>contentSize</span> <span class=p>=</span> <span class=n>CGSize</span><span class=p>(</span><span class=n>width</span><span class=p>:</span><span class=n>CGFloat</span><span class=p>(</span><span class=n>pageSize</span><span class=p>)</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>0</span><span class=p>)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>scrollView</span><span class=p>)</span>
+        // ScrollViewの設定.
+        let width = self.view.frame.maxX, height = self.view.frame.maxY
+        scrollView = UIScrollView(frame: self.view.frame)
+        scrollView.showsHorizontalScrollIndicator = false;
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.isPagingEnabled = true
+        scrollView.delegate = self
+        scrollView.contentSize = CGSize(width:CGFloat(pageSize) * width, height:0)
+        self.view.addSubview(scrollView)
 
-        <span class=c1>// Status Barの高さを取得.</span>
-        <span class=kd>let</span> <span class=nv>barHeight</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=bp>UIApplication</span><span class=p>.</span><span class=n>shared</span><span class=p>.</span><span class=n>statusBarFrame</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>height</span>
+        // Status Barの高さを取得.
+        let barHeight: CGFloat = UIApplication.shared.statusBarFrame.size.height
 
-        <span class=c1>// Viewの高さと幅を取得.</span>
-        <span class=kd>let</span> <span class=nv>displayWidth</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span>
-        <span class=kd>let</span> <span class=nv>displayHeight</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span>
+        // Viewの高さと幅を取得.
+        let displayWidth: CGFloat = self.view.frame.width
+        let displayHeight: CGFloat = self.view.frame.height
 
-        <span class=c1>// TableViewの生成( status barの高さ分ずらして表示 ).</span>
-        <span class=k>for</span> <span class=n>i</span> <span class=k>in</span> <span class=mi>0</span> <span class=p>..</span><span class=o>&lt;</span> <span class=n>pageSize</span> <span class=p>{</span>
+        // TableViewの生成( status barの高さ分ずらして表示 ).
+        for i in 0 ..&lt; pageSize {
 
-            <span class=kd>let</span> <span class=nv>tableView</span><span class=p>:</span> <span class=bp>UITableView</span> <span class=p>=</span> <span class=bp>UITableView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=n>i</span><span class=p>)</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=n>barHeight</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=n>displayWidth</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>displayHeight</span> <span class=o>-</span> <span class=n>barHeight</span><span class=p>))</span>
-            <span class=n>myTableView</span><span class=p>.</span><span class=n>append</span><span class=p>(</span><span class=n>tableView</span><span class=p>)</span>
-            <span class=n>myTableView</span><span class=p>[</span><span class=n>i</span><span class=p>].</span><span class=n>register</span><span class=p>(</span><span class=bp>UITableViewCell</span><span class=p>.</span><span class=kc>self</span><span class=p>,</span> <span class=n>forCellReuseIdentifier</span><span class=p>:</span> <span class=s>&quot;MyCell&quot;</span><span class=p>)</span>
-            <span class=n>myTableView</span><span class=p>[</span><span class=n>i</span><span class=p>].</span><span class=n>dataSource</span> <span class=p>=</span> <span class=kc>self</span>
-            <span class=n>myTableView</span><span class=p>[</span><span class=n>i</span><span class=p>].</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
-            <span class=n>scrollView</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myTableView</span><span class=p>[</span><span class=n>i</span><span class=p>])</span>
+            let tableView: UITableView = UITableView(frame: CGRect(x: CGFloat(i) * width, y: barHeight, width: displayWidth, height: displayHeight - barHeight))
+            myTableView.append(tableView)
+            myTableView[i].register(UITableViewCell.self, forCellReuseIdentifier: &quot;MyCell&quot;)
+            myTableView[i].dataSource = self
+            myTableView[i].delegate = self
+            scrollView.addSubview(myTableView[i])
 
-            <span class=c1>//ページごとに異なるラベルを表示.</span>
-            <span class=kd>let</span> <span class=nv>myLabel</span><span class=p>:</span><span class=bp>UILabel</span> <span class=p>=</span> <span class=bp>UILabel</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=n>CGFloat</span><span class=p>(</span><span class=n>i</span><span class=p>)</span> <span class=o>*</span> <span class=n>width</span> <span class=o>+</span> <span class=n>width</span><span class=o>/</span><span class=mi>2</span> <span class=o>-</span> <span class=mi>40</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=n>height</span><span class=o>/</span><span class=mi>2</span> <span class=o>-</span> <span class=mi>40</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=mi>80</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>80</span><span class=p>))</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=n>NSTextAlignment</span><span class=p>.</span><span class=n>center</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;Page</span><span class=si>\(</span><span class=n>i</span><span class=si>)</span><span class=s>&quot;</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>font</span> <span class=p>=</span> <span class=bp>UIFont</span><span class=p>.</span><span class=n>systemFont</span><span class=p>(</span><span class=n>ofSize</span><span class=p>:</span> <span class=bp>UIFont</span><span class=p>.</span><span class=n>smallSystemFontSize</span><span class=p>)</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>40.0</span>
+            //ページごとに異なるラベルを表示.
+            let myLabel:UILabel = UILabel(frame: CGRect(x:CGFloat(i) * width + width/2 - 40, y:height/2 - 40, width:80, height:80))
+            myLabel.backgroundColor = UIColor.black
+            myLabel.textColor = UIColor.white
+            myLabel.textAlignment = NSTextAlignment.center
+            myLabel.layer.masksToBounds = true
+            myLabel.text = &quot;Page\(i)&quot;
+            myLabel.font = UIFont.systemFont(ofSize: UIFont.smallSystemFontSize)
+            myLabel.layer.cornerRadius = 40.0
 
-            <span class=n>scrollView</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myLabel</span><span class=p>)</span>
-        <span class=p>}</span>
+            scrollView.addSubview(myLabel)
+        }
 
-        <span class=c1>// PageControlを作成.</span>
-        <span class=n>pageControl</span> <span class=p>=</span> <span class=bp>UIPageControl</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxY</span> <span class=o>-</span> <span class=mi>50</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>50</span><span class=p>))</span>
-        <span class=n>pageControl</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>lightGray</span>
+        // PageControlを作成.
+        pageControl = UIPageControl(frame: CGRect(x:0, y:self.view.frame.maxY - 50, width:width, height:50))
+        pageControl.backgroundColor = UIColor.lightGray
 
-        <span class=c1>// PageControlするページ数を設定.</span>
-        <span class=n>pageControl</span><span class=p>.</span><span class=n>numberOfPages</span> <span class=p>=</span> <span class=n>pageSize</span>
+        // PageControlするページ数を設定.
+        pageControl.numberOfPages = pageSize
 
-        <span class=c1>// 現在ページを設定.</span>
-        <span class=n>pageControl</span><span class=p>.</span><span class=n>currentPage</span> <span class=p>=</span> <span class=mi>0</span>
-        <span class=n>pageControl</span><span class=p>.</span><span class=n>isUserInteractionEnabled</span> <span class=p>=</span> <span class=kc>false</span>
+        // 現在ページを設定.
+        pageControl.currentPage = 0
+        pageControl.isUserInteractionEnabled = false
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>pageControl</span><span class=p>)</span>
-    <span class=p>}</span>
+        self.view.addSubview(pageControl)
+    }
 
 
-    <span class=kd>func</span> <span class=nf>scrollViewDidEndDecelerating</span><span class=p>(</span><span class=kc>_</span> <span class=n>scrollView</span><span class=p>:</span> <span class=bp>UIScrollView</span><span class=p>)</span> <span class=p>{</span>
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
 
-        <span class=c1>// スクロール数が1ページ分になったら.</span>
-        <span class=k>if</span> <span class=n>fmod</span><span class=p>(</span><span class=n>scrollView</span><span class=p>.</span><span class=n>contentOffset</span><span class=p>.</span><span class=n>x</span><span class=p>,</span> <span class=n>scrollView</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxX</span><span class=p>)</span> <span class=p>==</span> <span class=mi>0</span> <span class=p>{</span>
-            <span class=c1>// ページの場所を切り替える.</span>
-            <span class=n>pageControl</span><span class=p>.</span><span class=n>currentPage</span> <span class=p>=</span> <span class=nb>Int</span><span class=p>(</span><span class=n>scrollView</span><span class=p>.</span><span class=n>contentOffset</span><span class=p>.</span><span class=n>x</span> <span class=o>/</span> <span class=n>scrollView</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxX</span><span class=p>)</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
+        // スクロール数が1ページ分になったら.
+        if fmod(scrollView.contentOffset.x, scrollView.frame.maxX) == 0 {
+            // ページの場所を切り替える.
+            pageControl.currentPage = Int(scrollView.contentOffset.x / scrollView.frame.maxX)
+        }
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     Cellが選択された際に呼び出される.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>tableView</span><span class=p>(</span><span class=kc>_</span> <span class=n>tableView</span><span class=p>:</span> <span class=bp>UITableView</span><span class=p>,</span> <span class=n>didSelectRowAt</span> <span class=n>indexPath</span><span class=p>:</span> <span class=n>IndexPath</span><span class=p>)</span> <span class=p>{</span>
-        <span class=k>if</span> <span class=n>tableView</span> <span class=p>==</span> <span class=n>myTableView</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=p>{</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Num: </span><span class=si>\(</span><span class=n>indexPath</span><span class=p>.</span><span class=n>row</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Value: </span><span class=si>\(</span><span class=n>myItems</span><span class=p>[</span><span class=mi>0</span><span class=p>][</span><span class=n>indexPath</span><span class=p>.</span><span class=n>row</span><span class=p>]</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-        <span class=p>}</span> <span class=k>else</span> <span class=k>if</span> <span class=n>tableView</span> <span class=p>==</span> <span class=n>myTableView</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=p>{</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Num: </span><span class=si>\(</span><span class=n>indexPath</span><span class=p>.</span><span class=n>row</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Value: </span><span class=si>\(</span><span class=n>myItems</span><span class=p>[</span><span class=mi>1</span><span class=p>][</span><span class=n>indexPath</span><span class=p>.</span><span class=n>row</span><span class=p>]</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
+    /*
+     Cellが選択された際に呼び出される.
+     */
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == myTableView[0] {
+            print(&quot;Num: \(indexPath.row)&quot;)
+            print(&quot;Value: \(myItems[0][indexPath.row])&quot;)
+        } else if tableView == myTableView[1] {
+            print(&quot;Num: \(indexPath.row)&quot;)
+            print(&quot;Value: \(myItems[1][indexPath.row])&quot;)
+        }
 
-    <span class=p>}</span>
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     Cellの総数を返す.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>tableView</span><span class=p>(</span><span class=kc>_</span> <span class=n>tableView</span><span class=p>:</span> <span class=bp>UITableView</span><span class=p>,</span> <span class=n>numberOfRowsInSection</span> <span class=n>section</span><span class=p>:</span> <span class=nb>Int</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Int</span> <span class=p>{</span>
-        <span class=k>if</span> <span class=n>tableView</span> <span class=p>==</span> <span class=n>myTableView</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=p>{</span>
-            <span class=k>return</span> <span class=n>myItems</span><span class=p>[</span><span class=mi>0</span><span class=p>].</span><span class=bp>count</span>
-        <span class=p>}</span> <span class=k>else</span> <span class=k>if</span> <span class=n>tableView</span> <span class=p>==</span> <span class=n>myTableView</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=p>{</span>
-            <span class=k>return</span> <span class=n>myItems</span><span class=p>[</span><span class=mi>1</span><span class=p>].</span><span class=bp>count</span>
-        <span class=p>}</span> <span class=k>else</span><span class=p>{</span>
-            <span class=k>return</span> <span class=mi>0</span>
-        <span class=p>}</span>
+    /*
+     Cellの総数を返す.
+     */
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -&gt; Int {
+        if tableView == myTableView[0] {
+            return myItems[0].count
+        } else if tableView == myTableView[1] {
+            return myItems[1].count
+        } else{
+            return 0
+        }
 
-    <span class=p>}</span>
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     Headerを追加.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>tableView</span><span class=p>(</span><span class=kc>_</span> <span class=n>tableView</span><span class=p>:</span> <span class=bp>UITableView</span><span class=p>,</span> <span class=n>viewForHeaderInSection</span> <span class=n>section</span><span class=p>:</span> <span class=nb>Int</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=bp>UIView</span><span class=p>?</span> <span class=p>{</span>
-        <span class=kd>let</span> <span class=nv>myLabel</span><span class=p>:</span> <span class=bp>UILabel</span> <span class=p>=</span> <span class=bp>UILabel</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>100</span><span class=p>))</span>
+    /*
+     Headerを追加.
+     */
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -&gt; UIView? {
+        let myLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 100))
 
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=p>.</span><span class=n>center</span>
+        myLabel.textAlignment = .center
 
-        <span class=k>if</span> <span class=n>tableView</span> <span class=p>==</span> <span class=n>myTableView</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=p>{</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=n>myTitles</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span>
-        <span class=p>}</span> <span class=k>else</span> <span class=k>if</span> <span class=n>tableView</span> <span class=p>==</span> <span class=n>myTableView</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=p>{</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blue</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=n>myTitles</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span>
-        <span class=p>}</span>
+        if tableView == myTableView[0] {
+            myLabel.backgroundColor = UIColor.black
+            myLabel.textColor = UIColor.white
+            myLabel.text = myTitles[0]
+        } else if tableView == myTableView[1] {
+            myLabel.backgroundColor = UIColor.blue
+            myLabel.textColor = UIColor.white
+            myLabel.text = myTitles[1]
+        }
 
-        <span class=k>return</span> <span class=n>myLabel</span>
-    <span class=p>}</span>
+        return myLabel
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     Headerの高さ.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>tableView</span><span class=p>(</span><span class=kc>_</span> <span class=n>tableView</span><span class=p>:</span> <span class=bp>UITableView</span><span class=p>,</span> <span class=n>heightForHeaderInSection</span> <span class=n>section</span><span class=p>:</span> <span class=nb>Int</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=n>CGFloat</span> <span class=p>{</span>
-        <span class=k>return</span> <span class=mf>50.0</span>
-    <span class=p>}</span>
+    /*
+     Headerの高さ.
+     */
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -&gt; CGFloat {
+        return 50.0
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     Cellに値を設定する.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>tableView</span><span class=p>(</span><span class=kc>_</span> <span class=n>tableView</span><span class=p>:</span> <span class=bp>UITableView</span><span class=p>,</span> <span class=n>cellForRowAt</span> <span class=n>indexPath</span><span class=p>:</span> <span class=n>IndexPath</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=bp>UITableViewCell</span> <span class=p>{</span>
-        <span class=kd>let</span> <span class=nv>cell</span><span class=p>:</span> <span class=bp>UITableViewCell</span> <span class=p>=</span> <span class=n>tableView</span><span class=p>.</span><span class=n>dequeueReusableCell</span><span class=p>(</span><span class=n>withIdentifier</span><span class=p>:</span> <span class=s>&quot;MyCell&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=n>indexPath</span> <span class=k>as</span> <span class=n>IndexPath</span><span class=p>)</span>
+    /*
+     Cellに値を設定する.
+     */
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&gt; UITableViewCell {
+        let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: &quot;MyCell&quot;, for: indexPath as IndexPath)
 
-        <span class=k>if</span> <span class=n>tableView</span> <span class=p>==</span> <span class=n>myTableView</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=p>{</span>
-            <span class=n>cell</span><span class=p>.</span><span class=n>textLabel</span><span class=p>?.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;</span><span class=si>\(</span><span class=n>myItems</span><span class=p>[</span><span class=mi>0</span><span class=p>][</span><span class=n>indexPath</span><span class=p>.</span><span class=n>row</span><span class=p>]</span><span class=si>)</span><span class=s>&quot;</span>
-        <span class=p>}</span> <span class=k>else</span> <span class=k>if</span> <span class=n>tableView</span> <span class=p>==</span> <span class=n>myTableView</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=p>{</span>
-            <span class=n>cell</span><span class=p>.</span><span class=n>textLabel</span><span class=p>?.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;</span><span class=si>\(</span><span class=n>myItems</span><span class=p>[</span><span class=mi>1</span><span class=p>][</span><span class=n>indexPath</span><span class=p>.</span><span class=n>row</span><span class=p>]</span><span class=si>)</span><span class=s>&quot;</span>
-        <span class=p>}</span>
+        if tableView == myTableView[0] {
+            cell.textLabel?.text = &quot;\(myItems[0][indexPath.row])&quot;
+        } else if tableView == myTableView[1] {
+            cell.textLabel?.text = &quot;\(myItems[1][indexPath.row])&quot;
+        }
 
-        <span class=k>return</span> <span class=n>cell</span>
-    <span class=p>}</span>
+        return cell
+    }
 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal>  1</span>
-<span class=normal>  2</span>
-<span class=normal>  3</span>
-<span class=normal>  4</span>
-<span class=normal>  5</span>
-<span class=normal>  6</span>
-<span class=normal>  7</span>
-<span class=normal>  8</span>
-<span class=normal>  9</span>
-<span class=normal> 10</span>
-<span class=normal> 11</span>
-<span class=normal> 12</span>
-<span class=normal> 13</span>
-<span class=normal> 14</span>
-<span class=normal> 15</span>
-<span class=normal> 16</span>
-<span class=normal> 17</span>
-<span class=normal> 18</span>
-<span class=normal> 19</span>
-<span class=normal> 20</span>
-<span class=normal> 21</span>
-<span class=normal> 22</span>
-<span class=normal> 23</span>
-<span class=normal> 24</span>
-<span class=normal> 25</span>
-<span class=normal> 26</span>
-<span class=normal> 27</span>
-<span class=normal> 28</span>
-<span class=normal> 29</span>
-<span class=normal> 30</span>
-<span class=normal> 31</span>
-<span class=normal> 32</span>
-<span class=normal> 33</span>
-<span class=normal> 34</span>
-<span class=normal> 35</span>
-<span class=normal> 36</span>
-<span class=normal> 37</span>
-<span class=normal> 38</span>
-<span class=normal> 39</span>
-<span class=normal> 40</span>
-<span class=normal> 41</span>
-<span class=normal> 42</span>
-<span class=normal> 43</span>
-<span class=normal> 44</span>
-<span class=normal> 45</span>
-<span class=normal> 46</span>
-<span class=normal> 47</span>
-<span class=normal> 48</span>
-<span class=normal> 49</span>
-<span class=normal> 50</span>
-<span class=normal> 51</span>
-<span class=normal> 52</span>
-<span class=normal> 53</span>
-<span class=normal> 54</span>
-<span class=normal> 55</span>
-<span class=normal> 56</span>
-<span class=normal> 57</span>
-<span class=normal> 58</span>
-<span class=normal> 59</span>
-<span class=normal> 60</span>
-<span class=normal> 61</span>
-<span class=normal> 62</span>
-<span class=normal> 63</span>
-<span class=normal> 64</span>
-<span class=normal> 65</span>
-<span class=normal> 66</span>
-<span class=normal> 67</span>
-<span class=normal> 68</span>
-<span class=normal> 69</span>
-<span class=normal> 70</span>
-<span class=normal> 71</span>
-<span class=normal> 72</span>
-<span class=normal> 73</span>
-<span class=normal> 74</span>
-<span class=normal> 75</span>
-<span class=normal> 76</span>
-<span class=normal> 77</span>
-<span class=normal> 78</span>
-<span class=normal> 79</span>
-<span class=normal> 80</span>
-<span class=normal> 81</span>
-<span class=normal> 82</span>
-<span class=normal> 83</span>
-<span class=normal> 84</span>
-<span class=normal> 85</span>
-<span class=normal> 86</span>
-<span class=normal> 87</span>
-<span class=normal> 88</span>
-<span class=normal> 89</span>
-<span class=normal> 90</span>
-<span class=normal> 91</span>
-<span class=normal> 92</span>
-<span class=normal> 93</span>
-<span class=normal> 94</span>
-<span class=normal> 95</span>
-<span class=normal> 96</span>
-<span class=normal> 97</span>
-<span class=normal> 98</span>
-<span class=normal> 99</span>
-<span class=normal>100</span>
-<span class=normal>101</span>
-<span class=normal>102</span>
-<span class=normal>103</span>
-<span class=normal>104</span>
-<span class=normal>105</span>
-<span class=normal>106</span>
-<span class=normal>107</span>
-<span class=normal>108</span>
-<span class=normal>109</span>
-<span class=normal>110</span>
-<span class=normal>111</span>
-<span class=normal>112</span>
-<span class=normal>113</span>
-<span class=normal>114</span>
-<span class=normal>115</span>
-<span class=normal>116</span>
-<span class=normal>117</span>
-<span class=normal>118</span>
-<span class=normal>119</span>
-<span class=normal>120</span>
-<span class=normal>121</span>
-<span class=normal>122</span>
-<span class=normal>123</span>
-<span class=normal>124</span>
-<span class=normal>125</span>
-<span class=normal>126</span>
-<span class=normal>127</span>
-<span class=normal>128</span>
-<span class=normal>129</span>
-<span class=normal>130</span>
-<span class=normal>131</span>
-<span class=normal>132</span>
-<span class=normal>133</span>
-<span class=normal>134</span>
-<span class=normal>135</span>
-<span class=normal>136</span>
-<span class=normal>137</span>
-<span class=normal>138</span>
-<span class=normal>139</span>
-<span class=normal>140</span>
-<span class=normal>141</span>
-<span class=normal>142</span>
-<span class=normal>143</span>
-<span class=normal>144</span>
-<span class=normal>145</span>
-<span class=normal>146</span>
-<span class=normal>147</span>
-<span class=normal>148</span>
-<span class=normal>149</span>
-<span class=normal>150</span>
-<span class=normal>151</span>
-<span class=normal>152</span>
-<span class=normal>153</span>
-<span class=normal>154</span>
-<span class=normal>155</span>
-<span class=normal>156</span>
-<span class=normal>157</span>
-<span class=normal>158</span>
-<span class=normal>159</span>
-<span class=normal>160</span>
-<span class=normal>161</span>
-<span class=normal>162</span>
-<span class=normal>163</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit046_2.3</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/21.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit046_2.3
+//
+//  Created by KimikoWatanabe on 2016/08/21.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>UIScrollViewDelegate</span><span class=p>,</span> <span class=bp>UITableViewDelegate</span><span class=p>,</span> <span class=bp>UITableViewDataSource</span> <span class=p>{</span>
+class ViewController: UIViewController, UIScrollViewDelegate, UITableViewDelegate, UITableViewDataSource {
 
-    <span class=c1>// UIPageControl.</span>
-    <span class=kd>var</span> <span class=nv>pageControl</span><span class=p>:</span> <span class=bp>UIPageControl</span><span class=p>!</span>
-    <span class=c1>// UIScrillView.</span>
-    <span class=kd>var</span> <span class=nv>scrollView</span><span class=p>:</span> <span class=bp>UIScrollView</span><span class=p>!</span>
-    <span class=c1>// TableViewのアイテム.</span>
-    <span class=kd>let</span> <span class=nv>myItems</span><span class=p>:</span> <span class=p>[[</span><span class=nb>String</span><span class=p>]]</span> <span class=p>=</span> <span class=p>[[</span><span class=s>&quot;TEST1&quot;</span><span class=p>,</span> <span class=s>&quot;TEST2&quot;</span><span class=p>,</span> <span class=s>&quot;TEST3&quot;</span><span class=p>],[</span><span class=s>&quot;App1&quot;</span><span class=p>,</span> <span class=s>&quot;App2&quot;</span><span class=p>,</span> <span class=s>&quot;App3&quot;</span><span class=p>,</span> <span class=s>&quot;App4&quot;</span><span class=p>,</span> <span class=s>&quot;App5&quot;</span><span class=p>]]</span>
-    <span class=c1>// TableViewに表示するタイトル.</span>
-    <span class=kd>let</span> <span class=nv>myTitles</span><span class=p>:</span> <span class=p>[</span><span class=nb>String</span><span class=p>]</span> <span class=p>=</span> <span class=p>[</span><span class=s>&quot;title0&quot;</span><span class=p>,</span><span class=s>&quot;title1&quot;</span><span class=p>]</span>
-    <span class=c1>// TableView.</span>
-    <span class=kd>var</span> <span class=nv>myTableView</span><span class=p>:</span> <span class=p>[</span><span class=bp>UITableView</span><span class=p>]</span> <span class=p>=</span> <span class=p>[]</span>
-    <span class=c1>// ページ番号.</span>
-    <span class=kd>let</span> <span class=nv>pageSize</span> <span class=p>=</span> <span class=mi>2</span>
+    // UIPageControl.
+    var pageControl: UIPageControl!
+    // UIScrillView.
+    var scrollView: UIScrollView!
+    // TableViewのアイテム.
+    let myItems: [[String]] = [[&quot;TEST1&quot;, &quot;TEST2&quot;, &quot;TEST3&quot;],[&quot;App1&quot;, &quot;App2&quot;, &quot;App3&quot;, &quot;App4&quot;, &quot;App5&quot;]]
+    // TableViewに表示するタイトル.
+    let myTitles: [String] = [&quot;title0&quot;,&quot;title1&quot;]
+    // TableView.
+    var myTableView: [UITableView] = []
+    // ページ番号.
+    let pageSize = 2
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
+    override func viewDidLoad() {
 
-        <span class=c1>// ScrollViewの設定.</span>
-        <span class=kd>let</span> <span class=nv>width</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxX</span><span class=p>,</span> <span class=n>height</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxY</span>
-        <span class=n>scrollView</span> <span class=p>=</span> <span class=bp>UIScrollView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>)</span>
-        <span class=n>scrollView</span><span class=p>.</span><span class=n>showsHorizontalScrollIndicator</span> <span class=p>=</span> <span class=kc>false</span><span class=p>;</span>
-        <span class=n>scrollView</span><span class=p>.</span><span class=n>showsVerticalScrollIndicator</span> <span class=p>=</span> <span class=kc>false</span>
-        <span class=n>scrollView</span><span class=p>.</span><span class=n>pagingEnabled</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>scrollView</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
-        <span class=n>scrollView</span><span class=p>.</span><span class=n>contentSize</span> <span class=p>=</span> <span class=n>CGSizeMake</span><span class=p>(</span><span class=n>CGFloat</span><span class=p>(</span><span class=n>pageSize</span><span class=p>)</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mi>0</span><span class=p>)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>scrollView</span><span class=p>)</span>
+        // ScrollViewの設定.
+        let width = self.view.frame.maxX, height = self.view.frame.maxY
+        scrollView = UIScrollView(frame: self.view.frame)
+        scrollView.showsHorizontalScrollIndicator = false;
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.pagingEnabled = true
+        scrollView.delegate = self
+        scrollView.contentSize = CGSizeMake(CGFloat(pageSize) * width, 0)
+        self.view.addSubview(scrollView)
 
-        <span class=c1>// Status Barの高さを取得.</span>
-        <span class=kd>let</span> <span class=nv>barHeight</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=bp>UIApplication</span><span class=p>.</span><span class=n>sharedApplication</span><span class=p>().</span><span class=n>statusBarFrame</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>height</span>
+        // Status Barの高さを取得.
+        let barHeight: CGFloat = UIApplication.sharedApplication().statusBarFrame.size.height
 
-        <span class=c1>// Viewの高さと幅を取得.</span>
-        <span class=kd>let</span> <span class=nv>displayWidth</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span>
-        <span class=kd>let</span> <span class=nv>displayHeight</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span>
+        // Viewの高さと幅を取得.
+        let displayWidth: CGFloat = self.view.frame.width
+        let displayHeight: CGFloat = self.view.frame.height
 
-        <span class=c1>// TableViewの生成( status barの高さ分ずらして表示 ).</span>
-        <span class=k>for</span> <span class=n>i</span> <span class=k>in</span> <span class=mi>0</span> <span class=p>..</span><span class=o>&lt;</span> <span class=n>pageSize</span> <span class=p>{</span>
+        // TableViewの生成( status barの高さ分ずらして表示 ).
+        for i in 0 ..&lt; pageSize {
 
-            <span class=kd>let</span> <span class=nv>tableView</span><span class=p>:</span> <span class=bp>UITableView</span> <span class=p>=</span> <span class=bp>UITableView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=n>i</span><span class=p>)</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=n>barHeight</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=n>displayWidth</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>displayHeight</span> <span class=o>-</span> <span class=n>barHeight</span><span class=p>))</span>
-            <span class=n>myTableView</span><span class=p>.</span><span class=n>append</span><span class=p>(</span><span class=n>tableView</span><span class=p>)</span>
-            <span class=n>myTableView</span><span class=p>[</span><span class=n>i</span><span class=p>].</span><span class=n>registerClass</span><span class=p>(</span><span class=bp>UITableViewCell</span><span class=p>.</span><span class=kc>self</span><span class=p>,</span> <span class=n>forCellReuseIdentifier</span><span class=p>:</span> <span class=s>&quot;MyCell&quot;</span><span class=p>)</span>
-            <span class=n>myTableView</span><span class=p>[</span><span class=n>i</span><span class=p>].</span><span class=n>dataSource</span> <span class=p>=</span> <span class=kc>self</span>
-            <span class=n>myTableView</span><span class=p>[</span><span class=n>i</span><span class=p>].</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
-            <span class=n>scrollView</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myTableView</span><span class=p>[</span><span class=n>i</span><span class=p>])</span>
+            let tableView: UITableView = UITableView(frame: CGRect(x: CGFloat(i) * width, y: barHeight, width: displayWidth, height: displayHeight - barHeight))
+            myTableView.append(tableView)
+            myTableView[i].registerClass(UITableViewCell.self, forCellReuseIdentifier: &quot;MyCell&quot;)
+            myTableView[i].dataSource = self
+            myTableView[i].delegate = self
+            scrollView.addSubview(myTableView[i])
 
-            <span class=c1>//ページごとに異なるラベルを表示.</span>
-            <span class=kd>let</span> <span class=nv>myLabel</span><span class=p>:</span><span class=bp>UILabel</span> <span class=p>=</span> <span class=bp>UILabel</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=n>CGFloat</span><span class=p>(</span><span class=n>i</span><span class=p>)</span> <span class=o>*</span> <span class=n>width</span> <span class=o>+</span> <span class=n>width</span><span class=o>/</span><span class=mi>2</span> <span class=o>-</span> <span class=mi>40</span><span class=p>,</span> <span class=n>height</span><span class=o>/</span><span class=mi>2</span> <span class=o>-</span> <span class=mi>40</span><span class=p>,</span> <span class=mi>80</span><span class=p>,</span> <span class=mi>80</span><span class=p>))</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blackColor</span><span class=p>()</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>whiteColor</span><span class=p>()</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=n>NSTextAlignment</span><span class=p>.</span><span class=n>Center</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;Page</span><span class=si>\(</span><span class=n>i</span><span class=si>)</span><span class=s>&quot;</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>font</span> <span class=p>=</span> <span class=bp>UIFont</span><span class=p>.</span><span class=n>systemFontOfSize</span><span class=p>(</span><span class=bp>UIFont</span><span class=p>.</span><span class=n>smallSystemFontSize</span><span class=p>())</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>40.0</span>
+            //ページごとに異なるラベルを表示.
+            let myLabel:UILabel = UILabel(frame: CGRectMake(CGFloat(i) * width + width/2 - 40, height/2 - 40, 80, 80))
+            myLabel.backgroundColor = UIColor.blackColor()
+            myLabel.textColor = UIColor.whiteColor()
+            myLabel.textAlignment = NSTextAlignment.Center
+            myLabel.layer.masksToBounds = true
+            myLabel.text = &quot;Page\(i)&quot;
+            myLabel.font = UIFont.systemFontOfSize(UIFont.smallSystemFontSize())
+            myLabel.layer.cornerRadius = 40.0
 
-            <span class=n>scrollView</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myLabel</span><span class=p>)</span>
-        <span class=p>}</span>
+            scrollView.addSubview(myLabel)
+        }
 
-        <span class=c1>// PageControlを作成.</span>
-        <span class=n>pageControl</span> <span class=p>=</span> <span class=bp>UIPageControl</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxY</span> <span class=o>-</span> <span class=mi>50</span><span class=p>,</span> <span class=n>width</span><span class=p>,</span> <span class=mi>50</span><span class=p>))</span>
-        <span class=n>pageControl</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>lightGrayColor</span><span class=p>()</span>
+        // PageControlを作成.
+        pageControl = UIPageControl(frame: CGRectMake(0, self.view.frame.maxY - 50, width, 50))
+        pageControl.backgroundColor = UIColor.lightGrayColor()
 
-        <span class=c1>// PageControlするページ数を設定.</span>
-        <span class=n>pageControl</span><span class=p>.</span><span class=n>numberOfPages</span> <span class=p>=</span> <span class=n>pageSize</span>
+        // PageControlするページ数を設定.
+        pageControl.numberOfPages = pageSize
 
-        <span class=c1>// 現在ページを設定.</span>
-        <span class=n>pageControl</span><span class=p>.</span><span class=n>currentPage</span> <span class=p>=</span> <span class=mi>0</span>
-        <span class=n>pageControl</span><span class=p>.</span><span class=n>userInteractionEnabled</span> <span class=p>=</span> <span class=kc>false</span>
+        // 現在ページを設定.
+        pageControl.currentPage = 0
+        pageControl.userInteractionEnabled = false
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>pageControl</span><span class=p>)</span>
-    <span class=p>}</span>
+        self.view.addSubview(pageControl)
+    }
 
 
-    <span class=kd>func</span> <span class=nf>scrollViewDidEndDecelerating</span><span class=p>(</span><span class=n>scrollView</span><span class=p>:</span> <span class=bp>UIScrollView</span><span class=p>)</span> <span class=p>{</span>
+    func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
 
-        <span class=c1>// スクロール数が1ページ分になったら.</span>
-        <span class=k>if</span> <span class=n>fmod</span><span class=p>(</span><span class=n>scrollView</span><span class=p>.</span><span class=n>contentOffset</span><span class=p>.</span><span class=n>x</span><span class=p>,</span> <span class=n>scrollView</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxX</span><span class=p>)</span> <span class=p>==</span> <span class=mi>0</span> <span class=p>{</span>
-            <span class=c1>// ページの場所を切り替える.</span>
-            <span class=n>pageControl</span><span class=p>.</span><span class=n>currentPage</span> <span class=p>=</span> <span class=nb>Int</span><span class=p>(</span><span class=n>scrollView</span><span class=p>.</span><span class=n>contentOffset</span><span class=p>.</span><span class=n>x</span> <span class=o>/</span> <span class=n>scrollView</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>maxX</span><span class=p>)</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
+        // スクロール数が1ページ分になったら.
+        if fmod(scrollView.contentOffset.x, scrollView.frame.maxX) == 0 {
+            // ページの場所を切り替える.
+            pageControl.currentPage = Int(scrollView.contentOffset.x / scrollView.frame.maxX)
+        }
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     Cellが選択された際に呼び出される.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>tableView</span><span class=p>(</span><span class=n>tableView</span><span class=p>:</span> <span class=bp>UITableView</span><span class=p>,</span> <span class=n>didSelectRowAtIndexPath</span> <span class=n>indexPath</span><span class=p>:</span> <span class=bp>NSIndexPath</span><span class=p>)</span> <span class=p>{</span>
-        <span class=k>if</span> <span class=n>tableView</span> <span class=p>==</span> <span class=n>myTableView</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=p>{</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Num: </span><span class=si>\(</span><span class=n>indexPath</span><span class=p>.</span><span class=n>row</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Value: </span><span class=si>\(</span><span class=n>myItems</span><span class=p>[</span><span class=mi>0</span><span class=p>][</span><span class=n>indexPath</span><span class=p>.</span><span class=n>row</span><span class=p>]</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-        <span class=p>}</span> <span class=k>else</span> <span class=k>if</span> <span class=n>tableView</span> <span class=p>==</span> <span class=n>myTableView</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=p>{</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Num: </span><span class=si>\(</span><span class=n>indexPath</span><span class=p>.</span><span class=n>row</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Value: </span><span class=si>\(</span><span class=n>myItems</span><span class=p>[</span><span class=mi>1</span><span class=p>][</span><span class=n>indexPath</span><span class=p>.</span><span class=n>row</span><span class=p>]</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
+    /*
+     Cellが選択された際に呼び出される.
+     */
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if tableView == myTableView[0] {
+            print(&quot;Num: \(indexPath.row)&quot;)
+            print(&quot;Value: \(myItems[0][indexPath.row])&quot;)
+        } else if tableView == myTableView[1] {
+            print(&quot;Num: \(indexPath.row)&quot;)
+            print(&quot;Value: \(myItems[1][indexPath.row])&quot;)
+        }
 
-    <span class=p>}</span>
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     Cellの総数を返す.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>tableView</span><span class=p>(</span><span class=n>tableView</span><span class=p>:</span> <span class=bp>UITableView</span><span class=p>,</span> <span class=n>numberOfRowsInSection</span> <span class=n>section</span><span class=p>:</span> <span class=nb>Int</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=nb>Int</span> <span class=p>{</span>
-        <span class=k>if</span> <span class=n>tableView</span> <span class=p>==</span> <span class=n>myTableView</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=p>{</span>
-            <span class=k>return</span> <span class=n>myItems</span><span class=p>[</span><span class=mi>0</span><span class=p>].</span><span class=bp>count</span>
-        <span class=p>}</span> <span class=k>else</span> <span class=k>if</span> <span class=n>tableView</span> <span class=p>==</span> <span class=n>myTableView</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=p>{</span>
-            <span class=k>return</span> <span class=n>myItems</span><span class=p>[</span><span class=mi>1</span><span class=p>].</span><span class=bp>count</span>
-        <span class=p>}</span> <span class=k>else</span><span class=p>{</span>
-            <span class=k>return</span> <span class=mi>0</span>
-        <span class=p>}</span>
+    /*
+     Cellの総数を返す.
+     */
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -&gt; Int {
+        if tableView == myTableView[0] {
+            return myItems[0].count
+        } else if tableView == myTableView[1] {
+            return myItems[1].count
+        } else{
+            return 0
+        }
 
-    <span class=p>}</span>
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     Headerを追加.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>tableView</span><span class=p>(</span><span class=n>tableView</span><span class=p>:</span> <span class=bp>UITableView</span><span class=p>,</span> <span class=n>viewForHeaderInSection</span> <span class=n>section</span><span class=p>:</span> <span class=nb>Int</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=bp>UIView</span><span class=p>?</span> <span class=p>{</span>
-        <span class=kd>let</span> <span class=nv>myLabel</span><span class=p>:</span> <span class=bp>UILabel</span> <span class=p>=</span> <span class=bp>UILabel</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>100</span><span class=p>))</span>
+    /*
+     Headerを追加.
+     */
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -&gt; UIView? {
+        let myLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: self.view.bounds.width, height: 100))
 
-        <span class=n>myLabel</span><span class=p>.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=p>.</span><span class=n>Center</span>
+        myLabel.textAlignment = .Center
 
-        <span class=k>if</span> <span class=n>tableView</span> <span class=p>==</span> <span class=n>myTableView</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=p>{</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blackColor</span><span class=p>()</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>whiteColor</span><span class=p>()</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=n>myTitles</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span>
-        <span class=p>}</span> <span class=k>else</span> <span class=k>if</span> <span class=n>tableView</span> <span class=p>==</span> <span class=n>myTableView</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=p>{</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blueColor</span><span class=p>()</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>whiteColor</span><span class=p>()</span>
-            <span class=n>myLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=n>myTitles</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span>
-        <span class=p>}</span>
+        if tableView == myTableView[0] {
+            myLabel.backgroundColor = UIColor.blackColor()
+            myLabel.textColor = UIColor.whiteColor()
+            myLabel.text = myTitles[0]
+        } else if tableView == myTableView[1] {
+            myLabel.backgroundColor = UIColor.blueColor()
+            myLabel.textColor = UIColor.whiteColor()
+            myLabel.text = myTitles[1]
+        }
 
-        <span class=k>return</span> <span class=n>myLabel</span>
-    <span class=p>}</span>
+        return myLabel
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     Headerの高さ.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>tableView</span><span class=p>(</span><span class=n>tableView</span><span class=p>:</span> <span class=bp>UITableView</span><span class=p>,</span> <span class=n>heightForHeaderInSection</span> <span class=n>section</span><span class=p>:</span> <span class=nb>Int</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=n>CGFloat</span> <span class=p>{</span>
-        <span class=k>return</span> <span class=mf>50.0</span>
-    <span class=p>}</span>
+    /*
+     Headerの高さ.
+     */
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -&gt; CGFloat {
+        return 50.0
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     Cellに値を設定する.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>tableView</span><span class=p>(</span><span class=n>tableView</span><span class=p>:</span> <span class=bp>UITableView</span><span class=p>,</span> <span class=n>cellForRowAtIndexPath</span> <span class=n>indexPath</span><span class=p>:</span> <span class=bp>NSIndexPath</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=bp>UITableViewCell</span> <span class=p>{</span>
-        <span class=kd>let</span> <span class=nv>cell</span><span class=p>:</span> <span class=bp>UITableViewCell</span> <span class=p>=</span> <span class=n>tableView</span><span class=p>.</span><span class=n>dequeueReusableCellWithIdentifier</span><span class=p>(</span><span class=s>&quot;MyCell&quot;</span><span class=p>,</span> <span class=n>forIndexPath</span><span class=p>:</span> <span class=n>indexPath</span><span class=p>)</span>
+    /*
+     Cellに値を設定する.
+     */
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -&gt; UITableViewCell {
+        let cell: UITableViewCell = tableView.dequeueReusableCellWithIdentifier(&quot;MyCell&quot;, forIndexPath: indexPath)
 
-        <span class=k>if</span> <span class=n>tableView</span> <span class=p>==</span> <span class=n>myTableView</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span> <span class=p>{</span>
-            <span class=n>cell</span><span class=p>.</span><span class=n>textLabel</span><span class=p>?.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;</span><span class=si>\(</span><span class=n>myItems</span><span class=p>[</span><span class=mi>0</span><span class=p>][</span><span class=n>indexPath</span><span class=p>.</span><span class=n>row</span><span class=p>]</span><span class=si>)</span><span class=s>&quot;</span>
-        <span class=p>}</span> <span class=k>else</span> <span class=k>if</span> <span class=n>tableView</span> <span class=p>==</span> <span class=n>myTableView</span><span class=p>[</span><span class=mi>1</span><span class=p>]</span> <span class=p>{</span>
-            <span class=n>cell</span><span class=p>.</span><span class=n>textLabel</span><span class=p>?.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;</span><span class=si>\(</span><span class=n>myItems</span><span class=p>[</span><span class=mi>1</span><span class=p>][</span><span class=n>indexPath</span><span class=p>.</span><span class=n>row</span><span class=p>]</span><span class=si>)</span><span class=s>&quot;</span>
-        <span class=p>}</span>
+        if tableView == myTableView[0] {
+            cell.textLabel?.text = &quot;\(myItems[0][indexPath.row])&quot;
+        } else if tableView == myTableView[1] {
+            cell.textLabel?.text = &quot;\(myItems[1][indexPath.row])&quot;
+        }
 
-        <span class=k>return</span> <span class=n>cell</span>
-    <span class=p>}</span>
+        return cell
+    }
 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+}
+</code></pre></div></div>
 <h2 id="2330">2.3と3.0の差分</h2>
 <ul>
 <li>UIColorの参照方法が変更(UIColor.grayColor()-&gt;UIColor.gray)</li>

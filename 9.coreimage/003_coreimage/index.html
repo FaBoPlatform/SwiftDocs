@@ -2331,444 +2331,227 @@
                 
                 <h1 id="_1">画像のクロップ</h1>
 <p><img alt="Preview coreimage003" src="../img/coreimage003.png" /></p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span>
-<span class=normal>73</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  CoreImage003</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  CoreImage003
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
-<span class=kd>import</span> <span class=nc>CoreImage</span>
+import UIKit
+import CoreImage
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class ViewController: UIViewController {
 
-    <span class=c1>// ベース画像.</span>
-    <span class=kd>let</span> <span class=nv>myInputImage</span> <span class=p>=</span> <span class=bp>CIImage</span><span class=p>(</span><span class=n>image</span><span class=p>:</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>named</span><span class=p>:</span> <span class=s>&quot;sample1&quot;</span><span class=p>)</span><span class=o>!</span><span class=p>)</span>
+    // ベース画像.
+    let myInputImage = CIImage(image: UIImage(named: &quot;sample1&quot;)!)
 
-    <span class=c1>// ImageView.</span>
-    <span class=kd>var</span> <span class=nv>myImageView</span><span class=p>:</span> <span class=bp>UIImageView</span><span class=p>!</span>
+    // ImageView.
+    var myImageView: UIImageView!
 
-    <span class=c1>// ボタン.</span>
-    <span class=kd>let</span> <span class=nv>myButton</span><span class=p>:</span> <span class=bp>UIButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>()</span>
+    // ボタン.
+    let myButton: UIButton = UIButton()
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// UIImageViewの生成.</span>
-        <span class=n>myImageView</span> <span class=p>=</span>  <span class=bp>UIImageView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>height</span><span class=p>))</span>
-        <span class=n>myImageView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>ciImage</span><span class=p>:</span> <span class=n>myInputImage</span><span class=p>!)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myImageView</span><span class=p>)</span>
+        // UIImageViewの生成.
+        myImageView =  UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+        myImageView.image = UIImage(ciImage: myInputImage!)
+        self.view.addSubview(myImageView)
 
-        <span class=c1>// ボタン.</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>80</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>80</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>orange</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;Crop&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=bp>UIControl</span><span class=p>.</span><span class=n>State</span><span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=bp>UIControl</span><span class=p>.</span><span class=n>State</span><span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>40.0</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span> <span class=o>-</span> <span class=mi>50</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=mi>1</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>touchUpInside</span><span class=p>)</span>
+        // ボタン.
+        myButton.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        myButton.backgroundColor = UIColor.orange
+        myButton.layer.masksToBounds = true
+        myButton.setTitle(&quot;Crop&quot;, for: UIControl.State.normal)
+        myButton.setTitleColor(UIColor.white, for: UIControl.State.normal)
+        myButton.layer.cornerRadius = 40.0
+        myButton.layer.position = CGPoint(x: self.view.frame.width/2, y:self.view.frame.height - 50)
+        myButton.tag = 1
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(sender:)), for: .touchUpInside)
 
-        <span class=c1>// 背景色を黒.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span>
+        // 背景色を黒.
+        self.view.backgroundColor = UIColor.black
 
-        <span class=c1>// UIボタンをViewに追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>);</span>
-    <span class=p>}</span>
+        // UIボタンをViewに追加.
+        self.view.addSubview(myButton);
+    }
 
-    <span class=c1>// ボタンイベント.</span>
-    <span class=kr>@objc</span> <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>){</span>
+    // ボタンイベント.
+    @objc func onClickMyButton(sender: UIButton){
 
-        <span class=c1>// CIFilterを生成。nameにどんなを処理するのか記入.</span>
-        <span class=kd>let</span> <span class=nv>myCropFilter</span> <span class=p>=</span> <span class=bp>CIFilter</span><span class=p>(</span><span class=n>name</span><span class=p>:</span> <span class=s>&quot;CICrop&quot;</span><span class=p>)</span>
+        // CIFilterを生成。nameにどんなを処理するのか記入.
+        let myCropFilter = CIFilter(name: &quot;CICrop&quot;)
 
-        <span class=c1>// myScaleFilterに必要なパラメータを渡していく.</span>
-        <span class=c1>// myInputImageをInputImageとして渡す.</span>
-        <span class=n>myCropFilter</span><span class=p>!.</span><span class=n>setValue</span><span class=p>(</span><span class=n>myInputImage</span><span class=p>,</span> <span class=n>forKey</span><span class=p>:</span> <span class=n>kCIInputImageKey</span><span class=p>)</span>
+        // myScaleFilterに必要なパラメータを渡していく.
+        // myInputImageをInputImageとして渡す.
+        myCropFilter!.setValue(myInputImage, forKey: kCIInputImageKey)
 
-        <span class=c1>// 画像のトリミングする部分の座標とサイズを渡す.</span>
-        <span class=n>myCropFilter</span><span class=p>!.</span><span class=n>setValue</span><span class=p>(</span><span class=bp>CIVector</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>300</span><span class=p>,</span> <span class=n>z</span><span class=p>:</span> <span class=mi>175</span><span class=p>,</span> <span class=n>w</span><span class=p>:</span> <span class=mi>300</span><span class=p>),</span> <span class=n>forKey</span><span class=p>:</span> <span class=s>&quot;inputRectangle&quot;</span><span class=p>)</span>
+        // 画像のトリミングする部分の座標とサイズを渡す.
+        myCropFilter!.setValue(CIVector(x: 0, y: 300, z: 175, w: 300), forKey: &quot;inputRectangle&quot;)
 
-        <span class=c1>// フィルターを通した画像をアウトプット.</span>
-        <span class=kd>let</span> <span class=nv>myOutputImage</span> <span class=p>:</span> <span class=bp>CIImage</span> <span class=p>=</span> <span class=n>myCropFilter</span><span class=p>!.</span><span class=n>outputImage</span><span class=p>!</span>
+        // フィルターを通した画像をアウトプット.
+        let myOutputImage : CIImage = myCropFilter!.outputImage!
 
-        <span class=c1>// 再びUIViewにセット.</span>
-        <span class=n>myImageView</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>175</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>300</span><span class=p>)</span>
-        <span class=n>myImageView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>ciImage</span><span class=p>:</span> <span class=n>myOutputImage</span><span class=p>)</span>
+        // 再びUIViewにセット.
+        myImageView.frame = CGRect(x: 0, y: 0, width: 175, height: 300)
+        myImageView.image = UIImage(ciImage: myOutputImage)
 
-        <span class=c1>// 再描画.</span>
-        <span class=n>myImageView</span><span class=p>.</span><span class=n>setNeedsDisplay</span><span class=p>()</span>
+        // 再描画.
+        myImageView.setNeedsDisplay()
 
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span>
-<span class=normal>73</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  CoreImage003</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+    }
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  CoreImage003
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
-<span class=kd>import</span> <span class=nc>CoreImage</span>
+import UIKit
+import CoreImage
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class ViewController: UIViewController {
 
-    <span class=c1>// ベース画像.</span>
-    <span class=kd>let</span> <span class=nv>myInputImage</span> <span class=p>=</span> <span class=bp>CIImage</span><span class=p>(</span><span class=n>image</span><span class=p>:</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>named</span><span class=p>:</span> <span class=s>&quot;sample1&quot;</span><span class=p>)</span><span class=o>!</span><span class=p>)</span>
+    // ベース画像.
+    let myInputImage = CIImage(image: UIImage(named: &quot;sample1&quot;)!)
 
-    <span class=c1>// ImageView.</span>
-    <span class=kd>var</span> <span class=nv>myImageView</span><span class=p>:</span> <span class=bp>UIImageView</span><span class=p>!</span>
+    // ImageView.
+    var myImageView: UIImageView!
 
-    <span class=c1>// ボタン.</span>
-    <span class=kd>let</span> <span class=nv>myButton</span><span class=p>:</span> <span class=bp>UIButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>()</span>
+    // ボタン.
+    let myButton: UIButton = UIButton()
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// UIImageViewの生成.</span>
-        <span class=n>myImageView</span> <span class=p>=</span>  <span class=bp>UIImageView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>height</span><span class=p>))</span>
-        <span class=n>myImageView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>ciImage</span><span class=p>:</span> <span class=n>myInputImage</span><span class=p>!)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myImageView</span><span class=p>)</span>
+        // UIImageViewの生成.
+        myImageView =  UIImageView(frame: CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: self.view.frame.size.height))
+        myImageView.image = UIImage(ciImage: myInputImage!)
+        self.view.addSubview(myImageView)
 
-        <span class=c1>// ボタン.</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>80</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>80</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>orange</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;Crop&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=n>UIControlState</span><span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=n>UIControlState</span><span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>40.0</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span> <span class=o>-</span> <span class=mi>50</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=mi>1</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>touchUpInside</span><span class=p>)</span>
+        // ボタン.
+        myButton.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
+        myButton.backgroundColor = UIColor.orange
+        myButton.layer.masksToBounds = true
+        myButton.setTitle(&quot;Crop&quot;, for: UIControlState.normal)
+        myButton.setTitleColor(UIColor.white, for: UIControlState.normal)
+        myButton.layer.cornerRadius = 40.0
+        myButton.layer.position = CGPoint(x: self.view.frame.width/2, y:self.view.frame.height - 50)
+        myButton.tag = 1
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(sender:)), for: .touchUpInside)
 
-        <span class=c1>// 背景色を黒.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span>
+        // 背景色を黒.
+        self.view.backgroundColor = UIColor.black
 
-        <span class=c1>// UIボタンをViewに追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>);</span>
-    <span class=p>}</span>
+        // UIボタンをViewに追加.
+        self.view.addSubview(myButton);
+    }
 
-    <span class=c1>// ボタンイベント.</span>
-    <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>){</span>
+    // ボタンイベント.
+    func onClickMyButton(sender: UIButton){
 
-        <span class=c1>// CIFilterを生成。nameにどんなを処理するのか記入.</span>
-        <span class=kd>let</span> <span class=nv>myCropFilter</span> <span class=p>=</span> <span class=bp>CIFilter</span><span class=p>(</span><span class=n>name</span><span class=p>:</span> <span class=s>&quot;CICrop&quot;</span><span class=p>)</span>
+        // CIFilterを生成。nameにどんなを処理するのか記入.
+        let myCropFilter = CIFilter(name: &quot;CICrop&quot;)
 
-        <span class=c1>// myScaleFilterに必要なパラメータを渡していく.</span>
-        <span class=c1>// myInputImageをInputImageとして渡す.</span>
-        <span class=n>myCropFilter</span><span class=p>!.</span><span class=n>setValue</span><span class=p>(</span><span class=n>myInputImage</span><span class=p>,</span> <span class=n>forKey</span><span class=p>:</span> <span class=n>kCIInputImageKey</span><span class=p>)</span>
+        // myScaleFilterに必要なパラメータを渡していく.
+        // myInputImageをInputImageとして渡す.
+        myCropFilter!.setValue(myInputImage, forKey: kCIInputImageKey)
 
-        <span class=c1>// 画像のトリミングする部分の座標とサイズを渡す.</span>
-        <span class=n>myCropFilter</span><span class=p>!.</span><span class=n>setValue</span><span class=p>(</span><span class=bp>CIVector</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>300</span><span class=p>,</span> <span class=n>z</span><span class=p>:</span> <span class=mi>175</span><span class=p>,</span> <span class=n>w</span><span class=p>:</span> <span class=mi>300</span><span class=p>),</span> <span class=n>forKey</span><span class=p>:</span> <span class=s>&quot;inputRectangle&quot;</span><span class=p>)</span>
+        // 画像のトリミングする部分の座標とサイズを渡す.
+        myCropFilter!.setValue(CIVector(x: 0, y: 300, z: 175, w: 300), forKey: &quot;inputRectangle&quot;)
 
-        <span class=c1>// フィルターを通した画像をアウトプット.</span>
-        <span class=kd>let</span> <span class=nv>myOutputImage</span> <span class=p>:</span> <span class=bp>CIImage</span> <span class=p>=</span> <span class=n>myCropFilter</span><span class=p>!.</span><span class=n>outputImage</span><span class=p>!</span>
+        // フィルターを通した画像をアウトプット.
+        let myOutputImage : CIImage = myCropFilter!.outputImage!
 
-        <span class=c1>// 再びUIViewにセット.</span>
-        <span class=n>myImageView</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>175</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>300</span><span class=p>)</span>
-        <span class=n>myImageView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>ciImage</span><span class=p>:</span> <span class=n>myOutputImage</span><span class=p>)</span>
+        // 再びUIViewにセット.
+        myImageView.frame = CGRect(x: 0, y: 0, width: 175, height: 300)
+        myImageView.image = UIImage(ciImage: myOutputImage)
 
-        <span class=c1>// 再描画.</span>
-        <span class=n>myImageView</span><span class=p>.</span><span class=n>setNeedsDisplay</span><span class=p>()</span>
+        // 再描画.
+        myImageView.setNeedsDisplay()
 
-    <span class=p>}</span> 
-<span class=p>}</span> 
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span>
-<span class=normal>73</span>
-<span class=normal>74</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  CoreImage003</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
+    } 
+} 
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  CoreImage003
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
-<span class=kd>import</span> <span class=nc>CoreImage</span>
+import UIKit
+import CoreImage
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class ViewController: UIViewController {
 
-    <span class=c1>// ベース画像.</span>
-    <span class=kd>let</span> <span class=nv>myInputImage</span> <span class=p>=</span> <span class=bp>CIImage</span><span class=p>(</span><span class=n>image</span><span class=p>:</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>named</span><span class=p>:</span> <span class=s>&quot;sample1&quot;</span><span class=p>)</span><span class=o>!</span><span class=p>)</span>
+    // ベース画像.
+    let myInputImage = CIImage(image: UIImage(named: &quot;sample1&quot;)!)
 
-    <span class=c1>// ImageView.</span>
-    <span class=kd>var</span> <span class=nv>myImageView</span><span class=p>:</span> <span class=bp>UIImageView</span><span class=p>!</span>
+    // ImageView.
+    var myImageView: UIImageView!
 
-    <span class=c1>// ボタン.</span>
-    <span class=kd>let</span> <span class=nv>myButton</span><span class=p>:</span> <span class=bp>UIButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>()</span>
+    // ボタン.
+    let myButton: UIButton = UIButton()
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// UIImageViewの生成.</span>
-        <span class=n>myImageView</span> <span class=p>=</span>  <span class=bp>UIImageView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>width</span><span class=p>,</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>size</span><span class=p>.</span><span class=n>height</span><span class=p>))</span>
-        <span class=n>myImageView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>(</span><span class=bp>CIImage</span><span class=p>:</span> <span class=n>myInputImage</span><span class=p>!)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myImageView</span><span class=p>)</span>
+        // UIImageViewの生成.
+        myImageView =  UIImageView(frame: CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height))
+        myImageView.image = UIImage(CIImage: myInputImage!)
+        self.view.addSubview(myImageView)
 
-        <span class=c1>// ボタン.</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>80</span><span class=p>,</span><span class=mi>80</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>orangeColor</span><span class=p>();</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;Crop&quot;</span><span class=p>,</span> <span class=n>forState</span><span class=p>:</span> <span class=n>UIControlState</span><span class=p>.</span><span class=n>Normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>whiteColor</span><span class=p>(),</span> <span class=n>forState</span><span class=p>:</span> <span class=n>UIControlState</span><span class=p>.</span><span class=n>Normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>40.0</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span> <span class=o>-</span> <span class=mi>50</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=mi>1</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=kc>_</span><span class=p>:)),</span> <span class=n>forControlEvents</span><span class=p>:</span> <span class=p>.</span><span class=n>TouchUpInside</span><span class=p>)</span>
+        // ボタン.
+        myButton.frame = CGRectMake(0,0,80,80)
+        myButton.backgroundColor = UIColor.orangeColor();
+        myButton.layer.masksToBounds = true
+        myButton.setTitle(&quot;Crop&quot;, forState: UIControlState.Normal)
+        myButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        myButton.layer.cornerRadius = 40.0
+        myButton.layer.position = CGPoint(x: self.view.frame.width/2, y:self.view.frame.height - 50)
+        myButton.tag = 1
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(_:)), forControlEvents: .TouchUpInside)
 
-        <span class=c1>// 背景色を黒.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blackColor</span><span class=p>()</span>
+        // 背景色を黒.
+        self.view.backgroundColor = UIColor.blackColor()
 
-        <span class=c1>// UIボタンをViewに追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>);</span>
-    <span class=p>}</span>
+        // UIボタンをViewに追加.
+        self.view.addSubview(myButton);
+    }
 
-    <span class=c1>// ボタンイベント.</span>
-    <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>){</span>
+    // ボタンイベント.
+    func onClickMyButton(sender: UIButton){
 
-        <span class=c1>// CIFilterを生成。nameにどんなを処理するのか記入.</span>
-        <span class=kd>let</span> <span class=nv>myCropFilter</span> <span class=p>=</span> <span class=bp>CIFilter</span><span class=p>(</span><span class=n>name</span><span class=p>:</span> <span class=s>&quot;CICrop&quot;</span><span class=p>)</span>
+        // CIFilterを生成。nameにどんなを処理するのか記入.
+        let myCropFilter = CIFilter(name: &quot;CICrop&quot;)
 
-        <span class=c1>// myScaleFilterに必要なパラメータを渡していく.</span>
-        <span class=c1>// myInputImageをInputImageとして渡す.</span>
-        <span class=n>myCropFilter</span><span class=p>!.</span><span class=n>setValue</span><span class=p>(</span><span class=n>myInputImage</span><span class=p>,</span> <span class=n>forKey</span><span class=p>:</span> <span class=n>kCIInputImageKey</span><span class=p>)</span>
+        // myScaleFilterに必要なパラメータを渡していく.
+        // myInputImageをInputImageとして渡す.
+        myCropFilter!.setValue(myInputImage, forKey: kCIInputImageKey)
 
-        <span class=c1>// 画像のトリミングする部分の座標とサイズを渡す.</span>
-        <span class=n>myCropFilter</span><span class=p>!.</span><span class=n>setValue</span><span class=p>(</span><span class=bp>CIVector</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>300</span><span class=p>,</span> <span class=n>z</span><span class=p>:</span> <span class=mi>175</span><span class=p>,</span> <span class=n>w</span><span class=p>:</span> <span class=mi>300</span><span class=p>),</span> <span class=n>forKey</span><span class=p>:</span> <span class=s>&quot;inputRectangle&quot;</span><span class=p>)</span>
+        // 画像のトリミングする部分の座標とサイズを渡す.
+        myCropFilter!.setValue(CIVector(x: 0, y: 300, z: 175, w: 300), forKey: &quot;inputRectangle&quot;)
 
-        <span class=c1>// フィルターを通した画像をアウトプット.</span>
-        <span class=kd>let</span> <span class=nv>myOutputImage</span> <span class=p>:</span> <span class=bp>CIImage</span> <span class=p>=</span> <span class=n>myCropFilter</span><span class=p>!.</span><span class=n>outputImage</span><span class=p>!</span>
+        // フィルターを通した画像をアウトプット.
+        let myOutputImage : CIImage = myCropFilter!.outputImage!
 
-        <span class=c1>// 再びUIViewにセット.</span>
-        <span class=n>myImageView</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=mi>175</span><span class=p>,</span> <span class=mi>300</span><span class=p>)</span>
-        <span class=n>myImageView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>(</span><span class=bp>CIImage</span><span class=p>:</span> <span class=n>myOutputImage</span><span class=p>)</span>
+        // 再びUIViewにセット.
+        myImageView.frame = CGRectMake(0, 0, 175, 300)
+        myImageView.image = UIImage(CIImage: myOutputImage)
 
-        <span class=c1>// 再描画.</span>
-        <span class=n>myImageView</span><span class=p>.</span><span class=n>setNeedsDisplay</span><span class=p>()</span>
+        // 再描画.
+        myImageView.setNeedsDisplay()
 
-    <span class=p>}</span>
+    }
 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+}
+</code></pre></div></div>
 <h2 id="3x4x">3.xと4.xの差分</h2>
 <ul>
 <li><code>UIControlState</code> が <code>UIControl.State</code> に変更</li>

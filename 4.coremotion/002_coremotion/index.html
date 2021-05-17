@@ -2332,478 +2332,244 @@
                 <h1 id="_1">活動量計の値の取得</h1>
 <p><img alt="Preview coremotion002" src="../img/CoreMotion002.png" /></p>
 <p>info.plistに<code>NSMotionUsageDescription</code>を追加します。</p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span>
-<span class=normal>73</span>
-<span class=normal>74</span>
-<span class=normal>75</span>
-<span class=normal>76</span>
-<span class=normal>77</span>
-<span class=normal>78</span>
-<span class=normal>79</span>
-<span class=normal>80</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  coremotion002</span>
-<span class=c1>//</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  coremotion002
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
-<span class=kd>import</span> <span class=nc>CoreMotion</span>
+import UIKit
+import CoreMotion
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class ViewController: UIViewController {
 
-    <span class=kd>var</span> <span class=nv>myPedometer</span> <span class=p>=</span> <span class=bp>CMPedometer</span><span class=p>()</span> <span class=c1>// ペドメーター(歩数計)を生成.</span>
-    <span class=kd>let</span> <span class=nv>myDistanceLabel</span><span class=p>:</span> <span class=bp>UILabel</span> <span class=p>=</span> <span class=bp>UILabel</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>150</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>150</span><span class=p>))</span>
-    <span class=kd>let</span> <span class=nv>myTimeLabel</span><span class=p>:</span> <span class=bp>UILabel</span> <span class=p>=</span> <span class=bp>UILabel</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>150</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>150</span><span class=p>))</span>
-    <span class=kd>let</span> <span class=nv>mySpeedLabel</span><span class=p>:</span> <span class=bp>UILabel</span> <span class=p>=</span> <span class=bp>UILabel</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>150</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>150</span><span class=p>))</span>
+    var myPedometer = CMPedometer() // ペドメーター(歩数計)を生成.
+    let myDistanceLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
+    let myTimeLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
+    let mySpeedLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// Labelを作成.</span>
-        <span class=n>myDistanceLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blue</span>
-        <span class=n>myDistanceLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myDistanceLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>75.0</span>
-        <span class=n>myDistanceLabel</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
-        <span class=n>myDistanceLabel</span><span class=p>.</span><span class=n>shadowColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>gray</span>
-        <span class=n>myDistanceLabel</span><span class=p>.</span><span class=n>font</span> <span class=p>=</span> <span class=bp>UIFont</span><span class=p>.</span><span class=n>systemFont</span><span class=p>(</span><span class=n>ofSize</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=mi>30</span><span class=p>))</span>
-        <span class=n>myDistanceLabel</span><span class=p>.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=n>NSTextAlignment</span><span class=p>.</span><span class=n>center</span>
-        <span class=n>myDistanceLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span><span class=n>y</span><span class=p>:</span> <span class=mi>100</span><span class=p>)</span>
-        <span class=n>myDistanceLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;0 m&quot;</span>
+        // Labelを作成.
+        myDistanceLabel.backgroundColor = UIColor.blue
+        myDistanceLabel.layer.masksToBounds = true
+        myDistanceLabel.layer.cornerRadius = 75.0
+        myDistanceLabel.textColor = UIColor.white
+        myDistanceLabel.shadowColor = UIColor.gray
+        myDistanceLabel.font = UIFont.systemFont(ofSize: CGFloat(30))
+        myDistanceLabel.textAlignment = NSTextAlignment.center
+        myDistanceLabel.layer.position = CGPoint(x: self.view.bounds.width/2,y: 100)
+        myDistanceLabel.text = &quot;0 m&quot;
 
-        <span class=n>myTimeLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>orange</span>
-        <span class=n>myTimeLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myTimeLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>75.0</span>
-        <span class=n>myTimeLabel</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
-        <span class=n>myTimeLabel</span><span class=p>.</span><span class=n>shadowColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>gray</span>
-        <span class=n>myTimeLabel</span><span class=p>.</span><span class=n>font</span> <span class=p>=</span> <span class=bp>UIFont</span><span class=p>.</span><span class=n>systemFont</span><span class=p>(</span><span class=n>ofSize</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=mi>30</span><span class=p>))</span>
-        <span class=n>myTimeLabel</span><span class=p>.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=n>NSTextAlignment</span><span class=p>.</span><span class=n>center</span>
-        <span class=n>myTimeLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span><span class=n>y</span><span class=p>:</span> <span class=mi>275</span><span class=p>)</span>
-        <span class=n>myTimeLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;0 sec&quot;</span>
+        myTimeLabel.backgroundColor = UIColor.orange
+        myTimeLabel.layer.masksToBounds = true
+        myTimeLabel.layer.cornerRadius = 75.0
+        myTimeLabel.textColor = UIColor.white
+        myTimeLabel.shadowColor = UIColor.gray
+        myTimeLabel.font = UIFont.systemFont(ofSize: CGFloat(30))
+        myTimeLabel.textAlignment = NSTextAlignment.center
+        myTimeLabel.layer.position = CGPoint(x: self.view.bounds.width/2,y: 275)
+        myTimeLabel.text = &quot;0 sec&quot;
 
-        <span class=n>mySpeedLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>red</span>
-        <span class=n>mySpeedLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>mySpeedLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>75.0</span>
-        <span class=n>mySpeedLabel</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
-        <span class=n>mySpeedLabel</span><span class=p>.</span><span class=n>shadowColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>gray</span>
-        <span class=n>mySpeedLabel</span><span class=p>.</span><span class=n>font</span> <span class=p>=</span> <span class=bp>UIFont</span><span class=p>.</span><span class=n>systemFont</span><span class=p>(</span><span class=n>ofSize</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=mi>30</span><span class=p>))</span>
-        <span class=n>mySpeedLabel</span><span class=p>.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=n>NSTextAlignment</span><span class=p>.</span><span class=n>center</span>
-        <span class=n>mySpeedLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span><span class=n>y</span><span class=p>:</span> <span class=mi>450</span><span class=p>)</span>
-        <span class=n>mySpeedLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;0 m/S&quot;</span>
+        mySpeedLabel.backgroundColor = UIColor.red
+        mySpeedLabel.layer.masksToBounds = true
+        mySpeedLabel.layer.cornerRadius = 75.0
+        mySpeedLabel.textColor = UIColor.white
+        mySpeedLabel.shadowColor = UIColor.gray
+        mySpeedLabel.font = UIFont.systemFont(ofSize: CGFloat(30))
+        mySpeedLabel.textAlignment = NSTextAlignment.center
+        mySpeedLabel.layer.position = CGPoint(x: self.view.bounds.width/2,y: 450)
+        mySpeedLabel.text = &quot;0 m/S&quot;
 
-        <span class=c1>// Viewの背景色を青にする.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyan</span>
+        // Viewの背景色を青にする.
+        self.view.backgroundColor = UIColor.cyan
 
-        <span class=c1>// Viewに追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myDistanceLabel</span><span class=p>)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myTimeLabel</span><span class=p>)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>mySpeedLabel</span><span class=p>)</span>
+        // Viewに追加.
+        self.view.addSubview(myDistanceLabel)
+        self.view.addSubview(myTimeLabel)
+        self.view.addSubview(mySpeedLabel)
 
-        <span class=c1>// ペドメーター(歩数計)で計測開始.</span>
-        <span class=n>myPedometer</span><span class=p>.</span><span class=n>startUpdates</span><span class=p>(</span><span class=n>from</span><span class=p>:</span> <span class=n>Date</span><span class=p>(),</span> <span class=n>withHandler</span><span class=p>:</span> <span class=p>{(</span><span class=n>pedometerData</span><span class=p>,</span> <span class=n>error</span><span class=p>)</span> <span class=k>in</span>
-            <span class=k>if</span> <span class=kd>let</span> <span class=nv>e</span> <span class=p>=</span> <span class=n>error</span> <span class=p>{</span>
-                <span class=bp>print</span><span class=p>(</span><span class=n>e</span><span class=p>.</span><span class=n>localizedDescription</span><span class=p>)</span>
-                <span class=k>return</span>
-            <span class=p>}</span>
-            <span class=k>guard</span> <span class=kd>let</span> <span class=nv>data</span> <span class=p>=</span> <span class=n>pedometerData</span> <span class=k>else</span> <span class=p>{</span>
-                <span class=k>return</span>
-            <span class=p>}</span>
-            <span class=kd>let</span> <span class=nv>myDistance</span> <span class=p>=</span> <span class=n>data</span><span class=p>.</span><span class=bp>distance</span><span class=p>!.</span><span class=n>doubleValue</span>
-            <span class=kd>let</span> <span class=nv>myTime</span><span class=p>:</span> <span class=nb>Double</span> <span class=p>=</span> <span class=n>data</span><span class=p>.</span><span class=n>endDate</span><span class=p>.</span><span class=n>timeIntervalSince</span><span class=p>(</span><span class=n>data</span><span class=p>.</span><span class=n>startDate</span><span class=p>)</span>
-            <span class=kd>let</span> <span class=nv>mySpeed</span> <span class=p>=</span> <span class=n>myDistance</span> <span class=o>/</span> <span class=n>myTime</span>
-            <span class=n>DispatchQueue</span><span class=p>.</span><span class=n>main</span><span class=p>.</span><span class=n>async</span> <span class=p>{</span>
-                <span class=kc>self</span><span class=p>.</span><span class=n>myDistanceLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;</span><span class=si>\(</span><span class=n>round</span><span class=si>(</span><span class=n>myDistance</span><span class=si>))</span><span class=s> m&quot;</span>
-                <span class=kc>self</span><span class=p>.</span><span class=n>myTimeLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;</span><span class=si>\(</span><span class=n>round</span><span class=si>(</span><span class=n>myTime</span><span class=si>))</span><span class=s> sec&quot;</span>
-                <span class=kc>self</span><span class=p>.</span><span class=n>mySpeedLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;</span><span class=si>\(</span><span class=n>round</span><span class=si>(</span><span class=n>mySpeed</span><span class=si>))</span><span class=s> m/s&quot;</span>
-            <span class=p>}</span>
-        <span class=p>})</span>
-    <span class=p>}</span>
+        // ペドメーター(歩数計)で計測開始.
+        myPedometer.startUpdates(from: Date(), withHandler: {(pedometerData, error) in
+            if let e = error {
+                print(e.localizedDescription)
+                return
+            }
+            guard let data = pedometerData else {
+                return
+            }
+            let myDistance = data.distance!.doubleValue
+            let myTime: Double = data.endDate.timeIntervalSince(data.startDate)
+            let mySpeed = myDistance / myTime
+            DispatchQueue.main.async {
+                self.myDistanceLabel.text = &quot;\(round(myDistance)) m&quot;
+                self.myTimeLabel.text = &quot;\(round(myTime)) sec&quot;
+                self.mySpeedLabel.text = &quot;\(round(mySpeed)) m/s&quot;
+            }
+        })
+    }
 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span>
-<span class=normal>73</span>
-<span class=normal>74</span>
-<span class=normal>75</span>
-<span class=normal>76</span>
-<span class=normal>77</span>
-<span class=normal>78</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  coremotion002</span>
-<span class=c1>//</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  coremotion002
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
-<span class=kd>import</span> <span class=nc>CoreMotion</span>
+import UIKit
+import CoreMotion
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class ViewController: UIViewController {
 
-    <span class=kd>var</span> <span class=nv>myPedometer</span> <span class=p>=</span> <span class=bp>CMPedometer</span><span class=p>()</span> <span class=c1>// ペドメーター(歩数計)を生成.</span>
-    <span class=kd>let</span> <span class=nv>myDistanceLabel</span><span class=p>:</span> <span class=bp>UILabel</span> <span class=p>=</span> <span class=bp>UILabel</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>150</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>150</span><span class=p>))</span>
-    <span class=kd>let</span> <span class=nv>myTimeLabel</span><span class=p>:</span> <span class=bp>UILabel</span> <span class=p>=</span> <span class=bp>UILabel</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>150</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>150</span><span class=p>))</span>
-    <span class=kd>let</span> <span class=nv>mySpeedLabel</span><span class=p>:</span> <span class=bp>UILabel</span> <span class=p>=</span> <span class=bp>UILabel</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=mi>150</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=mi>150</span><span class=p>))</span>
+    var myPedometer = CMPedometer() // ペドメーター(歩数計)を生成.
+    let myDistanceLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
+    let myTimeLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
+    let mySpeedLabel: UILabel = UILabel(frame: CGRect(x: 0, y: 0, width: 150, height: 150))
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// Labelを作成.</span>
-        <span class=n>myDistanceLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blue</span>
-        <span class=n>myDistanceLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myDistanceLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>75.0</span>
-        <span class=n>myDistanceLabel</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
-        <span class=n>myDistanceLabel</span><span class=p>.</span><span class=n>shadowColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>gray</span>
-        <span class=n>myDistanceLabel</span><span class=p>.</span><span class=n>font</span> <span class=p>=</span> <span class=bp>UIFont</span><span class=p>.</span><span class=n>systemFont</span><span class=p>(</span><span class=n>ofSize</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=mi>30</span><span class=p>))</span>
-        <span class=n>myDistanceLabel</span><span class=p>.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=n>NSTextAlignment</span><span class=p>.</span><span class=n>center</span>
-        <span class=n>myDistanceLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span><span class=n>y</span><span class=p>:</span> <span class=mi>100</span><span class=p>)</span>
-        <span class=n>myDistanceLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;0 m&quot;</span>
+        // Labelを作成.
+        myDistanceLabel.backgroundColor = UIColor.blue
+        myDistanceLabel.layer.masksToBounds = true
+        myDistanceLabel.layer.cornerRadius = 75.0
+        myDistanceLabel.textColor = UIColor.white
+        myDistanceLabel.shadowColor = UIColor.gray
+        myDistanceLabel.font = UIFont.systemFont(ofSize: CGFloat(30))
+        myDistanceLabel.textAlignment = NSTextAlignment.center
+        myDistanceLabel.layer.position = CGPoint(x: self.view.bounds.width/2,y: 100)
+        myDistanceLabel.text = &quot;0 m&quot;
 
-        <span class=n>myTimeLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>orange</span>
-        <span class=n>myTimeLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myTimeLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>75.0</span>
-        <span class=n>myTimeLabel</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
-        <span class=n>myTimeLabel</span><span class=p>.</span><span class=n>shadowColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>gray</span>
-        <span class=n>myTimeLabel</span><span class=p>.</span><span class=n>font</span> <span class=p>=</span> <span class=bp>UIFont</span><span class=p>.</span><span class=n>systemFont</span><span class=p>(</span><span class=n>ofSize</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=mi>30</span><span class=p>))</span>
-        <span class=n>myTimeLabel</span><span class=p>.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=n>NSTextAlignment</span><span class=p>.</span><span class=n>center</span>
-        <span class=n>myTimeLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span><span class=n>y</span><span class=p>:</span> <span class=mi>275</span><span class=p>)</span>
-        <span class=n>myTimeLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;0 sec&quot;</span>
+        myTimeLabel.backgroundColor = UIColor.orange
+        myTimeLabel.layer.masksToBounds = true
+        myTimeLabel.layer.cornerRadius = 75.0
+        myTimeLabel.textColor = UIColor.white
+        myTimeLabel.shadowColor = UIColor.gray
+        myTimeLabel.font = UIFont.systemFont(ofSize: CGFloat(30))
+        myTimeLabel.textAlignment = NSTextAlignment.center
+        myTimeLabel.layer.position = CGPoint(x: self.view.bounds.width/2,y: 275)
+        myTimeLabel.text = &quot;0 sec&quot;
 
-        <span class=n>mySpeedLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>red</span>
-        <span class=n>mySpeedLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>mySpeedLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>75.0</span>
-        <span class=n>mySpeedLabel</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
-        <span class=n>mySpeedLabel</span><span class=p>.</span><span class=n>shadowColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>gray</span>
-        <span class=n>mySpeedLabel</span><span class=p>.</span><span class=n>font</span> <span class=p>=</span> <span class=bp>UIFont</span><span class=p>.</span><span class=n>systemFont</span><span class=p>(</span><span class=n>ofSize</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=mi>30</span><span class=p>))</span>
-        <span class=n>mySpeedLabel</span><span class=p>.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=n>NSTextAlignment</span><span class=p>.</span><span class=n>center</span>
-        <span class=n>mySpeedLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span><span class=n>y</span><span class=p>:</span> <span class=mi>450</span><span class=p>)</span>
-        <span class=n>mySpeedLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;0 m/S&quot;</span>
+        mySpeedLabel.backgroundColor = UIColor.red
+        mySpeedLabel.layer.masksToBounds = true
+        mySpeedLabel.layer.cornerRadius = 75.0
+        mySpeedLabel.textColor = UIColor.white
+        mySpeedLabel.shadowColor = UIColor.gray
+        mySpeedLabel.font = UIFont.systemFont(ofSize: CGFloat(30))
+        mySpeedLabel.textAlignment = NSTextAlignment.center
+        mySpeedLabel.layer.position = CGPoint(x: self.view.bounds.width/2,y: 450)
+        mySpeedLabel.text = &quot;0 m/S&quot;
 
-        <span class=c1>// Viewの背景色を青にする.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyan</span>
+        // Viewの背景色を青にする.
+        self.view.backgroundColor = UIColor.cyan
 
-        <span class=c1>// Viewに追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myDistanceLabel</span><span class=p>)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myTimeLabel</span><span class=p>)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>mySpeedLabel</span><span class=p>)</span>
+        // Viewに追加.
+        self.view.addSubview(myDistanceLabel)
+        self.view.addSubview(myTimeLabel)
+        self.view.addSubview(mySpeedLabel)
 
-        <span class=c1>// ペドメーター(歩数計)で計測開始.</span>
-        <span class=n>myPedometer</span><span class=p>.</span><span class=n>startUpdates</span><span class=p>(</span><span class=n>from</span><span class=p>:</span> <span class=n>Date</span><span class=p>(),</span> <span class=n>withHandler</span><span class=p>:</span> <span class=p>{(</span><span class=n>pedometerData</span><span class=p>,</span> <span class=n>error</span><span class=p>)</span> <span class=k>in</span>
-            <span class=k>if</span> <span class=kd>let</span> <span class=nv>e</span> <span class=p>=</span> <span class=n>error</span> <span class=p>{</span>
-                <span class=bp>print</span><span class=p>(</span><span class=n>e</span><span class=p>.</span><span class=n>localizedDescription</span><span class=p>)</span>
-                <span class=k>return</span>
-            <span class=p>}</span>
-            <span class=k>guard</span> <span class=kd>let</span> <span class=nv>data</span> <span class=p>=</span> <span class=n>pedometerData</span> <span class=k>else</span> <span class=p>{</span>
-                <span class=k>return</span>
-            <span class=p>}</span>
-            <span class=kd>let</span> <span class=nv>myDistance</span> <span class=p>=</span> <span class=n>data</span><span class=p>.</span><span class=bp>distance</span><span class=p>!.</span><span class=n>doubleValue</span>
-            <span class=kd>let</span> <span class=nv>myTime</span><span class=p>:</span> <span class=nb>Double</span> <span class=p>=</span> <span class=n>data</span><span class=p>.</span><span class=n>endDate</span><span class=p>.</span><span class=n>timeIntervalSince</span><span class=p>(</span><span class=n>data</span><span class=p>.</span><span class=n>startDate</span><span class=p>)</span>
-            <span class=kd>let</span> <span class=nv>mySpeed</span> <span class=p>=</span> <span class=n>myDistance</span> <span class=o>/</span> <span class=n>myTime</span>
-            <span class=kc>self</span><span class=p>.</span><span class=n>myDistanceLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;</span><span class=si>\(</span><span class=n>round</span><span class=si>(</span><span class=n>myDistance</span><span class=si>))</span><span class=s> m&quot;</span>
-            <span class=kc>self</span><span class=p>.</span><span class=n>myTimeLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;</span><span class=si>\(</span><span class=n>round</span><span class=si>(</span><span class=n>myTime</span><span class=si>))</span><span class=s> sec&quot;</span>
-            <span class=kc>self</span><span class=p>.</span><span class=n>mySpeedLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;</span><span class=si>\(</span><span class=n>round</span><span class=si>(</span><span class=n>mySpeed</span><span class=si>))</span><span class=s> m/s&quot;</span>
-        <span class=p>})</span>
-    <span class=p>}</span>
+        // ペドメーター(歩数計)で計測開始.
+        myPedometer.startUpdates(from: Date(), withHandler: {(pedometerData, error) in
+            if let e = error {
+                print(e.localizedDescription)
+                return
+            }
+            guard let data = pedometerData else {
+                return
+            }
+            let myDistance = data.distance!.doubleValue
+            let myTime: Double = data.endDate.timeIntervalSince(data.startDate)
+            let mySpeed = myDistance / myTime
+            self.myDistanceLabel.text = &quot;\(round(myDistance)) m&quot;
+            self.myTimeLabel.text = &quot;\(round(myTime)) sec&quot;
+            self.mySpeedLabel.text = &quot;\(round(mySpeed)) m/s&quot;
+        })
+    }
 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span>
-<span class=normal>73</span>
-<span class=normal>74</span>
-<span class=normal>75</span>
-<span class=normal>76</span>
-<span class=normal>77</span>
-<span class=normal>78</span>
-<span class=normal>79</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  coremotion002</span>
-<span class=c1>//</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  coremotion002
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
-<span class=kd>import</span> <span class=nc>CoreMotion</span>
+import UIKit
+import CoreMotion
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class ViewController: UIViewController {
 
-    <span class=kd>var</span> <span class=nv>myPedometer</span> <span class=p>=</span> <span class=bp>CMPedometer</span><span class=p>()</span> <span class=c1>// ペドメーター(歩数計)を生成.</span>
-    <span class=kd>let</span> <span class=nv>myDistanceLabel</span><span class=p>:</span> <span class=bp>UILabel</span> <span class=p>=</span> <span class=bp>UILabel</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>150</span><span class=p>,</span><span class=mi>150</span><span class=p>))</span>
-    <span class=kd>let</span> <span class=nv>myTimeLabel</span><span class=p>:</span> <span class=bp>UILabel</span> <span class=p>=</span> <span class=bp>UILabel</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>150</span><span class=p>,</span><span class=mi>150</span><span class=p>))</span>
-    <span class=kd>let</span> <span class=nv>mySpeedLabel</span><span class=p>:</span> <span class=bp>UILabel</span> <span class=p>=</span> <span class=bp>UILabel</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span><span class=mi>0</span><span class=p>,</span><span class=mi>150</span><span class=p>,</span><span class=mi>150</span><span class=p>))</span>
+    var myPedometer = CMPedometer() // ペドメーター(歩数計)を生成.
+    let myDistanceLabel: UILabel = UILabel(frame: CGRectMake(0,0,150,150))
+    let myTimeLabel: UILabel = UILabel(frame: CGRectMake(0,0,150,150))
+    let mySpeedLabel: UILabel = UILabel(frame: CGRectMake(0,0,150,150))
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// Labelを作成.</span>
-        <span class=n>myDistanceLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blueColor</span><span class=p>()</span>
-        <span class=n>myDistanceLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myDistanceLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>75.0</span>
-        <span class=n>myDistanceLabel</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>whiteColor</span><span class=p>()</span>
-        <span class=n>myDistanceLabel</span><span class=p>.</span><span class=n>shadowColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>grayColor</span><span class=p>()</span>
-        <span class=n>myDistanceLabel</span><span class=p>.</span><span class=n>font</span> <span class=p>=</span> <span class=bp>UIFont</span><span class=p>.</span><span class=n>systemFontOfSize</span><span class=p>(</span><span class=n>CGFloat</span><span class=p>(</span><span class=mi>30</span><span class=p>))</span>
-        <span class=n>myDistanceLabel</span><span class=p>.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=n>NSTextAlignment</span><span class=p>.</span><span class=n>Center</span>
-        <span class=n>myDistanceLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span><span class=n>y</span><span class=p>:</span> <span class=mi>100</span><span class=p>)</span>
-        <span class=n>myDistanceLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;0 m&quot;</span>
+        // Labelを作成.
+        myDistanceLabel.backgroundColor = UIColor.blueColor()
+        myDistanceLabel.layer.masksToBounds = true
+        myDistanceLabel.layer.cornerRadius = 75.0
+        myDistanceLabel.textColor = UIColor.whiteColor()
+        myDistanceLabel.shadowColor = UIColor.grayColor()
+        myDistanceLabel.font = UIFont.systemFontOfSize(CGFloat(30))
+        myDistanceLabel.textAlignment = NSTextAlignment.Center
+        myDistanceLabel.layer.position = CGPoint(x: self.view.bounds.width/2,y: 100)
+        myDistanceLabel.text = &quot;0 m&quot;
 
-        <span class=n>myTimeLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>orangeColor</span><span class=p>()</span>
-        <span class=n>myTimeLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myTimeLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>75.0</span>
-        <span class=n>myTimeLabel</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>whiteColor</span><span class=p>()</span>
-        <span class=n>myTimeLabel</span><span class=p>.</span><span class=n>shadowColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>grayColor</span><span class=p>()</span>
-        <span class=n>myTimeLabel</span><span class=p>.</span><span class=n>font</span> <span class=p>=</span> <span class=bp>UIFont</span><span class=p>.</span><span class=n>systemFontOfSize</span><span class=p>(</span><span class=n>CGFloat</span><span class=p>(</span><span class=mi>30</span><span class=p>))</span>
-        <span class=n>myTimeLabel</span><span class=p>.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=n>NSTextAlignment</span><span class=p>.</span><span class=n>Center</span>
-        <span class=n>myTimeLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span><span class=n>y</span><span class=p>:</span> <span class=mi>275</span><span class=p>)</span>
-        <span class=n>myTimeLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;0 sec&quot;</span>
+        myTimeLabel.backgroundColor = UIColor.orangeColor()
+        myTimeLabel.layer.masksToBounds = true
+        myTimeLabel.layer.cornerRadius = 75.0
+        myTimeLabel.textColor = UIColor.whiteColor()
+        myTimeLabel.shadowColor = UIColor.grayColor()
+        myTimeLabel.font = UIFont.systemFontOfSize(CGFloat(30))
+        myTimeLabel.textAlignment = NSTextAlignment.Center
+        myTimeLabel.layer.position = CGPoint(x: self.view.bounds.width/2,y: 275)
+        myTimeLabel.text = &quot;0 sec&quot;
 
-        <span class=n>mySpeedLabel</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>redColor</span><span class=p>()</span>
-        <span class=n>mySpeedLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>mySpeedLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>75.0</span>
-        <span class=n>mySpeedLabel</span><span class=p>.</span><span class=n>textColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>whiteColor</span><span class=p>()</span>
-        <span class=n>mySpeedLabel</span><span class=p>.</span><span class=n>shadowColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>grayColor</span><span class=p>()</span>
-        <span class=n>mySpeedLabel</span><span class=p>.</span><span class=n>font</span> <span class=p>=</span> <span class=bp>UIFont</span><span class=p>.</span><span class=n>systemFontOfSize</span><span class=p>(</span><span class=n>CGFloat</span><span class=p>(</span><span class=mi>30</span><span class=p>))</span>
-        <span class=n>mySpeedLabel</span><span class=p>.</span><span class=n>textAlignment</span> <span class=p>=</span> <span class=n>NSTextAlignment</span><span class=p>.</span><span class=n>Center</span>
-        <span class=n>mySpeedLabel</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span><span class=p>,</span><span class=n>y</span><span class=p>:</span> <span class=mi>450</span><span class=p>)</span>
-        <span class=n>mySpeedLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;0 m/S&quot;</span>
+        mySpeedLabel.backgroundColor = UIColor.redColor()
+        mySpeedLabel.layer.masksToBounds = true
+        mySpeedLabel.layer.cornerRadius = 75.0
+        mySpeedLabel.textColor = UIColor.whiteColor()
+        mySpeedLabel.shadowColor = UIColor.grayColor()
+        mySpeedLabel.font = UIFont.systemFontOfSize(CGFloat(30))
+        mySpeedLabel.textAlignment = NSTextAlignment.Center
+        mySpeedLabel.layer.position = CGPoint(x: self.view.bounds.width/2,y: 450)
+        mySpeedLabel.text = &quot;0 m/S&quot;
 
-        <span class=c1>// Viewの背景色を青にする.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>cyanColor</span><span class=p>()</span>
+        // Viewの背景色を青にする.
+        self.view.backgroundColor = UIColor.cyanColor()
 
-        <span class=c1>// Viewに追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myDistanceLabel</span><span class=p>)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myTimeLabel</span><span class=p>)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>mySpeedLabel</span><span class=p>)</span>
+        // Viewに追加.
+        self.view.addSubview(myDistanceLabel)
+        self.view.addSubview(myTimeLabel)
+        self.view.addSubview(mySpeedLabel)
 
-        <span class=c1>// ペドメーター(歩数計)で計測開始.</span>
-        <span class=n>myPedometer</span><span class=p>.</span><span class=n>startPedometerUpdatesFromDate</span><span class=p>(</span><span class=bp>NSDate</span><span class=p>(),</span> <span class=n>withHandler</span><span class=p>:</span> <span class=p>{</span> <span class=n>pedometerData</span><span class=p>,</span> <span class=n>error</span> <span class=k>in</span>
-            <span class=k>if</span> <span class=kd>let</span> <span class=nv>e</span> <span class=p>=</span> <span class=n>error</span> <span class=p>{</span>
-                <span class=bp>print</span><span class=p>(</span><span class=n>e</span><span class=p>.</span><span class=n>localizedDescription</span><span class=p>)</span>
-                <span class=k>return</span>
-            <span class=p>}</span>
-            <span class=k>guard</span> <span class=kd>let</span> <span class=nv>data</span> <span class=p>=</span> <span class=n>pedometerData</span> <span class=k>else</span> <span class=p>{</span>
-                <span class=k>return</span>
-            <span class=p>}</span>
-            <span class=kd>let</span> <span class=nv>myDistance</span> <span class=p>=</span> <span class=n>data</span><span class=p>.</span><span class=bp>distance</span><span class=p>!.</span><span class=n>doubleValue</span>
-            <span class=kd>let</span> <span class=nv>myTime</span><span class=p>:</span> <span class=nb>Double</span> <span class=p>=</span> <span class=n>data</span><span class=p>.</span><span class=n>endDate</span><span class=p>.</span><span class=n>timeIntervalSinceDate</span><span class=p>(</span><span class=n>data</span><span class=p>.</span><span class=n>startDate</span><span class=p>)</span>
-            <span class=kd>let</span> <span class=nv>mySpeed</span> <span class=p>=</span> <span class=n>myDistance</span> <span class=o>/</span> <span class=n>myTime</span>
-            <span class=kc>self</span><span class=p>.</span><span class=n>myDistanceLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;</span><span class=si>\(</span><span class=n>round</span><span class=si>(</span><span class=n>myDistance</span><span class=si>))</span><span class=s> m&quot;</span>
-            <span class=kc>self</span><span class=p>.</span><span class=n>myTimeLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;</span><span class=si>\(</span><span class=n>round</span><span class=si>(</span><span class=n>myTime</span><span class=si>))</span><span class=s> sec&quot;</span>
-            <span class=kc>self</span><span class=p>.</span><span class=n>mySpeedLabel</span><span class=p>.</span><span class=n>text</span> <span class=p>=</span> <span class=s>&quot;</span><span class=si>\(</span><span class=n>round</span><span class=si>(</span><span class=n>mySpeed</span><span class=si>))</span><span class=s> m/s&quot;</span>
-        <span class=p>})</span>
+        // ペドメーター(歩数計)で計測開始.
+        myPedometer.startPedometerUpdatesFromDate(NSDate(), withHandler: { pedometerData, error in
+            if let e = error {
+                print(e.localizedDescription)
+                return
+            }
+            guard let data = pedometerData else {
+                return
+            }
+            let myDistance = data.distance!.doubleValue
+            let myTime: Double = data.endDate.timeIntervalSinceDate(data.startDate)
+            let mySpeed = myDistance / myTime
+            self.myDistanceLabel.text = &quot;\(round(myDistance)) m&quot;
+            self.myTimeLabel.text = &quot;\(round(myTime)) sec&quot;
+            self.mySpeedLabel.text = &quot;\(round(mySpeed)) m/s&quot;
+        })
 
-    <span class=p>}</span>
+    }
 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+}
+</code></pre></div></div>
 <h2 id="3x4x">3.xと4.xの差分</h2>
 <ul>
 <li><code>self.myDistanceLabel.text = "\(round(myDistance)) m"</code><br />

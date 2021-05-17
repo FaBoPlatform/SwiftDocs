@@ -2332,532 +2332,274 @@
                 <h1 id="uislider">UISliderの表示</h1>
 <p><img alt="Preview uikit021_001" src="../img/uikit021_001.png" />
 <img alt="Preview uikit021_002" src="../img/uikit021_002.png" /></p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span>
-<span class=normal>73</span>
-<span class=normal>74</span>
-<span class=normal>75</span>
-<span class=normal>76</span>
-<span class=normal>77</span>
-<span class=normal>78</span>
-<span class=normal>79</span>
-<span class=normal>80</span>
-<span class=normal>81</span>
-<span class=normal>82</span>
-<span class=normal>83</span>
-<span class=normal>84</span>
-<span class=normal>85</span>
-<span class=normal>86</span>
-<span class=normal>87</span>
-<span class=normal>88</span>
-<span class=normal>89</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit021_4.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/13.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
-
-<span class=kd>import</span> <span class=nc>UIKit</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>{</span>
-
-    <span class=c1>// 画像を設定する.</span>
-    <span class=kd>private</span> <span class=kd>let</span> <span class=nv>myInputImage</span> <span class=p>=</span> <span class=bp>CIImage</span><span class=p>(</span><span class=n>image</span><span class=p>:</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>named</span><span class=p>:</span> <span class=s>&quot;sakura.jpg&quot;</span><span class=p>)</span><span class=o>!</span><span class=p>)</span>
-
-    <span class=c1>// ImageViewを.定義する.</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myImageView</span><span class=p>:</span> <span class=bp>UIImageView</span><span class=p>!</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-
-        <span class=c1>// UIImageViewを作成する.</span>
-        <span class=n>myImageView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>)</span>
-        <span class=n>myImageView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>ciImage</span><span class=p>:</span> <span class=n>myInputImage</span><span class=p>!)</span>
-
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myImageView</span><span class=p>)</span>
-
-        <span class=c1>// Sliderを作成する.</span>
-        <span class=kd>let</span> <span class=nv>myGreenSlider</span> <span class=p>=</span> <span class=bp>UISlider</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=mi>200</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>30</span><span class=p>))</span>
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>midX</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>500</span><span class=p>)</span>
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>10.0</span>
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>shadowOpacity</span> <span class=p>=</span> <span class=mf>0.5</span>
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>false</span>
-
-        <span class=c1>// 最小値と最大値を設定する.</span>
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>minimumValue</span> <span class=p>=</span> <span class=mi>0</span>
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>maximumValue</span> <span class=p>=</span> <span class=mi>1</span>
-
-        <span class=c1>// Sliderの位置を設定する.</span>
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>value</span> <span class=p>=</span> <span class=mf>0.5</span>
-
-        <span class=c1>// Sliderの現在位置より右のTintカラーを変える.</span>
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>maximumTrackTintColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>gray</span>
-
-        <span class=c1>// Sliderの現在位置より左のTintカラーを変える.</span>
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>minimumTrackTintColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span>
-
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onChangeValueMySlider</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=bp>UIControl</span><span class=p>.</span><span class=n>Event</span><span class=p>.</span><span class=n>valueChanged</span><span class=p>)</span>
-
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myGreenSlider</span><span class=p>)</span>
-
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>(</span><span class=n>red</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>green</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=n>myGreenSlider</span><span class=p>.</span><span class=n>value</span><span class=p>),</span> <span class=n>blue</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>alpha</span><span class=p>:</span> <span class=mi>1</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     Sliderの値が変わった時に呼ばれるメソッド</span>
-<span class=cm>     */</span>
-    <span class=kr>@objc</span> <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onChangeValueMySlider</span><span class=p>(</span><span class=n>sender</span> <span class=p>:</span> <span class=bp>UISlider</span><span class=p>){</span>
-
-
-        <span class=c1>// Sliderの値に応じてviewの背景のgreen値を変える.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>(</span><span class=n>red</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>green</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=n>sender</span><span class=p>.</span><span class=n>value</span><span class=p>),</span> <span class=n>blue</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>alpha</span><span class=p>:</span> <span class=mi>1</span><span class=p>)</span>
-
-        <span class=c1>// カラーエフェクトを指定してCIFilterをインスタンス化する.</span>
-        <span class=kd>let</span> <span class=nv>myColorFilter</span> <span class=p>=</span> <span class=bp>CIFilter</span><span class=p>(</span><span class=n>name</span><span class=p>:</span> <span class=s>&quot;CIColorCrossPolynomial&quot;</span><span class=p>)</span>
-
-        <span class=c1>// イメージを設定する.</span>
-        <span class=n>myColorFilter</span><span class=p>!.</span><span class=n>setValue</span><span class=p>(</span><span class=n>myInputImage</span><span class=p>,</span> <span class=n>forKey</span><span class=p>:</span> <span class=n>kCIInputImageKey</span><span class=p>)</span>
-
-        <span class=c1>// RGBの変換値を作成する.</span>
-        <span class=kd>let</span> <span class=nv>r</span><span class=p>:</span> <span class=p>[</span><span class=n>CGFloat</span><span class=p>]</span> <span class=p>=</span> <span class=p>[</span><span class=mf>0.0</span><span class=p>,</span> <span class=n>CGFloat</span><span class=p>(</span><span class=n>sender</span><span class=p>.</span><span class=n>value</span><span class=p>),</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>]</span>
-        <span class=kd>let</span> <span class=nv>g</span><span class=p>:</span> <span class=p>[</span><span class=n>CGFloat</span><span class=p>]</span> <span class=p>=</span> <span class=p>[</span><span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>1.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>]</span>
-        <span class=kd>let</span> <span class=nv>b</span><span class=p>:</span> <span class=p>[</span><span class=n>CGFloat</span><span class=p>]</span> <span class=p>=</span> <span class=p>[</span><span class=mf>1.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>]</span>
-
-        <span class=c1>// 値の調整をする.</span>
-        <span class=n>myColorFilter</span><span class=p>!.</span><span class=n>setValue</span><span class=p>(</span><span class=bp>CIVector</span><span class=p>(</span><span class=n>values</span><span class=p>:</span> <span class=n>r</span><span class=p>,</span> <span class=bp>count</span><span class=p>:</span> <span class=mi>10</span><span class=p>),</span> <span class=n>forKey</span><span class=p>:</span> <span class=s>&quot;inputRedCoefficients&quot;</span><span class=p>)</span>
-        <span class=n>myColorFilter</span><span class=p>!.</span><span class=n>setValue</span><span class=p>(</span><span class=bp>CIVector</span><span class=p>(</span><span class=n>values</span><span class=p>:</span> <span class=n>g</span><span class=p>,</span> <span class=bp>count</span><span class=p>:</span> <span class=mi>10</span><span class=p>),</span> <span class=n>forKey</span><span class=p>:</span> <span class=s>&quot;inputGreenCoefficients&quot;</span><span class=p>)</span>
-        <span class=n>myColorFilter</span><span class=p>!.</span><span class=n>setValue</span><span class=p>(</span><span class=bp>CIVector</span><span class=p>(</span><span class=n>values</span><span class=p>:</span> <span class=n>b</span><span class=p>,</span> <span class=bp>count</span><span class=p>:</span> <span class=mi>10</span><span class=p>),</span> <span class=n>forKey</span><span class=p>:</span> <span class=s>&quot;inputBlueCoefficients&quot;</span><span class=p>)</span>
-
-        <span class=c1>// フィルターで処理した画像をアウトプットする.</span>
-        <span class=kd>let</span> <span class=nv>myOutputImage</span> <span class=p>:</span> <span class=bp>CIImage</span> <span class=p>=</span> <span class=n>myColorFilter</span><span class=p>!.</span><span class=n>outputImage</span><span class=p>!</span>
-
-        <span class=c1>// 再びUIView処理済み画像を設定する.</span>
-        <span class=n>myImageView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>ciImage</span><span class=p>:</span> <span class=n>myOutputImage</span><span class=p>)</span>
-
-        <span class=c1>// 再描画をおこなう.</span>
-        <span class=n>myImageView</span><span class=p>.</span><span class=n>setNeedsDisplay</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span>
-<span class=normal>73</span>
-<span class=normal>74</span>
-<span class=normal>75</span>
-<span class=normal>76</span>
-<span class=normal>77</span>
-<span class=normal>78</span>
-<span class=normal>79</span>
-<span class=normal>80</span>
-<span class=normal>81</span>
-<span class=normal>82</span>
-<span class=normal>83</span>
-<span class=normal>84</span>
-<span class=normal>85</span>
-<span class=normal>86</span>
-<span class=normal>87</span>
-<span class=normal>88</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit021_3.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/13.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
-
-<span class=kd>import</span> <span class=nc>UIKit</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>{</span>
-
-    <span class=c1>// 画像を設定する.</span>
-    <span class=kd>private</span> <span class=kd>let</span> <span class=nv>myInputImage</span> <span class=p>=</span> <span class=bp>CIImage</span><span class=p>(</span><span class=n>image</span><span class=p>:</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>named</span><span class=p>:</span> <span class=s>&quot;sakura.jpg&quot;</span><span class=p>)</span><span class=o>!</span><span class=p>)</span>
-
-    <span class=c1>// ImageViewを.定義する.</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myImageView</span><span class=p>:</span> <span class=bp>UIImageView</span><span class=p>!</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-
-        <span class=c1>// UIImageViewを作成する.</span>
-        <span class=n>myImageView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>)</span>
-        <span class=n>myImageView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>ciImage</span><span class=p>:</span> <span class=n>myInputImage</span><span class=p>!)</span>
-
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myImageView</span><span class=p>)</span>
-
-        <span class=c1>// Sliderを作成する.</span>
-        <span class=kd>let</span> <span class=nv>myGreenSlider</span> <span class=p>=</span> <span class=bp>UISlider</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>0</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=mi>200</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>30</span><span class=p>))</span>
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>midX</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>500</span><span class=p>)</span>
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span>
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>10.0</span>
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>shadowOpacity</span> <span class=p>=</span> <span class=mf>0.5</span>
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>false</span>
-
-        <span class=c1>// 最小値と最大値を設定する.</span>
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>minimumValue</span> <span class=p>=</span> <span class=mi>0</span>
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>maximumValue</span> <span class=p>=</span> <span class=mi>1</span>
-
-        <span class=c1>// Sliderの位置を設定する.</span>
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>value</span> <span class=p>=</span> <span class=mf>0.5</span>
-
-        <span class=c1>// Sliderの現在位置より右のTintカラーを変える.</span>
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>maximumTrackTintColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>gray</span>
-
-        <span class=c1>// Sliderの現在位置より左のTintカラーを変える.</span>
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>minimumTrackTintColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span>
-
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onChangeValueMySlider</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=n>UIControlEvents</span><span class=p>.</span><span class=n>valueChanged</span><span class=p>)</span>
-
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myGreenSlider</span><span class=p>)</span>
-
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>(</span><span class=n>red</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>green</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=n>myGreenSlider</span><span class=p>.</span><span class=n>value</span><span class=p>),</span> <span class=n>blue</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>alpha</span><span class=p>:</span> <span class=mi>1</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     Sliderの値が変わった時に呼ばれるメソッド</span>
-<span class=cm>     */</span>
-    <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onChangeValueMySlider</span><span class=p>(</span><span class=n>sender</span> <span class=p>:</span> <span class=bp>UISlider</span><span class=p>){</span>
-
-        <span class=c1>// Sliderの値に応じてviewの背景のgreen値を変える.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>(</span><span class=n>red</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>green</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=n>sender</span><span class=p>.</span><span class=n>value</span><span class=p>),</span> <span class=n>blue</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>alpha</span><span class=p>:</span> <span class=mi>1</span><span class=p>)</span>
-
-        <span class=c1>// カラーエフェクトを指定してCIFilterをインスタンス化する.</span>
-        <span class=kd>let</span> <span class=nv>myColorFilter</span> <span class=p>=</span> <span class=bp>CIFilter</span><span class=p>(</span><span class=n>name</span><span class=p>:</span> <span class=s>&quot;CIColorCrossPolynomial&quot;</span><span class=p>)</span>
-
-        <span class=c1>// イメージを設定する.</span>
-        <span class=n>myColorFilter</span><span class=p>!.</span><span class=n>setValue</span><span class=p>(</span><span class=n>myInputImage</span><span class=p>,</span> <span class=n>forKey</span><span class=p>:</span> <span class=n>kCIInputImageKey</span><span class=p>)</span>
-
-        <span class=c1>// RGBの変換値を作成する.</span>
-        <span class=kd>let</span> <span class=nv>r</span><span class=p>:</span> <span class=p>[</span><span class=n>CGFloat</span><span class=p>]</span> <span class=p>=</span> <span class=p>[</span><span class=mf>0.0</span><span class=p>,</span> <span class=n>CGFloat</span><span class=p>(</span><span class=n>sender</span><span class=p>.</span><span class=n>value</span><span class=p>),</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>]</span>
-        <span class=kd>let</span> <span class=nv>g</span><span class=p>:</span> <span class=p>[</span><span class=n>CGFloat</span><span class=p>]</span> <span class=p>=</span> <span class=p>[</span><span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>1.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>]</span>
-        <span class=kd>let</span> <span class=nv>b</span><span class=p>:</span> <span class=p>[</span><span class=n>CGFloat</span><span class=p>]</span> <span class=p>=</span> <span class=p>[</span><span class=mf>1.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>]</span>
-
-        <span class=c1>// 値の調整をする.</span>
-        <span class=n>myColorFilter</span><span class=p>!.</span><span class=n>setValue</span><span class=p>(</span><span class=bp>CIVector</span><span class=p>(</span><span class=n>values</span><span class=p>:</span> <span class=n>r</span><span class=p>,</span> <span class=bp>count</span><span class=p>:</span> <span class=mi>10</span><span class=p>),</span> <span class=n>forKey</span><span class=p>:</span> <span class=s>&quot;inputRedCoefficients&quot;</span><span class=p>)</span>
-        <span class=n>myColorFilter</span><span class=p>!.</span><span class=n>setValue</span><span class=p>(</span><span class=bp>CIVector</span><span class=p>(</span><span class=n>values</span><span class=p>:</span> <span class=n>g</span><span class=p>,</span> <span class=bp>count</span><span class=p>:</span> <span class=mi>10</span><span class=p>),</span> <span class=n>forKey</span><span class=p>:</span> <span class=s>&quot;inputGreenCoefficients&quot;</span><span class=p>)</span>
-        <span class=n>myColorFilter</span><span class=p>!.</span><span class=n>setValue</span><span class=p>(</span><span class=bp>CIVector</span><span class=p>(</span><span class=n>values</span><span class=p>:</span> <span class=n>b</span><span class=p>,</span> <span class=bp>count</span><span class=p>:</span> <span class=mi>10</span><span class=p>),</span> <span class=n>forKey</span><span class=p>:</span> <span class=s>&quot;inputBlueCoefficients&quot;</span><span class=p>)</span>
-
-        <span class=c1>// フィルターで処理した画像をアウトプットする.</span>
-        <span class=kd>let</span> <span class=nv>myOutputImage</span> <span class=p>:</span> <span class=bp>CIImage</span> <span class=p>=</span> <span class=n>myColorFilter</span><span class=p>!.</span><span class=n>outputImage</span><span class=p>!</span>
-
-        <span class=c1>// 再びUIView処理済み画像を設定する.</span>
-        <span class=n>myImageView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>ciImage</span><span class=p>:</span> <span class=n>myOutputImage</span><span class=p>)</span>
-
-        <span class=c1>// 再描画をおこなう.</span>
-        <span class=n>myImageView</span><span class=p>.</span><span class=n>setNeedsDisplay</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span>
-<span class=normal>73</span>
-<span class=normal>74</span>
-<span class=normal>75</span>
-<span class=normal>76</span>
-<span class=normal>77</span>
-<span class=normal>78</span>
-<span class=normal>79</span>
-<span class=normal>80</span>
-<span class=normal>81</span>
-<span class=normal>82</span>
-<span class=normal>83</span>
-<span class=normal>84</span>
-<span class=normal>85</span>
-<span class=normal>86</span>
-<span class=normal>87</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit021_2.3</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/16.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
-
-<span class=kd>import</span> <span class=nc>UIKit</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>{</span>
-
-    <span class=c1>// 画像を設定する.</span>
-    <span class=kd>private</span> <span class=kd>let</span> <span class=nv>myInputImage</span> <span class=p>=</span> <span class=bp>CIImage</span><span class=p>(</span><span class=n>image</span><span class=p>:</span> <span class=bp>UIImage</span><span class=p>(</span><span class=n>named</span><span class=p>:</span> <span class=s>&quot;sakura.jpg&quot;</span><span class=p>)</span><span class=o>!</span><span class=p>)</span>
-
-    <span class=c1>// ImageViewを.定義する.</span>
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myImageView</span><span class=p>:</span> <span class=bp>UIImageView</span><span class=p>!</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-
-        <span class=c1>// UIImageViewを作成する.</span>
-        <span class=n>myImageView</span> <span class=p>=</span> <span class=bp>UIImageView</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>)</span>
-        <span class=n>myImageView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>(</span><span class=bp>CIImage</span><span class=p>:</span> <span class=n>myInputImage</span><span class=p>!)</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myImageView</span><span class=p>)</span>
-
-        <span class=c1>// Sliderを作成する.</span>
-        <span class=kd>let</span> <span class=nv>myGreenSlider</span> <span class=p>=</span> <span class=bp>UISlider</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=mi>0</span><span class=p>,</span> <span class=mi>200</span><span class=p>,</span> <span class=mi>30</span><span class=p>))</span>
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>position</span> <span class=p>=</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>midX</span><span class=p>,</span> <span class=mi>500</span><span class=p>)</span>
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>whiteColor</span><span class=p>()</span>
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>10.0</span>
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>shadowOpacity</span> <span class=p>=</span> <span class=mf>0.5</span>
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>false</span>
-
-        <span class=c1>// 最小値と最大値を設定する.</span>
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>minimumValue</span> <span class=p>=</span> <span class=mi>0</span>
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>maximumValue</span> <span class=p>=</span> <span class=mi>1</span>
-
-        <span class=c1>// Sliderの位置を設定する.</span>
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>value</span> <span class=p>=</span> <span class=mf>0.5</span>
-
-        <span class=c1>// Sliderの現在位置より右のTintカラーを変える.</span>
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>maximumTrackTintColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>grayColor</span><span class=p>()</span>
-
-        <span class=c1>// Sliderの現在位置より左のTintカラーを変える.</span>
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>minimumTrackTintColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blackColor</span><span class=p>()</span>
-
-        <span class=n>myGreenSlider</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onChangeValueMySlider</span><span class=p>(</span><span class=kc>_</span><span class=p>:)),</span> <span class=n>forControlEvents</span><span class=p>:</span> <span class=n>UIControlEvents</span><span class=p>.</span><span class=n>ValueChanged</span><span class=p>)</span>
-
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myGreenSlider</span><span class=p>)</span>
-
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>(</span><span class=n>red</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>green</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=n>myGreenSlider</span><span class=p>.</span><span class=n>value</span><span class=p>),</span> <span class=n>blue</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>alpha</span><span class=p>:</span> <span class=mi>1</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     Sliderの値が変わった時に呼ばれるメソッド</span>
-<span class=cm>     */</span>
-    <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onChangeValueMySlider</span><span class=p>(</span><span class=n>sender</span> <span class=p>:</span> <span class=bp>UISlider</span><span class=p>){</span>
-
-        <span class=c1>// Sliderの値に応じてviewの背景のgreen値を変える.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>(</span><span class=n>red</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>green</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>(</span><span class=n>sender</span><span class=p>.</span><span class=n>value</span><span class=p>),</span> <span class=n>blue</span><span class=p>:</span> <span class=mi>0</span><span class=p>,</span> <span class=n>alpha</span><span class=p>:</span> <span class=mi>1</span><span class=p>)</span>
-
-        <span class=c1>// カラーエフェクトを指定してCIFilterをインスタンス化する.</span>
-        <span class=kd>let</span> <span class=nv>myColorFilter</span> <span class=p>=</span> <span class=bp>CIFilter</span><span class=p>(</span><span class=n>name</span><span class=p>:</span> <span class=s>&quot;CIColorCrossPolynomial&quot;</span><span class=p>)</span>
-
-        <span class=c1>// イメージを設定する.</span>
-        <span class=n>myColorFilter</span><span class=p>!.</span><span class=n>setValue</span><span class=p>(</span><span class=n>myInputImage</span><span class=p>,</span> <span class=n>forKey</span><span class=p>:</span> <span class=n>kCIInputImageKey</span><span class=p>)</span>
-
-        <span class=c1>// RGBの変換値を作成する.</span>
-        <span class=kd>let</span> <span class=nv>r</span><span class=p>:</span> <span class=p>[</span><span class=n>CGFloat</span><span class=p>]</span> <span class=p>=</span> <span class=p>[</span><span class=mf>0.0</span><span class=p>,</span> <span class=n>CGFloat</span><span class=p>(</span><span class=n>sender</span><span class=p>.</span><span class=n>value</span><span class=p>),</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>]</span>
-        <span class=kd>let</span> <span class=nv>g</span><span class=p>:</span> <span class=p>[</span><span class=n>CGFloat</span><span class=p>]</span> <span class=p>=</span> <span class=p>[</span><span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>1.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>]</span>
-        <span class=kd>let</span> <span class=nv>b</span><span class=p>:</span> <span class=p>[</span><span class=n>CGFloat</span><span class=p>]</span> <span class=p>=</span> <span class=p>[</span><span class=mf>1.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>,</span> <span class=mf>0.0</span><span class=p>]</span>
-
-        <span class=c1>// 値の調整をする.</span>
-        <span class=n>myColorFilter</span><span class=p>!.</span><span class=n>setValue</span><span class=p>(</span><span class=bp>CIVector</span><span class=p>(</span><span class=n>values</span><span class=p>:</span> <span class=n>r</span><span class=p>,</span> <span class=bp>count</span><span class=p>:</span> <span class=mi>10</span><span class=p>),</span> <span class=n>forKey</span><span class=p>:</span> <span class=s>&quot;inputRedCoefficients&quot;</span><span class=p>)</span>
-        <span class=n>myColorFilter</span><span class=p>!.</span><span class=n>setValue</span><span class=p>(</span><span class=bp>CIVector</span><span class=p>(</span><span class=n>values</span><span class=p>:</span> <span class=n>g</span><span class=p>,</span> <span class=bp>count</span><span class=p>:</span> <span class=mi>10</span><span class=p>),</span> <span class=n>forKey</span><span class=p>:</span> <span class=s>&quot;inputGreenCoefficients&quot;</span><span class=p>)</span>
-        <span class=n>myColorFilter</span><span class=p>!.</span><span class=n>setValue</span><span class=p>(</span><span class=bp>CIVector</span><span class=p>(</span><span class=n>values</span><span class=p>:</span> <span class=n>b</span><span class=p>,</span> <span class=bp>count</span><span class=p>:</span> <span class=mi>10</span><span class=p>),</span> <span class=n>forKey</span><span class=p>:</span> <span class=s>&quot;inputBlueCoefficients&quot;</span><span class=p>)</span>
-
-        <span class=c1>// フィルターで処理した画像をアウトプットする.</span>
-        <span class=kd>let</span> <span class=nv>myOutputImage</span> <span class=p>:</span> <span class=bp>CIImage</span> <span class=p>=</span> <span class=n>myColorFilter</span><span class=p>!.</span><span class=n>outputImage</span><span class=p>!</span>
-
-        <span class=c1>// 再びUIView処理済み画像を設定する.</span>
-        <span class=n>myImageView</span><span class=p>.</span><span class=n>image</span> <span class=p>=</span> <span class=bp>UIImage</span><span class=p>(</span><span class=bp>CIImage</span><span class=p>:</span> <span class=n>myOutputImage</span><span class=p>)</span>
-
-        <span class=c1>// 再描画をおこなう.</span>
-        <span class=n>myImageView</span><span class=p>.</span><span class=n>setNeedsDisplay</span><span class=p>()</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit021_4.0
+//
+//  Created by KimikoWatanabe on 2016/08/13.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController{
+
+    // 画像を設定する.
+    private let myInputImage = CIImage(image: UIImage(named: &quot;sakura.jpg&quot;)!)
+
+    // ImageViewを.定義する.
+    private var myImageView: UIImageView!
+
+    override func viewDidLoad() {
+
+        // UIImageViewを作成する.
+        myImageView = UIImageView(frame: self.view.frame)
+        myImageView.image = UIImage(ciImage: myInputImage!)
+
+        self.view.addSubview(myImageView)
+
+        // Sliderを作成する.
+        let myGreenSlider = UISlider(frame: CGRect(x:0, y:0, width:200, height:30))
+        myGreenSlider.layer.position = CGPoint(x:self.view.frame.midX, y:500)
+        myGreenSlider.backgroundColor = UIColor.white
+        myGreenSlider.layer.cornerRadius = 10.0
+        myGreenSlider.layer.shadowOpacity = 0.5
+        myGreenSlider.layer.masksToBounds = false
+
+        // 最小値と最大値を設定する.
+        myGreenSlider.minimumValue = 0
+        myGreenSlider.maximumValue = 1
+
+        // Sliderの位置を設定する.
+        myGreenSlider.value = 0.5
+
+        // Sliderの現在位置より右のTintカラーを変える.
+        myGreenSlider.maximumTrackTintColor = UIColor.gray
+
+        // Sliderの現在位置より左のTintカラーを変える.
+        myGreenSlider.minimumTrackTintColor = UIColor.black
+
+        myGreenSlider.addTarget(self, action: #selector(ViewController.onChangeValueMySlider(sender:)), for: UIControl.Event.valueChanged)
+
+        self.view.addSubview(myGreenSlider)
+
+        self.view.backgroundColor = UIColor(red: 0, green: CGFloat(myGreenSlider.value), blue: 0, alpha: 1)
+    }
+
+    /*
+     Sliderの値が変わった時に呼ばれるメソッド
+     */
+    @objc internal func onChangeValueMySlider(sender : UISlider){
+
+
+        // Sliderの値に応じてviewの背景のgreen値を変える.
+        self.view.backgroundColor = UIColor(red: 0, green: CGFloat(sender.value), blue: 0, alpha: 1)
+
+        // カラーエフェクトを指定してCIFilterをインスタンス化する.
+        let myColorFilter = CIFilter(name: &quot;CIColorCrossPolynomial&quot;)
+
+        // イメージを設定する.
+        myColorFilter!.setValue(myInputImage, forKey: kCIInputImageKey)
+
+        // RGBの変換値を作成する.
+        let r: [CGFloat] = [0.0, CGFloat(sender.value), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        let g: [CGFloat] = [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        let b: [CGFloat] = [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+        // 値の調整をする.
+        myColorFilter!.setValue(CIVector(values: r, count: 10), forKey: &quot;inputRedCoefficients&quot;)
+        myColorFilter!.setValue(CIVector(values: g, count: 10), forKey: &quot;inputGreenCoefficients&quot;)
+        myColorFilter!.setValue(CIVector(values: b, count: 10), forKey: &quot;inputBlueCoefficients&quot;)
+
+        // フィルターで処理した画像をアウトプットする.
+        let myOutputImage : CIImage = myColorFilter!.outputImage!
+
+        // 再びUIView処理済み画像を設定する.
+        myImageView.image = UIImage(ciImage: myOutputImage)
+
+        // 再描画をおこなう.
+        myImageView.setNeedsDisplay()
+    }
+}
+
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit021_3.0
+//
+//  Created by KimikoWatanabe on 2016/08/13.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController{
+
+    // 画像を設定する.
+    private let myInputImage = CIImage(image: UIImage(named: &quot;sakura.jpg&quot;)!)
+
+    // ImageViewを.定義する.
+    private var myImageView: UIImageView!
+
+    override func viewDidLoad() {
+
+        // UIImageViewを作成する.
+        myImageView = UIImageView(frame: self.view.frame)
+        myImageView.image = UIImage(ciImage: myInputImage!)
+
+        self.view.addSubview(myImageView)
+
+        // Sliderを作成する.
+        let myGreenSlider = UISlider(frame: CGRect(x:0, y:0, width:200, height:30))
+        myGreenSlider.layer.position = CGPoint(x:self.view.frame.midX, y:500)
+        myGreenSlider.backgroundColor = UIColor.white
+        myGreenSlider.layer.cornerRadius = 10.0
+        myGreenSlider.layer.shadowOpacity = 0.5
+        myGreenSlider.layer.masksToBounds = false
+
+        // 最小値と最大値を設定する.
+        myGreenSlider.minimumValue = 0
+        myGreenSlider.maximumValue = 1
+
+        // Sliderの位置を設定する.
+        myGreenSlider.value = 0.5
+
+        // Sliderの現在位置より右のTintカラーを変える.
+        myGreenSlider.maximumTrackTintColor = UIColor.gray
+
+        // Sliderの現在位置より左のTintカラーを変える.
+        myGreenSlider.minimumTrackTintColor = UIColor.black
+
+        myGreenSlider.addTarget(self, action: #selector(ViewController.onChangeValueMySlider(sender:)), for: UIControlEvents.valueChanged)
+
+        self.view.addSubview(myGreenSlider)
+
+        self.view.backgroundColor = UIColor(red: 0, green: CGFloat(myGreenSlider.value), blue: 0, alpha: 1)
+    }
+
+    /*
+     Sliderの値が変わった時に呼ばれるメソッド
+     */
+    internal func onChangeValueMySlider(sender : UISlider){
+
+        // Sliderの値に応じてviewの背景のgreen値を変える.
+        self.view.backgroundColor = UIColor(red: 0, green: CGFloat(sender.value), blue: 0, alpha: 1)
+
+        // カラーエフェクトを指定してCIFilterをインスタンス化する.
+        let myColorFilter = CIFilter(name: &quot;CIColorCrossPolynomial&quot;)
+
+        // イメージを設定する.
+        myColorFilter!.setValue(myInputImage, forKey: kCIInputImageKey)
+
+        // RGBの変換値を作成する.
+        let r: [CGFloat] = [0.0, CGFloat(sender.value), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        let g: [CGFloat] = [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        let b: [CGFloat] = [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+        // 値の調整をする.
+        myColorFilter!.setValue(CIVector(values: r, count: 10), forKey: &quot;inputRedCoefficients&quot;)
+        myColorFilter!.setValue(CIVector(values: g, count: 10), forKey: &quot;inputGreenCoefficients&quot;)
+        myColorFilter!.setValue(CIVector(values: b, count: 10), forKey: &quot;inputBlueCoefficients&quot;)
+
+        // フィルターで処理した画像をアウトプットする.
+        let myOutputImage : CIImage = myColorFilter!.outputImage!
+
+        // 再びUIView処理済み画像を設定する.
+        myImageView.image = UIImage(ciImage: myOutputImage)
+
+        // 再描画をおこなう.
+        myImageView.setNeedsDisplay()
+    }
+}
+
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit021_2.3
+//
+//  Created by KimikoWatanabe on 2016/08/16.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController{
+
+    // 画像を設定する.
+    private let myInputImage = CIImage(image: UIImage(named: &quot;sakura.jpg&quot;)!)
+
+    // ImageViewを.定義する.
+    private var myImageView: UIImageView!
+
+    override func viewDidLoad() {
+
+        // UIImageViewを作成する.
+        myImageView = UIImageView(frame: self.view.frame)
+        myImageView.image = UIImage(CIImage: myInputImage!)
+        self.view.addSubview(myImageView)
+
+        // Sliderを作成する.
+        let myGreenSlider = UISlider(frame: CGRectMake(0, 0, 200, 30))
+        myGreenSlider.layer.position = CGPointMake(self.view.frame.midX, 500)
+        myGreenSlider.backgroundColor = UIColor.whiteColor()
+        myGreenSlider.layer.cornerRadius = 10.0
+        myGreenSlider.layer.shadowOpacity = 0.5
+        myGreenSlider.layer.masksToBounds = false
+
+        // 最小値と最大値を設定する.
+        myGreenSlider.minimumValue = 0
+        myGreenSlider.maximumValue = 1
+
+        // Sliderの位置を設定する.
+        myGreenSlider.value = 0.5
+
+        // Sliderの現在位置より右のTintカラーを変える.
+        myGreenSlider.maximumTrackTintColor = UIColor.grayColor()
+
+        // Sliderの現在位置より左のTintカラーを変える.
+        myGreenSlider.minimumTrackTintColor = UIColor.blackColor()
+
+        myGreenSlider.addTarget(self, action: #selector(ViewController.onChangeValueMySlider(_:)), forControlEvents: UIControlEvents.ValueChanged)
+
+        self.view.addSubview(myGreenSlider)
+
+        self.view.backgroundColor = UIColor(red: 0, green: CGFloat(myGreenSlider.value), blue: 0, alpha: 1)
+    }
+
+    /*
+     Sliderの値が変わった時に呼ばれるメソッド
+     */
+    internal func onChangeValueMySlider(sender : UISlider){
+
+        // Sliderの値に応じてviewの背景のgreen値を変える.
+        self.view.backgroundColor = UIColor(red: 0, green: CGFloat(sender.value), blue: 0, alpha: 1)
+
+        // カラーエフェクトを指定してCIFilterをインスタンス化する.
+        let myColorFilter = CIFilter(name: &quot;CIColorCrossPolynomial&quot;)
+
+        // イメージを設定する.
+        myColorFilter!.setValue(myInputImage, forKey: kCIInputImageKey)
+
+        // RGBの変換値を作成する.
+        let r: [CGFloat] = [0.0, CGFloat(sender.value), 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        let g: [CGFloat] = [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        let b: [CGFloat] = [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+        // 値の調整をする.
+        myColorFilter!.setValue(CIVector(values: r, count: 10), forKey: &quot;inputRedCoefficients&quot;)
+        myColorFilter!.setValue(CIVector(values: g, count: 10), forKey: &quot;inputGreenCoefficients&quot;)
+        myColorFilter!.setValue(CIVector(values: b, count: 10), forKey: &quot;inputBlueCoefficients&quot;)
+
+        // フィルターで処理した画像をアウトプットする.
+        let myOutputImage : CIImage = myColorFilter!.outputImage!
+
+        // 再びUIView処理済み画像を設定する.
+        myImageView.image = UIImage(CIImage: myOutputImage)
+
+        // 再描画をおこなう.
+        myImageView.setNeedsDisplay()
+    }
+}
+
+</code></pre></div></div>
 <h2 id="3040">3.0と4.0の差分</h2>
 <ul>
 <li><code>UIControlEvents</code> が、 <code>UIControl.Event</code> に変更</li>

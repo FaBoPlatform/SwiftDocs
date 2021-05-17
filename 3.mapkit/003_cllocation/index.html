@@ -2345,723 +2345,369 @@
                 
                 <h1 id="_1">現在位置の地図の表示</h1>
 <p><img alt="Preview mapkit003" src="../img/mapkit003.png" /></p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal>  1</span>
-<span class=normal>  2</span>
-<span class=normal>  3</span>
-<span class=normal>  4</span>
-<span class=normal>  5</span>
-<span class=normal>  6</span>
-<span class=normal>  7</span>
-<span class=normal>  8</span>
-<span class=normal>  9</span>
-<span class=normal> 10</span>
-<span class=normal> 11</span>
-<span class=normal> 12</span>
-<span class=normal> 13</span>
-<span class=normal> 14</span>
-<span class=normal> 15</span>
-<span class=normal> 16</span>
-<span class=normal> 17</span>
-<span class=normal> 18</span>
-<span class=normal> 19</span>
-<span class=normal> 20</span>
-<span class=normal> 21</span>
-<span class=normal> 22</span>
-<span class=normal> 23</span>
-<span class=normal> 24</span>
-<span class=normal> 25</span>
-<span class=normal> 26</span>
-<span class=normal> 27</span>
-<span class=normal> 28</span>
-<span class=normal> 29</span>
-<span class=normal> 30</span>
-<span class=normal> 31</span>
-<span class=normal> 32</span>
-<span class=normal> 33</span>
-<span class=normal> 34</span>
-<span class=normal> 35</span>
-<span class=normal> 36</span>
-<span class=normal> 37</span>
-<span class=normal> 38</span>
-<span class=normal> 39</span>
-<span class=normal> 40</span>
-<span class=normal> 41</span>
-<span class=normal> 42</span>
-<span class=normal> 43</span>
-<span class=normal> 44</span>
-<span class=normal> 45</span>
-<span class=normal> 46</span>
-<span class=normal> 47</span>
-<span class=normal> 48</span>
-<span class=normal> 49</span>
-<span class=normal> 50</span>
-<span class=normal> 51</span>
-<span class=normal> 52</span>
-<span class=normal> 53</span>
-<span class=normal> 54</span>
-<span class=normal> 55</span>
-<span class=normal> 56</span>
-<span class=normal> 57</span>
-<span class=normal> 58</span>
-<span class=normal> 59</span>
-<span class=normal> 60</span>
-<span class=normal> 61</span>
-<span class=normal> 62</span>
-<span class=normal> 63</span>
-<span class=normal> 64</span>
-<span class=normal> 65</span>
-<span class=normal> 66</span>
-<span class=normal> 67</span>
-<span class=normal> 68</span>
-<span class=normal> 69</span>
-<span class=normal> 70</span>
-<span class=normal> 71</span>
-<span class=normal> 72</span>
-<span class=normal> 73</span>
-<span class=normal> 74</span>
-<span class=normal> 75</span>
-<span class=normal> 76</span>
-<span class=normal> 77</span>
-<span class=normal> 78</span>
-<span class=normal> 79</span>
-<span class=normal> 80</span>
-<span class=normal> 81</span>
-<span class=normal> 82</span>
-<span class=normal> 83</span>
-<span class=normal> 84</span>
-<span class=normal> 85</span>
-<span class=normal> 86</span>
-<span class=normal> 87</span>
-<span class=normal> 88</span>
-<span class=normal> 89</span>
-<span class=normal> 90</span>
-<span class=normal> 91</span>
-<span class=normal> 92</span>
-<span class=normal> 93</span>
-<span class=normal> 94</span>
-<span class=normal> 95</span>
-<span class=normal> 96</span>
-<span class=normal> 97</span>
-<span class=normal> 98</span>
-<span class=normal> 99</span>
-<span class=normal>100</span>
-<span class=normal>101</span>
-<span class=normal>102</span>
-<span class=normal>103</span>
-<span class=normal>104</span>
-<span class=normal>105</span>
-<span class=normal>106</span>
-<span class=normal>107</span>
-<span class=normal>108</span>
-<span class=normal>109</span>
-<span class=normal>110</span>
-<span class=normal>111</span>
-<span class=normal>112</span>
-<span class=normal>113</span>
-<span class=normal>114</span>
-<span class=normal>115</span>
-<span class=normal>116</span>
-<span class=normal>117</span>
-<span class=normal>118</span>
-<span class=normal>119</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  MapKit003</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
-
-<span class=kd>import</span> <span class=nc>UIKit</span>
-<span class=kd>import</span> <span class=nc>MapKit</span>
-<span class=kd>import</span> <span class=nc>CoreLocation</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>MKMapViewDelegate</span><span class=p>,</span> <span class=bp>CLLocationManagerDelegate</span> <span class=p>{</span>
-
-    <span class=kd>var</span> <span class=nv>myMapView</span><span class=p>:</span> <span class=bp>MKMapView</span><span class=p>!</span>
-    <span class=kd>var</span> <span class=nv>myLocationManager</span><span class=p>:</span> <span class=bp>CLLocationManager</span><span class=p>!</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-
-        <span class=c1>// LocationManagerの生成.</span>
-        <span class=n>myLocationManager</span> <span class=p>=</span> <span class=bp>CLLocationManager</span><span class=p>()</span>
-
-        <span class=c1>// Delegateの設定.</span>
-        <span class=n>myLocationManager</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
-
-        <span class=c1>// 距離のフィルタ.</span>
-        <span class=n>myLocationManager</span><span class=p>.</span><span class=n>distanceFilter</span> <span class=p>=</span> <span class=mf>100.0</span>
-
-        <span class=c1>// 精度.</span>
-        <span class=n>myLocationManager</span><span class=p>.</span><span class=n>desiredAccuracy</span> <span class=p>=</span> <span class=n>kCLLocationAccuracyHundredMeters</span>
-
-        <span class=c1>// セキュリティ認証のステータスを取得.</span>
-        <span class=kd>let</span> <span class=nv>status</span> <span class=p>=</span> <span class=bp>CLLocationManager</span><span class=p>.</span><span class=n>authorizationStatus</span><span class=p>()</span>
-
-        <span class=c1>// まだ認証が得られていない場合は、認証ダイアログを表示.</span>
-        <span class=k>if</span><span class=p>(</span><span class=n>status</span> <span class=o>!=</span> <span class=n>CLAuthorizationStatus</span><span class=p>.</span><span class=n>authorizedWhenInUse</span><span class=p>)</span> <span class=p>{</span>
-
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;not determined&quot;</span><span class=p>)</span>
-            <span class=c1>// まだ承認が得られていない場合は、認証ダイアログを表示.</span>
-            <span class=n>myLocationManager</span><span class=p>.</span><span class=n>requestWhenInUseAuthorization</span><span class=p>()</span>
-        <span class=p>}</span>
-
-        <span class=c1>// 位置情報の更新を開始.</span>
-        <span class=n>myLocationManager</span><span class=p>.</span><span class=n>startUpdatingLocation</span><span class=p>()</span>
-
-        <span class=c1>// MapViewの生成.</span>
-        <span class=n>myMapView</span> <span class=p>=</span> <span class=bp>MKMapView</span><span class=p>()</span>
-
-        <span class=c1>// MapViewのサイズを画面全体に.</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span>
-
-        <span class=c1>// Delegateを設定.</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
-
-        <span class=c1>// MapViewをViewに追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myMapView</span><span class=p>)</span>
-
-        <span class=c1>// 中心点の緯度経度.</span>
-        <span class=kd>let</span> <span class=nv>myLat</span><span class=p>:</span> <span class=n>CLLocationDegrees</span> <span class=p>=</span> <span class=mf>37.506804</span>
-        <span class=kd>let</span> <span class=nv>myLon</span><span class=p>:</span> <span class=n>CLLocationDegrees</span> <span class=p>=</span> <span class=mf>139.930531</span>
-        <span class=kd>let</span> <span class=nv>myCoordinate</span><span class=p>:</span> <span class=bp>CLLocationCoordinate2D</span> <span class=p>=</span> <span class=n>CLLocationCoordinate2DMake</span><span class=p>(</span><span class=n>myLat</span><span class=p>,</span> <span class=n>myLon</span><span class=p>)</span> <span class=k>as</span> <span class=bp>CLLocationCoordinate2D</span>
-
-        <span class=c1>// 縮尺.</span>
-        <span class=kd>let</span> <span class=nv>myLatDist</span> <span class=p>:</span> <span class=n>CLLocationDistance</span> <span class=p>=</span> <span class=mi>100</span>
-        <span class=kd>let</span> <span class=nv>myLonDist</span> <span class=p>:</span> <span class=n>CLLocationDistance</span> <span class=p>=</span> <span class=mi>100</span>
-
-        <span class=c1>// Regionを作成.</span>
-        <span class=kd>let</span> <span class=nv>myRegion</span><span class=p>:</span> <span class=n>MKCoordinateRegion</span> <span class=p>=</span> <span class=n>MKCoordinateRegion</span><span class=p>(</span><span class=n>center</span><span class=p>:</span> <span class=n>myCoordinate</span><span class=p>,</span> <span class=n>latitudinalMeters</span><span class=p>:</span> <span class=n>myLatDist</span><span class=p>,</span> <span class=n>longitudinalMeters</span><span class=p>:</span> <span class=n>myLonDist</span><span class=p>);</span>
-
-        <span class=c1>// MapViewに反映.</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>setRegion</span><span class=p>(</span><span class=n>myRegion</span><span class=p>,</span> <span class=n>animated</span><span class=p>:</span> <span class=kc>true</span><span class=p>)</span>
-
-    <span class=p>}</span>
-
-    <span class=c1>// GPSから値を取得した際に呼び出されるメソッド.</span>
-    <span class=kd>func</span> <span class=nf>locationManager</span><span class=p>(</span><span class=kc>_</span> <span class=n>manager</span><span class=p>:</span> <span class=bp>CLLocationManager</span><span class=p>,</span> <span class=n>didUpdateLocations</span> <span class=n>locations</span><span class=p>:</span> <span class=p>[</span><span class=bp>CLLocation</span><span class=p>])</span> <span class=p>{</span>
-
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;didUpdateLocations&quot;</span><span class=p>)</span>
-
-        <span class=c1>// 配列から現在座標を取得.</span>
-        <span class=kd>let</span> <span class=nv>myLocations</span><span class=p>:</span> <span class=bp>NSArray</span> <span class=p>=</span> <span class=n>locations</span> <span class=k>as</span> <span class=bp>NSArray</span>
-        <span class=kd>let</span> <span class=nv>myLastLocation</span><span class=p>:</span> <span class=bp>CLLocation</span> <span class=p>=</span> <span class=n>myLocations</span><span class=p>.</span><span class=n>lastObject</span> <span class=k>as</span><span class=p>!</span> <span class=bp>CLLocation</span>
-        <span class=kd>let</span> <span class=nv>myLocation</span><span class=p>:</span><span class=bp>CLLocationCoordinate2D</span> <span class=p>=</span> <span class=n>myLastLocation</span><span class=p>.</span><span class=n>coordinate</span>
-
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;</span><span class=si>\(</span><span class=n>myLocation</span><span class=p>.</span><span class=n>latitude</span><span class=si>)</span><span class=s>, </span><span class=si>\(</span><span class=n>myLocation</span><span class=p>.</span><span class=n>longitude</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-
-        <span class=c1>// 縮尺.</span>
-        <span class=kd>let</span> <span class=nv>myLatDist</span> <span class=p>:</span> <span class=n>CLLocationDistance</span> <span class=p>=</span> <span class=mi>100</span>
-        <span class=kd>let</span> <span class=nv>myLonDist</span> <span class=p>:</span> <span class=n>CLLocationDistance</span> <span class=p>=</span> <span class=mi>100</span>
-
-        <span class=c1>// Regionを作成.</span>
-        <span class=kd>let</span> <span class=nv>myRegion</span><span class=p>:</span> <span class=n>MKCoordinateRegion</span> <span class=p>=</span> <span class=n>MKCoordinateRegion</span><span class=p>(</span><span class=n>center</span><span class=p>:</span> <span class=n>myLocation</span><span class=p>,</span> <span class=n>latitudinalMeters</span><span class=p>:</span> <span class=n>myLatDist</span><span class=p>,</span> <span class=n>longitudinalMeters</span><span class=p>:</span> <span class=n>myLonDist</span><span class=p>);</span>
-
-        <span class=c1>// MapViewに反映.</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>setRegion</span><span class=p>(</span><span class=n>myRegion</span><span class=p>,</span> <span class=n>animated</span><span class=p>:</span> <span class=kc>true</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=c1>// Regionが変更した時に呼び出されるメソッド.</span>
-    <span class=kd>func</span> <span class=nf>mapView</span><span class=p>(</span><span class=kc>_</span> <span class=n>mapView</span><span class=p>:</span> <span class=bp>MKMapView</span><span class=p>,</span> <span class=n>regionDidChangeAnimated</span> <span class=n>animated</span><span class=p>:</span> <span class=nb>Bool</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;regionDidChangeAnimated&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=c1>// 認証が変更された時に呼び出されるメソッド.</span>
-    <span class=kd>private</span> <span class=kd>func</span> <span class=nf>locationManager</span><span class=p>(</span><span class=n>manager</span><span class=p>:</span> <span class=bp>CLLocationManager</span><span class=p>,</span> <span class=n>didChangeAuthorizationStatus</span> <span class=n>status</span><span class=p>:</span> <span class=n>CLAuthorizationStatus</span><span class=p>)</span> <span class=p>{</span>
-        <span class=k>switch</span> <span class=n>status</span><span class=p>{</span>
-        <span class=k>case</span> <span class=p>.</span><span class=n>authorizedWhenInUse</span><span class=p>:</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;AuthorizedWhenInUse&quot;</span><span class=p>)</span>
-        <span class=k>case</span> <span class=p>.</span><span class=n>authorizedAlways</span><span class=p>:</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;AuthorizedAlways&quot;</span><span class=p>)</span>
-        <span class=k>case</span> <span class=p>.</span><span class=n>denied</span><span class=p>:</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Denied&quot;</span><span class=p>)</span>
-        <span class=k>case</span> <span class=p>.</span><span class=n>restricted</span><span class=p>:</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Restricted&quot;</span><span class=p>)</span>
-        <span class=k>case</span> <span class=p>.</span><span class=n>notDetermined</span><span class=p>:</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;NotDetermined&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal>  1</span>
-<span class=normal>  2</span>
-<span class=normal>  3</span>
-<span class=normal>  4</span>
-<span class=normal>  5</span>
-<span class=normal>  6</span>
-<span class=normal>  7</span>
-<span class=normal>  8</span>
-<span class=normal>  9</span>
-<span class=normal> 10</span>
-<span class=normal> 11</span>
-<span class=normal> 12</span>
-<span class=normal> 13</span>
-<span class=normal> 14</span>
-<span class=normal> 15</span>
-<span class=normal> 16</span>
-<span class=normal> 17</span>
-<span class=normal> 18</span>
-<span class=normal> 19</span>
-<span class=normal> 20</span>
-<span class=normal> 21</span>
-<span class=normal> 22</span>
-<span class=normal> 23</span>
-<span class=normal> 24</span>
-<span class=normal> 25</span>
-<span class=normal> 26</span>
-<span class=normal> 27</span>
-<span class=normal> 28</span>
-<span class=normal> 29</span>
-<span class=normal> 30</span>
-<span class=normal> 31</span>
-<span class=normal> 32</span>
-<span class=normal> 33</span>
-<span class=normal> 34</span>
-<span class=normal> 35</span>
-<span class=normal> 36</span>
-<span class=normal> 37</span>
-<span class=normal> 38</span>
-<span class=normal> 39</span>
-<span class=normal> 40</span>
-<span class=normal> 41</span>
-<span class=normal> 42</span>
-<span class=normal> 43</span>
-<span class=normal> 44</span>
-<span class=normal> 45</span>
-<span class=normal> 46</span>
-<span class=normal> 47</span>
-<span class=normal> 48</span>
-<span class=normal> 49</span>
-<span class=normal> 50</span>
-<span class=normal> 51</span>
-<span class=normal> 52</span>
-<span class=normal> 53</span>
-<span class=normal> 54</span>
-<span class=normal> 55</span>
-<span class=normal> 56</span>
-<span class=normal> 57</span>
-<span class=normal> 58</span>
-<span class=normal> 59</span>
-<span class=normal> 60</span>
-<span class=normal> 61</span>
-<span class=normal> 62</span>
-<span class=normal> 63</span>
-<span class=normal> 64</span>
-<span class=normal> 65</span>
-<span class=normal> 66</span>
-<span class=normal> 67</span>
-<span class=normal> 68</span>
-<span class=normal> 69</span>
-<span class=normal> 70</span>
-<span class=normal> 71</span>
-<span class=normal> 72</span>
-<span class=normal> 73</span>
-<span class=normal> 74</span>
-<span class=normal> 75</span>
-<span class=normal> 76</span>
-<span class=normal> 77</span>
-<span class=normal> 78</span>
-<span class=normal> 79</span>
-<span class=normal> 80</span>
-<span class=normal> 81</span>
-<span class=normal> 82</span>
-<span class=normal> 83</span>
-<span class=normal> 84</span>
-<span class=normal> 85</span>
-<span class=normal> 86</span>
-<span class=normal> 87</span>
-<span class=normal> 88</span>
-<span class=normal> 89</span>
-<span class=normal> 90</span>
-<span class=normal> 91</span>
-<span class=normal> 92</span>
-<span class=normal> 93</span>
-<span class=normal> 94</span>
-<span class=normal> 95</span>
-<span class=normal> 96</span>
-<span class=normal> 97</span>
-<span class=normal> 98</span>
-<span class=normal> 99</span>
-<span class=normal>100</span>
-<span class=normal>101</span>
-<span class=normal>102</span>
-<span class=normal>103</span>
-<span class=normal>104</span>
-<span class=normal>105</span>
-<span class=normal>106</span>
-<span class=normal>107</span>
-<span class=normal>108</span>
-<span class=normal>109</span>
-<span class=normal>110</span>
-<span class=normal>111</span>
-<span class=normal>112</span>
-<span class=normal>113</span>
-<span class=normal>114</span>
-<span class=normal>115</span>
-<span class=normal>116</span>
-<span class=normal>117</span>
-<span class=normal>118</span>
-<span class=normal>119</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  MapKit003</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
-
-<span class=kd>import</span> <span class=nc>UIKit</span>
-<span class=kd>import</span> <span class=nc>MapKit</span>
-<span class=kd>import</span> <span class=nc>CoreLocation</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>MKMapViewDelegate</span><span class=p>,</span> <span class=bp>CLLocationManagerDelegate</span> <span class=p>{</span>
-
-    <span class=kd>var</span> <span class=nv>myMapView</span><span class=p>:</span> <span class=bp>MKMapView</span><span class=p>!</span>
-    <span class=kd>var</span> <span class=nv>myLocationManager</span><span class=p>:</span> <span class=bp>CLLocationManager</span><span class=p>!</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-
-        <span class=c1>// LocationManagerの生成.</span>
-        <span class=n>myLocationManager</span> <span class=p>=</span> <span class=bp>CLLocationManager</span><span class=p>()</span>
-
-        <span class=c1>// Delegateの設定.</span>
-        <span class=n>myLocationManager</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
-
-        <span class=c1>// 距離のフィルタ.</span>
-        <span class=n>myLocationManager</span><span class=p>.</span><span class=n>distanceFilter</span> <span class=p>=</span> <span class=mf>100.0</span>
-
-        <span class=c1>// 精度.</span>
-        <span class=n>myLocationManager</span><span class=p>.</span><span class=n>desiredAccuracy</span> <span class=p>=</span> <span class=n>kCLLocationAccuracyHundredMeters</span>
-
-        <span class=c1>// セキュリティ認証のステータスを取得.</span>
-        <span class=kd>let</span> <span class=nv>status</span> <span class=p>=</span> <span class=bp>CLLocationManager</span><span class=p>.</span><span class=n>authorizationStatus</span><span class=p>()</span>
-
-        <span class=c1>// まだ認証が得られていない場合は、認証ダイアログを表示.</span>
-        <span class=k>if</span><span class=p>(</span><span class=n>status</span> <span class=o>!=</span> <span class=n>CLAuthorizationStatus</span><span class=p>.</span><span class=n>authorizedWhenInUse</span><span class=p>)</span> <span class=p>{</span>
-
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;not determined&quot;</span><span class=p>)</span>
-            <span class=c1>// まだ承認が得られていない場合は、認証ダイアログを表示.</span>
-            <span class=n>myLocationManager</span><span class=p>.</span><span class=n>requestWhenInUseAuthorization</span><span class=p>()</span>
-        <span class=p>}</span>
-
-        <span class=c1>// 位置情報の更新を開始.</span>
-        <span class=n>myLocationManager</span><span class=p>.</span><span class=n>startUpdatingLocation</span><span class=p>()</span>
-
-        <span class=c1>// MapViewの生成.</span>
-        <span class=n>myMapView</span> <span class=p>=</span> <span class=bp>MKMapView</span><span class=p>()</span>
-
-        <span class=c1>// MapViewのサイズを画面全体に.</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span>
-
-        <span class=c1>// Delegateを設定.</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
-
-        <span class=c1>// MapViewをViewに追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myMapView</span><span class=p>)</span>
-
-        <span class=c1>// 中心点の緯度経度.</span>
-        <span class=kd>let</span> <span class=nv>myLat</span><span class=p>:</span> <span class=n>CLLocationDegrees</span> <span class=p>=</span> <span class=mf>37.506804</span>
-        <span class=kd>let</span> <span class=nv>myLon</span><span class=p>:</span> <span class=n>CLLocationDegrees</span> <span class=p>=</span> <span class=mf>139.930531</span>
-        <span class=kd>let</span> <span class=nv>myCoordinate</span><span class=p>:</span> <span class=bp>CLLocationCoordinate2D</span> <span class=p>=</span> <span class=n>CLLocationCoordinate2DMake</span><span class=p>(</span><span class=n>myLat</span><span class=p>,</span> <span class=n>myLon</span><span class=p>)</span> <span class=k>as</span> <span class=bp>CLLocationCoordinate2D</span>
-
-        <span class=c1>// 縮尺.</span>
-        <span class=kd>let</span> <span class=nv>myLatDist</span> <span class=p>:</span> <span class=n>CLLocationDistance</span> <span class=p>=</span> <span class=mi>100</span>
-        <span class=kd>let</span> <span class=nv>myLonDist</span> <span class=p>:</span> <span class=n>CLLocationDistance</span> <span class=p>=</span> <span class=mi>100</span>
-
-        <span class=c1>// Regionを作成.</span>
-        <span class=kd>let</span> <span class=nv>myRegion</span><span class=p>:</span> <span class=n>MKCoordinateRegion</span> <span class=p>=</span> <span class=n>MKCoordinateRegionMakeWithDistance</span><span class=p>(</span><span class=n>myCoordinate</span><span class=p>,</span> <span class=n>myLatDist</span><span class=p>,</span> <span class=n>myLonDist</span><span class=p>);</span>
-
-        <span class=c1>// MapViewに反映.</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>setRegion</span><span class=p>(</span><span class=n>myRegion</span><span class=p>,</span> <span class=n>animated</span><span class=p>:</span> <span class=kc>true</span><span class=p>)</span>
-
-    <span class=p>}</span>
-
-    <span class=c1>// GPSから値を取得した際に呼び出されるメソッド.</span>
-    <span class=kd>func</span> <span class=nf>locationManager</span><span class=p>(</span><span class=kc>_</span> <span class=n>manager</span><span class=p>:</span> <span class=bp>CLLocationManager</span><span class=p>,</span> <span class=n>didUpdateLocations</span> <span class=n>locations</span><span class=p>:</span> <span class=p>[</span><span class=bp>CLLocation</span><span class=p>])</span> <span class=p>{</span>
-
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;didUpdateLocations&quot;</span><span class=p>)</span>
-
-        <span class=c1>// 配列から現在座標を取得.</span>
-        <span class=kd>let</span> <span class=nv>myLocations</span><span class=p>:</span> <span class=bp>NSArray</span> <span class=p>=</span> <span class=n>locations</span> <span class=k>as</span> <span class=bp>NSArray</span>
-        <span class=kd>let</span> <span class=nv>myLastLocation</span><span class=p>:</span> <span class=bp>CLLocation</span> <span class=p>=</span> <span class=n>myLocations</span><span class=p>.</span><span class=n>lastObject</span> <span class=k>as</span><span class=p>!</span> <span class=bp>CLLocation</span>
-        <span class=kd>let</span> <span class=nv>myLocation</span><span class=p>:</span><span class=bp>CLLocationCoordinate2D</span> <span class=p>=</span> <span class=n>myLastLocation</span><span class=p>.</span><span class=n>coordinate</span>
-
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;</span><span class=si>\(</span><span class=n>myLocation</span><span class=p>.</span><span class=n>latitude</span><span class=si>)</span><span class=s>, </span><span class=si>\(</span><span class=n>myLocation</span><span class=p>.</span><span class=n>longitude</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-
-        <span class=c1>// 縮尺.</span>
-        <span class=kd>let</span> <span class=nv>myLatDist</span> <span class=p>:</span> <span class=n>CLLocationDistance</span> <span class=p>=</span> <span class=mi>100</span>
-        <span class=kd>let</span> <span class=nv>myLonDist</span> <span class=p>:</span> <span class=n>CLLocationDistance</span> <span class=p>=</span> <span class=mi>100</span>
-
-        <span class=c1>// Regionを作成.</span>
-        <span class=kd>let</span> <span class=nv>myRegion</span><span class=p>:</span> <span class=n>MKCoordinateRegion</span> <span class=p>=</span> <span class=n>MKCoordinateRegionMakeWithDistance</span><span class=p>(</span><span class=n>myLocation</span><span class=p>,</span> <span class=n>myLatDist</span><span class=p>,</span> <span class=n>myLonDist</span><span class=p>);</span>
-
-        <span class=c1>// MapViewに反映.</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>setRegion</span><span class=p>(</span><span class=n>myRegion</span><span class=p>,</span> <span class=n>animated</span><span class=p>:</span> <span class=kc>true</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=c1>// Regionが変更した時に呼び出されるメソッド.</span>
-    <span class=kd>func</span> <span class=nf>mapView</span><span class=p>(</span><span class=kc>_</span> <span class=n>mapView</span><span class=p>:</span> <span class=bp>MKMapView</span><span class=p>,</span> <span class=n>regionDidChangeAnimated</span> <span class=n>animated</span><span class=p>:</span> <span class=nb>Bool</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;regionDidChangeAnimated&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=c1>// 認証が変更された時に呼び出されるメソッド.</span>
-    <span class=kd>private</span> <span class=kd>func</span> <span class=nf>locationManager</span><span class=p>(</span><span class=n>manager</span><span class=p>:</span> <span class=bp>CLLocationManager</span><span class=p>,</span> <span class=n>didChangeAuthorizationStatus</span> <span class=n>status</span><span class=p>:</span> <span class=n>CLAuthorizationStatus</span><span class=p>)</span> <span class=p>{</span>
-        <span class=k>switch</span> <span class=n>status</span><span class=p>{</span>
-        <span class=k>case</span> <span class=p>.</span><span class=n>authorizedWhenInUse</span><span class=p>:</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;AuthorizedWhenInUse&quot;</span><span class=p>)</span>
-        <span class=k>case</span> <span class=p>.</span><span class=n>authorized</span><span class=p>:</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Authorized&quot;</span><span class=p>)</span>
-        <span class=k>case</span> <span class=p>.</span><span class=n>denied</span><span class=p>:</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Denied&quot;</span><span class=p>)</span>
-        <span class=k>case</span> <span class=p>.</span><span class=n>restricted</span><span class=p>:</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Restricted&quot;</span><span class=p>)</span>
-        <span class=k>case</span> <span class=p>.</span><span class=n>notDetermined</span><span class=p>:</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;NotDetermined&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
-    <span class=p>}</span> 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal>  1</span>
-<span class=normal>  2</span>
-<span class=normal>  3</span>
-<span class=normal>  4</span>
-<span class=normal>  5</span>
-<span class=normal>  6</span>
-<span class=normal>  7</span>
-<span class=normal>  8</span>
-<span class=normal>  9</span>
-<span class=normal> 10</span>
-<span class=normal> 11</span>
-<span class=normal> 12</span>
-<span class=normal> 13</span>
-<span class=normal> 14</span>
-<span class=normal> 15</span>
-<span class=normal> 16</span>
-<span class=normal> 17</span>
-<span class=normal> 18</span>
-<span class=normal> 19</span>
-<span class=normal> 20</span>
-<span class=normal> 21</span>
-<span class=normal> 22</span>
-<span class=normal> 23</span>
-<span class=normal> 24</span>
-<span class=normal> 25</span>
-<span class=normal> 26</span>
-<span class=normal> 27</span>
-<span class=normal> 28</span>
-<span class=normal> 29</span>
-<span class=normal> 30</span>
-<span class=normal> 31</span>
-<span class=normal> 32</span>
-<span class=normal> 33</span>
-<span class=normal> 34</span>
-<span class=normal> 35</span>
-<span class=normal> 36</span>
-<span class=normal> 37</span>
-<span class=normal> 38</span>
-<span class=normal> 39</span>
-<span class=normal> 40</span>
-<span class=normal> 41</span>
-<span class=normal> 42</span>
-<span class=normal> 43</span>
-<span class=normal> 44</span>
-<span class=normal> 45</span>
-<span class=normal> 46</span>
-<span class=normal> 47</span>
-<span class=normal> 48</span>
-<span class=normal> 49</span>
-<span class=normal> 50</span>
-<span class=normal> 51</span>
-<span class=normal> 52</span>
-<span class=normal> 53</span>
-<span class=normal> 54</span>
-<span class=normal> 55</span>
-<span class=normal> 56</span>
-<span class=normal> 57</span>
-<span class=normal> 58</span>
-<span class=normal> 59</span>
-<span class=normal> 60</span>
-<span class=normal> 61</span>
-<span class=normal> 62</span>
-<span class=normal> 63</span>
-<span class=normal> 64</span>
-<span class=normal> 65</span>
-<span class=normal> 66</span>
-<span class=normal> 67</span>
-<span class=normal> 68</span>
-<span class=normal> 69</span>
-<span class=normal> 70</span>
-<span class=normal> 71</span>
-<span class=normal> 72</span>
-<span class=normal> 73</span>
-<span class=normal> 74</span>
-<span class=normal> 75</span>
-<span class=normal> 76</span>
-<span class=normal> 77</span>
-<span class=normal> 78</span>
-<span class=normal> 79</span>
-<span class=normal> 80</span>
-<span class=normal> 81</span>
-<span class=normal> 82</span>
-<span class=normal> 83</span>
-<span class=normal> 84</span>
-<span class=normal> 85</span>
-<span class=normal> 86</span>
-<span class=normal> 87</span>
-<span class=normal> 88</span>
-<span class=normal> 89</span>
-<span class=normal> 90</span>
-<span class=normal> 91</span>
-<span class=normal> 92</span>
-<span class=normal> 93</span>
-<span class=normal> 94</span>
-<span class=normal> 95</span>
-<span class=normal> 96</span>
-<span class=normal> 97</span>
-<span class=normal> 98</span>
-<span class=normal> 99</span>
-<span class=normal>100</span>
-<span class=normal>101</span>
-<span class=normal>102</span>
-<span class=normal>103</span>
-<span class=normal>104</span>
-<span class=normal>105</span>
-<span class=normal>106</span>
-<span class=normal>107</span>
-<span class=normal>108</span>
-<span class=normal>109</span>
-<span class=normal>110</span>
-<span class=normal>111</span>
-<span class=normal>112</span>
-<span class=normal>113</span>
-<span class=normal>114</span>
-<span class=normal>115</span>
-<span class=normal>116</span>
-<span class=normal>117</span>
-<span class=normal>118</span>
-<span class=normal>119</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  MapKit003</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by Misato Morino on 2016/08/15.</span>
-<span class=c1>//  Copyright © 2016年 Misato Morino. All rights reserved.</span>
-<span class=c1>//</span>
-
-<span class=kd>import</span> <span class=nc>UIKit</span>
-<span class=kd>import</span> <span class=nc>MapKit</span>
-<span class=kd>import</span> <span class=nc>CoreLocation</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span><span class=p>,</span> <span class=bp>MKMapViewDelegate</span><span class=p>,</span> <span class=bp>CLLocationManagerDelegate</span> <span class=p>{</span>
-
-    <span class=kd>var</span> <span class=nv>myMapView</span><span class=p>:</span> <span class=bp>MKMapView</span><span class=p>!</span>
-    <span class=kd>var</span> <span class=nv>myLocationManager</span><span class=p>:</span> <span class=bp>CLLocationManager</span><span class=p>!</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-
-        <span class=c1>// LocationManagerの生成.</span>
-        <span class=n>myLocationManager</span> <span class=p>=</span> <span class=bp>CLLocationManager</span><span class=p>()</span>
-
-        <span class=c1>// Delegateの設定.</span>
-        <span class=n>myLocationManager</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
-
-        <span class=c1>// 距離のフィルタ.</span>
-        <span class=n>myLocationManager</span><span class=p>.</span><span class=n>distanceFilter</span> <span class=p>=</span> <span class=mf>100.0</span>
-
-        <span class=c1>// 精度.</span>
-        <span class=n>myLocationManager</span><span class=p>.</span><span class=n>desiredAccuracy</span> <span class=p>=</span> <span class=n>kCLLocationAccuracyHundredMeters</span>
-
-        <span class=c1>// セキュリティ認証のステータスを取得.</span>
-        <span class=kd>let</span> <span class=nv>status</span> <span class=p>=</span> <span class=bp>CLLocationManager</span><span class=p>.</span><span class=n>authorizationStatus</span><span class=p>()</span>
-
-        <span class=c1>// まだ認証が得られていない場合は、認証ダイアログを表示.</span>
-        <span class=k>if</span><span class=p>(</span><span class=n>status</span> <span class=o>!=</span> <span class=n>CLAuthorizationStatus</span><span class=p>.</span><span class=n>AuthorizedWhenInUse</span><span class=p>)</span> <span class=p>{</span>
-
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;not determined&quot;</span><span class=p>)</span>
-            <span class=c1>// まだ承認が得られていない場合は、認証ダイアログを表示.</span>
-            <span class=n>myLocationManager</span><span class=p>.</span><span class=n>requestWhenInUseAuthorization</span><span class=p>()</span>
-        <span class=p>}</span>
-
-        <span class=c1>// 位置情報の更新を開始.</span>
-        <span class=n>myLocationManager</span><span class=p>.</span><span class=n>startUpdatingLocation</span><span class=p>()</span>
-
-        <span class=c1>// MapViewの生成.</span>
-        <span class=n>myMapView</span> <span class=p>=</span> <span class=bp>MKMapView</span><span class=p>()</span>
-
-        <span class=c1>// MapViewのサイズを画面全体に.</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span>
-
-        <span class=c1>// Delegateを設定.</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>delegate</span> <span class=p>=</span> <span class=kc>self</span>
-
-        <span class=c1>// MapViewをViewに追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myMapView</span><span class=p>)</span>
-
-        <span class=c1>// 中心点の緯度経度.</span>
-        <span class=kd>let</span> <span class=nv>myLat</span><span class=p>:</span> <span class=n>CLLocationDegrees</span> <span class=p>=</span> <span class=mf>37.506804</span>
-        <span class=kd>let</span> <span class=nv>myLon</span><span class=p>:</span> <span class=n>CLLocationDegrees</span> <span class=p>=</span> <span class=mf>139.930531</span>
-        <span class=kd>let</span> <span class=nv>myCoordinate</span><span class=p>:</span> <span class=bp>CLLocationCoordinate2D</span> <span class=p>=</span> <span class=n>CLLocationCoordinate2DMake</span><span class=p>(</span><span class=n>myLat</span><span class=p>,</span> <span class=n>myLon</span><span class=p>)</span> <span class=k>as</span> <span class=bp>CLLocationCoordinate2D</span>
-
-        <span class=c1>// 縮尺.</span>
-        <span class=kd>let</span> <span class=nv>myLatDist</span> <span class=p>:</span> <span class=n>CLLocationDistance</span> <span class=p>=</span> <span class=mi>100</span>
-        <span class=kd>let</span> <span class=nv>myLonDist</span> <span class=p>:</span> <span class=n>CLLocationDistance</span> <span class=p>=</span> <span class=mi>100</span>
-
-        <span class=c1>// Regionを作成.</span>
-        <span class=kd>let</span> <span class=nv>myRegion</span><span class=p>:</span> <span class=n>MKCoordinateRegion</span> <span class=p>=</span> <span class=n>MKCoordinateRegionMakeWithDistance</span><span class=p>(</span><span class=n>myCoordinate</span><span class=p>,</span> <span class=n>myLatDist</span><span class=p>,</span> <span class=n>myLonDist</span><span class=p>);</span>
-
-        <span class=c1>// MapViewに反映.</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>setRegion</span><span class=p>(</span><span class=n>myRegion</span><span class=p>,</span> <span class=n>animated</span><span class=p>:</span> <span class=kc>true</span><span class=p>)</span>
-
-    <span class=p>}</span>
-
-    <span class=c1>// GPSから値を取得した際に呼び出されるメソッド.</span>
-    <span class=kd>func</span> <span class=nf>locationManager</span><span class=p>(</span><span class=n>manager</span><span class=p>:</span> <span class=bp>CLLocationManager</span><span class=p>,</span> <span class=n>didUpdateLocations</span> <span class=n>locations</span><span class=p>:</span> <span class=p>[</span><span class=bp>CLLocation</span><span class=p>])</span> <span class=p>{</span>
-
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;didUpdateLocations&quot;</span><span class=p>)</span>
-
-        <span class=c1>// 配列から現在座標を取得.</span>
-        <span class=kd>let</span> <span class=nv>myLocations</span><span class=p>:</span> <span class=bp>NSArray</span> <span class=p>=</span> <span class=n>locations</span> <span class=k>as</span> <span class=bp>NSArray</span>
-        <span class=kd>let</span> <span class=nv>myLastLocation</span><span class=p>:</span> <span class=bp>CLLocation</span> <span class=p>=</span> <span class=n>myLocations</span><span class=p>.</span><span class=n>lastObject</span> <span class=k>as</span><span class=p>!</span> <span class=bp>CLLocation</span>
-        <span class=kd>let</span> <span class=nv>myLocation</span><span class=p>:</span><span class=bp>CLLocationCoordinate2D</span> <span class=p>=</span> <span class=n>myLastLocation</span><span class=p>.</span><span class=n>coordinate</span>
-
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;</span><span class=si>\(</span><span class=n>myLocation</span><span class=p>.</span><span class=n>latitude</span><span class=si>)</span><span class=s>, </span><span class=si>\(</span><span class=n>myLocation</span><span class=p>.</span><span class=n>longitude</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-
-        <span class=c1>// 縮尺.</span>
-        <span class=kd>let</span> <span class=nv>myLatDist</span> <span class=p>:</span> <span class=n>CLLocationDistance</span> <span class=p>=</span> <span class=mi>100</span>
-        <span class=kd>let</span> <span class=nv>myLonDist</span> <span class=p>:</span> <span class=n>CLLocationDistance</span> <span class=p>=</span> <span class=mi>100</span>
-
-        <span class=c1>// Regionを作成.</span>
-        <span class=kd>let</span> <span class=nv>myRegion</span><span class=p>:</span> <span class=n>MKCoordinateRegion</span> <span class=p>=</span> <span class=n>MKCoordinateRegionMakeWithDistance</span><span class=p>(</span><span class=n>myLocation</span><span class=p>,</span> <span class=n>myLatDist</span><span class=p>,</span> <span class=n>myLonDist</span><span class=p>);</span>
-
-        <span class=c1>// MapViewに反映.</span>
-        <span class=n>myMapView</span><span class=p>.</span><span class=n>setRegion</span><span class=p>(</span><span class=n>myRegion</span><span class=p>,</span> <span class=n>animated</span><span class=p>:</span> <span class=kc>true</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=c1>// Regionが変更した時に呼び出されるメソッド.</span>
-    <span class=kd>func</span> <span class=nf>mapView</span><span class=p>(</span><span class=n>mapView</span><span class=p>:</span> <span class=bp>MKMapView</span><span class=p>,</span> <span class=n>regionDidChangeAnimated</span> <span class=n>animated</span><span class=p>:</span> <span class=nb>Bool</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;regionDidChangeAnimated&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=c1>// 認証が変更された時に呼び出されるメソッド.</span>
-    <span class=kd>func</span> <span class=nf>locationManager</span><span class=p>(</span><span class=n>manager</span><span class=p>:</span> <span class=bp>CLLocationManager</span><span class=p>,</span> <span class=n>didChangeAuthorizationStatus</span> <span class=n>status</span><span class=p>:</span> <span class=n>CLAuthorizationStatus</span><span class=p>)</span> <span class=p>{</span>
-        <span class=k>switch</span> <span class=n>status</span><span class=p>{</span>
-        <span class=k>case</span> <span class=p>.</span><span class=n>AuthorizedWhenInUse</span><span class=p>:</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;AuthorizedWhenInUse&quot;</span><span class=p>)</span>
-        <span class=k>case</span> <span class=p>.</span><span class=n>Authorized</span><span class=p>:</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Authorized&quot;</span><span class=p>)</span>
-        <span class=k>case</span> <span class=p>.</span><span class=n>Denied</span><span class=p>:</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Denied&quot;</span><span class=p>)</span>
-        <span class=k>case</span> <span class=p>.</span><span class=n>Restricted</span><span class=p>:</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;Restricted&quot;</span><span class=p>)</span>
-        <span class=k>case</span> <span class=p>.</span><span class=n>NotDetermined</span><span class=p>:</span>
-            <span class=bp>print</span><span class=p>(</span><span class=s>&quot;NotDetermined&quot;</span><span class=p>)</span>
-        <span class=p>}</span>
-    <span class=p>}</span> 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>
+//
+//  ViewController.swift
+//  MapKit003
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
+
+import UIKit
+import MapKit
+import CoreLocation
+
+class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+
+    var myMapView: MKMapView!
+    var myLocationManager: CLLocationManager!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // LocationManagerの生成.
+        myLocationManager = CLLocationManager()
+
+        // Delegateの設定.
+        myLocationManager.delegate = self
+
+        // 距離のフィルタ.
+        myLocationManager.distanceFilter = 100.0
+
+        // 精度.
+        myLocationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+
+        // セキュリティ認証のステータスを取得.
+        let status = CLLocationManager.authorizationStatus()
+
+        // まだ認証が得られていない場合は、認証ダイアログを表示.
+        if(status != CLAuthorizationStatus.authorizedWhenInUse) {
+
+            print(&quot;not determined&quot;)
+            // まだ承認が得られていない場合は、認証ダイアログを表示.
+            myLocationManager.requestWhenInUseAuthorization()
+        }
+
+        // 位置情報の更新を開始.
+        myLocationManager.startUpdatingLocation()
+
+        // MapViewの生成.
+        myMapView = MKMapView()
+
+        // MapViewのサイズを画面全体に.
+        myMapView.frame = self.view.bounds
+
+        // Delegateを設定.
+        myMapView.delegate = self
+
+        // MapViewをViewに追加.
+        self.view.addSubview(myMapView)
+
+        // 中心点の緯度経度.
+        let myLat: CLLocationDegrees = 37.506804
+        let myLon: CLLocationDegrees = 139.930531
+        let myCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(myLat, myLon) as CLLocationCoordinate2D
+
+        // 縮尺.
+        let myLatDist : CLLocationDistance = 100
+        let myLonDist : CLLocationDistance = 100
+
+        // Regionを作成.
+        let myRegion: MKCoordinateRegion = MKCoordinateRegion(center: myCoordinate, latitudinalMeters: myLatDist, longitudinalMeters: myLonDist);
+
+        // MapViewに反映.
+        myMapView.setRegion(myRegion, animated: true)
+
+    }
+
+    // GPSから値を取得した際に呼び出されるメソッド.
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+
+        print(&quot;didUpdateLocations&quot;)
+
+        // 配列から現在座標を取得.
+        let myLocations: NSArray = locations as NSArray
+        let myLastLocation: CLLocation = myLocations.lastObject as! CLLocation
+        let myLocation:CLLocationCoordinate2D = myLastLocation.coordinate
+
+        print(&quot;\(myLocation.latitude), \(myLocation.longitude)&quot;)
+
+        // 縮尺.
+        let myLatDist : CLLocationDistance = 100
+        let myLonDist : CLLocationDistance = 100
+
+        // Regionを作成.
+        let myRegion: MKCoordinateRegion = MKCoordinateRegion(center: myLocation, latitudinalMeters: myLatDist, longitudinalMeters: myLonDist);
+
+        // MapViewに反映.
+        myMapView.setRegion(myRegion, animated: true)
+    }
+
+    // Regionが変更した時に呼び出されるメソッド.
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        print(&quot;regionDidChangeAnimated&quot;)
+    }
+
+    // 認証が変更された時に呼び出されるメソッド.
+    private func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        switch status{
+        case .authorizedWhenInUse:
+            print(&quot;AuthorizedWhenInUse&quot;)
+        case .authorizedAlways:
+            print(&quot;AuthorizedAlways&quot;)
+        case .denied:
+            print(&quot;Denied&quot;)
+        case .restricted:
+            print(&quot;Restricted&quot;)
+        case .notDetermined:
+            print(&quot;NotDetermined&quot;)
+        }
+    }
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  MapKit003
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
+
+import UIKit
+import MapKit
+import CoreLocation
+
+class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+
+    var myMapView: MKMapView!
+    var myLocationManager: CLLocationManager!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // LocationManagerの生成.
+        myLocationManager = CLLocationManager()
+
+        // Delegateの設定.
+        myLocationManager.delegate = self
+
+        // 距離のフィルタ.
+        myLocationManager.distanceFilter = 100.0
+
+        // 精度.
+        myLocationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+
+        // セキュリティ認証のステータスを取得.
+        let status = CLLocationManager.authorizationStatus()
+
+        // まだ認証が得られていない場合は、認証ダイアログを表示.
+        if(status != CLAuthorizationStatus.authorizedWhenInUse) {
+
+            print(&quot;not determined&quot;)
+            // まだ承認が得られていない場合は、認証ダイアログを表示.
+            myLocationManager.requestWhenInUseAuthorization()
+        }
+
+        // 位置情報の更新を開始.
+        myLocationManager.startUpdatingLocation()
+
+        // MapViewの生成.
+        myMapView = MKMapView()
+
+        // MapViewのサイズを画面全体に.
+        myMapView.frame = self.view.bounds
+
+        // Delegateを設定.
+        myMapView.delegate = self
+
+        // MapViewをViewに追加.
+        self.view.addSubview(myMapView)
+
+        // 中心点の緯度経度.
+        let myLat: CLLocationDegrees = 37.506804
+        let myLon: CLLocationDegrees = 139.930531
+        let myCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(myLat, myLon) as CLLocationCoordinate2D
+
+        // 縮尺.
+        let myLatDist : CLLocationDistance = 100
+        let myLonDist : CLLocationDistance = 100
+
+        // Regionを作成.
+        let myRegion: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(myCoordinate, myLatDist, myLonDist);
+
+        // MapViewに反映.
+        myMapView.setRegion(myRegion, animated: true)
+
+    }
+
+    // GPSから値を取得した際に呼び出されるメソッド.
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+
+        print(&quot;didUpdateLocations&quot;)
+
+        // 配列から現在座標を取得.
+        let myLocations: NSArray = locations as NSArray
+        let myLastLocation: CLLocation = myLocations.lastObject as! CLLocation
+        let myLocation:CLLocationCoordinate2D = myLastLocation.coordinate
+
+        print(&quot;\(myLocation.latitude), \(myLocation.longitude)&quot;)
+
+        // 縮尺.
+        let myLatDist : CLLocationDistance = 100
+        let myLonDist : CLLocationDistance = 100
+
+        // Regionを作成.
+        let myRegion: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(myLocation, myLatDist, myLonDist);
+
+        // MapViewに反映.
+        myMapView.setRegion(myRegion, animated: true)
+    }
+
+    // Regionが変更した時に呼び出されるメソッド.
+    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        print(&quot;regionDidChangeAnimated&quot;)
+    }
+
+    // 認証が変更された時に呼び出されるメソッド.
+    private func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        switch status{
+        case .authorizedWhenInUse:
+            print(&quot;AuthorizedWhenInUse&quot;)
+        case .authorized:
+            print(&quot;Authorized&quot;)
+        case .denied:
+            print(&quot;Denied&quot;)
+        case .restricted:
+            print(&quot;Restricted&quot;)
+        case .notDetermined:
+            print(&quot;NotDetermined&quot;)
+        }
+    } 
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  MapKit003
+//
+//  Created by Misato Morino on 2016/08/15.
+//  Copyright © 2016年 Misato Morino. All rights reserved.
+//
+
+import UIKit
+import MapKit
+import CoreLocation
+
+class ViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
+
+    var myMapView: MKMapView!
+    var myLocationManager: CLLocationManager!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // LocationManagerの生成.
+        myLocationManager = CLLocationManager()
+
+        // Delegateの設定.
+        myLocationManager.delegate = self
+
+        // 距離のフィルタ.
+        myLocationManager.distanceFilter = 100.0
+
+        // 精度.
+        myLocationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
+
+        // セキュリティ認証のステータスを取得.
+        let status = CLLocationManager.authorizationStatus()
+
+        // まだ認証が得られていない場合は、認証ダイアログを表示.
+        if(status != CLAuthorizationStatus.AuthorizedWhenInUse) {
+
+            print(&quot;not determined&quot;)
+            // まだ承認が得られていない場合は、認証ダイアログを表示.
+            myLocationManager.requestWhenInUseAuthorization()
+        }
+
+        // 位置情報の更新を開始.
+        myLocationManager.startUpdatingLocation()
+
+        // MapViewの生成.
+        myMapView = MKMapView()
+
+        // MapViewのサイズを画面全体に.
+        myMapView.frame = self.view.bounds
+
+        // Delegateを設定.
+        myMapView.delegate = self
+
+        // MapViewをViewに追加.
+        self.view.addSubview(myMapView)
+
+        // 中心点の緯度経度.
+        let myLat: CLLocationDegrees = 37.506804
+        let myLon: CLLocationDegrees = 139.930531
+        let myCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(myLat, myLon) as CLLocationCoordinate2D
+
+        // 縮尺.
+        let myLatDist : CLLocationDistance = 100
+        let myLonDist : CLLocationDistance = 100
+
+        // Regionを作成.
+        let myRegion: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(myCoordinate, myLatDist, myLonDist);
+
+        // MapViewに反映.
+        myMapView.setRegion(myRegion, animated: true)
+
+    }
+
+    // GPSから値を取得した際に呼び出されるメソッド.
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+
+        print(&quot;didUpdateLocations&quot;)
+
+        // 配列から現在座標を取得.
+        let myLocations: NSArray = locations as NSArray
+        let myLastLocation: CLLocation = myLocations.lastObject as! CLLocation
+        let myLocation:CLLocationCoordinate2D = myLastLocation.coordinate
+
+        print(&quot;\(myLocation.latitude), \(myLocation.longitude)&quot;)
+
+        // 縮尺.
+        let myLatDist : CLLocationDistance = 100
+        let myLonDist : CLLocationDistance = 100
+
+        // Regionを作成.
+        let myRegion: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(myLocation, myLatDist, myLonDist);
+
+        // MapViewに反映.
+        myMapView.setRegion(myRegion, animated: true)
+    }
+
+    // Regionが変更した時に呼び出されるメソッド.
+    func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+        print(&quot;regionDidChangeAnimated&quot;)
+    }
+
+    // 認証が変更された時に呼び出されるメソッド.
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        switch status{
+        case .AuthorizedWhenInUse:
+            print(&quot;AuthorizedWhenInUse&quot;)
+        case .Authorized:
+            print(&quot;Authorized&quot;)
+        case .Denied:
+            print(&quot;Denied&quot;)
+        case .Restricted:
+            print(&quot;Restricted&quot;)
+        case .NotDetermined:
+            print(&quot;NotDetermined&quot;)
+        }
+    } 
+}
+</code></pre></div></div>
 <h3 id="infoplist">Info.plist</h3>
-<p> <table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal>1</span>
-<span class=normal>2</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=nt>&lt;key&gt;</span>NSLocationWhenInUseUsageDescription<span class=nt>&lt;/key&gt;</span>
-<span class=nt>&lt;string&gt;</span>Use Location<span class=nt>&lt;/string&gt;</span>
-</code></pre></div></td></tr></table></p>
+<p> <pre><code class=xml>&lt;key&gt;NSLocationWhenInUseUsageDescription&lt;/key&gt;
+&lt;string&gt;Use Location&lt;/string&gt;
+</code></pre></p>
 <p>上記の内容をinfo.plistに追加</p>
 <h2 id="3x4x">3.xと4.xの差分</h2>
 <ul>

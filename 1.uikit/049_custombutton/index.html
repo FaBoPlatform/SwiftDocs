@@ -2345,686 +2345,351 @@
                 
                 <h1 id="button">カスタマイズButton</h1>
 <p><img alt="Preview uikit049" src="../img/uikit049.png" /></p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit049_4.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/21.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit049_4.0
+//
+//  Created by KimikoWatanabe on 2016/08/21.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class ViewController: UIViewController {
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=kd>let</span> <span class=nv>myButton</span> <span class=p>=</span> <span class=n>MyButton</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>50</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>50</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=mi>100</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>100</span><span class=p>))</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;ボタン&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=bp>UIControl</span><span class=p>.</span><span class=n>State</span><span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=bp>UIControl</span><span class=p>.</span><span class=n>State</span><span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>touchUpInside</span><span class=p>)</span>
+        let myButton = MyButton(frame: CGRect(x:50, y:50, width:100, height:100))
+        myButton.setTitle(&quot;ボタン&quot;, for: UIControl.State.normal)
+        myButton.setTitleColor(UIColor.black, for: UIControl.State.normal)
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(sender:)), for: .touchUpInside)
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>)</span>
+        self.view.addSubview(myButton)
 
-    <span class=p>}</span>
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-        <span class=c1>// Dispose of any resources that can be recreated.</span>
-    <span class=p>}</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     ボタンイベント.</span>
-<span class=cm>     */</span>
-    <span class=kr>@objc</span> <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>){</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;onClickMyButton:&quot;</span><span class=p>)</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;sender.currentTitile: </span><span class=si>\(</span><span class=n>sender</span><span class=p>.</span><span class=n>currentTitle</span><span class=p>!</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+    /*
+     ボタンイベント.
+     */
+    @objc func onClickMyButton(sender: UIButton){
+        print(&quot;onClickMyButton:&quot;)
+        print(&quot;sender.currentTitile: \(sender.currentTitle!)&quot;)
+    }
 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit049_3.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/21.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit049_3.0
+//
+//  Created by KimikoWatanabe on 2016/08/21.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class ViewController: UIViewController {
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=kd>let</span> <span class=nv>myButton</span> <span class=p>=</span> <span class=n>MyButton</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>50</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mi>50</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span><span class=mi>100</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span><span class=mi>100</span><span class=p>))</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;ボタン&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=n>UIControlState</span><span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=n>UIControlState</span><span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>touchUpInside</span><span class=p>)</span>
+        let myButton = MyButton(frame: CGRect(x:50, y:50, width:100, height:100))
+        myButton.setTitle(&quot;ボタン&quot;, for: UIControlState.normal)
+        myButton.setTitleColor(UIColor.black, for: UIControlState.normal)
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(sender:)), for: .touchUpInside)
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>)</span>
+        self.view.addSubview(myButton)
 
-    <span class=p>}</span>
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-        <span class=c1>// Dispose of any resources that can be recreated.</span>
-    <span class=p>}</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     ボタンイベント.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>){</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;onClickMyButton:&quot;</span><span class=p>)</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;sender.currentTitile: </span><span class=si>\(</span><span class=n>sender</span><span class=p>.</span><span class=n>currentTitle</span><span class=p>!</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+    /*
+     ボタンイベント.
+     */
+    func onClickMyButton(sender: UIButton){
+        print(&quot;onClickMyButton:&quot;)
+        print(&quot;sender.currentTitile: \(sender.currentTitle!)&quot;)
+    }
 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit049_2.3</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/21.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit049_2.3
+//
+//  Created by KimikoWatanabe on 2016/08/21.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class ViewController: UIViewController {
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=kd>let</span> <span class=nv>myButton</span> <span class=p>=</span> <span class=n>MyButton</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=mi>50</span><span class=p>,</span> <span class=mi>50</span><span class=p>,</span> <span class=mi>100</span><span class=p>,</span> <span class=mi>100</span><span class=p>))</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;ボタン&quot;</span><span class=p>,</span> <span class=n>forState</span><span class=p>:</span> <span class=n>UIControlState</span><span class=p>.</span><span class=n>Normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>blackColor</span><span class=p>(),</span> <span class=n>forState</span><span class=p>:</span> <span class=n>UIControlState</span><span class=p>.</span><span class=n>Normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=kc>_</span><span class=p>:)),</span> <span class=n>forControlEvents</span><span class=p>:</span> <span class=p>.</span><span class=n>TouchUpInside</span><span class=p>)</span>
+        let myButton = MyButton(frame: CGRectMake(50, 50, 100, 100))
+        myButton.setTitle(&quot;ボタン&quot;, forState: UIControlState.Normal)
+        myButton.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(_:)), forControlEvents: .TouchUpInside)
 
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>)</span>
+        self.view.addSubview(myButton)
 
-    <span class=p>}</span>
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-        <span class=c1>// Dispose of any resources that can be recreated.</span>
-    <span class=p>}</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     ボタンイベント.</span>
-<span class=cm>     */</span>
-    <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>){</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;onClickMyButton:&quot;</span><span class=p>)</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;sender.currentTitile: </span><span class=si>\(</span><span class=n>sender</span><span class=p>.</span><span class=n>currentTitle</span><span class=p>!</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+    /*
+     ボタンイベント.
+     */
+    func onClickMyButton(sender: UIButton){
+        print(&quot;onClickMyButton:&quot;)
+        print(&quot;sender.currentTitile: \(sender.currentTitle!)&quot;)
+    }
 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+}
+</code></pre></div></div>
 <h3 id="mybuttonswift">MyButton.swift</h3>
-<div class=md-fenced-code-tabs id=tab-tab-group-1><input name=tab-group-1 type=radio id=tab-group-1-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-1-0_swift-panel role=tab><label for=tab-group-1-0_swift class=code-tab-label data-lang=swift id=tab-group-1-0_swift-label>Swift 4.x/Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-0_swift-panel aria-labelledby=tab-group-1-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal>  1</span>
-<span class=normal>  2</span>
-<span class=normal>  3</span>
-<span class=normal>  4</span>
-<span class=normal>  5</span>
-<span class=normal>  6</span>
-<span class=normal>  7</span>
-<span class=normal>  8</span>
-<span class=normal>  9</span>
-<span class=normal> 10</span>
-<span class=normal> 11</span>
-<span class=normal> 12</span>
-<span class=normal> 13</span>
-<span class=normal> 14</span>
-<span class=normal> 15</span>
-<span class=normal> 16</span>
-<span class=normal> 17</span>
-<span class=normal> 18</span>
-<span class=normal> 19</span>
-<span class=normal> 20</span>
-<span class=normal> 21</span>
-<span class=normal> 22</span>
-<span class=normal> 23</span>
-<span class=normal> 24</span>
-<span class=normal> 25</span>
-<span class=normal> 26</span>
-<span class=normal> 27</span>
-<span class=normal> 28</span>
-<span class=normal> 29</span>
-<span class=normal> 30</span>
-<span class=normal> 31</span>
-<span class=normal> 32</span>
-<span class=normal> 33</span>
-<span class=normal> 34</span>
-<span class=normal> 35</span>
-<span class=normal> 36</span>
-<span class=normal> 37</span>
-<span class=normal> 38</span>
-<span class=normal> 39</span>
-<span class=normal> 40</span>
-<span class=normal> 41</span>
-<span class=normal> 42</span>
-<span class=normal> 43</span>
-<span class=normal> 44</span>
-<span class=normal> 45</span>
-<span class=normal> 46</span>
-<span class=normal> 47</span>
-<span class=normal> 48</span>
-<span class=normal> 49</span>
-<span class=normal> 50</span>
-<span class=normal> 51</span>
-<span class=normal> 52</span>
-<span class=normal> 53</span>
-<span class=normal> 54</span>
-<span class=normal> 55</span>
-<span class=normal> 56</span>
-<span class=normal> 57</span>
-<span class=normal> 58</span>
-<span class=normal> 59</span>
-<span class=normal> 60</span>
-<span class=normal> 61</span>
-<span class=normal> 62</span>
-<span class=normal> 63</span>
-<span class=normal> 64</span>
-<span class=normal> 65</span>
-<span class=normal> 66</span>
-<span class=normal> 67</span>
-<span class=normal> 68</span>
-<span class=normal> 69</span>
-<span class=normal> 70</span>
-<span class=normal> 71</span>
-<span class=normal> 72</span>
-<span class=normal> 73</span>
-<span class=normal> 74</span>
-<span class=normal> 75</span>
-<span class=normal> 76</span>
-<span class=normal> 77</span>
-<span class=normal> 78</span>
-<span class=normal> 79</span>
-<span class=normal> 80</span>
-<span class=normal> 81</span>
-<span class=normal> 82</span>
-<span class=normal> 83</span>
-<span class=normal> 84</span>
-<span class=normal> 85</span>
-<span class=normal> 86</span>
-<span class=normal> 87</span>
-<span class=normal> 88</span>
-<span class=normal> 89</span>
-<span class=normal> 90</span>
-<span class=normal> 91</span>
-<span class=normal> 92</span>
-<span class=normal> 93</span>
-<span class=normal> 94</span>
-<span class=normal> 95</span>
-<span class=normal> 96</span>
-<span class=normal> 97</span>
-<span class=normal> 98</span>
-<span class=normal> 99</span>
-<span class=normal>100</span>
-<span class=normal>101</span>
-<span class=normal>102</span>
-<span class=normal>103</span>
-<span class=normal>104</span>
-<span class=normal>105</span>
-<span class=normal>106</span>
-<span class=normal>107</span>
-<span class=normal>108</span>
-<span class=normal>109</span>
-<span class=normal>110</span>
-<span class=normal>111</span>
-<span class=normal>112</span>
-<span class=normal>113</span>
-<span class=normal>114</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  MyButton.swift</span>
-<span class=c1>//  UIKit049_4.0</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/21.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-1><input name=tab-group-1 type=radio id=tab-group-1-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-1-0_swift-panel role=tab><label for=tab-group-1-0_swift class=code-tab-label data-lang=swift id=tab-group-1-0_swift-label>Swift 4.x/Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-0_swift-panel aria-labelledby=tab-group-1-0_swift-label><pre><code class=swift>//
+//  MyButton.swift
+//  UIKit049_4.0
+//
+//  Created by KimikoWatanabe on 2016/08/21.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>Foundation</span>
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import Foundation
+import UIKit
 
-<span class=kd>class</span> <span class=nc>MyButton</span><span class=p>:</span> <span class=bp>UIButton</span> <span class=p>{</span>
+class MyButton: UIButton {
 
-    <span class=kd>var</span> <span class=nv>myStatus</span><span class=p>:</span> <span class=n>ButtonStatus</span><span class=p>!</span>
-    <span class=kd>enum</span> <span class=nc>ButtonStatus</span> <span class=p>{</span>
-        <span class=k>case</span> <span class=n>Normal</span>
-        <span class=k>case</span> <span class=n>TouchBegan</span>
-        <span class=k>case</span> <span class=n>TouchEnded</span>
-    <span class=p>}</span>
+    var myStatus: ButtonStatus!
+    enum ButtonStatus {
+        case Normal
+        case TouchBegan
+        case TouchEnded
+    }
 
-    <span class=kr>required</span> <span class=kd>init</span><span class=p>(</span><span class=n>coder</span> <span class=n>aDecoder</span><span class=p>:</span> <span class=bp>NSCoder</span><span class=p>)</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>coder</span><span class=p>:</span> <span class=n>aDecoder</span><span class=p>)</span><span class=o>!</span>
-    <span class=p>}</span>
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+    }
 
-    <span class=kr>override</span> <span class=kd>init</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>)</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>frame</span><span class=p>)</span>
-        <span class=n>myStatus</span> <span class=p>=</span> <span class=p>.</span><span class=n>Normal</span>
-    <span class=p>}</span>
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>touchesBegan</span><span class=p>(</span><span class=kc>_</span> <span class=n>touches</span><span class=p>:</span> <span class=n>Set</span><span class=p>&lt;</span><span class=bp>UITouch</span><span class=p>&gt;,</span> <span class=n>with</span> <span class=n>event</span><span class=p>:</span> <span class=bp>UIEvent</span><span class=p>?)</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>touchesBegan</span><span class=p>(</span><span class=n>touches</span><span class=p>,</span> <span class=n>with</span><span class=p>:</span> <span class=n>event</span><span class=p>)</span>
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        myStatus = .Normal
+    }
+    override func touchesBegan(_ touches: Set&lt;UITouch&gt;, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
 
-        <span class=n>myStatus</span> <span class=p>=</span> <span class=p>.</span><span class=n>TouchBegan</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>setNeedsDisplay</span><span class=p>()</span>
-    <span class=p>}</span>
+        myStatus = .TouchBegan
+        self.setNeedsDisplay()
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>touchesEnded</span><span class=p>(</span><span class=kc>_</span> <span class=n>touches</span><span class=p>:</span> <span class=n>Set</span><span class=p>&lt;</span><span class=bp>UITouch</span><span class=p>&gt;,</span> <span class=n>with</span> <span class=n>event</span><span class=p>:</span> <span class=bp>UIEvent</span><span class=p>?)</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>touchesEnded</span><span class=p>(</span><span class=n>touches</span><span class=p>,</span> <span class=n>with</span><span class=p>:</span> <span class=n>event</span><span class=p>)</span>
+    override func touchesEnded(_ touches: Set&lt;UITouch&gt;, with event: UIEvent?) {
+        super.touchesEnded(touches, with: event)
 
-        <span class=n>myStatus</span> <span class=p>=</span> <span class=p>.</span><span class=n>TouchEnded</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>setNeedsDisplay</span><span class=p>()</span>
-    <span class=p>}</span>
+        myStatus = .TouchEnded
+        self.setNeedsDisplay()
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>draw</span><span class=p>(</span><span class=kc>_</span> <span class=n>rect</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>)</span> <span class=p>{</span>
+    override func draw(_ rect: CGRect) {
 
-        <span class=kd>let</span> <span class=nv>width</span> <span class=p>=</span> <span class=n>rect</span><span class=p>.</span><span class=n>width</span><span class=p>,</span> <span class=n>height</span> <span class=p>=</span> <span class=n>rect</span><span class=p>.</span><span class=n>height</span>
+        let width = rect.width, height = rect.height
 
-        <span class=k>if</span> <span class=n>myStatus</span> <span class=p>==</span> <span class=p>.</span><span class=n>Normal</span> <span class=o>||</span> <span class=n>myStatus</span> <span class=p>==</span> <span class=p>.</span><span class=n>TouchEnded</span> <span class=p>{</span>
-            <span class=c1>// 色の定義.</span>
-            <span class=kd>let</span> <span class=nv>color</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>(</span><span class=n>red</span><span class=p>:</span> <span class=mf>0.081</span><span class=p>,</span> <span class=n>green</span><span class=p>:</span> <span class=mf>1.000</span><span class=p>,</span> <span class=n>blue</span><span class=p>:</span> <span class=mf>0.421</span><span class=p>,</span> <span class=n>alpha</span><span class=p>:</span> <span class=mf>1.000</span><span class=p>)</span>
+        if myStatus == .Normal || myStatus == .TouchEnded {
+            // 色の定義.
+            let color = UIColor(red: 0.081, green: 1.000, blue: 0.421, alpha: 1.000)
 
-            <span class=c1>// ボタンの形状を定義.</span>
-            <span class=kd>let</span> <span class=nv>path</span> <span class=p>=</span> <span class=n>makeNormalPath</span><span class=p>(</span><span class=n>width</span><span class=p>:</span> <span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>height</span><span class=p>)</span>
-            <span class=n>color</span><span class=p>.</span><span class=n>setFill</span><span class=p>()</span>
-            <span class=n>path</span><span class=p>.</span><span class=n>fill</span><span class=p>()</span>
-            <span class=n>path</span><span class=p>.</span><span class=n>lineWidth</span> <span class=p>=</span> <span class=mi>0</span>
-            <span class=n>path</span><span class=p>.</span><span class=n>stroke</span><span class=p>()</span>
+            // ボタンの形状を定義.
+            let path = makeNormalPath(width: width, height: height)
+            color.setFill()
+            path.fill()
+            path.lineWidth = 0
+            path.stroke()
 
-        <span class=p>}</span> <span class=k>else</span> <span class=k>if</span> <span class=n>myStatus</span> <span class=p>==</span> <span class=p>.</span><span class=n>TouchBegan</span> <span class=p>{</span>
-            <span class=c1>// 色の定義.</span>
-            <span class=kd>let</span> <span class=nv>color</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>(</span><span class=n>red</span><span class=p>:</span> <span class=mf>1.000</span><span class=p>,</span> <span class=n>green</span><span class=p>:</span> <span class=mf>1.000</span><span class=p>,</span> <span class=n>blue</span><span class=p>:</span> <span class=mf>0.421</span><span class=p>,</span> <span class=n>alpha</span><span class=p>:</span> <span class=mf>1.000</span><span class=p>)</span>
+        } else if myStatus == .TouchBegan {
+            // 色の定義.
+            let color = UIColor(red: 1.000, green: 1.000, blue: 0.421, alpha: 1.000)
 
-            <span class=c1>// ボタンの形状を定義.</span>
-            <span class=kd>let</span> <span class=nv>path</span> <span class=p>=</span> <span class=n>makeNormalPath</span><span class=p>(</span><span class=n>width</span><span class=p>:</span> <span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>height</span><span class=p>)</span>
-            <span class=n>color</span><span class=p>.</span><span class=n>setFill</span><span class=p>()</span>
-            <span class=n>path</span><span class=p>.</span><span class=n>fill</span><span class=p>()</span>
-            <span class=n>path</span><span class=p>.</span><span class=n>lineWidth</span> <span class=p>=</span> <span class=mi>0</span>
-            <span class=n>path</span><span class=p>.</span><span class=n>stroke</span><span class=p>()</span>
-        <span class=p>}</span>
+            // ボタンの形状を定義.
+            let path = makeNormalPath(width: width, height: height)
+            color.setFill()
+            path.fill()
+            path.lineWidth = 0
+            path.stroke()
+        }
 
-        <span class=kc>super</span><span class=p>.</span><span class=n>draw</span><span class=p>(</span><span class=n>rect</span><span class=p>)</span>
-    <span class=p>}</span>
+        super.draw(rect)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     ボタンの形状を作成.</span>
-<span class=cm>     */</span>
-    <span class=kd>private</span> <span class=kd>func</span> <span class=nf>makeNormalPath</span><span class=p>(</span><span class=n>width</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=bp>UIBezierPath</span><span class=p>{</span>
-        <span class=kd>let</span> <span class=nv>bezierPath</span> <span class=p>=</span> <span class=bp>UIBezierPath</span><span class=p>()</span>
-        <span class=n>bezierPath</span><span class=p>.</span><span class=n>move</span><span class=p>(</span><span class=n>to</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mf>46.33</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mf>0.5</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>))</span>
-        <span class=n>bezierPath</span><span class=p>.</span><span class=n>addCurve</span><span class=p>(</span><span class=n>to</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mf>37.47</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mf>30.41</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                            <span class=n>controlPoint1</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mf>38.21</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mf>0.5</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                            <span class=n>controlPoint2</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mf>45.96</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mf>18.21</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>))</span>
-        <span class=c1>//</span>
-        <span class=n>bezierPath</span><span class=p>.</span><span class=n>addCurve</span><span class=p>(</span><span class=n>to</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mf>0.54</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mf>30.41</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint1</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mf>28.97</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mf>42.61</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint2</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mf>2.75</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mf>21.75</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>))</span>
-        <span class=n>bezierPath</span><span class=p>.</span><span class=n>addCurve</span><span class=p>(</span><span class=n>to</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mf>28.61</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mf>65.04</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint1</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=o>-</span><span class=mf>1.68</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mf>39.06</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint2</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mf>28.61</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mf>53.23</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>))</span>
-        <span class=n>bezierPath</span><span class=p>.</span><span class=n>addCurve</span><span class=p>(</span><span class=n>to</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mf>12.36</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mf>96.52</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint1</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mf>28.61</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mf>76.84</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint2</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mf>4.23</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mf>91.79</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>))</span>
-        <span class=n>bezierPath</span><span class=p>.</span><span class=n>addCurve</span><span class=p>(</span><span class=n>to</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mf>61.1</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mf>83.92</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint1</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mf>20.48</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mf>101.24</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint2</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mf>38.21</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mf>83.92</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>))</span>
-        <span class=n>bezierPath</span><span class=p>.</span><span class=n>addCurve</span><span class=p>(</span><span class=n>to</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mf>100.99</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mf>105.96</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint1</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mi>84</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mf>83.92</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint2</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mf>95.82</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mf>114.62</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>))</span>
-        <span class=n>bezierPath</span><span class=p>.</span><span class=n>addCurve</span><span class=p>(</span><span class=n>to</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mf>86.22</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mf>65.04</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint1</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mf>106.16</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mf>97.3</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint2</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mf>83.63</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mf>81.56</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>))</span>
-        <span class=n>bezierPath</span><span class=p>.</span><span class=n>addCurve</span><span class=p>(</span><span class=n>to</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mf>114.29</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mf>13.09</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint1</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mf>88.8</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mf>48.51</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint2</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mf>117.24</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mf>17.81</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>))</span>
-        <span class=n>bezierPath</span><span class=p>.</span><span class=n>addCurve</span><span class=p>(</span><span class=n>to</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mf>69.97</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mf>30.41</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint1</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mf>111.33</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mf>8.37</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint2</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mf>86.96</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mf>37.88</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>))</span>
-        <span class=n>bezierPath</span><span class=p>.</span><span class=n>addCurve</span><span class=p>(</span><span class=n>to</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mf>46.33</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mf>0.5</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint1</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mf>52.98</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mf>22.93</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint2</span><span class=p>:</span> <span class=n>CGPoint</span><span class=p>(</span><span class=n>x</span><span class=p>:</span><span class=mf>54.46</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span><span class=mf>0.5</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>))</span>
-        <span class=n>bezierPath</span><span class=p>.</span><span class=n>close</span><span class=p>()</span>
+    /*
+     ボタンの形状を作成.
+     */
+    private func makeNormalPath(width: CGFloat, height: CGFloat) -&gt; UIBezierPath{
+        let bezierPath = UIBezierPath()
+        bezierPath.move(to: CGPoint(x:46.33/120 * width, y:0.5/120 * height))
+        bezierPath.addCurve(to: CGPoint(x:37.47/120 * width, y:30.41/120 * height),
+                            controlPoint1: CGPoint(x:38.21/120 * width, y:0.5/120 * height),
+                            controlPoint2: CGPoint(x:45.96/120 * width, y:18.21/120 * height))
+        //
+        bezierPath.addCurve(to: CGPoint(x:0.54/120 * width, y:30.41/120 * height),
+                                   controlPoint1: CGPoint(x:28.97/120 * width, y:42.61/120 * height),
+                                   controlPoint2: CGPoint(x:2.75/120 * width, y:21.75/120 * height))
+        bezierPath.addCurve(to: CGPoint(x:28.61/120 * width, y:65.04/120 * height),
+                                   controlPoint1: CGPoint(x:-1.68/120 * width, y:39.06/120 * height),
+                                   controlPoint2: CGPoint(x:28.61/120 * width, y:53.23/120 * height))
+        bezierPath.addCurve(to: CGPoint(x:12.36/120 * width, y:96.52/120 * height),
+                                   controlPoint1: CGPoint(x:28.61/120 * width, y:76.84/120 * height),
+                                   controlPoint2: CGPoint(x:4.23/120 * width, y:91.79/120 * height))
+        bezierPath.addCurve(to: CGPoint(x:61.1/120 * width, y:83.92/120 * height),
+                                   controlPoint1: CGPoint(x:20.48/120 * width, y:101.24/120 * height),
+                                   controlPoint2: CGPoint(x:38.21/120 * width, y:83.92/120 * height))
+        bezierPath.addCurve(to: CGPoint(x:100.99/120 * width, y:105.96/120 * height),
+                                   controlPoint1: CGPoint(x:84/120 * width, y:83.92/120 * height),
+                                   controlPoint2: CGPoint(x:95.82/120 * width, y:114.62/120 * height))
+        bezierPath.addCurve(to: CGPoint(x:86.22/120 * width, y:65.04/120 * height),
+                                   controlPoint1: CGPoint(x:106.16/120 * width, y:97.3/120 * height),
+                                   controlPoint2: CGPoint(x:83.63/120 * width, y:81.56/120 * height))
+        bezierPath.addCurve(to: CGPoint(x:114.29/120 * width, y:13.09/120 * height),
+                                   controlPoint1: CGPoint(x:88.8/120 * width, y:48.51/120 * height),
+                                   controlPoint2: CGPoint(x:117.24/120 * width, y:17.81/120 * height))
+        bezierPath.addCurve(to: CGPoint(x:69.97/120 * width, y:30.41/120 * height),
+                                   controlPoint1: CGPoint(x:111.33/120 * width, y:8.37/120 * height),
+                                   controlPoint2: CGPoint(x:86.96/120 * width, y:37.88/120 * height))
+        bezierPath.addCurve(to: CGPoint(x:46.33/120 * width, y:0.5/120 * height),
+                                   controlPoint1: CGPoint(x:52.98/120 * width, y:22.93/120 * height),
+                                   controlPoint2: CGPoint(x:54.46/120 * width, y:0.5/120 * height))
+        bezierPath.close()
 
-        <span class=k>return</span> <span class=n>bezierPath</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-1 type=radio id=tab-group-1-1_swift class=code-tab data-lang=swift aria-controls=tab-group-1-1_swift-panel role=tab><label for=tab-group-1-1_swift class=code-tab-label data-lang=swift id=tab-group-1-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-1_swift-panel aria-labelledby=tab-group-1-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal>  1</span>
-<span class=normal>  2</span>
-<span class=normal>  3</span>
-<span class=normal>  4</span>
-<span class=normal>  5</span>
-<span class=normal>  6</span>
-<span class=normal>  7</span>
-<span class=normal>  8</span>
-<span class=normal>  9</span>
-<span class=normal> 10</span>
-<span class=normal> 11</span>
-<span class=normal> 12</span>
-<span class=normal> 13</span>
-<span class=normal> 14</span>
-<span class=normal> 15</span>
-<span class=normal> 16</span>
-<span class=normal> 17</span>
-<span class=normal> 18</span>
-<span class=normal> 19</span>
-<span class=normal> 20</span>
-<span class=normal> 21</span>
-<span class=normal> 22</span>
-<span class=normal> 23</span>
-<span class=normal> 24</span>
-<span class=normal> 25</span>
-<span class=normal> 26</span>
-<span class=normal> 27</span>
-<span class=normal> 28</span>
-<span class=normal> 29</span>
-<span class=normal> 30</span>
-<span class=normal> 31</span>
-<span class=normal> 32</span>
-<span class=normal> 33</span>
-<span class=normal> 34</span>
-<span class=normal> 35</span>
-<span class=normal> 36</span>
-<span class=normal> 37</span>
-<span class=normal> 38</span>
-<span class=normal> 39</span>
-<span class=normal> 40</span>
-<span class=normal> 41</span>
-<span class=normal> 42</span>
-<span class=normal> 43</span>
-<span class=normal> 44</span>
-<span class=normal> 45</span>
-<span class=normal> 46</span>
-<span class=normal> 47</span>
-<span class=normal> 48</span>
-<span class=normal> 49</span>
-<span class=normal> 50</span>
-<span class=normal> 51</span>
-<span class=normal> 52</span>
-<span class=normal> 53</span>
-<span class=normal> 54</span>
-<span class=normal> 55</span>
-<span class=normal> 56</span>
-<span class=normal> 57</span>
-<span class=normal> 58</span>
-<span class=normal> 59</span>
-<span class=normal> 60</span>
-<span class=normal> 61</span>
-<span class=normal> 62</span>
-<span class=normal> 63</span>
-<span class=normal> 64</span>
-<span class=normal> 65</span>
-<span class=normal> 66</span>
-<span class=normal> 67</span>
-<span class=normal> 68</span>
-<span class=normal> 69</span>
-<span class=normal> 70</span>
-<span class=normal> 71</span>
-<span class=normal> 72</span>
-<span class=normal> 73</span>
-<span class=normal> 74</span>
-<span class=normal> 75</span>
-<span class=normal> 76</span>
-<span class=normal> 77</span>
-<span class=normal> 78</span>
-<span class=normal> 79</span>
-<span class=normal> 80</span>
-<span class=normal> 81</span>
-<span class=normal> 82</span>
-<span class=normal> 83</span>
-<span class=normal> 84</span>
-<span class=normal> 85</span>
-<span class=normal> 86</span>
-<span class=normal> 87</span>
-<span class=normal> 88</span>
-<span class=normal> 89</span>
-<span class=normal> 90</span>
-<span class=normal> 91</span>
-<span class=normal> 92</span>
-<span class=normal> 93</span>
-<span class=normal> 94</span>
-<span class=normal> 95</span>
-<span class=normal> 96</span>
-<span class=normal> 97</span>
-<span class=normal> 98</span>
-<span class=normal> 99</span>
-<span class=normal>100</span>
-<span class=normal>101</span>
-<span class=normal>102</span>
-<span class=normal>103</span>
-<span class=normal>104</span>
-<span class=normal>105</span>
-<span class=normal>106</span>
-<span class=normal>107</span>
-<span class=normal>108</span>
-<span class=normal>109</span>
-<span class=normal>110</span>
-<span class=normal>111</span>
-<span class=normal>112</span>
-<span class=normal>113</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  MyButton.swift</span>
-<span class=c1>//  UIKit049_2.3</span>
-<span class=c1>//</span>
-<span class=c1>//  Created by KimikoWatanabe on 2016/08/21.</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+        return bezierPath
+    }
+}
+</code></pre></div><input name=tab-group-1 type=radio id=tab-group-1-1_swift class=code-tab data-lang=swift aria-controls=tab-group-1-1_swift-panel role=tab><label for=tab-group-1-1_swift class=code-tab-label data-lang=swift id=tab-group-1-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-1_swift-panel aria-labelledby=tab-group-1-1_swift-label><pre><code class=swift>//
+//  MyButton.swift
+//  UIKit049_2.3
+//
+//  Created by KimikoWatanabe on 2016/08/21.
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>Foundation</span>
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import Foundation
+import UIKit
 
-<span class=kd>class</span> <span class=nc>MyButton</span><span class=p>:</span> <span class=bp>UIButton</span> <span class=p>{</span>
+class MyButton: UIButton {
 
-    <span class=kd>var</span> <span class=nv>myStatus</span><span class=p>:</span> <span class=n>ButtonStatus</span><span class=p>!</span>
-    <span class=kd>enum</span> <span class=nc>ButtonStatus</span> <span class=p>{</span>
-        <span class=k>case</span> <span class=n>Normal</span>
-        <span class=k>case</span> <span class=n>TouchBegan</span>
-        <span class=k>case</span> <span class=n>TouchEnded</span>
-    <span class=p>}</span>
+    var myStatus: ButtonStatus!
+    enum ButtonStatus {
+        case Normal
+        case TouchBegan
+        case TouchEnded
+    }
 
-    <span class=kr>required</span> <span class=kd>init</span><span class=p>(</span><span class=n>coder</span> <span class=n>aDecoder</span><span class=p>:</span> <span class=bp>NSCoder</span><span class=p>)</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>coder</span><span class=p>:</span> <span class=n>aDecoder</span><span class=p>)</span><span class=o>!</span>
-    <span class=p>}</span>
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+    }
 
-    <span class=kr>override</span> <span class=kd>init</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>)</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>frame</span><span class=p>)</span>
-        <span class=n>myStatus</span> <span class=p>=</span> <span class=p>.</span><span class=n>Normal</span>
-    <span class=p>}</span>
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>touchesBegan</span><span class=p>(</span><span class=n>touches</span><span class=p>:</span> <span class=n>Set</span><span class=p>&lt;</span><span class=bp>UITouch</span><span class=p>&gt;,</span> <span class=n>withEvent</span> <span class=n>event</span><span class=p>:</span> <span class=bp>UIEvent</span><span class=p>?)</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>touchesBegan</span><span class=p>(</span><span class=n>touches</span><span class=p>,</span> <span class=n>withEvent</span><span class=p>:</span> <span class=n>event</span><span class=p>)</span>
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        myStatus = .Normal
+    }
+    override func touchesBegan(touches: Set&lt;UITouch&gt;, withEvent event: UIEvent?) {
+        super.touchesBegan(touches, withEvent: event)
 
-        <span class=n>myStatus</span> <span class=p>=</span> <span class=p>.</span><span class=n>TouchBegan</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>setNeedsDisplay</span><span class=p>()</span>
-    <span class=p>}</span>
+        myStatus = .TouchBegan
+        self.setNeedsDisplay()
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>touchesEnded</span><span class=p>(</span><span class=n>touches</span><span class=p>:</span> <span class=n>Set</span><span class=p>&lt;</span><span class=bp>UITouch</span><span class=p>&gt;,</span> <span class=n>withEvent</span> <span class=n>event</span><span class=p>:</span> <span class=bp>UIEvent</span><span class=p>?)</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>touchesEnded</span><span class=p>(</span><span class=n>touches</span><span class=p>,</span> <span class=n>withEvent</span><span class=p>:</span> <span class=n>event</span><span class=p>)</span>
+    override func touchesEnded(touches: Set&lt;UITouch&gt;, withEvent event: UIEvent?) {
+        super.touchesEnded(touches, withEvent: event)
 
-        <span class=n>myStatus</span> <span class=p>=</span> <span class=p>.</span><span class=n>TouchEnded</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>setNeedsDisplay</span><span class=p>()</span>
-    <span class=p>}</span>
+        myStatus = .TouchEnded
+        self.setNeedsDisplay()
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>drawRect</span><span class=p>(</span><span class=n>rect</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>)</span> <span class=p>{</span>
+    override func drawRect(rect: CGRect) {
 
-        <span class=kd>let</span> <span class=nv>width</span> <span class=p>=</span> <span class=n>rect</span><span class=p>.</span><span class=n>width</span><span class=p>,</span> <span class=n>height</span> <span class=p>=</span> <span class=n>rect</span><span class=p>.</span><span class=n>height</span>
+        let width = rect.width, height = rect.height
 
-        <span class=k>if</span> <span class=n>myStatus</span> <span class=p>==</span> <span class=p>.</span><span class=n>Normal</span> <span class=o>||</span> <span class=n>myStatus</span> <span class=p>==</span> <span class=p>.</span><span class=n>TouchEnded</span> <span class=p>{</span>
-            <span class=c1>// 色の定義.</span>
-            <span class=kd>let</span> <span class=nv>color</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>(</span><span class=n>red</span><span class=p>:</span> <span class=mf>0.081</span><span class=p>,</span> <span class=n>green</span><span class=p>:</span> <span class=mf>1.000</span><span class=p>,</span> <span class=n>blue</span><span class=p>:</span> <span class=mf>0.421</span><span class=p>,</span> <span class=n>alpha</span><span class=p>:</span> <span class=mf>1.000</span><span class=p>)</span>
+        if myStatus == .Normal || myStatus == .TouchEnded {
+            // 色の定義.
+            let color = UIColor(red: 0.081, green: 1.000, blue: 0.421, alpha: 1.000)
 
-            <span class=c1>// ボタンの形状を定義.</span>
-            <span class=kd>let</span> <span class=nv>path</span> <span class=p>=</span> <span class=n>makeNormalPath</span><span class=p>(</span><span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>height</span><span class=p>)</span>
-            <span class=n>color</span><span class=p>.</span><span class=n>setFill</span><span class=p>()</span>
-            <span class=n>path</span><span class=p>.</span><span class=n>fill</span><span class=p>()</span>
-            <span class=n>path</span><span class=p>.</span><span class=n>lineWidth</span> <span class=p>=</span> <span class=mi>0</span>
-            <span class=n>path</span><span class=p>.</span><span class=n>stroke</span><span class=p>()</span>
+            // ボタンの形状を定義.
+            let path = makeNormalPath(width, height: height)
+            color.setFill()
+            path.fill()
+            path.lineWidth = 0
+            path.stroke()
 
-        <span class=p>}</span> <span class=k>else</span> <span class=k>if</span> <span class=n>myStatus</span> <span class=p>==</span> <span class=p>.</span><span class=n>TouchBegan</span> <span class=p>{</span>
-            <span class=c1>// 色の定義.</span>
-            <span class=kd>let</span> <span class=nv>color</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>(</span><span class=n>red</span><span class=p>:</span> <span class=mf>1.000</span><span class=p>,</span> <span class=n>green</span><span class=p>:</span> <span class=mf>1.000</span><span class=p>,</span> <span class=n>blue</span><span class=p>:</span> <span class=mf>0.421</span><span class=p>,</span> <span class=n>alpha</span><span class=p>:</span> <span class=mf>1.000</span><span class=p>)</span>
+        } else if myStatus == .TouchBegan {
+            // 色の定義.
+            let color = UIColor(red: 1.000, green: 1.000, blue: 0.421, alpha: 1.000)
 
-            <span class=c1>// ボタンの形状を定義.</span>
-            <span class=kd>let</span> <span class=nv>path</span> <span class=p>=</span> <span class=n>makeNormalPath</span><span class=p>(</span><span class=n>width</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>height</span><span class=p>)</span>
-            <span class=n>color</span><span class=p>.</span><span class=n>setFill</span><span class=p>()</span>
-            <span class=n>path</span><span class=p>.</span><span class=n>fill</span><span class=p>()</span>
-            <span class=n>path</span><span class=p>.</span><span class=n>lineWidth</span> <span class=p>=</span> <span class=mi>0</span>
-            <span class=n>path</span><span class=p>.</span><span class=n>stroke</span><span class=p>()</span>
-        <span class=p>}</span>
+            // ボタンの形状を定義.
+            let path = makeNormalPath(width, height: height)
+            color.setFill()
+            path.fill()
+            path.lineWidth = 0
+            path.stroke()
+        }
 
-        <span class=kc>super</span><span class=p>.</span><span class=n>drawRect</span><span class=p>(</span><span class=n>rect</span><span class=p>)</span>
-    <span class=p>}</span>
+        super.drawRect(rect)
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>     ボタンの形状を作成.</span>
-<span class=cm>     */</span>
-    <span class=kd>private</span> <span class=kd>func</span> <span class=nf>makeNormalPath</span><span class=p>(</span><span class=n>width</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>CGFloat</span><span class=p>)</span> <span class=p>-&gt;</span> <span class=bp>UIBezierPath</span><span class=p>{</span>
-        <span class=kd>let</span> <span class=nv>bezierPath</span> <span class=p>=</span> <span class=bp>UIBezierPath</span><span class=p>()</span>
-        <span class=n>bezierPath</span><span class=p>.</span><span class=n>moveToPoint</span><span class=p>(</span><span class=n>CGPointMake</span><span class=p>(</span><span class=mf>46.33</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mf>0.5</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>))</span>
-        <span class=n>bezierPath</span><span class=p>.</span><span class=n>addCurveToPoint</span><span class=p>(</span><span class=n>CGPointMake</span><span class=p>(</span><span class=mf>37.47</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mf>30.41</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint1</span><span class=p>:</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=mf>38.21</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mf>0.5</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint2</span><span class=p>:</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=mf>45.96</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mf>18.21</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>))</span>
-        <span class=n>bezierPath</span><span class=p>.</span><span class=n>addCurveToPoint</span><span class=p>(</span><span class=n>CGPointMake</span><span class=p>(</span><span class=mf>0.54</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mf>30.41</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint1</span><span class=p>:</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=mf>28.97</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mf>42.61</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint2</span><span class=p>:</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=mf>2.75</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mf>21.75</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>))</span>
-        <span class=n>bezierPath</span><span class=p>.</span><span class=n>addCurveToPoint</span><span class=p>(</span><span class=n>CGPointMake</span><span class=p>(</span><span class=mf>28.61</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mf>65.04</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint1</span><span class=p>:</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=o>-</span><span class=mf>1.68</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mf>39.06</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint2</span><span class=p>:</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=mf>28.61</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mf>53.23</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>))</span>
-        <span class=n>bezierPath</span><span class=p>.</span><span class=n>addCurveToPoint</span><span class=p>(</span><span class=n>CGPointMake</span><span class=p>(</span><span class=mf>12.36</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mf>96.52</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint1</span><span class=p>:</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=mf>28.61</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mf>76.84</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint2</span><span class=p>:</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=mf>4.23</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mf>91.79</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>))</span>
-        <span class=n>bezierPath</span><span class=p>.</span><span class=n>addCurveToPoint</span><span class=p>(</span><span class=n>CGPointMake</span><span class=p>(</span><span class=mf>61.1</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mf>83.92</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint1</span><span class=p>:</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=mf>20.48</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mf>101.24</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint2</span><span class=p>:</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=mf>38.21</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mf>83.92</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>))</span>
-        <span class=n>bezierPath</span><span class=p>.</span><span class=n>addCurveToPoint</span><span class=p>(</span><span class=n>CGPointMake</span><span class=p>(</span><span class=mf>100.99</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mf>105.96</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint1</span><span class=p>:</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=mi>84</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mf>83.92</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint2</span><span class=p>:</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=mf>95.82</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mf>114.62</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>))</span>
-        <span class=n>bezierPath</span><span class=p>.</span><span class=n>addCurveToPoint</span><span class=p>(</span><span class=n>CGPointMake</span><span class=p>(</span><span class=mf>86.22</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mf>65.04</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint1</span><span class=p>:</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=mf>106.16</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mf>97.3</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint2</span><span class=p>:</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=mf>83.63</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mf>81.56</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>))</span>
-        <span class=n>bezierPath</span><span class=p>.</span><span class=n>addCurveToPoint</span><span class=p>(</span><span class=n>CGPointMake</span><span class=p>(</span><span class=mf>114.29</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mf>13.09</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint1</span><span class=p>:</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=mf>88.8</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mf>48.51</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint2</span><span class=p>:</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=mf>117.24</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mf>17.81</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>))</span>
-        <span class=n>bezierPath</span><span class=p>.</span><span class=n>addCurveToPoint</span><span class=p>(</span><span class=n>CGPointMake</span><span class=p>(</span><span class=mf>69.97</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mf>30.41</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint1</span><span class=p>:</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=mf>111.33</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mf>8.37</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint2</span><span class=p>:</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=mf>86.96</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mf>37.88</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>))</span>
-        <span class=n>bezierPath</span><span class=p>.</span><span class=n>addCurveToPoint</span><span class=p>(</span><span class=n>CGPointMake</span><span class=p>(</span><span class=mf>46.33</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mf>0.5</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint1</span><span class=p>:</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=mf>52.98</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mf>22.93</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>),</span>
-                                   <span class=n>controlPoint2</span><span class=p>:</span> <span class=n>CGPointMake</span><span class=p>(</span><span class=mf>54.46</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>width</span><span class=p>,</span> <span class=mf>0.5</span><span class=o>/</span><span class=mi>120</span> <span class=o>*</span> <span class=n>height</span><span class=p>))</span>
-        <span class=n>bezierPath</span><span class=p>.</span><span class=n>closePath</span><span class=p>()</span>
+    /*
+     ボタンの形状を作成.
+     */
+    private func makeNormalPath(width: CGFloat, height: CGFloat) -&gt; UIBezierPath{
+        let bezierPath = UIBezierPath()
+        bezierPath.moveToPoint(CGPointMake(46.33/120 * width, 0.5/120 * height))
+        bezierPath.addCurveToPoint(CGPointMake(37.47/120 * width, 30.41/120 * height),
+                                   controlPoint1: CGPointMake(38.21/120 * width, 0.5/120 * height),
+                                   controlPoint2: CGPointMake(45.96/120 * width, 18.21/120 * height))
+        bezierPath.addCurveToPoint(CGPointMake(0.54/120 * width, 30.41/120 * height),
+                                   controlPoint1: CGPointMake(28.97/120 * width, 42.61/120 * height),
+                                   controlPoint2: CGPointMake(2.75/120 * width, 21.75/120 * height))
+        bezierPath.addCurveToPoint(CGPointMake(28.61/120 * width, 65.04/120 * height),
+                                   controlPoint1: CGPointMake(-1.68/120 * width, 39.06/120 * height),
+                                   controlPoint2: CGPointMake(28.61/120 * width, 53.23/120 * height))
+        bezierPath.addCurveToPoint(CGPointMake(12.36/120 * width, 96.52/120 * height),
+                                   controlPoint1: CGPointMake(28.61/120 * width, 76.84/120 * height),
+                                   controlPoint2: CGPointMake(4.23/120 * width, 91.79/120 * height))
+        bezierPath.addCurveToPoint(CGPointMake(61.1/120 * width, 83.92/120 * height),
+                                   controlPoint1: CGPointMake(20.48/120 * width, 101.24/120 * height),
+                                   controlPoint2: CGPointMake(38.21/120 * width, 83.92/120 * height))
+        bezierPath.addCurveToPoint(CGPointMake(100.99/120 * width, 105.96/120 * height),
+                                   controlPoint1: CGPointMake(84/120 * width, 83.92/120 * height),
+                                   controlPoint2: CGPointMake(95.82/120 * width, 114.62/120 * height))
+        bezierPath.addCurveToPoint(CGPointMake(86.22/120 * width, 65.04/120 * height),
+                                   controlPoint1: CGPointMake(106.16/120 * width, 97.3/120 * height),
+                                   controlPoint2: CGPointMake(83.63/120 * width, 81.56/120 * height))
+        bezierPath.addCurveToPoint(CGPointMake(114.29/120 * width, 13.09/120 * height),
+                                   controlPoint1: CGPointMake(88.8/120 * width, 48.51/120 * height),
+                                   controlPoint2: CGPointMake(117.24/120 * width, 17.81/120 * height))
+        bezierPath.addCurveToPoint(CGPointMake(69.97/120 * width, 30.41/120 * height),
+                                   controlPoint1: CGPointMake(111.33/120 * width, 8.37/120 * height),
+                                   controlPoint2: CGPointMake(86.96/120 * width, 37.88/120 * height))
+        bezierPath.addCurveToPoint(CGPointMake(46.33/120 * width, 0.5/120 * height),
+                                   controlPoint1: CGPointMake(52.98/120 * width, 22.93/120 * height),
+                                   controlPoint2: CGPointMake(54.46/120 * width, 0.5/120 * height))
+        bezierPath.closePath()
 
-        <span class=k>return</span> <span class=n>bezierPath</span>
-    <span class=p>}</span>
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+        return bezierPath
+    }
+}
+
+</code></pre></div></div>
 <h2 id="3x4x">3.xと4.xの差分</h2>
 <ul>
 <li><code>UIControlState</code> が <code>UIControl.State</code> に変更</li>

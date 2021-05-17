@@ -2331,442 +2331,230 @@
                 
                 <h1 id="uibutton">UIButtonでボタンを表示</h1>
 <p><img alt="Preview uikit002" src="../img/uikit002.png" /> <img alt="Preview uikit002_1" src="../img/uikit002_1.png" /></p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span>
-<span class=normal>73</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit002</span>
-<span class=c1>//</span>
-<span class=c1>//  Copyright © 2018年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit002
+//
+//  Copyright © 2018年 FaBo, Inc. All rights reserved.
+//
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+import UIKit
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+class ViewController: UIViewController {
 
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myButton</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>!</span>
+    private var myButton: UIButton!
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// Buttonを生成する.</span>
-        <span class=n>myButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>()</span>
+        // Buttonを生成する.
+        myButton = UIButton()
 
-        <span class=c1>// ボタンのサイズ.</span>
-        <span class=kd>let</span> <span class=nv>bWidth</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>200</span>
-        <span class=kd>let</span> <span class=nv>bHeight</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>50</span>
+        // ボタンのサイズ.
+        let bWidth: CGFloat = 200
+        let bHeight: CGFloat = 50
 
-        <span class=c1>// ボタンのX,Y座標.</span>
-        <span class=kd>let</span> <span class=nv>posX</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span> <span class=o>-</span> <span class=n>bWidth</span><span class=o>/</span><span class=mi>2</span>
-        <span class=kd>let</span> <span class=nv>posY</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span><span class=o>/</span><span class=mi>2</span> <span class=o>-</span> <span class=n>bHeight</span><span class=o>/</span><span class=mi>2</span>
+        // ボタンのX,Y座標.
+        let posX: CGFloat = self.view.frame.width/2 - bWidth/2
+        let posY: CGFloat = self.view.frame.height/2 - bHeight/2
 
-        <span class=c1>// ボタンの設置座標とサイズを設定する.</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=n>posX</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=n>posY</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=n>bWidth</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>bHeight</span><span class=p>)</span>
+        // ボタンの設置座標とサイズを設定する.
+        myButton.frame = CGRect(x: posX, y: posY, width: bWidth, height: bHeight)
 
-        <span class=c1>// ボタンの背景色を設定.</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>red</span>
+        // ボタンの背景色を設定.
+        myButton.backgroundColor = UIColor.red
 
-        <span class=c1>// ボタンの枠を丸くする.</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
+        // ボタンの枠を丸くする.
+        myButton.layer.masksToBounds = true
 
-        <span class=c1>// コーナーの半径を設定する.</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
+        // コーナーの半径を設定する.
+        myButton.layer.cornerRadius = 20.0
 
-        <span class=c1>// タイトルを設定する(通常時).</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;ボタン(通常)&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>normal</span><span class=p>)</span>
+        // タイトルを設定する(通常時).
+        myButton.setTitle(&quot;ボタン(通常)&quot;, for: .normal)
+        myButton.setTitleColor(UIColor.white, for: .normal)
 
-        <span class=c1>// タイトルを設定する(ボタンがハイライトされた時).</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;ボタン(押された時)&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>highlighted</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>highlighted</span><span class=p>)</span>
+        // タイトルを設定する(ボタンがハイライトされた時).
+        myButton.setTitle(&quot;ボタン(押された時)&quot;, for: .highlighted)
+        myButton.setTitleColor(UIColor.black, for: .highlighted)
 
-        <span class=c1>// ボタンにタグをつける.</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=mi>1</span>
+        // ボタンにタグをつける.
+        myButton.tag = 1
 
-        <span class=c1>// イベントを追加する</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span>        <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>touchUpInside</span><span class=p>)</span>
+        // イベントを追加する
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(sender:)),        for: .touchUpInside)
 
-        <span class=c1>// ボタンをViewに追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>)</span>
+        // ボタンをViewに追加.
+        self.view.addSubview(myButton)
 
-    <span class=p>}</span>
+    }
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-        <span class=c1>// Dispose of any resources that can be recreated.</span>
-    <span class=p>}</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 
-    <span class=cm>/*</span>
-<span class=cm>    ボタンのイベント.</span>
-<span class=cm>    */</span>
-    <span class=kr>@objc</span> <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;onClickMyButton:&quot;</span><span class=p>);</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;sender.currentTitle: </span><span class=si>\(</span><span class=n>sender</span><span class=p>.</span><span class=n>currentTitle</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;sender.tag: </span><span class=si>\(</span><span class=n>sender</span><span class=p>.</span><span class=n>tag</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+    /*
+    ボタンのイベント.
+    */
+    @objc internal func onClickMyButton(sender: UIButton) {
+        print(&quot;onClickMyButton:&quot;);
+        print(&quot;sender.currentTitle: \(sender.currentTitle)&quot;)
+        print(&quot;sender.tag: \(sender.tag)&quot;)
+    }
 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span>
-<span class=normal>73</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit002</span>
-<span class=c1>//</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+}
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit002
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myButton</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>!</span>
+import UIKit
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+class ViewController: UIViewController {
 
-        <span class=c1>// Buttonを生成する.</span>
-        <span class=n>myButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>()</span>
+    private var myButton: UIButton!
 
-        <span class=c1>// ボタンのサイズ.</span>
-        <span class=kd>let</span> <span class=nv>bWidth</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>200</span>
-        <span class=kd>let</span> <span class=nv>bHeight</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>50</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// ボタンのX,Y座標.</span>
-        <span class=kd>let</span> <span class=nv>posX</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span> <span class=o>-</span> <span class=n>bWidth</span><span class=o>/</span><span class=mi>2</span>
-        <span class=kd>let</span> <span class=nv>posY</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span><span class=o>/</span><span class=mi>2</span> <span class=o>-</span> <span class=n>bHeight</span><span class=o>/</span><span class=mi>2</span>
+        // Buttonを生成する.
+        myButton = UIButton()
 
-        <span class=c1>// ボタンの設置座標とサイズを設定する.</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=n>posX</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=n>posY</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=n>bWidth</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>bHeight</span><span class=p>)</span>
+        // ボタンのサイズ.
+        let bWidth: CGFloat = 200
+        let bHeight: CGFloat = 50
 
-        <span class=c1>// ボタンの背景色を設定.</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>red</span>
+        // ボタンのX,Y座標.
+        let posX: CGFloat = self.view.frame.width/2 - bWidth/2
+        let posY: CGFloat = self.view.frame.height/2 - bHeight/2
 
-        <span class=c1>// ボタンの枠を丸くする.</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
+        // ボタンの設置座標とサイズを設定する.
+        myButton.frame = CGRect(x: posX, y: posY, width: bWidth, height: bHeight)
 
-        <span class=c1>// コーナーの半径を設定する.</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
+        // ボタンの背景色を設定.
+        myButton.backgroundColor = UIColor.red
 
-        <span class=c1>// タイトルを設定する(通常時).</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;ボタン(通常)&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>white</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>normal</span><span class=p>)</span>
+        // ボタンの枠を丸くする.
+        myButton.layer.masksToBounds = true
 
-        <span class=c1>// タイトルを設定する(ボタンがハイライトされた時).</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;ボタン(押された時)&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>highlighted</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>black</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>highlighted</span><span class=p>)</span>
+        // コーナーの半径を設定する.
+        myButton.layer.cornerRadius = 20.0
 
-        <span class=c1>// ボタンにタグをつける.</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=mi>1</span>
+        // タイトルを設定する(通常時).
+        myButton.setTitle(&quot;ボタン(通常)&quot;, for: .normal)
+        myButton.setTitleColor(UIColor.white, for: .normal)
 
-        <span class=c1>// イベントを追加する</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>touchUpInside</span><span class=p>)</span>
+        // タイトルを設定する(ボタンがハイライトされた時).
+        myButton.setTitle(&quot;ボタン(押された時)&quot;, for: .highlighted)
+        myButton.setTitleColor(UIColor.black, for: .highlighted)
 
-        <span class=c1>// ボタンをViewに追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>)</span>
+        // ボタンにタグをつける.
+        myButton.tag = 1
 
-    <span class=p>}</span>
+        // イベントを追加する
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(sender:)), for: .touchUpInside)
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-        <span class=c1>// Dispose of any resources that can be recreated.</span>
-    <span class=p>}</span>
+        // ボタンをViewに追加.
+        self.view.addSubview(myButton)
 
-    <span class=cm>/*</span>
-<span class=cm>     ボタンのイベント.</span>
-<span class=cm>     */</span>
-    <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;onClickMyButton:&quot;</span><span class=p>);</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;sender.currentTitle: </span><span class=si>\(</span><span class=n>sender</span><span class=p>.</span><span class=n>currentTitle</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;sender.tag: </span><span class=si>\(</span><span class=n>sender</span><span class=p>.</span><span class=n>tag</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+    }
 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal> 1</span>
-<span class=normal> 2</span>
-<span class=normal> 3</span>
-<span class=normal> 4</span>
-<span class=normal> 5</span>
-<span class=normal> 6</span>
-<span class=normal> 7</span>
-<span class=normal> 8</span>
-<span class=normal> 9</span>
-<span class=normal>10</span>
-<span class=normal>11</span>
-<span class=normal>12</span>
-<span class=normal>13</span>
-<span class=normal>14</span>
-<span class=normal>15</span>
-<span class=normal>16</span>
-<span class=normal>17</span>
-<span class=normal>18</span>
-<span class=normal>19</span>
-<span class=normal>20</span>
-<span class=normal>21</span>
-<span class=normal>22</span>
-<span class=normal>23</span>
-<span class=normal>24</span>
-<span class=normal>25</span>
-<span class=normal>26</span>
-<span class=normal>27</span>
-<span class=normal>28</span>
-<span class=normal>29</span>
-<span class=normal>30</span>
-<span class=normal>31</span>
-<span class=normal>32</span>
-<span class=normal>33</span>
-<span class=normal>34</span>
-<span class=normal>35</span>
-<span class=normal>36</span>
-<span class=normal>37</span>
-<span class=normal>38</span>
-<span class=normal>39</span>
-<span class=normal>40</span>
-<span class=normal>41</span>
-<span class=normal>42</span>
-<span class=normal>43</span>
-<span class=normal>44</span>
-<span class=normal>45</span>
-<span class=normal>46</span>
-<span class=normal>47</span>
-<span class=normal>48</span>
-<span class=normal>49</span>
-<span class=normal>50</span>
-<span class=normal>51</span>
-<span class=normal>52</span>
-<span class=normal>53</span>
-<span class=normal>54</span>
-<span class=normal>55</span>
-<span class=normal>56</span>
-<span class=normal>57</span>
-<span class=normal>58</span>
-<span class=normal>59</span>
-<span class=normal>60</span>
-<span class=normal>61</span>
-<span class=normal>62</span>
-<span class=normal>63</span>
-<span class=normal>64</span>
-<span class=normal>65</span>
-<span class=normal>66</span>
-<span class=normal>67</span>
-<span class=normal>68</span>
-<span class=normal>69</span>
-<span class=normal>70</span>
-<span class=normal>71</span>
-<span class=normal>72</span>
-<span class=normal>73</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit002</span>
-<span class=c1>//</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 
-<span class=kd>import</span> <span class=nc>UIKit</span>
+    /*
+     ボタンのイベント.
+     */
+    internal func onClickMyButton(sender: UIButton) {
+        print(&quot;onClickMyButton:&quot;);
+        print(&quot;sender.currentTitle: \(sender.currentTitle)&quot;)
+        print(&quot;sender.tag: \(sender.tag)&quot;)
+    }
 
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
+}
 
-    <span class=kd>private</span> <span class=kd>var</span> <span class=nv>myButton</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>!</span>
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit002
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
 
-        <span class=c1>// Buttonを生成する.</span>
-        <span class=n>myButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>()</span>
+import UIKit
 
-        <span class=c1>// ボタンのサイズ.</span>
-        <span class=kd>let</span> <span class=nv>bWidth</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>200</span>
-        <span class=kd>let</span> <span class=nv>bHeight</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>50</span>
+class ViewController: UIViewController {
 
-        <span class=c1>// ボタンのX,Y座標.</span>
-        <span class=kd>let</span> <span class=nv>posX</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>width</span><span class=o>/</span><span class=mi>2</span> <span class=o>-</span> <span class=n>bWidth</span><span class=o>/</span><span class=mi>2</span>
-        <span class=kd>let</span> <span class=nv>posY</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>frame</span><span class=p>.</span><span class=n>height</span><span class=o>/</span><span class=mi>2</span> <span class=o>-</span> <span class=n>bHeight</span><span class=o>/</span><span class=mi>2</span>
+    private var myButton: UIButton!
 
-        <span class=c1>// ボタンの設置座標とサイズを設定する.</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>frame</span> <span class=p>=</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=n>posX</span><span class=p>,</span> <span class=n>posY</span><span class=p>,</span> <span class=n>bWidth</span><span class=p>,</span> <span class=n>bHeight</span><span class=p>)</span>
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
-        <span class=c1>// ボタンの背景色を設定.</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>redColor</span><span class=p>()</span>
+        // Buttonを生成する.
+        myButton = UIButton()
 
-        <span class=c1>// ボタンの枠を丸くする.</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
+        // ボタンのサイズ.
+        let bWidth: CGFloat = 200
+        let bHeight: CGFloat = 50
 
-        <span class=c1>// コーナーの半径を設定する.</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
+        // ボタンのX,Y座標.
+        let posX: CGFloat = self.view.frame.width/2 - bWidth/2
+        let posY: CGFloat = self.view.frame.height/2 - bHeight/2
 
-        <span class=c1>// タイトルを設定する(通常時).</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;ボタン(通常)&quot;</span><span class=p>,</span> <span class=n>forState</span><span class=p>:</span> <span class=p>.</span><span class=n>Normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>whiteColor</span><span class=p>(),</span> <span class=n>forState</span><span class=p>:</span> <span class=p>.</span><span class=n>Normal</span><span class=p>)</span>
+        // ボタンの設置座標とサイズを設定する.
+        myButton.frame = CGRectMake(posX, posY, bWidth, bHeight)
 
-        <span class=c1>// タイトルを設定する(ボタンがハイライトされた時).</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;ボタン(押された時)&quot;</span><span class=p>,</span> <span class=n>forState</span><span class=p>:</span> <span class=p>.</span><span class=n>Highlighted</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitleColor</span><span class=p>(</span><span class=bp>UIColor</span><span class=p>.</span><span class=n>blackColor</span><span class=p>(),</span> <span class=n>forState</span><span class=p>:</span> <span class=p>.</span><span class=n>Highlighted</span><span class=p>)</span>
+        // ボタンの背景色を設定.
+        myButton.backgroundColor = UIColor.redColor()
 
-        <span class=c1>// ボタンにタグをつける.</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=mi>1</span>
+        // ボタンの枠を丸くする.
+        myButton.layer.masksToBounds = true
 
-        <span class=c1>// イベントを追加する</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>ViewController</span><span class=p>.</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=kc>_</span><span class=p>:)),</span> <span class=n>forControlEvents</span><span class=p>:</span> <span class=p>.</span><span class=n>TouchUpInside</span><span class=p>)</span>
+        // コーナーの半径を設定する.
+        myButton.layer.cornerRadius = 20.0
 
-        <span class=c1>// ボタンをViewに追加.</span>
-        <span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>)</span>
+        // タイトルを設定する(通常時).
+        myButton.setTitle(&quot;ボタン(通常)&quot;, forState: .Normal)
+        myButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
 
-    <span class=p>}</span>
+        // タイトルを設定する(ボタンがハイライトされた時).
+        myButton.setTitle(&quot;ボタン(押された時)&quot;, forState: .Highlighted)
+        myButton.setTitleColor(UIColor.blackColor(), forState: .Highlighted)
 
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-        <span class=c1>// Dispose of any resources that can be recreated.</span>
-    <span class=p>}</span>
+        // ボタンにタグをつける.
+        myButton.tag = 1
 
-    <span class=cm>/*</span>
-<span class=cm>     ボタンのイベント.</span>
-<span class=cm>    */</span>
-    <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;onClickMyButton:&quot;</span><span class=p>);</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;sender.currentTitle: </span><span class=si>\(</span><span class=n>sender</span><span class=p>.</span><span class=n>currentTitle</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;sender.tag: </span><span class=si>\(</span><span class=n>sender</span><span class=p>.</span><span class=n>tag</span><span class=si>)</span><span class=s>&quot;</span><span class=p>)</span>
-    <span class=p>}</span>
+        // イベントを追加する
+        myButton.addTarget(self, action: #selector(ViewController.onClickMyButton(_:)), forControlEvents: .TouchUpInside)
 
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+        // ボタンをViewに追加.
+        self.view.addSubview(myButton)
+
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    /*
+     ボタンのイベント.
+    */
+    internal func onClickMyButton(sender: UIButton) {
+        print(&quot;onClickMyButton:&quot;);
+        print(&quot;sender.currentTitle: \(sender.currentTitle)&quot;)
+        print(&quot;sender.tag: \(sender.tag)&quot;)
+    }
+
+}
+</code></pre></div></div>
 <h2 id="3040">3.0と4.0の差分</h2>
 <ul>
 <li><code>internal func onClickMyButton(sender: UIButton)</code> に <code>@objc</code> を追加</li>

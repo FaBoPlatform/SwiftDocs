@@ -2332,746 +2332,381 @@
                 <h1 id="usernotification">UserNotificationを表示</h1>
 <p><img alt="Preview uikit008" src="../img/uikit008.png" />
 <img alt="Preview uikit008_1" src="../img/uikit008_1.png" /></p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal>  1</span>
-<span class=normal>  2</span>
-<span class=normal>  3</span>
-<span class=normal>  4</span>
-<span class=normal>  5</span>
-<span class=normal>  6</span>
-<span class=normal>  7</span>
-<span class=normal>  8</span>
-<span class=normal>  9</span>
-<span class=normal> 10</span>
-<span class=normal> 11</span>
-<span class=normal> 12</span>
-<span class=normal> 13</span>
-<span class=normal> 14</span>
-<span class=normal> 15</span>
-<span class=normal> 16</span>
-<span class=normal> 17</span>
-<span class=normal> 18</span>
-<span class=normal> 19</span>
-<span class=normal> 20</span>
-<span class=normal> 21</span>
-<span class=normal> 22</span>
-<span class=normal> 23</span>
-<span class=normal> 24</span>
-<span class=normal> 25</span>
-<span class=normal> 26</span>
-<span class=normal> 27</span>
-<span class=normal> 28</span>
-<span class=normal> 29</span>
-<span class=normal> 30</span>
-<span class=normal> 31</span>
-<span class=normal> 32</span>
-<span class=normal> 33</span>
-<span class=normal> 34</span>
-<span class=normal> 35</span>
-<span class=normal> 36</span>
-<span class=normal> 37</span>
-<span class=normal> 38</span>
-<span class=normal> 39</span>
-<span class=normal> 40</span>
-<span class=normal> 41</span>
-<span class=normal> 42</span>
-<span class=normal> 43</span>
-<span class=normal> 44</span>
-<span class=normal> 45</span>
-<span class=normal> 46</span>
-<span class=normal> 47</span>
-<span class=normal> 48</span>
-<span class=normal> 49</span>
-<span class=normal> 50</span>
-<span class=normal> 51</span>
-<span class=normal> 52</span>
-<span class=normal> 53</span>
-<span class=normal> 54</span>
-<span class=normal> 55</span>
-<span class=normal> 56</span>
-<span class=normal> 57</span>
-<span class=normal> 58</span>
-<span class=normal> 59</span>
-<span class=normal> 60</span>
-<span class=normal> 61</span>
-<span class=normal> 62</span>
-<span class=normal> 63</span>
-<span class=normal> 64</span>
-<span class=normal> 65</span>
-<span class=normal> 66</span>
-<span class=normal> 67</span>
-<span class=normal> 68</span>
-<span class=normal> 69</span>
-<span class=normal> 70</span>
-<span class=normal> 71</span>
-<span class=normal> 72</span>
-<span class=normal> 73</span>
-<span class=normal> 74</span>
-<span class=normal> 75</span>
-<span class=normal> 76</span>
-<span class=normal> 77</span>
-<span class=normal> 78</span>
-<span class=normal> 79</span>
-<span class=normal> 80</span>
-<span class=normal> 81</span>
-<span class=normal> 82</span>
-<span class=normal> 83</span>
-<span class=normal> 84</span>
-<span class=normal> 85</span>
-<span class=normal> 86</span>
-<span class=normal> 87</span>
-<span class=normal> 88</span>
-<span class=normal> 89</span>
-<span class=normal> 90</span>
-<span class=normal> 91</span>
-<span class=normal> 92</span>
-<span class=normal> 93</span>
-<span class=normal> 94</span>
-<span class=normal> 95</span>
-<span class=normal> 96</span>
-<span class=normal> 97</span>
-<span class=normal> 98</span>
-<span class=normal> 99</span>
-<span class=normal>100</span>
-<span class=normal>101</span>
-<span class=normal>102</span>
-<span class=normal>103</span>
-<span class=normal>104</span>
-<span class=normal>105</span>
-<span class=normal>106</span>
-<span class=normal>107</span>
-<span class=normal>108</span>
-<span class=normal>109</span>
-<span class=normal>110</span>
-<span class=normal>111</span>
-<span class=normal>112</span>
-<span class=normal>113</span>
-<span class=normal>114</span>
-<span class=normal>115</span>
-<span class=normal>116</span>
-<span class=normal>117</span>
-<span class=normal>118</span>
-<span class=normal>119</span>
-<span class=normal>120</span>
-<span class=normal>121</span>
-<span class=normal>122</span>
-<span class=normal>123</span>
-<span class=normal>124</span>
-<span class=normal>125</span>
-<span class=normal>126</span>
-<span class=normal>127</span>
-<span class=normal>128</span>
-<span class=normal>129</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit008</span>
-<span class=c1>//</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
-
-<span class=kd>import</span> <span class=nc>UIKit</span>
-<span class=kd>import</span> <span class=nc>UserNotifications</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
-
-    <span class=kd>private</span> <span class=kd>let</span> <span class=nv>BUTTON_NORMAL</span><span class=p>:</span> <span class=nb>Int</span> <span class=p>=</span> <span class=mi>1</span>
-    <span class=kd>private</span> <span class=kd>let</span> <span class=nv>BUTTON_FIRE</span><span class=p>:</span> <span class=nb>Int</span> <span class=p>=</span> <span class=mi>2</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-
-        <span class=c1>// Notificationの表示許可をもらう.</span>
-        <span class=kd>let</span> <span class=nv>center</span> <span class=p>=</span> <span class=bp>UNUserNotificationCenter</span><span class=p>.</span><span class=n>current</span><span class=p>()</span>
-        <span class=n>center</span><span class=p>.</span><span class=n>requestAuthorization</span><span class=p>(</span><span class=n>options</span><span class=p>:</span> <span class=p>[.</span><span class=n>alert</span><span class=p>,</span> <span class=p>.</span><span class=n>sound</span><span class=p>])</span> <span class=p>{</span> <span class=p>(</span><span class=n>granted</span><span class=p>,</span> <span class=n>error</span><span class=p>)</span> <span class=k>in</span>
-
-        <span class=p>}</span>
-
-        <span class=c1>// すぐにNotificationを発火するボタン.</span>
-        <span class=kd>let</span> <span class=nv>buttonWidth</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>200</span>
-        <span class=kd>let</span> <span class=nv>buttonHeight</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>80</span>
-        <span class=kd>let</span> <span class=nv>posX</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span> <span class=o>-</span> <span class=n>buttonWidth</span><span class=p>)</span> <span class=o>/</span> <span class=mi>2</span>
-        <span class=kd>let</span> <span class=nv>posY</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>200</span>
-
-        <span class=kd>let</span> <span class=nv>myButton</span><span class=p>:</span> <span class=bp>UIButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=n>posX</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=n>posY</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=n>buttonWidth</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>buttonHeight</span><span class=p>))</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>orange</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=n>BUTTON_NORMAL</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;Notification&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>touchDown</span><span class=p>)</span>
-        <span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>)</span>
-
-        <span class=c1>// 時間をおいてNotificationを発火するボタン.</span>
-        <span class=kd>let</span> <span class=nv>posFireX</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span> <span class=o>-</span> <span class=n>buttonWidth</span><span class=p>)</span> <span class=o>/</span> <span class=mi>2</span>
-        <span class=kd>let</span> <span class=nv>posFireY</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>400</span>
-
-        <span class=kd>let</span> <span class=nv>myFireButton</span><span class=p>:</span> <span class=bp>UIButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=n>posFireX</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=n>posFireY</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=n>buttonWidth</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>buttonHeight</span><span class=p>))</span>
-        <span class=n>myFireButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blue</span>
-        <span class=n>myFireButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myFireButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myFireButton</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=n>BUTTON_FIRE</span>
-        <span class=n>myFireButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;Fire Notification&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myFireButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>touchDown</span><span class=p>)</span>
-        <span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myFireButton</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-        <span class=c1>// Dispose of any resources that can be recreated.</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     ボタンイベント.</span>
-<span class=cm>     */</span>
-    <span class=kr>@objc</span> <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;onClickMyButton&quot;</span><span class=p>)</span>
-        <span class=k>if</span> <span class=n>sender</span><span class=p>.</span><span class=n>tag</span> <span class=p>==</span> <span class=n>BUTTON_NORMAL</span> <span class=p>{</span>
-            <span class=n>showNotification</span><span class=p>()</span>
-        <span class=p>}</span> <span class=k>else</span> <span class=k>if</span> <span class=n>sender</span><span class=p>.</span><span class=n>tag</span> <span class=p>==</span> <span class=n>BUTTON_FIRE</span> <span class=p>{</span>
-            <span class=n>showNotificationFire</span><span class=p>()</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     Notificationを表示.</span>
-<span class=cm>     */</span>
-    <span class=kd>private</span> <span class=kd>func</span> <span class=nf>showNotification</span><span class=p>()</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;showNotification&quot;</span><span class=p>)</span>
-
-        <span class=c1>// Notificationを生成.</span>
-        <span class=kd>let</span> <span class=nv>content</span> <span class=p>=</span> <span class=bp>UNMutableNotificationContent</span><span class=p>()</span>
-
-        <span class=c1>// Titleを代入する.</span>
-        <span class=n>content</span><span class=p>.</span><span class=n>title</span> <span class=p>=</span> <span class=s>&quot;Title1&quot;</span>
-
-        <span class=c1>// Bodyを代入する.</span>
-        <span class=n>content</span><span class=p>.</span><span class=n>body</span> <span class=p>=</span> <span class=s>&quot;Hello Notification&quot;</span>
-
-        <span class=c1>// 音を設定する.</span>
-        <span class=n>content</span><span class=p>.</span><span class=n>sound</span> <span class=p>=</span> <span class=bp>UNNotificationSound</span><span class=p>.</span><span class=k>default</span>
-
-        <span class=c1>// Requestを生成する.</span>
-        <span class=kd>let</span> <span class=nv>request</span> <span class=p>=</span> <span class=bp>UNNotificationRequest</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>identifier</span><span class=p>:</span> <span class=s>&quot;Title1&quot;</span><span class=p>,</span> <span class=n>content</span><span class=p>:</span> <span class=n>content</span><span class=p>,</span> <span class=n>trigger</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-
-        <span class=c1>// Noticationを発行する.</span>
-        <span class=kd>let</span> <span class=nv>center</span> <span class=p>=</span> <span class=bp>UNUserNotificationCenter</span><span class=p>.</span><span class=n>current</span><span class=p>()</span>
-        <span class=n>center</span><span class=p>.</span><span class=n>add</span><span class=p>(</span><span class=n>request</span><span class=p>)</span> <span class=p>{</span> <span class=p>(</span><span class=n>error</span><span class=p>)</span> <span class=k>in</span>
-            <span class=bp>print</span><span class=p>(</span><span class=n>error</span> <span class=k>as</span> <span class=nb>Any</span><span class=p>)</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     Notificationを表示(10秒後)</span>
-<span class=cm>     */</span>
-    <span class=kd>private</span> <span class=kd>func</span> <span class=nf>showNotificationFire</span><span class=p>()</span> <span class=p>{</span>
-        <span class=c1>// Notificationを生成.</span>
-        <span class=kd>let</span> <span class=nv>content</span> <span class=p>=</span> <span class=bp>UNMutableNotificationContent</span><span class=p>()</span>
-
-        <span class=c1>// Titleを代入する.</span>
-        <span class=n>content</span><span class=p>.</span><span class=n>title</span> <span class=p>=</span> <span class=s>&quot;Title1&quot;</span>
-
-        <span class=c1>// Bodyを代入する.</span>
-        <span class=n>content</span><span class=p>.</span><span class=n>body</span> <span class=p>=</span> <span class=s>&quot;Hello Notification&quot;</span>
-
-        <span class=c1>// 音を設定する.</span>
-        <span class=n>content</span><span class=p>.</span><span class=n>sound</span> <span class=p>=</span> <span class=bp>UNNotificationSound</span><span class=p>.</span><span class=k>default</span>
-
-        <span class=c1>// Triggerを生成する.</span>
-        <span class=kd>let</span> <span class=nv>trigger</span> <span class=p>=</span> <span class=bp>UNTimeIntervalNotificationTrigger</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>timeInterval</span><span class=p>:</span> <span class=mi>5</span><span class=p>,</span> <span class=n>repeats</span><span class=p>:</span> <span class=kc>false</span><span class=p>)</span>
-
-        <span class=c1>// Requestを生成する.</span>
-        <span class=kd>let</span> <span class=nv>request</span> <span class=p>=</span> <span class=bp>UNNotificationRequest</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>identifier</span><span class=p>:</span> <span class=s>&quot;Title1&quot;</span><span class=p>,</span> <span class=n>content</span><span class=p>:</span> <span class=n>content</span><span class=p>,</span> <span class=n>trigger</span><span class=p>:</span> <span class=n>trigger</span><span class=p>)</span>
-
-        <span class=c1>// Noticationを発行する.</span>
-        <span class=kd>let</span> <span class=nv>center</span> <span class=p>=</span> <span class=bp>UNUserNotificationCenter</span><span class=p>.</span><span class=n>current</span><span class=p>()</span>
-        <span class=n>center</span><span class=p>.</span><span class=n>add</span><span class=p>(</span><span class=n>request</span><span class=p>)</span> <span class=p>{</span> <span class=p>(</span><span class=n>error</span><span class=p>)</span> <span class=k>in</span>
-            <span class=bp>print</span><span class=p>(</span><span class=n>error</span> <span class=k>as</span> <span class=nb>Any</span><span class=p>)</span>
-        <span class=p>}</span>
-
-    <span class=p>}</span>
-
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 4.x/Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal>  1</span>
-<span class=normal>  2</span>
-<span class=normal>  3</span>
-<span class=normal>  4</span>
-<span class=normal>  5</span>
-<span class=normal>  6</span>
-<span class=normal>  7</span>
-<span class=normal>  8</span>
-<span class=normal>  9</span>
-<span class=normal> 10</span>
-<span class=normal> 11</span>
-<span class=normal> 12</span>
-<span class=normal> 13</span>
-<span class=normal> 14</span>
-<span class=normal> 15</span>
-<span class=normal> 16</span>
-<span class=normal> 17</span>
-<span class=normal> 18</span>
-<span class=normal> 19</span>
-<span class=normal> 20</span>
-<span class=normal> 21</span>
-<span class=normal> 22</span>
-<span class=normal> 23</span>
-<span class=normal> 24</span>
-<span class=normal> 25</span>
-<span class=normal> 26</span>
-<span class=normal> 27</span>
-<span class=normal> 28</span>
-<span class=normal> 29</span>
-<span class=normal> 30</span>
-<span class=normal> 31</span>
-<span class=normal> 32</span>
-<span class=normal> 33</span>
-<span class=normal> 34</span>
-<span class=normal> 35</span>
-<span class=normal> 36</span>
-<span class=normal> 37</span>
-<span class=normal> 38</span>
-<span class=normal> 39</span>
-<span class=normal> 40</span>
-<span class=normal> 41</span>
-<span class=normal> 42</span>
-<span class=normal> 43</span>
-<span class=normal> 44</span>
-<span class=normal> 45</span>
-<span class=normal> 46</span>
-<span class=normal> 47</span>
-<span class=normal> 48</span>
-<span class=normal> 49</span>
-<span class=normal> 50</span>
-<span class=normal> 51</span>
-<span class=normal> 52</span>
-<span class=normal> 53</span>
-<span class=normal> 54</span>
-<span class=normal> 55</span>
-<span class=normal> 56</span>
-<span class=normal> 57</span>
-<span class=normal> 58</span>
-<span class=normal> 59</span>
-<span class=normal> 60</span>
-<span class=normal> 61</span>
-<span class=normal> 62</span>
-<span class=normal> 63</span>
-<span class=normal> 64</span>
-<span class=normal> 65</span>
-<span class=normal> 66</span>
-<span class=normal> 67</span>
-<span class=normal> 68</span>
-<span class=normal> 69</span>
-<span class=normal> 70</span>
-<span class=normal> 71</span>
-<span class=normal> 72</span>
-<span class=normal> 73</span>
-<span class=normal> 74</span>
-<span class=normal> 75</span>
-<span class=normal> 76</span>
-<span class=normal> 77</span>
-<span class=normal> 78</span>
-<span class=normal> 79</span>
-<span class=normal> 80</span>
-<span class=normal> 81</span>
-<span class=normal> 82</span>
-<span class=normal> 83</span>
-<span class=normal> 84</span>
-<span class=normal> 85</span>
-<span class=normal> 86</span>
-<span class=normal> 87</span>
-<span class=normal> 88</span>
-<span class=normal> 89</span>
-<span class=normal> 90</span>
-<span class=normal> 91</span>
-<span class=normal> 92</span>
-<span class=normal> 93</span>
-<span class=normal> 94</span>
-<span class=normal> 95</span>
-<span class=normal> 96</span>
-<span class=normal> 97</span>
-<span class=normal> 98</span>
-<span class=normal> 99</span>
-<span class=normal>100</span>
-<span class=normal>101</span>
-<span class=normal>102</span>
-<span class=normal>103</span>
-<span class=normal>104</span>
-<span class=normal>105</span>
-<span class=normal>106</span>
-<span class=normal>107</span>
-<span class=normal>108</span>
-<span class=normal>109</span>
-<span class=normal>110</span>
-<span class=normal>111</span>
-<span class=normal>112</span>
-<span class=normal>113</span>
-<span class=normal>114</span>
-<span class=normal>115</span>
-<span class=normal>116</span>
-<span class=normal>117</span>
-<span class=normal>118</span>
-<span class=normal>119</span>
-<span class=normal>120</span>
-<span class=normal>121</span>
-<span class=normal>122</span>
-<span class=normal>123</span>
-<span class=normal>124</span>
-<span class=normal>125</span>
-<span class=normal>126</span>
-<span class=normal>127</span>
-<span class=normal>128</span>
-<span class=normal>129</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit008</span>
-<span class=c1>//</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
-
-<span class=kd>import</span> <span class=nc>UIKit</span>
-<span class=kd>import</span> <span class=nc>UserNotifications</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
-
-    <span class=kd>private</span> <span class=kd>let</span> <span class=nv>BUTTON_NORMAL</span><span class=p>:</span> <span class=nb>Int</span> <span class=p>=</span> <span class=mi>1</span>
-    <span class=kd>private</span> <span class=kd>let</span> <span class=nv>BUTTON_FIRE</span><span class=p>:</span> <span class=nb>Int</span> <span class=p>=</span> <span class=mi>2</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-
-        <span class=c1>// Notificationの表示許可をもらう.</span>
-        <span class=kd>let</span> <span class=nv>center</span> <span class=p>=</span> <span class=bp>UNUserNotificationCenter</span><span class=p>.</span><span class=n>current</span><span class=p>()</span>
-        <span class=n>center</span><span class=p>.</span><span class=n>requestAuthorization</span><span class=p>(</span><span class=n>options</span><span class=p>:</span> <span class=p>[.</span><span class=n>alert</span><span class=p>,</span> <span class=p>.</span><span class=n>sound</span><span class=p>])</span> <span class=p>{</span> <span class=p>(</span><span class=n>granted</span><span class=p>,</span> <span class=n>error</span><span class=p>)</span> <span class=k>in</span>
-
-        <span class=p>}</span>
-
-        <span class=c1>// すぐにNotificationを発火するボタン.</span>
-        <span class=kd>let</span> <span class=nv>buttonWidth</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>200</span>
-        <span class=kd>let</span> <span class=nv>buttonHeight</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>80</span>
-        <span class=kd>let</span> <span class=nv>posX</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span> <span class=o>-</span> <span class=n>buttonWidth</span><span class=p>)</span> <span class=o>/</span> <span class=mi>2</span>
-        <span class=kd>let</span> <span class=nv>posY</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>200</span>
-
-        <span class=kd>let</span> <span class=nv>myButton</span><span class=p>:</span> <span class=bp>UIButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=n>posX</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=n>posY</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=n>buttonWidth</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>buttonHeight</span><span class=p>))</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>orange</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=n>BUTTON_NORMAL</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;Notification&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>touchDown</span><span class=p>)</span>
-        <span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>)</span>
-
-        <span class=c1>// 時間をおいてNotificationを発火するボタン.</span>
-        <span class=kd>let</span> <span class=nv>posFireX</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span> <span class=o>-</span> <span class=n>buttonWidth</span><span class=p>)</span> <span class=o>/</span> <span class=mi>2</span>
-        <span class=kd>let</span> <span class=nv>posFireY</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>400</span>
-
-        <span class=kd>let</span> <span class=nv>myFireButton</span><span class=p>:</span> <span class=bp>UIButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRect</span><span class=p>(</span><span class=n>x</span><span class=p>:</span> <span class=n>posFireX</span><span class=p>,</span> <span class=n>y</span><span class=p>:</span> <span class=n>posFireY</span><span class=p>,</span> <span class=n>width</span><span class=p>:</span> <span class=n>buttonWidth</span><span class=p>,</span> <span class=n>height</span><span class=p>:</span> <span class=n>buttonHeight</span><span class=p>))</span>
-        <span class=n>myFireButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blue</span>
-        <span class=n>myFireButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myFireButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myFireButton</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=n>BUTTON_FIRE</span>
-        <span class=n>myFireButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;Fire Notification&quot;</span><span class=p>,</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>normal</span><span class=p>)</span>
-        <span class=n>myFireButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:)),</span> <span class=k>for</span><span class=p>:</span> <span class=p>.</span><span class=n>touchDown</span><span class=p>)</span>
-        <span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myFireButton</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-        <span class=c1>// Dispose of any resources that can be recreated.</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     ボタンイベント.</span>
-<span class=cm>     */</span>
-    <span class=kr>@objc</span> <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;onClickMyButton&quot;</span><span class=p>)</span>
-        <span class=k>if</span> <span class=n>sender</span><span class=p>.</span><span class=n>tag</span> <span class=p>==</span> <span class=n>BUTTON_NORMAL</span> <span class=p>{</span>
-            <span class=n>showNotification</span><span class=p>()</span>
-        <span class=p>}</span> <span class=k>else</span> <span class=k>if</span> <span class=n>sender</span><span class=p>.</span><span class=n>tag</span> <span class=p>==</span> <span class=n>BUTTON_FIRE</span> <span class=p>{</span>
-            <span class=n>showNotificationFire</span><span class=p>()</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     Notificationを表示.</span>
-<span class=cm>     */</span>
-    <span class=kd>private</span> <span class=kd>func</span> <span class=nf>showNotification</span><span class=p>()</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;showNotification&quot;</span><span class=p>)</span>
-
-        <span class=c1>// Notificationを生成.</span>
-        <span class=kd>let</span> <span class=nv>content</span> <span class=p>=</span> <span class=bp>UNMutableNotificationContent</span><span class=p>()</span>
-
-        <span class=c1>// Titleを代入する.</span>
-        <span class=n>content</span><span class=p>.</span><span class=n>title</span> <span class=p>=</span> <span class=s>&quot;Title1&quot;</span>
-
-        <span class=c1>// Bodyを代入する.</span>
-        <span class=n>content</span><span class=p>.</span><span class=n>body</span> <span class=p>=</span> <span class=s>&quot;Hello Notification&quot;</span>
-
-        <span class=c1>// 音を設定する.</span>
-        <span class=n>content</span><span class=p>.</span><span class=n>sound</span> <span class=p>=</span> <span class=bp>UNNotificationSound</span><span class=p>.</span><span class=k>default</span><span class=p>()</span>
-
-        <span class=c1>// Requestを生成する.</span>
-        <span class=kd>let</span> <span class=nv>request</span> <span class=p>=</span> <span class=bp>UNNotificationRequest</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>identifier</span><span class=p>:</span> <span class=s>&quot;Title1&quot;</span><span class=p>,</span> <span class=n>content</span><span class=p>:</span> <span class=n>content</span><span class=p>,</span> <span class=n>trigger</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-
-        <span class=c1>// Noticationを発行する.</span>
-        <span class=kd>let</span> <span class=nv>center</span> <span class=p>=</span> <span class=bp>UNUserNotificationCenter</span><span class=p>.</span><span class=n>current</span><span class=p>()</span>
-        <span class=n>center</span><span class=p>.</span><span class=n>add</span><span class=p>(</span><span class=n>request</span><span class=p>)</span> <span class=p>{</span> <span class=p>(</span><span class=n>error</span><span class=p>)</span> <span class=k>in</span>
-            <span class=bp>print</span><span class=p>(</span><span class=n>error</span> <span class=k>as</span> <span class=nb>Any</span><span class=p>)</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     Notificationを表示(10秒後)</span>
-<span class=cm>     */</span>
-    <span class=kd>private</span> <span class=kd>func</span> <span class=nf>showNotificationFire</span><span class=p>()</span> <span class=p>{</span>
-        <span class=c1>// Notificationを生成.</span>
-        <span class=kd>let</span> <span class=nv>content</span> <span class=p>=</span> <span class=bp>UNMutableNotificationContent</span><span class=p>()</span>
-
-        <span class=c1>// Titleを代入する.</span>
-        <span class=n>content</span><span class=p>.</span><span class=n>title</span> <span class=p>=</span> <span class=s>&quot;Title1&quot;</span>
-
-        <span class=c1>// Bodyを代入する.</span>
-        <span class=n>content</span><span class=p>.</span><span class=n>body</span> <span class=p>=</span> <span class=s>&quot;Hello Notification&quot;</span>
-
-        <span class=c1>// 音を設定する.</span>
-        <span class=n>content</span><span class=p>.</span><span class=n>sound</span> <span class=p>=</span> <span class=bp>UNNotificationSound</span><span class=p>.</span><span class=k>default</span><span class=p>()</span>
-
-        <span class=c1>// Triggerを生成する.</span>
-        <span class=kd>let</span> <span class=nv>trigger</span> <span class=p>=</span> <span class=bp>UNTimeIntervalNotificationTrigger</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>timeInterval</span><span class=p>:</span> <span class=mi>5</span><span class=p>,</span> <span class=n>repeats</span><span class=p>:</span> <span class=kc>false</span><span class=p>)</span>
-
-        <span class=c1>// Requestを生成する.</span>
-        <span class=kd>let</span> <span class=nv>request</span> <span class=p>=</span> <span class=bp>UNNotificationRequest</span><span class=p>.</span><span class=kd>init</span><span class=p>(</span><span class=n>identifier</span><span class=p>:</span> <span class=s>&quot;Title1&quot;</span><span class=p>,</span> <span class=n>content</span><span class=p>:</span> <span class=n>content</span><span class=p>,</span> <span class=n>trigger</span><span class=p>:</span> <span class=n>trigger</span><span class=p>)</span>
-
-        <span class=c1>// Noticationを発行する.</span>
-        <span class=kd>let</span> <span class=nv>center</span> <span class=p>=</span> <span class=bp>UNUserNotificationCenter</span><span class=p>.</span><span class=n>current</span><span class=p>()</span>
-        <span class=n>center</span><span class=p>.</span><span class=n>add</span><span class=p>(</span><span class=n>request</span><span class=p>)</span> <span class=p>{</span> <span class=p>(</span><span class=n>error</span><span class=p>)</span> <span class=k>in</span>
-            <span class=bp>print</span><span class=p>(</span><span class=n>error</span> <span class=k>as</span> <span class=nb>Any</span><span class=p>)</span>
-        <span class=p>}</span>
-
-    <span class=p>}</span>
-
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><table class=codehilitetable><tr><td class=linenos><div class=linenodiv><pre><span class=normal>  1</span>
-<span class=normal>  2</span>
-<span class=normal>  3</span>
-<span class=normal>  4</span>
-<span class=normal>  5</span>
-<span class=normal>  6</span>
-<span class=normal>  7</span>
-<span class=normal>  8</span>
-<span class=normal>  9</span>
-<span class=normal> 10</span>
-<span class=normal> 11</span>
-<span class=normal> 12</span>
-<span class=normal> 13</span>
-<span class=normal> 14</span>
-<span class=normal> 15</span>
-<span class=normal> 16</span>
-<span class=normal> 17</span>
-<span class=normal> 18</span>
-<span class=normal> 19</span>
-<span class=normal> 20</span>
-<span class=normal> 21</span>
-<span class=normal> 22</span>
-<span class=normal> 23</span>
-<span class=normal> 24</span>
-<span class=normal> 25</span>
-<span class=normal> 26</span>
-<span class=normal> 27</span>
-<span class=normal> 28</span>
-<span class=normal> 29</span>
-<span class=normal> 30</span>
-<span class=normal> 31</span>
-<span class=normal> 32</span>
-<span class=normal> 33</span>
-<span class=normal> 34</span>
-<span class=normal> 35</span>
-<span class=normal> 36</span>
-<span class=normal> 37</span>
-<span class=normal> 38</span>
-<span class=normal> 39</span>
-<span class=normal> 40</span>
-<span class=normal> 41</span>
-<span class=normal> 42</span>
-<span class=normal> 43</span>
-<span class=normal> 44</span>
-<span class=normal> 45</span>
-<span class=normal> 46</span>
-<span class=normal> 47</span>
-<span class=normal> 48</span>
-<span class=normal> 49</span>
-<span class=normal> 50</span>
-<span class=normal> 51</span>
-<span class=normal> 52</span>
-<span class=normal> 53</span>
-<span class=normal> 54</span>
-<span class=normal> 55</span>
-<span class=normal> 56</span>
-<span class=normal> 57</span>
-<span class=normal> 58</span>
-<span class=normal> 59</span>
-<span class=normal> 60</span>
-<span class=normal> 61</span>
-<span class=normal> 62</span>
-<span class=normal> 63</span>
-<span class=normal> 64</span>
-<span class=normal> 65</span>
-<span class=normal> 66</span>
-<span class=normal> 67</span>
-<span class=normal> 68</span>
-<span class=normal> 69</span>
-<span class=normal> 70</span>
-<span class=normal> 71</span>
-<span class=normal> 72</span>
-<span class=normal> 73</span>
-<span class=normal> 74</span>
-<span class=normal> 75</span>
-<span class=normal> 76</span>
-<span class=normal> 77</span>
-<span class=normal> 78</span>
-<span class=normal> 79</span>
-<span class=normal> 80</span>
-<span class=normal> 81</span>
-<span class=normal> 82</span>
-<span class=normal> 83</span>
-<span class=normal> 84</span>
-<span class=normal> 85</span>
-<span class=normal> 86</span>
-<span class=normal> 87</span>
-<span class=normal> 88</span>
-<span class=normal> 89</span>
-<span class=normal> 90</span>
-<span class=normal> 91</span>
-<span class=normal> 92</span>
-<span class=normal> 93</span>
-<span class=normal> 94</span>
-<span class=normal> 95</span>
-<span class=normal> 96</span>
-<span class=normal> 97</span>
-<span class=normal> 98</span>
-<span class=normal> 99</span>
-<span class=normal>100</span>
-<span class=normal>101</span>
-<span class=normal>102</span>
-<span class=normal>103</span>
-<span class=normal>104</span>
-<span class=normal>105</span>
-<span class=normal>106</span>
-<span class=normal>107</span>
-<span class=normal>108</span>
-<span class=normal>109</span>
-<span class=normal>110</span>
-<span class=normal>111</span>
-<span class=normal>112</span>
-<span class=normal>113</span></pre></div></td><td class=code><div class=codehilite><pre><span></span><code><span class=c1>//</span>
-<span class=c1>//  ViewController.swift</span>
-<span class=c1>//  UIKit008</span>
-<span class=c1>//</span>
-<span class=c1>//  Copyright © 2016年 FaBo, Inc. All rights reserved.</span>
-<span class=c1>//</span>
-
-<span class=kd>import</span> <span class=nc>UIKit</span>
-
-<span class=kd>class</span> <span class=nc>ViewController</span><span class=p>:</span> <span class=bp>UIViewController</span> <span class=p>{</span>
-
-    <span class=kd>private</span> <span class=kd>let</span> <span class=nv>BUTTON_NORMAL</span><span class=p>:</span> <span class=nb>Int</span> <span class=p>=</span> <span class=mi>1</span>
-    <span class=kd>private</span> <span class=kd>let</span> <span class=nv>BUTTON_FIRE</span><span class=p>:</span> <span class=nb>Int</span> <span class=p>=</span> <span class=mi>2</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>viewDidLoad</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>viewDidLoad</span><span class=p>()</span>
-
-        <span class=c1>// アラートの表示許可をもらう.</span>
-        <span class=kd>let</span> <span class=nv>setting</span> <span class=p>=</span> <span class=bp>UIUserNotificationSettings</span><span class=p>(</span><span class=n>forTypes</span><span class=p>:</span> <span class=p>[.</span><span class=n>Sound</span><span class=p>,</span> <span class=p>.</span><span class=n>Alert</span><span class=p>],</span> <span class=n>categories</span><span class=p>:</span> <span class=kc>nil</span><span class=p>)</span>
-        <span class=bp>UIApplication</span><span class=p>.</span><span class=n>sharedApplication</span><span class=p>().</span><span class=n>registerUserNotificationSettings</span><span class=p>(</span><span class=n>setting</span><span class=p>)</span>
-
-        <span class=c1>// すぐにNotificationを発火するボタン.</span>
-        <span class=kd>let</span> <span class=nv>buttonWidth</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>200</span>
-        <span class=kd>let</span> <span class=nv>buttonHeight</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>80</span>
-        <span class=kd>let</span> <span class=nv>posX</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span> <span class=o>-</span> <span class=n>buttonWidth</span><span class=p>)</span> <span class=o>/</span> <span class=mi>2</span>
-        <span class=kd>let</span> <span class=nv>posY</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>200</span>
-
-        <span class=kd>let</span> <span class=nv>myButton</span><span class=p>:</span> <span class=bp>UIButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=n>posX</span><span class=p>,</span> <span class=n>posY</span><span class=p>,</span> <span class=n>buttonWidth</span><span class=p>,</span> <span class=n>buttonHeight</span><span class=p>))</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>orangeColor</span><span class=p>()</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=n>BUTTON_NORMAL</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;Notification&quot;</span><span class=p>,</span> <span class=n>forState</span><span class=p>:</span> <span class=p>.</span><span class=n>Normal</span><span class=p>)</span>
-        <span class=n>myButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=kc>_</span><span class=p>:)),</span> <span class=n>forControlEvents</span><span class=p>:</span> <span class=p>.</span><span class=n>TouchDown</span><span class=p>)</span>
-        <span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myButton</span><span class=p>)</span>
-
-        <span class=c1>// 時間をおいてNotificationを発火するボタン.</span>
-        <span class=kd>let</span> <span class=nv>posFireX</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=p>(</span><span class=kc>self</span><span class=p>.</span><span class=n>view</span><span class=p>.</span><span class=n>bounds</span><span class=p>.</span><span class=n>width</span> <span class=o>-</span> <span class=n>buttonWidth</span><span class=p>)</span> <span class=o>/</span> <span class=mi>2</span>
-        <span class=kd>let</span> <span class=nv>posFireY</span><span class=p>:</span> <span class=n>CGFloat</span> <span class=p>=</span> <span class=mi>400</span>
-
-        <span class=kd>let</span> <span class=nv>myFireButton</span><span class=p>:</span> <span class=bp>UIButton</span> <span class=p>=</span> <span class=bp>UIButton</span><span class=p>(</span><span class=n>frame</span><span class=p>:</span> <span class=n>CGRectMake</span><span class=p>(</span><span class=n>posFireX</span><span class=p>,</span> <span class=n>posFireY</span><span class=p>,</span> <span class=n>buttonWidth</span><span class=p>,</span> <span class=n>buttonHeight</span><span class=p>))</span>
-        <span class=n>myFireButton</span><span class=p>.</span><span class=n>backgroundColor</span> <span class=p>=</span> <span class=bp>UIColor</span><span class=p>.</span><span class=n>blueColor</span><span class=p>()</span>
-        <span class=n>myFireButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>masksToBounds</span> <span class=p>=</span> <span class=kc>true</span>
-        <span class=n>myFireButton</span><span class=p>.</span><span class=n>layer</span><span class=p>.</span><span class=n>cornerRadius</span> <span class=p>=</span> <span class=mf>20.0</span>
-        <span class=n>myFireButton</span><span class=p>.</span><span class=n>tag</span> <span class=p>=</span> <span class=n>BUTTON_FIRE</span>
-        <span class=n>myFireButton</span><span class=p>.</span><span class=n>setTitle</span><span class=p>(</span><span class=s>&quot;Fire Notification&quot;</span><span class=p>,</span> <span class=n>forState</span><span class=p>:</span> <span class=p>.</span><span class=n>Normal</span><span class=p>)</span>
-        <span class=n>myFireButton</span><span class=p>.</span><span class=n>addTarget</span><span class=p>(</span><span class=kc>self</span><span class=p>,</span> <span class=n>action</span><span class=p>:</span> <span class=k>#selector</span><span class=p>(</span><span class=n>onClickMyButton</span><span class=p>(</span><span class=kc>_</span><span class=p>:)),</span> <span class=n>forControlEvents</span><span class=p>:</span> <span class=p>.</span><span class=n>TouchDown</span><span class=p>)</span>
-        <span class=n>view</span><span class=p>.</span><span class=n>addSubview</span><span class=p>(</span><span class=n>myFireButton</span><span class=p>)</span>
-
-    <span class=p>}</span>
-
-    <span class=kr>override</span> <span class=kd>func</span> <span class=nf>didReceiveMemoryWarning</span><span class=p>()</span> <span class=p>{</span>
-        <span class=kc>super</span><span class=p>.</span><span class=n>didReceiveMemoryWarning</span><span class=p>()</span>
-        <span class=c1>// Dispose of any resources that can be recreated.</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     ボタンイベント.</span>
-<span class=cm>    */</span>
-    <span class=kd>internal</span> <span class=kd>func</span> <span class=nf>onClickMyButton</span><span class=p>(</span><span class=n>sender</span><span class=p>:</span> <span class=bp>UIButton</span><span class=p>)</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;onClickMyButton&quot;</span><span class=p>)</span>
-        <span class=k>if</span> <span class=n>sender</span><span class=p>.</span><span class=n>tag</span> <span class=p>==</span> <span class=n>BUTTON_NORMAL</span> <span class=p>{</span>
-            <span class=n>showNotification</span><span class=p>()</span>
-        <span class=p>}</span> <span class=k>else</span> <span class=k>if</span> <span class=n>sender</span><span class=p>.</span><span class=n>tag</span> <span class=p>==</span> <span class=n>BUTTON_FIRE</span> <span class=p>{</span>
-            <span class=n>showNotificationFire</span><span class=p>()</span>
-        <span class=p>}</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     Notificationを表示.</span>
-<span class=cm>    */</span>
-    <span class=kd>private</span> <span class=kd>func</span> <span class=nf>showNotification</span><span class=p>()</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;showNotification&quot;</span><span class=p>)</span>
-
-        <span class=c1>// Notificationを生成.</span>
-        <span class=kd>let</span> <span class=nv>myNotification</span><span class=p>:</span> <span class=bp>UILocalNotification</span> <span class=p>=</span> <span class=bp>UILocalNotification</span><span class=p>()</span>
-
-        <span class=c1>// メッセージを代入する.</span>
-        <span class=n>myNotification</span><span class=p>.</span><span class=n>alertBody</span> <span class=p>=</span> <span class=s>&quot;TEST1&quot;</span>
-
-        <span class=c1>// Timezoneを設定する.</span>
-        <span class=n>myNotification</span><span class=p>.</span><span class=n>timeZone</span> <span class=p>=</span> <span class=bp>NSTimeZone</span><span class=p>.</span><span class=n>defaultTimeZone</span><span class=p>()</span>
-
-        <span class=c1>// Noticationを発行する.</span>
-        <span class=bp>UIApplication</span><span class=p>.</span><span class=n>sharedApplication</span><span class=p>().</span><span class=n>scheduleLocalNotification</span><span class=p>(</span><span class=n>myNotification</span><span class=p>)</span>
-    <span class=p>}</span>
-
-    <span class=cm>/*</span>
-<span class=cm>     Notificationを表示(10秒後)</span>
-<span class=cm>    */</span>
-    <span class=kd>private</span> <span class=kd>func</span> <span class=nf>showNotificationFire</span><span class=p>()</span> <span class=p>{</span>
-        <span class=bp>print</span><span class=p>(</span><span class=s>&quot;showNotificationFire&quot;</span><span class=p>)</span>
-
-        <span class=c1>// Notificationを生成.</span>
-        <span class=kd>let</span> <span class=nv>myFireNotification</span><span class=p>:</span> <span class=bp>UILocalNotification</span> <span class=p>=</span> <span class=bp>UILocalNotification</span><span class=p>()</span>
-
-        <span class=c1>// メッセージを代入する.</span>
-        <span class=n>myFireNotification</span><span class=p>.</span><span class=n>alertBody</span> <span class=p>=</span> <span class=s>&quot;TEST2&quot;</span>
-
-        <span class=c1>// 再生サウンドを設定する.</span>
-        <span class=n>myFireNotification</span><span class=p>.</span><span class=n>soundName</span> <span class=p>=</span> <span class=n>UILocalNotificationDefaultSoundName</span>
-
-        <span class=c1>// Timezoneを設定する.</span>
-        <span class=n>myFireNotification</span><span class=p>.</span><span class=n>timeZone</span> <span class=p>=</span> <span class=bp>NSTimeZone</span><span class=p>.</span><span class=n>defaultTimeZone</span><span class=p>()</span>
-
-        <span class=c1>// 10秒後に設定する.</span>
-        <span class=n>myFireNotification</span><span class=p>.</span><span class=n>fireDate</span> <span class=p>=</span> <span class=bp>NSDate</span><span class=p>(</span><span class=n>timeIntervalSinceNow</span><span class=p>:</span> <span class=mi>10</span><span class=p>)</span>
-
-        <span class=c1>// Notificationを発行する.</span>
-        <span class=bp>UIApplication</span><span class=p>.</span><span class=n>sharedApplication</span><span class=p>().</span><span class=n>scheduleLocalNotification</span><span class=p>(</span><span class=n>myFireNotification</span><span class=p>)</span>
-    <span class=p>}</span>
-
-<span class=p>}</span>
-</code></pre></div></td></tr></table></div></div>
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit008
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+import UserNotifications
+
+class ViewController: UIViewController {
+
+    private let BUTTON_NORMAL: Int = 1
+    private let BUTTON_FIRE: Int = 2
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Notificationの表示許可をもらう.
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+
+        }
+
+        // すぐにNotificationを発火するボタン.
+        let buttonWidth: CGFloat = 200
+        let buttonHeight: CGFloat = 80
+        let posX: CGFloat = (self.view.bounds.width - buttonWidth) / 2
+        let posY: CGFloat = 200
+
+        let myButton: UIButton = UIButton(frame: CGRect(x: posX, y: posY, width: buttonWidth, height: buttonHeight))
+        myButton.backgroundColor = UIColor.orange
+        myButton.layer.masksToBounds = true
+        myButton.layer.cornerRadius = 20.0
+        myButton.tag = BUTTON_NORMAL
+        myButton.setTitle(&quot;Notification&quot;, for: .normal)
+        myButton.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchDown)
+        view.addSubview(myButton)
+
+        // 時間をおいてNotificationを発火するボタン.
+        let posFireX: CGFloat = (self.view.bounds.width - buttonWidth) / 2
+        let posFireY: CGFloat = 400
+
+        let myFireButton: UIButton = UIButton(frame: CGRect(x: posFireX, y: posFireY, width: buttonWidth, height: buttonHeight))
+        myFireButton.backgroundColor = UIColor.blue
+        myFireButton.layer.masksToBounds = true
+        myFireButton.layer.cornerRadius = 20.0
+        myFireButton.tag = BUTTON_FIRE
+        myFireButton.setTitle(&quot;Fire Notification&quot;, for: .normal)
+        myFireButton.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchDown)
+        view.addSubview(myFireButton)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    /*
+     ボタンイベント.
+     */
+    @objc internal func onClickMyButton(sender: UIButton) {
+        print(&quot;onClickMyButton&quot;)
+        if sender.tag == BUTTON_NORMAL {
+            showNotification()
+        } else if sender.tag == BUTTON_FIRE {
+            showNotificationFire()
+        }
+    }
+
+    /*
+     Notificationを表示.
+     */
+    private func showNotification() {
+        print(&quot;showNotification&quot;)
+
+        // Notificationを生成.
+        let content = UNMutableNotificationContent()
+
+        // Titleを代入する.
+        content.title = &quot;Title1&quot;
+
+        // Bodyを代入する.
+        content.body = &quot;Hello Notification&quot;
+
+        // 音を設定する.
+        content.sound = UNNotificationSound.default
+
+        // Requestを生成する.
+        let request = UNNotificationRequest.init(identifier: &quot;Title1&quot;, content: content, trigger: nil)
+
+        // Noticationを発行する.
+        let center = UNUserNotificationCenter.current()
+        center.add(request) { (error) in
+            print(error as Any)
+        }
+    }
+
+    /*
+     Notificationを表示(10秒後)
+     */
+    private func showNotificationFire() {
+        // Notificationを生成.
+        let content = UNMutableNotificationContent()
+
+        // Titleを代入する.
+        content.title = &quot;Title1&quot;
+
+        // Bodyを代入する.
+        content.body = &quot;Hello Notification&quot;
+
+        // 音を設定する.
+        content.sound = UNNotificationSound.default
+
+        // Triggerを生成する.
+        let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 5, repeats: false)
+
+        // Requestを生成する.
+        let request = UNNotificationRequest.init(identifier: &quot;Title1&quot;, content: content, trigger: trigger)
+
+        // Noticationを発行する.
+        let center = UNUserNotificationCenter.current()
+        center.add(request) { (error) in
+            print(error as Any)
+        }
+
+    }
+
+}
+
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 4.x/Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit008
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+import UserNotifications
+
+class ViewController: UIViewController {
+
+    private let BUTTON_NORMAL: Int = 1
+    private let BUTTON_FIRE: Int = 2
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // Notificationの表示許可をもらう.
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+
+        }
+
+        // すぐにNotificationを発火するボタン.
+        let buttonWidth: CGFloat = 200
+        let buttonHeight: CGFloat = 80
+        let posX: CGFloat = (self.view.bounds.width - buttonWidth) / 2
+        let posY: CGFloat = 200
+
+        let myButton: UIButton = UIButton(frame: CGRect(x: posX, y: posY, width: buttonWidth, height: buttonHeight))
+        myButton.backgroundColor = UIColor.orange
+        myButton.layer.masksToBounds = true
+        myButton.layer.cornerRadius = 20.0
+        myButton.tag = BUTTON_NORMAL
+        myButton.setTitle(&quot;Notification&quot;, for: .normal)
+        myButton.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchDown)
+        view.addSubview(myButton)
+
+        // 時間をおいてNotificationを発火するボタン.
+        let posFireX: CGFloat = (self.view.bounds.width - buttonWidth) / 2
+        let posFireY: CGFloat = 400
+
+        let myFireButton: UIButton = UIButton(frame: CGRect(x: posFireX, y: posFireY, width: buttonWidth, height: buttonHeight))
+        myFireButton.backgroundColor = UIColor.blue
+        myFireButton.layer.masksToBounds = true
+        myFireButton.layer.cornerRadius = 20.0
+        myFireButton.tag = BUTTON_FIRE
+        myFireButton.setTitle(&quot;Fire Notification&quot;, for: .normal)
+        myFireButton.addTarget(self, action: #selector(onClickMyButton(sender:)), for: .touchDown)
+        view.addSubview(myFireButton)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    /*
+     ボタンイベント.
+     */
+    @objc internal func onClickMyButton(sender: UIButton) {
+        print(&quot;onClickMyButton&quot;)
+        if sender.tag == BUTTON_NORMAL {
+            showNotification()
+        } else if sender.tag == BUTTON_FIRE {
+            showNotificationFire()
+        }
+    }
+
+    /*
+     Notificationを表示.
+     */
+    private func showNotification() {
+        print(&quot;showNotification&quot;)
+
+        // Notificationを生成.
+        let content = UNMutableNotificationContent()
+
+        // Titleを代入する.
+        content.title = &quot;Title1&quot;
+
+        // Bodyを代入する.
+        content.body = &quot;Hello Notification&quot;
+
+        // 音を設定する.
+        content.sound = UNNotificationSound.default()
+
+        // Requestを生成する.
+        let request = UNNotificationRequest.init(identifier: &quot;Title1&quot;, content: content, trigger: nil)
+
+        // Noticationを発行する.
+        let center = UNUserNotificationCenter.current()
+        center.add(request) { (error) in
+            print(error as Any)
+        }
+    }
+
+    /*
+     Notificationを表示(10秒後)
+     */
+    private func showNotificationFire() {
+        // Notificationを生成.
+        let content = UNMutableNotificationContent()
+
+        // Titleを代入する.
+        content.title = &quot;Title1&quot;
+
+        // Bodyを代入する.
+        content.body = &quot;Hello Notification&quot;
+
+        // 音を設定する.
+        content.sound = UNNotificationSound.default()
+
+        // Triggerを生成する.
+        let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 5, repeats: false)
+
+        // Requestを生成する.
+        let request = UNNotificationRequest.init(identifier: &quot;Title1&quot;, content: content, trigger: trigger)
+
+        // Noticationを発行する.
+        let center = UNUserNotificationCenter.current()
+        center.add(request) { (error) in
+            print(error as Any)
+        }
+
+    }
+
+}
+
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  UIKit008
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+
+    private let BUTTON_NORMAL: Int = 1
+    private let BUTTON_FIRE: Int = 2
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        // アラートの表示許可をもらう.
+        let setting = UIUserNotificationSettings(forTypes: [.Sound, .Alert], categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(setting)
+
+        // すぐにNotificationを発火するボタン.
+        let buttonWidth: CGFloat = 200
+        let buttonHeight: CGFloat = 80
+        let posX: CGFloat = (self.view.bounds.width - buttonWidth) / 2
+        let posY: CGFloat = 200
+
+        let myButton: UIButton = UIButton(frame: CGRectMake(posX, posY, buttonWidth, buttonHeight))
+        myButton.backgroundColor = UIColor.orangeColor()
+        myButton.layer.masksToBounds = true
+        myButton.layer.cornerRadius = 20.0
+        myButton.tag = BUTTON_NORMAL
+        myButton.setTitle(&quot;Notification&quot;, forState: .Normal)
+        myButton.addTarget(self, action: #selector(onClickMyButton(_:)), forControlEvents: .TouchDown)
+        view.addSubview(myButton)
+
+        // 時間をおいてNotificationを発火するボタン.
+        let posFireX: CGFloat = (self.view.bounds.width - buttonWidth) / 2
+        let posFireY: CGFloat = 400
+
+        let myFireButton: UIButton = UIButton(frame: CGRectMake(posFireX, posFireY, buttonWidth, buttonHeight))
+        myFireButton.backgroundColor = UIColor.blueColor()
+        myFireButton.layer.masksToBounds = true
+        myFireButton.layer.cornerRadius = 20.0
+        myFireButton.tag = BUTTON_FIRE
+        myFireButton.setTitle(&quot;Fire Notification&quot;, forState: .Normal)
+        myFireButton.addTarget(self, action: #selector(onClickMyButton(_:)), forControlEvents: .TouchDown)
+        view.addSubview(myFireButton)
+
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
+    /*
+     ボタンイベント.
+    */
+    internal func onClickMyButton(sender: UIButton) {
+        print(&quot;onClickMyButton&quot;)
+        if sender.tag == BUTTON_NORMAL {
+            showNotification()
+        } else if sender.tag == BUTTON_FIRE {
+            showNotificationFire()
+        }
+    }
+
+    /*
+     Notificationを表示.
+    */
+    private func showNotification() {
+        print(&quot;showNotification&quot;)
+
+        // Notificationを生成.
+        let myNotification: UILocalNotification = UILocalNotification()
+
+        // メッセージを代入する.
+        myNotification.alertBody = &quot;TEST1&quot;
+
+        // Timezoneを設定する.
+        myNotification.timeZone = NSTimeZone.defaultTimeZone()
+
+        // Noticationを発行する.
+        UIApplication.sharedApplication().scheduleLocalNotification(myNotification)
+    }
+
+    /*
+     Notificationを表示(10秒後)
+    */
+    private func showNotificationFire() {
+        print(&quot;showNotificationFire&quot;)
+
+        // Notificationを生成.
+        let myFireNotification: UILocalNotification = UILocalNotification()
+
+        // メッセージを代入する.
+        myFireNotification.alertBody = &quot;TEST2&quot;
+
+        // 再生サウンドを設定する.
+        myFireNotification.soundName = UILocalNotificationDefaultSoundName
+
+        // Timezoneを設定する.
+        myFireNotification.timeZone = NSTimeZone.defaultTimeZone()
+
+        // 10秒後に設定する.
+        myFireNotification.fireDate = NSDate(timeIntervalSinceNow: 10)
+
+        // Notificationを発行する.
+        UIApplication.sharedApplication().scheduleLocalNotification(myFireNotification)
+    }
+
+}
+
+</code></pre></div></div>
 <h2 id="4x5x">4.xと5.xの差分</h2>
 <ul>
 <li><code>UNNotificationSound.default()</code> を <code>UNNotificationSound.default</code> に変更</li>
