@@ -66,73 +66,33 @@ class ViewController: UIViewController {
 }
 ```
 
-```swift fct_label="Swift 2.3"
+```swift fct_label="Swift UI"
 //
-//  ViewController.swift
-//  uikit001
+//  ContentView.swift
 //
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
+//  Copyright © 2021年 FaBo, Inc. All rights reserved.
 //
 
-import UIKit
+import SwiftUI
 
-class ViewController: UIViewController {
+struct ContentView: View {
+    var body: some View {
+        ZStack {
+            Color.init(UIColor.cyan).edgesIgnoringSafeArea(.all)
+            
+            let bWidth: CGFloat = 200
+            let bHeight: CGFloat = 50
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // ボタンのサイズを定義.
-        let bWidth: CGFloat = 200
-        let bHeight: CGFloat = 50
-
-        // 配置する座標を定義(画面の中心).
-        let posX: CGFloat = self.view.bounds.width/2 - bWidth/2
-        let posY: CGFloat = self.view.bounds.height/2 - bHeight/2
-
-        // Labelを作成.
-        let label: UILabel = UILabel(frame: CGRect(x: posX, y: posY, width: bWidth, height: bHeight))
-
-        // UILabelの背景をオレンジ色に.
-        label.backgroundColor = UIColor.orangeColor()
-
-        // UILabelの枠を丸くする.
-        label.layer.masksToBounds = true
-
-        // 丸くするコーナーの半径.
-        label.layer.cornerRadius = 20.0
-
-        // 文字の色を白に定義.
-        label.textColor = UIColor.whiteColor()
-
-        // UILabelに文字を代入.
-        label.text = "Hello Swift!!"
-
-        // 文字の影をグレーに定義.
-        label.shadowColor = UIColor.grayColor()
-
-        // Textを中央寄せにする.
-        label.textAlignment = NSTextAlignment.Center
-
-        // Viewの背景を青にする.
-        self.view.backgroundColor = UIColor.cyanColor()
-
-        // ViewにLabelを追加.
-        self.view.addSubview(label)
-
+            Text("Hello Swift!!")
+                .frame(maxWidth: bWidth, maxHeight: bHeight, alignment: .center)
+                .foregroundColor(Color.white)
+                .background(Color.orange)
+                .shadow(color: .gray, radius: 10, x: 0.0, y: 0.0)
+                .cornerRadius(10)
+        }
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
 }
 ```
-
-## 2.xと3.xの差分
-
-* UIColor.grayColor()がUIColor.grayに変更
-* NSTextAlignment.Centerが、NSTextAlignment.centerに変更
 
 ## Reference
 

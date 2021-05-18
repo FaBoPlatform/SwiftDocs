@@ -7,14 +7,18 @@ extra:
         language: 'jp'
 markdown_extensions:
   - fontawesome_markdown
-  - codehilite:
+  - pymdownx.highlight:
       linenums: true
+  - pymdownx.superfences
   - admonition
   - pymdownx.keys
   - markdown_fenced_code_tabs
   - markdown.extensions.def_list
 extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/highlight.min.js
+  - javascripts/config.js
   - 'javascripts/extra.js'
 extra_css:
   - "https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"  
   - 'stylesheets/extra.css'
+  - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.7.2/styles/default.min.css
