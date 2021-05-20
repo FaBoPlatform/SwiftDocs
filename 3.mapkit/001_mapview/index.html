@@ -1266,20 +1266,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#3x4x" class="md-nav__link">
-    3.xと4.xの差分
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2330" class="md-nav__link">
-    2.3と3.0の差分
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#reference" class="md-nav__link">
     Reference
   </a>
@@ -2298,20 +2284,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#3x4x" class="md-nav__link">
-    3.xと4.xの差分
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2330" class="md-nav__link">
-    2.3と3.0の差分
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#reference" class="md-nav__link">
     Reference
   </a>
@@ -2333,12 +2305,38 @@
                 
                 <h1 id="_1">地図の表示</h1>
 <p><img alt="Preview mapkit001" src="../img/mapkit001.png" /></p>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift UI</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
 //  ViewController.swift
 //  MapKit001
 //
-//  Created by Misato Morino on 2016/08/15.
-//  Copyright © 2016年 Misato Morino. All rights reserved.
+//  Copyright © 2021年 FaBo, Inc. All rights reserved.
+//
+
+import SwiftUI
+import MapKit
+
+struct ContentView: View {
+    @State private var region = MKCoordinateRegion(
+        center: CLLocationCoordinate2D(latitude: 37.521528012588654,
+                                       longitude: 139.93847299738346),
+        span: MKCoordinateSpan(latitudeDelta: 0.005,
+                               longitudeDelta: 0.005)
+    )
+    var body: some View {
+        Map(coordinateRegion: $region)
+    }
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    }
+}
+</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
+//  ViewController.swift
+//  MapKit001
+//
+//  Copyright © 2016年 FaBo, Inc. All rights reserved.
 //
 
 import UIKit
@@ -2386,121 +2384,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         print(&quot;regionDidChangeAnimated&quot;)
     }
 }
-</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
-//  ViewController.swift
-//  MapKit001
-//
-//  Created by Misato Morino on 2016/08/15.
-//  Copyright © 2016年 Misato Morino. All rights reserved.
-//
-
-import UIKit
-import MapKit
-
-class ViewController: UIViewController, MKMapViewDelegate {
-
-    // MapView.
-    var myMapView : MKMapView!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // MapViewの生成.
-        myMapView = MKMapView()
-
-        // MapViewのサイズを画面全体に.
-        myMapView.frame = self.view.bounds
-
-        // Delegateを設定.
-        myMapView.delegate = self
-
-        // MapViewをViewに追加.
-        self.view.addSubview(myMapView)
-
-        // 中心点の緯度経度.
-        let myLat: CLLocationDegrees = 37.506804
-        let myLon: CLLocationDegrees = 139.930531
-        let myCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(myLat, myLon)
-
-        // 縮尺.
-        let myLatDist : CLLocationDistance = 100
-        let myLonDist : CLLocationDistance = 100
-
-        // Regionを作成.
-        let myRegion: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(myCoordinate, myLatDist, myLonDist);
-
-        // MapViewに反映.
-        myMapView.setRegion(myRegion, animated: true)
-
-    }
-
-    // Regionが変更された時に呼び出されるメソッド.
-    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        print(&quot;regionDidChangeAnimated&quot;)
-    } 
-}
-</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><pre><code class=swift>//
-//  ViewController.swift
-//  MapKit001
-//
-//  Created by Misato Morino on 2016/08/15.
-//  Copyright © 2016年 Misato Morino. All rights reserved.
-//
-
-import UIKit
-import MapKit
-
-class ViewController: UIViewController, MKMapViewDelegate {
-
-    // MapView.
-    var myMapView : MKMapView!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // MapViewの生成.
-        myMapView = MKMapView()
-
-        // MapViewのサイズを画面全体に.
-        myMapView.frame = self.view.bounds
-
-        // Delegateを設定.
-        myMapView.delegate = self
-
-        // MapViewをViewに追加.
-        self.view.addSubview(myMapView)
-
-        // 中心点の緯度経度.
-        let myLat: CLLocationDegrees = 37.506804
-        let myLon: CLLocationDegrees = 139.930531
-        let myCoordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(myLat, myLon)
-
-        // 縮尺.
-        let myLatDist : CLLocationDistance = 100
-        let myLonDist : CLLocationDistance = 100
-
-        // Regionを作成.
-        let myRegion: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(myCoordinate, myLatDist, myLonDist);
-
-        // MapViewに反映.
-        myMapView.setRegion(myRegion, animated: true)
-
-    }
-
-    // Regionが変更された時に呼び出されるメソッド.
-    func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-        print(&quot;regionDidChangeAnimated&quot;)
-    } 
-}
 </code></pre></div></div>
-<h2 id="3x4x">3.xと4.xの差分</h2>
-<ul>
-<li><code>MKCoordinateRegionMakeWithDistance(myCoordinate, myLatDist, myLonDist)</code> が <code>MKCoordinateRegion(center: myCoordinate, latitudinalMeters: myLatDist, longitudinalMeters: myLonDist)</code> に変更</li>
-</ul>
-<h2 id="2330">2.3と3.0の差分</h2>
-<ul>
-<li><code>func mapView(mapView: MKMapView, regionDidChangeAnimated animated: Bool)</code> に <code>func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool)</code> に変更</li>
-</ul>
 <h2 id="reference">Reference</h2>
 <ul>
 <li>MKMapView<ul>
