@@ -402,37 +402,43 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#swiftui" class="md-nav__link">
+    SwiftUI
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#swift" class="md-nav__link">
+    Swift
+  </a>
+  
+    <nav class="md-nav" aria-label="Swift">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#appdelegateswift" class="md-nav__link">
     AppDelegate.swift
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#firstviewcontrollerswift" class="md-nav__link">
     FirstViewController.swift
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#secondviewcontrollerswift" class="md-nav__link">
     SecondViewController.swift
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#3040" class="md-nav__link">
-    3.0と4.0の差分
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2330" class="md-nav__link">
-    2.3と3.0の差分
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2331,37 +2337,43 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#swiftui" class="md-nav__link">
+    SwiftUI
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#swift" class="md-nav__link">
+    Swift
+  </a>
+  
+    <nav class="md-nav" aria-label="Swift">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#appdelegateswift" class="md-nav__link">
     AppDelegate.swift
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#firstviewcontrollerswift" class="md-nav__link">
     FirstViewController.swift
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#secondviewcontrollerswift" class="md-nav__link">
     SecondViewController.swift
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#3040" class="md-nav__link">
-    3.0と4.0の差分
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2330" class="md-nav__link">
-    2.3と3.0の差分
-  </a>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2388,8 +2400,46 @@
                 <h1 id="uitabbarcontroller">UITabBarControllerでタブの表示</h1>
 <p><img alt="Preview uikit013" src="../img/uikit013.png" />
 <img alt="Preview uikit013_1" src="../img/uikit013_1.png" /></p>
+<h2 id="swiftui">SwiftUI</h2>
+<p> <pre><code class>//
+//  ContentView.swift
+//  UI001
+//
+//
+
+import SwiftUI
+import CoreData
+
+struct ContentView: View {
+    var body: some View {
+        TabView {
+            FirstView().tabItem {
+                Text(&quot;First&quot;)
+                Image(systemName: &quot;seal&quot;)
+            }
+            SecondView().tabItem {
+                Text(&quot;Second&quot;)
+                Image(systemName: &quot;seal&quot;)
+            }
+        }
+    }
+}
+
+struct FirstView: View {
+    var body: some View {
+        Color.init(UIColor.cyan).edgesIgnoringSafeArea(.all)
+    }
+}
+
+struct SecondView: View {
+    var body: some View {
+        Color.init(UIColor.green).edgesIgnoringSafeArea(.all)
+    }
+}
+</code></pre></p>
+<h2 id="swift">Swift</h2>
 <h3 id="appdelegateswift">AppDelegate.swift</h3>
-<div class=md-fenced-code-tabs id=tab-tab-group-0><input name=tab-group-0 type=radio id=tab-group-0-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-0-0_swift-panel role=tab><label for=tab-group-0-0_swift class=code-tab-label data-lang=swift id=tab-group-0-0_swift-label>Swift 5.x/4.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-0_swift-panel aria-labelledby=tab-group-0-0_swift-label><pre><code class=swift>//
+<p> <pre><code class=swift>//
 //  AppDelegate.swift
 //  UIKit013_3.0
 //
@@ -2453,136 +2503,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-1_swift class=code-tab data-lang=swift aria-controls=tab-group-0-1_swift-panel role=tab><label for=tab-group-0-1_swift class=code-tab-label data-lang=swift id=tab-group-0-1_swift-label>Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-1_swift-panel aria-labelledby=tab-group-0-1_swift-label><pre><code class=swift>//
-//  AppDelegate.swift
-//  UIKit013_3.0
-//
-//  Created by akira on 2016/08/13.
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
-//
-
-import UIKit
-
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    var window: UIWindow?
-
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -&gt; Bool {
-
-        // Tabに設定するViewControllerのインスタンスを生成.
-        let myFirstTab: UIViewController = FirstViewController()
-        let mySecondTab: UIViewController = SecondViewController()
-
-        // タブを要素に持つArrayの.を作成する.
-        let myTabs = NSArray(objects: myFirstTab, mySecondTab)
-
-        // UITabControllerの作成する.
-        let myTabBarController: UITabBarController = UITabBarController()
-
-        // ViewControllerを設定する.
-        myTabBarController.setViewControllers(myTabs as? [UIViewController], animated: false)
-
-        // RootViewControllerに設定する.
-        self.window!.rootViewController = myTabBarController
-
-        // Windowを表示する.
-        self.window!.makeKeyAndVisible()
-
-        return true
-    }
-
-    func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-    }
-
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    }
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-    }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
-
-    func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-
-
-}
-</code></pre></div><input name=tab-group-0 type=radio id=tab-group-0-2_swift class=code-tab data-lang=swift aria-controls=tab-group-0-2_swift-panel role=tab><label for=tab-group-0-2_swift class=code-tab-label data-lang=swift id=tab-group-0-2_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-0-2_swift-panel aria-labelledby=tab-group-0-2_swift-label><pre><code class=swift>//
-//  AppDelegate.swift
-//  UIKit013
-//
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
-//
-
-import UIKit
-
-@UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
-
-    var window: UIWindow?
-
-
-    func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -&gt; Bool {
-
-        // Tabに設定するViewControllerのインスタンスを生成.
-        let myFirstTab: UIViewController = FirstViewController()
-        let mySecondTab: UIViewController = SecondViewController()
-
-        // タブを要素に持つArrayの.を作成する.
-        let myTabs = NSArray(objects: myFirstTab, mySecondTab)
-
-        // UITabControllerの作成する.
-        let myTabBarController: UITabBarController = UITabBarController()
-
-        // ViewControllerを設定する.
-        myTabBarController.setViewControllers(myTabs as? [UIViewController], animated: false)
-
-        // RootViewControllerに設定する.
-        self.window!.rootViewController = myTabBarController
-
-        // Windowを表示する.
-        self.window!.makeKeyAndVisible()
-
-        return true
-    }
-
-    func applicationWillResignActive(application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
-    }
-
-    func applicationDidEnterBackground(application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    }
-
-    func applicationWillEnterForeground(application: UIApplication) {
-        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
-    }
-
-    func applicationDidBecomeActive(application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-    }
-
-    func applicationWillTerminate(application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-
-
-}
-</code></pre></div></div>
+</code></pre></p>
 <h3 id="firstviewcontrollerswift">FirstViewController.swift</h3>
-<div class=md-fenced-code-tabs id=tab-tab-group-1><input name=tab-group-1 type=radio id=tab-group-1-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-1-0_swift-panel role=tab><label for=tab-group-1-0_swift class=code-tab-label data-lang=swift id=tab-group-1-0_swift-label>Swift 4.x/Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-0_swift-panel aria-labelledby=tab-group-1-0_swift-label><pre><code class=swift>//
+<p> <pre><code class=swift>//
 //  FirstViewController.swift
 //  UIKit013
 //
@@ -2619,46 +2542,9 @@ class FirstViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 }
-</code></pre></div><input name=tab-group-1 type=radio id=tab-group-1-1_swift class=code-tab data-lang=swift aria-controls=tab-group-1-1_swift-panel role=tab><label for=tab-group-1-1_swift class=code-tab-label data-lang=swift id=tab-group-1-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-1-1_swift-panel aria-labelledby=tab-group-1-1_swift-label><pre><code class=swift>//
-//  FirstViewController.swift
-//  UIKit013
-//
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
-//
-
-import UIKit
-
-class FirstViewController: UIViewController {
-
-    init() {
-        super.init(nibName: nil, bundle: nil)
-
-        // Viewの背景色をCyanに設定する.
-        self.view.backgroundColor = UIColor.cyanColor()
-
-        //tabBarItemのアイコンをFeaturedに、タグを1と定義する.
-        self.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Featured, tag: 1)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-
-    required override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-}
-</code></pre></div></div>
+</code></pre></p>
 <h3 id="secondviewcontrollerswift">SecondViewController.swift</h3>
-<div class=md-fenced-code-tabs id=tab-tab-group-2><input name=tab-group-2 type=radio id=tab-group-2-0_swift checked=checked class=code-tab data-lang=swift aria-controls=tab-group-2-0_swift-panel role=tab><label for=tab-group-2-0_swift class=code-tab-label data-lang=swift id=tab-group-2-0_swift-label>Swift 4.x/Swift 3.x</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-2-0_swift-panel aria-labelledby=tab-group-2-0_swift-label><pre><code class=swift>//
+<p> <pre><code class=swift>//
 //  SecondViewController.swift
 //  UIKit013
 //
@@ -2697,54 +2583,7 @@ class SecondViewController: UIViewController {
 
 
 }
-</code></pre></div><input name=tab-group-2 type=radio id=tab-group-2-1_swift class=code-tab data-lang=swift aria-controls=tab-group-2-1_swift-panel role=tab><label for=tab-group-2-1_swift class=code-tab-label data-lang=swift id=tab-group-2-1_swift-label>Swift 2.3</label><div class=code-tabpanel role=tabpanel data-lang=swift id=tab-group-2-1_swift-panel aria-labelledby=tab-group-2-1_swift-label><pre><code class=swift>///
-//  SecondViewController.swift
-//  UIKit013
-//
-//  Copyright © 2016年 FaBo, Inc. All rights reserved.
-//
-
-import UIKit
-
-class SecondViewController: UIViewController {
-
-    init() {
-        super.init(nibName: nil, bundle: nil)
-
-        // Viewの背景色をGreenに設定する.
-        self.view.backgroundColor = UIColor.greenColor()
-
-        // tabBarItemのアイコンをFeaturedに、タグを2と定義する.
-        self.tabBarItem = UITabBarItem(tabBarSystemItem: UITabBarSystemItem.Featured, tag: 2)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-
-    required override init(nibName nibNameOrNil: String!, bundle nibBundleOrNil: NSBundle!) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
-
-}
-</code></pre></div></div>
-<h2 id="3040">3.0と4.0の差分</h2>
-<ul>
-<li><code>[NSObject: AnyObject]?</code> が、 <code>[UIApplication.LaunchOptionsKey : Any]? = nil</code> に変更</li>
-</ul>
-<h2 id="2330">2.3と3.0の差分</h2>
-<ul>
-<li>UIScreen.mainScreen()がUIScreen.mainに変更.</li>
-</ul>
+</code></pre></p>
 <h2 id="reference">Reference</h2>
 <ul>
 <li>UITabBarController<ul>
